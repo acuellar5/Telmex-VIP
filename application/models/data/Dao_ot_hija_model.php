@@ -1042,7 +1042,7 @@ class Dao_ot_hija_model extends CI_Model {
         $this->db->update('inconcistencia', $data);
   }
 
-
+    // obtiene toda la informacion de una ot hija y otp por id de oth
     public function getothija($idOth){
     $query = $this->db->query("
         SELECT oth.k_id_estado_ot, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
@@ -1075,7 +1075,7 @@ class Dao_ot_hija_model extends CI_Model {
   public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo){
       $query = $this->db->query("
             SELECT 
-            oth.id_orden_trabajo_hija, oth.k_id_estado_ot
+            oth.id_orden_trabajo_hija, oth.k_id_estado_ot, e.n_name_estado_ot
             FROM 
             ot_hija oth
             INNER JOIN 
