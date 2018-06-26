@@ -24,9 +24,4 @@ class Welcome extends CI_Controller
       $res = $dao->insert($this->request);
       $this->json($res);
     }
-    //
-    public function algoo(){
-      $this->load->view('algo');
-    }
-
 }

@@ -67,7 +67,7 @@
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('editarOts') ?>">Ver OTS</a></li>
-                    <li><a href="<?= URL::to('cargarOts') ?>">Cargar incormación</a></li>
+                    <li><a href="<?= URL::to('cargarOts') ?>">Cargar información</a></li>
                   </ul>
                 </li>
               <?php
