@@ -1002,9 +1002,9 @@ $(function () {
 
 
 
-            $('#modalEditTicket').modal('show');
 
             $('.ins_servicio').hide();
+            $('#modalEditTicket').modal('show');
 
 
         },
