@@ -8,7 +8,7 @@
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
-<div class="tab-content">
+<div class="tab-content" id="contenido_tablas">
 
     <div id="hoy" class="tab-pane fade in active">
         <h3>Actuales</h3>
