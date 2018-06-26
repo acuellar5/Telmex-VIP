@@ -176,7 +176,7 @@ $(function () {
             var trParent = aLinkLog.parents('tr');
             var record = todo.tablaTodo.row(trParent).data();
             console.log(record);
-//            $('#modalEditTicket').modal('show');
+            $('#Modal_detalle').modal('show');
         },
         getButtons: function (obj) {
             boton = '<div class="btn-group">'

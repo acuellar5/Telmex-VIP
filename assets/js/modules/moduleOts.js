@@ -365,7 +365,7 @@ $(function () {
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
                 // limpiar el formulario...
-                $('#miform').reset();
+                $('#k_id_estado_ot').html("");
                 $.each(registro,function(i,item){
                     $('#' + i).val(item);
                 }); 

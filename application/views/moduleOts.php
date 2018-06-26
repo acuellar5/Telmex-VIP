@@ -49,7 +49,7 @@
 </div>
 
 <!-- Modal editar OTs -->
- <div id="modalEditTicket" class="modal " data-backdrop="static" data-keyboard="false" role="dialog" >
+ <div id="modalEditTicket" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
                 <div class="modal-dialog modal-lg2" style="width: 1100px;">
                  <div class="modal-content">
                         <div class="modal-header">

@@ -80,3 +80,12 @@ height: 100%;
     border-radius: 10%;
     font-family: sans-serif;
 }
+
+.sessionmodal{
+
+    background-color: #fff;
+    border: 1px solid #b9b3b3;
+    border-radius: 15px;
+    margin: 18px 0px;
+    padding: 25px;
+}
