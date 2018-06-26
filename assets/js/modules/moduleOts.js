@@ -332,8 +332,12 @@ $(function () {
             events: function () {
                 $('#contenido_tablas').on('click', 'a.ver-al', eventos.onClickShowModalEdit);
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
+                $('#ins_servicio').on('change', eventos.selectFormulary );
             },
-
+            //
+            selectFormulary: function(){
+                alert('hola');
+            },
             onClickShowModalEdit: function () {
                 var aLinkLog = $(this);
                 var trParent = aLinkLog.parents('tr');
@@ -365,7 +369,7 @@ $(function () {
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
                 // limpiar el formulario...
-                $('#miform').reset();
+                $('#formModal')[0].reset();
                 $.each(registro,function(i,item){
                     $('#' + i).val(item);
                 }); 
