@@ -1,6 +1,6 @@
 <?php 
 	header("Content-Type: application/vnd.ms-excel; charset=UTF-8");
-	header("Content-Disposition: attachment;filename= como_se_va_a_llamar.xls");
+	header("Content-Disposition: attachment;filename= ".$registros['otp'][0]->nombre.".xls");
 	header("Pragma: no-cache");
 	header("Expires: 0");
 ?>
@@ -19,7 +19,8 @@
 						<td>Programado</td>
 						<td>Compromiso</td>
 						<td>Creacion</td>
-						<td>Nombre</td>
+						<td>Ciudad</td>
+						<td>Recurrente</td>
 					</tr>
 				<?php 
 				//$registros
@@ -33,7 +34,8 @@
 						echo "<td>".elimina_acentos($registros['otp'][$i]->fecha_programacion)."</td>";
 						echo "<td>".elimina_acentos($registros['otp'][$i]->fecha_compromiso)."</td>";
 						echo "<td>".elimina_acentos($registros['otp'][$i]->fecha_creacion)."</td>";
-						echo "<td>".elimina_acentos($registros['otp'][$i]->nombre)."</td>";
+						echo "<td>".elimina_acentos($registros['otp'][$i]->ciudad)."</td>";
+						echo "<td>".elimina_acentos($registros['otp'][$i]->recurrente)."</td>";
 					echo "</tr>";
 							
 				}
@@ -45,35 +47,21 @@
 			<table width="100%" border="1">
 				<h3 align="center" style="color: #084c6f;">Tabla de Detalles OTH</h3>
 				<tr bgcolor="#084c6f" style="color: white;" align="center" >
-					<td>OTP</td>
-					<td>Cliente</td>
-					<td>tipo OTP</td>
-					<td>Servicio</td>
-					<td>Estado otp</td>
-					<td>Programación</td>
-					<td>Compromiso</td>
-					<td>Creación</td>
-					<td>Ingeniero</td>
 					<td>OTH</td>
 					<td>Tipo OTH</td>
 					<td>Estado OTH</td>
+					<td>Creacion OTH</td>
+					<td>Ingeniero</td>
 				</tr>
 			<?php 
 			//$registros
 			for ($i=0; $i < count($registros['oth']); $i++) { 
 				echo "<tr>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->k_id_ot_padre)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->n_nombre_cliente)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->orden_trabajo)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->servicio)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->estado_orden_trabajo)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->fecha_programacion)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->fecha_compromiso)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->fecha_creacion)."</td>";
-					echo "<td>".elimina_acentos($registros['oth'][$i]->nombre)."</td>";
 					echo "<td>".elimina_acentos($registros['oth'][$i]->id_orden_trabajo_hija)."</td>";
 					echo "<td>".elimina_acentos($registros['oth'][$i]->ot_hija)."</td>";
 					echo "<td>".elimina_acentos($registros['oth'][$i]->estado_orden_trabajo_hija)."</td>";
+					echo "<td>".elimina_acentos($registros['oth'][$i]->fecha_creacion_ot_hija)."</td>";
+					echo "<td>".elimina_acentos($registros['oth'][$i]->nombre)."</td>";
 				echo "</tr>";
 						
 			}

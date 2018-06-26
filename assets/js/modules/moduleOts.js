@@ -734,19 +734,20 @@ $(function () {
                  // console.log(record);
             },
 
+
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
-                // console.log(registro);
+                console.log(registro);
                 // limpiar el formulario...
                 $('#general').html("");
                 $('#k_id_estado_ot').html("");
 
                 $.post(baseurl + '/OtHija/c_fillmodals',
                     {
-                        idOth: registro.k_id_estado_ot// parametros que se envian
+                        idOth: registro.id_orden_trabajo_hija// parametros que se envian
                     },
                     function (data) {
-                        $.each(registro,function(i,item){
+                        $.each(data,function(i,item){
                             $('#' + i).val(item);
                         }); 
                     });
