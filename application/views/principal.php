@@ -73,7 +73,16 @@ if (Auth::user()->n_project == 'Implementacion') {
         <div class="head-last"><!--texto aca--> </div>
     </div>
 
-
 <?php } ?>
 
+<div id="Modal_detalle" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+    <div class="col-md-12">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="myModalLabel"></h3>
+            </div>
+    </div>
+    
+
+</div>
 
