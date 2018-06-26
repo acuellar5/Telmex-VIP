@@ -37,6 +37,26 @@
             </tbody>
         </table>
     </div>
+    <div class="col col-md-12">
+        <h1>Detalles</h1>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#fueraTiempos">Fuera de tiempos</a></li>
+            <li class=""><a data-toggle="tab" href="#enTiempos">En Tiempos</a></li>
+            <li class=""><a data-toggle="tab" href="#todo">Todo</a></li>
+        </ul>
+        <div id="fueraTiempos" class="tab-pane fade">
+            <h3>Fuera de tiempos</h3>
+            <table id="tablaFueraTiempos" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        </div>
+        <div id="enTiempos" class="tab-pane fade">
+            <h3>En Tiempos</h3>
+            <table id="tablaEnTiempos" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        </div>
+        <div id="todo" class="tab-pane fade">
+            <h3>Todo</h3>
+            <table id="tablaTodo" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        </div>
+    </div>
     <?php
 }
 if (Auth::user()->n_project == 'Implementacion') {
