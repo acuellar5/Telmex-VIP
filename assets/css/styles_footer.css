@@ -1,0 +1,15 @@
+.footerF{
+   position: relative;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #084c6f;
+   color: #d2c9c9;
+   text-align: center;
+   height:8%;
+   font-size: 110%;
+   font-family:serif;
+}
+.footerF p {
+	padding: 13px 0 0 0px;
+}
