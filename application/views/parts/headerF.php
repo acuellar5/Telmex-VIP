@@ -34,13 +34,7 @@
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/animsition/css/animsition.min.css') ?>">
         <!--==============================================================================================-->
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
-        <!--===============================================================================================-->
-        <!-- <script src="<?= URL::to('assets2/vendor/jquery/jquery-3.2.1.min.js') ?>"></script> -->
-        <!--===============================================================================================-->
-        <!-- <script src="<?= URL::to('assets2/vendor/animsition/js/animsition.min.js') ?>"></script> -->
-        <!--===============================================================================================-->
-        <!-- <script src="<?= URL::to('assets2/vendor/bootstrap/js/popper.js') ?>"></script> -->
-        <!-- <script src="<?= URL::to('assets2/vendor/bootstrap/js/bootstrap.min.js') ?>"></script> -->
+
   <?php endif ?>
     <?php if ($this->uri->segment(1) == 'editarOts') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . time()) ?>" />
@@ -93,5 +87,5 @@
       </div>
     </nav>
   </div>
-  <div class="container" style="min-height: 545px;">
+  <div class="container" style="min-height: 518px;">
   
