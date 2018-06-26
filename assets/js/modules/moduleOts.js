@@ -8,7 +8,7 @@ $(function () {
 
         //Eventos de la ventana.
         events: function () {
-            $('#tablaEditOts').on('click', 'a.ver-al', hoy.onClickShowModalEdit);
+            
         },
         listOtsCurrent: function () {
             $.post(baseurl + '/OtHija/getOtsAssigned',
@@ -56,13 +56,6 @@ $(function () {
                     + '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>'
                     + '</div>';
             return boton;
-        },
-        onClickShowModalEdit: function () {
-            var aLinkLog = $(this);
-            var trParent = aLinkLog.parents('tr');
-            var record = hoy.tablaEditOts.row(trParent).data();
-            console.log(record);
-            $('#modalEditTicket').modal('show');
         }
     };
     hoy.init();
@@ -79,8 +72,7 @@ $(function () {
         },
         //Eventos de la ventana.
         events: function () {
-            $('#tabla_total').on('click', 'a.ver-log', total.onClickVerLogTrChanges);
-
+           
         },
 
         //Primer paso para obtener toda la lista de total
@@ -139,51 +131,9 @@ $(function () {
             return botones;
         },
 
-        //
-        onClickVerLogTrChanges: function () {
-            var aLinkLog = $(this);
-            var trParent = aLinkLog.parents('tr');
-            var record = total.tableTotal.row(trParent).data();
-            total.getLogById(record);
-        },
 
-        //
-        getLogById: function(obj){
-            $.post( baseurl + '/Log/getLogById', 
-                {
-                    id: obj.id_orden_trabajo_hija
-                }, 
-                function(data) {
-                var obj = JSON.parse(data);
-                total.showModalHistorial(obj);
-                }
-            );            
-        },
 
-        // Muestra modal detalle historial log por id
-        showModalHistorial: function(obj){
-            $('#ModalHistorialLog').modal('show');
-            $('#titleEventHistory').html('Historial Cambios de orden ' + obj[0].id_ot_hija + '');
-            total.printTableHistory(obj);
-        },
 
-         //pintamos la tabla de log
-        printTableHistory: function(data){
-            console.log(data);
-            // limpio el cache si ya habia pintado otra tabla
-            if(total.tableModalHistory){
-                //si ya estaba inicializada la tabla la destruyo
-                total.tableModalHistory.destroy();
-            }
-            ///lleno la tabla con los valores enviados
-            total.tableModalHistory = $('#tableHistorialLog').DataTable(total.configTableLog(data,[                                       
-                    {data: "id_ot_hija"},
-                    {data: "antes"},
-                    {data: "ahora"},
-                    {data: "columna"},
-                    {data: "fecha_mod"}
-                ]));
-        },
 
         // Datos de configuracion del datatable para log  sin usar (server side prossesing)
         configTableLog: function (data, columns, onDraw) {
@@ -371,6 +321,140 @@ $(function () {
         }
     };
     quinceDias.init();
+
+        eventos = {
+            init: function () {
+                eventos.events();
+                
+            },
+    
+            //Eventos de la ventana.
+            events: function () {
+                $('#contenido_tablas').on('click', 'a.ver-al', eventos.onClickShowModalEdit);
+                $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
+            },
+
+            onClickShowModalEdit: function () {
+                var aLinkLog = $(this);
+                var trParent = aLinkLog.parents('tr');
+                var tabla = aLinkLog.parents('table').attr('id');
+                var record;
+
+                switch(tabla) {
+                    case 'tablaEditOts':
+                        record = hoy.tablaEditOts.row(trParent).data();                    
+                        break;
+                    case 'tabla_total':
+                        record = total.tableTotal.row(trParent).data();                    
+                        break;
+                    case 'tablaNewOts':
+                        record = nueva.tablaNewOts.row(trParent).data();                    
+                        break;
+                    case 'tablaChangesOts':
+                        record = cambio.tablaChangesOts.row(trParent).data();                    
+                        break;
+                    case 'tablaFiteenDaysOts':
+                        record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
+                        break;                
+                }
+
+                eventos.fillFormModal(record);
+                // console.log(record);
+            },
+
+            //llenamos los input del modal con la informacion a la q le dio click
+            fillFormModal: function(registro){
+                // limpiar el formulario...
+                $('#miform').reset();
+                $.each(registro,function(i,item){
+                    $('#' + i).val(item);
+                }); 
+
+                $('#modalEditTicket').modal('show');
+            },
+
+
+
+
+
+
+
+
+            //************************************LOG**************************************
+
+            //
+            onClickVerLogTrChanges: function () {
+                var aLinkLog = $(this);
+                var trParent = aLinkLog.parents('tr');
+                var tabla = aLinkLog.parents('table').attr('id');
+                var record;
+
+                switch(tabla) {
+                    case 'tablaEditOts':
+                        record = hoy.tablaEditOts.row(trParent).data();                    
+                        break;
+                    case 'tabla_total':
+                        record = total.tableTotal.row(trParent).data();                    
+                        break;
+                    case 'tablaNewOts':
+                        record = nueva.tablaNewOts.row(trParent).data();                    
+                        break;
+                    case 'tablaChangesOts':
+                        record = cambio.tablaChangesOts.row(trParent).data();                    
+                        break;
+                    case 'tablaFiteenDaysOts':
+                        record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
+                        break;                
+                }
+
+
+                eventos.getLogById(record);
+            },
+
+             //
+            getLogById: function(obj){
+                $.post( baseurl + '/Log/getLogById', 
+                    {
+                        id: obj.id_orden_trabajo_hija
+                    }, 
+                    function(data) {
+                    var obj = JSON.parse(data);
+                    eventos.showModalHistorial(obj);
+                    }
+                );            
+            },
+
+            
+            // Muestra modal detalle historial log por id
+            showModalHistorial: function(obj){
+                $('#ModalHistorialLog').modal('show');
+                $('#titleEventHistory').html('Historial Cambios de orden ' + obj[0].id_ot_hija + '');
+                eventos.printTableHistory(obj);
+            },
+             //pintamos la tabla de log
+            printTableHistory: function(data){
+                // limpio el cache si ya habia pintado otra tabla
+                if(eventos.tableModalHistory){
+                    //si ya estaba inicializada la tabla la destruyo
+                    eventos.tableModalHistory.destroy();
+                }
+                ///lleno la tabla con los valores enviados
+                eventos.tableModalHistory = $('#tableHistorialLog').DataTable(total.configTableLog(data,[                                       
+                        {data: "id_ot_hija"},
+                        {data: "antes"},
+                        {data: "ahora"},
+                        {data: "columna"},
+                        {data: "fecha_mod"}
+                    ]));
+            },
+
+
+
+
+        };
+        eventos.init();
+
+
 });
 
 
