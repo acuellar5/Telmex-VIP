@@ -55,6 +55,13 @@ class Dao_estado_ot_model extends CI_Model {
 
     }
 
+    //retorna a js los estados segun id de tipo
+    public function m_getStatusByType($idtipo){
+        $query = $this->db->order_by('k_id_tipo ASC, i_orden ASC');
+        $query = $this->db->get_where('estado_ot', array('k_id_tipo'=>$idtipo));
+        return $query->result();
+    }
+
 }
 
 ?>
