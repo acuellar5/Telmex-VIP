@@ -98,7 +98,7 @@ class OtHija extends CI_Controller {
         echo json_encode($json_data);        
     }
     
-    public function c_getOtsNew() {
+    public function getOtsNew() {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
@@ -110,7 +110,19 @@ class OtHija extends CI_Controller {
         }
     }
     
-    public function c_getOtsChange() {
+    public function getOtsChange() {
+        $response = null;
+        if (Auth::check()) {
+            $otHijaModel = new Dao_ot_hija_model();
+            $res = $otHijaModel->getOtsChange();
+            $this->json($res);
+        } else {
+            $this->json(new Response(EMessages::SESSION_INACTIVE));
+            return;
+        }
+    }
+    
+    public function getOtsOutTime() {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
