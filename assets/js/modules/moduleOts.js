@@ -321,6 +321,7 @@ $(function () {
         }
     };
     quinceDias.init();
+    //******************************************************** FIN 15 DIAS ********************************************************************//
 
         eventos = {
             init: function () {
@@ -332,8 +333,12 @@ $(function () {
             events: function () {
                 $('#contenido_tablas').on('click', 'a.ver-al', eventos.onClickShowModalEdit);
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
+                $('#ins_servicio').on('change', eventos.selectFormulary );
             },
-
+            //
+            selectFormulary: function(){
+                alert('hola');
+            },
             onClickShowModalEdit: function () {
                 var aLinkLog = $(this);
                 var trParent = aLinkLog.parents('tr');
@@ -358,13 +363,12 @@ $(function () {
                         break;                
                 }
                 eventos.fillFormModal(record);
-                // console.log(record);
+                 // console.log(record);
             },
 
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
-                console.log("registro", registro);
-
+                console.log(registro);
                 // limpiar el formulario...
                 $('#k_id_estado_ot').html("");
 
@@ -372,11 +376,16 @@ $(function () {
                     $('#' + i).val(item);
                 }); 
 
-                eventos.fillSelect(registro.k_id_tipo);
+                eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot);
+
+                console.log(registro.k_id_estado_ot);
+                // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
+                // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
+
                 $('#modalEditTicket').modal('show');
             },
 
-            fillSelect: function(idtipo){
+            fillSelect: function(idtipo, val_estado){
               $.post(baseurl + "/User/c_getStatusByType",
                   {
                     idtipo: idtipo
@@ -386,8 +395,12 @@ $(function () {
                     var status = JSON.parse(data);
                     // Pinto el select de estado
                     $.each(status,function(i,item){
-                      $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
-                    });                
+                        if (val_estado == item.k_id_estado_ot) {
+                            $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" selected>'+item.n_name_estado_ot+'</option>');                            
+                        }else {
+                            $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
+                        }
+                    }); 
                 });
 
             },

@@ -701,7 +701,7 @@
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                            <select name="k_id_estado_ot" id="k_id_estado_ot" class="form-control llenarEstadosJS">                                                                
+                                                            <select name="k_id_estado_ot" id="k_id_estado_ot" class="form-control llenarEstadosJS">           
                                                             </select>
                                                         </div>
                                                     </div>
@@ -751,9 +751,6 @@
 <!-- ********************************************************formulario plantillas******************************** -->
                                <div id="general"></div>
 <!-- ********************************************************fin formulario plantillas******************************** -->
-
-
-
 
                     </form>
                 </div>
