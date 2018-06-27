@@ -8,6 +8,7 @@ class User extends CI_Controller {
         parent::__construct();
         $this->load->model('data/Dao_user_model');
         $this->load->model('data/Dao_ot_hija_model');
+        $this->load->model('data/Dao_estado_ot_model');
     }
 
     private function validUser($request) {
@@ -107,7 +108,7 @@ class User extends CI_Controller {
         $answer['estadosOts'] = json_encode($estadosOt);
         $data['title']='Editar OTS';
         $this->load->view('parts/headerF', $data);
-        $this->load->view('moduleOts', $answer);
+        $this->load->view('moduleOts');
         $this->load->view('parts/footerF');
 
 
@@ -419,6 +420,16 @@ class User extends CI_Controller {
       return $num2;
       
     }
+
+    //retorna a js los estados segun id de tipo
+    public function c_getStatusByType(){
+      $data = $this->Dao_estado_ot_model->m_getStatusByType($this->input->post('idtipo'));
+      echo json_encode($data);
+
+    }
+
+
+
 
     //
     public function prueba(){

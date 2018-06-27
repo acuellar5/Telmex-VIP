@@ -168,7 +168,7 @@ $(function () {
         events: function () {
         },
         listOtsNew: function () {
-            $.post(baseurl + '/OtHija/getOtsNew',
+            $.post(baseurl + '/OtHija/c_getOtsNew',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -224,7 +224,7 @@ $(function () {
         events: function () {
         },
         listOtsChange: function () {
-            $.post(baseurl + '/OtHija/getOtsChange',
+            $.post(baseurl + '/OtHija/c_getOtsChange',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -357,23 +357,40 @@ $(function () {
                         record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
                         break;                
                 }
-
                 eventos.fillFormModal(record);
                 // console.log(record);
             },
 
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
+                console.log("registro", registro);
+
                 // limpiar el formulario...
-                $('#miform').reset();
+                $('#k_id_estado_ot').html("");
+
                 $.each(registro,function(i,item){
                     $('#' + i).val(item);
                 }); 
 
+                eventos.fillSelect(registro.k_id_tipo);
                 $('#modalEditTicket').modal('show');
             },
 
+            fillSelect: function(idtipo){
+              $.post(baseurl + "/User/c_getStatusByType",
+                  {
+                    idtipo: idtipo
+                  },
+                  function (data) {
+                    // Decodifica el objeto traido desde el controlador
+                    var status = JSON.parse(data);
+                    // Pinto el select de estado
+                    $.each(status,function(i,item){
+                      $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
+                    });                
+                });
 
+            },
 
 
 

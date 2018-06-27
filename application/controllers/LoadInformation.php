@@ -179,10 +179,10 @@ class LoadInformation extends CI_Controller {
                                 
                                 $insert = array(
                                     'id_ot_hija' => $arrayBD['id_orden_trabajo_hija'],
-                                    'antes'     => $arrayBD[$key],
-                                    'ahora'     => $dataExcel[$key],
-                                    'columna'  => $key,
-                                    'fecha_mod'=> $fActual
+                                    'antes'      => $arrayBD[$key],
+                                    'ahora'      => $dataExcel[$key],
+                                    'columna'    => $key,
+                                    'fecha_mod'  => $fActual
                                     );
 
                                 $this->Dao_log_model->insertLogRow($insert);
@@ -193,7 +193,7 @@ class LoadInformation extends CI_Controller {
                             // Si en la comparacion hubo alguna modificacion
                             if (count($updates) >0)  {
                                 $updates['estado_mod'] = 1;
-                                $updates['fecha_insercion_zolid'] = $fActual;
+                                $updates['fecha_actual'] = $fActual;
                                 $updates['id_orden_trabajo_hija'] = $arrayBD['id_orden_trabajo_hija'];
                                 $updates['ot_hija'] = $arrayBD['ot_hija'];
                                 // print_r("cambios");
@@ -202,7 +202,7 @@ class LoadInformation extends CI_Controller {
                              else {
                                 if ($arrayBD['estado_mod'] != 2) {
                                     $cambioStatusMod['estado_mod'] = 2;
-                                    $updates['fecha_insercion_zolid'] = $fActual;
+                                    $cambioStatusMod['fecha_actual'] = $fActual;
                                     $cambioStatusMod['id_orden_trabajo_hija'] = $arrayBD['id_orden_trabajo_hija'];
                                 }
                             }
@@ -250,7 +250,7 @@ class LoadInformation extends CI_Controller {
                         $data = array(
                                 'id_orden_trabajo_hija'            => $this->getValueCell($sheet, 'AW'. $row),
                                 'k_id_estado_ot'                   => $id_estado->k_id_estado_ot,
-                                'k_id_user'                        => $this->cedula_del_inegeniero($this->getValueCell($sheet, 'AB'. $row), $list_inges),
+                                'k_id_user'                        => $this->cedula_del_inegeniero(str_replace(array("ñ", "Ñ"), 'N',$this->getValueCell($sheet, 'AB'. $row)), $list_inges),
                                 'id_cliente_onyx'                  => $this->getValueCell($sheet, 'A'. $row),
                                 'nombre_cliente'                   => $this->getValueCell($sheet, 'B'. $row),
                                 'grupo_objetivo'                   => $this->getValueCell($sheet, 'C'. $row),

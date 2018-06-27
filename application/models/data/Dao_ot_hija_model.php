@@ -170,7 +170,7 @@ class Dao_ot_hija_model extends CI_Model {
 
     // actualiza en tabla ot_hija enviados los campos (hay q enviarle a data el arreglo ya creado)
     public function update_ot_hija_status_mod($data) {
-        $query = $this->db->query("UPDATE ot_hija SET estado_mod = " . $data['estado_mod'] . "  WHERE id_orden_trabajo_hija = " . $data['id_orden_trabajo_hija'] . ";");
+        $query = $this->db->query("UPDATE ot_hija SET estado_mod = " . $data['estado_mod'] . ", fecha_actual = '".$data['fecha_actual']."'  WHERE id_orden_trabajo_hija = " . $data['id_orden_trabajo_hija'] . ";");
 
         $error = $this->db->error();
         if ($error['message']) {
@@ -341,7 +341,7 @@ class Dao_ot_hija_model extends CI_Model {
             $query = $this->db->query("SELECT oh.*, eo.k_id_tipo 
                                 FROM ot_hija oh
                                 INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
-                                WHERE fecha_actual = CURDATE() AND estado_mod = 0
+                                WHERE estado_mod = 0
                                 $condicion ORDER BY tipo_trascurrido DESC");
             return $query->result();
         } catch (DeplynException $ex) {
@@ -360,7 +360,7 @@ class Dao_ot_hija_model extends CI_Model {
             $query = $this->db->query("SELECT oh.*, eo.k_id_tipo 
                                 FROM ot_hija oh
                                 INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
-                                WHERE fecha_actual = CURDATE() AND estado_mod = 1
+                                WHERE estado_mod = 1
                                 $condicion ORDER BY tipo_trascurrido DESC");
             return $query->result();
         } catch (DeplynException $ex) {

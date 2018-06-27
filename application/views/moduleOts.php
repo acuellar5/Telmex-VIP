@@ -12,7 +12,7 @@
 
     <div id="hoy" class="tab-pane fade in active">
         <h3>Actuales</h3>
-        <table id="tablaEditOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaEditOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="total" class="tab-pane fade">
@@ -33,23 +33,23 @@
 
     <div id="nuevas" class="tab-pane fade">
         <h3>Nuevas</h3>
-        <table id="tablaNewOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaNewOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="cambio" class="tab-pane fade">
         <h3>Cambios</h3>
-        <table id="tablaChangesOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaChangesOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="dias_15" class="tab-pane fade">
         <h3>15 Días</h3>
-        <table id="tablaFiteenDaysOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaFiteenDaysOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
 </div>
 
 <!-- Modal editar OTs -->
- <div id="modalEditTicket" class="modal " data-backdrop="static" data-keyboard="false" role="dialog" >
+ <div id="modalEditTicket" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
                 <div class="modal-dialog modal-lg2" style="width: 1100px;">
                  <div class="modal-content">
                         <div class="modal-header">
@@ -701,7 +701,7 @@
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                            <select name="k_id_estado_ot" id="k_id_estado_ot" class="form-control">                                                                
+                                                            <select name="k_id_estado_ot" id="k_id_estado_ot" class="form-control llenarEstadosJS">                                                                
                                                             </select>
                                                         </div>
                                                     </div>
