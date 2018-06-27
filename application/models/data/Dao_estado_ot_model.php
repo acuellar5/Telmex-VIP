@@ -62,6 +62,19 @@ class Dao_estado_ot_model extends CI_Model {
         return $query->result();
     }
 
+    //trae el nombre del estado por su id
+    public function getNameStatusById($id){
+        $query = $this->db->query("
+                SELECT 
+                n_name_estado_ot 
+                FROM
+                estado_ot 
+                WHERE
+                k_id_estado_ot = $id
+            ");
+        return $query->row()->n_name_estado_ot;
+    }
+
 }
 
 ?>

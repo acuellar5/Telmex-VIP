@@ -8,6 +8,7 @@ class OtHija extends CI_Controller {
         parent::__construct();
         $this->load->model('data/Dao_ot_hija_model');
         $this->load->model('data/Dao_log_model');
+        $this->load->model('data/Dao_estado_ot_model');
     }
 
     public function getOtsAssigned() {
@@ -22,17 +23,33 @@ class OtHija extends CI_Controller {
         }
     }
     
-    public function updateStatusOt() {
+    public function c_updateStatusOt() {
         //Se comprueba si no hay sesión.
-        $response = null;
-        if (Auth::check()) {
-            $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->updateStatusOt($this->request);
-            $this->json($res);
-        } else {
-            $this->json(new Response(EMessages::SESSION_INACTIVE));
-            return;
-        }
+        // print_r($_POST);
+        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($this->input->post('k_id_estado_ot'));
+
+        date_default_timezone_set("America/Bogota");
+        $fActual = date('Y-m-d');
+        $data = array(
+            'id_orden_trabajo_hija' => $this->input->post('id_orden_trabajo_hija'),
+            'k_id_estado_ot' => $this->input->post('k_id_estado_ot'),
+            'estado_orden_trabajo_hija' => $text_estado,
+            'fecha_actual' => $fActual,
+            'estado_mod' => 1
+        );
+
+        $dataLog = array(
+            'id_ot_hija' => $this->input->post('id_orden_trabajo_hija'),
+            'antes' => $this->input->post('estado_orden_trabajo_hija'),
+            'ahora' => $text_estado,
+            'columna' => 'estado_orden_trabajo_hija',
+            'fecha_mod' => $fActual,
+        );
+        
+
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
+
+         echo json_encode($res);
     }
     
     public function getOtsFiteenDays() {

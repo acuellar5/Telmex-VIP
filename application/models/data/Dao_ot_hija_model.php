@@ -69,23 +69,42 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
-    public function updateStatusOt($request) {
-        try {
-            $otHija = new OtHijaModel();
-            $datos = $otHija->where("k_id_register", "=", $request->k_id_register)
-                    ->update([
-                "observaciones" => $request->observaciones,
-                "k_id_estado_ot" => $request->k_id_estado_ot,
-                "estado_orden_trabajo_hija" => $request->estado_orden_trabajo_hija
-            ]);
-//            echo $otHija->getSQL();
-            $response = new Response(EMessages::SUCCESS);
-            $response->setData($datos);
-            return $response;
-        } catch (DeplynException $ex) {
-            return $ex;
-        }
+
+    //
+    public function m_updateStatusOt($data, $dataLog){
+        $this->db->where('id_orden_trabajo_hija', $data['id_orden_trabajo_hija']);
+        $this->db->update('ot_hija', $data);
+        $error = $this->db->error();
+
+        $this->db->insert('log', $dataLog);
+
+
+
+            if ($error['message']) {
+              return 'error';
+            }else{
+              return 1;
+            }
+
     }
+
+//     public function updateStatusOt($request) {
+//         try {
+//             $otHija = new OtHijaModel();
+//             $datos = $otHija->where("k_id_register", "=", $request->k_id_register)
+//                     ->update([
+//                 "observaciones" => $request->observaciones,
+//                 "k_id_estado_ot" => $request->k_id_estado_ot,
+//                 "estado_orden_trabajo_hija" => $request->estado_orden_trabajo_hija
+//             ]);
+// //            echo $otHija->getSQL();
+//             $response = new Response(EMessages::SUCCESS);
+//             $response->setData($datos);
+//             return $response;
+//         } catch (DeplynException $ex) {
+//             return $ex;
+//         }
+//     }
 
     public function getOtsFiteenDays() {
         try {
