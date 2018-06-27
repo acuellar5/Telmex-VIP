@@ -366,9 +366,7 @@ $(function () {
                 console.log("registro", registro);
 
                 // limpiar el formulario...
-                document.getElementById('formModal').reset();
                 $('#k_id_estado_ot').html("");
-
 
                 $.each(registro,function(i,item){
                     $('#' + i).val(item);
