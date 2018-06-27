@@ -36,7 +36,7 @@
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
 
   <?php endif ?>
-    <?php if ($this->uri->segment(1) == 'editarOts') { ?>
+    <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . time()) ?>" />
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 

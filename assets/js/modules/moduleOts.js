@@ -168,7 +168,7 @@ $(function () {
         events: function () {
         },
         listOtsNew: function () {
-            $.post(baseurl + '/OtHija/getOtsNew',
+            $.post(baseurl + '/OtHija/c_getOtsNew',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -224,7 +224,7 @@ $(function () {
         events: function () {
         },
         listOtsChange: function () {
-            $.post(baseurl + '/OtHija/getOtsChange',
+            $.post(baseurl + '/OtHija/c_getOtsChange',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -370,7 +370,6 @@ $(function () {
             fillFormModal: function(registro){
                 console.log(registro);
                 // limpiar el formulario...
-                document.getElementById('formModal').reset();
                 $('#k_id_estado_ot').html("");
 
                 $.each(registro,function(i,item){

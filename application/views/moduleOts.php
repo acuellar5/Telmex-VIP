@@ -12,7 +12,7 @@
 
     <div id="hoy" class="tab-pane fade in active">
         <h3>Actuales</h3>
-        <table id="tablaEditOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaEditOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="total" class="tab-pane fade">
@@ -33,17 +33,17 @@
 
     <div id="nuevas" class="tab-pane fade">
         <h3>Nuevas</h3>
-        <table id="tablaNewOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaNewOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="cambio" class="tab-pane fade">
         <h3>Cambios</h3>
-        <table id="tablaChangesOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaChangesOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="dias_15" class="tab-pane fade">
         <h3>15 Días</h3>
-        <table id="tablaFiteenDaysOts" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaFiteenDaysOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
 </div>
