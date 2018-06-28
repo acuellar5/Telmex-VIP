@@ -11,7 +11,7 @@ $(function () {
             
         },
         listOtsCurrent: function () {
-            $.post(baseurl + '/OtHija/getOtsAssigned',
+            $.post(baseurl + '/OtHija/c_getOtsAssigned',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -366,6 +366,7 @@ $(function () {
 
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
+                console.log(registro);
                 // console.log(registro);
                 // limpiar el formulario...
                  $('#general').html("");
@@ -383,7 +384,6 @@ $(function () {
 
 
                 var algo = $('#k_id_estado_ot').val() ;
-                console.log(algo);
 
                 // if (registro.k_id_tipo == 1) {
                 //     // alert('entro');
@@ -1350,6 +1350,7 @@ $(function () {
 
 
             fillSelect: function(idtipo, val_estado){
+
               $.ajaxSetup({async:false});
               $.post(baseurl + "/User/c_getStatusByType",
                   {
@@ -1363,7 +1364,11 @@ $(function () {
                         if (val_estado == item.k_id_estado_ot) {
                             $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" selected>'+item.n_name_estado_ot+'</option>');                            
                         }else {
-                            $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
+                            if (item.k_id_estado_ot < val_estado) {
+                                $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" disabled>'+item.n_name_estado_ot+'</option>');                                
+                            } else {
+                                $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
+                            }
                         }
                     }); 
                 });
