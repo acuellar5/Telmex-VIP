@@ -1,10 +1,10 @@
     <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#hoy">Actuales</a></li>
-    <li class=""><a data-toggle="tab" href="#total">Total</a></li>
-    <li class=""><a data-toggle="tab" href="#nuevas">Nuevas</a></li>
-    <li class=""><a data-toggle="tab" href="#cambio">Cambios</a></li>
-    <li class=""><a data-toggle="tab" href="#dias_15">15 Días</a></li>
+    <li class="active"><a data-toggle="tab" href="#hoy">Actuales <span class="badge badge_cami" id="bdg_hoy">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#total">Total <span class="badge badge_cami" id="bdg_total">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#nuevas">Nuevas <span class="badge badge_cami" id="bdg_nuevas">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#cambio">Cambios <span class="badge badge_cami" id="bdg_cambios">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#dias_15">15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -58,8 +58,8 @@
                         </div>
                         <div class="modal-body">
                             <div>
-                                <form class="well form-horizontal" id="formModal" action="OtHija/updateStatusOt" method="post" novalidate="novalidate">
-                                    <input name="k_id_register" id="k_id_register" type="hidden">
+                                <form class="well form-horizontal" id="formModal" action="OtHija/c_updateStatusOt" method="post" novalidate="novalidate">
+                                    <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                                     <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                                     <fieldset>
                                        <div class="widget bg_white m-t-25 display-block">
@@ -759,7 +759,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-                <button type="button" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
+                <button type="submit" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
             </div>
         </div>
     </div>
