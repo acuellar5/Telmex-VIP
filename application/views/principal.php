@@ -89,6 +89,7 @@ if (Auth::user()->n_project == 'Implementacion') {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="title_modal" align="center"></h3>
             </div>
             <div>
                 <div class="modal-body">
@@ -294,7 +295,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="producto" class="col-md-12 control-label ubicacionLetra">Producto: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <input name="producto" id="producto" class="form-control" minlength="3" disabled="true" type="text" required>
+                                            <input name="producto" id="mdl_producto" class="form-control" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div>
@@ -431,7 +432,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="monto_moneda_local_cargo_mensual" class="col-md-12 control-label ubicacionLetra">Monto Moneda Local Cargo Mensual: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <input name="monto_moneda_local_cargo_mensual" id="monto_moneda_local_cargo_mensual" class="form-control" minlength="3" disabled="true" type="text" required>
+                                            <input name="monto_moneda_local_cargo_mensual" id="mdl_monto_moneda_local_cargo_mensual" class="form-control" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div>

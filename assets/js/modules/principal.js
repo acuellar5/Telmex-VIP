@@ -58,11 +58,20 @@ $(function () {
             return boton;
         },
         onClickShowModalDet: function () {
+            document.getElementById("formModal_detalle").reset();
+            $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
-            var record = fTiempos.tablaEditOts.row(trParent).data();
-//            console.log(record);
-            $('#modalEditTicket').modal('show');
+            var record = fTiempos.tablaFueraTiempos.row(trParent).data();
+            fTiempos.fillFormModal(record);        
+        },
+
+        fillFormModal: function(registros){
+            $.each(registros ,function(i,item){
+                    $('#mdl_' + i).val(item);
+                });
+            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+            $('#Modal_detalle').modal('show');
         }
     };
     fTiempos.init();
@@ -77,6 +86,7 @@ $(function () {
 
         //Eventos de la ventana.
         events: function () {
+            $('#tablaEnTiempos').on('click', 'a.ver-det', eTiempos.onClickShowModalDet);
         },
         listInTimes: function () {
             $.post(baseurl + '/OtHija/c_getOtsInTimes',
@@ -98,7 +108,7 @@ $(function () {
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Días vencimiento", data: "tiempo_vencer"},
-                {data: fTiempos.getButtons},
+                {data: eTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -125,11 +135,22 @@ $(function () {
             return boton;
         },
         onClickShowModalDet: function () {
+            document.getElementById("formModal_detalle").reset();
+            // imprimir el titulo
+            $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
-            var record = fTiempos.tablaEditOts.row(trParent).data();
+            var record = eTiempos.tablaEnTiempos.row(trParent).data();
 //            console.log(record);
-            $('#modalEditTicket').modal('show');
+            fTiempos.fillFormModal(record);  
+        },
+
+            fillFormModal: function(registros){
+            $.each(registros ,function(i,item){
+                    $('#mdl_' + i).val(item);
+                });
+            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+            $('#Modal_detalle').modal('show');
         }
     };
     eTiempos.init();
@@ -187,12 +208,21 @@ $(function () {
             }
         },
         onClickShowModalDet: function () {
+            document.getElementById("formModal_detalle").reset();
+            $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = todo.tablaTodo.row(trParent).data();
-            console.log(record);
             $('#Modal_detalle').modal('show');
         },
+        fillFormModal: function(registros){
+            $.each(registros ,function(i,item){
+                    $('#mdl_' + i).val(item);
+                });
+            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+            $('#Modal_detalle').modal('show');
+        },
+
         getButtons: function (obj) {
             boton = '<div class="btn-group">'
                     + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'

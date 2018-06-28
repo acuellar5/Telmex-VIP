@@ -619,7 +619,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                 WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
                                                 WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY))
                                             END AS tiempo_vencidas
-                                        FROM telmex_vip.ot_hija oth
+                                        FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
                                         WHERE oth.estado_orden_trabajo_hija != 'Cerrada' 
@@ -731,7 +731,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                         WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
                                                         ELSE 0
                                                 END AS tiempo_vencer
-                                        FROM telmex_vip.ot_hija oth
+                                        FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
                                         WHERE (oth.estado_orden_trabajo_hija != 'Cerrada') 
