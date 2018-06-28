@@ -59,19 +59,19 @@
 /*Imagen responsive para el fondo de implementacion de servicios*/
 
 .css_imagen{
-width: 100%; 
-height: 91%; 
-padding: 0 !important; 
-margin: 0; top: 53px; 
-left: 0; 
-right: 0; 
-position: absolute;
-}*/
+    width: 100%; 
+    height: 91%; 
+    padding: 0 !important; 
+    margin: 0; top: 53px; 
+    left: 0; 
+    right: 0; 
+    position: absolute;
+}
 /*Clase para quitar un padding inferior que genera la barra de navegacion*/
 
 .imagenfond{
-width: 100%; 
-height: 100%;
+    width: 100%; 
+    height: 100%;
 }
 
 .selectValidacionIP{
@@ -86,6 +86,14 @@ height: 100%;
     background-color: #fff;
     border: 1px solid #b9b3b3;
     border-radius: 15px;
-    margin: 18px 0px;
+    margin:  0px;
     padding: 25px;
+}
+/*Estilo al modal de detalles en Gestion*/
+.ubicacionLetra{
+    text-align: left !important;
+}
+
+#formModal_detalle .input-group{
+    width: 100% !important;
 }
