@@ -534,17 +534,74 @@ class Dao_ot_hija_model extends CI_Model {
             return $ex;
         }
     }
-
-
-
     
     public function getOtsOutTime() {
         try {
             $db = new DB();
-            $query = $this->db->query("SELECT oth.nombre_cliente, oth.id_cliente_onyx, oth.id_orden_trabajo_hija, 
-                                            oth.ot_hija, oth.estado_orden_trabajo_hija, oth.tipo_trascurrido,
+            $query = $this->db->query("SELECT oth.id_orden_trabajo_hija, 
+                                            oth.k_id_estado_ot, 
+                                            oth.k_id_user, 
+                                            oth.id_cliente_onyx, 
+                                            oth.nombre_cliente, 
+                                            oth.grupo_objetivo, 
+                                            oth.segmento, 
+                                            oth.nivel_atencion, 
+                                            oth.ciudad, 
+                                            oth.departamento, 
+                                            oth.grupo, 
+                                            oth.consultor_comercial, 
+                                            oth.grupo2, 
+                                            oth.consultor_postventa, 
+                                            oth.proy_instalacion, 
+                                            oth.ing_responsable, 
+                                            oth.id_enlace, 
+                                            oth.alias_enlace, 
+                                            oth.orden_trabajo, 
+                                            oth.nro_ot_onyx, 
+                                            oth.servicio, 
+                                            oth.familia, 
+                                            oth.producto, 
+                                            DATE_FORMAT(oth.fecha_creacion, '%Y-%m-%d') AS fecha_creacion, 
+                                            oth.tiempo_incidente, 
+                                            oth.estado_orden_trabajo, 
+                                            oth.tiempo_estado, 
+                                            oth.ano_ingreso_estado, 
+                                            oth.mes_ngreso_estado, 
+                                            DATE_FORMAT(oth.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
+                                            oth.usuario_asignado, 
+                                            oth.grupo_asignado, 
+                                            oth.ingeniero_provisioning, 
+                                            oth.cargo_arriendo, 
+                                            oth.cargo_mensual, 
+                                            oth.monto_moneda_local_arriendo, 
+                                            oth.monto_moneda_local_cargo_mensual, 
+                                            oth.cargo_obra_civil, 
+                                            oth.descripcion, 
+                                            oth.direccion_origen, 
+                                            oth.ciudad_incidente, 
+                                            oth.direccion_destino, 
+                                            oth.ciudad_incidente3, 
+                                            DATE_FORMAT(oth.fecha_compromiso, '%Y-%m-%d') AS fecha_compromiso, 
+                                            DATE_FORMAT(oth.fecha_programacion, '%Y-%m-%d') AS fecha_programacion, 
+                                            DATE_FORMAT(oth.fecha_realizacion, '%Y-%m-%d') AS fecha_realizacion, 
+                                            oth.resolucion_1, 
+                                            oth.resolucion_2, 
+                                            oth.resolucion_3, 
+                                            oth.resolucion_4, 
+                                            DATE_FORMAT(oth.fecha_creacion_ot_hija, '%Y-%m-%d') AS fecha_creacion_ot_hija, 
+                                            oth.proveedor_ultima_milla, 
+                                            oth.usuario_asignado4, 
+                                            oth.resolucion_15, 
+                                            oth.resolucion_26, 
+                                            oth.resolucion_37, 
+                                            oth.resolucion_48, 
+                                            oth.ot_hija, 
+                                            oth.estado_orden_trabajo_hija, 
+                                            DATE_FORMAT(oth.fec_actualizacion_onyx_hija, '%Y-%m-%d') AS fec_actualizacion_onyx_hija, 
+                                            oth.tipo_trascurrido, 
+                                            DATE_FORMAT(oth.fecha_actual, '%Y-%m-%d') AS fecha_actual, 
+                                            oth.estado_mod,
                                             CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero,
-                                            oth.fecha_creacion,
                                             eot.k_id_tipo,
                                             CASE
                                                 WHEN eot.k_id_tipo = 1 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 3 DAY))
@@ -583,6 +640,119 @@ class Dao_ot_hija_model extends CI_Model {
                                                     OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) < CURDATE())
                                                     OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY) < CURDATE()))
                                         ORDER by tiempo_vencidas DESC");
+            return $query->result();
+        } catch (DeplynException $ex) {
+            return $ex;
+        }
+    }
+    
+    public function getOtsInTimes() {
+        try {
+            $db = new DB();
+            $query = $this->db->query("SELECT oth.id_orden_trabajo_hija, 
+                                            oth.k_id_estado_ot, 
+                                            oth.k_id_user, 
+                                            oth.id_cliente_onyx, 
+                                            oth.nombre_cliente, 
+                                            oth.grupo_objetivo, 
+                                            oth.segmento, 
+                                            oth.nivel_atencion, 
+                                            oth.ciudad, 
+                                            oth.departamento, 
+                                            oth.grupo, 
+                                            oth.consultor_comercial, 
+                                            oth.grupo2, 
+                                            oth.consultor_postventa, 
+                                            oth.proy_instalacion, 
+                                            oth.ing_responsable, 
+                                            oth.id_enlace, 
+                                            oth.alias_enlace, 
+                                            oth.orden_trabajo, 
+                                            oth.nro_ot_onyx, 
+                                            oth.servicio, 
+                                            oth.familia, 
+                                            oth.producto, 
+                                            DATE_FORMAT(oth.fecha_creacion, '%Y-%m-%d') AS fecha_creacion, 
+                                            oth.tiempo_incidente, 
+                                            oth.estado_orden_trabajo, 
+                                            oth.tiempo_estado, 
+                                            oth.ano_ingreso_estado, 
+                                            oth.mes_ngreso_estado, 
+                                            DATE_FORMAT(oth.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
+                                            oth.usuario_asignado, 
+                                            oth.grupo_asignado, 
+                                            oth.ingeniero_provisioning, 
+                                            oth.cargo_arriendo, 
+                                            oth.cargo_mensual, 
+                                            oth.monto_moneda_local_arriendo, 
+                                            oth.monto_moneda_local_cargo_mensual, 
+                                            oth.cargo_obra_civil, 
+                                            oth.descripcion, 
+                                            oth.direccion_origen, 
+                                            oth.ciudad_incidente, 
+                                            oth.direccion_destino, 
+                                            oth.ciudad_incidente3, 
+                                            DATE_FORMAT(oth.fecha_compromiso, '%Y-%m-%d') AS fecha_compromiso, 
+                                            DATE_FORMAT(oth.fecha_programacion, '%Y-%m-%d') AS fecha_programacion, 
+                                            DATE_FORMAT(oth.fecha_realizacion, '%Y-%m-%d') AS fecha_realizacion, 
+                                            oth.resolucion_1, 
+                                            oth.resolucion_2, 
+                                            oth.resolucion_3, 
+                                            oth.resolucion_4, 
+                                            DATE_FORMAT(oth.fecha_creacion_ot_hija, '%Y-%m-%d') AS fecha_creacion_ot_hija, 
+                                            oth.proveedor_ultima_milla, 
+                                            oth.usuario_asignado4, 
+                                            oth.resolucion_15, 
+                                            oth.resolucion_26, 
+                                            oth.resolucion_37, 
+                                            oth.resolucion_48, 
+                                            oth.ot_hija, 
+                                            oth.estado_orden_trabajo_hija, 
+                                            DATE_FORMAT(oth.fec_actualizacion_onyx_hija, '%Y-%m-%d') AS fec_actualizacion_onyx_hija, 
+                                            oth.tipo_trascurrido, 
+                                            DATE_FORMAT(oth.fecha_actual, '%Y-%m-%d') AS fecha_actual, 
+                                            oth.estado_mod,
+                                            CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero,
+                                            eot.k_id_tipo,
+                                                CASE
+                                                        WHEN eot.k_id_tipo = 1 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
+                                                WHEN eot.k_id_tipo = 2 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
+                                                        WHEN eot.k_id_tipo = 3 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                        WHEN eot.k_id_tipo = 4 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 5 DAY))
+                                                        WHEN eot.k_id_tipo = 6 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 1 DAY))
+                                                        WHEN eot.k_id_tipo = 7 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                        WHEN eot.k_id_tipo = 8 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 20 DAY))
+                                                        WHEN eot.k_id_tipo = 9 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                        WHEN eot.k_id_tipo = 37 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
+                                                WHEN eot.k_id_tipo = 47 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                        WHEN eot.k_id_tipo = 48 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                        WHEN eot.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                        WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY))
+                                                        WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
+                                                        ELSE 0
+                                                END AS tiempo_vencer
+                                        FROM telmex_vip.ot_hija oth
+                                        INNER JOIN user ON user.k_id_user = oth.k_id_user
+                                        INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
+                                        WHERE (oth.estado_orden_trabajo_hija != 'Cerrada') 
+                                                AND (oth.estado_orden_trabajo_hija != 'Cancelada') 
+                                                AND (oth.estado_orden_trabajo_hija != '3- Terminada')
+                                                AND (((eot.k_id_tipo = 1 AND ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 2 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 3 AND ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 4 AND ADDDATE(oth.fecha_creacion, INTERVAL 5 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 6 AND ADDDATE(oth.fecha_creacion, INTERVAL 1 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 7 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 8 AND ADDDATE(oth.fecha_creacion, INTERVAL 20 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 9 AND ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 37 AND ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 47 AND ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 48 AND ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 52 AND ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY) >= CURDATE())
+                                                        OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) >= CURDATE()))       
+                                                OR (eot.k_id_tipo IN (5,10,11,12,39,41,42,46,49,50,51,54,55,56,57,59,60,61,66)))
+                                        ORDER by tiempo_vencer ASC;");
             return $query->result();
         } catch (DeplynException $ex) {
             return $ex;

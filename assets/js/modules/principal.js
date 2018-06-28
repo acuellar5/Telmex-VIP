@@ -79,7 +79,7 @@ $(function () {
         events: function () {
         },
         listInTimes: function () {
-            $.post(baseurl + '/OtHija/getOtsInTimes',
+            $.post(baseurl + '/OtHija/c_getOtsInTimes',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -92,11 +92,13 @@ $(function () {
             eTiempos.tablaEnTiempos = $('#tablaEnTiempos').DataTable(eTiempos.configTable(data, [
                 {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
+                {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Días vencimiento", data: "tiempo_vencer"},
+                {data: fTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -112,9 +114,22 @@ $(function () {
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[7, 'asc']],
                 drawCallback: onDraw
             }
+        },
+        getButtons: function (obj) {
+            boton = '<div class="btn-group">'
+                    + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
+                    + '</div>';
+            return boton;
+        },
+        onClickShowModalDet: function () {
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var record = fTiempos.tablaEditOts.row(trParent).data();
+//            console.log(record);
+            $('#modalEditTicket').modal('show');
         }
     };
     eTiempos.init();
