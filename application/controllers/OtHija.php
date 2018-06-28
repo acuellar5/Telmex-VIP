@@ -144,6 +144,18 @@ class OtHija extends CI_Controller {
             return;
         }
     }
+    
+    public function c_getOtsInTimes() {
+        $response = null;
+        if (Auth::check()) {
+            $otHijaModel = new Dao_ot_hija_model();
+            $res = $otHijaModel->getOtsInTimes();
+            $this->json($res);
+        } else {
+            $this->json(new Response(EMessages::SESSION_INACTIVE));
+            return;
+        }
+    }
 
 
    
