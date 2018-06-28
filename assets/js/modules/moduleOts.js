@@ -424,7 +424,7 @@ $(function () {
                     $('#' + i).val(item);
                 }); 
 
-                eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot);
+                eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
 
                 // console.log(registro.k_id_estado_ot);
                 // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
@@ -1397,7 +1397,7 @@ $(function () {
 
 
 
-            fillSelect: function(idtipo, val_estado){
+            fillSelect: function(idtipo, val_estado , orden){
 
               $.ajaxSetup({async:false});
               $.post(baseurl + "/User/c_getStatusByType",
@@ -1412,9 +1412,11 @@ $(function () {
                         if (val_estado == item.k_id_estado_ot) {
                             $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" selected>'+item.n_name_estado_ot+'</option>');                            
                         }else {
-                            if (item.k_id_estado_ot < val_estado) {
+                            if (parseInt(item.i_orden) < parseInt(orden)) {
+                                console.log(item.n_name_estado_ot+  " " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" disabled>'+item.n_name_estado_ot+'</option>');                                
                             } else {
+                                console.log(item.n_name_estado_ot+  "  " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
                             }
                         }
