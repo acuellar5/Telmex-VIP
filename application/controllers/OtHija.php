@@ -105,11 +105,11 @@ class OtHija extends CI_Controller {
         }
     }
     
-    public function getOtsOutTime() {
+    public function c_getOtsOutTime() {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->getOtsChange();
+            $res = $otHijaModel->getOtsOutTime();
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));

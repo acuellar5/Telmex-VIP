@@ -3,7 +3,6 @@ $(function () {
         init: function () {
             fTiempos.events();
             fTiempos.listOutTime();
-
         },
 
         //Eventos de la ventana.
@@ -11,7 +10,7 @@ $(function () {
             $('#tablaFueraTiempos').on('click', 'a.ver-det', fTiempos.onClickShowModalDet);
         },
         listOutTime: function () {
-            $.post(baseurl + '/OtHija/getOtsOutTime',
+            $.post(baseurl + '/OtHija/c_getOtsOutTime',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -26,11 +25,12 @@ $(function () {
             fTiempos.tablaFueraTiempos = $('#tablaFueraTiempos').DataTable(fTiempos.configTable(data, [
                 {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
+                {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Días vencida", data: "tiempo_vencidas"},
                 {data: fTiempos.getButtons},
             ]));
         },
@@ -47,7 +47,7 @@ $(function () {
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -61,7 +61,7 @@ $(function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = fTiempos.tablaEditOts.row(trParent).data();
-            console.log(record);
+//            console.log(record);
             $('#modalEditTicket').modal('show');
         }
     };

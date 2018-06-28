@@ -29,11 +29,9 @@ class User extends CI_Controller {
         }
         //Comprobamos si el Auth ha encontrado válida las credenciales consultadas...
         if ($res) {
-            $otHijaModel = new Dao_ot_hija_model();
-            $answer['ots'] = $otHijaModel->getOtsReportPrincipalAdmin();
             $data['title'] = 'Home';
             $this->load->view('parts/headerF', $data);
-            $this->load->view('principal', $answer);
+            $this->load->view('principal');
             $this->load->view('parts/footerF');
         } else {
             $answer['error'] = "error";
