@@ -214,6 +214,7 @@ $(function () {
             var trParent = aLinkLog.parents('tr');
             var record = todo.tablaTodo.row(trParent).data();
             $('#Modal_detalle').modal('show');
+            fTiempos.fillFormModal(record);  
         },
         fillFormModal: function(registros){
             $.each(registros ,function(i,item){
