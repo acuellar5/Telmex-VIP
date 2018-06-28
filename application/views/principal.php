@@ -684,10 +684,10 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label for="falta" class="col-md-12 control-label ubicacionLetra">FALTA: &nbsp;</label>
+                                    <label for="Tipo_transcurrido" class="col-md-12 control-label ubicacionLetra">Tiempo transcurrido: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <input name="FALTA" id="mdl_FALTA"  class="form-control" minlength="5" disabled="true" type="text" required>
+                                            <input name="Tipo_transcurrido" id="mdl_Tipo_transcurrido"  class="form-control" minlength="5" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div>

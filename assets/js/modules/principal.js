@@ -133,12 +133,12 @@ $(function () {
             $('#tablaTodo').on('click', 'a.ver-det', todo.onClickShowModalDet);
         },
         listAllOts: function () {
-            $.post(baseurl + '/OtHija/getOtsAssigned',
+            $.post(baseurl + '/OtHija/c_getOtsAssigned',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
                     function (data) {
-                        todo.printTableAllOts(data);
+                        todo.printTableAllOts(data['data']);
                     });
         },
         printTableAllOts: function (data) {
