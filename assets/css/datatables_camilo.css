@@ -379,6 +379,22 @@ table.dataTable_camilo td{
         background-color: : #084c6fb8 !important;
         color: #fff;
     }
+    /* badges */
+    .badge_cami {
+      background-color: #99b5c4;
+      border: 1px solid #fff;
+      
+    }
+
+
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #fff !important;
+    cursor: default;
+    background-color: #084c6f !important;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+   }
+
 
 table.dataTable_camilo .btn_datatable_cami{
   background-color: #084c6f94 !important;
