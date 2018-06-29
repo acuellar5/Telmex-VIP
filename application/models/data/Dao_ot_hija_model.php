@@ -759,4 +759,61 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
+
+    //trae conteo para pagina principal (resumen)
+    public function getCountsSumary(){
+        $query = $this->db->query("
+                SELECT 
+                COUNT(*) count, t.n_name_tipo,
+                SUM(CASE
+                    WHEN e.k_id_tipo = 1 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 3 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 2 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) < 1 THEN 1
+                    WHEN e.k_id_tipo = 3 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 4 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 6 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 6 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 2 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 7 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 16 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 8 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 21 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 9 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 37 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 3 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 47 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 48 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 52 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 53 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 58 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) < 1 THEN 1 
+                    ELSE 0
+                END) AS en_tiempo, 
+                SUM(CASE
+                    WHEN e.k_id_tipo = 1 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 3 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 2 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) >= 1 THEN 1
+                    WHEN e.k_id_tipo = 3 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 4 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 6 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 6 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 2 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 7 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 16 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 8 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 21 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 9 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 37 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 3 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 47 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 48 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 52 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 53 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) >= 1 THEN 1 
+                    WHEN e.k_id_tipo = 58 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) >= 1 THEN 1 
+                    else 0
+                END) AS fuera_tiempo
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                INNER JOIN tipo_ot_hija t 
+                ON e.k_id_tipo = t.k_id_tipo
+                WHERE 
+                e.n_name_estado_ot <> 'Cancelada' AND
+                e.n_name_estado_ot <> 'Cerrada' AND
+                e.n_name_estado_ot <> '3- Terminada' 
+                GROUP BY e.k_id_tipo;
+        ");
+
+        return $query->result();
+    }
+
 }
+

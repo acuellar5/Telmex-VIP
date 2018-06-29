@@ -65,6 +65,8 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
+
+          $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
           $data['title'] = 'Home';
           $this->load->view('parts/headerF', $data);
           $this->load->view('principal');
