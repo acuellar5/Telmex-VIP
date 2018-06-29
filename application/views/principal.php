@@ -63,17 +63,17 @@
 
     <div id="fuera_tiempos" class="tab-pane fade in active">
         <h3>Fuera de Tiempos</h3>
-        <table id="tablaFueraTiempos" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaFueraTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="en_tiempos" class="tab-pane fade">
         <h3>En Tiempos</h3>
-        <table id="tablaEnTiempos" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaEnTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
     <div id="todo" class="tab-pane fade">
         <h3>Todo</h3>
-        <table id="tablaTodo" class="table table-hover table-striped dataTable_camilo" width="100%"></table>
+        <table id="tablaTodo" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
     </div>
 
 </div>

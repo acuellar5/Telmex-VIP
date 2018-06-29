@@ -30,6 +30,7 @@ class User extends CI_Controller {
         //Comprobamos si el Auth ha encontrado válida las credenciales consultadas...
         if ($res) {
             $data['title'] = 'Home';
+            $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
             $this->load->view('parts/headerF', $data);
             $this->load->view('principal');
             $this->load->view('parts/footerF');
