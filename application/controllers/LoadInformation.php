@@ -165,8 +165,8 @@ class LoadInformation extends CI_Controller {
                             $estadoMod = $this->get_estado_by_name_ot_hiha($this->getValueCell($sheet, 'AV'. $row), $dataExcel['estado_orden_trabajo_hija']);
                             // Si i-order es mayor en base de datos se igualan ambos registros para q cuando los compare en el foreach los omita porque son iguales
                             if ($arrayBD['i_orden'] > $estadoMod->i_orden) {
-                                $arrayBD['estado_orden_trabajo_hija']   = 0;
-                                $dataExcel['estado_orden_trabajo_hija'] = 0;
+                                $arrayBD['estado_orden_trabajo_hija']   = $arrayBD['estado_orden_trabajo_hija'];
+                                $dataExcel['estado_orden_trabajo_hija'] = $arrayBD['estado_orden_trabajo_hija'];
 
                             }
 
