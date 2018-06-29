@@ -92,11 +92,21 @@
 /*Estilo al modal de detalles en Gestion*/
 .ubicacionLetra{
     text-align: left !important;
+    font-size: 12px !important;
+    height: 29px !important;
 }
 
 #formModal_detalle .input-group{
     width: 100% !important;
+    font-size: 12px;
 }
 .csstextarea{
     resize: vertical ;
+}
+.tamanioletra{
+    text-align: left !important;
+    font-size: 12px !important;
+}
+.sessionmodal .form-group{
+    margin:0;
 }

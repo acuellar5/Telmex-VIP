@@ -414,7 +414,6 @@ $(function () {
 
             //llenamos los input del modal con la informacion a la q le dio click
             fillFormModal: function(registro){
-                console.log(registro);
                 // console.log(registro);
                 // limpiar el formulario...
                  $('#general').html("");

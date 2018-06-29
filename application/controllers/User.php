@@ -30,6 +30,7 @@ class User extends CI_Controller {
         //Comprobamos si el Auth ha encontrado válida las credenciales consultadas...
         if ($res) {
             $data['title'] = 'Home';
+            $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
             $this->load->view('parts/headerF', $data);
             $this->load->view('principal');
             $this->load->view('parts/footerF');
@@ -65,6 +66,8 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
+
+          $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
           $data['title'] = 'Home';
           $this->load->view('parts/headerF', $data);
           $this->load->view('principal');
@@ -95,21 +98,6 @@ class User extends CI_Controller {
         $this->load->view('parts/headerF', $data);
         $this->load->view('loadInformation');
         $this->load->view('parts/footerF');
-    }
-
-    public function editOts() {
-        if (!Auth::check()) {
-            Redirect::to(URL::base());
-        }
-        $estadoOtModel = new Dao_estado_ot_model();
-        $estadosOt = $estadoOtModel->getAll();
-        $answer['estadosOts'] = json_encode($estadosOt);
-        $data['title']='Editar OTS';
-        $this->load->view('parts/headerF', $data);
-        $this->load->view('moduleOts');
-        $this->load->view('parts/footerF');
-
-
     }
 
     public function markings() {

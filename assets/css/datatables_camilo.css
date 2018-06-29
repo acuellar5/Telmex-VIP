@@ -405,3 +405,7 @@ table.dataTable_camilo .btn_datatable_cami:hover{
   background-color: #084c6f !important;
   color: #fff;
 }
+
+#tabla_resumen {
+  margin-bottom: 50px;
+}
