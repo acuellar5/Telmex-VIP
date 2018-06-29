@@ -603,6 +603,7 @@ class Dao_ot_hija_model extends CI_Model {
                                             oth.estado_mod,
                                             CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero,
                                             eot.k_id_tipo,
+                                            tot.n_name_tipo,
                                             CASE
                                                 WHEN eot.k_id_tipo = 1 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 3 DAY))
                                                 WHEN eot.k_id_tipo = 2 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY))
@@ -622,6 +623,7 @@ class Dao_ot_hija_model extends CI_Model {
                                         FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
+                                        INNER JOIN tipo_ot_hija tot ON tot.k_id_tipo = eot.k_id_tipo
                                         WHERE oth.estado_orden_trabajo_hija != 'Cerrada' 
                                             AND oth.estado_orden_trabajo_hija != 'Cancelada' 
                                             AND oth.estado_orden_trabajo_hija != '3- Terminada'
@@ -714,26 +716,28 @@ class Dao_ot_hija_model extends CI_Model {
                                             oth.estado_mod,
                                             CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero,
                                             eot.k_id_tipo,
-                                                CASE
-                                                        WHEN eot.k_id_tipo = 1 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
+                                            tot.n_name_tipo,
+                                            CASE
+                                                WHEN eot.k_id_tipo = 1 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
                                                 WHEN eot.k_id_tipo = 2 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
-                                                        WHEN eot.k_id_tipo = 3 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
-                                                        WHEN eot.k_id_tipo = 4 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 5 DAY))
-                                                        WHEN eot.k_id_tipo = 6 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 1 DAY))
-                                                        WHEN eot.k_id_tipo = 7 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
-                                                        WHEN eot.k_id_tipo = 8 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 20 DAY))
-                                                        WHEN eot.k_id_tipo = 9 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
-                                                        WHEN eot.k_id_tipo = 37 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
+                                                WHEN eot.k_id_tipo = 3 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                WHEN eot.k_id_tipo = 4 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 5 DAY))
+                                                WHEN eot.k_id_tipo = 6 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 1 DAY))
+                                                WHEN eot.k_id_tipo = 7 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                WHEN eot.k_id_tipo = 8 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 20 DAY))
+                                                WHEN eot.k_id_tipo = 9 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                WHEN eot.k_id_tipo = 37 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
                                                 WHEN eot.k_id_tipo = 47 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
-                                                        WHEN eot.k_id_tipo = 48 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
-                                                        WHEN eot.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
-                                                        WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY))
-                                                        WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
-                                                        ELSE 0
-                                                END AS tiempo_vencer
+                                                WHEN eot.k_id_tipo = 48 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                WHEN eot.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
+                                                WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY))
+                                                WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
+                                                ELSE 0
+                                            END AS tiempo_vencer
                                         FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
+                                        INNER JOIN tipo_ot_hija tot ON tot.k_id_tipo = eot.k_id_tipo
                                         WHERE (oth.estado_orden_trabajo_hija != 'Cerrada') 
                                                 AND (oth.estado_orden_trabajo_hija != 'Cancelada') 
                                                 AND (oth.estado_orden_trabajo_hija != '3- Terminada')
