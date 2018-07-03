@@ -136,7 +136,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
-                WHERE ot.fecha_actual = CURDATE() 
+                WHERE ot.fecha_insercion_zolid = CURDATE() 
                 $condicion ORDER BY tipo_trascurrido DESC
             ");
             return $query;

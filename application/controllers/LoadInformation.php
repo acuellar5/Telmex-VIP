@@ -165,11 +165,9 @@ class LoadInformation extends CI_Controller {
                             $estadoMod = $this->get_estado_by_name_ot_hiha($this->getValueCell($sheet, 'AV'. $row), $dataExcel['estado_orden_trabajo_hija']);
                             // Si i-order es mayor en base de datos se igualan ambos registros para q cuando los compare en el foreach los omita porque son iguales
                             if ($arrayBD['i_orden'] > $estadoMod->i_orden) {
-                                $arrayBD['estado_orden_trabajo_hija']   = 0;
-                                $dataExcel['estado_orden_trabajo_hija'] = 0;
-
+                                $arrayBD['estado_orden_trabajo_hija']   = $arrayBD['estado_orden_trabajo_hija'];
+                                $dataExcel['estado_orden_trabajo_hija'] = $arrayBD['estado_orden_trabajo_hija'];
                             }
-
                         }
 
                         // Recorro el array de lo q viene en excel
@@ -192,17 +190,17 @@ class LoadInformation extends CI_Controller {
                            
                             // Si en la comparacion hubo alguna modificacion
                             if (count($updates) >0)  {
-                                $updates['estado_mod'] = 1;
-                                $updates['fecha_actual'] = $fActual;
+                                $updates['estado_mod']            = 1;
+                                $updates['fecha_actual']          = $fActual;
                                 $updates['id_orden_trabajo_hija'] = $arrayBD['id_orden_trabajo_hija'];
-                                $updates['ot_hija'] = $arrayBD['ot_hija'];
-                                // print_r("cambios");
+                                $updates['ot_hija']               = $arrayBD['ot_hija'];
+                                $updates['k_id_estado_ot']        = $estadoMod->k_id_estado_ot;
                             }
                             // si son iguales
                              else {
                                 if ($arrayBD['estado_mod'] != 2) {
-                                    $cambioStatusMod['estado_mod'] = 2;
-                                    $cambioStatusMod['fecha_actual'] = $fActual;
+                                    $cambioStatusMod['estado_mod']            = 2;
+                                    $cambioStatusMod['fecha_actual']          = $fActual;
                                     $cambioStatusMod['id_orden_trabajo_hija'] = $arrayBD['id_orden_trabajo_hija'];
                                 }
                             }
