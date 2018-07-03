@@ -7,7 +7,7 @@
   <!--   ICONO PAGINA    -->
   <link rel="icon" href="<?= URL::to('assets/img/logo_zte.png'); ?>">
   <!-- STYLES HEADER FOOTER  -->
-  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_header.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_header.css?v='.time()); ?>">
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/bootstrap/css/bootstrap.min.css') ?>"/>
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/font-awesome/css/font-awesome.min.css') ?>"/>
