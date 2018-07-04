@@ -3,8 +3,8 @@
                 <script type='text/javascript' src='http://181.49.46.6/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 619px;'><object class='tableauViz' width='100%' height='619' style='display:none;'><param name='host_url' value='http%3A%2F%2F181.49.46.6%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TVIPInstalaciones&#47;EstadodeOTs' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
             </div>-->
     <h1>¿Cómo vamos?</h1>
-    <div class="col col-md-6" style="background: red; height: 300px;"></div>
-    <div class="col col-md-6" style="background: blue; height: 300px;"></div>
+    <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 1</div>
+    <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 2</div>
     <div class="col col-md-12">
         <h2>Resumen</h2>
         <table class="table table-bordered dataTable_camilo" id="tabla_resumen">

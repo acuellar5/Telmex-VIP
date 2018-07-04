@@ -39,7 +39,7 @@
 <?php if ($this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User'): ?>
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
-    <script src="<?= URL::to('assets/js/modules/principal.js') ?>"></script>
+    <script src="<?= URL::to('assets/js/modules/principal.js?v='. time()) ?>"></script>
 <?php endif ?>
 
 </body>

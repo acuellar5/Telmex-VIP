@@ -119,12 +119,13 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                ordering:false,
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[7, 'asc']],
+//                order: [[7, 'asc']],
                 drawCallback: onDraw
             }
         },
@@ -136,12 +137,14 @@ $(function () {
         },
         getAlertIcon: function (obj) {
             color = 'FFFFFF';
-            if (obj.tiempo_vencer == -1) {
-                color = 'FAAD12';
+            if (obj.tiempo_vencer == -1 || obj.tiempo_vencer == 0) {
+                color = 'FFA500';
             }else if (obj.tiempo_vencer == -2) {
                 color = 'FFFF00';
             }else if (obj.tiempo_vencer < -2) {
-                color = '5cb85c';
+                color = '7CFC00';
+            }else if (obj.tiempo_vencer == 'en tiempos') {
+                color = '7CFC00';
             }
             boton = '<form class="form-inline">'
                     + '<div class="btn-group col col-md-6">'
