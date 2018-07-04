@@ -107,7 +107,7 @@ $(function () {
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
-                {title: "Días vencimiento", data: "tiempo_vencer"},
+                {title: "Días vencimiento", data: eTiempos.getAlertIcon},
                 {data: eTiempos.getButtons},
             ]));
         },
@@ -119,12 +119,13 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                ordering:false,
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[7, 'asc']],
+//                order: [[7, 'asc']],
                 drawCallback: onDraw
             }
         },
@@ -132,6 +133,27 @@ $(function () {
             boton = '<div class="btn-group">'
                     + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
                     + '</div>';
+            return boton;
+        },
+        getAlertIcon: function (obj) {
+            color = 'FFFFFF';
+            if (obj.tiempo_vencer == -1 || obj.tiempo_vencer == 0) {
+                color = 'FFA500';
+            }else if (obj.tiempo_vencer == -2) {
+                color = 'FFFF00';
+            }else if (obj.tiempo_vencer < -2) {
+                color = '7CFC00';
+            }else if (obj.tiempo_vencer == 'en tiempos') {
+                color = '7CFC00';
+            }
+            boton = '<form class="form-inline">'
+                    + '<div class="btn-group col col-md-6">'
+                    + obj.tiempo_vencer
+                    + '</div>'
+                    + '<div class="btn-group col col-md-6">'
+                    + '<div class="circulo" style="background: #'+color+';"></div>'
+                    + '</div>'
+                    + '</form>';
             return boton;
         },
         onClickShowModalDet: function () {

@@ -733,7 +733,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                 WHEN eot.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY))
                                                 WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY))
                                                 WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
-                                                ELSE 0
+                                                ELSE 'en tiempos'
                                             END AS tiempo_vencer
                                         FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
@@ -757,7 +757,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                         OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY) >= CURDATE())
                                                         OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) >= CURDATE()))       
                                                 OR (eot.k_id_tipo IN (5,10,11,12,39,41,42,46,49,50,51,54,55,56,57,59,60,61,66)))
-                                        ORDER by tiempo_vencer ASC;");
+                                        ORDER BY LENGTH(tiempo_vencer),tiempo_vencer ASC");
             return $query->result();
         } catch (DeplynException $ex) {
             return $ex;
