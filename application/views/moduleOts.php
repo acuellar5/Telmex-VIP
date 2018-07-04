@@ -734,10 +734,10 @@
                                         <div class="widget bg_white m-t-25 display-block">
                                             <fieldset class="col-md-12 control-label">
                                                 <div class="form-group">
-                                                    <label for="observaciones" class="col-md-3 control-label">Observaciones: &nbsp;</label>
+                                                    <label for="n_observacion_cierre" class="col-md-3 control-label">Observaciones: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
-                                                            <textarea name="observaciones" id="observaciones" class="form-control" rows="3" cols="100"></textarea>
+                                                            <textarea name="n_observacion_cierre" id="n_observacion_cierre" class="form-control" rows="3" cols="100"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

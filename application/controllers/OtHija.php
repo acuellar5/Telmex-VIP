@@ -26,6 +26,7 @@ class OtHija extends CI_Controller {
     public function c_getOtsAssigned() {
         $response = null;
         if (Auth::check()) {
+            ini_set('memory_limit', '-1');
             $otHijaModel = new Dao_ot_hija_model();
             $data = $otHijaModel->getOtsAssigned();
             $res['data'] = $data->result();
@@ -49,7 +50,8 @@ class OtHija extends CI_Controller {
             'k_id_estado_ot' => $this->input->post('k_id_estado_ot'),
             'estado_orden_trabajo_hija' => $text_estado,
             'fecha_actual' => $fActual,
-            'estado_mod' => 1
+            'estado_mod' => 1,
+            'n_observacion_cierre' => $this->input->post('n_observacion_cierre')
         );
 
         $dataLog = array(
@@ -120,6 +122,7 @@ class OtHija extends CI_Controller {
     public function c_getOtsNew() {
         $response = null;
         if (Auth::check()) {
+            ini_set('memory_limit', '-1');
             $otHijaModel = new Dao_ot_hija_model();
             $data = $otHijaModel->getOtsNew();
             $res['data'] = $data->result();

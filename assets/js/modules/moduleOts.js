@@ -390,7 +390,6 @@ $(function () {
                 var trParent = aLinkLog.parents('tr');
                 var tabla = aLinkLog.parents('table').attr('id');
                 var record;
-
                 switch(tabla) {
                     case 'tablaEditOts':
                         record = hoy.tablaEditOts.row(trParent).data();                    
@@ -408,6 +407,7 @@ $(function () {
                         record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
                         break;                
                 }
+console.log(record);
                 eventos.fillFormModal(record);
                  // console.log(record);
             },
@@ -1333,70 +1333,10 @@ $(function () {
 
             $('#general').html(form);;
 
-
-
-
-
-
-
-
          },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             fillSelect: function(idtipo, val_estado , orden){
+                console.log(idtipo);
 
               $.ajaxSetup({async:false});
               $.post(baseurl + "/User/c_getStatusByType",
@@ -1412,10 +1352,10 @@ $(function () {
                             $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" selected>'+item.n_name_estado_ot+'</option>');                            
                         }else {
                             if (parseInt(item.i_orden) < parseInt(orden)) {
-                                console.log(item.n_name_estado_ot+  " " + item.i_orden + " orden = " + orden );
+                                // console.log(item.n_name_estado_ot+  " " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" disabled>'+item.n_name_estado_ot+'</option>');                                
                             } else {
-                                console.log(item.n_name_estado_ot+  "  " + item.i_orden + " orden = " + orden );
+                                // console.log(item.n_name_estado_ot+  "  " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
                             }
                         }

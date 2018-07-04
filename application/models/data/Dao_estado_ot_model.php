@@ -75,6 +75,26 @@ class Dao_estado_ot_model extends CI_Model {
         return $query->row()->n_name_estado_ot;
     }
 
+    //
+    public function getStatusByTypeAndStatusName($id_tipo, $name_status){
+        $query = $this->db->query("
+                    SELECT 
+                    * 
+                    FROM 
+                    estado_ot e
+
+                    INNER JOIN tipo_ot_hija t
+                    ON e.k_id_tipo = t.k_id_tipo
+
+                    WHERE 
+                    t.k_id_tipo = '$id_tipo' AND
+                    e.n_name_estado_ot = '$name_status'
+                    ;
+            ");
+        // print_r($this->db->last_query());
+        return $query->row();
+    }
+
 }
 
 ?>

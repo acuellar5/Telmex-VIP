@@ -159,15 +159,16 @@ class LoadInformation extends CI_Controller {
                             'fec_actualizacion_onyx_hija'      => $this->getDatePHPExcel($sheet, 'BF'. $row),
                             'tipo_trascurrido'                 => $this->getValueCell($sheet, 'BG'. $row)
                             );
-                        // SI EL ESTADO->I-ORDER ES MAYOR EN LA BASE DE DATOS NO SE DEBE ACTUALIZAR 
+
                         if ($arrayBD['estado_orden_trabajo_hija'] != $dataExcel['estado_orden_trabajo_hija']) {
-                            //funcion que me retorna el estado e iorder de la posicion de excel en q estamos
-                            $estadoMod = $this->get_estado_by_name_ot_hiha($this->getValueCell($sheet, 'AV'. $row), $dataExcel['estado_orden_trabajo_hija']);
-                            // Si i-order es mayor en base de datos se igualan ambos registros para q cuando los compare en el foreach los omita porque son iguales
-                            if ($arrayBD['i_orden'] > $estadoMod->i_orden) {
-                                $arrayBD['estado_orden_trabajo_hija']   = $arrayBD['estado_orden_trabajo_hija'];
-                                $dataExcel['estado_orden_trabajo_hija'] = $arrayBD['estado_orden_trabajo_hija'];
+                            $nombre_ref = $this->Dao_tipo_ot_hija_model->get_tipo_ot_hija_by_name($this->getValueCell($sheet, 'AV'. $row));
+                            $id_estado_camb_excel = $this->Dao_estado_ot_model->getStatusByTypeAndStatusName($nombre_ref->id_tipo, $this->getValueCell($sheet, 'AZ'. $row));
+                            if ($arrayBD['i_orden'] < $id_estado_camb_excel->i_orden) {
+                                $dataExcel['k_id_estado_ot'] = $id_estado_camb_excel->k_id_estado_ot;
+                            } else {
+                                unset($dataExcel['estado_orden_trabajo_hija']);
                             }
+
                         }
 
                         // Recorro el array de lo q viene en excel
@@ -194,7 +195,7 @@ class LoadInformation extends CI_Controller {
                                 $updates['fecha_actual']          = $fActual;
                                 $updates['id_orden_trabajo_hija'] = $arrayBD['id_orden_trabajo_hija'];
                                 $updates['ot_hija']               = $arrayBD['ot_hija'];
-                                $updates['k_id_estado_ot']        = $estadoMod->k_id_estado_ot;
+                                // $updates['k_id_estado_ot']        = $estadoMod->k_id_estado_ot;
                             }
                             // si son iguales
                              else {
@@ -214,14 +215,6 @@ class LoadInformation extends CI_Controller {
                             }
                         }
                         if ($updates) {
-                                // if ($updates['estado_orden_trabajo_hija']) {
-                                //     $status = $this->get_estado_by_name_ot_hiha($updates['ot_hija'], $updates['estado_orden_trabajo_hija']);
-
-                                //     if ($arrayBD['i_orden'] < $status->i_orden) {
-                                //         $updates['k_id_estado_ot'] = $status->k_id_estado_ot;
-                                //     }
-                                // } 
-
                                 $actualizar = $this->Dao_ot_hija_model->update_ot_hija_mod($updates);
                                 
                             // Si se actualizó  el estado a sin cambios retorna 1 
@@ -399,9 +392,9 @@ class LoadInformation extends CI_Controller {
 
 
      //
-     private function get_estado_by_name_ot_hiha($name, $status){
+     private function get_estado_by_name_ot_hiha($name_type, $status){
            
-        $id_tipo =  $this->Dao_tipo_ot_hija_model->get_tipo_ot_hija_by_name($name);
+        $id_tipo =  $this->Dao_tipo_ot_hija_model->get_tipo_ot_hija_by_name($name_type);
 
         if ($id_tipo) {
             $id_estado = $this->Dao_estado_ot_model->get_status_by_idtipo_and_name_status($id_tipo->id_tipo, $status);

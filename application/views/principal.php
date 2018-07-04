@@ -10,12 +10,12 @@
         <table class="table table-bordered dataTable_camilo" id="tabla_resumen">
             <thead>
                 <tr>
-                    <th>Ot Hija</th>
-                    <th>Plan de trabajo</th>
+                    <th>Tipo OT Hija</th>
+                    <th>Cant Total</th>
                     <th>En Tiempos</th>
                     <th>Fuera de tiempos</th>
-                    <th>Ot Hija</th>
-                    <th>Plan de trabajo</th>
+                    <th>Tipo OT Hija</th>
+                    <th>Cant Total</th>
                     <th>En Tiempos</th>
                     <th>Fuera de tiempos</th>
                 </tr>
