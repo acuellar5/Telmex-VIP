@@ -102,28 +102,28 @@ class LoadInformation extends CI_Controller {
 
             try {                
 
-                $inputFileType = PHPExcel_IOFactory::identify($file);
-                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                $inputFileType               = PHPExcel_IOFactory::identify($file);
+                $objReader                   = PHPExcel_IOFactory::createReader($inputFileType);
                 $objReader->setReadDataOnly(true);
                 //Leer el archivo...
-                $objPHPExcel = $objReader->load($file);
-
+                $objPHPExcel                 = $objReader->load($file);
+                
                 //Cambiar el archivo...
-//                $objWriter = PHPExcel_IOFactory::createWriter($objPHPExce, $inputFileTypel);
-                $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-
+                // $objWriter = PHPExcel_IOFactory::createWriter($objPHPExce, $inputFileTypel);
+                $objWriter                   = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+                
                 //Obtenemos la página.
-                $sheet = $objPHPExcel->getSheet(0);
+                $sheet                       = $objPHPExcel->getSheet(0);
                 //Obtenemos el highestRow...
-                $highestRow = 0;
-                $row = $request->index;
-                $limit = $row + $request->limit;
-                $inserts = 0;
-                $errorInsert = [];
-                $errorUpdate = [];
-                $errorNoChange = [];
-                $actualizar = 0;
-                $actualizados = 0;
+                $highestRow                  = 0;
+                $row                         = $request->index;
+                $limit                       = $row + $request->limit;
+                $inserts                     = 0;
+                $errorInsert                 = [];
+                $errorUpdate                 = [];
+                $errorNoChange               = [];
+                $actualizar                  = 0;
+                $actualizados                = 0;
                
 
                 //fecha Actual
@@ -158,14 +158,28 @@ class LoadInformation extends CI_Controller {
                             'estado_orden_trabajo_hija'        => $this->getValueCell($sheet, 'AZ'. $row),
                             'fec_actualizacion_onyx_hija'      => $this->getDatePHPExcel($sheet, 'BF'. $row),
                             'tipo_trascurrido'                 => $this->getValueCell($sheet, 'BG'. $row)
-                            );
+                        );
 
+                        // Se hace la comparacion antes del foreach para el tratamiento de cambio de estados
                         if ($arrayBD['estado_orden_trabajo_hija'] != $dataExcel['estado_orden_trabajo_hija']) {
+                            // Se calcula el tipo-estado que viene del excel
                             $nombre_ref = $this->Dao_tipo_ot_hija_model->get_tipo_ot_hija_by_name($this->getValueCell($sheet, 'AV'. $row));
                             $id_estado_camb_excel = $this->Dao_estado_ot_model->getStatusByTypeAndStatusName($nombre_ref->id_tipo, $this->getValueCell($sheet, 'AZ'. $row));
+                            // sI EL ORDEN DEL CAMBIO DE ESTADO ES ASCENDENTE SE DEBE EFECTUAR EL CAMBIO
                             if ($arrayBD['i_orden'] < $id_estado_camb_excel->i_orden) {
                                 $dataExcel['k_id_estado_ot'] = $id_estado_camb_excel->k_id_estado_ot;
+                            // SINO SE DEBE CAPTURAR LA INCONSISTENCIA    
                             } else {
+                                $insert_incons = array(
+                                    'id_ot_hija' => $arrayBD['id_orden_trabajo_hija'],
+                                    'k_id_user'  => $arrayBD['k_id_user'],
+                                    'fecha_mod'  => $fActual,
+                                    'en_zolid'   => $arrayBD['estado_orden_trabajo_hija'],
+                                    'en_excel'   => $dataExcel['estado_orden_trabajo_hija'],
+                                    'estado_ver' => 1
+                                );
+                                 $this->Dao_log_model->insertInconsistenciaRow($insert_incons);
+                                
                                 unset($dataExcel['estado_orden_trabajo_hija']);
                             }
 

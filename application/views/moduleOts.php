@@ -19,11 +19,11 @@
         <h3>Total</h3>
         <table id="tabla_total" class='table table-bordered table-striped dataTable_camilo' width='100%'>
             <thead>
-            <th>Id Cliente Onix</th>
+            <th>OT Padre</th>
+            <th>Id OT Hija</th>
             <th>Nombre Cliente</th>
             <th>Fecha Compromiso</th>
             <th>Fecha Programación</th>
-            <th>Id OT Hija</th>
             <th>OT Hija</th>
             <th>Estado OT Hija</th>
             <th>opc</th>

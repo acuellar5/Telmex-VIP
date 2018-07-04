@@ -6,7 +6,7 @@
     <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 1</div>
     <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 2</div>
     <div class="col col-md-12">
-        <h2>Resumen</h2>
+        <h2>Resumen Tareas en Progreso</h2>
         <table class="table table-bordered dataTable_camilo" id="tabla_resumen">
             <thead>
                 <tr>
