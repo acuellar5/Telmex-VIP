@@ -407,7 +407,7 @@ $(function () {
                         record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
                         break;                
                 }
-console.log(record);
+// console.log(record);
                 eventos.fillFormModal(record);
                  // console.log(record);
             },
@@ -422,6 +422,7 @@ console.log(record);
                 $.each(registro,function(i,item){
                     $('#' + i).val(item);
                 }); 
+                    $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
 
                 eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
 
@@ -451,21 +452,6 @@ console.log(record);
                 $('.ins_servicio').hide();
                 $('#modalEditTicket').modal('show');
             },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 updateStatusOt: function(){
 
                     
@@ -485,7 +471,7 @@ console.log(record);
                     function(data){
                          //console.log(data);
                          var res = JSON.parse(data);
-                         console.log(res);
+                         // console.log(res);
                          if (res == 1) {
                              swal("Se actualizo correctamente!", "", "success");
                              setTimeout('document.location.reload()',1500);
@@ -495,19 +481,6 @@ console.log(record);
 
                     });
                 },
-
-
-
-
-
-
-
-
-
-
-
-
-
                 //limpia el modal cada vez que se cierra
                 clearModal: function(){   
                      $('#formModal')[0].reset();
@@ -1336,7 +1309,7 @@ console.log(record);
          },
 
             fillSelect: function(idtipo, val_estado , orden){
-                console.log(idtipo);
+                // console.log(idtipo);
 
               $.ajaxSetup({async:false});
               $.post(baseurl + "/User/c_getStatusByType",
