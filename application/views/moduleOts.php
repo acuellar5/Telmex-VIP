@@ -54,7 +54,7 @@
                  <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                            <h3 class="modal-title" id="myModalLabel">Orden Ot Hija N <label id="id_ot_modal">aaaa</label></h3>
+                            <h3 class="modal-title" id="myModalLabel">    Orden Ot Hija N <label id="id_ot_modal"></label></h3>
                         </div>
                         <div class="modal-body">
                             <div>
@@ -801,8 +801,5 @@
         <script>
             var urlbase = "<?php echo URL::base(); ?>";
             swal('OK', 'se actualizó correctamente', 'success'); 
-            $('.swal-button').on('click', function(){
-                location.href = urlbase + "/editarOts";
-            })
         </script>
 <?php endif ?>

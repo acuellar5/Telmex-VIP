@@ -31,6 +31,10 @@
               <span class="label-input100">IP *</span>
               <input class="input100" type="text" name="IP" id="IP" placeholder="Segmento de red a validar" required>
             </div>
+            <div class="wrap-input100  bg1 rs1-wrap-input100"  id="mascaraLoop">
+              <span class="label-input100">Mask*</span>
+              <input class="input100" type="number" name="IP" id="mascaraL" required>
+            </div>
 
 
             <div class="wrap-input100  bg1 rs1-wrap-input100"  id="IPPdiv" style="display:none;">
@@ -173,6 +177,7 @@ gtag('config', 'UA-23581568-13');
 
 	function validarInformacion(){
 		var ip = $('#IP').val();
+		var mask = $('#mascaraL').val();
 
 		if(validarIP(ip)){
 			var salida = "";
@@ -190,31 +195,25 @@ gtag('config', 'UA-23581568-13');
 					});
 				} else {
 					salida = salida + "****Estos comandos se deben correr sobre  ASR (A9KTRIARA1  |  A9KORTEZAL) - CONSULTA ENRUTAMIENTO ESTÁTICO****" + "\n\n";
-					salida = salida + "sh route " + ip + "\n";
-					salida = salida + "show route vrf " + "ip-telephony " + ip + "\n";
-					salida = salida + "show route vrf " + "pymes-tpbc " + ip + "\n";
-					salida = salida + "show route vrf " + "sip-trunk " + ip + "\n";
-					salida = salida + "show route vrf " + "core-sip-trunk  " + ip + "\n";
-					salida = salida + "show route vrf " + "ims-sbc-core " + ip + "\n";
-					salida = salida + "show route vrf " + "ims-sbc-ippbx " + ip + "\n\n\n\n";
+					salida = salida + "sh route " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + "ip-telephony " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + "pymes-tpbc " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + "sip-trunk " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + "core-sip-trunk  " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + "ims-sbc-core " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + "ims-sbc-ippbx " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n\n\n\n";
 
 					salida = salida + "****Estos comandos se deben correr sobre  ASR (A9KTRIARA1  |  A9KORTEZAL) - CONSULTA ENRUTAMIENTO DINÁMICO BGP****" + "\n\n";
-					salida = salida + "sh route " + " longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] +"\n";
-					salida = salida + "show route vrf " + " ip-telephony  longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
-					salida = salida + "show route vrf " + " pymes-tpbc  longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
-					salida = salida + "show route vrf " + " sip-trunk  longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
-					salida = salida + "show route vrf " + " core-sip-trunk  longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
-					salida = salida + "show route vrf " + " ims-sbc-core  longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
-					salida = salida + "show route vrf " + " ims-sbc-ippbx  longer-prefix " + ip + "/24 | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n\n\n\n";
+					salida = salida + "sh route " + " longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] +"." + "\n";
+					salida = salida + "show route vrf " + " ip-telephony  longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + " pymes-tpbc  longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + " sip-trunk  longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + " core-sip-trunk  longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + " ims-sbc-core  longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n";
+					salida = salida + "show route vrf " + " ims-sbc-ippbx  longer-prefix " + ip + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." + "\n\n\n\n";
 
 					salida = salida + "****Estos comandos se deben correr sobre ASR (A9KTRIARA1  |  A9KORTEZAL)****" + "\n\n";
-					salida = salida + "show bgp all all " + ip +"\n";
-					salida = salida + "show bgp vrf " + "ip-telephony " + ip +"\n";
-					salida = salida + "show bgp vrf " + "pymes-tpbc " + ip +"\n";
-					salida = salida + "show bgp vrf " + "sip-trunk " + ip +"\n";
-					salida = salida + "show bgp vrf " + "core-sip-trunk " + ip +"\n";
-					salida = salida + "show bgp vrf " + "ims-sbc-core " + ip +"\n";
-					salida = salida + "show bgp vrf " + "ims-sbc-ippbx " + ip +"\n";
+					salida = salida + "show ipV4 all  " + ip + "/" + mask + " | inc " + ip.split(".")[0] + "." + ip.split(".")[1] + "." + ip.split(".")[2] + "." +"\n";
 
 					$('#resultado').val(salida);
 				}
@@ -292,34 +291,40 @@ gtag('config', 'UA-23581568-13');
 		var option = $('#service option:selected').val();
 		console.log(option);
 		if(option == "LoopBack"){
-			$('#IPdiv').show();
-			$('#resultadoDIV').show();
-			$('#IPPdiv').hide();
-			$('#mascaraPdiv').hide();
-			$('#resultadoPDIV').hide();
-			$('#IPWANdiv').hide();
-			$('#resultadoWANDIV').hide();
-			$('#mascaraWANdiv').hide();
+			$('#IPdiv').show(400);
+			$('#mascaraL').show(400);
+			$('#resultadoDIV').show(400);
+			$('#IPPdiv').hide(400);
+			$('#mascaraPdiv').hide(400);
+			$('#resultadoPDIV').hide(400);
+			$('#IPWANdiv').hide(400);
+			$('#resultadoWANDIV').hide(400);
+			$('#mascaraWANdiv').hide(400);
+			$('#mascaraLoop').show(400);
 		}
 		if(option == "WAN"){
-			$('#IPdiv').hide();
-			$('#resultadoDIV').hide();
-			$('#IPPdiv').hide();
-			$('#resultadoPDIV').hide();
-			$('#mascaraPdiv').hide();
-			$('#IPWANdiv').show();
-			$('#resultadoWANDIV').show();
-			$('#mascaraWANdiv').show();
+			$('#IPdiv').hide(400);
+			$('#mascaraL').hide(400);
+			$('#resultadoDIV').hide(400);
+			$('#IPPdiv').hide(400);
+			$('#resultadoPDIV').hide(400);
+			$('#mascaraPdiv').hide(400);
+			$('#IPWANdiv').show(400);
+			$('#resultadoWANDIV').show(400);
+			$('#mascaraWANdiv').show(400);
+			$('#mascaraLoop').hide(400);
 		}
 		if(option == "Publica"){
-			$('#IPdiv').hide();
-			$('#resultadoDIV').hide();
-			$('#IPPdiv').show();
-			$('#resultadoPDIV').show();
-			$('#mascaraPdiv').show();
-			$('#IPWANdiv').hide();
-			$('#resultadoWANDIV').hide();
-			$('#mascaraWANdiv').hide();
+			$('#IPdiv').hide(400);
+			$('#mascaraL').hide(400);
+			$('#resultadoDIV').hide(400);
+			$('#IPPdiv').show(400);
+			$('#resultadoPDIV').show(400);
+			$('#mascaraPdiv').show(400);
+			$('#IPWANdiv').hide(400);
+			$('#resultadoWANDIV').hide(400);
+			$('#mascaraWANdiv').hide(400);
+			$('#mascaraLoop').hide(400);
 		}
 		$('#resultado').val("");
 
