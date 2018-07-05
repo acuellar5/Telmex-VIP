@@ -136,7 +136,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
-                WHERE ot.fecha_insercion_zolid = CURDATE() 
+                WHERE ot.fecha_actual = CURDATE() 
                 $condicion ORDER BY tipo_trascurrido DESC
             ");
             return $query;
@@ -538,6 +538,11 @@ class Dao_ot_hija_model extends CI_Model {
     public function getOtsOutTime() {
         try {
             $db = new DB();
+            $condicion = "";
+            $usuario_session = Auth::user()->k_id_user;
+            if (Auth::user()->n_role_user == 'ingeniero') {
+                $condicion = "AND user.k_id_user = $usuario_session";
+            }
             $query = $this->db->query("SELECT oth.id_orden_trabajo_hija, 
                                             oth.k_id_estado_ot, 
                                             oth.k_id_user, 
@@ -641,6 +646,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                     OR (eot.k_id_tipo = 52 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) < CURDATE())
                                                     OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) < CURDATE())
                                                     OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY) < CURDATE()))
+                                            $condicion
                                         ORDER by tiempo_vencidas DESC");
             return $query->result();
         } catch (DeplynException $ex) {
@@ -651,6 +657,11 @@ class Dao_ot_hija_model extends CI_Model {
     public function getOtsInTimes() {
         try {
             $db = new DB();
+            $condicion = "";
+            $usuario_session = Auth::user()->k_id_user;
+            if (Auth::user()->n_role_user == 'ingeniero') {
+                $condicion = "AND user.k_id_user = $usuario_session";
+            }
             $query = $this->db->query("SELECT oth.id_orden_trabajo_hija, 
                                             oth.k_id_estado_ot, 
                                             oth.k_id_user, 
@@ -756,6 +767,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                         OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY) >= CURDATE())
                                                         OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) >= CURDATE()))       
                                                 OR (eot.k_id_tipo IN (5,10,11,12,39,41,42,46,49,50,51,54,55,56,57,59,60,61,66)))
+                                                $condicion
                                         ORDER BY LENGTH(tiempo_vencer),tiempo_vencer ASC");
             return $query->result();
         } catch (DeplynException $ex) {
@@ -766,6 +778,11 @@ class Dao_ot_hija_model extends CI_Model {
 
     //trae conteo para pagina principal (resumen)
     public function getCountsSumary(){
+        $condicion = "";
+        $usuario_session = Auth::user()->k_id_user;
+        if (Auth::user()->n_role_user == 'ingeniero') {
+            $condicion = "AND k_id_user = $usuario_session";
+        }
         $query = $this->db->query("
                 SELECT 
                 COUNT(*) count, t.n_name_tipo,
@@ -813,6 +830,7 @@ class Dao_ot_hija_model extends CI_Model {
                 e.n_name_estado_ot <> 'Cancelada' AND
                 e.n_name_estado_ot <> 'Cerrada' AND
                 e.n_name_estado_ot <> '3- Terminada' 
+                $condicion
                 GROUP BY e.k_id_tipo;
         ");
 
