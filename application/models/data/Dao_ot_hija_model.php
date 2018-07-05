@@ -357,6 +357,11 @@ class Dao_ot_hija_model extends CI_Model {
         $order  = $parameters['order'];
         $columm = $parameters['columm'];
 
+
+        $limit_start_length = ($parameters['length'] == -1) ? "" : "LIMIT $start, $length"  ;
+
+
+
         // Cuando el usuario logueado es un ingeniero... si es admin puede ver todo
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
@@ -457,8 +462,8 @@ class Dao_ot_hija_model extends CI_Model {
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 ".$srch." ".$condicion."
-                ORDER BY $columm $order
-                LIMIT $start, $length 
+                ORDER BY $columm $order 
+                $limit_start_length 
             ");
         // cant de registros es necesaria para saber cuanto es el total de registros sin filtros existentes en la consulta
         $cant = $this->db->query("
@@ -804,7 +809,7 @@ class Dao_ot_hija_model extends CI_Model {
                     WHEN e.k_id_tipo = 53 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) >= 1 THEN 1 
                     WHEN e.k_id_tipo = 58 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) >= 1 THEN 1 
                     else 0
-                END) AS fuera_tiempo
+                END) AS fuera_tiempo, e.k_id_tipo 
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e
@@ -816,10 +821,9 @@ class Dao_ot_hija_model extends CI_Model {
                 e.n_name_estado_ot <> 'Cerrada' AND
                 e.n_name_estado_ot <> '3- Terminada' 
                 GROUP BY e.k_id_tipo;
-        ");
+        ");        
 
         return $query->result();
     }
 
 }
-

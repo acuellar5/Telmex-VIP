@@ -42,7 +42,62 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual,
+                        
+                        /*exportOptions: {
+                            columns: ':visible',
+                            //columns: [ 0, 1, 2, 5 ], // selecciona las columnas que desea exportar
+                            // modifier: { // cUANDO NO SE DESEA registros SELECTIVO
+                            //     selected: null
+                            // }
+                        }*/
+       
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    },
+
+
+
+                                /*AÑADE BOTON PARA MOSTRAR U OCULTAR COLUMNAS*/
+                                // {
+                                //     extend: 'collection',
+                                //     text: 'Table control',
+                                //     buttons: [
+                                //         {
+                                //             text: 'Toggle start date',
+                                //             action: function ( e, dt, node, config ) {
+                                //                 dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
+                                //             }
+                                //         },
+                                //         {
+                                //             text: 'Toggle salary',
+                                //             action: function ( e, dt, node, config ) {
+                                //                 dt.column( -1 ).visible( ! dt.column( -1 ).visible() );
+                                //             }
+                                //         },
+                                //         'colvis'
+                                //     ]
+                                // }
+                    // 'colvis' // ocultar y mostrar columnas
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
@@ -119,6 +174,23 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 ordering:false,
                 columnDefs: [{
                         defaultContent: "",
@@ -221,6 +293,23 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
@@ -256,7 +345,3 @@ $(function () {
     };
     todo.init();
 });
-
-
-
-
