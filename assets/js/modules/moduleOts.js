@@ -25,11 +25,11 @@ $(function () {
         printTableOtsCurrent: function (data) {
             ///lleno la tabla con los valores enviados
             hoy.tablaEditOts = $('#tablaEditOts').DataTable(hoy.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "opc", data: hoy.getButtons},
@@ -43,12 +43,29 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[0, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -88,11 +105,11 @@ $(function () {
         genericCogDataTable: function (url, table) {
             return {
                 columns: [
-                    {data: "id_cliente_onyx"},
+                    {data: "nro_ot_onyx"},
+                    {data: "id_orden_trabajo_hija"},
                     {data: "nombre_cliente"},
                     {data: "fecha_compromiso"},
                     {data: "fecha_programacion"},
-                    {data: "id_orden_trabajo_hija"},
                     {data: "ot_hija"},
                     {data: "estado_orden_trabajo_hija"},
                     {data: total.getButtons},
@@ -100,6 +117,23 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
@@ -156,7 +190,7 @@ $(function () {
                       // targets: -1,
                       orderable: false,
                   }],
-              order: [[0, 'asc']],
+              // order: [[0, 'desc']],
               drawCallback: onDraw
             }
         },
@@ -190,11 +224,11 @@ $(function () {
         printTableOtsNew: function (data) {
             ///lleno la tabla con los valores enviados
             nueva.tablaNewOts = $('#tablaNewOts').DataTable(nueva.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "opc", data: nueva.getButtons},
@@ -208,12 +242,29 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[0, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -256,11 +307,11 @@ $(function () {
         printTableOtsChange: function (data) {
             ///lleno la tabla con los valores enviados
             cambio.tablaChangesOts = $('#tablaChangesOts').DataTable(cambio.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "opc", data: cambio.getButtons}
@@ -274,12 +325,29 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[0, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -328,11 +396,11 @@ $(function () {
         printTableOtsFiteenDays: function (data) {
             ///lleno la tabla con los valores enviados
             quinceDias.tablaFiteenDaysOts = $('#tablaFiteenDaysOts').DataTable(quinceDias.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "opc", data: quinceDias.getButtons}
@@ -346,12 +414,29 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[0, 'desc']],
                 drawCallback: onDraw
             }
         },

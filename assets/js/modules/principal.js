@@ -23,15 +23,15 @@ $(function () {
         printTableOutTime: function (data) {
             ///lleno la tabla con los valores enviados
             fTiempos.tablaFueraTiempos = $('#tablaFueraTiempos').DataTable(fTiempos.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Ot Hija", data: "n_name_tipo"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Días vencida", data: "tiempo_vencidas"},
-                {data: fTiempos.getButtons},
+                {title: "opc", data: fTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -42,7 +42,62 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual,
+                        
+                        /*exportOptions: {
+                            columns: ':visible',
+                            //columns: [ 0, 1, 2, 5 ], // selecciona las columnas que desea exportar
+                            // modifier: { // cUANDO NO SE DESEA registros SELECTIVO
+                            //     selected: null
+                            // }
+                        }*/
+       
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    },
+
+
+
+                                /*AÑADE BOTON PARA MOSTRAR U OCULTAR COLUMNAS*/
+                                // {
+                                //     extend: 'collection',
+                                //     text: 'Table control',
+                                //     buttons: [
+                                //         {
+                                //             text: 'Toggle start date',
+                                //             action: function ( e, dt, node, config ) {
+                                //                 dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
+                                //             }
+                                //         },
+                                //         {
+                                //             text: 'Toggle salary',
+                                //             action: function ( e, dt, node, config ) {
+                                //                 dt.column( -1 ).visible( ! dt.column( -1 ).visible() );
+                                //             }
+                                //         },
+                                //         'colvis'
+                                //     ]
+                                // }
+                    // 'colvis' // ocultar y mostrar columnas
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
@@ -100,15 +155,15 @@ $(function () {
         printTableInTimes: function (data) {
             ///lleno la tabla con los valores enviados
             eTiempos.tablaEnTiempos = $('#tablaEnTiempos').DataTable(eTiempos.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Ot Hija", data: "n_name_tipo"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
-                {title: "Días vencimiento", data: eTiempos.getAlertIcon},
-                {data: eTiempos.getButtons},
+                {title: "Días max Entrega", data: eTiempos.getAlertIcon},
+                {title: "opc",data: eTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -119,6 +174,23 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 ordering:false,
                 columnDefs: [{
                         defaultContent: "",
@@ -139,6 +211,7 @@ $(function () {
             color = 'FFFFFF';
             if (obj.tiempo_vencer == -1 || obj.tiempo_vencer == 0) {
                 color = 'FFA500';
+                obj.tiempo_vencer = (obj.tiempo_vencer == 0) ? 'Hoy' : 'Mañana ';
             }else if (obj.tiempo_vencer == -2) {
                 color = 'FFFF00';
             }else if (obj.tiempo_vencer < -2) {
@@ -202,14 +275,14 @@ $(function () {
         printTableAllOts: function (data) {
             ///lleno la tabla con los valores enviados
             todo.tablaTodo = $('#tablaTodo').DataTable(todo.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Ver Detalle", data: todo.getButtons},
+                {title: "opc", data: todo.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -220,6 +293,23 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
@@ -255,7 +345,3 @@ $(function () {
     };
     todo.init();
 });
-
-
-
-

@@ -49,7 +49,9 @@ table.dataTable_camilo {
   table.dataTable_camilo tbody tr {
     background-color: white; }
     table.dataTable_camilo tbody tr.selected {
-      background-color: #084c6f; }
+      background-color: #61a0d0eb;
+      color: #fff;
+    }
   table.dataTable_camilo tbody th,
   table.dataTable_camilo tbody td {
     padding: 8px 10px; }
@@ -408,4 +410,23 @@ table.dataTable_camilo .btn_datatable_cami:hover{
 
 #tabla_resumen {
   margin-bottom: 50px;
+}
+
+.dt-buttons {
+      text-align: center;
+}
+
+.btn-cami_cool {
+  background: transparent;
+  border-radius: 0;
+  border: 1px solid #084c6f;
+  color: #084c6f;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 6px 35px;
+  transition: all 0.4s ease-in-out;
+}
+.btn-cami_cool:hover {
+  background: #084c6f;
+  color: #ffffff;
 }

@@ -26,7 +26,8 @@ return [
     //Por favor, Seguir subiendo la configuración de sus localhost y no la del servidor
     //que el único que apunte a el servidor mysql sea quíen suba el proyecto con nuevos cambios...
       
-    'default' => 'mysql',
+
+    'default' => 'mysqlLocalhost',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
