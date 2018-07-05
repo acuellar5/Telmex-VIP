@@ -23,15 +23,15 @@ $(function () {
         printTableOutTime: function (data) {
             ///lleno la tabla con los valores enviados
             fTiempos.tablaFueraTiempos = $('#tablaFueraTiempos').DataTable(fTiempos.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Ot Hija", data: "n_name_tipo"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Días vencida", data: "tiempo_vencidas"},
-                {data: fTiempos.getButtons},
+                {title: "opc", data: fTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -100,15 +100,15 @@ $(function () {
         printTableInTimes: function (data) {
             ///lleno la tabla con los valores enviados
             eTiempos.tablaEnTiempos = $('#tablaEnTiempos').DataTable(eTiempos.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Ot Hija", data: "n_name_tipo"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
-                {title: "Días vencimiento", data: eTiempos.getAlertIcon},
-                {data: eTiempos.getButtons},
+                {title: "Días max Entrega", data: eTiempos.getAlertIcon},
+                {title: "opc",data: eTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -139,6 +139,7 @@ $(function () {
             color = 'FFFFFF';
             if (obj.tiempo_vencer == -1 || obj.tiempo_vencer == 0) {
                 color = 'FFA500';
+                obj.tiempo_vencer = (obj.tiempo_vencer == 0) ? 'Hoy' : 'Mañana ';
             }else if (obj.tiempo_vencer == -2) {
                 color = 'FFFF00';
             }else if (obj.tiempo_vencer < -2) {
@@ -202,14 +203,14 @@ $(function () {
         printTableAllOts: function (data) {
             ///lleno la tabla con los valores enviados
             todo.tablaTodo = $('#tablaTodo').DataTable(todo.configTable(data, [
-                {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Ver Detalle", data: todo.getButtons},
+                {title: "opc", data: todo.getButtons},
             ]));
         },
         // Datos de configuracion del datatable

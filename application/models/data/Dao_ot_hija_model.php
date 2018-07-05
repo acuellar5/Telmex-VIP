@@ -282,6 +282,8 @@ class Dao_ot_hija_model extends CI_Model {
         $query = $this->db->query("
             SELECT 
             ot.id_orden_trabajo_hija,
+            ot.k_id_estado_ot,
+            ot.k_id_user,
             ot.usuario_asignado,
             ot.estado_orden_trabajo,
             ot.tiempo_estado,

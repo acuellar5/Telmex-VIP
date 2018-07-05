@@ -19,11 +19,11 @@
         <h3>Total</h3>
         <table id="tabla_total" class='table table-bordered table-striped dataTable_camilo' width='100%'>
             <thead>
-            <th>Id Cliente Onix</th>
+            <th>OT Padre</th>
+            <th>Id OT Hija</th>
             <th>Nombre Cliente</th>
             <th>Fecha Compromiso</th>
             <th>Fecha Programación</th>
-            <th>Id OT Hija</th>
             <th>OT Hija</th>
             <th>Estado OT Hija</th>
             <th>opc</th>
@@ -54,7 +54,7 @@
                  <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                            <h3 class="modal-title" id="myModalLabel"></h3>
+                            <h3 class="modal-title" id="myModalLabel">Orden Ot Hija N <label id="id_ot_modal">aaaa</label></h3>
                         </div>
                         <div class="modal-body">
                             <div>
@@ -734,10 +734,10 @@
                                         <div class="widget bg_white m-t-25 display-block">
                                             <fieldset class="col-md-12 control-label">
                                                 <div class="form-group">
-                                                    <label for="observaciones" class="col-md-3 control-label">Observaciones: &nbsp;</label>
+                                                    <label for="n_observacion_cierre" class="col-md-3 control-label">Observaciones: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
-                                                            <textarea name="observaciones" id="observaciones" class="form-control" rows="3" cols="100"></textarea>
+                                                            <textarea name="n_observacion_cierre" id="n_observacion_cierre" class="form-control" rows="3" cols="100"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -16,7 +16,18 @@ class Dao_log_model extends CI_Model {
         $error = $this->db->error();
         if ($error['message']) {
             print_r($error);
-            return "error";
+        }
+
+    }
+
+    // inserta en tabla inconsistencia todos los campos (hay q enviarle a data el arreglo ya creado)
+    public function insertInconsistenciaRow($data){
+        //inserta el arreglo
+        $this->db->insert('inconcistencia', $data);
+        // capturar error de insercion
+        $error = $this->db->error();
+        if ($error['message']) {
+            print_r($error);
         }
 
     }
