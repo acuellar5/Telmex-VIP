@@ -8,6 +8,18 @@ $(function () {
         //Eventos de la ventana.
         events: function () {
             $('#tablaFueraTiempos').on('click', 'a.ver-det', fTiempos.onClickShowModalDet);
+
+            // EVENTO DEL MENU STICKY
+             $('#btn_fixed').on('click', function(){
+                $(this).hide();
+                $('#content_fixed').removeClass('closed');
+                $('#content_fixed #menu_fixed').removeClass('hidden').hide().fadeIn(500);
+            });
+            $('#btn_close_fixed').on('click', function(){
+                $('#content_fixed').addClass('closed');
+                $('#content_fixed #menu_fixed').hide();
+                $('#btn_fixed').fadeIn(500);
+            });
         },
         listOutTime: function () {
             $.post(baseurl + '/OtHija/c_getOtsOutTime',
