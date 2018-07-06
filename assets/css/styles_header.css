@@ -118,3 +118,8 @@
      border-radius: 50%;
      border: 1px solid #000;
 }
+.telmexVIP_header .badge {
+    background-color: #1f4c6f;
+    border: 1px solid #ece6e5;
+    color: #eee8e8;
+}

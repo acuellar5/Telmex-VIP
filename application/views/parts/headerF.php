@@ -64,6 +64,12 @@
                     <li><a href="<?= URL::to('cargarOts') ?>">Cargar información</a></li>
                   </ul>
                 </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] ?></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
+                    <li><a href="<?= URL::to('cargarOts') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
+                  </ul>
+                </li>
               <?php
               }
               if (Auth::user()->n_project == 'Implementacion') {
