@@ -931,4 +931,19 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+
+    //retorna estados por nombre de tipo
+    public function getNewStatusByType($name){
+        $query = $this->db->query("
+                SELECT distinct estado_orden_trabajo_hija 
+                FROM 
+                ot_hija
+                where 
+                k_id_estado_ot = 189 and 
+                ot_hija = '$name'
+            ");
+        return $query->result();
+
+    }
+
 }

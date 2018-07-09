@@ -4,16 +4,69 @@
 </div>
 
 
-<table class="table table-hover table-bordered table-striped dataTable_camilo">
+<table class="table table-hover table-bordered table-striped dataTable_camilo" id="table_new_types"  cellspacing="2">
 	<thead>
 		<th>Nombre Tipo</th>
-		<th>cant registros afectados</th>
+		<th>cant registros con éste estado</th>
+		<th>Es Nuevo?</th>
+		<th>Es Variante?</th>
 	</thead>
 	<?php for ($i=0; $i < count($tipos); $i++) { ?>
-		<tr>
-			<td><?php echo $tipos[$i]->ot_hija; ?></td>
+		<tr >
+			<td><strong><?php echo $tipos[$i]->ot_hija; ?></strong></td>
 			<td><?php echo $tipos[$i]->cant; ?></td>
+			<td>
+				<div class="btn-group">
+                    <a class="btn btn-default btn-xs ver-det btn-success" title="Editar Ots" onclick="showModalNewType(<?= "'".$tipos[$i]->ot_hija."'"; ?>)">
+                    	<span class="fa fa-plus"></span>
+                    </a>
+                </div>
+            </td>
+			<td>
+				<div class="btn-group">
+                    <a class="btn btn-default btn-xs ver-det btn-primary" title="Editar Ots">
+                    	<span class="fa fa-handshake-o"></span>
+                    </a>
+                </div>
+            </td>
 		</tr>
 	<?php } ?>
 		
 </table>
+
+<!------------------------------- MODAL GUARDAR NUEVO TIPO----------------------------- -->
+<div id="mdl_new_type" class="modal fade " role="dialog">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+				<h3 class="modal-title" id="mdl_title_new_type">Añadir Nuevo Tipo</h3>
+			</div>
+			<div class="modal-body">
+				<table class="table table-hover table-bordered table-striped">
+					<thead>
+						<tr>
+							<td colspan="2" align="center" id="mdl_tbl_title_tipo"></td>
+						</tr>
+						<tr>
+							<td>estado</td>
+							<td>Orden Jerarquia</td>
+						</tr>
+					</thead>
+					<tbody id="mdl_tbl_new_type">	
+					</tbody>
+				</table>
+				<center>
+					<button class="btn-cami_cool" id="añadir_estado"> Añadir estado  <span class="fa fa-plus"></span></button>
+				</center>
+
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+				<button type="button" class="btn btn-success" id="mdl_save_new_type"><i class='glyphicon glyphicon-send'></i>&nbsp;Guardar</button>
+			</div>
+		</div>
+	</div>
+</div>

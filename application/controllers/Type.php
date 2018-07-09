@@ -19,6 +19,13 @@ class Type extends CI_Controller {
     $this->load->view('parts/footerF');
   }
 
+  //Obtiene los estados por el nombre del tipo
+  public function c_getNewStatusByType(){
+	$nombre_tipo = $this->input->post('name');
+	$estados = $this->Dao_ot_hija_model->getNewStatusByType($nombre_tipo);
+	echo json_encode($estados);
+  }
+
 
   
   
