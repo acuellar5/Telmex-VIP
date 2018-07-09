@@ -152,8 +152,9 @@ class OtHija extends CI_Controller {
     public function c_getOtsOutTime() {
         $response = null;
         if (Auth::check()) {
+            $idTipo = $this->input->post('idTipo');
             $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->getOtsOutTime();
+            $res = $otHijaModel->getOtsOutTime($idTipo);
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
@@ -164,8 +165,9 @@ class OtHija extends CI_Controller {
     public function c_getOtsInTimes() {
         $response = null;
         if (Auth::check()) {
+            $idTipo = $this->input->post('idTipo');
             $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->getOtsInTimes();
+            $res = $otHijaModel->getOtsInTimes($idTipo);
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));

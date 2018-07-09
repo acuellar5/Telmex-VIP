@@ -801,8 +801,5 @@
         <script>
             var urlbase = "<?php echo URL::base(); ?>";
             swal('OK', 'se actualizó correctamente', 'success'); 
-            $('.swal-button').on('click', function(){
-                location.href = urlbase + "/editarOts";
-            })
         </script>
 <?php endif ?>

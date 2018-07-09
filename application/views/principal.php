@@ -29,14 +29,14 @@
                      echo "<tr>";
                        echo " <td><b>". $registros[$i]->n_name_tipo ."</b></td>";
                        echo " <td>". $registros[$i]->count ."</td>";
-                       echo " <td>". $terna ."</td>";
-                       echo " <td>". $registros[$i]->fuera_tiempo ."</td>";
+                       echo " <td><a onclick='showModalDetResInTimes(". $registros[$i]->k_id_tipo .");'>". $terna ."</a></td>";
+                       echo " <td><a onclick='showModalDetResOutTime(". $registros[$i]->k_id_tipo .");'>". $registros[$i]->fuera_tiempo ."</a></td>";
                        if (isset($registros[$i+1])) {
                         $terna1 = ($registros[$i + 1]->en_tiempo == 0 && $registros[$i + 1]->fuera_tiempo == 0) ? $registros[$i + 1]->count : $registros[$i + 1]->en_tiempo;
                            echo " <td><b>". $registros[$i+1]->n_name_tipo ."</b></td>";
                            echo " <td>". $registros[$i+1]->count ."</td>";
-                           echo " <td>". $terna1 ."</td>";
-                           echo " <td>". $registros[$i+1]->fuera_tiempo ."</td>";                        
+                           echo " <td><a onclick='showModalDetResInTimes(". $registros[$i+1]->k_id_tipo .");'>". $terna1 ."</a></td>";
+                           echo " <td><a onclick='showModalDetResOutTime(". $registros[$i+1]->k_id_tipo .");'>". $registros[$i+1]->fuera_tiempo ."</a></td>";                        
                        }
                      echo "</tr>";
                  } 
@@ -704,6 +704,48 @@ if (Auth::user()->n_project == 'Implementacion') {
 
                         </fieldset>
                     </form>
+                </div>            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- ****************************MODAL DE DETALLE RESUMEN FUERA DE TIEMPO************************************************ -->
+<div id="Modal_detalle_res_out" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+    <div class="col-md-12">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="title_modal" align="center"></h3>
+            </div>
+            <div>
+                <div class="modal-body">
+                    <h3>Fuera de Tiempos</h3>
+                    <table id="tablaDetalleResOutTimes" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+                </div>            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- ****************************MODAL DE DETALLE RESUMEN EN TIEMPO************************************************ -->
+<div id="Modal_detalle_res_in" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+    <div class="col-md-12">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="title_modal" align="center"></h3>
+            </div>
+            <div>
+                <div class="modal-body">
+                    <h3>En Tiempos</h3>
+                    <table id="tablaDetalleResInTimes" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
                 </div>            
             </div>
             <div class="modal-footer">

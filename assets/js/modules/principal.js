@@ -12,7 +12,7 @@ $(function () {
         listOutTime: function () {
             $.post(baseurl + '/OtHija/c_getOtsOutTime',
                     {
-                        // clave: 'valor' // parametros que se envian
+                        idTipo: null // parametros que se envian
                     },
                     function (data) {
                         fTiempos.printTableOutTime(data);
@@ -63,14 +63,14 @@ $(function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = fTiempos.tablaFueraTiempos.row(trParent).data();
-            fTiempos.fillFormModal(record);        
+            fTiempos.fillFormModal(record);
         },
 
-        fillFormModal: function(registros){
-            $.each(registros ,function(i,item){
-                    $('#mdl_' + i).val(item);
-                });
-            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+        fillFormModal: function (registros) {
+            $.each(registros, function (i, item) {
+                $('#mdl_' + i).val(item);
+            });
+            $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
         }
     };
@@ -108,7 +108,7 @@ $(function () {
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Días max Entrega", data: eTiempos.getAlertIcon},
-                {title: "opc",data: eTiempos.getButtons},
+                {title: "opc", data: eTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -119,7 +119,7 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
-                ordering:false,
+                ordering: false,
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
@@ -140,11 +140,11 @@ $(function () {
             if (obj.tiempo_vencer == -1 || obj.tiempo_vencer == 0) {
                 color = 'FFA500';
                 obj.tiempo_vencer = (obj.tiempo_vencer == 0) ? 'Hoy' : 'Mañana ';
-            }else if (obj.tiempo_vencer == -2) {
+            } else if (obj.tiempo_vencer == -2) {
                 color = 'FFFF00';
-            }else if (obj.tiempo_vencer < -2) {
+            } else if (obj.tiempo_vencer < -2) {
                 color = '7CFC00';
-            }else if (obj.tiempo_vencer == 'en tiempos') {
+            } else if (obj.tiempo_vencer == 'en tiempos') {
                 color = '7CFC00';
             }
             boton = '<form class="form-inline">'
@@ -152,7 +152,7 @@ $(function () {
                     + obj.tiempo_vencer
                     + '</div>'
                     + '<div class="btn-group col col-md-6">'
-                    + '<div class="circulo" style="background: #'+color+';"></div>'
+                    + '<div class="circulo" style="background: #' + color + ';"></div>'
                     + '</div>'
                     + '</form>';
             return boton;
@@ -165,21 +165,21 @@ $(function () {
             var trParent = aLinkLog.parents('tr');
             var record = eTiempos.tablaEnTiempos.row(trParent).data();
 //            console.log(record);
-            fTiempos.fillFormModal(record);  
+            fTiempos.fillFormModal(record);
         },
 
-            fillFormModal: function(registros){
-            $.each(registros ,function(i,item){
-                    $('#mdl_' + i).val(item);
-                });
-            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+        fillFormModal: function (registros) {
+            $.each(registros, function (i, item) {
+                $('#mdl_' + i).val(item);
+            });
+            $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
         }
     };
     eTiempos.init();
 
     /************************************************FIN NUEVAS************************************************/
-    /**********************************************INICIO CAMBIOS*********************************************/
+    /**********************************************INICIO TODO*********************************************/
 
     todo = {
         init: function () {
@@ -237,13 +237,13 @@ $(function () {
             var trParent = aLinkLog.parents('tr');
             var record = todo.tablaTodo.row(trParent).data();
             $('#Modal_detalle').modal('show');
-            fTiempos.fillFormModal(record);  
+            fTiempos.fillFormModal(record);
         },
-        fillFormModal: function(registros){
-            $.each(registros ,function(i,item){
-                    $('#mdl_' + i).val(item);
-                });
-            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+        fillFormModal: function (registros) {
+            $.each(registros, function (i, item) {
+                $('#mdl_' + i).val(item);
+            });
+            $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
         },
 
@@ -255,8 +255,60 @@ $(function () {
         }
     };
     todo.init();
+
+    /************************************************FIN TODO************************************************/
 });
 
+var tabla_cont_out;
+function showModalDetResOutTime(idTipo) {
+    if (tabla_cont_out) {
+        tabla_cont_out.destroy();
+    }
+    $.post(baseurl + '/OtHija/c_getOtsOutTime',
+            {
+                idTipo: idTipo // parametros que se envian
+            },
+            function (data) {
+//                todo.printTableAllOts(data['data']);
+                tabla_cont_out = $('#tablaDetalleResOutTimes').DataTable(fTiempos.configTable(data, [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Ot Hija", data: "n_name_tipo"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
+                    {title: "Fecha Creación", data: "fecha_creacion"},
+                    {title: "Días vencida", data: "tiempo_vencidas"},
+                    {title: "opc", data: fTiempos.getButtons},
+                ]));
+            });
+    $('#Modal_detalle_res_out').modal('show');
+}
 
+var tabla_cont_in;
+function showModalDetResInTimes(idTipo) {
+    if (tabla_cont_in) {
+        tabla_cont_in.destroy();
+    }
+    $.post(baseurl + '/OtHija/c_getOtsInTimes',
+            {
+                idTipo: idTipo // parametros que se envian
+            },
+            function (data) {
+//                todo.printTableAllOts(data['data']);
+                tabla_cont_in = $('#tablaDetalleResInTimes').DataTable(eTiempos.configTable(data, [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Ot Hija", data: "n_name_tipo"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
+                    {title: "Fecha Creación", data: "fecha_creacion"},
+                    {title: "Días max Entrega", data: eTiempos.getAlertIcon},
+                    {title: "opc", data: eTiempos.getButtons},
+                ]));
+            });
+    $('#Modal_detalle_res_in').modal('show');
+}
 
 
