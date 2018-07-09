@@ -847,21 +847,35 @@ class Dao_ot_hija_model extends CI_Model {
 
     //Retorna la cantidad de registros irregulares en un array
     public function getCantUndefined(){
-        $data['indefinidos'] = $this->getCantIndefinidosYNull();
+        $data['indefinidos'] = $this->getCantIndefinidos();
+        $data['nulos'] = $this->getCantNull();
         $data['new_types'] = $this->cant_new_types();
         $data['new_status'] = $this->cant_new_status();
         return $data;
     }
 
-    //Retorna la cantidad de registros con estado indefinido y nulo
-    public function getCantIndefinidosYNull(){
+    //Retorna la cantidad de registros con estado indefinido 
+    public function getCantIndefinidos(){
         $query = $this->db->query("
             SELECT 
             COUNT(1) AS cant 
             FROM 
             ot_hija
             where 
-            k_id_estado_ot = 189 OR
+            k_id_estado_ot = 189
+        ");
+
+        return $query->row()->cant;
+    }
+
+    //Retorna la cantidad de registros con estado nulo
+    public function getCantNull(){
+        $query = $this->db->query("
+            SELECT 
+            COUNT(1) AS cant 
+            FROM 
+            ot_hija
+            where
             k_id_estado_ot  IS NULL
         ");
 
@@ -894,6 +908,21 @@ class Dao_ot_hija_model extends CI_Model {
         ");
 
         return $query->row()->cant;
+    }
+
+
+    ////Retorna la cantidad de registros con estado indefinido 
+    public function getTypeUndefined(){
+        $query = $this->db->query("
+            SELECT 
+            ot_hija , count(ot_hija) as cant
+            FROM   
+            ot_hija 
+            WHERE 
+            k_id_estado_ot = 189
+            group by ot_hija
+        ");
+        return $query->result();
     }
 
 }
