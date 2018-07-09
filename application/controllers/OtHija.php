@@ -17,6 +17,7 @@ class OtHija extends CI_Controller {
             Redirect::to(URL::base());
         }
         $data['title']='Editar OTS';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('moduleOts');
         $this->load->view('parts/footerF');

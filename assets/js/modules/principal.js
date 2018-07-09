@@ -8,6 +8,18 @@ $(function () {
         //Eventos de la ventana.
         events: function () {
             $('#tablaFueraTiempos').on('click', 'a.ver-det', fTiempos.onClickShowModalDet);
+
+            // EVENTO DEL MENU STICKY
+             $('#btn_fixed').on('click', function(){
+                $(this).hide();
+                $('#content_fixed').removeClass('closed');
+                $('#content_fixed #menu_fixed').removeClass('hidden').hide().fadeIn(500);
+            });
+            $('#btn_close_fixed').on('click', function(){
+                $('#content_fixed').addClass('closed');
+                $('#content_fixed #menu_fixed').hide();
+                $('#btn_fixed').fadeIn(500);
+            });
         },
         listOutTime: function () {
             $.post(baseurl + '/OtHija/c_getOtsOutTime',
@@ -42,7 +54,62 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual,
+                        
+                        /*exportOptions: {
+                            columns: ':visible',
+                            //columns: [ 0, 1, 2, 5 ], // selecciona las columnas que desea exportar
+                            // modifier: { // cUANDO NO SE DESEA registros SELECTIVO
+                            //     selected: null
+                            // }
+                        }*/
+       
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    },
+
+
+
+                                /*AÑADE BOTON PARA MOSTRAR U OCULTAR COLUMNAS*/
+                                // {
+                                //     extend: 'collection',
+                                //     text: 'Table control',
+                                //     buttons: [
+                                //         {
+                                //             text: 'Toggle start date',
+                                //             action: function ( e, dt, node, config ) {
+                                //                 dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
+                                //             }
+                                //         },
+                                //         {
+                                //             text: 'Toggle salary',
+                                //             action: function ( e, dt, node, config ) {
+                                //                 dt.column( -1 ).visible( ! dt.column( -1 ).visible() );
+                                //             }
+                                //         },
+                                //         'colvis'
+                                //     ]
+                                // }
+                    // 'colvis' // ocultar y mostrar columnas
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
@@ -119,7 +186,24 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
-                ordering: false,
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                ordering:false,
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
@@ -221,6 +305,23 @@ $(function () {
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,

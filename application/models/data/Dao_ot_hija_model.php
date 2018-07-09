@@ -357,6 +357,11 @@ class Dao_ot_hija_model extends CI_Model {
         $order  = $parameters['order'];
         $columm = $parameters['columm'];
 
+
+        $limit_start_length = ($parameters['length'] == -1) ? "" : "LIMIT $start, $length"  ;
+
+
+
         // Cuando el usuario logueado es un ingeniero... si es admin puede ver todo
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
@@ -457,8 +462,8 @@ class Dao_ot_hija_model extends CI_Model {
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 ".$srch." ".$condicion."
-                ORDER BY $columm $order
-                LIMIT $start, $length 
+                ORDER BY $columm $order 
+                $limit_start_length 
             ");
         // cant de registros es necesaria para saber cuanto es el total de registros sin filtros existentes en la consulta
         $cant = $this->db->query("
@@ -845,5 +850,56 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
-}
 
+    //Retorna la cantidad de registros irregulares en un array
+    public function getCantUndefined(){
+        $data['indefinidos'] = $this->getCantIndefinidosYNull();
+        $data['new_types'] = $this->cant_new_types();
+        $data['new_status'] = $this->cant_new_status();
+        return $data;
+    }
+
+    //Retorna la cantidad de registros con estado indefinido y nulo
+    public function getCantIndefinidosYNull(){
+        $query = $this->db->query("
+            SELECT 
+            COUNT(1) AS cant 
+            FROM 
+            ot_hija
+            where 
+            k_id_estado_ot = 189 OR
+            k_id_estado_ot  IS NULL
+        ");
+
+        return $query->row()->cant;
+    }
+
+    //Retorna cantidad de tipos nuevos en el sistema
+    public function cant_new_types(){
+        $query = $this->db->query("
+            SELECT 
+            count(distinct ot_hija) AS cant 
+            FROM   
+            ot_hija 
+            WHERE 
+            k_id_estado_ot = 189
+        ");
+
+        return $query->row()->cant;
+    }
+
+    //Retorna cantidad de estados nuevos en el sistema
+    public function cant_new_status(){
+       $query = $this->db->query("
+            SELECT 
+            COUNT(DISTINCT(CONCAT(ot_hija, estado_orden_trabajo_hija))) AS cant 
+            FROM 
+            ot_hija 
+            WHERE 
+            k_id_estado_ot is NULL 
+        ");
+
+        return $query->row()->cant;
+    }
+
+}
