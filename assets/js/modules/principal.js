@@ -8,6 +8,7 @@ $(function () {
         //Eventos de la ventana.
         events: function () {
             $('#tablaFueraTiempos').on('click', 'a.ver-det', fTiempos.onClickShowModalDet);
+            $('#tablaDetalleResOutTimes').on('click', 'a.ver-det', fTiempos.onClickShowModalDet);
 
             // EVENTO DEL MENU STICKY
              $('#btn_fixed').on('click', function(){
@@ -42,6 +43,7 @@ $(function () {
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Recurrente", data: "MRC"},
                 {title: "Días vencida", data: "tiempo_vencidas"},
                 {title: "opc", data: fTiempos.getButtons},
             ]));
@@ -154,6 +156,7 @@ $(function () {
         //Eventos de la ventana.
         events: function () {
             $('#tablaEnTiempos').on('click', 'a.ver-det', eTiempos.onClickShowModalDet);
+            $('#tablaDetalleResInTimes').on('click', 'a.ver-det', eTiempos.onClickShowModalDet);
         },
         listInTimes: function () {
             $.post(baseurl + '/OtHija/c_getOtsInTimes',
@@ -174,6 +177,7 @@ $(function () {
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Recurrente", data: "MRC"},
                 {title: "Días max Entrega", data: eTiempos.getAlertIcon},
                 {title: "opc", data: eTiempos.getButtons},
             ]));
@@ -294,6 +298,7 @@ $(function () {
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Recurrente", data: "MRC"},
                 {title: "opc", data: todo.getButtons},
             ]));
         },
@@ -379,6 +384,7 @@ function showModalDetResOutTime(idTipo) {
                     {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                     {title: "Ingeniero Responsable", data: "ingeniero"},
                     {title: "Fecha Creación", data: "fecha_creacion"},
+                    {title: "Recurrente", data: "MRC"},
                     {title: "Días vencida", data: "tiempo_vencidas"},
                     {title: "opc", data: fTiempos.getButtons},
                 ]));
@@ -405,6 +411,7 @@ function showModalDetResInTimes(idTipo) {
                     {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
                     {title: "Ingeniero Responsable", data: "ingeniero"},
                     {title: "Fecha Creación", data: "fecha_creacion"},
+                    {title: "Recurrente", data: "MRC"},
                     {title: "Días max Entrega", data: eTiempos.getAlertIcon},
                     {title: "opc", data: eTiempos.getButtons},
                 ]));
