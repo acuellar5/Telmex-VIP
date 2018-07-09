@@ -26,6 +26,7 @@
             <th>Fecha Programación</th>
             <th>OT Hija</th>
             <th>Estado OT Hija</th>
+            <th>Recurrente</th>
             <th>opc</th>
             </thead>
         </table>

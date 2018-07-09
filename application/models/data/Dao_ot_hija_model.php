@@ -129,7 +129,8 @@ class Dao_ot_hija_model extends CI_Model {
                 case
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
-                END AS 'function'
+                END AS 'function',
+                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
@@ -454,7 +455,8 @@ class Dao_ot_hija_model extends CI_Model {
                 case
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
-                END AS 'function'
+                END AS 'function',
+                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
@@ -634,7 +636,8 @@ class Dao_ot_hija_model extends CI_Model {
                                                 WHEN eot.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
                                                 WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
                                                 WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY))
-                                            END AS tiempo_vencidas
+                                            END AS tiempo_vencidas,
+                                            CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                                         FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
@@ -757,7 +760,8 @@ class Dao_ot_hija_model extends CI_Model {
                                                 WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY))
                                                 WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
                                                 ELSE 'en tiempos'
-                                            END AS tiempo_vencer
+                                            END AS tiempo_vencer,
+                                            CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                                         FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot

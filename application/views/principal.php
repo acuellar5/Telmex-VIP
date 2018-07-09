@@ -114,7 +114,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 <?php } ?>
 
 <!-- ****************************MODAL DE DETALLE ************************************************ -->
-<div id="Modal_detalle" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="Modal_detalle" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="z-index: 9999999999 !important;">
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header">
@@ -737,7 +737,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 </div>
 
 <!-- ****************************MODAL DE DETALLE RESUMEN FUERA DE TIEMPO************************************************ -->
-<div id="Modal_detalle_res_out" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="Modal_detalle_res_out" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" >
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header">
@@ -758,7 +758,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 </div>
 
 <!-- ****************************MODAL DE DETALLE RESUMEN EN TIEMPO************************************************ -->
-<div id="Modal_detalle_res_in" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="Modal_detalle_res_in" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" >
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header">
