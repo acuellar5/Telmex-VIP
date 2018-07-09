@@ -542,13 +542,16 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
     
-    public function getOtsOutTime() {
+    public function getOtsOutTime($idTipo) {
         try {
             $db = new DB();
             $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND user.k_id_user = $usuario_session";
+                $condicion .= " AND user.k_id_user = $usuario_session";
+            }
+            if ($idTipo) {
+                $condicion .= " AND eot.k_id_tipo = $idTipo";
             }
             $query = $this->db->query("SELECT oth.id_orden_trabajo_hija, 
                                             oth.k_id_estado_ot, 
@@ -661,13 +664,16 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
     
-    public function getOtsInTimes() {
+    public function getOtsInTimes($idTipo) {
         try {
             $db = new DB();
             $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND user.k_id_user = $usuario_session";
+                $condicion .= " AND user.k_id_user = $usuario_session";
+            }
+            if ($idTipo) {
+                $condicion .= " AND eot.k_id_tipo = $idTipo";
             }
             $query = $this->db->query("SELECT oth.id_orden_trabajo_hija, 
                                             oth.k_id_estado_ot, 
@@ -773,7 +779,7 @@ class Dao_ot_hija_model extends CI_Model {
                                                         OR (eot.k_id_tipo = 52 AND ADDDATE(oth.fecha_creacion, INTERVAL 14 DAY) >= CURDATE())
                                                         OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY) >= CURDATE())
                                                         OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) >= CURDATE()))       
-                                                OR (eot.k_id_tipo IN (5,10,11,12,39,41,42,46,49,50,51,54,55,56,57,59,60,61,66)))
+                                                OR (eot.k_id_tipo IN (5,10,11,12,39,41,42,46,49,50,51,54,55,56,57,59,60,61,62,66)))
                                                 $condicion
                                         ORDER BY LENGTH(tiempo_vencer),tiempo_vencer ASC");
             return $query->result();
@@ -794,20 +800,20 @@ class Dao_ot_hija_model extends CI_Model {
                 SELECT 
                 COUNT(*) count, t.n_name_tipo,
                 SUM(CASE
-                    WHEN e.k_id_tipo = 1 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 3 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 2 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) < 1 THEN 1
-                    WHEN e.k_id_tipo = 3 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 4 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 6 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 6 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 2 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 7 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 16 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 8 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 21 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 9 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 37 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 3 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 47 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 48 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 52 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 53 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) < 1 THEN 1 
-                    WHEN e.k_id_tipo = 58 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 1 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 2 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 2 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) < 1 THEN 1
+                    WHEN e.k_id_tipo = 3 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 14 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 4 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 5 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 6 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 1 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 7 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 15 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 8 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 20 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 9 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 14 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 37 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 2 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 47 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 14 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 48 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 14 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 52 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 14 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 53 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 6 DAY)) < 1 THEN 1 
+                    WHEN e.k_id_tipo = 58 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) < 1 THEN 1 
                     ELSE 0
                 END) AS en_tiempo, 
                 SUM(CASE
@@ -826,7 +832,7 @@ class Dao_ot_hija_model extends CI_Model {
                     WHEN e.k_id_tipo = 53 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 7 DAY)) >= 1 THEN 1 
                     WHEN e.k_id_tipo = 58 AND DATEDIFF(CURDATE(),ADDDATE(ot.fecha_creacion, INTERVAL 8 DAY)) >= 1 THEN 1 
                     else 0
-                END) AS fuera_tiempo, e.k_id_tipo 
+                END) AS fuera_tiempo, e.k_id_tipo
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e
@@ -834,12 +840,12 @@ class Dao_ot_hija_model extends CI_Model {
                 INNER JOIN tipo_ot_hija t 
                 ON e.k_id_tipo = t.k_id_tipo
                 WHERE 
-                e.n_name_estado_ot <> 'Cancelada' AND
-                e.n_name_estado_ot <> 'Cerrada' AND
-                e.n_name_estado_ot <> '3- Terminada' 
+                ot.estado_orden_trabajo_hija <> 'Cancelada' AND
+                ot.estado_orden_trabajo_hija <> 'Cerrada' AND
+                ot.estado_orden_trabajo_hija <> '3- Terminada' 
                 $condicion
-                GROUP BY e.k_id_tipo;
-        ");        
+                GROUP BY e.k_id_tipo
+        ");
 
         return $query->result();
     }
