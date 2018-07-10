@@ -27,7 +27,7 @@ $('#añadir_estado').click(function(){
 										<td><input type="text" name="name_status[]" id="" required class="form-control"></td>
 										<td>
 											<div class="input-group">
-												<input type="number" name="jerarquia[]" id="" required class="form-control">
+												<input type="number" name="jerarquia[]" id="" required class="form-control cssmodificacionin">
 												<span class="fa fa-minus btn btn-danger"></span>
 											</div>
 										</td>
