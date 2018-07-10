@@ -1,12 +1,15 @@
-<div class="alert alert-danger alert-dismissible col-sm-8 cssparaeldiv" align="center">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <span class="fa fa-exclamation-triangle"> </span> <strong> Danger! </strong> Actualmente existen <strong><?php echo $cantidad['indefinidos'] ?></strong> registros con tipo de orden indefinido. <span class="fa fa-exclamation-triangle"></span>
+<div class="cssparaeldiv">
+	<div class="alert alert-danger alert-dismissible col-md-8 col-sm-12" align="center">
+	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <span class="fa fa-exclamation-triangle"> </span> <strong> Danger! </strong> Actualmente existen <strong><?php echo $cantidad['indefinidos'] ?></strong> registros con tipo de orden indefinido. <span class="fa fa-exclamation-triangle"></span>
+	</div>
 </div>
-<div class="alert alert-warning alert-dismissible col-sm-8" align="center">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> La información que se edite en este modulo debe ser idéntica a cómo esté en el excel <span class="fa fa-exclamation-triangle"></span>
+<div class="cssparaeldiv">
+	<div class="alert alert-warning alert-dismissible col-md-8 col-sm-12" align="center">
+	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	    <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> La información que se edite en este modulo debe ser idéntica a cómo esté en el excel <span class="fa fa-exclamation-triangle"></span>
+	</div>
 </div>
-
 <table class="table table-hover table-bordered table-striped dataTable_camilo csstable" id="table_new_types"  cellspacing="2">
 	<thead>
 		<th class="csscolumna">Nombre Tipo</th>
@@ -63,7 +66,7 @@
 					</table>
 				</form>
 				<center>
-					<button class="btn-cami_cool " id="añadir_estado"> Añadir estado  <span class="fa fa-plus ubicacionboton"></span></button>
+					<button class="btn-cami_cool " id="añadir_estado"> Añadir estado  <span class="fa fa-plus"></span></button>
 				</center>
 
 

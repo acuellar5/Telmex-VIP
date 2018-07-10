@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'faber';
+$active_group = 'local';
 
 $query_builder = TRUE;
 
@@ -80,7 +80,7 @@ $db['local'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'Telmex_vip_prueba',
+	'database' => 'Telmex_vip',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
