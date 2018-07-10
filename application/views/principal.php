@@ -50,7 +50,7 @@
 <div class="contenedor closed" id="content_fixed">
   <div id="btn_fixed" >
     <span class="rotate-90 text">
-      <i class="glyphicon glyphicon-chevron-up"></i><span class="espaciomenu">Ver menú</span>
+      <i class="glyphicon glyphicon-chevron-up"></i><span class="espaciomenu">View menu</span>
     </span>
   </div>
   <div class="hidden" id="menu_fixed">
@@ -737,7 +737,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 </div>
 
 <!-- ****************************MODAL DE DETALLE RESUMEN FUERA DE TIEMPO************************************************ -->
-<div id="Modal_detalle_res_out" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="Modal_detalle_res_out" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header">
@@ -758,7 +758,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 </div>
 
 <!-- ****************************MODAL DE DETALLE RESUMEN EN TIEMPO************************************************ -->
-<div id="Modal_detalle_res_in" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="Modal_detalle_res_in" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header">

@@ -1,4 +1,4 @@
-<div class="alert alert-danger alert-dismissible col-sm-8" align="center">
+<div class="alert alert-danger alert-dismissible col-sm-8 cssparaeldiv" align="center">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <span class="fa fa-exclamation-triangle"> </span> <strong> Danger! </strong> Actualmente existen <strong><?php echo $cantidad['indefinidos'] ?></strong> registros con tipo de orden indefinido. <span class="fa fa-exclamation-triangle"></span>
 </div>
@@ -7,15 +7,15 @@
     <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> La información que se edite en este modulo debe ser idéntica a cómo esté en el excel <span class="fa fa-exclamation-triangle"></span>
 </div>
 
-<table class="table table-hover table-bordered table-striped dataTable_camilo" id="table_new_types"  cellspacing="2">
+<table class="table table-hover table-bordered table-striped dataTable_camilo csstable" id="table_new_types"  cellspacing="2">
 	<thead>
-		<th>Nombre Tipo</th>
+		<th class="csscolumna">Nombre Tipo</th>
 		<th>cant registros con éste estado</th>
 		<th>Es Nuevo?</th>
 		<th>Es Variante?</th>
 	</thead>
 	<?php for ($i=0; $i < count($tipos); $i++) { ?>
-		<tr >
+		<tr class="cssformtext" >
 			<td><strong><?php echo $tipos[$i]->ot_hija; ?></strong></td>
 			<td><?php echo $tipos[$i]->cant; ?></td>
 			<td>
@@ -41,8 +41,8 @@
 <div id="mdl_new_type" class="modal fade " role="dialog">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+			<div class="modal-header cssnewtypem">
+				<button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('/assets/images/cerrar (7).png') ?>"></img></button>
 				<h3 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo Tipo</h3>
 			</div>
 			<div class="modal-body">
@@ -50,10 +50,10 @@
 					<table class="table table-hover table-bordered table-striped">
 							<thead>
 								<tr>
-									<td colspan="2" align="center" id="mdl_tbl_title_tipo"></td>
+									<td colspan="2" align="center" id="mdl_tbl_title_tipo" class="csstypesubtitle"></td>
 								</tr>
 								<tr>
-									<td align="center"><b>NOMBRE ESTADO</b></td>
+									<td class="anchotable"><b>NOMBRE ESTADO</b></td>
 									<td align="center"><b>ORDEN JERARQUIA</b></td>
 								</tr>
 							</thead>
@@ -63,13 +63,13 @@
 					</table>
 				</form>
 				<center>
-					<button class="btn-cami_cool" id="añadir_estado"> Añadir estado  <span class="fa fa-plus"></span></button>
+					<button class="btn-cami_cool " id="añadir_estado"> Añadir estado  <span class="fa fa-plus ubicacionboton"></span></button>
 				</center>
 
 
 
 			</div>
-			<div class="modal-footer">
+			<div class="modal-footer cssnewtypem">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
 				<button type="submit" class="btn btn-success" id="mdl_save_new_type" form="mdl_form_new_type"><i class='glyphicon glyphicon-send'></i>&nbsp;Guardar</button>
 			</div>

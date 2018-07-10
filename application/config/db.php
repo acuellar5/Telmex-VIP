@@ -26,7 +26,8 @@ return [
     //Por favor, Seguir subiendo la configuración de sus localhost y no la del servidor
     //que el único que apunte a el servidor mysql sea quíen suba el proyecto con nuevos cambios...
       
-    'default' => 'mysqlLocalhost',
+
+    'default' => 'camilo',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
@@ -47,7 +48,7 @@ return [
             'driver' => 'mysql',
             'host' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
             'port' => '3306',
-            'database' => 'telmex_vip',
+            'database' => 'Telmex_vip_prueba',
             'username' => 'adminZTE',
             'password' => 'a4b3c2d1',
             'charset' => 'utf8',
