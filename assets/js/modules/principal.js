@@ -419,4 +419,10 @@ function showModalDetResInTimes(idTipo) {
     $('#Modal_detalle_res_in').modal('show');
 }
 
+//Funcionamiento del Scroll para el segundo modal
 
+$('#Modal_detalle').on("hidden.bs.modal", function (e) { 
+    if ($('.modal:visible').length) { 
+        $('body').addClass('modal-open');
+    }
+});
