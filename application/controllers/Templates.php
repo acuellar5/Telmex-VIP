@@ -6,116 +6,209 @@ class Templates extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-//->load->model('data/configdb_model');
+        $this->load->model('data/Dao_ot_hija_model');
+        $this->load->model('data/Dao_estado_ot_model');
     }
 
 //
-    public function fill_formulary($servicio) {
 
-        $argumentos = array(
-            'nombre' => 'pepito',
-            'nombre_cliente' => 'alguien',
-            'servicio' => 'algo',
-            'fecha' => '19/06/2018',
-            'direccion_instalacion' => 'cll 93',
-            'ancho_banda' => 'ancha',
-            'interfaz_entrega' => 'entregadaaaaaaa',
-            'fecha_servicio' => '0-05-2018',
-            'ingeniero1' => 'andres jaja',
-            'ingeniero1_tel' => '32565855136',
-            'ingeniero1_email' => 'alguien.algo.cosas',
-            'ingeniero2' => '12',
-            'ingeniero2_tel' => '12',
-            'ingeniero2_email' => '12',
-            'ingeniero3' => '12',
-            'ingeniero3_tel' => '12',
-            'ingeniero3_email' => '12'
+
+    public function c_updateStatusOt($servicio = null) {
+      if ($servicio) {
+        $data_template = $this->fill_formulary($servicio, $_POST);
+        switch ($servicio) {
+               case '1':
+                 $template = $this->internet_dedicado_empresarial($data_template);
+                 break;
+               case '2':
+                 $template = $this->internet_dedicado($data_template);
+                 break;
+               case '3':
+                 $template = $this->mpls_avanzado_intranet($data_template);
+                 break;
+               case '4':
+                 $template = $this->mpls_avanzado_intranet_varios_puntos($data_template);
+                 break;
+               case '5':
+                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data_template);
+                 break;
+               case '6':
+                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data_template);
+                 break;
+               case '7':
+                 $template = $this->avanzado_extranet($data_template);
+                 break;
+               case '8':
+                 $template = $this->backend_mpls($data_template);
+                 break;
+               case '9':
+                 $template = $this->mpls_avanzado_componente_datacenter_claro($data_template);
+                 break;
+               case '10':
+                 $template = $this->mpls_transaccional_3g($data_template);
+                 break;
+           
+             }  
+             // print_r($template);   
+             $this->enviar_email($template);
+
+      } else {  
+        $this->update_status($_POST);
+      }
+        
+
+    }
+
+    //Actualiza el estato (hay que enviarle el post)
+    private function update_status($data){
+      echo "entra aca bien";
+        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($this->input->post('k_id_estado_ot'));
+
+        date_default_timezone_set("America/Bogota");
+        $fActual = date('Y-m-d');
+        $data = array(
+            'id_orden_trabajo_hija' => $this->input->post('id_orden_trabajo_hija'),
+            'k_id_estado_ot' => $this->input->post('k_id_estado_ot'),
+            'estado_orden_trabajo_hija' => $text_estado,
+            'fecha_actual' => $fActual,
+            'estado_mod' => 1,
+            'n_observacion_cierre' => $this->input->post('n_observacion_cierre')
         );
 
-
-        $argumentos2 = array(
-            'nombre' => 'pepito',
-            'nombre_cliente' => 'alguien',
-            'servicio' => 'algo',
-            'fecha' => '19/06/2018',
-            'direccion_instalacion_des1' => 'jmmm',
-            'direccion_instalacion_des2' => 'jmmm',
-            'direccion_instalacion_des3' => 'jmmm',
-            'direccion_instalacion_des4' => 'jmmm',
-            'existente' => 'no',
-            'nuevo' => 'si',
-            'ancho_banda' => 'ancha',
-            'interfaz_entrega' => 'entregadaaaaaaa',
-            'equipos_intalar_camp1' => 'nose',
-            'equipos_intalar_camp2' => 'nose',
-            'equipos_intalar_camp3' => 'nose',
-            'equipos_intalar_camp4' => 'nose',
-            'fecha_servicio' => '0-05-2018',
-            'ingeniero1' => 'andres jaja',
-            'ingeniero1_tel' => '32565855136',
-            'ingeniero1_email' => 'alguien.algo.cosas',
-            'ingeniero2' => '12',
-            'ingeniero2_tel' => '12',
-            'ingeniero2_email' => '12',
-            'ingeniero3' => '12',
-            'ingeniero3_tel' => '12',
-            'ingeniero3_email' => '12'
+        $dataLog = array(
+            'id_ot_hija' => $this->input->post('id_orden_trabajo_hija'),
+            'antes' => $this->input->post('estado_orden_trabajo_hija'),
+            'ahora' => $text_estado,
+            'columna' => 'estado_orden_trabajo_hija',
+            'fecha_mod' => $fActual,
         );
+        
 
-        $argumentos3 = array(
-            'nombre' => 'pepito',
-            'nombre_cliente' => 'alguien',
-            'servicio' => 'algo',
-            'fecha' => '19/06/2018',
-            'direccion_instalacion' => 'cll 93',
-            'existente' => 'no',
-            'nuevo' => 'si',
-            'ancho_banda' => 'ancha',
-            'interfaz_entrega' => 'entregadaaaaaaa',
-            'fecha_servicio' => '0-05-2018',
-            'ingeniero1' => 'andres jaja',
-            'ingeniero1_tel' => '32565855136',
-            'ingeniero1_email' => 'alguien.algo.cosas',
-            'ingeniero2' => '12',
-            'ingeniero2_tel' => '12',
-            'ingeniero2_email' => '12',
-            'ingeniero3' => '12',
-            'ingeniero3_tel' => '12',
-            'ingeniero3_email' => '12'
-        );
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
 
-        if ($servicio === 1 || $servicio == 2) {
-            return $argumento2;
-        }
+        header('Location: ' . URL::base() . '/editarOts?msj=ok');
+    }
+
+
+
+    public function fill_formulary($s) {
+
+      switch (true) {
+        case ($s == 1 || $s == 2):
+            $argumentos = array(
+                'nombre' => $this->input->post('nombre'),
+                'nombre_cliente' => $this->input->post('nombre_cliente'),
+                'servicio' => $this->input->post('servicio'),
+                'fecha' => $this->input->post('fecha'),
+                'direccion_instalacion' => $this->input->post('direccion_instalacion'),
+                'ancho_banda' => $this->input->post('ancho_banda'),
+                'interfaz_entrega' => $this->input->post('interfaz_entrega') ,
+                'fecha_servicio' => $this->input->post('fecha_servicio'),
+                'ingeniero1' => $this->input->post('ingeniero1'),
+                'ingeniero1_tel' => $this->input->post('ingeniero1_tel'),
+                'ingeniero1_email' => $this->input->post('ingeniero1_email'),
+                'ingeniero2' => $this->input->post('ingeniero2'),
+                'ingeniero2_tel' => $this->input->post('ingeniero2_tel'),
+                'ingeniero2_email' => $this->input->post('ingeniero2_email'),
+                'ingeniero3' => $this->input->post('ingeniero3'),
+                'ingeniero3_tel' => $this->input->post('ingeniero3_tel'),
+                'ingeniero3_email' => $this->input->post('ingeniero3_email')
+            );          
+          break;
+        case ($s == 4):
+            $argumentos = array(
+                'nombre' => $this->input->post('nombre'),
+                'nombre_cliente' => $this->input->post('nombre_cliente') ,
+                'servicio' => $this->input->post('servicio') ,
+                'fecha' => $this->input->post('fecha') ,
+                'direccion_instalacion_des1' => $this->input->post('direccion_instalacion_des1') ,
+                'direccion_instalacion_des2' => $this->input->post('direccion_instalacion_des2') ,
+                'direccion_instalacion_des3' => $this->input->post('direccion_instalacion_des3') ,
+                'direccion_instalacion_des4' => $this->input->post('direccion_instalacion_des4') ,
+                'existente' => $this->input->post('existente') ,
+                'nuevo' => $this->input->post('nuevo') ,
+                'ancho_banda' => $this->input->post('ancho_banda') ,
+                'interfaz_entrega' => $this->input->post('interfaz_entrega') ,
+                'equipos_intalar_camp1' => $this->input->post('equipos_intalar_camp1') ,
+                'equipos_intalar_camp2' => $this->input->post('equipos_intalar_camp2') ,
+                'equipos_intalar_camp3' => $this->input->post('equipos_intalar_camp3') ,
+                'equipos_intalar_camp4' => $this->input->post('equipos_intalar_camp4') ,
+                'fecha_servicio' => $this->input->post('fecha_servicio') ,
+                'ingeniero1' => $this->input->post('ingeniero1') ,
+                'ingeniero1_tel' => $this->input->post('ingeniero1_tel') ,
+                'ingeniero1_email' => $this->input->post('ingeniero1_email') ,
+                'ingeniero2' => $this->input->post('ingeniero2') ,
+                'ingeniero2_tel' => $this->input->post('ingeniero2_tel') ,
+                'ingeniero2_email' => $this->input->post('ingeniero2_email') ,
+                'ingeniero3' => $this->input->post('ingeniero3') ,
+                'ingeniero3_tel' => $this->input->post('ingeniero3_tel') ,
+                'ingeniero3_email' => $this->input->post('ingeniero3_email') 
+            );
+          break;
+        case ($s == 3 || $s == 4 || $s == 6 || $s == 7 || $s == 8 || $s == 9 || $s == 10 ):
+            $argumentos = array(
+                'nombre' => $this->input->post('nombre'),
+                'nombre_cliente' => $this->input->post('nombre_cliente') ,
+                'servicio' => $this->input->post('servicio') ,
+                'fecha' => $this->input->post('fecha') ,
+                'direccion_instalacion' => $this->input->post('direccion_instalacion'),
+                'existente' => $this->input->post('existente') ,
+                'nuevo' => $this->input->post('nuevo') ,
+                'ancho_banda' => $this->input->post('ancho_banda') ,
+                'interfaz_entrega' => $this->input->post('interfaz_entrega') ,
+                'fecha_servicio' => $this->input->post('fecha_servicio') ,
+                'ingeniero1' => $this->input->post('ingeniero1') ,
+                'ingeniero1_tel' => $this->input->post('ingeniero1_tel') ,
+                'ingeniero1_email' => $this->input->post('ingeniero1_email') ,
+                'ingeniero2' => $this->input->post('ingeniero2') ,
+                'ingeniero2_tel' => $this->input->post('ingeniero2_tel') ,
+                'ingeniero2_email' => $this->input->post('ingeniero2_email') ,
+                'ingeniero3' => $this->input->post('ingeniero3') ,
+                'ingeniero3_tel' => $this->input->post('ingeniero3_tel') ,
+                'ingeniero3_email' => $this->input->post('ingeniero3_email') 
+                
+            );
+          break;
+      }
+
+
+      return $argumentos;
     }
 
 //
-    public function enviar_email() {
+    public function enviar_email($cuerpo) {
 
         $this->load->library('parser');
 
         $config = Array(
+            // 'smtp_crypto' => 'ssl', //protocolo de encriptado
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'zolid.datafill@gmail.com',
-            'smtp_pass' => 'z0lid.datafil1',
+            'smtp_user' => 'zolid.telmex.vip@gmail.com',
+            'smtp_pass' => 'z0l1dTelmex',
+            // 'smtp_timeout' => 5, //tiempo de conexion maxima 5 segundos
             'mailtype' => 'html',
             'charset' => 'utf-8',
-            'priority' => 5
+            'priority' => 3,
         );
-        $argumentos = $this->_post($this->input->post('servicio'));
-        $cuerpo = $this->internet_dedicado_empresarial($argumentos);
+        // $argumentos = $this->_post($this->input->post('servicio'));
+        // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
         $asunto = 'esta es la prueba';
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
-        $this->email->from('zolid.datafill@gmail.com', 'ZOLID'); // change it to yours
-        $this->email->to('johnfbr1998@gmail.com'); // change it to yours
+        $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
+        $this->email->to($this->input->post('Email_envio')); // change it to yours
         // $this->email->cc('bredi.buitrago@zte.com.cn, johnfbr1998@gmail.com');
         $this->email->subject("PRUEBA DE UN CORREO");
         $this->email->message($cuerpo);
-        $this->email->send();
+        if($this->email->send())
+          { echo "se envio";
+            $this->update_status($_POST);
+          }else{
+            echo "Hubo un error en el envio del correo";
+          }
     }
 
     public function internet_dedicado_empresarial($argumentos) {
@@ -127,7 +220,7 @@ class Templates extends CI_Controller {
 
 <p class="MsoNormal" style="margin:0cm 0cm 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)<span></span></span></p>
 
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"><' . $argumentos['nombre'] . '</span></b><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif"><span></span></span></p>
+<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">' . $argumentos['nombre'] . '</span></b><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif"><span></span></span></p>
 
 <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif"><span></span></span></p>
@@ -652,7 +745,7 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
   <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span style="font-size:9pt;font-family:Arial,sans-serif;color:black">(Destino del Servicio)<span></span></span></i></b></p>
   </td>
   <td width="536" colspan="8" valign="top" style="width:402pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:8.05pt">
-  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:10pt;font-family:Arial,sans-serif;color:black"><span> ' . $argumentos['dereccion_instalacion'] . '</span></span></b></p>
+  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:10pt;font-family:Arial,sans-serif;color:black"><span> ' . $argumentos['direccion_instalacion'] . '</span></span></b></p>
   </td>
  </tr>
  <tr style="height:8pt">
@@ -1138,7 +1231,7 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
   <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span style="font-size:9pt;font-family:Arial,sans-serif;color:black">Fecha de Entrega de Servicio<span></span></span></i></b></p>
   </td>
   <td width="347" colspan="13" valign="top" style="width:260.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:16.4pt">
-  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:8pt;font-family:Arial,sans-serif;color:black"><span> ' . $argumentos['fecha_entrega_servicios'] . '</span></span></p>
+  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:8pt;font-family:Arial,sans-serif;color:black"><span> ' . $argumentos['fecha_servicio'] . '</span></span></p>
   </td>
   <td width="189" colspan="5" valign="top" style="width:141.65pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm;height:16.4pt">
   <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:8pt;font-family:Arial,sans-serif">sujeta a cambios derivados del cumplimiento de las actividades
@@ -2210,7 +2303,7 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
   <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span style="font-size:9pt;font-family:Arial,sans-serif;color:black">Fecha de Entrega de Servicio<span></span></span></i></b></p>
   </td>
   <td width="347" colspan="13" valign="top" style="width:260.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:16.4pt">
-  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:8pt;font-family:Arial,sans-serif;color:black"><span>' . argumentos['fecha_servicio'] . '</span></span></p>
+  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:8pt;font-family:Arial,sans-serif;color:black"><span>' . $argumentos['fecha_servicio'] . '</span></span></p>
   </td>
   <td width="189" colspan="5" valign="top" style="width:141.65pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm;height:16.4pt">
   <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:8pt;font-family:Arial,sans-serif">sujeta a cambios derivados del cumplimiento de las actividades
@@ -2675,7 +2768,7 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
   <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span style="font-size:9pt;font-family:Arial,sans-serif;color:black">Ancho de Banda<span></span></span></i></b></p>
   </td>
   <td width="536" colspan="19" valign="top" style="width:402.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:8pt">
-  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:10pt;font-family:Arial,sans-serif;color:black"><span>' . argumentos['ancho_banda'] . '</span></span></b></p>
+  <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:10pt;font-family:Arial,sans-serif;color:black"><span>' . $argumentos['ancho_banda'] . '</span></span></b></p>
   </td>
   <td width="12" style="width:9pt;padding:0cm;height:8pt">
   <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">&nbsp;</span></p>
@@ -3060,7 +3153,7 @@ contactar a:<span></span></span></p>
   <p class="MsoNormal" style="margin:0cm 0cm 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Email:<span></span></span></b></p>
   </td>
   <td width="217" valign="top" style="width:162.85pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm;height:12.5pt">
-  <p class="MsoNormal" style="margin:0cm 0cm 6pt 18pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif"><span>' . argumentos['ingeniero2_email'] . '</span></span></b></p>
+  <p class="MsoNormal" style="margin:0cm 0cm 6pt 18pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif"><span>' . $argumentos['ingeniero2_email'] . '</span></span></b></p>
   </td>
  </tr>
  <tr style="height:12.5pt">

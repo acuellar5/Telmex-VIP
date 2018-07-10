@@ -190,17 +190,24 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                ordering:false,
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-//                order: [[7, 'asc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },
+//                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+//                 ordering:false,
+//                 columnDefs: [{
         getButtons: function (obj) {
             boton = '<div class="btn-group">'
                     + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
@@ -309,13 +316,18 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },

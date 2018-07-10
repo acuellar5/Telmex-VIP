@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'local';
+$active_group = 'faber';
 
 $query_builder = TRUE;
 
@@ -80,7 +80,7 @@ $db['local'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'telmex_vip',
+	'database' => 'Telmex_vip_prueba',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -119,12 +119,35 @@ $db['faber'] = array(
 	'save_queries' => TRUE
 );
 
+// $db['servidor'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
+// 	'username' => 'adminZTE',
+// 	'password' => 'a4b3c2d1',
+// 	'database' => 'telmex_vip',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+
+
 $db['servidor'] = array(
 	'dsn'	=> '',
 	'hostname' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
 	'username' => 'adminZTE',
 	'password' => 'a4b3c2d1',
-	'database' => 'telmex_vip',
+	'database' => 'Telmex_vip_prueba',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
