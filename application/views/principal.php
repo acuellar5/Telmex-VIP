@@ -2,11 +2,11 @@
     <!--        <div>
                 <script type='text/javascript' src='http://181.49.46.6/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 619px;'><object class='tableauViz' width='100%' height='619' style='display:none;'><param name='host_url' value='http%3A%2F%2F181.49.46.6%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TVIPInstalaciones&#47;EstadodeOTs' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
             </div>-->
-    <h1>¿Cómo vamos?</h1>
+    <h1 id="como_vamos">¿Cómo vamos?</h1>
     <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 1</div>
     <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 2</div>
     <div class="col col-md-12">
-        <h2>Resumen Tareas en Progreso</h2>
+        <h2 id="Tareas_progreso">Resumen Tareas en Progreso</h2>
         <table class="table table-bordered dataTable_camilo" id="tabla_resumen">
             <thead>
                 <tr>
@@ -29,14 +29,14 @@
                      echo "<tr>";
                        echo " <td><b>". $registros[$i]->n_name_tipo ."</b></td>";
                        echo " <td>". $registros[$i]->count ."</td>";
-                       echo " <td>". $terna ."</td>";
-                       echo " <td>". $registros[$i]->fuera_tiempo ."</td>";
+                       echo " <td><a onclick='showModalDetResInTimes(". $registros[$i]->k_id_tipo .");'>". $terna ."</a></td>";
+                       echo " <td><a onclick='showModalDetResOutTime(". $registros[$i]->k_id_tipo .");'>". $registros[$i]->fuera_tiempo ."</a></td>";
                        if (isset($registros[$i+1])) {
                         $terna1 = ($registros[$i + 1]->en_tiempo == 0 && $registros[$i + 1]->fuera_tiempo == 0) ? $registros[$i + 1]->count : $registros[$i + 1]->en_tiempo;
                            echo " <td><b>". $registros[$i+1]->n_name_tipo ."</b></td>";
                            echo " <td>". $registros[$i+1]->count ."</td>";
-                           echo " <td>". $terna1 ."</td>";
-                           echo " <td>". $registros[$i+1]->fuera_tiempo ."</td>";                        
+                           echo " <td><a onclick='showModalDetResInTimes(". $registros[$i+1]->k_id_tipo .");'>". $terna1 ."</a></td>";
+                           echo " <td><a onclick='showModalDetResOutTime(". $registros[$i+1]->k_id_tipo .");'>". $registros[$i+1]->fuera_tiempo ."</a></td>";                        
                        }
                      echo "</tr>";
                  } 
@@ -45,6 +45,29 @@
         </table>
     </div>
 <h2>Detalles</h2>
+
+<!-- ****************************MENU STICK ************************************************ -->
+<div class="contenedor closed" id="content_fixed">
+  <div id="btn_fixed" >
+    <span class="rotate-90 text">
+      <i class="glyphicon glyphicon-chevron-up"></i><span class="espaciomenu">View menu</span>
+    </span>
+  </div>
+  <div class="hidden" id="menu_fixed">
+    <span id="btn_close_fixed">
+      <i class="glyphicon glyphicon-chevron-right"></i> Cerrar
+    </span>
+    <div class="menu-fixed">
+      <ul>
+        <li><a href="#como_vamos">¿Cómo vamos?</a></li>
+        <li><a href="#Tareas_progreso">Tareas en progreso</a></li>
+        <li><a href="#Detalles">Detalles</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<span id="Detalles"></span>
+
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#fuera_tiempos">Fuera de Tiempos</a></li>
@@ -91,7 +114,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 <?php } ?>
 
 <!-- ****************************MODAL DE DETALLE ************************************************ -->
-<div id="Modal_detalle" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="Modal_detalle" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="z-index: 9999999999 !important;">
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header">
@@ -704,6 +727,48 @@ if (Auth::user()->n_project == 'Implementacion') {
 
                         </fieldset>
                     </form>
+                </div>            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- ****************************MODAL DE DETALLE RESUMEN FUERA DE TIEMPO************************************************ -->
+<div id="Modal_detalle_res_out" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
+    <div class="col-md-12">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="title_modal" align="center"></h3>
+            </div>
+            <div>
+                <div class="modal-body">
+                    <h3>Fuera de Tiempos</h3>
+                    <table id="tablaDetalleResOutTimes" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+                </div>            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- ****************************MODAL DE DETALLE RESUMEN EN TIEMPO************************************************ -->
+<div id="Modal_detalle_res_in" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
+    <div class="col-md-12">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="title_modal" align="center"></h3>
+            </div>
+            <div>
+                <div class="modal-body">
+                    <h3>En Tiempos</h3>
+                    <table id="tablaDetalleResInTimes" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
                 </div>            
             </div>
             <div class="modal-footer">

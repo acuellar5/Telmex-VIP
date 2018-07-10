@@ -31,6 +31,7 @@ class User extends CI_Controller {
         if ($res) {
             $data['title'] = 'Home';
             $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
+            $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
             $this->load->view('parts/headerF', $data);
             $this->load->view('principal');
             $this->load->view('parts/footerF');
@@ -69,6 +70,7 @@ class User extends CI_Controller {
 
           $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
           $data['title'] = 'Home';
+          $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
           $this->load->view('parts/headerF', $data);
           $this->load->view('principal');
           $this->load->view('parts/footerF');
@@ -84,6 +86,7 @@ class User extends CI_Controller {
         } else {
 
           $data['title'] = 'VerificacionRouting';
+          $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
           $this->load->view('parts/headerF', $data);
           $this->load->view('dataValidation');
           $this->load->view('parts/footerF');
@@ -95,6 +98,7 @@ class User extends CI_Controller {
             Redirect::to(URL::base());
         }
         $data['title']='Cargar OTS';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('loadInformation');
         $this->load->view('parts/footerF');
@@ -105,6 +109,7 @@ class User extends CI_Controller {
             Redirect::to(URL::base());
         }
         $data['title']='Marcaciones';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('markings');
         $this->load->view('parts/footerF');

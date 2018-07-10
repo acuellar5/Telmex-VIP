@@ -58,10 +58,16 @@
               <?php
               if (Auth::user()->n_project == 'Gestion') {
                 ?>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión<span class="caret"></span></a>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('editarOts') ?>">Work Managment</a></li>
-                    <li><a href="<?= URL::to('cargarOts') ?>">Cargar información</a></li>
+                    <li><a href="<?= URL::to('editarOts') ?>">Work Management</a></li>
+                    <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
+                    <li><a href="<?= URL::to('cargarOts') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
                   </ul>
                 </li>
               <?php
@@ -79,10 +85,10 @@
            <!--  <li><a href="#">facturacion</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Bienvenido </b> <?php echo Auth::user()->n_last_name_user; ?><br>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome  </b> <?php echo Auth::user()->n_last_name_user; ?><br>
               </a>
           </li>
-          <li><a href="<?= URL::to('User/logout') ?>"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+          <li><a href="<?= URL::to('User/logout') ?>"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
         </ul>
       </div>
     </nav>
