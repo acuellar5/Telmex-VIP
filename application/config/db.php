@@ -83,5 +83,18 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+        // 'mysqlserv' => [
+        //     'driver' => 'mysql',
+        //     'host' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
+        //     'port' => '3306',
+        //     'database' => 'Telmex_vip_prueba',
+        //     'username' => 'adminZTE',
+        //     'password' => 'a4b3c2d1',
+        //     'charset' => 'utf8',
+        //     'collation' => 'utf8mb4_unicode_ci',
+        //     'prefix' => '',
+        //     'strict' => true,
+        //     'engine' => null,
+        // ],
     ]
 ];

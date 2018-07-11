@@ -177,7 +177,8 @@ class Templates extends CI_Controller {
 
 //
     public function enviar_email($cuerpo) {
-
+      $Email_user = Auth::user()->n_mail_user; 
+      $correos = ['bredi.buitrago@zte.com.cn', 'jfgrisales21@gmail.com', $Email_user];
         $this->load->library('parser');
 
         $config = Array(
@@ -200,7 +201,7 @@ class Templates extends CI_Controller {
         $this->email->set_newline("\r\n");
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
         $this->email->to($this->input->post('Email_envio')); // change it to yours
-        // $this->email->cc('bredi.buitrago@zte.com.cn, johnfbr1998@gmail.com');
+        $this->email->cc($correos);
         $this->email->subject("PRUEBA DE UN CORREO");
         $this->email->message($cuerpo);
         if($this->email->send())

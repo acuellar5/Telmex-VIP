@@ -671,22 +671,26 @@ $(function () {
                     valServicio = $('#ins_servicio').val();
                 
                 var form = "";
-                form += `<div class="widget bg_white m-t-25 display-block">
-                            <fieldset class="col-md-12 control-label">
-                                <div class="form-group">
-                                    <label for="Email_envio" class="col-md-3 control-label">Email: &nbsp;</label>
-                                    <div class="col-md-8 selectContainer">
+                form += `
+                        <div class="widget bg_white m-t-25 display-block cliente">
+                            <fieldset class="col-md-6 control-label">
+                            <span class="div_Text_Form_modal"><strong>Email al que se dirije el correo: &nbsp;</strong></span>
+                            </fieldset>
+                            <!-- fin seccion izquierda form-->
+
+                            <!--  inicio seccion derecha form---->
+                            <fieldset>
+                                <div class="form-group Email_envio">
+                                    <label for="Email_envio" class="col-md-3 control-label"> </label>
+                                    <div class="col-md-8 selectContainer div_Form_Modals">
                                         <div class="input-group">
-                                            <input type="text" name="Email_envio" id="Email_envio" >
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <input name="Email_envio" id="Email_envio" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
-                            <fieldset>
-                                <div class="form-group m-t-40 p-b-40"></div>
-                            </fieldset>
                         </div>
-                            
                         <div class="widget bg_white m-t-25 display-block cliente">
                             <fieldset class="col-md-6 control-label">
                                 <div class="form-group nombre " >
@@ -733,7 +737,7 @@ $(function () {
                                 </div>
 
                             </fieldset>
-                        </div>`;
+                            </div>`;
                     
 
 
@@ -779,7 +783,7 @@ $(function () {
                                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                                         </div>
                                                     </div>
@@ -827,7 +831,7 @@ $(function () {
                                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                                         </div>
                                                     </div>
@@ -893,7 +897,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
@@ -984,7 +988,7 @@ $(function () {
                                             <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                    <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                     <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                                 </div>
                                             </div>
@@ -1075,7 +1079,7 @@ $(function () {
                                         <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                 <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                             </div>
                                         </div>
@@ -1122,7 +1126,7 @@ $(function () {
                                         <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                 <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                             </div>
                                         </div>
@@ -1187,7 +1191,7 @@ $(function () {
                             <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                             <div class="col-md-8 selectContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                    <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                     <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                 </div>
                             </div>
@@ -1252,7 +1256,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
@@ -1318,7 +1322,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
@@ -1383,7 +1387,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
