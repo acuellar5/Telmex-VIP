@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/font-awesome/css/font-awesome.min.css') ?>"/>
 
   <!-- STYLES DATATABLES CAMILO -->
-  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css?v='.time()); ?>">
   <!-- STYLES MODULES PRINCIPAL -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- STYLES  FOOTER  -->
