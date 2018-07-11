@@ -34,7 +34,7 @@ $('#añadir_estado').click(function(){
 										<td>
 											<div class="input-group">
 												<input type="number" name="jerarquia[]" id="orden_${flag}" class="form-control jsStatusPlus  cssmodificacionin">
-												<span class="fa fa-minus btn btn-danger btn_minus" onclick="removeRow('${flag}')"></span>
+												<span class="fa fa-minus btn btn-danger btn_minus btn_red" onclick="removeRow('${flag}')"></span>
 
 											</div>
 										</td>
