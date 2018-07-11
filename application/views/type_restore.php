@@ -108,7 +108,7 @@
  				<legend id="mdl_title_name"></legend>
  				<!--*********************  SELECT  *********************-->
  				<div class="form-group col-sm-12">
- 					<label for="list_tipos" class="col-sm-4 control-label">Tipos Originales : &nbsp;</label>
+ 					<label for="list_tipos" class="col-sm-4 control-label"> Tipos Originales : &nbsp;</label>
  					<div class="col-sm-8 selectContainer">
  						<div class="input-group">
  							<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
