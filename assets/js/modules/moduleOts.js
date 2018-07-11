@@ -1536,6 +1536,15 @@ $(function () {
                 var mail = $('#ingeniero1_email').val();
                 var mail1 = $('#Email_envio').val();
                 var expresiones = /\w+@\w+\.+[a-z]/;
+                // swal({
+                //           title: "Advertencia!",
+                //           text: '¿El correo '+ mail1 +' es correocto ?',
+                //           icon: "warning",
+                //           buttons: true,
+                          
+                //           dangerMode: true,
+                //           buttons: ["Cancelar!", "Continuar!"],
+                //     });
                 var inputs = [  $('#nombre').val(),
                                 $('#nombre_cliente').val(),
                                 $('#servicio').val(),
@@ -1565,6 +1574,7 @@ $(function () {
                     }else {
                         return true;
                     }
+                    
                 return response;
 
 
