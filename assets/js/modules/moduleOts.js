@@ -60,13 +60,18 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'desc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -135,12 +140,15 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
                     }],
+                order: [[7, 'desc']],
+                // drawCallback: onDraw,
                 // order: [[0, 'desc']], //ardenaniento
                 "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
                 "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
@@ -187,16 +195,39 @@ $(function () {
               "language": {
                   "url": baseurl + "/assets/plugins/datatables/lang/es.json"
               },
-              columnDefs: [{
-                      defaultContent: "",
-                      // targets: -1,
-                      orderable: false,
-                  }],
-              // order: [[0, 'desc']],
-              drawCallback: onDraw
+              dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
+                        defaultContent: "",
+                        // targets: -1,
+                        orderable: false,
+                    }],
+                order: [[7, 'desc']],
+                drawCallback: onDraw
             }
         },
-
+ 
+            
+            
+        
     };
     total.init();
     /************************************************FIN TOTAL************************************************/
@@ -261,13 +292,14 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                select:true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'desc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -345,13 +377,14 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                select:true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'desc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -435,13 +468,14 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
+                select:true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'desc']],
+                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
         },
@@ -473,6 +507,7 @@ $(function () {
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
                 $('#ins_servicio').on('change', eventos.selectFormulary );
                 $('.cerrar').on('click', eventos.clearModal);
+                $('#formModal').submit(eventos.clicOnButton);
 
             },
             onClickShowModalEdit: function () {
@@ -516,28 +551,77 @@ $(function () {
 
                 eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
 
-                // console.log(registro.k_id_estado_ot);
                 // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
                 // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
+                // console.log($('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true));
 
 
                 var algo = $('#k_id_estado_ot').val() ;
+                if (registro.k_id_tipo == 1) {
+                  $('#k_id_estado_ot').on('change', function(){
+                    // $('')
+                        $('#general').html("");
+                        if ($('#k_id_estado_ot').val() == 3 )
+                        {
+                            $('#btnUpdOt').attr('disabled', true);
+                            $('.ins_servicio').show();
+                                $('#ins_servicio').on('change', function(){
+                                    var otra = $('#ins_servicio').val();
+                                    switch (otra) {
+                                           case "0":
+                                             $('#btnUpdOt').attr('disabled', true);   
+                                             break 
+                                           case "1":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/1');
+                                             $('#btnUpdOt').attr('disabled', false);  
+                                             $("#nombre").attr("required", true);
+                                             break;
+                                           case "2":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/2');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "3":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/3');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "4":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/4');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "5":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/5');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "6":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/6');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "7":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/7');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "8":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/8');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "9":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/9');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "10":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/10');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                       
+                                         }
+                        });                   
+                        }else{
+                            $('.ins_servicio').hide();
+                            $('#btnUpdOt').attr('disabled', false);
+                        }
+                    });
 
-                // if (registro.k_id_tipo == 1) {
-                //     // alert('entro');
-                //   $('#k_id_estado_ot').on('change', function(){
-                //         // alert('entro a la funcion select');
-                //         if ($('#k_id_estado_ot').val() == 3 )
-                //         {
-                //             $('.ins_servicio').show();
-                //             // $('#btnUpdOt').attr('disabled', true);
-                //         }else{
-                //             $('.ins_servicio').hide();
-                //             // $('#btnUpdOt').attr('disabled', false);
-                //         }                    
-                //     });
-
-                // } 
+                } 
 
                 $('.ins_servicio').hide();
                 $('#modalEditTicket').modal('show');
@@ -587,7 +671,23 @@ $(function () {
                     valServicio = $('#ins_servicio').val();
                 
                 var form = "";
-                form += `<div class="widget bg_white m-t-25 display-block cliente">
+                form += `<div class="widget bg_white m-t-25 display-block">
+                            <fieldset class="col-md-12 control-label">
+                                <div class="form-group">
+                                    <label for="Email_envio" class="col-md-3 control-label">Email: &nbsp;</label>
+                                    <div class="col-md-8 selectContainer">
+                                        <div class="input-group">
+                                            <input type="text" name="Email_envio" id="Email_envio" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-group m-t-40 p-b-40"></div>
+                            </fieldset>
+                        </div>
+                            
+                        <div class="widget bg_white m-t-25 display-block cliente">
                             <fieldset class="col-md-6 control-label">
                                 <div class="form-group nombre " >
                                     <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
@@ -1317,7 +1417,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero1_tel" id="ingeniero1_tel" class="form-control" type="text" required>
+                                                                <input name="ingeniero1_tel" id="ingeniero1_tel" class="form-control" type="number" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1326,7 +1426,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero1_email" id="ingeniero1_email" class="form-control" type="text"required>
+                                                                <input name="ingeniero1_email" id="ingeniero1_email" class="form-control" type="email"required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1349,7 +1449,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero2_tel" id="ingeniero2_tel" class="form-control" type="text" >
+                                                                <input name="ingeniero2_tel" id="ingeniero2_tel" class="form-control" type="number" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1358,7 +1458,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero2_email" id="ingeniero2_email" class="form-control" type="text" >
+                                                                <input name="ingeniero2_email" id="ingeniero2_email" class="form-control" type="email" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1376,7 +1476,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero3_tel" id="ingeniero3_tel" class="form-control" type="text" >
+                                                                <input name="ingeniero3_tel" id="ingeniero3_tel" class="form-control" type="number" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1385,7 +1485,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero3_email" id="ingeniero3_email" class="form-control" type="text" >
+                                                                <input name="ingeniero3_email" id="ingeniero3_email" class="form-control" type="email" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1394,7 +1494,7 @@ $(function () {
 
                 }
 
-            $('#general').html(form);;
+            $('#general').html(form);
 
          },
 
@@ -1424,6 +1524,47 @@ $(function () {
                         }
                     }); 
                 });
+
+            },
+            clicOnButton: function(){
+               
+                var response;
+                var mail = $('#ingeniero1_email').val();
+                var mail1 = $('#Email_envio').val();
+                var expresiones = /\w+@\w+\.+[a-z]/;
+                var inputs = [  $('#nombre').val(),
+                                $('#nombre_cliente').val(),
+                                $('#servicio').val(),
+                                $('#fecha').val(),
+                                $('#direccion_instalacion').val(),
+                                $('#direccion_instalacion_des1').val(),
+                                $('#ancho_banda').val(),
+                                $('#interfaz_entrega').val(),
+                                $('#equipos_intalar_camp1').val(),
+                                $('#fecha_servicio').val(),
+                                $('#ingeniero1').val(),
+                                $('#ingeniero1_tel').val(),
+                            ];
+                                
+                            
+                inputs.forEach(function(input){
+                    if (input == '') {
+                        alert('Complete correctamente los campos'+' '+input); 
+                        response = false;
+                    } else {
+                        response = true;
+                    }
+                });
+                    if (!expresiones.test(mail) || !expresiones.test(mail1)) {
+                        alert('El formato del correo está mal');
+                        return false;
+                    }else {
+                        return true;
+                    }
+                return response;
+
+
+
 
             },
 

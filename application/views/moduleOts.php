@@ -55,11 +55,11 @@
                  <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                            <h3 class="modal-title" id="myModalLabel">Orden Ot Hija N <label id="id_ot_modal">aaaa</label></h3>
+                            <h3 class="modal-title" id="myModalLabel">    Orden Ot Hija N <label id="id_ot_modal"></label></h3>
                         </div>
                         <div class="modal-body">
                             <div>
-                                <form class="well form-horizontal" id="formModal" action="OtHija/c_updateStatusOt" method="post" novalidate="novalidate">
+                                <form class="well form-horizontal" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
                                     <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                                     <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                                     <fieldset>

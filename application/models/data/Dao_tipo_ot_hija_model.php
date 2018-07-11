@@ -74,6 +74,22 @@ class Dao_tipo_ot_hija_model extends CI_Model {
 
     }
 
+    // Inserta un nuevo tipo a la tabla tipo_ot_hija
+    public function insert_new_type($data){
+        if ($this->db->insert('tipo_ot_hija',$data)) {
+            return $this->db->insert_id();
+        }else {
+            return false;
+        }
+        
+    }
+
+    // retorna listado de los tipos originales existentes
+    public function get_list_types(){
+        $query = $this->db->get_where('tipo_ot_hija', array('i_referencia'=>null));
+        return $query->result();
+    }
+
 
 
 

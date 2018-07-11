@@ -372,7 +372,7 @@ class Dao_ot_hija_model extends CI_Model {
         // si el usuario escribio algo en el buscador se concatena el where + lo que debe buscar
         if($search){
             $srch  = "where ot.nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_cliente_onyx LIKE '%".$search."%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
             $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
             $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
             $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
@@ -934,5 +934,65 @@ class Dao_ot_hija_model extends CI_Model {
         ");
         return $query->result();
     }
+
+
+    //retorna estados por nombre de tipo
+    public function getNewStatusByType($name){
+        $query = $this->db->query("
+                SELECT distinct estado_orden_trabajo_hija 
+                FROM 
+                ot_hija
+                where 
+                k_id_estado_ot = 189 and 
+                ot_hija = '$name'
+            ");
+        return $query->result();
+
+    }
+
+    //trae registros estado indefinido por nombre de estado y ot_hija (tipo)
+    public function update_regis_indef_by_estado($id_type, $type, $name_status){
+        $query = $this->db->query("
+                SELECT 
+                k_id_estado_ot 
+                FROM 
+                estado_ot
+                where 
+                n_name_estado_ot = '$name_status' and 
+                k_id_tipo = '$id_type'
+            ");
+        if ($query->row()->k_id_estado_ot) {
+
+            $id_estado_ot = $query->row()->k_id_estado_ot;
+
+            $where = array(
+                'k_id_estado_ot'            => '189',
+                'estado_orden_trabajo_hija'                   => $name_status,
+                'ot_hija' => $type
+            );
+
+            $data = array(
+                'k_id_estado_ot' => $id_estado_ot
+            );            
+
+            $this->db->where($where); 
+            $this->db->update('ot_hija', $data);
+
+            // print_r($this->db->last_query());
+            $afectados = $this->db->affected_rows();
+
+            return $afectados;
+
+
+        }else{
+            return 0;
+        }
+
+
+
+    }
+
+
+
 
 }

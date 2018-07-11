@@ -244,4 +244,46 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .espaciomenu{
     margin-left: 10px;
 }
+/*Estilo para la vista de Type restore*/
+.cssparaeldiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.csstable{
+    width: 67% !important;
+}
+.csscolumna{
+    width: 50%;
+    text-align: center;
+}
+.cssformtext{
+    text-align: center;
+}
+.cssnewtypem{
+    background: #084c6f;
+    color: #fff;
+}
+.csstypesubtitle{
+    background: #084c6f;
+    color: #fff;
+    font-family: inherit;
+}
+.anchotable{
+    width: 75%;
+}
 
+.cssmodificacionin{
+    width: 67% !important;
+    border-radius: 11% !important;
+    margin-right: 3% !important;
+}
+.ubicacionboton{
+    float: right;
+   /* margin-top: 4px !important;*/
+   margin-bottom: -9% !important;
+
+}
+.cssicerrar{
+   
+}

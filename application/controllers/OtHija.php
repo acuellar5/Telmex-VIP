@@ -38,37 +38,7 @@ class OtHija extends CI_Controller {
             return;
         }
     }
-    
-    public function c_updateStatusOt() {
-        //Se comprueba si no hay sesión.
-        // print_r($_POST);
-        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($this->input->post('k_id_estado_ot'));
 
-        date_default_timezone_set("America/Bogota");
-        $fActual = date('Y-m-d');
-        $data = array(
-            'id_orden_trabajo_hija' => $this->input->post('id_orden_trabajo_hija'),
-            'k_id_estado_ot' => $this->input->post('k_id_estado_ot'),
-            'estado_orden_trabajo_hija' => $text_estado,
-            'fecha_actual' => $fActual,
-            'estado_mod' => 1,
-            'n_observacion_cierre' => $this->input->post('n_observacion_cierre')
-        );
-
-        $dataLog = array(
-            'id_ot_hija' => $this->input->post('id_orden_trabajo_hija'),
-            'antes' => $this->input->post('estado_orden_trabajo_hija'),
-            'ahora' => $text_estado,
-            'columna' => 'estado_orden_trabajo_hija',
-            'fecha_mod' => $fActual,
-        );
-        
-
-        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
-
-        header('Location: ' . URL::base() . '/editarOts?msj=ok');
-
-    }
     
     public function c_getOtsFiteenDays() {
         $response = null;
