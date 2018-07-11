@@ -107,7 +107,23 @@
  			<div class="modal-body">
  				<legend id="mdl_title_name"></legend>
  				<!--*********************  SELECT  *********************-->
- 				<div class="form-group col-sm-12">
+ 				<div class="form-group col-sm-12">  
+ 					<label for="list_tipos" class="col-sm-4 control-label">Tipos Originales:&nbsp;</label>
+ 					<div class="col-sm-8 selectContainer">
+	 					<div class="row-fluid input-group">
+	 						<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+						    <select name="list_tipos" id="list_tipos" class="selectpicker " data-show-subtext="true" data-live-search="true" required>
+						        <option value="">  Seleccionar ...</option>
+						    </select>
+						    <span class="help-inline"></span>
+						</div>	
+					</div>
+ 				</div>
+ 				<br>
+ 				<br>
+ 				<br>
+
+ 				<!-- <div class="form-group col-sm-12">  
  					<label for="list_tipos" class="col-sm-4 control-label"> Tipos Originales : &nbsp;</label>
  					<div class="col-sm-8 selectContainer">
  						<div class="input-group">
@@ -121,7 +137,7 @@
  				<br>
  				<br>
  				<br>
- 				
+ 				 -->
  						
  			</div>
  			<div class="modal-footer">

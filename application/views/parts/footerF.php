@@ -46,9 +46,14 @@
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/js/modules/principal.js?v='. time()) ?>"></script>
 <?php endif ?>
-<!-- **********************************************REPARAR TIPOS Y ESTADOS*******************************************-->
+<!-- ***********************************REPARAR TIPOS Y ESTADOS*****************************************-->
 <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
     <script src="<?= URL::to('assets/js/modules/type_restore.js?v='. time()) ?>"></script>
+<?php endif ?>
+
+<?php if ($this->uri->segment(1) == 'type_restore'): ?>
+<!-- *****************************************type_restore*********************************************-->
+    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap-selet.min.js') ?>"></script>
 <?php endif ?>
 
 
