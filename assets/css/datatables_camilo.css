@@ -216,10 +216,11 @@ table.dataTable_camilo td{
     cursor: pointer;
 }
 
-table.dataTable_camilo tfoot input{
+table.dataTable_camilo thead input{
     width: 100%;
     padding: 3px !important;
     box-sizing: border-box;
+    color: #000000;
 }
 /*
  * Control feature layout

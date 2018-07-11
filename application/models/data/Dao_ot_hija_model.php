@@ -262,7 +262,8 @@ class Dao_ot_hija_model extends CI_Model {
                 case
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
-                END AS 'function'
+                END AS 'function',
+                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
@@ -377,6 +378,7 @@ class Dao_ot_hija_model extends CI_Model {
             $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
             $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
             $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
             $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%'";
         } else {
             // Si no escribio nada en el buscador se pasa vacio
@@ -456,7 +458,7 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
@@ -498,7 +500,8 @@ class Dao_ot_hija_model extends CI_Model {
                 $condicion = "AND k_id_user = $usuario_session";
             }
             $query = $this->db->query("
-                        SELECT oh.*, eo.k_id_tipo , eo.i_orden
+                        SELECT oh.*, eo.k_id_tipo , eo.i_orden,
+                        CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                         FROM ot_hija oh
                         INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
                         WHERE estado_mod = 0
@@ -518,7 +521,8 @@ class Dao_ot_hija_model extends CI_Model {
             if (Auth::user()->n_role_user == 'ingeniero') {
                 $condicion = "AND k_id_user = $usuario_session";
             }
-            $query = $this->db->query("SELECT oh.*, eo.k_id_tipo, eo.i_orden 
+            $query = $this->db->query("SELECT oh.*, eo.k_id_tipo, eo.i_orden,
+                                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
                                 FROM ot_hija oh
                                 INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
                                 WHERE estado_mod = 1
