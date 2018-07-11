@@ -246,12 +246,12 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 /*Estilo para la vista de Type restore*/
 .cssparaeldiv{
-    margin-left: 17%;
-    margin-bottom: 4% !important;
-    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .csstable{
-    width: 51% !important;
+    width: 67% !important;
 }
 .csscolumna{
     width: 50%;
@@ -284,7 +284,8 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
    margin-bottom: -9% !important;
 
 }
-.cssicerrar{
+.btn_red{
+    width: 30%;
    
 }
 .div_Form_Modals {

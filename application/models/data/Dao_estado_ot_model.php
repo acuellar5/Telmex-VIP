@@ -95,6 +95,15 @@ class Dao_estado_ot_model extends CI_Model {
         return $query->row();
     }
 
+    //Inserta en la tabla estado_ot nuevos estados
+    public function insert_new_status($data){
+        if ($this->db->insert('estado_ot',$data)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
 
 ?>

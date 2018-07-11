@@ -47,13 +47,15 @@
     <script src="<?= URL::to('assets/js/modules/principal.js?v='. time()) ?>"></script>
 <?php endif ?>
 <!-- **********************************************REPARAR TIPOS Y ESTADOS*******************************************-->
-<?php if ($this->uri->segment(1) == 'type_restore'): ?>
+<?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
     <script src="<?= URL::to('assets/js/modules/type_restore.js?v='. time()) ?>"></script>
 <?php endif ?>
 
 
 <!-- ***********************faber*********************************** -->
 <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal'): ?>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
