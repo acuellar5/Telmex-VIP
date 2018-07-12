@@ -195,33 +195,6 @@ $(function () {
               "language": {
                   "url": baseurl + "/assets/plugins/datatables/lang/es.json"
               },
-//              dom: 'Blfrtip',
-//                buttons: [
-//                    {
-//                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
-//                        className: 'btn-cami_cool',
-//                        extend: 'excel',
-//                        title: 'ZOLID EXCEL',
-//                        filename: 'zolid ' + fecha_actual
-//                    },
-//                    {
-//                        text: 'Imprimir <span class="fa fa-print"></span>',
-//                        className: 'btn-cami_cool',
-//                        extend: 'print',
-//                        title: 'Reporte Zolid',
-//                    }
-//                ],
-//                select: true,
-//                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-//                columnDefs: [{
-//                        // targets: -1,
-//                        // visible: false,
-//                        defaultContent: "",
-//                        // targets: -1,
-//                        orderable: false,
-//                    }],
-//                order: [[7, 'desc']],
-//                drawCallback: onDraw
             }
         },
  

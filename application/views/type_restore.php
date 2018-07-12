@@ -7,7 +7,7 @@
 <div class="cssparaeldiv">
 	<div class="alert alert-warning alert-dismissible col-md-8 col-sm-12" align="center">
 	    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	    <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> La información que se edite en este modulo debe ser idéntica a cómo esté en el excel <span class="fa fa-exclamation-triangle"></span>
+	    <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> Los estados que edite en este modulo deben ser idénticos a cómo estén en el excel <span class="fa fa-exclamation-triangle"></span>
 	</div>
 </div>
 <table class="table table-hover table-bordered table-striped dataTable_camilo csstable" id="table_new_types"  cellspacing="2">
@@ -107,6 +107,7 @@
  			<div class="modal-body color_fondo_modal">
  				<legend id="mdl_title_name"></legend>
  				<!--*********************  SELECT  *********************-->
+
 				<div class="form-group col-sm-12">  
  					<label for="list_tipos" class="col-sm-4 control-label">Tipos Originales:&nbsp;</label>
  					<div class="col-sm-8 selectContainer">
@@ -124,8 +125,7 @@
 						</div>	
 					</div>
  				</div>
- 			
-		
+
  			</div>
  			<div class="modal-footer csstypesubtitle">
  				<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>

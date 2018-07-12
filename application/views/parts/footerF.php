@@ -53,7 +53,6 @@
 <?php endif ?>
 
 
-
 <!-- ***********************faber*********************************** -->
 <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal'): ?>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
