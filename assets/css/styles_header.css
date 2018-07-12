@@ -296,6 +296,7 @@ margin-left: -53%;
 }
 .color_fondo_modal{
     background: #8080800f;
+    height: 160px !important;
 }
 .color_letra{
     color: #084c6f;
