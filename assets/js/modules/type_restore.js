@@ -14,31 +14,31 @@ function fillModalNewType(estados_existentes, name){
 	$('#mdl_new_type').modal('show');
 	$('#mdl_tbl_title_tipo').html("<strong>" + name + "</strong>");
 	$('#mdl_tbl_name_type').val(name);
-
 	$('#mdl_tbl_new_type').html("");
 	$.each(estados_existentes, function(i, estado) {
 
-		 $('#mdl_tbl_new_type').append(`<tr>
-											<td><input type="text" name="name_status[]" id="estado_${flag}" class="form-control" value="${estado.estado_orden_trabajo_hija}" readonly></td>
-											
-											<td><input type="number" name="jerarquia[]" id="exist${i}" class="form-control jsStatusPlus"></td>
-										</tr>`
+		 $('#mdl_tbl_new_type').append(
+		 	`<tr>
+				<td><input type="text" name="name_status[]" id="estado_${flag}" class="form-control" value="${estado.estado_orden_trabajo_hija}" readonly></td>
+				<td><input type="number" name="jerarquia[]" id="exist${i}" class="form-control jsStatusPlus"></td>
+			</tr>`
 		);
 		 flag++;
 	});
 }
 // Al darle clic a añadir nuevo estadoi del modal
 $('#añadir_estado').click(function(){
-	$('#mdl_tbl_new_type').append(	`<tr id="row${flag}">
-										<td><input type="text" name="name_status[]" id="estado_${flag}" class="form-control jsStatusPlus"></td>
-										<td>
-											<div class="input-group">
-												<input type="number" name="jerarquia[]" id="orden_${flag}" class="form-control jsStatusPlus  cssmodificacionin">
-												<span class="fa fa-minus btn btn-danger btn_minus btn_red" onclick="removeRow('${flag}')"></span>
+	$('#mdl_tbl_new_type').append(	
+		`<tr id="row${flag}">
+			<td><input type="text" name="name_status[]" id="estado_${flag}" class="form-control jsStatusPlus"></td>
+			<td>
+				<div class="input-group">
+					<input type="number" name="jerarquia[]" id="orden_${flag}" class="form-control jsStatusPlus  cssmodificacionin">
+					<span class="fa fa-minus btn btn-danger btn_minus btn_red" onclick="removeRow('${flag}')"></span>
 
-											</div>
-										</td>
-									</tr>`
+				</div>
+			</td>
+		</tr>`
 		);
 	flag++;
 });
@@ -71,12 +71,10 @@ function validar_form(){
   			customClass: 'animated bounceInDown'
 		});
 	}
-	return bandera;	
-
+	return bandera;
 }
 
 // ****************************SECCION PAREA TIPPOS VARIANTES****************************
-
 function showModalVarianteType(name){
 	$.post( baseurl + '/Type/c_get_list_types', 
 		{
@@ -90,12 +88,6 @@ function showModalVarianteType(name){
 
 function fillModalVarianteType(tipos, name){
 	$('#mdl_title_name').html(name);
-	// tipos.forEach(function(tipo){
-	// 	$('#list_tipos').append(`
-	// 		<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
-	// 	`);
-	// });
-
 	$('#mdl_variant_type').modal('show');
 }
 
@@ -111,8 +103,7 @@ $('#mdl_btn_save_variant').click(function(event) {
 				title: "Oops...", 
 				text: "Debes seleccionar un tipo de OT para asociar la variante",
 				type: "warning"
-			}
-			
+			}			
 		);
 	} else {
 		swal({
@@ -132,59 +123,71 @@ $('#mdl_btn_save_variant').click(function(event) {
                 	 	name: name,
                 	 	id_type: valor
                 	 }, 
-                	 function(data, textStatus, xhr) {
+                	 function(data) {
                 	 	var obj = JSON.parse(data);
-                	 	var res;
                 	 	if (obj.actu > 0) {
-		                    swal(
-		                    	{
-		                    		title: "¡Genial!<br>" + obj.actu + " Registros restaurados", 
-		                    		html: "¡El Nuevo tipo ha sido asociado!", 
-		                    		type: "success", 
-		                    		confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!'
-		                    	})
-		                    		.then((resultado) => {
-		            	 		 		res = 1;
-		            	 		 		console.log(res);
-		                	 	 	});
-		                    
+		                    alert_reg_restaurados(obj.actu, obj.nulos);		                    
                 	 	} 
                 	 	if (obj.nulos > 0) {
-                	 		swal({
-							  type: 'info',
-							  title: "¡Importante!<br> " + obj.nulos + " Registros se actualizaron a estado nulo ",
-							  html: "¡Estos registros existentes quedaron asociados al tipo seleccionado, pero el estado que tenian no estaba asociado con el tipo elegido \n\n<br>, Reparar en modulo <a href='"+baseurl+"/status_restore' target='_blank'><b> STATUS RESTORE </b></a>!",
-							  footer: '<a href="'+baseurl+'/status_restore" target="_blank"><strong> STATUS RESTORE </strong></a>',
-							  confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!'
-							})
-	                	 		 .then((resultado) => {
-	            	 		 		res = 1;
-	                	 	 	});
+                	 		alert_reg_restaurados(obj.actu, obj.nulos);
                 	 	}
-                	 	console.log(res);
-                	 	if (res) {
-                	 		location.reload();                	 	 	                	 		
-                	 	}
-                		
+                	 	if (obj.nulos == 0 && obj.actu == 0) {
+            	 			swal(
+									{
+										title: "Oops...", 
+										text: "El tipo ya existe en nuestra base de datos",
+										type: "error"
+									}			
+							);
+                	 	}                	 	                		
                 	});
-
-
-
                 } else {
-
 					const toast = swal.mixin({
 					  toast: true,
 					  position: 'top-end',
 					  showConfirmButton: false,
 					  timer: 3000
 					});
-
 					toast({
-					  type: 'success',
+					  type: 'error',
 					  title: 'Acción Cancelada'
 					});
-
                 }
             });
 	}
 });
+
+// llamar alert de registros restaurados
+function alert_reg_restaurados(cant_actu, cant_null){
+	swal({
+    		title: "¡Genial!<br>" + cant_actu + " Registros restaurados", 
+    		html: "¡El Nuevo tipo ha sido asociado!", 
+    		type: "success", 
+    		confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!'
+    	}).then((resultado) => {
+	 		if (cant_null > 0) {
+	 			alert_reg_nulos(0, cant_null);
+	 		}else{
+	 			location.reload(); 
+	 		}
+        });
+}
+
+// Llamar alert de registros nulos
+function alert_reg_nulos(cant_actu, cant_null){
+	swal(
+			{
+			  type: 'info',
+			  title: "¡Importante!<br> " + cant_null + " Registros se actualizaron a estado nulo ",
+			  html: "¡Estos registros existentes quedaron asociados al tipo seleccionado, pero el estado que tenian no estaba asociado con el tipo elegido \n\n<br>, Reparar en modulo <a href='"+baseurl+"/status_restore' target='_blank'><b> STATUS RESTORE </b></a>!",
+			  footer: '<a href="'+baseurl+'/status_restore" target="_blank"><strong> STATUS RESTORE </strong></a>',
+			  confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!'
+			}).then((resultado) => {
+ 		 		if (cant_actu > 0) {
+ 		 			alert_reg_restaurados(cant_actu, 0);
+
+ 		 		}else{
+ 		 			location.reload(); 
+ 		 		}
+		 	 });
+}
