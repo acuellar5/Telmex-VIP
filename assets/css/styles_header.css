@@ -298,5 +298,10 @@ margin-left: -53%;
     background: #8080800f;
 }
 .color_letra{
-    color: #084c6f;
+    color: #fff;
+}
+
+.wdth_225p {
+    width: 300px !important;
+    font-size: 12px !important;
 }

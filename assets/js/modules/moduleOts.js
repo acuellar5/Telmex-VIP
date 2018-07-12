@@ -1613,9 +1613,6 @@ $(function () {
                     ]));
             },
 
-
-
-
         };
         eventos.init();
 

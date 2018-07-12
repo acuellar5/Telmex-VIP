@@ -28,9 +28,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<?php if ($this->uri->segment(1) == 'type_restore'): ?>
+<?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
 <!-- ************************************** type_restore ********************************************* -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
 <?php endif ?>
 
   <!-- ********************************VISTA VALIDADOR IP *********************************************-->

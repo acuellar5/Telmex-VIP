@@ -79,7 +79,7 @@
 		</div>
 	</div>
 </div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 
 <?php 
 	if ($msj) {
@@ -113,7 +113,7 @@
  					<div class="col-sm-8 selectContainer">
 	 					<div class="row-fluid input-group">
 	 						<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-						    <select name="list_tipos" id="list_tipos" class="selectpicker llenar_tipos" data-show-subtext="true" data-live-search="true" required>
+						    <select name="list_tipos" id="list_tipos" class="selectpicker llenar_tipos" data-show-subtext="true" data-live-search="true" required data-style="btn-primary wdth_225p">
 						        <option value="">  Seleccionar ...</option>
 						        <?php 
 								for ($i=0; $i < count($type_list); $i++) { 
@@ -128,28 +128,6 @@
  				<br>
  				<br>
  				<br> 
-
- 				<!-- <div class="form-group col-sm-12">  
- 					<label for="list_tipos" class="col-sm-4 control-label"> Tipos Originales : &nbsp;</label>
- 					<div class="col-sm-8 selectContainer">
-	 					<div class="row-fluid input-group">
-	 						<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-						    <select name="list_tipos" id="list_tipos" class="selectpicker llenar_tipos" data-show-subtext="true" data-live-search="true" required>
-						        <option value="">  Seleccionar ...</option>
-						        <?php 
-								for ($i=0; $i < count($type_list); $i++) { 
-									echo "<option value='".$type_list[$i]->k_id_tipo."'> ".$type_list[$i]->n_name_tipo."</option>";
-								}
- 								?>
-						    </select>
-						    <span class="help-inline"></span>
-						</div>	
-					</div>
- 				</div>
- 				<br>
- 				<br>
- 				<br> 
- 				 -->
 
  						
  			</div>
