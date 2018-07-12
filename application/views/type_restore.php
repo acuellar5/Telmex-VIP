@@ -125,11 +125,7 @@
 						</div>	
 					</div>
  				</div>
- 				<br>
- 				<br>
- 				<br> 
 
- 						
  			</div>
  			<div class="modal-footer csstypesubtitle">
  				<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
