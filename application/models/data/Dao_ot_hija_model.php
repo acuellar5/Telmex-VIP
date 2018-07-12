@@ -335,6 +335,7 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
+    // Actualiza ot 
     public function update_ot_hija_mod($data) {
 
         $this->db->where('id_orden_trabajo_hija', $data['id_orden_trabajo_hija']);
@@ -359,8 +360,8 @@ class Dao_ot_hija_model extends CI_Model {
         $order  = $parameters['order'];
         $columm = $parameters['columm'];
 
-
-        $limit_start_length = ($parameters['length'] == -1) ? "" : "LIMIT $start, $length"  ;
+        // Cuando le da all genera un -1
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length"  ;
 
 
 
@@ -996,9 +997,6 @@ class Dao_ot_hija_model extends CI_Model {
         }else{
             return 0;
         }
-
-
-
     }
     
     ////Retorna la cantidad de registros con estado nulo
@@ -1013,6 +1011,31 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
 
+    // retorna las ot por nombre del tipo (ot_hija) 
+    public function get_ot_by_tipo($name_type){
+        $query = $this->db->get_where('ot_hija', array('ot_hija'=>$name_type));
+        return $query->result();
+    }
+
+    // Actualizar tabla ot por id register
+    public function update_ot_hija($data){
+        $this->db->where('k_id_register', $data['k_id_register']);
+        $this->db->update('ot_hija', $data);
+
+        $error = $this->db->error();
+
+        if ($error['message']) {
+          return 1;
+        }else{
+          return 0;
+        }
+        
+    }
+
+
+    /**************************************************************************************************************/
+    /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
+    /**************************************************************************************************************/
 
 
 }

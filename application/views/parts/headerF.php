@@ -19,10 +19,22 @@
   <!-- STYLES  FOOTER  -->
   <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_footer.css'); ?>">
 
+  <?php if ($this->uri->segment(1) == 'type_restore'): ?>
+<!-- ************************************ type_restore ******************************************* -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
+<?php endif ?>
+
   <script scr="<?= URL::to("assets/plugins/sweetalert-master/dist/sweetalert.min.js") ?>" ></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- **********************************************VISTA VALIDADOR IP *********************************************-->
+
+<?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
+<!-- ************************************** type_restore ********************************************* -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
+<?php endif ?>
+
+  <!-- ********************************VISTA VALIDADOR IP *********************************************-->
   <?php if ($this->uri->segment(1) == 'validadorIp'): ?>
         <!-- ASSESTS 2 -->
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/main.css') ?>">

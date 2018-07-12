@@ -61,7 +61,15 @@ function validar_form(){
 	});
 
 	if (!bandera) {
-		swal('Recuerda!','no puede quedar ningun estado vacio y debes darle un orden de jerarquia a los estados EJ: \n\n Generada  => 1 \n Cancelada => 2 \n Cerrada    => 3', 'error');		
+		swal({
+			title : 'Recuerda!',
+			type : 'error' ,
+			html: 'No puede quedar ningun estado vacio y debes darle un orden de jerarquia a los estados <br><br>EJEMPLO: <br><br> Generada  => 1 <br> Cancelada => 2 <br> Cerrada    => 3' ,
+			confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!',
+			showCloseButton: true,
+			animation: false,
+  			customClass: 'animated bounceInDown'
+		});
 	}
 	return bandera;	
 
@@ -82,45 +90,100 @@ function showModalVarianteType(name){
 
 function fillModalVarianteType(tipos, name){
 	$('#mdl_title_name').html(name);
-	tipos.forEach(function(tipo){
-		$('#list_tipos').append(`
-			<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
-		`);
-	});
+	// tipos.forEach(function(tipo){
+	// 	$('#list_tipos').append(`
+	// 		<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
+	// 	`);
+	// });
 
 	$('#mdl_variant_type').modal('show');
 }
 
 // al darle clic al boton enviar de variantes 
 $('#mdl_btn_save_variant').click(function(event) {
-
 	var valor = $('#list_tipos').val();
 	var text_sel = $("#list_tipos option:selected").text();
 	var name = $('#mdl_title_name').html();
+	
 	if (valor == '') {
-		swal("Debes seleccionar un tipo de OT para asociar la variante");
+		swal(
+			{
+				title: "Oops...", 
+				text: "Debes seleccionar un tipo de OT para asociar la variante",
+				type: "warning"
+			}
+			
+		);
 	} else {
 		swal({
-              title: "Advertencia!",
-              text: `¿Desea asociar  '${name}'  como variante del tipo '${text_sel}'?`,
-              icon: "warning",
-              buttons: true,
-              
-              dangerMode: true,
-              buttons: ["Cancelar!", "Continuar!"],
+              title: "¿Está Seguro?",
+              html: `¿Desea asociar  <b>'${name}'</b> <br> como variante del tipo <b>'${text_sel}'</b>?`,
+              type: "question",
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Sí, Asociar!',
+              cancelButtonText: 'No, Cancelar!',
         })
-            .then((continuar) => {
-                if (continuar) {
-                    swal("¡Genial! ¡El Nuevo tipo ha sido asociado!", {
-                        icon: "success",
-                    });
-                    return true;
+            .then((result) => {
+                if (result.value) {
+                	$.post( baseurl + '/Type/c_save_type_variant',
+                	 {
+                	 	name: name,
+                	 	id_type: valor
+                	 }, 
+                	 function(data, textStatus, xhr) {
+                	 	var obj = JSON.parse(data);
+                	 	var res;
+                	 	if (obj.actu > 0) {
+		                    swal(
+		                    	{
+		                    		title: "¡Genial!<br>" + obj.actu + " Registros restaurados", 
+		                    		html: "¡El Nuevo tipo ha sido asociado!", 
+		                    		type: "success", 
+		                    		confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!'
+		                    	})
+		                    		.then((resultado) => {
+		            	 		 		res = 1;
+		            	 		 		console.log(res);
+		                	 	 	});
+		                    
+                	 	} 
+                	 	if (obj.nulos > 0) {
+                	 		swal({
+							  type: 'info',
+							  title: "¡Importante!<br> " + obj.nulos + " Registros se actualizaron a estado nulo ",
+							  html: "¡Estos registros existentes quedaron asociados al tipo seleccionado, pero el estado que tenian no estaba asociado con el tipo elegido \n\n<br>, Reparar en modulo <a href='"+baseurl+"/status_restore' target='_blank'><b> STATUS RESTORE </b></a>!",
+							  footer: '<a href="'+baseurl+'/status_restore" target="_blank"><strong> STATUS RESTORE </strong></a>',
+							  confirmButtonText: '<i class="fa fa-thumbs-up"></i> OK!'
+							})
+	                	 		 .then((resultado) => {
+	            	 		 		res = 1;
+	                	 	 	});
+                	 	}
+                	 	console.log(res);
+                	 	if (res) {
+                	 		location.reload();                	 	 	                	 		
+                	 	}
+                		
+                	});
+
+
+
                 } else {
-                    swal("¡Cancelaste la opración!",{
-                        icon: "error",
-                        dangerMode: true,
-                    });
-                    return false;
+
+					const toast = swal.mixin({
+					  toast: true,
+					  position: 'top-end',
+					  showConfirmButton: false,
+					  timer: 3000
+					});
+
+					toast({
+					  type: 'success',
+					  title: 'Acción Cancelada'
+					});
+
                 }
             });
 	}
