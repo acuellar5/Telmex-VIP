@@ -82,11 +82,11 @@ function showModalVarianteType(name){
 
 function fillModalVarianteType(tipos, name){
 	$('#mdl_title_name').html(name);
-	tipos.forEach(function(tipo){
-		$('#list_tipos').append(`
-			<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
-		`);
-	});
+	// tipos.forEach(function(tipo){
+	// 	$('#list_tipos').append(`
+	// 		<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
+	// 	`);
+	// });
 
 	$('#mdl_variant_type').modal('show');
 }

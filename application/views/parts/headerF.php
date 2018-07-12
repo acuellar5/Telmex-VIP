@@ -25,7 +25,7 @@
 
 <?php if ($this->uri->segment(1) == 'type_restore'): ?>
 <!-- ************************************** type_restore ********************************************* -->
-    <script src="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>" ></script>
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
 <?php endif ?>
 
   <!-- ********************************VISTA VALIDADOR IP *********************************************-->

@@ -291,6 +291,12 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .div_Form_Modals {
 margin-left: -53%;
 }
- .div_Text_Form_modal{
+.div_Text_Form_modal{
     margin-right: 30%;
- }
+}
+.color_fondo_modal{
+    background: #8080800f;
+}
+.color_letra{
+    color: #084c6f;
+}

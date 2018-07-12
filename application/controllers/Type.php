@@ -17,6 +17,7 @@ class Type extends CI_Controller {
     $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
     $data['cantidad']  = $this->Dao_ot_hija_model->getCantUndefined();
     $data['tipos']     = $this->Dao_ot_hija_model->getTypeUndefined();
+    $data['type_list'] = $this->Dao_tipo_ot_hija_model->get_list_types();
     $this->load->view('parts/headerF', $data);
     $this->load->view('type_restore');
     $this->load->view('parts/footerF');
