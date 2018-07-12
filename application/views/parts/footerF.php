@@ -27,9 +27,9 @@
 
 <?php if ($this->uri->segment(1) == 'editarOts'): ?>
 <!-- **********************************************VISTA EDITAR OTS *********************************************-->
-    <script src="<?= URL::to('assets/plugins/datatables/js/jquery.dataTables.js?v=1.0') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
-    <script src="<?= URL::to('assets/js/modules/moduleOts.js') ?>"></script>    
+    <script src="<?= URL::to('assets/js/modules/moduleOts.js?v='. time()) ?>"></script>    
     
 <?php endif ?>
 
@@ -49,6 +49,10 @@
 <!-- **********************************************REPARAR TIPOS Y ESTADOS*******************************************-->
 <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
     <script src="<?= URL::to('assets/js/modules/type_restore.js?v='. time()) ?>"></script>
+<?php endif ?>
+    
+<?php if ($this->uri->segment(1) == 'status_restore' || $this->uri->segment(1) == 'Status'): ?>
+    <script src="<?= URL::to('assets/js/modules/status_restore.js?v='. time()) ?>"></script>
 <?php endif ?>
 
 

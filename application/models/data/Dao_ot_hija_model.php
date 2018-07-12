@@ -270,7 +270,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija
-                WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) < CURDATE() 
+                WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
                 AND ot.k_id_estado_ot = 1 
                 $condicion
             ");
@@ -941,13 +941,18 @@ class Dao_ot_hija_model extends CI_Model {
 
 
     //retorna estados por nombre de tipo
-    public function getNewStatusByType($name){
+    public function getNewStatusByType($name, $isNull = null){
+        $condicion = "";
+        if (!$isNull) {
+            $condicion = "k_id_estado_ot = 189 AND";
+        }
+        
         $query = $this->db->query("
                 SELECT distinct estado_orden_trabajo_hija 
                 FROM 
                 ot_hija
-                where 
-                k_id_estado_ot = 189 and 
+                WHERE
+                $condicion  
                 ot_hija = '$name'
             ");
         return $query->result();
@@ -994,6 +999,17 @@ class Dao_ot_hija_model extends CI_Model {
 
 
 
+    }
+    
+    ////Retorna la cantidad de registros con estado nulo
+    public function getStatusNull(){
+        $query = $this->db->query("
+            SELECT ot_hija, estado_orden_trabajo_hija, count(ot_hija) as cant
+            FROM ot_hija 
+            WHERE k_id_estado_ot is null
+            GROUP BY ot_hija
+        ");
+        return $query->result();
     }
 
 
