@@ -3,6 +3,7 @@ $(function () {
         init: function () {
             fTiempos.events();
             fTiempos.listOutTime();
+            fTiempos.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -11,12 +12,12 @@ $(function () {
             $('#tablaDetalleResOutTimes').on('click', 'a.ver-det', fTiempos.onClickShowModalDet);
 
             // EVENTO DEL MENU STICKY
-             $('#btn_fixed').on('click', function(){
+            $('#btn_fixed').on('click', function () {
                 $(this).hide();
                 $('#content_fixed').removeClass('closed');
                 $('#content_fixed #menu_fixed').removeClass('hidden').hide().fadeIn(500);
             });
-            $('#btn_close_fixed').on('click', function(){
+            $('#btn_close_fixed').on('click', function () {
                 $('#content_fixed').addClass('closed');
                 $('#content_fixed #menu_fixed').hide();
                 $('#btn_fixed').fadeIn(500);
@@ -51,6 +52,28 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                initComplete: function () {
+                    var r = $('#tablaFueraTiempos tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaFueraTiempos thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaFueraTiempos').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -64,15 +87,15 @@ $(function () {
                         extend: 'excel',
                         title: 'ZOLID EXCEL',
                         filename: 'zolid ' + fecha_actual,
-                        
+
                         /*exportOptions: {
-                            columns: ':visible',
-                            //columns: [ 0, 1, 2, 5 ], // selecciona las columnas que desea exportar
-                            // modifier: { // cUANDO NO SE DESEA registros SELECTIVO
-                            //     selected: null
-                            // }
-                        }*/
-       
+                         columns: ':visible',
+                         //columns: [ 0, 1, 2, 5 ], // selecciona las columnas que desea exportar
+                         // modifier: { // cUANDO NO SE DESEA registros SELECTIVO
+                         //     selected: null
+                         // }
+                         }*/
+
                     },
                     {
                         text: 'Imprimir <span class="fa fa-print"></span>',
@@ -80,35 +103,31 @@ $(function () {
                         extend: 'print',
                         title: 'Reporte Zolid',
                     },
-
-
-
-                                /*AÑADE BOTON PARA MOSTRAR U OCULTAR COLUMNAS*/
-                                // {
-                                //     extend: 'collection',
-                                //     text: 'Table control',
-                                //     buttons: [
-                                //         {
-                                //             text: 'Toggle start date',
-                                //             action: function ( e, dt, node, config ) {
-                                //                 dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
-                                //             }
-                                //         },
-                                //         {
-                                //             text: 'Toggle salary',
-                                //             action: function ( e, dt, node, config ) {
-                                //                 dt.column( -1 ).visible( ! dt.column( -1 ).visible() );
-                                //             }
-                                //         },
-                                //         'colvis'
-                                //     ]
-                                // }
-                    // 'colvis' // ocultar y mostrar columnas
+                            /*AÑADE BOTON PARA MOSTRAR U OCULTAR COLUMNAS*/
+                            // {
+                            //     extend: 'collection',
+                            //     text: 'Table control',
+                            //     buttons: [
+                            //         {
+                            //             text: 'Toggle start date',
+                            //             action: function ( e, dt, node, config ) {
+                            //                 dt.column( -2 ).visible( ! dt.column( -2 ).visible() );
+                            //             }
+                            //         },
+                            //         {
+                            //             text: 'Toggle salary',
+                            //             action: function ( e, dt, node, config ) {
+                            //                 dt.column( -1 ).visible( ! dt.column( -1 ).visible() );
+                            //             }
+                            //         },
+                            //         'colvis'
+                            //     ]
+                            // }
+                            // 'colvis' // ocultar y mostrar columnas
                 ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    
-                    
+
                 columnDefs: [{
                         // targets: -1,
                         // visible: false,
@@ -134,13 +153,17 @@ $(function () {
             var record = fTiempos.tablaFueraTiempos.row(trParent).data();
             fTiempos.fillFormModal(record);
         },
-
         fillFormModal: function (registros) {
             $.each(registros, function (i, item) {
                 $('#mdl_' + i).val(item);
             });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
+        },
+        individualColumnSearching: function () {
+            $('#tablaFueraTiempos tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     fTiempos.init();
@@ -208,8 +231,7 @@ $(function () {
                 ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    
-                    
+                ordering: false,
                 columnDefs: [{
                         // targets: -1,
                         // visible: false,
@@ -279,41 +301,29 @@ $(function () {
     todo = {
         init: function () {
             todo.events();
-            todo.listAllOts();
+            todo.getListTotal();
         },
 
         //Eventos de la ventana.
         events: function () {
             $('#tablaTodo').on('click', 'a.ver-det', todo.onClickShowModalDet);
         },
-        listAllOts: function () {
-            $.post(baseurl + '/OtHija/c_getOtsAssigned',
-                    {
-                        // clave: 'valor' // parametros que se envian
-                    },
-                    function (data) {
-                        todo.printTableAllOts(data['data']);
-                    });
+        getListTotal: function () {
+            todo.tableTotal = $('#tablaTodo').DataTable(todo.genericCogDataTable("/OtHija/getListTotalOts", "tablaTodo"));
         },
-        printTableAllOts: function (data) {
-            ///lleno la tabla con los valores enviados
-            todo.tablaTodo = $('#tablaTodo').DataTable(todo.configTable(data, [
-                {title: "OT Padre", data: "nro_ot_onyx"},
-                {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Ot Hija", data: "ot_hija"},
-                {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Recurrente", data: "MRC"},
-                {title: "opc", data: todo.getButtons},
-            ]));
-        },
-        // Datos de configuracion del datatable
-        configTable: function (data, columns, onDraw) {
+        genericCogDataTable: function (url, table) {
             return {
-                data: data,
-                columns: columns,
+                columns: [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                    {title: "Fecha Programación", data: "fecha_programacion"},
+                    {title: "Ot Hija", data: "ot_hija"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Recurrente", data: "MRC"},
+                    {title: "opc", data: todo.getButtons},
+                ],
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -341,13 +351,30 @@ $(function () {
                         // targets: -1,
                         // visible: false,
                         defaultContent: "",
-                        // targets: -1,
+                        //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
                     }],
-                order: [[7, 'desc']],
-                drawCallback: onDraw
-            }
+                // order: [[0, 'desc']], //ardenaniento
+                "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+                "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+
+
+                drawCallback: function (data) {
+                    if ($('#bdg_total').html() == "...") {
+                        $('#bdg_total').html(data.json.recordsFiltered);
+                    }
+
+                },
+                "ajax": {
+                    url: baseurl + '/' + url, // json datasource
+                    type: "POST", // type of method  , by default would be get
+                    error: function () {  // error handling code
+                        $("#employee_grid_processing").css("display", "none");
+                    }
+                }
+            };
         },
+        // Datos de configuracion del datatable
         onClickShowModalDet: function () {
             document.getElementById("formModal_detalle").reset();
             $('#title_modal').html('');
@@ -373,7 +400,6 @@ $(function () {
         }
     };
     todo.init();
-
     /************************************************FIN TODO************************************************/
 });
 

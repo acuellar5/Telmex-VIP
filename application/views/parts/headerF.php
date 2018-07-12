@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/font-awesome/css/font-awesome.min.css') ?>"/>
 
   <!-- STYLES DATATABLES CAMILO -->
-  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css?v='.time()); ?>">
   <!-- STYLES MODULES PRINCIPAL -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- STYLES  FOOTER  -->
@@ -27,7 +27,13 @@
   <script scr="<?= URL::to("assets/plugins/sweetalert-master/dist/sweetalert.min.js") ?>" ></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- **********************************************VISTA VALIDADOR IP *********************************************-->
+
+<?php if ($this->uri->segment(1) == 'type_restore'): ?>
+<!-- ************************************** type_restore ********************************************* -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
+<?php endif ?>
+
+  <!-- ********************************VISTA VALIDADOR IP *********************************************-->
   <?php if ($this->uri->segment(1) == 'validadorIp'): ?>
         <!-- ASSESTS 2 -->
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/main.css') ?>">
@@ -99,4 +105,3 @@
     </nav>
   </div>
   <div class="container" style="min-height: 518px;">
-  

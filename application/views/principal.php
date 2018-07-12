@@ -21,79 +21,94 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 $total = count($registros);
                 $mitad = ($total / 2);
-                for ($i=0; $i < $total; $i = $i + 2) {
+                for ($i = 0; $i < $total; $i = $i + 2) {
                     $terna = ($registros[$i]->en_tiempo == 0 && $registros[$i]->fuera_tiempo == 0) ? $registros[$i]->count : $registros[$i]->en_tiempo;
-                     echo "<tr>";
-                       echo " <td><b>". $registros[$i]->n_name_tipo ."</b></td>";
-                       echo " <td>". $registros[$i]->count ."</td>";
-                       echo " <td><a onclick='showModalDetResInTimes(". $registros[$i]->k_id_tipo .");'>". $terna ."</a></td>";
-                       echo " <td><a onclick='showModalDetResOutTime(". $registros[$i]->k_id_tipo .");'>". $registros[$i]->fuera_tiempo ."</a></td>";
-                       if (isset($registros[$i+1])) {
+                    echo "<tr>";
+                    echo " <td><b>" . $registros[$i]->n_name_tipo . "</b></td>";
+                    echo " <td>" . $registros[$i]->count . "</td>";
+                    echo " <td><a onclick='showModalDetResInTimes(" . $registros[$i]->k_id_tipo . ");'>" . $terna . "</a></td>";
+                    echo " <td><a onclick='showModalDetResOutTime(" . $registros[$i]->k_id_tipo . ");'>" . $registros[$i]->fuera_tiempo . "</a></td>";
+                    if (isset($registros[$i + 1])) {
                         $terna1 = ($registros[$i + 1]->en_tiempo == 0 && $registros[$i + 1]->fuera_tiempo == 0) ? $registros[$i + 1]->count : $registros[$i + 1]->en_tiempo;
-                           echo " <td><b>". $registros[$i+1]->n_name_tipo ."</b></td>";
-                           echo " <td>". $registros[$i+1]->count ."</td>";
-                           echo " <td><a onclick='showModalDetResInTimes(". $registros[$i+1]->k_id_tipo .");'>". $terna1 ."</a></td>";
-                           echo " <td><a onclick='showModalDetResOutTime(". $registros[$i+1]->k_id_tipo .");'>". $registros[$i+1]->fuera_tiempo ."</a></td>";                        
-                       }
-                     echo "</tr>";
-                 } 
-                 ?>                
+                        echo " <td><b>" . $registros[$i + 1]->n_name_tipo . "</b></td>";
+                        echo " <td>" . $registros[$i + 1]->count . "</td>";
+                        echo " <td><a onclick='showModalDetResInTimes(" . $registros[$i + 1]->k_id_tipo . ");'>" . $terna1 . "</a></td>";
+                        echo " <td><a onclick='showModalDetResOutTime(" . $registros[$i + 1]->k_id_tipo . ");'>" . $registros[$i + 1]->fuera_tiempo . "</a></td>";
+                    }
+                    echo "</tr>";
+                }
+                ?>                
             </tbody>
         </table>
     </div>
-<h2>Detalles</h2>
+    <h2>Detalles</h2>
 
-<!-- ****************************MENU STICK ************************************************ -->
-<div class="contenedor closed" id="content_fixed">
-  <div id="btn_fixed" >
-    <span class="rotate-90 text">
-      <i class="glyphicon glyphicon-chevron-up"></i><span class="espaciomenu">View menu</span>
-    </span>
-  </div>
-  <div class="hidden" id="menu_fixed">
-    <span id="btn_close_fixed">
-      <i class="glyphicon glyphicon-chevron-right"></i> Cerrar
-    </span>
-    <div class="menu-fixed">
-      <ul>
-        <li><a href="#como_vamos">¿Cómo vamos?</a></li>
-        <li><a href="#Tareas_progreso">Tareas en progreso</a></li>
-        <li><a href="#Detalles">Detalles</a></li>
-      </ul>
+    <!-- ****************************MENU STICK ************************************************ -->
+    <div class="contenedor closed" id="content_fixed">
+        <div id="btn_fixed" >
+            <span class="rotate-90 text">
+                <i class="glyphicon glyphicon-chevron-up"></i><span class="espaciomenu">Ver menú</span>
+            </span>
+        </div>
+        <div class="hidden" id="menu_fixed">
+            <span id="btn_close_fixed">
+                <i class="glyphicon glyphicon-chevron-right"></i> Cerrar
+            </span>
+            <div class="menu-fixed">
+                <ul>
+                    <li><a href="#como_vamos">¿Cómo vamos?</a></li>
+                    <li><a href="#Tareas_progreso">Tareas en progreso</a></li>
+                    <li><a href="#Detalles">Detalles</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<span id="Detalles"></span>
+    <span id="Detalles"></span>
 
-<!--*********************  MODULO PESTAÑAS  *********************-->
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#fuera_tiempos">Fuera de Tiempos</a></li>
-    <li class=""><a data-toggle="tab" href="#en_tiempos">En Tiempos</a></li>
-    <li class=""><a data-toggle="tab" href="#todo">Todo</a></li>
-</ul>
+    <!--*********************  MODULO PESTAÑAS  *********************-->
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#fuera_tiempos">Fuera de Tiempos</a></li>
+        <li class=""><a data-toggle="tab" href="#en_tiempos">En Tiempos</a></li>
+        <li class=""><a data-toggle="tab" href="#todo">Todo</a></li>
+    </ul>
 
-<!--*********************  CONTENIDO PESTAÑAS  *********************-->
-<div class="tab-content">
+    <!--*********************  CONTENIDO PESTAÑAS  *********************-->
+    <div class="tab-content">
 
-    <div id="fuera_tiempos" class="tab-pane fade in active">
-        <h3>Fuera de Tiempos</h3>
-        <table id="tablaFueraTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+        <div id="fuera_tiempos" class="tab-pane fade in active">
+            <h3>Fuera de Tiempos</h3>
+            <table id="tablaFueraTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div id="en_tiempos" class="tab-pane fade">
+            <h3>En Tiempos</h3>
+            <table id="tablaEnTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+        </div>
+
+        <div id="todo" class="tab-pane fade">
+            <h3>Todo</h3>
+            <table id="tablaTodo" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+        </div>
+
     </div>
-
-    <div id="en_tiempos" class="tab-pane fade">
-        <h3>En Tiempos</h3>
-        <table id="tablaEnTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
-    </div>
-
-    <div id="todo" class="tab-pane fade">
-        <h3>Todo</h3>
-        <table id="tablaTodo" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
-    </div>
-
-</div>
 
     <?php
 }
@@ -125,7 +140,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                 <div class="modal-body">
                     <form class="well form-horizontal" id="formModal_detalle" action=""  method="post">
                         <fieldset>
-                             <!-- PRIMERA SESSION -->
+                            <!-- PRIMERA SESSION -->
                             <fieldset class="col-md-3 sessionmodal">
 
                                 <div class="form-group col-md-12">
@@ -155,7 +170,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="grupo_objetivo" id="mdl_grupo_objetivo" class="form-control tamanioletra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                 </div> 
+                                </div> 
 
                                 <div class="form-group col-md-12">
                                     <label for="segmento" class="col-md-12 control-label ubicacionLetra">Segmento: &nbsp;</label>
@@ -228,7 +243,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="consultor_postventa" class="col-md-12 control-label ubicacionLetra">Consultor Postventa: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                           <input name="consultor_postventa" id="mdl_consultor_postventa" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
+                                            <input name="consultor_postventa" id="mdl_consultor_postventa" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div> 
@@ -273,7 +288,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </fieldset>
 
 
@@ -281,7 +296,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                             <fieldset class="col-md-3 sessionmodal" x;">
 
 
-                                <div class="form-group col-md-12">
+                                      <div class="form-group col-md-12">
                                     <label for="orden_trabajo" class="col-md-12 control-label ubicacionLetra">Orden Trabajo: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
@@ -423,15 +438,15 @@ if (Auth::user()->n_project == 'Implementacion') {
                                         </div> 
                                     </div>
                                 </div>
-                                
-                                
+
+
                             </fieldset>
 
                             <!-- TERCERA SESSION -->
                             <fieldset class="col-md-3 sessionmodal" x;">
 
 
-                                <div class="form-group col-md-12">
+                                      <div class="form-group col-md-12">
                                     <label for="cargo_arriendo" class="col-md-12 control-label ubicacionLetra">Cargo Arriendo: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
@@ -535,7 +550,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group col-md-12">
                                     <label for="fecha_programacion" class="col-md-12 control-label ubicacionLetra">Fecha Programación: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
@@ -562,7 +577,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </fieldset>
 
                             <!-- CUARTA SESSION -->
@@ -730,7 +745,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                 </div>            
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+                <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
             </div>
         </div>
     </div> 
@@ -751,7 +766,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                 </div>            
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+                <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
             </div>
         </div>
     </div> 
@@ -772,7 +787,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                 </div>            
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
+                <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
             </div>
         </div>
     </div> 

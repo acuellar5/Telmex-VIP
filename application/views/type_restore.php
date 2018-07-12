@@ -100,14 +100,15 @@
  <div id="mdl_variant_type" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-md">
  		<div class="modal-content">
- 			<div class="modal-header">
+ 			<div class="modal-header csstypesubtitle">
  				<button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
- 				<h3 class="modal-title" id="mdl_title_variant_type"> Asignar Variante a tipo </h3>
+ 				<h3 class="modal-title color_letra" id="mdl_title_variant_type"> Asignar Variante a Tipo </h3>
  			</div>
- 			<div class="modal-body">
+ 			<div class="modal-body color_fondo_modal">
  				<legend id="mdl_title_name"></legend>
  				<!--*********************  SELECT  *********************-->
- 				<div class="form-group col-sm-12">  
+
+				<div class="form-group col-sm-12">  
  					<label for="list_tipos" class="col-sm-4 control-label">Tipos Originales:&nbsp;</label>
  					<div class="col-sm-8 selectContainer">
 	 					<div class="row-fluid input-group">
@@ -126,10 +127,33 @@
  				</div>
  				<br>
  				<br>
- 				<br> 				
+ 				<br> 
+
+ 				<!-- <div class="form-group col-sm-12">  
+ 					<label for="list_tipos" class="col-sm-4 control-label"> Tipos Originales : &nbsp;</label>
+ 					<div class="col-sm-8 selectContainer">
+	 					<div class="row-fluid input-group">
+	 						<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+						    <select name="list_tipos" id="list_tipos" class="selectpicker llenar_tipos" data-show-subtext="true" data-live-search="true" required>
+						        <option value="">  Seleccionar ...</option>
+						        <?php 
+								for ($i=0; $i < count($type_list); $i++) { 
+									echo "<option value='".$type_list[$i]->k_id_tipo."'> ".$type_list[$i]->n_name_tipo."</option>";
+								}
+ 								?>
+						    </select>
+						    <span class="help-inline"></span>
+						</div>	
+					</div>
+ 				</div>
+ 				<br>
+ 				<br>
+ 				<br> 
+ 				 -->
+
  						
  			</div>
- 			<div class="modal-footer">
+ 			<div class="modal-footer csstypesubtitle">
  				<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
  				<button type="button" class="btn btn-success" id="mdl_btn_save_variant"><i class='glyphicon glyphicon-send'></i>&nbsp;enviar</button>
  			</div>

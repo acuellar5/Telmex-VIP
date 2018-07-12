@@ -46,14 +46,15 @@
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/js/modules/principal.js?v='. time()) ?>"></script>
 <?php endif ?>
-<!-- **********************************************REPARAR TIPOS Y ESTADOS*******************************************-->
+<!-- ***********************************REPARAR TIPOS Y ESTADOS*****************************************-->
 <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
     <script src="<?= URL::to('assets/js/modules/type_restore.js?v='. time()) ?>"></script>
     <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap-selet.min.js') ?>"></script>
 <?php endif ?>
 
-<!-- ***********************faber*********************************** -->
 
+<!-- ***********************faber*********************************** -->
+<?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal'): ?>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
@@ -63,7 +64,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
 <!-- COLVIs PARA MOSTRAR U OCULTAR COLUMNAS -->
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
-
+<?php endif ?>
 <!-- ***********************faber*********************************** -->
 
 

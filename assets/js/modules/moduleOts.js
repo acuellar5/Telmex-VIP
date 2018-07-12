@@ -195,33 +195,6 @@ $(function () {
               "language": {
                   "url": baseurl + "/assets/plugins/datatables/lang/es.json"
               },
-              // dom: 'Blfrtip',
-              //   buttons: [
-              //       {
-              //           text: 'Excel <span class="fa fa-file-excel-o"></span>',
-              //           className: 'btn-cami_cool',
-              //           extend: 'excel',
-              //           title: 'ZOLID EXCEL',
-              //           filename: 'zolid ' + fecha_actual
-              //       },
-              //       {
-              //           text: 'Imprimir <span class="fa fa-print"></span>',
-              //           className: 'btn-cami_cool',
-              //           extend: 'print',
-              //           title: 'Reporte Zolid',
-              //       }
-              //   ],
-              //   select: true,
-              //   "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-              //   columnDefs: [{
-              //           // targets: -1,
-              //           // visible: false,
-              //           defaultContent: "",
-              //           // targets: -1,
-              //           orderable: false,
-              //       }],
-              //   order: [[7, 'desc']],
-              //   drawCallback: onDraw
             }
         },
  
@@ -671,22 +644,26 @@ $(function () {
                     valServicio = $('#ins_servicio').val();
                 
                 var form = "";
-                form += `<div class="widget bg_white m-t-25 display-block">
-                            <fieldset class="col-md-12 control-label">
-                                <div class="form-group">
-                                    <label for="Email_envio" class="col-md-3 control-label">Email: &nbsp;</label>
-                                    <div class="col-md-8 selectContainer">
+                form += `
+                        <div class="widget bg_white m-t-25 display-block cliente">
+                            <fieldset class="col-md-6 control-label">
+                            <span class="div_Text_Form_modal"><strong>Email al que se dirije el correo: &nbsp;</strong></span>
+                            </fieldset>
+                            <!-- fin seccion izquierda form-->
+
+                            <!--  inicio seccion derecha form---->
+                            <fieldset>
+                                <div class="form-group Email_envio">
+                                    <label for="Email_envio" class="col-md-3 control-label"> </label>
+                                    <div class="col-md-8 selectContainer div_Form_Modals">
                                         <div class="input-group">
-                                            <input type="text" name="Email_envio" id="Email_envio" >
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <input name="Email_envio" id="Email_envio" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                 </div>
                             </fieldset>
-                            <fieldset>
-                                <div class="form-group m-t-40 p-b-40"></div>
-                            </fieldset>
                         </div>
-                            
                         <div class="widget bg_white m-t-25 display-block cliente">
                             <fieldset class="col-md-6 control-label">
                                 <div class="form-group nombre " >
@@ -733,7 +710,7 @@ $(function () {
                                 </div>
 
                             </fieldset>
-                        </div>`;
+                            </div>`;
                     
 
 
@@ -779,7 +756,7 @@ $(function () {
                                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                                         </div>
                                                     </div>
@@ -827,7 +804,7 @@ $(function () {
                                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
-                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                                         </div>
                                                     </div>
@@ -893,7 +870,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
@@ -984,7 +961,7 @@ $(function () {
                                             <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                    <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                     <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                                 </div>
                                             </div>
@@ -1075,7 +1052,7 @@ $(function () {
                                         <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                 <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                             </div>
                                         </div>
@@ -1122,7 +1099,7 @@ $(function () {
                                         <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                                 <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                             </div>
                                         </div>
@@ -1187,7 +1164,7 @@ $(function () {
                             <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                             <div class="col-md-8 selectContainer">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                    <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                     <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                 </div>
                             </div>
@@ -1252,7 +1229,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
@@ -1318,7 +1295,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
@@ -1383,7 +1360,7 @@ $(function () {
                                     <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
                                             <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
