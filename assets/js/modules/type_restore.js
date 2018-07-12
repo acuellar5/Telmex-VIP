@@ -82,18 +82,17 @@ function showModalVarianteType(name){
 
 function fillModalVarianteType(tipos, name){
 	$('#mdl_title_name').html(name);
-	tipos.forEach(function(tipo){
-		$('#list_tipos').append(`
-			<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
-		`);
-	});
+	// tipos.forEach(function(tipo){
+	// 	$('#list_tipos').append(`
+	// 		<option value="${tipo.k_id_tipo}">${tipo.n_name_tipo}</option>
+	// 	`);
+	// });
 
 	$('#mdl_variant_type').modal('show');
 }
 
 // al darle clic al boton enviar de variantes 
 $('#mdl_btn_save_variant').click(function(event) {
-
 	var valor = $('#list_tipos').val();
 	var text_sel = $("#list_tipos option:selected").text();
 	var name = $('#mdl_title_name').html();
@@ -111,16 +110,35 @@ $('#mdl_btn_save_variant').click(function(event) {
         })
             .then((continuar) => {
                 if (continuar) {
-                    swal("¡Genial! ¡El Nuevo tipo ha sido asociado!", {
-                        icon: "success",
-                    });
-                    return true;
+                	$.post( baseurl + '/Type/c_save_type_variant',
+                	 {
+                	 	name: name,
+                	 	id_type: valor
+                	 }, 
+                	 function(data, textStatus, xhr) {
+                	 	var obj = JSON.parse(data);
+                	 	if (obj.actu > 0) {
+		                    swal("¡Genial!\n" + obj.actu + " Registros restaurados", "¡El Nuevo tipo ha sido asociado!", "success");
+                	 	} 
+                	 	if (obj.nulos > 0) {
+                	 		swal({
+							  type: 'info',
+							  title: "¡Importante!\n " + obj.nulos + " Registros se actualizaron a estado nulo ",
+							  text: "¡Estos registros existentes quedaron asociados al tipo  seleccionado, pero el estado que tenian no estaba asociado con el tipo elegido \n\n Reparar en modulo Status Restore!",
+							  footer: '<a href>Why do I have this issue?</a>'
+							})
+                	 	}
+
+                		
+                	});
+
+
+
                 } else {
-                    swal("¡Cancelaste la opración!",{
+                    swal("¡Cancelaste la operación!",{
                         icon: "error",
                         dangerMode: true,
                     });
-                    return false;
                 }
             });
 	}
