@@ -81,7 +81,7 @@ if ($msj) {
         ?>
         <script> swal('ERROR', 'existió un error al insertar el tipo nuevo y actualizar los registros', 'error');</script>
     <?php } else if ($msj == 'No existen') { ?>
-        <script>  swal('Atención', 'El estado que esta intentando inssertar pertence a un tipo nuevo', 'info');</script>
+        <script>  swal('Atención', 'El estado que esta intentando insertar pertence a un tipo nuevo, por favor dirigase al modulo <a href="<?= URL::to('status_restore') ?>">Status restore</a>', 'info');</script>
     <?php } else {
         ?>
         <script> swal('BIEN!', 'Se actualizaron ' + <?= $msj ?> + ' registros exitosamente.', 'success');</script>
