@@ -19,7 +19,7 @@ function fillModalNewType(estados_existentes, name) {
     $.each(estados_existentes, function (i, estado) {
 
         $('#mdl_tbl_new_type').append('<tr>'
-                                            + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.estado_orden_trabajo_hija + '" readonly></td>'
+                                            + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.n_name_estado_ot + '" readonly></td>'
                                             + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control jsStatusPlus"></td>'
                                         + '</tr>'
                 );

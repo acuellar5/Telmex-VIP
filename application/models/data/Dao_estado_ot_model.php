@@ -98,6 +98,17 @@ class Dao_estado_ot_model extends CI_Model {
     //Inserta en la tabla estado_ot nuevos estados
     public function insert_new_status($data){
         if ($this->db->insert('estado_ot',$data)) {
+            return $this->db->insert_id();;
+        }else {
+            return false;
+        }
+    }
+    
+    public function updateStatusById($orden, $id){
+        $sql = "UPDATE estado_ot 
+                SET i_orden = $orden
+                WHERE k_id_estado_ot = $id";
+        if ($this->db->query($sql)) {
             return true;
         }else {
             return false;

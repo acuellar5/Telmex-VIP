@@ -146,9 +146,8 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
-
     //
-    public function m_updateStatusOt($data, $dataLog){
+    public function m_updateStatusOt($data, $dataLog) {
         $this->db->where('id_orden_trabajo_hija', $data['id_orden_trabajo_hija']);
         $this->db->update('ot_hija', $data);
         $error = $this->db->error();
@@ -157,12 +156,11 @@ class Dao_ot_hija_model extends CI_Model {
 
 
 
-            if ($error['message']) {
-              return 'error';
-            }else{
-              return 1;
-            }
-
+        if ($error['message']) {
+            return 'error';
+        } else {
+            return 1;
+        }
     }
 
 //     public function updateStatusOt($request) {
@@ -275,10 +273,8 @@ class Dao_ot_hija_model extends CI_Model {
                 $condicion
             ");
         return $query;
-
     }
 
-    
     // llama el primer elemento dependiendo el id rf
     public function getExistIdOtHija($id) {
         $query = $this->db->query("
@@ -324,7 +320,7 @@ class Dao_ot_hija_model extends CI_Model {
 
     // actualiza en tabla ot_hija enviados los campos (hay q enviarle a data el arreglo ya creado)
     public function update_ot_hija_status_mod($data) {
-        $query = $this->db->query("UPDATE ot_hija SET estado_mod = " . $data['estado_mod'] . ", fecha_actual = '".$data['fecha_actual']."'  WHERE id_orden_trabajo_hija = " . $data['id_orden_trabajo_hija'] . ";");
+        $query = $this->db->query("UPDATE ot_hija SET estado_mod = " . $data['estado_mod'] . ", fecha_actual = '" . $data['fecha_actual'] . "'  WHERE id_orden_trabajo_hija = " . $data['id_orden_trabajo_hija'] . ";");
 
         $error = $this->db->error();
         if ($error['message']) {
@@ -350,18 +346,17 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
-
     //Consulta controlada para el data tables usado con server side prossesing
-    public function getAllOtPS($parameters){
+    public function getAllOtPS($parameters) {
         // reasigno las variables para q sean mas dicientes y manejables
-        $start  = $parameters['start'];
+        $start = $parameters['start'];
         $length = $parameters['length'];
         $search = $parameters['search'];
-        $order  = $parameters['order'];
+        $order = $parameters['order'];
         $columm = $parameters['columm'];
 
         // Cuando le da all genera un -1
-        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length"  ;
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
 
 
 
@@ -369,18 +364,18 @@ class Dao_ot_hija_model extends CI_Model {
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion = ($search)? " AND ot.k_id_user = $usuario_session " : " WHERE ot.k_id_user = $usuario_session ";
+            $condicion = ($search) ? " AND ot.k_id_user = $usuario_session " : " WHERE ot.k_id_user = $usuario_session ";
         }
         // si el usuario escribio algo en el buscador se concatena el where + lo que debe buscar
-        if($search){
-            $srch  = "where ot.nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
-            $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
-            $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%'";
+        if ($search) {
+            $srch = "where ot.nombre_cliente LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.fecha_compromiso LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.fecha_programacion LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%'";
         } else {
             // Si no escribio nada en el buscador se pasa vacio
             $srch = "";
@@ -466,7 +461,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
-                ".$srch." ".$condicion."
+                " . $srch . " " . $condicion . "
                 ORDER BY $columm $order 
                 $limit_start_length 
             ");
@@ -478,20 +473,20 @@ class Dao_ot_hija_model extends CI_Model {
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
 
-                ".$srch." ".$condicion." 
+                " . $srch . " " . $condicion . " 
             ");
         // en cantidad solo necesito la cantidad numerica
         $cantidad = $cant->row()->cant;
 
-         // retorno el objeto de la primera consulta entre ellos ->result() y -> num_rows() en la posicion datos y la cantidad total
+        // retorno el objeto de la primera consulta entre ellos ->result() y -> num_rows() en la posicion datos y la cantidad total
         $retorno = array(
             "numDataTotal" => $cantidad,
-            "datos"        => $query
+            "datos" => $query
         );
 
         return $retorno;
     }
-    
+
     public function getOtsNew() {
         try {
             $db = new DB();
@@ -513,7 +508,7 @@ class Dao_ot_hija_model extends CI_Model {
             return $ex;
         }
     }
-    
+
     public function getOtsChange() {
         try {
             $db = new DB();
@@ -533,7 +528,7 @@ class Dao_ot_hija_model extends CI_Model {
             return $ex;
         }
     }
-    
+
     public function getOtsReportPrincipalAdmin() {
         try {
             $db = new DB();
@@ -548,7 +543,7 @@ class Dao_ot_hija_model extends CI_Model {
             return $ex;
         }
     }
-    
+
     public function getOtsOutTime($idTipo) {
         try {
             $db = new DB();
@@ -671,7 +666,7 @@ class Dao_ot_hija_model extends CI_Model {
             return $ex;
         }
     }
-    
+
     public function getOtsInTimes($idTipo) {
         try {
             $db = new DB();
@@ -797,9 +792,8 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
-
     //trae conteo para pagina principal (resumen)
-    public function getCountsSumary(){
+    public function getCountsSumary() {
         $condicion = "";
         $usuario_session = Auth::user()->k_id_user;
         if (Auth::user()->n_role_user == 'ingeniero') {
@@ -859,9 +853,8 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
-
     //Retorna la cantidad de registros irregulares en un array
-    public function getCantUndefined(){
+    public function getCantUndefined() {
         $data['indefinidos'] = $this->getCantIndefinidos();
         $data['nulos'] = $this->getCantNull();
         $data['new_types'] = $this->cant_new_types();
@@ -870,7 +863,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Retorna la cantidad de registros con estado indefinido 
-    public function getCantIndefinidos(){
+    public function getCantIndefinidos() {
         $query = $this->db->query("
             SELECT 
             COUNT(1) AS cant 
@@ -884,7 +877,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Retorna la cantidad de registros con estado nulo
-    public function getCantNull(){
+    public function getCantNull() {
         $query = $this->db->query("
             SELECT 
             COUNT(1) AS cant 
@@ -898,7 +891,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Retorna cantidad de tipos nuevos en el sistema
-    public function cant_new_types(){
+    public function cant_new_types() {
         $query = $this->db->query("
             SELECT 
             count(distinct ot_hija) AS cant 
@@ -912,8 +905,8 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Retorna cantidad de estados nuevos en el sistema
-    public function cant_new_status(){
-       $query = $this->db->query("
+    public function cant_new_status() {
+        $query = $this->db->query("
             SELECT 
             COUNT(DISTINCT(CONCAT(ot_hija, estado_orden_trabajo_hija))) AS cant 
             FROM 
@@ -925,9 +918,8 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->row()->cant;
     }
 
-
     ////Retorna la cantidad de registros con estado indefinido 
-    public function getTypeUndefined(){
+    public function getTypeUndefined() {
         $query = $this->db->query("
             SELECT 
             ot_hija , count(ot_hija) as cant
@@ -940,14 +932,13 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
-
     //retorna estados por nombre de tipo
-    public function getNewStatusByType($name, $isNull = null){
+    public function getNewStatusByType($name, $isNull = null) {
         $condicion = "";
         if (!$isNull) {
             $condicion = "k_id_estado_ot = 189 AND";
         }
-        
+
         $query = $this->db->query("
                 SELECT distinct estado_orden_trabajo_hija 
                 FROM 
@@ -957,11 +948,10 @@ class Dao_ot_hija_model extends CI_Model {
                 ot_hija = '$name'
             ");
         return $query->result();
-
     }
 
     //trae registros estado indefinido por nombre de estado y ot_hija (tipo)
-    public function update_regis_indef_by_estado($id_type, $type, $name_status){
+    public function update_regis_indef_by_estado($id_type, $type, $name_status) {
         $query = $this->db->query("
                 SELECT 
                 k_id_estado_ot 
@@ -976,31 +966,29 @@ class Dao_ot_hija_model extends CI_Model {
             $id_estado_ot = $query->row()->k_id_estado_ot;
 
             $where = array(
-                'k_id_estado_ot'            => '189',
-                'estado_orden_trabajo_hija'                   => $name_status,
+                'k_id_estado_ot' => '189',
+                'estado_orden_trabajo_hija' => $name_status,
                 'ot_hija' => $type
             );
 
             $data = array(
                 'k_id_estado_ot' => $id_estado_ot
-            );            
+            );
 
-            $this->db->where($where); 
+            $this->db->where($where);
             $this->db->update('ot_hija', $data);
 
             // print_r($this->db->last_query());
             $afectados = $this->db->affected_rows();
 
             return $afectados;
-
-
-        }else{
+        } else {
             return 0;
         }
     }
-    
+
     ////Retorna la cantidad de registros con estado nulo
-    public function getStatusNull(){
+    public function getStatusNull() {
         $query = $this->db->query("
             SELECT ot_hija, estado_orden_trabajo_hija, count(ot_hija) as cant
             FROM ot_hija 
@@ -1010,32 +998,58 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
-
     // retorna las ot por nombre del tipo (ot_hija) 
-    public function get_ot_by_tipo($name_type){
-        $query = $this->db->get_where('ot_hija', array('ot_hija'=>$name_type));
+    public function get_ot_by_tipo($name_type) {
+        $query = $this->db->get_where('ot_hija', array('ot_hija' => $name_type));
         return $query->result();
     }
 
     // Actualizar tabla ot por id register
-    public function update_ot_hija($data){
+    public function update_ot_hija($data) {
         $this->db->where('k_id_register', $data['k_id_register']);
         $this->db->update('ot_hija', $data);
 
         $error = $this->db->error();
 
         if ($error['message']) {
-          return 1;
-        }else{
-          return 0;
+            return 1;
+        } else {
+            return 0;
         }
-        
+    }
+    
+    public function geStatusByType($name) {
+        $query = $this->db->query("
+                SELECT et.n_name_estado_ot 
+                FROM estado_ot et
+                INNER JOIN tipo_ot_hija toh ON toh.k_id_tipo = et.k_id_tipo OR toh.i_referencia = et.k_id_tipo
+                WHERE toh.n_name_tipo = '$name'
+            ");
+        return $query->result();
     }
 
+    //trae registros estado null por nombre de estado y ot_hija (tipo)
+    public function update_regis_null_by_estado($id_estado_ot, $type, $name_status) {
+        $where = array(
+            'k_id_estado_ot' => null,
+            'estado_orden_trabajo_hija' => $name_status,
+            'ot_hija' => $type
+        );
 
-    /**************************************************************************************************************/
-    /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
-    /**************************************************************************************************************/
+        $data = array(
+            'k_id_estado_ot' => $id_estado_ot
+        );
 
+        $this->db->where($where);
+        $this->db->update('ot_hija', $data);
 
+        // print_r($this->db->last_query());
+        $afectados = $this->db->affected_rows();
+
+        return $afectados;
+    }
+
+    /*     * *********************************************************************************************************** */
+    /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
+    /*     * *********************************************************************************************************** */
 }
