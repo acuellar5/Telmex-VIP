@@ -174,7 +174,6 @@ function alert_reg_restaurados(cant_actu, cant_null){
 	 		}
         });
 }
-
 // Llamar alert de registros nulos
 function alert_reg_nulos(cant_actu, cant_null){
 	swal(

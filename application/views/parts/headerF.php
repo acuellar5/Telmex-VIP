@@ -76,12 +76,15 @@
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
                   </ul>
                 </li>
+                <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
                     <li><a href="<?= URL::to('status_restore') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
                   </ul>
-                </li>
+                </li>                  
+                <?php endif ?>
+                
               <?php
               }
               if (Auth::user()->n_project == 'Implementacion') {
@@ -89,7 +92,7 @@
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Implementación Servicios <span class="caret"></span></a>
                   <ul class="dropdown-menu tamaniomin">
                     <li><a href="<?= URL::to('generarMarcaciones') ?>">Marcaciones</a></li>
-                    <li><a href="<?= URL::to('validadorIp') ?>" ">Validación IP</a></li>
+                    <li><a href="<?= URL::to('validadorIp') ?>">Validación IP</a></li>
                   </ul>
                 </li>
               <?php } ?>

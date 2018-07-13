@@ -51,6 +51,7 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                // Para los filtros por columna
                 initComplete: function () {
                     var r = $('#tablaFueraTiempos tfoot tr');
                     r.find('th').each(function () {
@@ -63,6 +64,9 @@ $(function () {
                     var table = $('#tablaFueraTiempos').DataTable();
 
                     // Apply the search
+
+                    /*table.columns().every(function () {*/
+
                     table.columns().every(function () {
                         var that = this;
 
@@ -73,6 +77,7 @@ $(function () {
                         });
                     });
                 },
+                
                 data: data,
                 columns: columns,
                 "language": {
