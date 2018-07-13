@@ -34,6 +34,10 @@
 
 </table>
 
+<!-- ***************************TABLA DE INCONSISTENCIAS*************************** -->
+<h3>Tabla de registro con tipo Indefinido</h3>
+<table id="table_null" class="table table-hover table-bordered table-striped dataTable_camilo "></table>
+
 <!------------------------------- MODAL GUARDAR NUEVO TIPO----------------------------- -->
 <div id="mdl_new_type" class="modal fade " role="dialog">
     <div class="modal-dialog modal-md">

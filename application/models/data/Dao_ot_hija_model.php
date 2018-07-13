@@ -1075,6 +1075,20 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+    // tabla de null
+    public function getListOtsNull(){
+    $query = $this->db->query("
+    SELECT nro_ot_onyx, 
+           id_orden_trabajo_hija, 
+           nombre_cliente, ot_hija, 
+           estado_orden_trabajo_hija, 
+           fecha_creacion 
+           FROM telmex_vip.ot_hija 
+           WHERE k_id_estado_ot is null;
+    ");
+    return $query->result();
+  }
+
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
     /*     * *********************************************************************************************************** */
