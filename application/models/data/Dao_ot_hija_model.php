@@ -1005,7 +1005,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Trae los datos de la tabla inconsistencias 
-    public function print_tabl(){
+    public function print_tabl() {
         $query = $this->db->query("
             SELECT o.nro_ot_onyx AS ot_padre, o.id_orden_trabajo_hija AS ot_hija,
             o.nombre_cliente AS cliente, o.orden_trabajo AS trabajo, 
@@ -1038,7 +1038,7 @@ class Dao_ot_hija_model extends CI_Model {
             return 0;
         }
     }
-    
+
     public function geStatusByType($name) {
         $query = $this->db->query("
                 SELECT et.n_name_estado_ot 
@@ -1062,19 +1062,20 @@ class Dao_ot_hija_model extends CI_Model {
         return $afectados;
     }
 
-     /**************************************************************************************************************/
-    /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
-    /**************************************************************************************************************/
-    public function getAllOtsUndefined(){
-    $query = $this->db->query("
-    SELECT nro_ot_onyx, 
-           id_orden_trabajo_hija, 
-           nombre_cliente, ot_hija, 
-           estado_orden_trabajo_hija, 
-           fecha_creacion 
-           FROM telmex_vip.ot_hija 
-           WHERE k_id_estado_ot = '189';
+    public function getAllOtsUndefined() {
+        $query = $this->db->query("
+            SELECT nro_ot_onyx, 
+            id_orden_trabajo_hija, 
+            nombre_cliente, ot_hija, 
+            estado_orden_trabajo_hija, 
+            fecha_creacion 
+            FROM telmex_vip.ot_hija 
+            WHERE k_id_estado_ot = '189';
     ");
-    return $query->result();
-  }
+        return $query->result();
+    }
+
+    /*     * *********************************************************************************************************** */
+    /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
+    /*     * *********************************************************************************************************** */
 }
