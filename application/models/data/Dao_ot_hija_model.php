@@ -1056,8 +1056,13 @@ class Dao_ot_hija_model extends CI_Model {
             'estado_orden_trabajo_hija' => $name_status,
             'ot_hija' => $type
         );
+        // print_r($this->db->last_query());
+        $afectados = $this->db->affected_rows();
 
-    /**************************************************************************************************************/
+        return $afectados;
+    }
+
+     /**************************************************************************************************************/
     /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
     /**************************************************************************************************************/
     public function getAllOtsUndefined(){
@@ -1072,14 +1077,4 @@ class Dao_ot_hija_model extends CI_Model {
     ");
     return $query->result();
   }
-
-        // print_r($this->db->last_query());
-        $afectados = $this->db->affected_rows();
-
-        return $afectados;
-    }
-
-    /*     * *********************************************************************************************************** */
-    /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
-    /*     * *********************************************************************************************************** */
 }
