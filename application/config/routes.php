@@ -59,6 +59,7 @@ $route['paginaPrincipal'] = 'User/principalView';
 $route['editarOts'] = 'OtHija/editOts';
 $route['cargarOts'] = 'User/loadInformation';
 $route['type_restore'] = 'Type/type_restore';
+$route['status_restore'] = 'Status/status_restore';
 $route['generarMarcaciones'] = 'User/markings';
 $route['validadorIp'] = 'User/routingVerification';
 $route['login'] = 'welcome/index';

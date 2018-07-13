@@ -270,7 +270,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija
-                WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) < CURDATE() 
+                WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
                 AND ot.k_id_estado_ot = 1 
                 $condicion
             ");
@@ -335,6 +335,7 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
+    // Actualiza ot 
     public function update_ot_hija_mod($data) {
 
         $this->db->where('id_orden_trabajo_hija', $data['id_orden_trabajo_hija']);
@@ -359,8 +360,8 @@ class Dao_ot_hija_model extends CI_Model {
         $order  = $parameters['order'];
         $columm = $parameters['columm'];
 
-
-        $limit_start_length = ($parameters['length'] == -1) ? "" : "LIMIT $start, $length"  ;
+        // Cuando le da all genera un -1
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length"  ;
 
 
 
@@ -941,13 +942,18 @@ class Dao_ot_hija_model extends CI_Model {
 
 
     //retorna estados por nombre de tipo
-    public function getNewStatusByType($name){
+    public function getNewStatusByType($name, $isNull = null){
+        $condicion = "";
+        if (!$isNull) {
+            $condicion = "k_id_estado_ot = 189 AND";
+        }
+        
         $query = $this->db->query("
                 SELECT distinct estado_orden_trabajo_hija 
                 FROM 
                 ot_hija
-                where 
-                k_id_estado_ot = 189 and 
+                WHERE
+                $condicion  
                 ot_hija = '$name'
             ");
         return $query->result();
@@ -991,9 +997,24 @@ class Dao_ot_hija_model extends CI_Model {
         }else{
             return 0;
         }
+    }
+    
+    ////Retorna la cantidad de registros con estado nulo
+    public function getStatusNull(){
+        $query = $this->db->query("
+            SELECT ot_hija, estado_orden_trabajo_hija, count(ot_hija) as cant
+            FROM ot_hija 
+            WHERE k_id_estado_ot is null
+            GROUP BY ot_hija
+        ");
+        return $query->result();
+    }
 
 
-
+    // retorna las ot por nombre del tipo (ot_hija) 
+    public function get_ot_by_tipo($name_type){
+        $query = $this->db->get_where('ot_hija', array('ot_hija'=>$name_type));
+        return $query->result();
     }
 
     //Trae los datos de la tabla inconsistencias 
@@ -1017,7 +1038,36 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+    // Actualizar tabla ot por id register
+    public function update_ot_hija($data){
+        $this->db->where('k_id_register', $data['k_id_register']);
+        $this->db->update('ot_hija', $data);
+
+        $error = $this->db->error();
+
+        if ($error['message']) {
+          return 1;
+        }else{
+          return 0;
+        }
+        
+    }
 
 
+    /**************************************************************************************************************/
+    /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
+    /**************************************************************************************************************/
+    public function getAllOtsUndefined(){
+    $query = $this->db->query("
+    SELECT nro_ot_onyx, 
+           id_orden_trabajo_hija, 
+           nombre_cliente, ot_hija, 
+           estado_orden_trabajo_hija, 
+           fecha_creacion 
+           FROM telmex_vip.ot_hija 
+           WHERE k_id_estado_ot = '189';
+    ");
+    return $query->result();
+  }
 
 }

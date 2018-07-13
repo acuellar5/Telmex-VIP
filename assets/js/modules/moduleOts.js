@@ -3,7 +3,7 @@ $(function () {
         init: function () {
             hoy.events();
             hoy.listOtsCurrent();
-
+            hoy.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -39,6 +39,28 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                initComplete: function () {
+                    var r = $('#tablaEditOts tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaEditOts thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaEditOts').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -84,6 +106,11 @@ $(function () {
 
             botones += '</div>';
             return botones;
+        },
+        individualColumnSearching: function () {
+            $('#tablaEditOts tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     hoy.init();
@@ -96,7 +123,7 @@ $(function () {
         init: function () {
             total.events();
             total.getListTotal();
-
+            total.individualColumnSearching();
         },
         //Eventos de la ventana.
         events: function () {
@@ -121,6 +148,28 @@ $(function () {
                     {data: "MRC"},
                     {data: total.getButtons},
                 ],
+                initComplete: function () {
+                    var r = $('#tabla_total tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tabla_total thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tabla_total').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -182,11 +231,6 @@ $(function () {
             botones += '</div>';
             return botones;
         },
-
-
-
-
-
         // Datos de configuracion del datatable para log  sin usar (server side prossesing)
         configTableLog: function (data, columns, onDraw) {
             return {
@@ -195,39 +239,14 @@ $(function () {
               "language": {
                   "url": baseurl + "/assets/plugins/datatables/lang/es.json"
               },
-              dom: 'Blfrtip',
-                buttons: [
-                    {
-                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
-                        className: 'btn-cami_cool',
-                        extend: 'excel',
-                        title: 'ZOLID EXCEL',
-                        filename: 'zolid ' + fecha_actual
-                    },
-                    {
-                        text: 'Imprimir <span class="fa fa-print"></span>',
-                        className: 'btn-cami_cool',
-                        extend: 'print',
-                        title: 'Reporte Zolid',
-                    }
-                ],
-                select: true,
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                columnDefs: [{
-                        // targets: -1,
-                        // visible: false,
-                        defaultContent: "",
-                        // targets: -1,
-                        orderable: false,
-                    }],
-                order: [[7, 'desc']],
-                drawCallback: onDraw
+
             }
         },
- 
-            
-            
-        
+        individualColumnSearching: function () {
+            $('#tabla_total tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
+        } 
     };
     total.init();
     /************************************************FIN TOTAL************************************************/
@@ -236,7 +255,7 @@ $(function () {
         init: function () {
             nueva.events();
             nueva.listOtsNew();
-
+            nueva.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -271,6 +290,28 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                initComplete: function () {
+                    var r = $('#tablaNewOts tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaNewOts thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaNewOts').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -310,6 +351,11 @@ $(function () {
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             botones += '</div>';
             return botones;
+        },
+        individualColumnSearching: function () {
+            $('#tablaNewOts tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     nueva.init();
@@ -321,7 +367,7 @@ $(function () {
         init: function () {
             cambio.events();
             cambio.listOtsChange();
-
+            cambio.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -356,6 +402,28 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                initComplete: function () {
+                    var r = $('#tablaChangesOts tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaChangesOts thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaChangesOts').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -399,6 +467,11 @@ $(function () {
 
             botones += '</div>';
             return botones;
+        },
+        individualColumnSearching: function () {
+            $('#tablaChangesOts tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     cambio.init();
@@ -410,7 +483,7 @@ $(function () {
         init: function () {
             quinceDias.events();
             quinceDias.listOtsFiteenDays();
-
+            quinceDias.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -447,6 +520,28 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                initComplete: function () {
+                    var r = $('#tablaFiteenDaysOts tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaFiteenDaysOts thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaFiteenDaysOts').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -490,6 +585,11 @@ $(function () {
 
             botones += '</div>';
             return botones;
+        },
+        individualColumnSearching: function () {
+            $('#tablaFiteenDaysOts tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     quinceDias.init();
@@ -1676,9 +1776,6 @@ $(function () {
                         {data: "fecha_mod"}
                     ]));
             },
-
-
-
 
         };
         eventos.init();

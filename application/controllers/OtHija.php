@@ -23,7 +23,7 @@ class OtHija extends CI_Controller {
         $this->load->view('parts/footerF');
     }
 
-
+    // Selecciona todas las ots actuales
     public function c_getOtsAssigned() {
         $response = null;
         if (Auth::check()) {
@@ -44,9 +44,6 @@ class OtHija extends CI_Controller {
         $response = null;
         if (Auth::check()) {
             $data = $this->Dao_ot_hija_model->getOtsFiteenDays();
-
-
-
             // $otHijaModel = new Dao_ot_hija_model();
             $res['data'] = $data->result();
             $res['count'] = $data->num_rows();
@@ -59,6 +56,7 @@ class OtHija extends CI_Controller {
 
     // Función para traer dinamicamente elementos del datatables con server side prossesing
     public function getListTotalOts(){
+        ini_set('memory_limit', '-1');
         // se configuro el datatables para q envie los parametros por post
         // colum_num se usa para el ordenamiento por columna dependiendo la peticion
         $columm_num = $this->input->post('order')['0']['column'];
@@ -147,5 +145,8 @@ class OtHija extends CI_Controller {
     }
 
 
-   
+
+    /**************************************************************************************************************/
+    /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
+    /**************************************************************************************************************/
 }

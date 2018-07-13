@@ -39,7 +39,7 @@ class Dao_estado_ot_model extends CI_Model {
         }
     }
 
-    //
+    // Retorna un registro buscado por idtipo y nombre de estado
     public function get_status_by_idtipo_and_name_status($idTipo, $nombre){
         $query = $this->db->query("
             SELECT * 

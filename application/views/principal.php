@@ -100,12 +100,41 @@
 
         <div id="en_tiempos" class="tab-pane fade">
             <h3>En Tiempos</h3>
-            <table id="tablaEnTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+            <table id="tablaEnTiempos" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
 
         <div id="todo" class="tab-pane fade">
             <h3>Todo</h3>
-            <table id="tablaTodo" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+            <table id="tablaTodo" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
 
     </div>
