@@ -430,9 +430,14 @@ class User extends CI_Controller {
       
       echo "<br>";
      
-
-
     }
+
+  //  
+  public function c_print_table_incons(){
+    $data = $this->Dao_ot_hija_model->print_tabl();
+    echo json_encode($data);
+  }
+
 
 
 

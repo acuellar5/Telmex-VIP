@@ -69,7 +69,5 @@ class Type extends CI_Controller {
     echo json_encode($types);
   }
 
-
-  
   
 }

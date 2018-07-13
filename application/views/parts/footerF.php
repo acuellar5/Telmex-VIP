@@ -29,7 +29,7 @@
 <!-- **********************************************VISTA EDITAR OTS *********************************************-->
     <script src="<?= URL::to('assets/plugins/datatables/js/jquery.dataTables.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
-    <script src="<?= URL::to('assets/js/modules/moduleOts.js') ?>"></script>    
+    <script src="<?= URL::to("assets/js/modules/moduleOts.js?v=" . time()) ?>"></script>    
     
 <?php endif ?>
 

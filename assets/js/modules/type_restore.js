@@ -124,4 +124,12 @@ $('#mdl_btn_save_variant').click(function(event) {
                 }
             });
 	}
+
+     tab_inconsis.init();
+
+
+
+
+
+
 });

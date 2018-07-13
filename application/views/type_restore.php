@@ -40,6 +40,7 @@
 		
 </table>
 
+
 <!------------------------------- MODAL GUARDAR NUEVO TIPO----------------------------- -->
 <div id="mdl_new_type" class="modal fade " role="dialog">
 	<div class="modal-dialog modal-md">
