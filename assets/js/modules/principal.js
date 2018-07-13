@@ -51,7 +51,6 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
-                // Para los filtros por columna
                 initComplete: function () {
                     var r = $('#tablaFueraTiempos tfoot tr');
                     r.find('th').each(function () {
@@ -64,9 +63,6 @@ $(function () {
                     var table = $('#tablaFueraTiempos').DataTable();
 
                     // Apply the search
-
-                    /*table.columns().every(function () {*/
-
                     table.columns().every(function () {
                         var that = this;
 
@@ -77,7 +73,6 @@ $(function () {
                         });
                     });
                 },
-                
                 data: data,
                 columns: columns,
                 "language": {
@@ -285,7 +280,6 @@ $(function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = eTiempos.tablaEnTiempos.row(trParent).data();
-//            console.log(record);
             fTiempos.fillFormModal(record);
         },
 
@@ -460,14 +454,8 @@ $(function () {
                        buttons: [{
                         text: 'Ocultar seleccionados',
                         className: 'btn-cami_cool',
-                       //  action: function () {
-                       //      var datos = ;
-                       //  console.log();
-
-                       // }
-
-                   }
-                   ],
+                        action: tab_inconsis.hiddenRows
+                        }],
                       columnDefs: [{
                               defaultContent: "",
                               targets: -1,
@@ -481,7 +469,7 @@ $(function () {
                 //Son los chekecds de datatables
                 getcheck: function(obj){
                     return `<label class=" S_check">
-                          <input type="checkbox" class="all_select">
+                          <input type="checkbox" class="all_select" data-idchk="${obj.id_inc}">
                           <span class="checkmark" ></span>
                         </label>`;
                 },
@@ -494,7 +482,6 @@ $(function () {
                         tab_inconsis.chk = 0
                     }
                     var all_checks = document.querySelectorAll('.all_select');
-                        console.log(all_checks);
                     all_checks.forEach(function(input){
                         if (tab_inconsis.chk == 0) {
                             input.checked = true;
@@ -508,6 +495,31 @@ $(function () {
                         }
                     });
                 },
+
+                //comentar faber
+                hiddenRows: function(event){
+                    var all_checks = $('.all_select');
+                    $.each(all_checks, function(i, input){
+                        if (input.checked) {
+                            // alert seguro?
+
+
+                            $.post('/path/to/file', 
+                                {
+                                    registro: input.dataset.idchk,
+                                }, 
+                            function(data) {
+                                // si es json_encode
+                                // var obj = JSON.parse(data);
+
+                                //ya se tubo q haber actualizado
+                            });                            
+                        }
+                    }); 
+
+
+                },
+
 
              };
 

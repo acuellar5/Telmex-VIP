@@ -177,8 +177,8 @@ class Templates extends CI_Controller {
 
 //
     public function enviar_email($cuerpo) {
-      $Email_user = Auth::user()->n_mail_user; 
-      $correos = ['bredi.buitrago@zte.com.cn', 'jfgrisales21@gmail.com', $Email_user];
+      $email_user = Auth::user()->n_mail_user; 
+      $correos = ['bredi.buitrago@zte.com.cn', 'jfgrisales21@misena.edu.co', $email_user];
         $this->load->library('parser');
 
         $config = Array(
@@ -191,7 +191,7 @@ class Templates extends CI_Controller {
             // 'smtp_timeout' => 5, //tiempo de conexion maxima 5 segundos
             'mailtype' => 'html',
             'charset' => 'utf-8',
-            'priority' => 3,
+            'priority' => 1,
         );
         // $argumentos = $this->_post($this->input->post('servicio'));
         // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
@@ -202,7 +202,7 @@ class Templates extends CI_Controller {
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
         $this->email->to($this->input->post('Email_envio')); // change it to yours
         $this->email->cc($correos);
-        $this->email->subject("PRUEBA DE UN CORREO");
+        $this->email->subject("Notificación de Servicio");
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";

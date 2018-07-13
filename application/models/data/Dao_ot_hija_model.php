@@ -1015,7 +1015,7 @@ class Dao_ot_hija_model extends CI_Model {
             o.ot_hija AS tipo, o.estado_orden_trabajo_hija AS estado,
             concat(u.n_name_user, ' ', u.n_last_name_user) AS nombre_usuario,
             i.fecha_mod AS fecha_modificacion, i.en_zolid AS zolid,
-            i.en_excel AS excel
+            i.en_excel AS excel, i.k_id_inconsistencia AS id_inc
             FROM inconcistencia i
             INNER JOIN user u 
             ON i.k_id_user = u.k_id_user
@@ -1095,6 +1095,11 @@ class Dao_ot_hija_model extends CI_Model {
            WHERE k_id_estado_ot is null;
     ");
     return $query->result();
+  }
+  //actualiza la columna ver a 0
+  public function upVerTo_0(){
+        $this->db->where('k_id_inconsistencia', $data['k_id_inconsistencia']);
+        $this->db->update('inconcistencia', $data);
   }
 
     /*     * *********************************************************************************************************** */
