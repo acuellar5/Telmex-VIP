@@ -1036,6 +1036,17 @@ class Dao_ot_hija_model extends CI_Model {
     /**************************************************************************************************************/
     /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
     /**************************************************************************************************************/
-
+    public function getAllOtsUndefined(){
+    $query = $this->db->query("
+    SELECT nro_ot_onyx, 
+           id_orden_trabajo_hija, 
+           nombre_cliente, ot_hija, 
+           estado_orden_trabajo_hija, 
+           fecha_creacion 
+           FROM telmex_vip.ot_hija 
+           WHERE k_id_estado_ot = '189';
+    ");
+    return $query->result();
+  }
 
 }
