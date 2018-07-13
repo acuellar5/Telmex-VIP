@@ -1004,6 +1004,27 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+    //Trae los datos de la tabla inconsistencias 
+    public function print_tabl(){
+        $query = $this->db->query("
+            SELECT o.nro_ot_onyx AS ot_padre, o.id_orden_trabajo_hija AS ot_hija,
+            o.nombre_cliente AS cliente, o.orden_trabajo AS trabajo, 
+            o.servicio AS servicio, o.fecha_creacion AS fecha_creacion,
+            o.ot_hija AS tipo, o.estado_orden_trabajo_hija AS estado,
+            concat(u.n_name_user, ' ', u.n_last_name_user) AS nombre_usuario,
+            i.fecha_mod AS fecha_modificacion, i.en_zolid AS zolid,
+            i.en_excel AS excel
+            FROM inconcistencia i
+            INNER JOIN user u 
+            ON i.k_id_user = u.k_id_user
+            INNER JOIN ot_hija o
+            ON o.id_orden_trabajo_hija = i.id_ot_hija
+            WHERE estado_ver = 1
+            ;
+            ");
+        return $query->result();
+    }
+
     // Actualizar tabla ot por id register
     public function update_ot_hija($data) {
         $this->db->where('k_id_register', $data['k_id_register']);
@@ -1036,12 +1057,21 @@ class Dao_ot_hija_model extends CI_Model {
             'ot_hija' => $type
         );
 
-        $data = array(
-            'k_id_estado_ot' => $id_estado_ot
-        );
-
-        $this->db->where($where);
-        $this->db->update('ot_hija', $data);
+    /**************************************************************************************************************/
+    /*************************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS*************************/
+    /**************************************************************************************************************/
+    public function getAllOtsUndefined(){
+    $query = $this->db->query("
+    SELECT nro_ot_onyx, 
+           id_orden_trabajo_hija, 
+           nombre_cliente, ot_hija, 
+           estado_orden_trabajo_hija, 
+           fecha_creacion 
+           FROM telmex_vip.ot_hija 
+           WHERE k_id_estado_ot = '189';
+    ");
+    return $query->result();
+  }
 
         // print_r($this->db->last_query());
         $afectados = $this->db->affected_rows();
