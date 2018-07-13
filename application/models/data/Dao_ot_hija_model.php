@@ -1056,6 +1056,13 @@ class Dao_ot_hija_model extends CI_Model {
             'estado_orden_trabajo_hija' => $name_status,
             'ot_hija' => $type
         );
+
+        $data = array(
+            'k_id_estado_ot' => $id_estado_ot
+        );
+
+        $this->db->where($where);
+        $this->db->update('ot_hija', $data);
         // print_r($this->db->last_query());
         $afectados = $this->db->affected_rows();
 
