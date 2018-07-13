@@ -319,7 +319,7 @@ table.dataTable_camilo thead input{
     top: 50%;
     left: 50%;
     width: 100%;
-    height: 40px;
+    height: 89px;
     margin-left: -50%;
     margin-top: -25px;
     padding-top: 20px;
@@ -338,8 +338,17 @@ table.dataTable_camilo thead input{
 .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_processing,
 .dataTables_wrapper .dataTables_paginate {
-    color: #084c6f; 
+    /*color: #e8e8e800;*/
+    /*background-image: url(https://k33.kn3.net/taringa/E/2/3/7/0/6/LKGamer222/543.gif);*/
+    background-position: 350px; 
 }
+
+.dataTables_processing {
+    color: #e8e8e800 ;
+    background-image: url(../images/loading.gif) !important;
+    background-repeat: no-repeat !important;
+}
+
 .dataTables_wrapper .dataTables_scroll {
     clear: both; }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
