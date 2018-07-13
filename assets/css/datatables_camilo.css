@@ -437,3 +437,39 @@ table.dataTable_camilo .btn_datatable_cami:hover{
     background: #084c6f;
     color: #ffffff;
 }
+/*CSS PARA BOTON PRESIONABLE*/
+.btn_check{
+    background: #084c6f;
+    border-bottom: 4px solid #608fa7;
+    border-radius: 3px;
+    box-shadow: 3px 3px 6px #999;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    height: 32px;
+    padding: 5px 13px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+}
+
+.btn_check:hover{
+    /*background: #348ab7;*/
+}
+.btn_checkeado {
+    color: #45EC45;
+    background: #084c6f;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    height: 32px;
+    padding: 5px 13px;
+    text-align: center;
+    
+    box-shadow: 2px 2px 2px #777 inset, 0px 0px 15px 0px #13a8dd;
+    border-bottom: 2px solid #13a8dd;
+     border-top: 2px solid #031836; 
+    text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
+    /*transform: translateY(4px);*/
+    transition: all 0.1s ease 0s;
+    /*margin: 80px auto 76px auto;*/
+}

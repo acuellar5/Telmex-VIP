@@ -173,7 +173,6 @@ $(function () {
         init: function () {
             eTiempos.events();
             eTiempos.listInTimes();
-            eTiempos.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -208,28 +207,6 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
-                initComplete: function () {
-                    var r = $('#tablaEnTiempos tfoot tr');
-                    r.find('th').each(function () {
-                        $(this).css('padding', 8);
-                    });
-                    $('#tablaEnTiempos thead').append(r);
-                    $('#search_0').css('text-align', 'center');
-
-                    // DataTable
-                    var table = $('#tablaEnTiempos').DataTable();
-
-                    // Apply the search
-                    table.columns().every(function () {
-                        var that = this;
-
-                        $('input', this.footer()).on('keyup change', function () {
-                            if (that.search() !== this.value) {
-                                that.search(this.value).draw();
-                            }
-                        });
-                    });
-                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -313,11 +290,6 @@ $(function () {
             });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
-        },
-        individualColumnSearching: function () {
-            $('#tablaEnTiempos tfoot th').each(function () {
-                $(this).html('<input type="text" placeholder="Buscar" />');
-            });
         }
     };
     eTiempos.init();
@@ -329,7 +301,6 @@ $(function () {
         init: function () {
             todo.events();
             todo.getListTotal();
-            todo.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -337,7 +308,7 @@ $(function () {
             $('#tablaTodo').on('click', 'a.ver-det', todo.onClickShowModalDet);
         },
         getListTotal: function () {
-            todo.tablaTodo = $('#tablaTodo').DataTable(todo.genericCogDataTable("/OtHija/getListTotalOts", "tablaTodo"));
+            todo.tableTotal = $('#tablaTodo').DataTable(todo.genericCogDataTable("/OtHija/getListTotalOts", "tablaTodo"));
         },
         genericCogDataTable: function (url, table) {
             return {
@@ -352,28 +323,6 @@ $(function () {
                     {title: "Recurrente", data: "MRC"},
                     {title: "opc", data: todo.getButtons},
                 ],
-                initComplete: function () {
-                    var r = $('#tablaTodo tfoot tr');
-                    r.find('th').each(function () {
-                        $(this).css('padding', 8);
-                    });
-                    $('#tablaTodo thead').append(r);
-                    $('#search_0').css('text-align', 'center');
-
-                    // DataTable
-                    var table = $('#tablaTodo').DataTable();
-
-                    // Apply the search
-                    table.columns().every(function () {
-                        var that = this;
-
-                        $('input', this.footer()).on('keyup change', function () {
-                            if (that.search() !== this.value) {
-                                that.search(this.value).draw();
-                            }
-                        });
-                    });
-                },
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -393,15 +342,17 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
-                select: true,
+                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    
+                    
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
                     }],
-                order: [[7, 'desc']],
-                // drawCallback: onDraw,
                 // order: [[0, 'desc']], //ardenaniento
                 "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
                 "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
@@ -409,9 +360,9 @@ $(function () {
 
                 drawCallback: function (data) {
                     if ($('#bdg_total').html() == "...") {
-                        $('#bdg_total').html(data.json.recordsFiltered);                        
+                        $('#bdg_total').html(data.json.recordsFiltered);
                     }
-                    
+
                 },
                 "ajax": {
                     url: baseurl + '/' + url, // json datasource
@@ -445,11 +396,6 @@ $(function () {
                     + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
                     + '</div>';
             return boton;
-        },
-        individualColumnSearching: function () {
-            $('#tablaTodo tfoot th').each(function () {
-                $(this).html('<input type="text" placeholder="Buscar" />');
-            });
         }
     };
     todo.init();
@@ -494,16 +440,29 @@ $(function () {
                     {title: "Fecha modificacion", data: "fecha_modificacion"},
                     {title: "Zolid", data: "zolid"},
                     {title: "Excel", data: "excel"},
-                    {title: `<button type="button" id="check_all" data-check="0"> Select all </button>`, data: tab_inconsis.getcheck},
+                    {title: `<button type="button" id="check_all" data-check="0" class="btn_check" title="Select All"> *</button>`, data: tab_inconsis.getcheck},
                     ]));
                 },   
                 configTable: function (data, columns, onDraw) {
                     return {
                       data: data,
                       columns: columns,
-                      
+                      //lenguaje del plugin
+                      /*"language": { 
+                          "url": baseurl + "assets/plugins/datatables/lang/es.json"
+                      },*/
                        dom: 'Blfrtip',
-               
+                       buttons: [{
+                        text: 'Ocultar seleccionados',
+                        className: 'btn-cami_cool',
+                       //  action: function () {
+                       //      var datos = ;
+                       //  console.log();
+
+                       // }
+
+                   }
+                   ],
                       columnDefs: [{
                               defaultContent: "",
                               targets: -1,
@@ -530,14 +489,17 @@ $(function () {
                         tab_inconsis.chk = 0
                     }
                     var all_checks = document.querySelectorAll('.all_select');
-
+                        console.log(all_checks);
                     all_checks.forEach(function(input){
                         if (tab_inconsis.chk == 0) {
                             input.checked = true;
-                            $('#check_all').css('background', 'red');
+                            $('#check_all').removeClass('btn_check');
+                            $('#check_all').addClass('btn_checkeado');
+
                         } else {
                             input.checked = false;
-                            $('#check_all').css('background', 'blue');
+                            $('#check_all').addClass('btn_check');
+                            $('#check_all').removeClass('btn_checkeado');
                         }
                     });
                 },

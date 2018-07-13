@@ -432,11 +432,24 @@ class User extends CI_Controller {
      
     }
 
-  //  
+  //  TRAE LOS REGISTROS DE LA TABLA DE INCONSISTENCIAS
   public function c_print_table_incons(){
-    $data = $this->Dao_ot_hija_model->print_tabl();
-    echo json_encode($data);
+    if (Auth::check()) {
+            $data = $this->Dao_ot_hija_model->print_tabl();
+            echo json_encode($data);
+        } else {
+            $this->json(new Response(EMessages::SESSION_INACTIVE));
+        }
   }
+  //cambia el estado de estado_Ver (1) a estado ver (0)
+  // public function c_hide_inconsistency(){
+  //   $data = array(
+  //     'k_id_inconsistencia' =>$this->input->post('k_id_inconsistencia'),
+  //     'estado_ver' =>$this->input->post('estado_ver')
+  //   );
+    
+  //   echo json_encode($data);
+  // }
 
 
 

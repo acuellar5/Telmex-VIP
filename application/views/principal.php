@@ -62,6 +62,7 @@
                     <li><a href="#como_vamos">¿Cómo vamos?</a></li>
                     <li><a href="#Tareas_progreso">Tareas en progreso</a></li>
                     <li><a href="#Detalles">Detalles</a></li>
+                    <li><a href="#inconcsistencias">Inconsistencias</a></li>
                 </ul>
             </div>
         </div>
@@ -162,7 +163,7 @@ if (Auth::user()->n_project == 'Implementacion') {
 <!-- TABLA INCONSISTENCIAS -->
 
 
-  <div id="fuera_tiempos" class="tab-pane fade in active">
+  <div id="inconcsistencias" class="tab-pane fade in active">
             <h3>Inconsistencias</h3>
             <table id="tabla_inconsistencias" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
                     <tr>
