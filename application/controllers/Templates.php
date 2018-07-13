@@ -165,7 +165,7 @@ class Templates extends CI_Controller {
                 'ingeniero2_email' => $this->input->post('ingeniero2_email') ,
                 'ingeniero3' => $this->input->post('ingeniero3') ,
                 'ingeniero3_tel' => $this->input->post('ingeniero3_tel') ,
-                'ingeniero3_email' => $this->input->post('ingeniero3_email') 
+                'ingeniero3_email' => $this->input->post('ingeniero3_email'), 
                 
             );
           break;

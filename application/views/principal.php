@@ -157,6 +157,29 @@ if (Auth::user()->n_project == 'Implementacion') {
 
 <?php } ?>
 
+
+
+<!-- TABLA INCONSISTENCIAS -->
+
+
+  <div id="fuera_tiempos" class="tab-pane fade in active">
+            <h3>Inconsistencias</h3>
+            <table id="tabla_inconsistencias" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+            </table>
+        </div>
+
+
 <!-- ****************************MODAL DE DETALLE ************************************************ -->
 <div id="Modal_detalle" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="z-index: 9999999999 !important;">
     <div class="col-md-12">

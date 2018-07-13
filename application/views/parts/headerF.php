@@ -92,7 +92,7 @@
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Implementación Servicios <span class="caret"></span></a>
                   <ul class="dropdown-menu tamaniomin">
                     <li><a href="<?= URL::to('generarMarcaciones') ?>">Marcaciones</a></li>
-                    <li><a href="<?= URL::to('validadorIp') ?>" ">Validación IP</a></li>
+                    <li><a href="<?= URL::to('validadorIp') ?>">Validación IP</a></li>
                   </ul>
                 </li>
               <?php } ?>

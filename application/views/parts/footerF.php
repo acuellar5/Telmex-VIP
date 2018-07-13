@@ -25,11 +25,12 @@
     <script src="<?= URL::to("assets/js/utils/app.dom.js?v=" . time()) ?>" type="text/javascript"></script>
 <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'editarOts'): ?>
+<?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'status_restore' || $this->uri->segment(1) == 'type_restore'): ?>
 <!-- **********************************************VISTA EDITAR OTS *********************************************-->
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
-    <script src="<?= URL::to('assets/js/modules/moduleOts.js?v='. time()) ?>"></script>    
+    <script src="<?= URL::to("assets/js/modules/moduleOts.js?v=" . time()) ?>"></script>    
+
     
 <?php endif ?>
 

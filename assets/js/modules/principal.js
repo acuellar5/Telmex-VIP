@@ -32,7 +32,6 @@ $(function () {
                         fTiempos.printTableOutTime(data);
                     });
 
-
         },
         printTableOutTime: function (data) {
             ///lleno la tabla con los valores enviados
@@ -460,6 +459,100 @@ $(function () {
     };
     todo.init();
     /************************************************FIN TODO************************************************/
+    /*********************************************TABLA INCONSISTENCIAS**************************************/
+
+
+    tab_inconsis = {
+                chk : $('#check_all').data('check'),
+                 init: function () {
+                     tab_inconsis.events();
+                     tab_inconsis.listInconsi()
+                     
+                 },
+         
+                 //Eventos de la ventana.
+                 events: function () {
+                    $('#tabla_inconsistencias').on('click', 'button#check_all', tab_inconsis.all_select_check);
+                 },
+                 listInconsi: function () {
+                 $.post(baseurl + '/User/c_print_table_incons',
+                        {
+                            // clave: 'valor' // parametros que se envian
+                        },
+                        function (data) {
+                            var obj = JSON.parse(data);
+                            tab_inconsis.print_tab(obj);
+                        });
+             },
+
+                print_tab: function (data){
+                 tab_inconsis.tablaInconsistencias = $('#tabla_inconsistencias').DataTable(tab_inconsis.configTable(data, [
+                    {title: "OT Padre", data: "ot_padre"},
+                    {title: "Id Orden Trabajo Hija", data: "ot_hija"},
+                    {title: "Nombre Cliente", data: "cliente"},
+                    {title: "Trabajo", data: "trabajo"},
+                    {title: "Servicio", data: "servicio"},
+                    {title: "Fecha de creacion", data: "fecha_creacion"},
+                    {title: "Tipo", data: "tipo"},
+                    {title: "Estado", data: "estado"},
+                    {title: "Nombre de usuario", data: "nombre_usuario"},
+                    {title: "Fecha modificacion", data: "fecha_modificacion"},
+                    {title: "Zolid", data: "zolid"},
+                    {title: "Excel", data: "excel"},
+                    {title: `<button type="button" id="check_all" data-check="0"> Select all </button>`, data: tab_inconsis.getcheck},
+                    ]));
+                },   
+                configTable: function (data, columns, onDraw) {
+                    return {
+                      data: data,
+                      columns: columns,
+                      
+                       dom: 'Blfrtip',
+               
+                      columnDefs: [{
+                              defaultContent: "",
+                              targets: -1,
+                              orderable: false,
+                          }],
+                      order: [[3, 'asc']],
+                      drawCallback: onDraw
+                    }
+                },
+
+                //Son los chekecds de datatables
+                getcheck: function(obj){
+                    return `<label class=" S_check">
+                          <input type="checkbox" class="all_select">
+                          <span class="checkmark" ></span>
+                        </label>`;
+                },
+
+                
+                all_select_check: function(){
+                    if (tab_inconsis.chk == 0) {
+                        tab_inconsis.chk = 1;
+                    }else {
+                        tab_inconsis.chk = 0
+                    }
+                    var all_checks = document.querySelectorAll('.all_select');
+
+                    all_checks.forEach(function(input){
+                        if (tab_inconsis.chk == 0) {
+                            input.checked = true;
+                            $('#check_all').css('background', 'red');
+                        } else {
+                            input.checked = false;
+                            $('#check_all').css('background', 'blue');
+                        }
+                    });
+                },
+
+             };
+
+        tab_inconsis.init();
+
+
+
 });
 
 var tabla_cont_out;

@@ -239,6 +239,7 @@ $(function () {
               "language": {
                   "url": baseurl + "/assets/plugins/datatables/lang/es.json"
               },
+
             }
         },
         individualColumnSearching: function () {
@@ -606,7 +607,7 @@ $(function () {
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
                 $('#ins_servicio').on('change', eventos.selectFormulary );
                 $('.cerrar').on('click', eventos.clearModal);
-                $('#formModal').submit(eventos.clicOnButton);
+                $('#btnUpdOt').on('click', eventos.clicOnButton);
 
             },
             onClickShowModalEdit: function () {
@@ -725,35 +726,35 @@ $(function () {
                 $('.ins_servicio').hide();
                 $('#modalEditTicket').modal('show');
             },
-                updateStatusOt: function(){
+                // updateStatusOt: function(){
 
                     
-                    var id_orden_trabajo_hija = $('#id_orden_trabajo_hija').val();
-                    var k_id_estado_ot = $('#k_id_estado_ot').val();
-                    var estado_orden_trabajo_hija = $('#estado_orden_trabajo_hija').val();
-                    var fecha_actual = $('#fecha_actual').val();
-                    var estado_mod = $('#estado_mod').val();
+                //     var id_orden_trabajo_hija = $('#id_orden_trabajo_hija').val();
+                //     var k_id_estado_ot = $('#k_id_estado_ot').val();
+                //     var estado_orden_trabajo_hija = $('#estado_orden_trabajo_hija').val();
+                //     var fecha_actual = $('#fecha_actual').val();
+                //     var estado_mod = $('#estado_mod').val();
 
-                    $.post( baseurl +"OtHija/c_updateStatusOt",
-                    {
-                        k_id_estado_ot: k_id_estado_ot,
-                        estado_orden_trabajo_hija: estado_orden_trabajo_hija,
-                        fecha_actual: fecha_actual,
-                        estado_mod: estado_mod,
-                    },
-                    function(data){
-                         //console.log(data);
-                         var res = JSON.parse(data);
-                         // console.log(res);
-                         if (res == 1) {
-                             swal("Se actualizo correctamente!", "", "success");
-                             setTimeout('document.location.reload()',1500);
-                         }else {
-                           swal("No actualizo correctamente!", "", "error");
-                         }
+                //     $.post( baseurl +"OtHija/c_updateStatusOt",
+                //     {
+                //         k_id_estado_ot: k_id_estado_ot,
+                //         estado_orden_trabajo_hija: estado_orden_trabajo_hija,
+                //         fecha_actual: fecha_actual,
+                //         estado_mod: estado_mod,
+                //     },
+                //     function(data){
+                //          console.log(data);
+                //          var res = JSON.parse(data);
+                //          // console.log(res);
+                //          if (res == 1) {
+                //              swal("Se actualizo correctamente!", "", "success");
+                //              setTimeout('document.location.reload()',1500);
+                //          }else {
+                //            swal("No actualizo correctamente!", "", "error");
+                //          }
 
-                    });
-                },
+                //     });
+                // },
                 //limpia el modal cada vez que se cierra
                 clearModal: function(){   
                      $('#formModal')[0].reset();
@@ -807,7 +808,7 @@ $(function () {
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                            <input name="nombre_cliente" id="nombre_cliente" class="form-control" type="text" required>
+                                            <input name="nombre_cliente" id="nombre_cliente_val" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                 </div>
@@ -821,7 +822,7 @@ $(function () {
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                            <input name="servicio" id="servicio" class="form-control" type="text" required>
+                                            <input name="servicio" id="servicio_val" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                 </div>
@@ -1631,44 +1632,81 @@ $(function () {
             },
             clicOnButton: function(){
                
-                var response;
+                var msj = false;
+                var response = true;
                 var mail = $('#ingeniero1_email').val();
                 var mail1 = $('#Email_envio').val();
                 var expresiones = /\w+@\w+\.+[a-z]/;
-                var inputs = [  $('#nombre').val(),
-                                $('#nombre_cliente').val(),
-                                $('#servicio').val(),
-                                $('#fecha').val(),
-                                $('#direccion_instalacion').val(),
-                                $('#direccion_instalacion_des1').val(),
-                                $('#ancho_banda').val(),
-                                $('#interfaz_entrega').val(),
-                                $('#equipos_intalar_camp1').val(),
-                                $('#fecha_servicio').val(),
-                                $('#ingeniero1').val(),
-                                $('#ingeniero1_tel').val(),
+                var inputs = [  $('#nombre'),
+                                $('#nombre_cliente_val'),
+                                $('#servicio_val'),
+                                $('#fecha'),
+                                $('#direccion_instalacion'),
+                                $('#direccion_instalacion_des1'),
+                                $('#ancho_banda'),
+                                $('#interfaz_entrega'),
+                                $('#equipos_intalar_camp1'),
+                                $('#fecha_servicio'),
+                                $('#ingeniero1'),
+                                $('#ingeniero1_tel'),
+                                $('#ingeniero1_email'),
+                                $('#Email_envio')
                             ];
                                 
                             
                 inputs.forEach(function(input){
-                    if (input == '') {
-                        alert('Complete correctamente los campos'+' '+input); 
-                        response = false;
-                    } else {
-                        response = true;
-                    }
-                });
-                    if (!expresiones.test(mail) || !expresiones.test(mail1)) {
-                        alert('El formato del correo está mal');
+                    if (input.val() == '') {
+                        msj = true;
+                        input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
                         return false;
                     }else {
-                        return true;
+                        input.css("box-shadow", "none");                        
                     }
-                return response;
+                });
+                if (msj) {
+                    swal('Error', 'Complete correctamente los campos', 'error');
+                    response = false; 
+                    return false; 
+                }
 
+                if (!expresiones.test(mail) || !expresiones.test(mail1)) {
+                    swal('Error', 'El formato del correo está mal', 'error');
+                    return false;
+                }
+                
+                if(response){
 
+                    swal({
+                        title:"Advertencia",
+                        text: '¿El correo  '+mail1+'  es el correcto?',
+                        icon: "warning",
+                        buttons: true,
 
-
+                        dangerMode: true,
+                        buttons: {
+                        cancel: "Cancelar!",
+                        continuar: {
+                          text: "Continuar!",
+                          value: "continuar",
+                          className: "btn_continuar",
+                        },
+                      },
+                    })
+                    .then((continuar) => {
+                        if (continuar) {
+                            $('#formModal').submit();
+                            response = true;
+                        } else {
+                            swal("¡Cancelaste la opración!",{
+                                icon: "error",
+                                dangerMode: true,
+                            });
+                            response = false;
+                            return false;
+                        }
+                    });
+                }
+                return false;
             },
 
             //************************************LOG**************************************

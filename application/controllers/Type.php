@@ -126,7 +126,15 @@ class Type extends CI_Controller {
     echo json_encode($respuesta);
   }
 
-
-  
+// TABLA DE INCONSISTENCIA
+public function getListOtsUndefined(){
+  $UndefinedOts = $this->Dao_ot_hija_model->getAllOtsUndefined();
+  echo json_encode($UndefinedOts);
+}
+// tabla de null
+public function getListOtsNull(){
+  $NullOts = $this->Dao_ot_hija_model->getListOtsNull();
+  echo json_encode($NullOts);
+}   
   
 }

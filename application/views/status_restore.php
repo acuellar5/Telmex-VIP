@@ -34,13 +34,17 @@
 
 </table>
 
+<!-- ***************************TABLA DE INCONSISTENCIAS*************************** -->
+<h3>Tabla de registro con tipo Indefinido</h3>
+<table id="table_null" class="table table-hover table-bordered table-striped dataTable_camilo "></table>
+
 <!------------------------------- MODAL GUARDAR NUEVO TIPO----------------------------- -->
 <div id="mdl_new_type" class="modal fade " role="dialog">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header cssnewtypem">
                 <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('/assets/images/cerrar (7).png') ?>"></img></button>
-                <h3 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo Tipo</h3>
+                <h3 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo Estado</h3>
             </div>
             <div class="modal-body">
                 <form class="well form-horizontal" id="mdl_form_new_type" action="<?= URL::to('Status/save_new_status'); ?>"  method="post" onsubmit="return validar_form()">
@@ -73,7 +77,7 @@
         </div>
     </div>
 </div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 
 <?php
 if ($msj) {
@@ -81,7 +85,7 @@ if ($msj) {
         ?>
         <script> swal('ERROR', 'existió un error al insertar el tipo nuevo y actualizar los registros', 'error');</script>
     <?php } else if ($msj == 'No existen') { ?>
-        <script>  swal('Atención', 'El estado que esta intentando insertar pertence a un tipo nuevo, por favor dirigase al modulo <a href="<?= URL::to('status_restore') ?>">Status restore</a>', 'info');</script>
+        <script>  swal('Atención', 'El estado que esta intentando insertar pertence a un tipo nuevo, por favor dirigase al modulo <a href="<?= URL::to('type_restore') ?>" target="_blank"><strong> TYPE RESTORE </strong></a> para corregir este caso.', 'info');</script>
     <?php } else {
         ?>
         <script> swal('BIEN!', 'Se actualizaron ' + <?= $msj ?> + ' registros exitosamente.', 'success');</script>
