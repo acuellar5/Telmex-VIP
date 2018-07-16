@@ -10,7 +10,7 @@ class OtHija extends CI_Controller {
         $this->load->model('data/Dao_log_model');
     }
 
-    public function getOtsAssigned() {
+    public function c_getOtsAssigned() {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
@@ -109,6 +109,18 @@ class OtHija extends CI_Controller {
             $data = $otHijaModel->getOtsChange();
             $res['data'] = $data->result();
             $res['count'] = $data->num_rows();
+            $this->json($res);
+        } else {
+            $this->json(new Response(EMessages::SESSION_INACTIVE));
+            return;
+        }
+    }
+    
+    public function c_getOtsOutTime() {
+        $response = null;
+        if (Auth::check()) {
+            $otHijaModel = new Dao_ot_hija_model();
+            $res = $otHijaModel->getOtsOutTime();
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));

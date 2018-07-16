@@ -11,7 +11,7 @@ $(function () {
             
         },
         listOtsCurrent: function () {
-            $.post(baseurl + '/OtHija/getOtsAssigned',
+            $.post(baseurl + '/OtHija/c_getOtsAssigned',
                     {
                         // clave: 'valor' // parametros que se envian
                     },

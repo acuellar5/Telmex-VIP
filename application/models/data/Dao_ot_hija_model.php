@@ -257,26 +257,7 @@ class Dao_ot_hija_model extends CI_Model {
 
     }
 
-    public function getCountOtsFiteenDays() {
-        try {
-            $db = new DB();
-            $condicion = "";
-            $usuario_session = Auth::user()->n_name_user . " " . Auth::user()->n_last_name_user;
-            if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND usuario_asignado like '%$usuario_session%'";
-            }
-            $datos = $db->select("SELECT count(*) as cont
-                                FROM telmex_vip.ot_hija
-                                WHERE ADDDATE(fecha_actual, INTERVAL 15 DAY) = CURDATE()
-                                $condicion")->first();
-            $response = new Response(EMessages::SUCCESS);
-            $response->setData($datos);
-            return $response;
-        } catch (DeplynException $ex) {
-            return $ex;
-        }
-    }
-
+    
     // llama el primer elemento dependiendo el id rf
     public function getExistIdOtHija($id) {
         $query = $this->db->query("
@@ -489,7 +470,7 @@ class Dao_ot_hija_model extends CI_Model {
                 $condicion = "AND k_id_user = $usuario_session";
             }
             $query = $this->db->query("
-                        SELECT oh.*, eo.k_id_tipo 
+                        SELECT oh.*, eo.k_id_tipo , eo.i_orden
                         FROM ot_hija oh
                         INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
                         WHERE estado_mod = 0
@@ -509,7 +490,7 @@ class Dao_ot_hija_model extends CI_Model {
             if (Auth::user()->n_role_user == 'ingeniero') {
                 $condicion = "AND k_id_user = $usuario_session";
             }
-            $query = $this->db->query("SELECT oh.*, eo.k_id_tipo 
+            $query = $this->db->query("SELECT oh.*, eo.k_id_tipo, eo.i_orden 
                                 FROM ot_hija oh
                                 INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
                                 WHERE estado_mod = 1
@@ -529,6 +510,59 @@ class Dao_ot_hija_model extends CI_Model {
                                         FROM ot_hija oth
                                         INNER JOIN user ON user.k_id_user = oth.k_id_user
                                         WHERE oth.fecha_actual = CURDATE()");
+            return $query->result();
+        } catch (DeplynException $ex) {
+            return $ex;
+        }
+    }
+
+
+
+    
+    public function getOtsOutTime() {
+        try {
+            $db = new DB();
+            $query = $this->db->query("SELECT oth.nombre_cliente, oth.id_cliente_onyx, oth.id_orden_trabajo_hija, 
+                                            oth.ot_hija, oth.estado_orden_trabajo_hija, oth.tipo_trascurrido,
+                                            CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero,
+                                            oth.fecha_creacion,
+                                            eot.k_id_tipo,
+                                            CASE
+                                                WHEN eot.k_id_tipo = 1 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 3 DAY))
+                                                WHEN eot.k_id_tipo = 2 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY))
+                                                WHEN eot.k_id_tipo = 3 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                WHEN eot.k_id_tipo = 4 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY))
+                                                WHEN eot.k_id_tipo = 6 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY))
+                                                WHEN eot.k_id_tipo = 7 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 16 DAY))
+                                                WHEN eot.k_id_tipo = 8 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 21 DAY))
+                                                WHEN eot.k_id_tipo = 9 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                WHEN eot.k_id_tipo = 47 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                WHEN eot.k_id_tipo = 48 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                WHEN eot.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY))
+                                                WHEN eot.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY))
+                                                WHEN eot.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY))
+                                            END AS tiempo_vencidas
+                                        FROM telmex_vip.ot_hija oth
+                                        INNER JOIN user ON user.k_id_user = oth.k_id_user
+                                        INNER JOIN estado_ot eot ON eot.k_id_estado_ot = oth.k_id_estado_ot
+                                        WHERE oth.fecha_actual = CURDATE() 
+                                                AND oth.estado_orden_trabajo_hija != 'Cerrada' 
+                                                AND oth.estado_orden_trabajo_hija != 'Cancelada' 
+                                                AND oth.estado_orden_trabajo_hija != '3- Terminada'
+                                                AND ((eot.k_id_tipo = 1 AND ADDDATE(oth.fecha_creacion, INTERVAL 3 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 2 AND ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 3 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 4 AND ADDDATE(oth.fecha_creacion, INTERVAL 6 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 6 AND ADDDATE(oth.fecha_creacion, INTERVAL 2 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 7 AND ADDDATE(oth.fecha_creacion, INTERVAL 16 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 8 AND ADDDATE(oth.fecha_creacion, INTERVAL 21 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 9 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 47 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 48 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 52 AND ADDDATE(oth.fecha_creacion, INTERVAL 15 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 53 AND ADDDATE(oth.fecha_creacion, INTERVAL 7 DAY) < CURDATE())
+                                                        OR (eot.k_id_tipo = 58 AND ADDDATE(oth.fecha_creacion, INTERVAL 8 DAY) < CURDATE()))
+                                        ORDER by tiempo_vencidas DESC");
             return $query->result();
         } catch (DeplynException $ex) {
             return $ex;
