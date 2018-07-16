@@ -598,6 +598,7 @@ $(function () {
         eventos = {
             init: function () {
                 eventos.events();
+
                 
             },
     
@@ -608,6 +609,32 @@ $(function () {
                 $('#ins_servicio').on('change', eventos.selectFormulary );
                 $('.cerrar').on('click', eventos.clearModal);
                 $('#btnUpdOt').on('click', eventos.clicOnButton);
+
+                //añadir copia para el envio de correos
+                $('#modalEditTicket').on('click', 'span#añadir_correo', function(){
+                    $('#seccion_correos').append(  
+                        `<div class="form-group row">
+                            <label for="mail_cc" class="col-md-2 control-label">Con copia a: </label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input type="text" name="mail_cc[]" required class="form-control">
+
+                                </div>
+                            </div>
+                            <span class="fa fa-minus btn btn-danger btn_minus col-md-1"></span>
+                        </div>`
+                        );
+                    eventos.flag++;
+                });
+
+                $('#modalEditTicket').on('click', 'span.btn_minus' , function(){
+                   var sp = $(this);
+                   var div_pdr = sp.parent('div');
+                   div_pdr.remove(); 
+                });
+
+
 
             },
             onClickShowModalEdit: function () {
@@ -763,8 +790,27 @@ $(function () {
 
 
 
-                  selectFormulary: function () {
+                selectFormulary: function () {
                 $('#general').html("");
+
+                var nombre_cliente = $('#nombre_cliente').val();
+                var servicio_val = $("#ins_servicio option:selected").html();
+                var direccion_destino = $('#direccion_destino').val();
+
+                // // a continuacion creamos la fecha en la variable date
+                // var date = new Date()
+                // // Luego le sacamos los datos año, dia, mes 
+                // // y numero de dia de la variable date
+                // var año = date.getYear()
+                // var mes = date.getMonth()
+                // var ndia = date.getDate()
+                // //Damos a los meses el valor en número
+                // mes+=1;
+                // if(mes<10) mes="0"+mes;
+                // //juntamos todos los datos en una variable
+                // var fecha_actual = ndia + "/" + mes + "/" + año
+
+
                 var toog = true;
                 var jmm = $('#general').html("");
                 var valServicio = 0;
@@ -772,7 +818,7 @@ $(function () {
                 
                 var form = "";
                 form += `
-                        <div class="widget bg_white m-t-25 display-block cliente">
+                        <div class="widget bg_white m-t-25 display-block cliente" id="seccion_correos">
                             <fieldset class="col-md-6 control-label">
                             <span class="div_Text_Form_modal"><strong>Email al que se dirije el correo: &nbsp;</strong></span>
                             </fieldset>
@@ -788,6 +834,7 @@ $(function () {
                                             <input name="Email_envio" id="Email_envio" class="form-control" type="text" required>
                                         </div>
                                     </div>
+                                <span class="btn btn-cami_cool" id="añadir_correo"> Add  <span class="fa fa-plus"></span></span>
                                 </div>
                             </fieldset>
                         </div>
@@ -808,7 +855,7 @@ $(function () {
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                            <input name="nombre_cliente" id="nombre_cliente_val" class="form-control" type="text" required>
+                                            <input name="nombre_cliente" id="nombre_cliente_val" class="form-control" type="text" value="${nombre_cliente}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -822,7 +869,7 @@ $(function () {
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                            <input name="servicio" id="servicio_val" class="form-control" type="text" required>
+                                            <input name="servicio" id="servicio_val" class="form-control" type="text" value="${servicio_val}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -831,7 +878,7 @@ $(function () {
                                     <div class="col-md-8 selectContainer">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                            <input name="fecha" id="fecha" class="form-control" type="date" required>
+                                            <input name="fecha" id="fecha" class="form-control" type="text" value="${fecha_actual}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -854,7 +901,7 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group direccion">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required >
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
                                                         </div>
                                                     </div>
                                                 </div>                                              
@@ -863,7 +910,8 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -902,7 +950,7 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group direccion">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required >
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
                                                         </div>
                                                     </div>
                                                 </div>                                              
@@ -911,7 +959,8 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -958,7 +1007,7 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group direccion">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required >
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -989,7 +1038,8 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1124,7 +1174,8 @@ $(function () {
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                    <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                    <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                    <span class="input-group-addon">MHz</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1150,7 +1201,7 @@ $(function () {
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group direccion">
                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required>
+                                                <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
                                             </div>
                                         </div>
                                     </div>                                              
@@ -1159,7 +1210,8 @@ $(function () {
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                <span class="input-group-addon">MHz</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1197,7 +1249,7 @@ $(function () {
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group direccion">
                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required>
+                                                <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
                                             </div>
                                         </div>
                                     </div>                                              
@@ -1206,7 +1258,8 @@ $(function () {
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                <span class="input-group-addon">MHz</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1252,7 +1305,7 @@ $(function () {
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group direccion">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                    <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required>
+                                                    <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
                                                 </div>
                                             </div>
                                         </div>
@@ -1283,7 +1336,8 @@ $(function () {
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                    <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                    <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                    <span class="input-group-addon">MHz</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -1317,7 +1371,7 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group direccion">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required>
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1348,7 +1402,8 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1383,7 +1438,7 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group direccion">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required >
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1414,7 +1469,8 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1448,7 +1504,7 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group direccion">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" required>
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1479,7 +1535,8 @@ $(function () {
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" required>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
                                                         </div>
                                                     </div>
                                                 </div>
