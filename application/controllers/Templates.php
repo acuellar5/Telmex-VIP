@@ -130,7 +130,6 @@ class Templates extends CI_Controller {
                 'equipos_intalar_camp1' => $p['equipos_intalar_camp1'],
                 'equipos_intalar_camp2' => $p['equipos_intalar_camp2'],
                 'equipos_intalar_camp3' => $p['equipos_intalar_camp3'],
-                'equipos_intalar_camp4' => $p['equipos_intalar_camp4'],
                 'fecha_servicio' => $p['fecha_servicio'],
                 'ingeniero1' => $p['ingeniero1'],
                 'ingeniero1_tel' => $p['ingeniero1_tel'],
@@ -204,6 +203,7 @@ class Templates extends CI_Controller {
           { echo "se envio";
             $this->update_status($_POST);
           }else{
+            show_error($this->email->print_debugger())
             echo ":( Hubo un error en el envio del correo";
           }
     }
@@ -1761,7 +1761,7 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
   </td>
   <td width="536" colspan="18" valign="top" style="width:402.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:4.2pt"></td>
   <td width="12" rowspan="4" style="width:9pt;padding:0cm;height:4.2pt">
-  <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">&nbsp;</span></p>
+  <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span>' . $argumentos['equipos_intalar_camp1'] . '</span></p>
   </td>
  </tr>
  <tr style="height:4.1pt">

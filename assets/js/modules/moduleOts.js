@@ -831,12 +831,12 @@ $(function () {
 
                             <!--  inicio seccion derecha form---->
                             <fieldset>
-                                <div class="form-group Email_envio">
-                                    <label for="Email_envio" class="col-md-3 control-label"> </label>
+                                <div class="form-group mail_envio">
+                                    <label for="mail_envio" class="col-md-3 control-label"> </label>
                                     <div class="col-md-8 selectContainer div_Form_Modals">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                            <input name="Email_envio" id="Email_envio" class="form-control" type="text" required>
+                                            <input name="mail_envio" id="mail_envio" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                 <span class="btn btn-cami_cool" id="añadir_correo"> Add  <span class="fa fa-plus"></span></span>
@@ -1697,7 +1697,7 @@ $(function () {
                     var msj = false;
                     var response = true;
                     var mail = $('#ingeniero1_email').val();
-                    var mail1 = $('#Email_envio').val();
+                    var mail1 = $('#mail_envio').val();
                     var expresiones = /\w+@\w+\.+[a-z]/;
                     var inputs = [  $('#nombre'),
                                     $('#nombre_cliente_val'),
@@ -1712,7 +1712,7 @@ $(function () {
                                     $('#ingeniero1'),
                                     $('#ingeniero1_tel'),
                                     $('#ingeniero1_email'),
-                                    $('#Email_envio')
+                                    $('#mail_envio')
                                 ];
                     inputs.forEach(function(input){
                         if (input.val() == '') {
