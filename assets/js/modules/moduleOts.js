@@ -16,7 +16,8 @@ $(function () {
                         // clave: 'valor' // parametros que se envian
                     },
                     function (data) {
-                        hoy.printTableOtsCurrent(data);
+                        $('#bdg_hoy').html(data['count']);
+                        hoy.printTableOtsCurrent(data['data']);
                     });
 
 
@@ -31,7 +32,7 @@ $(function () {
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {data: hoy.getButtons},
+                {title: "opc", data: hoy.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -52,10 +53,14 @@ $(function () {
             }
         },
         getButtons: function (obj) {
-            boton = '<div class="btn-group">'
-                    + '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>'
-                    + '</div>';
-            return boton;
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            if (obj.function != 0) {                
+                botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+            }
+
+            botones += '</div>';
+            return botones;
         }
     };
     hoy.init();
@@ -105,8 +110,11 @@ $(function () {
                 "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
 
 
-                drawCallback: function () {
-                    // vista.runTimers(table);
+                drawCallback: function (data) {
+                    if ($('#bdg_total').html() == "...") {
+                        $('#bdg_total').html(data.json.recordsFiltered);                        
+                    }
+                    
                 },
                 "ajax": {
                     url: baseurl + '/' + url, // json datasource
@@ -173,7 +181,8 @@ $(function () {
                         // clave: 'valor' // parametros que se envian
                     },
                     function (data) {
-                        nueva.printTableOtsNew(data);
+                        $('#bdg_nuevas').html(data['count']);
+                        nueva.printTableOtsNew(data['data']);
                     });
 
 
@@ -188,6 +197,7 @@ $(function () {
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "opc", data: nueva.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -206,6 +216,14 @@ $(function () {
                 order: [[0, 'asc']],
                 drawCallback: onDraw
             }
+        },
+        //retorna botones para las opciones de la tabla
+        getButtons: function(obj){
+            // console.log(obj);
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            botones += '</div>';
+            return botones;
         }
     };
     nueva.init();
@@ -229,7 +247,8 @@ $(function () {
                         // clave: 'valor' // parametros que se envian
                     },
                     function (data) {
-                        cambio.printTableOtsChange(data);
+                        $('#bdg_cambios').html(data['count']);
+                        cambio.printTableOtsChange(data['data']);
                     });
 
 
@@ -244,6 +263,7 @@ $(function () {
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "opc", data: cambio.getButtons}
             ]));
         },
         // Datos de configuracion del datatable
@@ -262,6 +282,18 @@ $(function () {
                 order: [[0, 'asc']],
                 drawCallback: onDraw
             }
+        },
+        //retorna botones para las opciones de la tabla
+        getButtons: function(obj){
+            // console.log(obj);
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            if (obj.function != 0) {                
+                botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+            }
+
+            botones += '</div>';
+            return botones;
         }
     };
     cambio.init();
@@ -280,12 +312,15 @@ $(function () {
         events: function () {
         },
         listOtsFiteenDays: function () {
-            $.post(baseurl + '/OtHija/getOtsFiteenDays',
+            $.post(baseurl + '/OtHija/c_getOtsFiteenDays',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
                     function (data) {
-                        quinceDias.printTableOtsFiteenDays(data.data);
+                        // console.log(data);
+                        $('#bdg_15').html(data['count']);
+                        quinceDias.printTableOtsFiteenDays(data['data']);
+
                     });
 
 
@@ -300,6 +335,7 @@ $(function () {
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "opc", data: quinceDias.getButtons}
             ]));
         },
         // Datos de configuracion del datatable
@@ -318,6 +354,18 @@ $(function () {
                 order: [[0, 'asc']],
                 drawCallback: onDraw
             }
+        },
+        //retorna botones para las opciones de la tabla
+        getButtons: function(obj){
+            // console.log(obj);
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            if (obj.function != 0) {                
+                botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+            }
+
+            botones += '</div>';
+            return botones;
         }
     };
     quinceDias.init();
@@ -404,11 +452,6 @@ $(function () {
                 });
 
             },
-
-
-
-
-
 
             //************************************LOG**************************************
 

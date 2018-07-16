@@ -1,10 +1,10 @@
     <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#hoy">Actuales</a></li>
-    <li class=""><a data-toggle="tab" href="#total">Total</a></li>
-    <li class=""><a data-toggle="tab" href="#nuevas">Nuevas</a></li>
-    <li class=""><a data-toggle="tab" href="#cambio">Cambios</a></li>
-    <li class=""><a data-toggle="tab" href="#dias_15">15 Días</a></li>
+    <li class="active"><a data-toggle="tab" href="#hoy">Actuales <span class="badge badge_cami" id="bdg_hoy">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#total">Total <span class="badge badge_cami" id="bdg_total">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#nuevas">Nuevas <span class="badge badge_cami" id="bdg_nuevas">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#cambio">Cambios <span class="badge badge_cami" id="bdg_cambios">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#dias_15">15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->

@@ -14,7 +14,9 @@ class OtHija extends CI_Controller {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->getOtsAssigned();
+            $data = $otHijaModel->getOtsAssigned();
+            $res['data'] = $data->result();
+            $res['count'] = $data->num_rows();
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
@@ -35,12 +37,16 @@ class OtHija extends CI_Controller {
         }
     }
     
-    public function getOtsFiteenDays() {
+    public function c_getOtsFiteenDays() {
         $response = null;
         if (Auth::check()) {
-            $otHijaModel = new Dao_ot_hija_model();
-            $res['data'] = $otHijaModel->getOtsFiteenDays();
-            $res['count'] = $otHijaModel->getCountOtsFiteenDays()->data;
+            $data = $this->Dao_ot_hija_model->getOtsFiteenDays();
+
+
+
+            // $otHijaModel = new Dao_ot_hija_model();
+            $res['data'] = $data->result();
+            $res['count'] = $data->num_rows();
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
@@ -85,7 +91,10 @@ class OtHija extends CI_Controller {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->getOtsNew();
+            $data = $otHijaModel->getOtsNew();
+            $res['data'] = $data->result();
+            $res['count'] = $data->num_rows();
+
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
@@ -97,7 +106,9 @@ class OtHija extends CI_Controller {
         $response = null;
         if (Auth::check()) {
             $otHijaModel = new Dao_ot_hija_model();
-            $res = $otHijaModel->getOtsChange();
+            $data = $otHijaModel->getOtsChange();
+            $res['data'] = $data->result();
+            $res['count'] = $data->num_rows();
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
