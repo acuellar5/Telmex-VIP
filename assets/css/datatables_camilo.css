@@ -319,7 +319,7 @@ table.dataTable_camilo thead input{
     top: 50%;
     left: 50%;
     width: 100%;
-    height: 40px;
+    height: 89px;
     margin-left: -50%;
     margin-top: -25px;
     padding-top: 20px;
@@ -338,8 +338,17 @@ table.dataTable_camilo thead input{
 .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_processing,
 .dataTables_wrapper .dataTables_paginate {
-    color: #084c6f; 
+    /*color: #e8e8e800;*/
+    /*background-image: url(https://k33.kn3.net/taringa/E/2/3/7/0/6/LKGamer222/543.gif);*/
+    background-position: 350px; 
 }
+
+.dataTables_processing {
+    color: #e8e8e800 ;
+    background-image: url(../images/loading.gif) !important;
+    background-repeat: no-repeat !important;
+}
+
 .dataTables_wrapper .dataTables_scroll {
     clear: both; }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
@@ -436,4 +445,40 @@ table.dataTable_camilo .btn_datatable_cami:hover{
 .btn-cami_cool:hover {
     background: #084c6f;
     color: #ffffff;
+}
+/*CSS PARA BOTON PRESIONABLE*/
+.btn_check{
+    background: #084c6f;
+    border-bottom: 4px solid #608fa7;
+    border-radius: 3px;
+    box-shadow: 3px 3px 6px #999;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    height: 32px;
+    padding: 5px 13px;
+    text-align: center;
+    transition: all 0.2s ease 0s;
+}
+
+.btn_check:hover{
+    /*background: #348ab7;*/
+}
+.btn_checkeado {
+    color: #45EC45;
+    background: #084c6f;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    height: 32px;
+    padding: 5px 13px;
+    text-align: center;
+    
+    box-shadow: 2px 2px 2px #777 inset, 0px 0px 15px 0px #13a8dd;
+    border-bottom: 2px solid #13a8dd;
+     border-top: 2px solid #031836; 
+    text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
+    /*transform: translateY(4px);*/
+    transition: all 0.1s ease 0s;
+    /*margin: 80px auto 76px auto;*/
 }

@@ -14,75 +14,76 @@ class Templates extends CI_Controller {
 
 
     public function c_updateStatusOt($servicio = null) {
-      if ($servicio) {
-        $data_template = $this->fill_formulary($servicio, $_POST);
-        switch ($servicio) {
-               case '1':
-                 $template = $this->internet_dedicado_empresarial($data_template);
-                 break;
-               case '2':
-                 $template = $this->internet_dedicado($data_template);
-                 break;
-               case '3':
-                 $template = $this->mpls_avanzado_intranet($data_template);
-                 break;
-               case '4':
-                 $template = $this->mpls_avanzado_intranet_varios_puntos($data_template);
-                 break;
-               case '5':
-                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data_template);
-                 break;
-               case '6':
-                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data_template);
-                 break;
-               case '7':
-                 $template = $this->avanzado_extranet($data_template);
-                 break;
-               case '8':
-                 $template = $this->backend_mpls($data_template);
-                 break;
-               case '9':
-                 $template = $this->mpls_avanzado_componente_datacenter_claro($data_template);
-                 break;
-               case '10':
-                 $template = $this->mpls_transaccional_3g($data_template);
-                 break;
-           
-             }  
-             // print_r($template);   
-             $this->enviar_email($template);
 
-      } else {  
-        $this->update_status($_POST);
-      }
+      header('Content-Type: text/plain');
+      print_r($this->input->post());
+      // if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
+      //   $data_template = $this->fill_formulary($servicio, $_POST);
+      //   switch ($servicio) {
+      //          case '1':
+      //            $template = $this->internet_dedicado_empresarial($data_template);
+      //            break;
+      //          case '2':
+      //            $template = $this->internet_dedicado($data_template);
+      //            break;
+      //          case '3':
+      //            $template = $this->mpls_avanzado_intranet($data_template);
+      //            break;
+      //          case '4':
+      //            $template = $this->mpls_avanzado_intranet_varios_puntos($data_template);
+      //            break;
+      //          case '5':
+      //            $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data_template);
+      //            break;
+      //          case '6':
+      //            $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data_template);
+      //            break;
+      //          case '7':
+      //            $template = $this->avanzado_extranet($data_template);
+      //            break;
+      //          case '8':
+      //            $template = $this->backend_mpls($data_template);
+      //            break;
+      //          case '9':
+      //            $template = $this->mpls_avanzado_componente_datacenter_claro($data_template);
+      //            break;
+      //          case '10':
+      //            $template = $this->mpls_transaccional_3g($data_template);
+      //            break;
+           
+      //        }  
+      //        // print_r($template);   
+      //        $this->enviar_email($template, $_POST);
+
+      // } else {  
+      //   $this->update_status($_POST);
+      // }
         
 
     }
 
     //Actualiza el estato (hay que enviarle el post)
-    private function update_status($data){
-      echo "entra aca bien";
-        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($this->input->post('k_id_estado_ot'));
+    private function update_status($pt){
+        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($pt['k_id_estado_ot']);
 
         date_default_timezone_set("America/Bogota");
         $fActual = date('Y-m-d');
         $data = array(
-            'id_orden_trabajo_hija' => $this->input->post('id_orden_trabajo_hija'),
-            'k_id_estado_ot' => $this->input->post('k_id_estado_ot'),
+            'id_orden_trabajo_hija' => $pt['id_orden_trabajo_hija'],
+            'k_id_estado_ot' => $pt['k_id_estado_ot'],
             'estado_orden_trabajo_hija' => $text_estado,
             'fecha_actual' => $fActual,
             'estado_mod' => 1,
-            'n_observacion_cierre' => $this->input->post('n_observacion_cierre')
+            'n_observacion_cierre' => $pt['n_observacion_cierre']
         );
 
         $dataLog = array(
-            'id_ot_hija' => $this->input->post('id_orden_trabajo_hija'),
-            'antes' => $this->input->post('estado_orden_trabajo_hija'),
+            'id_ot_hija' => $pt['id_orden_trabajo_hija'],
+            'antes' => $pt['estado_orden_trabajo_hija'],
             'ahora' => $text_estado,
             'columna' => 'estado_orden_trabajo_hija',
             'fecha_mod' => $fActual,
-        );
-        
+        );        
 
         $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
 
@@ -90,95 +91,93 @@ class Templates extends CI_Controller {
     }
 
 
-
-    public function fill_formulary($s) {
+    // se llenan los argumentos dependiendo el servicio
+    public function fill_formulary($s, $p) {
 
       switch (true) {
         case ($s == 1 || $s == 2):
             $argumentos = array(
-                'nombre' => $this->input->post('nombre'),
-                'nombre_cliente' => $this->input->post('nombre_cliente'),
-                'servicio' => $this->input->post('servicio'),
-                'fecha' => $this->input->post('fecha'),
-                'direccion_instalacion' => $this->input->post('direccion_instalacion'),
-                'ancho_banda' => $this->input->post('ancho_banda'),
-                'interfaz_entrega' => $this->input->post('interfaz_entrega') ,
-                'fecha_servicio' => $this->input->post('fecha_servicio'),
-                'ingeniero1' => $this->input->post('ingeniero1'),
-                'ingeniero1_tel' => $this->input->post('ingeniero1_tel'),
-                'ingeniero1_email' => $this->input->post('ingeniero1_email'),
-                'ingeniero2' => $this->input->post('ingeniero2'),
-                'ingeniero2_tel' => $this->input->post('ingeniero2_tel'),
-                'ingeniero2_email' => $this->input->post('ingeniero2_email'),
-                'ingeniero3' => $this->input->post('ingeniero3'),
-                'ingeniero3_tel' => $this->input->post('ingeniero3_tel'),
-                'ingeniero3_email' => $this->input->post('ingeniero3_email')
+                'nombre' => $p['nombre'],
+                'nombre_cliente' => $p['nombre_cliente'],
+                'servicio' => $p['servicio'],
+                'fecha' => $p['fecha'],
+                'direccion_instalacion' => $p['direccion_instalacion'],
+                'ancho_banda' => $p['ancho_banda'],
+                'interfaz_entrega' => $p['interfaz_entrega'],
+                'fecha_servicio' => $p['fecha_servicio'],
+                'ingeniero1' => $p['ingeniero1'],
+                'ingeniero1_tel' => $p['ingeniero1_tel'],
+                'ingeniero1_email' => $p['ingeniero1_email'],
+                'ingeniero2' => $p['ingeniero2'],
+                'ingeniero2_tel' => $p['ingeniero2_tel'],
+                'ingeniero2_email' => $p['ingeniero2_email'],
+                'ingeniero3' => $p['ingeniero3'],
+                'ingeniero3_tel' => $p['ingeniero3_tel'],
+                'ingeniero3_email' => $p['ingeniero3_email']
             );          
           break;
         case ($s == 4):
             $argumentos = array(
-                'nombre' => $this->input->post('nombre'),
-                'nombre_cliente' => $this->input->post('nombre_cliente') ,
-                'servicio' => $this->input->post('servicio') ,
-                'fecha' => $this->input->post('fecha') ,
-                'direccion_instalacion_des1' => $this->input->post('direccion_instalacion_des1') ,
-                'direccion_instalacion_des2' => $this->input->post('direccion_instalacion_des2') ,
-                'direccion_instalacion_des3' => $this->input->post('direccion_instalacion_des3') ,
-                'direccion_instalacion_des4' => $this->input->post('direccion_instalacion_des4') ,
-                'existente' => $this->input->post('existente') ,
-                'nuevo' => $this->input->post('nuevo') ,
-                'ancho_banda' => $this->input->post('ancho_banda') ,
-                'interfaz_entrega' => $this->input->post('interfaz_entrega') ,
-                'equipos_intalar_camp1' => $this->input->post('equipos_intalar_camp1') ,
-                'equipos_intalar_camp2' => $this->input->post('equipos_intalar_camp2') ,
-                'equipos_intalar_camp3' => $this->input->post('equipos_intalar_camp3') ,
-                'equipos_intalar_camp4' => $this->input->post('equipos_intalar_camp4') ,
-                'fecha_servicio' => $this->input->post('fecha_servicio') ,
-                'ingeniero1' => $this->input->post('ingeniero1') ,
-                'ingeniero1_tel' => $this->input->post('ingeniero1_tel') ,
-                'ingeniero1_email' => $this->input->post('ingeniero1_email') ,
-                'ingeniero2' => $this->input->post('ingeniero2') ,
-                'ingeniero2_tel' => $this->input->post('ingeniero2_tel') ,
-                'ingeniero2_email' => $this->input->post('ingeniero2_email') ,
-                'ingeniero3' => $this->input->post('ingeniero3') ,
-                'ingeniero3_tel' => $this->input->post('ingeniero3_tel') ,
-                'ingeniero3_email' => $this->input->post('ingeniero3_email') 
+                'nombre' => $p['nombre'],
+                'nombre_cliente' => $p['nombre_cliente'],
+                'servicio' => $p['servicio'],
+                'fecha' => $p['fecha'],
+                'direccion_instalacion_des1' => $p['direccion_instalacion_des1'],
+                'direccion_instalacion_des2' => $p['direccion_instalacion_des2'],
+                'direccion_instalacion_des3' => $p['direccion_instalacion_des3'],
+                'direccion_instalacion_des4' => $p['direccion_instalacion_des4'],
+                'existente' => $p['existente'],
+                'nuevo' => $p['nuevo'],
+                'ancho_banda' => $p['ancho_banda'],
+                'interfaz_entrega' => $p['interfaz_entrega'],
+                'equipos_intalar_camp1' => $p['equipos_intalar_camp1'],
+                'equipos_intalar_camp2' => $p['equipos_intalar_camp2'],
+                'equipos_intalar_camp3' => $p['equipos_intalar_camp3'],
+                'equipos_intalar_camp4' => $p['equipos_intalar_camp4'],
+                'fecha_servicio' => $p['fecha_servicio'],
+                'ingeniero1' => $p['ingeniero1'],
+                'ingeniero1_tel' => $p['ingeniero1_tel'],
+                'ingeniero1_email' => $p['ingeniero1_email'],
+                'ingeniero2' => $p['ingeniero2'],
+                'ingeniero2_tel' => $p['ingeniero2_tel'],
+                'ingeniero2_email' => $p['ingeniero2_email'],
+                'ingeniero3' => $p['ingeniero3'],
+                'ingeniero3_tel' => $p['ingeniero3_tel'],
+                'ingeniero3_email' => $p['ingeniero3_email'] 
             );
           break;
         case ($s == 3 || $s == 4 || $s == 6 || $s == 7 || $s == 8 || $s == 9 || $s == 10 ):
             $argumentos = array(
-                'nombre' => $this->input->post('nombre'),
-                'nombre_cliente' => $this->input->post('nombre_cliente') ,
-                'servicio' => $this->input->post('servicio') ,
-                'fecha' => $this->input->post('fecha') ,
-                'direccion_instalacion' => $this->input->post('direccion_instalacion'),
-                'existente' => $this->input->post('existente') ,
-                'nuevo' => $this->input->post('nuevo') ,
-                'ancho_banda' => $this->input->post('ancho_banda') ,
-                'interfaz_entrega' => $this->input->post('interfaz_entrega') ,
-                'fecha_servicio' => $this->input->post('fecha_servicio') ,
-                'ingeniero1' => $this->input->post('ingeniero1') ,
-                'ingeniero1_tel' => $this->input->post('ingeniero1_tel') ,
-                'ingeniero1_email' => $this->input->post('ingeniero1_email') ,
-                'ingeniero2' => $this->input->post('ingeniero2') ,
-                'ingeniero2_tel' => $this->input->post('ingeniero2_tel') ,
-                'ingeniero2_email' => $this->input->post('ingeniero2_email') ,
-                'ingeniero3' => $this->input->post('ingeniero3') ,
-                'ingeniero3_tel' => $this->input->post('ingeniero3_tel') ,
-                'ingeniero3_email' => $this->input->post('ingeniero3_email'), 
+                'nombre' => $p['nombre'],
+                'nombre_cliente' => $p['nombre_cliente'],
+                'servicio' => $p['servicio'],
+                'fecha' => $p['fecha'],
+                'direccion_instalacion' => $p['direccion_instalacion'],
+                'existente' => $p['existente'],
+                'nuevo' => $p['nuevo'],
+                'ancho_banda' => $p['ancho_banda'],
+                'interfaz_entrega' => $p['interfaz_entrega'],
+                'fecha_servicio' => $p['fecha_servicio'],
+                'ingeniero1' => $p['ingeniero1'],
+                'ingeniero1_tel' => $p['ingeniero1_tel'],
+                'ingeniero1_email' => $p['ingeniero1_email'],
+                'ingeniero2' => $p['ingeniero2'],
+                'ingeniero2_tel' => $p['ingeniero2_tel'],
+                'ingeniero2_email' => $p['ingeniero2_email'],
+                'ingeniero3' => $p['ingeniero3'],
+                'ingeniero3_tel' => $p['ingeniero3_tel'],
+                'ingeniero3_email' => $p['ingeniero3_email']
                 
             );
           break;
       }
-
-
       return $argumentos;
     }
 
 //
-    public function enviar_email($cuerpo) {
-      $Email_user = Auth::user()->n_mail_user; 
-      $correos = ['bredi.buitrago@zte.com.cn', 'jfgrisales21@gmail.com', $Email_user];
+    public function enviar_email($cuerpo , $pt) {
+      $email_user = Auth::user()->n_mail_user; 
+      $correos = [$email_user];
         $this->load->library('parser');
 
         $config = Array(
@@ -191,7 +190,7 @@ class Templates extends CI_Controller {
             // 'smtp_timeout' => 5, //tiempo de conexion maxima 5 segundos
             'mailtype' => 'html',
             'charset' => 'utf-8',
-            'priority' => 3,
+            'priority' => 1,
         );
         // $argumentos = $this->_post($this->input->post('servicio'));
         // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
@@ -200,15 +199,16 @@ class Templates extends CI_Controller {
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
-        $this->email->to($this->input->post('Email_envio')); // change it to yours
+        $this->email->to($pt['mail_envio']); // change it to yours
         $this->email->cc($correos);
-        $this->email->subject("PRUEBA DE UN CORREO");
+        $this->email->subject("Notificación de Servicio");
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";
             $this->update_status($_POST);
           }else{
-            echo "Hubo un error en el envio del correo";
+            echo ":( Hubo un error en el envio del correo";
+            show_error($this->email->print_debugger());
           }
     }
 

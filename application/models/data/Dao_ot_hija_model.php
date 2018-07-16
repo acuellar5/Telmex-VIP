@@ -347,7 +347,8 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Consulta controlada para el data tables usado con server side prossesing
-    public function getAllOtPS($parameters) {
+    public function getAllOtPS($parameters, $search_col){
+
         // reasigno las variables para q sean mas dicientes y manejables
         $start = $parameters['start'];
         $length = $parameters['length'];
@@ -359,23 +360,23 @@ class Dao_ot_hija_model extends CI_Model {
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
 
 
-
         // Cuando el usuario logueado es un ingeniero... si es admin puede ver todo
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion = ($search) ? " AND ot.k_id_user = $usuario_session " : " WHERE ot.k_id_user = $usuario_session ";
+            $condicion = " AND ot.k_id_user = $usuario_session ";
         }
         // si el usuario escribio algo en el buscador se concatena el where + lo que debe buscar
-        if ($search) {
-            $srch = "where ot.nombre_cliente LIKE '%" . $search . "%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
-            $srch .= "ot.fecha_compromiso LIKE '%" . $search . "%' OR ";
-            $srch .= "ot.fecha_programacion LIKE '%" . $search . "%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
-            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%'";
+        if($search){
+            $srch  = "AND (ot.nombre_cliente LIKE '%".$search."%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
+
         } else {
             // Si no escribio nada en el buscador se pasa vacio
             $srch = "";
@@ -461,7 +462,8 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
-                " . $srch . " " . $condicion . "
+                WHERE 1 = 1 
+                ".$srch." ".$condicion." ".$search_col."
                 ORDER BY $columm $order 
                 $limit_start_length 
             ");
@@ -1013,7 +1015,7 @@ class Dao_ot_hija_model extends CI_Model {
             o.ot_hija AS tipo, o.estado_orden_trabajo_hija AS estado,
             concat(u.n_name_user, ' ', u.n_last_name_user) AS nombre_usuario,
             i.fecha_mod AS fecha_modificacion, i.en_zolid AS zolid,
-            i.en_excel AS excel
+            i.en_excel AS excel, i.k_id_inconsistencia AS id_inc
             FROM inconcistencia i
             INNER JOIN user u 
             ON i.k_id_user = u.k_id_user
@@ -1081,7 +1083,6 @@ class Dao_ot_hija_model extends CI_Model {
     ");
         return $query->result();
     }
-
     // tabla de null
     public function getListOtsNull(){
     $query = $this->db->query("
@@ -1094,6 +1095,11 @@ class Dao_ot_hija_model extends CI_Model {
            WHERE k_id_estado_ot is null;
     ");
     return $query->result();
+  }
+  //actualiza la columna ver a 0
+  public function upVerTo_0(){
+        $this->db->where('k_id_inconsistencia', $data['k_id_inconsistencia']);
+        $this->db->update('inconcistencia', $data);
   }
 
     /*     * *********************************************************************************************************** */

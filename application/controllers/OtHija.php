@@ -70,8 +70,18 @@ class OtHija extends CI_Controller {
                'columm' => $this->input->post('columns')[$columm_num]['data']// column es la columna q se le dio click(ordenamiento)
               );
 
+        $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+        $search_col = ""; 
+        $cant_colum = count($this->input->post('columns'));
+
+        for ($i=0; $i < $cant_colum; $i++) { 
+            if ($this->input->post('columns')[$i]['search']['value'] !== "") {
+                $search_col .= " AND (". $col_names[$i] ." LIKE '%".$this->input->post('columns')[$i]['search']['value']."%') ";
+            }
+        }
+
         // hago la consulta al modelo y le envio los parametros
-        $result = $this->Dao_ot_hija_model->getAllOtPS($parameters);
+        $result = $this->Dao_ot_hija_model->getAllOtPS($parameters, $search_col);
         // guardo los registros en la variable resultado
         $resultado  = $result['datos'];
         // y el numero de cantidad total en la var total datos
