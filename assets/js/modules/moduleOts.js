@@ -836,7 +836,7 @@ $(function () {
                                     <div class="col-md-8 selectContainer div_Form_Modals">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                            <input name="Email_envio" id="Email_envio" class="form-control" type="text" required>
+                                            <input name="mail_envio" id="mail_envio" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                 <span class="btn btn-cami_cool" id="añadir_correo"> Add  <span class="fa fa-plus"></span></span>
