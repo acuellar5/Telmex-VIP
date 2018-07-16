@@ -674,7 +674,12 @@ $(function () {
                 $.each(registro,function(i,item){
                     $('#' + i).val(item);
                 }); 
+
+                $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
+
+
                     $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
+
 
                 eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
 
@@ -1688,82 +1693,83 @@ $(function () {
 
             },
             clicOnButton: function(){
-               
-                var msj = false;
-                var response = true;
-                var mail = $('#ingeniero1_email').val();
-                var mail1 = $('#Email_envio').val();
-                var expresiones = /\w+@\w+\.+[a-z]/;
-                var inputs = [  $('#nombre'),
-                                $('#nombre_cliente_val'),
-                                $('#servicio_val'),
-                                $('#fecha'),
-                                $('#direccion_instalacion'),
-                                $('#direccion_instalacion_des1'),
-                                $('#ancho_banda'),
-                                $('#interfaz_entrega'),
-                                $('#equipos_intalar_camp1'),
-                                $('#fecha_servicio'),
-                                $('#ingeniero1'),
-                                $('#ingeniero1_tel'),
-                                $('#ingeniero1_email'),
-                                $('#Email_envio')
-                            ];
+                if ($("#k_id_estado_ot").val() == 3) {
+                    var msj = false;
+                    var response = true;
+                    var mail = $('#ingeniero1_email').val();
+                    var mail1 = $('#Email_envio').val();
+                    var expresiones = /\w+@\w+\.+[a-z]/;
+                    var inputs = [  $('#nombre'),
+                                    $('#nombre_cliente_val'),
+                                    $('#servicio_val'),
+                                    $('#fecha'),
+                                    $('#direccion_instalacion'),
+                                    $('#direccion_instalacion_des1'),
+                                    $('#ancho_banda'),
+                                    $('#interfaz_entrega'),
+                                    $('#equipos_intalar_camp1'),
+                                    $('#fecha_servicio'),
+                                    $('#ingeniero1'),
+                                    $('#ingeniero1_tel'),
+                                    $('#ingeniero1_email'),
+                                    $('#Email_envio')
+                                ];
+                                    
                                 
-                            
-                inputs.forEach(function(input){
-                    if (input.val() == '') {
-                        msj = true;
-                        input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
-                        return false;
-                    }else {
-                        input.css("box-shadow", "none");                        
-                    }
-                });
-                if (msj) {
-                    swal('Error', 'Complete correctamente los campos', 'error');
-                    response = false; 
-                    return false; 
-                }
-
-                if (!expresiones.test(mail) || !expresiones.test(mail1)) {
-                    swal('Error', 'El formato del correo está mal', 'error');
-                    return false;
-                }
-                
-                if(response){
-
-                    swal({
-                        title:"Advertencia",
-                        text: '¿El correo  '+mail1+'  es el correcto?',
-                        icon: "warning",
-                        buttons: true,
-
-                        dangerMode: true,
-                        buttons: {
-                        cancel: "Cancelar!",
-                        continuar: {
-                          text: "Continuar!",
-                          value: "continuar",
-                          className: "btn_continuar",
-                        },
-                      },
-                    })
-                    .then((continuar) => {
-                        if (continuar) {
-                            $('#formModal').submit();
-                            response = true;
-                        } else {
-                            swal("¡Cancelaste la opración!",{
-                                icon: "error",
-                                dangerMode: true,
-                            });
-                            response = false;
+                    inputs.forEach(function(input){
+                        if (input.val() == '') {
+                            msj = true;
+                            input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
                             return false;
+                        }else {
+                            input.css("box-shadow", "none");                        
                         }
                     });
-                }
+                    if (msj) {
+                        swal('Error', 'Complete correctamente los campos', 'error');
+                        response = false; 
+                        return false; 
+                    }
+
+                    if (!expresiones.test(mail) || !expresiones.test(mail1)) {
+                        swal('Error', 'El formato del correo está mal', 'error');
+                        return false;
+                    }
+                    
+                    if(response){
+
+                        swal({
+                            title:"Advertencia",
+                            text: '¿El correo  '+mail1+'  es el correcto?',
+                            icon: "warning",
+                            buttons: true,
+
+                            dangerMode: true,
+                            buttons: {
+                            cancel: "Cancelar!",
+                            continuar: {
+                              text: "Continuar!",
+                              value: "continuar",
+                              className: "btn_continuar",
+                            },
+                          },
+                        })
+                        .then((continuar) => {
+                            if (continuar) {
+                                $('#formModal').submit();
+                                response = true;
+                            } else {
+                                swal("¡Cancelaste la opración!",{
+                                    icon: "error",
+                                    dangerMode: true,
+                                });
+                                response = false;
+                                return false;
+                            }
+                        });
+                    }
                 return false;
+                }
             },
 
             //************************************LOG**************************************

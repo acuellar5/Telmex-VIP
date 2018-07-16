@@ -14,7 +14,7 @@ class Templates extends CI_Controller {
 
 
     public function c_updateStatusOt($servicio = null) {
-      if ($servicio) {
+      if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
         $data_template = $this->fill_formulary($servicio, $_POST);
         switch ($servicio) {
                case '1':
@@ -50,7 +50,7 @@ class Templates extends CI_Controller {
            
              }  
              // print_r($template);   
-             $this->enviar_email($template);
+             $this->enviar_email($template, $_POST);
 
       } else {  
         $this->update_status($_POST);
@@ -173,13 +173,8 @@ class Templates extends CI_Controller {
 
 //
     public function enviar_email($cuerpo) {
-<<<<<<< HEAD
-      $mail_user = Auth::user()->n_mail_user; 
-      $correos = ['bredi.buitrago@zte.com.cn', 'jfgrisales21@gmail.com', $mail_user];
-=======
       $email_user = Auth::user()->n_mail_user; 
       $correos = [$email_user];
->>>>>>> 0ef480153c03a4c72fe7b81cc8d68bdd3d1bbe53
         $this->load->library('parser');
 
         $config = Array(

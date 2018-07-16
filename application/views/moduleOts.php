@@ -131,6 +131,7 @@
                     <form class="well form-horizontal" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
                         <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
+                        <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
                         <fieldset>
                             <div class="widget bg_white m-t-25 display-block">
                                 <fieldset class="col-md-6">
