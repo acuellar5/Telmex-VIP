@@ -442,14 +442,14 @@ class User extends CI_Controller {
         }
   }
   //cambia el estado de estado_Ver (1) a estado ver (0)
-  // public function c_hide_inconsistency(){
-  //   $data = array(
-  //     'k_id_inconsistencia' =>$this->input->post('k_id_inconsistencia'),
-  //     'estado_ver' =>$this->input->post('estado_ver')
-  //   );
-    
-  //   echo json_encode($data);
-  // }
+  public function c_hide_inconsistency(){
+    $data = array(
+      'k_id_inconsistencia' =>$this->input->post('k_id_inconsistencia'),
+      'estado_ver' => 0,
+       );
+    $this->Dao_ot_hija_model->upVerTo_0();
+    echo json_encode($data);
+  }
 
 
 
