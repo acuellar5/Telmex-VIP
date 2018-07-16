@@ -14,12 +14,6 @@ class Templates extends CI_Controller {
 
 
     public function c_updateStatusOt($servicio = null) {
-<<<<<<< HEAD
-=======
-
-      // header('Content-Type: text/plain');
-      // print_r($this->input->post());
->>>>>>> a99943c3d2cc6eb17115bad7c7086bffc7f4ab15
       if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
         $data_template = $this->fill_formulary($servicio, $_POST);
         switch ($servicio) {
@@ -177,26 +171,9 @@ class Templates extends CI_Controller {
     }
 
 //
-<<<<<<< HEAD
     public function enviar_email($cuerpo) {
       $email_user = Auth::user()->n_mail_user; 
       $correos = [$email_user];
-=======
-    public function enviar_email($cuerpo , $pt) {
-      header('Content-Type: text/plain');
-
-      $email_user = Auth::user()->n_mail_user;
-      $correos = [];
-      if (Auth::user()->n_mail_user || Auth::user()->n_mail_user != "") {
-        array_push($correos, $email_user);
-      }
-
-      if ($pt['mail_cc']) {
-        for ($i=0; $i < count($pt['mail_cc']); $i++) { 
-          array_push($correos, $pt['mail_cc'][$i]);
-        }
-      }
->>>>>>> a99943c3d2cc6eb17115bad7c7086bffc7f4ab15
         $this->load->library('parser');
 
         $config = Array(
@@ -213,7 +190,7 @@ class Templates extends CI_Controller {
         );
         // $argumentos = $this->_post($this->input->post('servicio'));
         // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
-        $asunto = 'Notificación de Servicio';
+        $asunto = 'esta es la prueba';
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
