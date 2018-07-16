@@ -43,6 +43,7 @@ class OtHija extends CI_Controller {
     public function c_getOtsFiteenDays() {
         $response = null;
         if (Auth::check()) {
+            ini_set('memory_limit', '-1');
             $data = $this->Dao_ot_hija_model->getOtsFiteenDays();
             // $otHijaModel = new Dao_ot_hija_model();
             $res['data'] = $data->result();
@@ -107,6 +108,7 @@ class OtHija extends CI_Controller {
     public function c_getOtsChange() {
         $response = null;
         if (Auth::check()) {
+            ini_set('memory_limit', '-1');
             $otHijaModel = new Dao_ot_hija_model();
             $data = $otHijaModel->getOtsChange();
             $res['data'] = $data->result();
