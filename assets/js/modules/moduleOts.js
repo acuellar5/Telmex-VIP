@@ -831,7 +831,11 @@ $(function () {
 
                             <!--  inicio seccion derecha form---->
                             <fieldset>
+<<<<<<< HEAD
                                 <div class="form-group mail_envio">
+=======
+                                <div class="form-group Email_envio">
+>>>>>>> a99943c3d2cc6eb17115bad7c7086bffc7f4ab15
                                     <label for="mail_envio" class="col-md-3 control-label"> </label>
                                     <div class="col-md-8 selectContainer div_Form_Modals">
                                         <div class="input-group">
@@ -1696,8 +1700,13 @@ $(function () {
                 if ($("#k_id_estado_ot").val() == 3) {
                     var msj = false;
                     var response = true;
+<<<<<<< HEAD
                     var mail = $('#ingeniero1_email').val();
                     var mail1 = $('#mail_envio').val();
+=======
+                    var mail = $('#ingeniero1_email');
+                    var mail1 = $('#mail_envio');
+>>>>>>> a99943c3d2cc6eb17115bad7c7086bffc7f4ab15
                     var expresiones = /\w+@\w+\.+[a-z]/;
                     var inputs = [  $('#nombre'),
                                     $('#nombre_cliente_val'),
@@ -1729,10 +1738,10 @@ $(function () {
                         return false; 
                     }
 
-                    if (!expresiones.test(mail) || !expresiones.test(mail1)) {
-                        swal('Error', 'El formato del correo está mal', 'error');
-                        return false;
-                    }
+                    // if (!expresiones.test(mail.val()) || !expresiones.test(mail1.val())) {
+                    //     swal('Error', 'El formato del correo está mal', 'error');
+                    //     return false;
+                    // }
                     
                     if(response){
 
