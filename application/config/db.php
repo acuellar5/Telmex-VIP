@@ -27,7 +27,7 @@ return [
     //que el único que apunte a el servidor mysql sea quíen suba el proyecto con nuevos cambios...
       
 
-    'default' => 'mysqlserv',
+    'default' => 'camilo',
     /*
       |--------------------------------------------------------------------------
       | Database Connections

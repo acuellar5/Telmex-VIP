@@ -1714,8 +1714,6 @@ $(function () {
                                     $('#ingeniero1_email'),
                                     $('#Email_envio')
                                 ];
-                                    
-                                
                     inputs.forEach(function(input){
                         if (input.val() == '') {
                             msj = true;
