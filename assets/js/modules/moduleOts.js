@@ -832,7 +832,7 @@ $(function () {
                             <!--  inicio seccion derecha form---->
                             <fieldset>
                                 <div class="form-group Email_envio">
-                                    <label for="Email_envio" class="col-md-3 control-label"> </label>
+                                    <label for="mail_envio" class="col-md-3 control-label"> </label>
                                     <div class="col-md-8 selectContainer div_Form_Modals">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1696,8 +1696,8 @@ $(function () {
                 if ($("#k_id_estado_ot").val() == 3) {
                     var msj = false;
                     var response = true;
-                    var mail = $('#ingeniero1_email').val();
-                    var mail1 = $('#Email_envio').val();
+                    var mail = $('#ingeniero1_email');
+                    var mail1 = $('#mail_envio');
                     var expresiones = /\w+@\w+\.+[a-z]/;
                     var inputs = [  $('#nombre'),
                                     $('#nombre_cliente_val'),
@@ -1712,7 +1712,7 @@ $(function () {
                                     $('#ingeniero1'),
                                     $('#ingeniero1_tel'),
                                     $('#ingeniero1_email'),
-                                    $('#Email_envio')
+                                    $('#mail_envio')
                                 ];
                     inputs.forEach(function(input){
                         if (input.val() == '') {
@@ -1729,10 +1729,10 @@ $(function () {
                         return false; 
                     }
 
-                    if (!expresiones.test(mail) || !expresiones.test(mail1)) {
-                        swal('Error', 'El formato del correo está mal', 'error');
-                        return false;
-                    }
+                    // if (!expresiones.test(mail.val()) || !expresiones.test(mail1.val())) {
+                    //     swal('Error', 'El formato del correo está mal', 'error');
+                    //     return false;
+                    // }
                     
                     if(response){
 

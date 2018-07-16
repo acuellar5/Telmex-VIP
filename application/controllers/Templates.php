@@ -15,49 +15,49 @@ class Templates extends CI_Controller {
 
     public function c_updateStatusOt($servicio = null) {
 
-      header('Content-Type: text/plain');
-      print_r($this->input->post());
-      // if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
-      //   $data_template = $this->fill_formulary($servicio, $_POST);
-      //   switch ($servicio) {
-      //          case '1':
-      //            $template = $this->internet_dedicado_empresarial($data_template);
-      //            break;
-      //          case '2':
-      //            $template = $this->internet_dedicado($data_template);
-      //            break;
-      //          case '3':
-      //            $template = $this->mpls_avanzado_intranet($data_template);
-      //            break;
-      //          case '4':
-      //            $template = $this->mpls_avanzado_intranet_varios_puntos($data_template);
-      //            break;
-      //          case '5':
-      //            $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data_template);
-      //            break;
-      //          case '6':
-      //            $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data_template);
-      //            break;
-      //          case '7':
-      //            $template = $this->avanzado_extranet($data_template);
-      //            break;
-      //          case '8':
-      //            $template = $this->backend_mpls($data_template);
-      //            break;
-      //          case '9':
-      //            $template = $this->mpls_avanzado_componente_datacenter_claro($data_template);
-      //            break;
-      //          case '10':
-      //            $template = $this->mpls_transaccional_3g($data_template);
-      //            break;
+      // header('Content-Type: text/plain');
+      // print_r($this->input->post());
+      if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
+        $data_template = $this->fill_formulary($servicio, $_POST);
+        switch ($servicio) {
+               case '1':
+                 $template = $this->internet_dedicado_empresarial($data_template);
+                 break;
+               case '2':
+                 $template = $this->internet_dedicado($data_template);
+                 break;
+               case '3':
+                 $template = $this->mpls_avanzado_intranet($data_template);
+                 break;
+               case '4':
+                 $template = $this->mpls_avanzado_intranet_varios_puntos($data_template);
+                 break;
+               case '5':
+                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data_template);
+                 break;
+               case '6':
+                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data_template);
+                 break;
+               case '7':
+                 $template = $this->avanzado_extranet($data_template);
+                 break;
+               case '8':
+                 $template = $this->backend_mpls($data_template);
+                 break;
+               case '9':
+                 $template = $this->mpls_avanzado_componente_datacenter_claro($data_template);
+                 break;
+               case '10':
+                 $template = $this->mpls_transaccional_3g($data_template);
+                 break;
            
-      //        }  
-      //        // print_r($template);   
-      //        $this->enviar_email($template, $_POST);
+             }  
+             // print_r($template);   
+             $this->enviar_email($template, $_POST);
 
-      // } else {  
-      //   $this->update_status($_POST);
-      // }
+      } else {  
+        $this->update_status($_POST);
+      }
         
 
     }
@@ -133,7 +133,6 @@ class Templates extends CI_Controller {
                 'equipos_intalar_camp1' => $p['equipos_intalar_camp1'],
                 'equipos_intalar_camp2' => $p['equipos_intalar_camp2'],
                 'equipos_intalar_camp3' => $p['equipos_intalar_camp3'],
-                'equipos_intalar_camp4' => $p['equipos_intalar_camp4'],
                 'fecha_servicio' => $p['fecha_servicio'],
                 'ingeniero1' => $p['ingeniero1'],
                 'ingeniero1_tel' => $p['ingeniero1_tel'],
@@ -176,8 +175,19 @@ class Templates extends CI_Controller {
 
 //
     public function enviar_email($cuerpo , $pt) {
-      $email_user = Auth::user()->n_mail_user; 
-      $correos = [$email_user];
+      header('Content-Type: text/plain');
+
+      $email_user = Auth::user()->n_mail_user;
+      $correos = [];
+      if (Auth::user()->n_mail_user || Auth::user()->n_mail_user != "") {
+        array_push($correos, $email_user);
+      }
+
+      if ($pt['mail_cc']) {
+        for ($i=0; $i < count($pt['mail_cc']); $i++) { 
+          array_push($correos, $pt['mail_cc'][$i]);
+        }
+      }
         $this->load->library('parser');
 
         $config = Array(
@@ -194,7 +204,7 @@ class Templates extends CI_Controller {
         );
         // $argumentos = $this->_post($this->input->post('servicio'));
         // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
-        $asunto = 'esta es la prueba';
+        $asunto = 'Notificación de Servicio';
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
