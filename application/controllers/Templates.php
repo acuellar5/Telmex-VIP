@@ -178,7 +178,7 @@ class Templates extends CI_Controller {
 //
     public function enviar_email($cuerpo) {
       $email_user = Auth::user()->n_mail_user; 
-      $correos = ['bredi.buitrago@zte.com.cn', 'jfgrisales21@misena.edu.co', $email_user];
+      $correos = [$email_user];
         $this->load->library('parser');
 
         $config = Array(
@@ -208,7 +208,7 @@ class Templates extends CI_Controller {
           { echo "se envio";
             $this->update_status($_POST);
           }else{
-            echo "Hubo un error en el envio del correo";
+            echo ":( Hubo un error en el envio del correo";
           }
     }
 
