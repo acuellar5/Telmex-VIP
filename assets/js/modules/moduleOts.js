@@ -607,7 +607,7 @@ $(function () {
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
                 $('#ins_servicio').on('change', eventos.selectFormulary );
                 $('.cerrar').on('click', eventos.clearModal);
-                $('#btnUpdOt').on('click', eventos.clicOnButton);
+                ///$('#btnUpdOt').on('click', eventos.clicOnButton);
 
             },
             onClickShowModalEdit: function () {
@@ -658,10 +658,11 @@ $(function () {
 
                 var algo = $('#k_id_estado_ot').val() ;
                 if (registro.k_id_tipo == 1) {
+                  $('#btnUpdOt').on('click', eventos.clicOnButton);  
                   $('#k_id_estado_ot').on('change', function(){
                     // $('')
                         $('#general').html("");
-                        if ($('#k_id_estado_ot').val() == 3 )
+                        if ($('#k_id_estado_ot').val() == 3 ) 
                         {
                             $('#btnUpdOt').attr('disabled', true);
                             $('.ins_servicio').show();
@@ -1631,7 +1632,7 @@ $(function () {
 
             },
             clicOnButton: function(){
-               
+                if (registro.k_id_tipo == 1 && registro.k_id_estado_ot) {
                 var msj = false;
                 var response = true;
                 var mail = $('#ingeniero1_email').val();
@@ -1707,6 +1708,7 @@ $(function () {
                     });
                 }
                 return false;
+              }  
             },
 
             //************************************LOG**************************************
