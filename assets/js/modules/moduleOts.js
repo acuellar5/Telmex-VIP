@@ -32,6 +32,7 @@ $(function () {
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Recurrente", data: "MRC"},
                 {title: "opc", data: hoy.getButtons},
             ]));
@@ -145,6 +146,7 @@ $(function () {
                     {data: "fecha_programacion"},
                     {data: "ot_hija"},
                     {data: "estado_orden_trabajo_hija"},
+                    {data: "ingeniero"},
                     {data: "MRC"},
                     {data: total.getButtons},
                 ],
@@ -283,6 +285,7 @@ $(function () {
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Recurrente", data: "MRC"},
                 {title: "opc", data: nueva.getButtons},
             ]));
@@ -395,6 +398,7 @@ $(function () {
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Recurrente", data: "MRC"},
                 {title: "opc", data: cambio.getButtons}
             ]));
@@ -513,6 +517,7 @@ $(function () {
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
                 {title: "Recurrente", data: "MRC"},
                 {title: "opc", data: quinceDias.getButtons}
             ]));

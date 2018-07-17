@@ -348,7 +348,7 @@ $(function () {
                     {title: "Fecha Programación", data: "fecha_programacion"},
                     {title: "Ot Hija", data: "ot_hija"},
                     {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                    {title: "Ingeniero Responsable", data: "nombre_cliente"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
                     {title: "Recurrente", data: "MRC"},
                     {title: "opc", data: todo.getButtons},
                 ],
