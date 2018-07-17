@@ -1200,97 +1200,135 @@ $(function () {
                     break;
                     case "5":
                     form += `<div class="widget bg_white m-t-25 display-block cliente">
-                                <fieldset class="col-md-6 control-label">
-                                  <div class="form-group direccion_instalacion">
-                                        <label for="direccion_instalacion" class="col-md-3 control-label">Direccion De Instalacion: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group direccion">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
-                                            </div>
-                                        </div>
-                                    </div>                                              
-                                    <div class="form-group ancho_banda">
-                                        <label for="ancho_banda" class="col-md-3 control-label">Ancho de Banda: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
-                                                <span class="input-group-addon">MHz</span>
-                                            </div>
+                                            <fieldset class="col-md-6 control-label">
+                                               <div class="form-group existente">
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="existente" id="existente" class="form-control" type="text" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group direccion_instalacion">
+                                                    <label for="direccion_instalacion" class="col-md-3 control-label">Direccion De Instalacion: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group direccion">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group interfaz_grafica">
+                                                 <label for="interfaz_entrega" class="col-md-3 control-label">Interfaz de Entrega: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </fieldset> 
+                                            
+                                            <fieldset>
+                                                <div class="form-group nuevo">
+                                                    <label for="nuevo" class="col-md-3 control-label">Nuevo: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="nuevo" id="nuevo" class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="form-group ancho_banda">
+                                                  <label for="ancho_banda" class="col-md-3 control-label">Ancho de Banda: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group fecha_servicio">
+                                    <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
+                                    <div class="col-md-8 selectContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+                                            <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
-                                </fieldset> 
-                                
-                                <fieldset>
-                                    <div class="form-group interfaz_grafica">
-                                        <label for="interfaz_entrega" class="col-md-3 control-label">Interfaz de Entrega: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group fecha_servicio">
-                                        <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                </fieldset>
-                            </div>
+                                </div>
+                            </fieldset>
+                        </div>   
                             `;
 
                     break;
                     case "6":
                     form += `<div class="widget bg_white m-t-25 display-block cliente">
-                                <fieldset class="col-md-6 control-label">
-                                  <div class="form-group direccion_instalacion">
-                                        <label for="direccion_instalacion" class="col-md-3 control-label">Direccion De Instalacion: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group direccion">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
-                                            </div>
-                                        </div>
-                                    </div>                                              
-                                    <div class="form-group ancho_banda">
-                                        <label for="ancho_banda" class="col-md-3 control-label">Ancho de Banda: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
-                                                <span class="input-group-addon">MHz</span>
-                                            </div>
+                                            <fieldset class="col-md-6 control-label">
+                                               <div class="form-group existente">
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="existente" id="existente" class="form-control" type="text" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group direccion_instalacion">
+                                                    <label for="direccion_instalacion" class="col-md-3 control-label">Direccion De Instalacion: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group direccion">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group interfaz_grafica">
+                                                 <label for="interfaz_entrega" class="col-md-3 control-label">Interfaz de Entrega: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </fieldset> 
+                                            
+                                            <fieldset>
+                                                <div class="form-group nuevo">
+                                                    <label for="nuevo" class="col-md-3 control-label">Nuevo: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="nuevo" id="nuevo" class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="form-group ancho_banda">
+                                                  <label for="ancho_banda" class="col-md-3 control-label">Ancho de Banda: &nbsp;</label>
+                                                    <div class="col-md-8 selectContainer">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+                                                            <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+                                                            <span class="input-group-addon">MHz</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group fecha_servicio">
+                                    <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
+                                    <div class="col-md-8 selectContainer">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+                                            <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
                                         </div>
                                     </div>
-                                </fieldset> 
-                                
-                                <fieldset>
-                                    <div class="form-group interfaz_grafica">
-                                        <label for="interfaz_entrega" class="col-md-3 control-label">Interfaz de Entrega: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group fecha_servicio">
-                                        <label for="fecha_servicio" class="col-md-3 control-label">Fecha de Entrega de Servicio: &nbsp;</label>
-                                        <div class="col-md-8 selectContainer">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                </fieldset>
-                            </div>
+                                </div>
+                            </fieldset>
+                        </div>   
                             `;
                     break;
                     case "7":
