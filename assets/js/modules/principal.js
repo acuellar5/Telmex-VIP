@@ -58,11 +58,20 @@ $(function () {
             return boton;
         },
         onClickShowModalDet: function () {
+            document.getElementById("formModal_detalle").reset();
+            $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
-            var record = fTiempos.tablaEditOts.row(trParent).data();
-//            console.log(record);
-            $('#modalEditTicket').modal('show');
+            var record = fTiempos.tablaFueraTiempos.row(trParent).data();
+            fTiempos.fillFormModal(record);        
+        },
+
+        fillFormModal: function(registros){
+            $.each(registros ,function(i,item){
+                    $('#mdl_' + i).val(item);
+                });
+            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+            $('#Modal_detalle').modal('show');
         }
     };
     fTiempos.init();
@@ -77,9 +86,10 @@ $(function () {
 
         //Eventos de la ventana.
         events: function () {
+            $('#tablaEnTiempos').on('click', 'a.ver-det', eTiempos.onClickShowModalDet);
         },
         listInTimes: function () {
-            $.post(baseurl + '/OtHija/getOtsInTimes',
+            $.post(baseurl + '/OtHija/c_getOtsInTimes',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
@@ -92,11 +102,13 @@ $(function () {
             eTiempos.tablaEnTiempos = $('#tablaEnTiempos').DataTable(eTiempos.configTable(data, [
                 {title: "Id Cliente Onyx", data: "id_cliente_onyx"},
                 {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
                 {title: "Ot Hija", data: "ot_hija"},
                 {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsable", data: "ingeniero"},
+                {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Días vencimiento", data: "tiempo_vencer"},
+                {data: eTiempos.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -112,9 +124,33 @@ $(function () {
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[0, 'asc']],
+                order: [[7, 'asc']],
                 drawCallback: onDraw
             }
+        },
+        getButtons: function (obj) {
+            boton = '<div class="btn-group">'
+                    + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
+                    + '</div>';
+            return boton;
+        },
+        onClickShowModalDet: function () {
+            document.getElementById("formModal_detalle").reset();
+            // imprimir el titulo
+            $('#title_modal').html('');
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var record = eTiempos.tablaEnTiempos.row(trParent).data();
+//            console.log(record);
+            fTiempos.fillFormModal(record);  
+        },
+
+            fillFormModal: function(registros){
+            $.each(registros ,function(i,item){
+                    $('#mdl_' + i).val(item);
+                });
+            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
+            $('#Modal_detalle').modal('show');
         }
     };
     eTiempos.init();
@@ -133,12 +169,12 @@ $(function () {
             $('#tablaTodo').on('click', 'a.ver-det', todo.onClickShowModalDet);
         },
         listAllOts: function () {
-            $.post(baseurl + '/OtHija/getOtsAssigned',
+            $.post(baseurl + '/OtHija/c_getOtsAssigned',
                     {
                         // clave: 'valor' // parametros que se envian
                     },
                     function (data) {
-                        todo.printTableAllOts(data);
+                        todo.printTableAllOts(data['data']);
                     });
         },
         printTableAllOts: function (data) {
@@ -172,12 +208,22 @@ $(function () {
             }
         },
         onClickShowModalDet: function () {
+            document.getElementById("formModal_detalle").reset();
+            $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = todo.tablaTodo.row(trParent).data();
-            console.log(record);
+            $('#Modal_detalle').modal('show');
+            fTiempos.fillFormModal(record);  
+        },
+        fillFormModal: function(registros){
+            $.each(registros ,function(i,item){
+                    $('#mdl_' + i).val(item);
+                });
+            $('#title_modal').html('<b>Detalle de la orden  '+ registros.id_orden_trabajo_hija +'</b>');
             $('#Modal_detalle').modal('show');
         },
+
         getButtons: function (obj) {
             boton = '<div class="btn-group">'
                     + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
