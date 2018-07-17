@@ -4,7 +4,7 @@
     <li class=""><a data-toggle="tab" href="#total">Total <span class="badge badge_cami" id="bdg_total">...</span></a></li>
     <li class=""><a data-toggle="tab" href="#nuevas">Nuevas <span class="badge badge_cami" id="bdg_nuevas">...</span></a></li>
     <li class=""><a data-toggle="tab" href="#cambio">Cambios <span class="badge badge_cami" id="bdg_cambios">...</span></a></li>
-    <li class=""><a data-toggle="tab" href="#dias_15">15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li>
+    <li class=""><a data-toggle="tab" href="#dias_15">KickOff 15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -796,3 +796,13 @@
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if (isset($_GET['msj'])): ?>
+        <script>
+            var urlbase = "<?php echo URL::base(); ?>";
+            swal('OK', 'se actualizó correctamente', 'success'); 
+            $('.swal-button').on('click', function(){
+                location.href = urlbase + "/editarOts";
+            })
+        </script>
+<?php endif ?>

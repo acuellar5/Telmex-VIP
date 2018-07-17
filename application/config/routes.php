@@ -56,7 +56,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['principal'] = 'User/principal';
 $route['paginaPrincipal'] = 'User/principalView';
-$route['editarOts'] = 'User/editOts';
+$route['editarOts'] = 'OtHija/editOts';
 $route['cargarOts'] = 'User/loadInformation';
 $route['generarMarcaciones'] = 'User/markings';
 $route['validadorIp'] = 'User/routingVerification';

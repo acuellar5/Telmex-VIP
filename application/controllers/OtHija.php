@@ -11,6 +11,18 @@ class OtHija extends CI_Controller {
         $this->load->model('data/Dao_estado_ot_model');
     }
 
+
+    public function editOts() {
+        if (!Auth::check()) {
+            Redirect::to(URL::base());
+        }
+        $data['title']='Editar OTS';
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('moduleOts');
+        $this->load->view('parts/footerF');
+    }
+
+
     public function c_getOtsAssigned() {
         $response = null;
         if (Auth::check()) {
@@ -51,7 +63,8 @@ class OtHija extends CI_Controller {
 
         $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
 
-         echo json_encode($res);
+        header('Location: ' . URL::base() . '/editarOts?msj=ok');
+
     }
     
     public function c_getOtsFiteenDays() {

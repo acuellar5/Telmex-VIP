@@ -97,21 +97,6 @@ class User extends CI_Controller {
         $this->load->view('parts/footerF');
     }
 
-    public function editOts() {
-        if (!Auth::check()) {
-            Redirect::to(URL::base());
-        }
-        $estadoOtModel = new Dao_estado_ot_model();
-        $estadosOt = $estadoOtModel->getAll();
-        $answer['estadosOts'] = json_encode($estadosOt);
-        $data['title']='Editar OTS';
-        $this->load->view('parts/headerF', $data);
-        $this->load->view('moduleOts');
-        $this->load->view('parts/footerF');
-
-
-    }
-
     public function markings() {
         if (!Auth::check()) {
             Redirect::to(URL::base());
