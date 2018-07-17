@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'faber';
+$active_group = 'local';
 
 $query_builder = TRUE;
 
@@ -147,7 +147,7 @@ $db['servidor'] = array(
 	'hostname' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
 	'username' => 'adminZTE',
 	'password' => 'a4b3c2d1',
-	'database' => 'Telmex_vip_prueba',
+	'database' => 'telmex_vip',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
