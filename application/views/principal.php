@@ -62,7 +62,7 @@
                     <li><a href="#como_vamos">¿Cómo vamos?</a></li>
                     <li><a href="#Tareas_progreso">Tareas en progreso</a></li>
                     <li><a href="#Detalles">Detalles</a></li>
-                    <li><a href="#inconcsistencias">Inconsistencias</a></li>
+                    <!--<li><a href="#inconcsistencias">Inconsistencias</a></li>-->
                 </ul>
             </div>
         </div>
@@ -133,6 +133,7 @@
                         <th></th>
                         <th></th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </tfoot>
             </table>
@@ -157,27 +158,6 @@ if (Auth::user()->n_project == 'Implementacion') {
     </div>
 
 <?php } ?>
-
-
-
-<!-- TABLA INCONSISTENCIAS -->
-<!-- <div id="inconcsistencias" class="tab-pane fade in active">
-    <h3>Inconsistencias</h3>
-    <table id="tabla_inconsistencias" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </table>
-</div> -->
-
 
 <!-- ****************************MODAL DE DETALLE ************************************************ -->
 <div id="Modal_detalle" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="z-index: 9999999999 !important;">

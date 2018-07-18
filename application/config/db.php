@@ -48,7 +48,7 @@ return [
             'driver' => 'mysql',
             'host' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
             'port' => '3306',
-            'database' => 'Telmex_vip_prueba',
+            'database' => 'telmex_vip',
             'username' => 'adminZTE',
             'password' => 'a4b3c2d1',
             'charset' => 'utf8',

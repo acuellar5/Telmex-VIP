@@ -14,9 +14,6 @@ class Templates extends CI_Controller {
 
 
     public function c_updateStatusOt($servicio = null) {
-
-      // header('Content-Type: text/plain');
-      // print_r($this->input->post());
       if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
         $data_template = $this->fill_formulary($servicio, $_POST);
         switch ($servicio) {
@@ -145,7 +142,7 @@ class Templates extends CI_Controller {
                 'ingeniero3_email' => $p['ingeniero3_email'] 
             );
           break;
-        case ($s == 3 || $s == 4 || $s == 6 || $s == 7 || $s == 8 || $s == 9 || $s == 10 ):
+        case ($s == 3 || $s == 5 || $s == 6 || $s == 7 || $s == 8 || $s == 9 || $s == 10 ):
             $argumentos = array(
                 'nombre' => $p['nombre'],
                 'nombre_cliente' => $p['nombre_cliente'],
@@ -186,6 +183,7 @@ class Templates extends CI_Controller {
           array_push($correos, $pt['mail_cc'][$i]);
         }
       }
+
         $this->load->library('parser');
 
         $config = Array(
@@ -202,7 +200,7 @@ class Templates extends CI_Controller {
         );
         // $argumentos = $this->_post($this->input->post('servicio'));
         // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
-        $asunto = 'Notificación de Servicio';
+        $asunto = 'esta es la prueba';
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
@@ -213,10 +211,10 @@ class Templates extends CI_Controller {
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";
-            $this->update_status($_POST);
+            $this->update_status($pt);
           }else{
+
             echo ":( Hubo un error en el envio del correo";
-            show_error($this->email->print_debugger());
           }
     }
 
@@ -268,36 +266,6 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
 <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span><img width="717" height="453" src="' . URL::base() . '/assets/img/mail_formats/actividades_para_la_instalacion_de_su_servicio.png"></span></b><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span></span></span></p>
 
 <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><a name="m_5089500533639821532__GoBack"></a><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:12pt;font-family:Arial,sans-serif">CARACTERISTICAS DEL SERVICIO CONTRATADO<span></span></span></b></p>
-
 <p class="MsoNormal" align="center" style="text-align:center;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="color:white"><span>&nbsp;</span></span></b></p>
 
 <table class="m_5089500533639821532gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="935" style="width:701.3pt;border-collapse:collapse">
@@ -1773,7 +1741,7 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
   </td>
   <td width="536" colspan="18" valign="top" style="width:402.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:4.2pt"></td>
   <td width="12" rowspan="4" style="width:9pt;padding:0cm;height:4.2pt">
-  <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">&nbsp;</span></p>
+  <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span>' . $argumentos['equipos_intalar_camp1'] . '</span></p>
   </td>
  </tr>
  <tr style="height:4.1pt">
@@ -2175,27 +2143,6 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
 
 <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span><img width="717" height="453"  src="' . URL::base() . '/assets/img/mail_formats/actividades_para_la_instalacion_de_su_servicio.png"></span></b><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span></span></span></p>
 
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:12pt;font-family:Arial,sans-serif">CARACTERISTICAS DEL SERVICIO CONTRATADO<span></span></span></b></p>
-
-<p class="MsoNormal" align="center" style="text-align:center;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="color:white"><span>&nbsp;</span></span></b></p>
 
 <table class="m_937943869150412458gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="947" style="width:710.55pt;border-collapse:collapse">
  <tbody><tr style="height:29.05pt">
@@ -2558,7 +2505,7 @@ contactar a:<span></span></span></p>
   <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:10pt;font-family:Arial,sans-serif">INGENIERO:<span></span></span></b></p>
   </td>
   <td width="368" colspan="3" valign="top" style="width:276.05pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:white;padding:0cm 5.4pt;height:14.3pt">
-  <p class="MsoNormal" style="margin:0cm 0cm 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif"><span>' . $argumentos['ingeniero'] . '</span></span></b></p>
+  <p class="MsoNormal" style="margin:0cm 0cm 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif"><span>' . $argumentos['ingeniero1'] . '</span></span></b></p>
   </td>
  </tr>
  <tr style="height:12.5pt">
@@ -3250,27 +3197,6 @@ servicio.<span style="color:rgb(31,73,125)"><span></span></span></span></p>
 
 <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span><img width="717" height="453" src="' . URL::base() . '/assets/img/mail_formats/actividades_para_la_instalacion_de_su_servicio.png"></span></b><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span></span></span></p>
 
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)"><span>&nbsp;</span></span></p>
-
-<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO"><span>&nbsp;</span></span></p>
 
 <p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:12pt;font-family:Arial,sans-serif">CARACTERISTICAS DEL SERVICIO CONTRATADO<span></span></span></b></p>
 

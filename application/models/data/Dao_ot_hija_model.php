@@ -55,7 +55,7 @@ class Dao_ot_hija_model extends CI_Model {
             $condicion = "";
             if (Auth::user()->n_role_user == 'ingeniero') {
                 $usuario_session = Auth::user()->k_id_user;
-                $condicion = "AND k_id_user = $usuario_session";
+                $condicion = "AND ot.k_id_user = $usuario_session";
             }
             $query = $this->db->query("
                 SELECT 
@@ -130,11 +130,14 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
+                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                INNER JOIN user
+                ON user.k_id_user = ot.k_id_user
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 WHERE ot.fecha_actual = CURDATE() 
@@ -184,8 +187,8 @@ class Dao_ot_hija_model extends CI_Model {
     public function getOtsFiteenDays() {
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
-            $usuario_session = Auth::user()->n_name_user . " " . Auth::user()->n_last_name_user;
-            $condicion = "AND usuario_asignado like '%$usuario_session%'";
+            $usuario_session = Auth::user()->k_id_user;
+            $condicion = "AND ot.k_id_user = $usuario_session";
         }
         $query = $this->db->query("
                 SELECT 
@@ -261,11 +264,14 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
+                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                INNER JOIN user
+                ON user.k_id_user = ot.k_id_user
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija
                 WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
@@ -456,11 +462,14 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC,
+                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                INNER JOIN user 
+                ON user.k_id_user = ot.k_id_user 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 WHERE 1 = 1 
@@ -498,13 +507,15 @@ class Dao_ot_hija_model extends CI_Model {
             $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND k_id_user = $usuario_session";
+                $condicion = "AND oh.k_id_user = $usuario_session";
             }
             $query = $this->db->query("
                         SELECT oh.*, eo.k_id_tipo , eo.i_orden,
-                        CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
+                        CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
+                        CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
                         FROM ot_hija oh
                         INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
+                        INNER JOIN user ON user.k_id_user = oh.k_id_user
                         WHERE estado_mod = 0
                         $condicion ORDER BY tipo_trascurrido DESC
                     ");
@@ -520,12 +531,14 @@ class Dao_ot_hija_model extends CI_Model {
             $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND k_id_user = $usuario_session";
+                $condicion = "AND oh.k_id_user = $usuario_session";
             }
             $query = $this->db->query("SELECT oh.*, eo.k_id_tipo, eo.i_orden,
-                                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC
+                                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
+                                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
                                 FROM ot_hija oh
                                 INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
+                                INNER JOIN user ON user.k_id_user = oh.k_id_user
                                 WHERE estado_mod = 1
                                 $condicion ORDER BY tipo_trascurrido DESC");
             return $query;

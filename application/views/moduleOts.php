@@ -24,6 +24,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -40,11 +41,13 @@
             <th>Fecha Programación</th>
             <th>OT Hija</th>
             <th>Estado OT Hija</th>
+            <th>Ingeniero Responsable</th>
             <th>Recurrente</th>
             <th>opc</th>
             </thead>
             <tfoot>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -73,6 +76,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -92,6 +96,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -102,6 +107,7 @@
         <table id="tablaFiteenDaysOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
             <tfoot>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
