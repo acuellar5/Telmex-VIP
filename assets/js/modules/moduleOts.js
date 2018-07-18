@@ -1612,7 +1612,8 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero1" id="ingeniero1" class="form-control" type="text" required >
+                                                                <select name="ingeniero1" id="ingeniero1" class="form-control" type="text" required >
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
