@@ -175,8 +175,6 @@ class Templates extends CI_Controller {
 
 //
     public function enviar_email($cuerpo , $pt) {
-      header('Content-Type: text/plain');
-
       $email_user = Auth::user()->n_mail_user;
       $correos = [];
       if (Auth::user()->n_mail_user || Auth::user()->n_mail_user != "") {

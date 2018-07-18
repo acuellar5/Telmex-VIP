@@ -57,17 +57,17 @@ class OtHija extends CI_Controller {
 
     // Función para traer dinamicamente elementos del datatables con server side prossesing
     public function getListTotalOts(){
-        ini_set('memory_limit', '-1');
+        // ini_set('memory_limit', '-1');
         // se configuro el datatables para q envie los parametros por post
         // colum_num se usa para el ordenamiento por columna dependiendo la peticion
-        $columm_num = $this->input->post('order')['0']['column'];
+        // $columm_num = $this->input->post('order')['0']['column'];
         // parametros obtenidos... 
         $parameters = array(
                'start'  => $this->input->post('start'),//start se usa para la paginacion ('desde')
                'length' => $this->input->post('length'),//length para la cantidad ('cuantos')... lo controla el select de mostrar
                'search' => $this->input->post('search')['value'],// search para lo que ingresa el usuario en el buscador
-               'order'  => $this->input->post('order')['0']['dir'],// order para el direccionamiento de la ordenada
-               'columm' => $this->input->post('columns')[$columm_num]['data']// column es la columna q se le dio click(ordenamiento)
+               // 'order'  => $this->input->post('order')['0']['dir'],// order para el direccionamiento de la ordenada
+               // 'columm' => $this->input->post('columns')[$columm_num]['data']// column es la columna q se le dio click(ordenamiento)
               );
 
         $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];

@@ -170,15 +170,15 @@ class LoadInformation extends CI_Controller {
                                 $dataExcel['k_id_estado_ot'] = $id_estado_camb_excel->k_id_estado_ot;
                             // SINO SE DEBE CAPTURAR LA INCONSISTENCIA    
                             } else {
-                                $insert_incons = array(
-                                    'id_ot_hija' => $arrayBD['id_orden_trabajo_hija'],
-                                    'k_id_user'  => $arrayBD['k_id_user'],
-                                    'fecha_mod'  => $fActual,
-                                    'en_zolid'   => $arrayBD['estado_orden_trabajo_hija'],
-                                    'en_excel'   => $dataExcel['estado_orden_trabajo_hija'],
-                                    'estado_ver' => 1
-                                );
-                                 $this->Dao_log_model->insertInconsistenciaRow($insert_incons);
+                                // $insert_incons = array(
+                                //     'id_ot_hija' => $arrayBD['id_orden_trabajo_hija'],
+                                //     'k_id_user'  => $arrayBD['k_id_user'],
+                                //     'fecha_mod'  => $fActual,
+                                //     'en_zolid'   => $arrayBD['estado_orden_trabajo_hija'],
+                                //     'en_excel'   => $dataExcel['estado_orden_trabajo_hija'],
+                                //     'estado_ver' => 1
+                                // );
+                                //  $this->Dao_log_model->insertInconsistenciaRow($insert_incons);
                                 
                                 unset($dataExcel['estado_orden_trabajo_hija']);
                             }
@@ -249,7 +249,7 @@ class LoadInformation extends CI_Controller {
 
                     //si no existe lo inserto en la db tabla ot_hija
                     else {
-
+                        
                         $id_estado = $this->get_estado_by_name_ot_hiha($this->getValueCell($sheet, 'AV'. $row), $this->getValueCell($sheet, 'AZ'. $row));                    
                         //LLENO EL ARRAY LETRAS CON LOS VARORES DE LA FILA DEL EXCEL EN LA QUE VA EL WHILE
                         $data = array(

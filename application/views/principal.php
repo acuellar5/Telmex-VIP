@@ -161,24 +161,22 @@ if (Auth::user()->n_project == 'Implementacion') {
 
 
 <!-- TABLA INCONSISTENCIAS -->
-
-
-  <div id="inconcsistencias" class="tab-pane fade in active">
-            <h3>Inconsistencias</h3>
-            <table id="tabla_inconsistencias" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-            </table>
-        </div>
+<!-- <div id="inconcsistencias" class="tab-pane fade in active">
+    <h3>Inconsistencias</h3>
+    <table id="tabla_inconsistencias" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+</div> -->
 
 
 <!-- ****************************MODAL DE DETALLE ************************************************ -->

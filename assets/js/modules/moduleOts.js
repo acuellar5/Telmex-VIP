@@ -195,8 +195,9 @@ $(function () {
                         defaultContent: "",
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
-                    }],
-                order: [[7, 'desc']],
+                    }],                
+                ordering: false,
+                // order: [[8, 'desc']],
                 // drawCallback: onDraw,
                 // order: [[0, 'desc']], //ardenaniento
                 "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
@@ -337,7 +338,7 @@ $(function () {
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
-                        // targets: -1,
+                        targets: 0,
                         orderable: false,
                     }],
                 order: [[7, 'desc']],

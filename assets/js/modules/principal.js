@@ -352,7 +352,8 @@ $(function () {
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
                     }],
-                // order: [[0, 'desc']], //ardenaniento
+                // order: [[8, 'desc']], //ardenaniento
+                ordering: false,
                 "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
                 "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
 
@@ -523,7 +524,7 @@ $(function () {
 
              };
 
-        tab_inconsis.init();
+        // tab_inconsis.init();
 
 
 
