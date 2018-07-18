@@ -171,9 +171,19 @@ class Templates extends CI_Controller {
     }
 
 //
-    public function enviar_email($cuerpo) {
-      $email_user = Auth::user()->n_mail_user; 
-      $correos = [$email_user];
+    public function enviar_email($cuerpo , $pt) {
+      $email_user = Auth::user()->n_mail_user;
+      $correos = [];
+      if (Auth::user()->n_mail_user || Auth::user()->n_mail_user != "") {
+        array_push($correos, $email_user);
+      }
+
+      if ($pt['mail_cc']) {
+        for ($i=0; $i < count($pt['mail_cc']); $i++) { 
+          array_push($correos, $pt['mail_cc'][$i]);
+        }
+      }
+
         $this->load->library('parser');
 
         $config = Array(
@@ -195,13 +205,13 @@ class Templates extends CI_Controller {
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
-        $this->email->to($this->input->post('mail_envio')); // change it to yours
+        $this->email->to($pt['mail_envio']); // change it to yours
         $this->email->cc($correos);
         $this->email->subject("Notificación de Servicio");
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";
-            $this->update_status($_POST);
+            $this->update_status($pt);
           }else{
 
             echo ":( Hubo un error en el envio del correo";

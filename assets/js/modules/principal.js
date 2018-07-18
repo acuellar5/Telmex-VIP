@@ -403,7 +403,8 @@ $(function () {
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
                     }],
-                // order: [[0, 'desc']], //ardenaniento
+                // order: [[8, 'desc']], //ardenaniento
+                ordering: false,
                 "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
                 "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
 
@@ -455,129 +456,9 @@ $(function () {
     };
     todo.init();
     /************************************************FIN TODO************************************************/
-    /*********************************************TABLA INCONSISTENCIAS**************************************/
-    tab_inconsis = {
-        chk: $('#check_all').data('check'),
-        init: function () {
-            tab_inconsis.events();
-            tab_inconsis.listInconsi()
-
-        },
-
-        //Eventos de la ventana.
-        events: function () {
-            $('#tabla_inconsistencias').on('click', 'button#check_all', tab_inconsis.all_select_check);
-        },
-        listInconsi: function () {
-            $.post(baseurl + '/User/c_print_table_incons',
-                    {
-                        // clave: 'valor' // parametros que se envian
-                    },
-                    function (data) {
-                        var obj = JSON.parse(data);
-                        tab_inconsis.print_tab(obj);
-                    });
-        },
-
-        print_tab: function (data) {
-            tab_inconsis.tablaInconsistencias = $('#tabla_inconsistencias').DataTable(tab_inconsis.configTable(data, [
-                {title: "OT Padre", data: "ot_padre"},
-                {title: "Id Orden Trabajo Hija", data: "ot_hija"},
-                {title: "Nombre Cliente", data: "cliente"},
-                {title: "Trabajo", data: "trabajo"},
-                {title: "Servicio", data: "servicio"},
-                {title: "Fecha de creacion", data: "fecha_creacion"},
-                {title: "Tipo", data: "tipo"},
-                {title: "Estado", data: "estado"},
-                {title: "Nombre de usuario", data: "nombre_usuario"},
-                {title: "Fecha modificacion", data: "fecha_modificacion"},
-                {title: "Zolid", data: "zolid"},
-                {title: "Excel", data: "excel"},
-                {title: `<button type="button" id="check_all" data-check="0" class="btn_check" title="Select All"> *</button>`, data: tab_inconsis.getcheck},
-            ]));
-        },
-        configTable: function (data, columns, onDraw) {
-            return {
-                data: data,
-                columns: columns,
-                //lenguaje del plugin
-                /*"language": { 
-                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
-                 },*/
-                dom: 'Blfrtip',
-                buttons: [{
-                        text: 'Ocultar seleccionados',
-                        className: 'btn-cami_cool',
-                        action: tab_inconsis.hiddenRows
-                    }],
-                columnDefs: [{
-                        defaultContent: "",
-                        targets: -1,
-                        orderable: false,
-                    }],
-                order: [[3, 'asc']],
-                drawCallback: onDraw
-            }
-        },
-
-        //Son los chekecds de datatables
-        getcheck: function (obj) {
-            return `<label class=" S_check">
-                          <input type="checkbox" class="all_select" data-idchk="${obj.id_inc}">
-                          <span class="checkmark" ></span>
-                        </label>`;
-        },
-
-        all_select_check: function () {
-            if (tab_inconsis.chk == 0) {
-                tab_inconsis.chk = 1;
-            } else {
-                tab_inconsis.chk = 0
-            }
-            var all_checks = document.querySelectorAll('.all_select');
-            all_checks.forEach(function (input) {
-                if (tab_inconsis.chk == 0) {
-                    input.checked = true;
-                    $('#check_all').removeClass('btn_check');
-                    $('#check_all').addClass('btn_checkeado');
-
-                } else {
-                    input.checked = false;
-                    $('#check_all').addClass('btn_check');
-                    $('#check_all').removeClass('btn_checkeado');
-                }
-            });
-        },
-
-        //comentar faber
-        hiddenRows: function (event) {
-            var all_checks = $('.all_select');
-            $.each(all_checks, function (i, input) {
-                if (input.checked) {
-                    // alert seguro?
-
-
-                    $.post('/path/to/file',
-                            {
-                                registro: input.dataset.idchk,
-                            },
-                            function (data) {
-                                // si es json_encode
-                                // var obj = JSON.parse(data);
-
-                                //ya se tubo q haber actualizado
-                            });
-                }
-            });
-
-
-        },
-
-    };
-
-//    tab_inconsis.init();
 });
 
+//**********************************************JHON*********************
 var tabla_cont_out;
 function showModalDetResOutTime(idTipo) {
     if (tabla_cont_out) {

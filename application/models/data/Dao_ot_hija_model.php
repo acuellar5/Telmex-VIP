@@ -359,11 +359,12 @@ class Dao_ot_hija_model extends CI_Model {
         $start = $parameters['start'];
         $length = $parameters['length'];
         $search = $parameters['search'];
-        $order = $parameters['order'];
-        $columm = $parameters['columm'];
+        // $order = $parameters['order'];
+        // $columm = $parameters['columm'];
 
         // Cuando le da all genera un -1
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
+        // $order_by = ($columm == 'function') ? "" : "ORDER BY $columm $order";
 
 
         // Cuando el usuario logueado es un ingeniero... si es admin puede ver todo
@@ -473,9 +474,10 @@ class Dao_ot_hija_model extends CI_Model {
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 WHERE 1 = 1 
                 ".$srch." ".$condicion." ".$search_col."
-                ORDER BY $columm $order 
+
                 $limit_start_length 
             ");
+        // print_r($this->db->last_query());
         // cant de registros es necesaria para saber cuanto es el total de registros sin filtros existentes en la consulta
         $cant = $this->db->query("
                 SELECT count(1) cant 
@@ -488,6 +490,7 @@ class Dao_ot_hija_model extends CI_Model {
             ");
         // en cantidad solo necesito la cantidad numerica
         $cantidad = $cant->row()->cant;
+
 
         // retorno el objeto de la primera consulta entre ellos ->result() y -> num_rows() en la posicion datos y la cantidad total
         $retorno = array(
