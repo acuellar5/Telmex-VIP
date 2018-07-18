@@ -173,6 +173,7 @@ $(function () {
         init: function () {
             eTiempos.events();
             eTiempos.listInTimes();
+            eTiempos.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -207,6 +208,28 @@ $(function () {
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
+                initComplete: function () {
+                    var r = $('#tablaEnTiempos tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaEnTiempos thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaEnTiempos').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 data: data,
                 columns: columns,
                 "language": {
@@ -289,6 +312,11 @@ $(function () {
             });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
+        },
+        individualColumnSearching: function () {
+            $('#tablaEnTiempos tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     eTiempos.init();
@@ -300,6 +328,7 @@ $(function () {
         init: function () {
             todo.events();
             todo.getListTotal();
+            todo.individualColumnSearching();
         },
 
         //Eventos de la ventana.
@@ -319,9 +348,32 @@ $(function () {
                     {title: "Fecha Programación", data: "fecha_programacion"},
                     {title: "Ot Hija", data: "ot_hija"},
                     {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
                     {title: "Recurrente", data: "MRC"},
                     {title: "opc", data: todo.getButtons},
                 ],
+                initComplete: function () {
+                    var r = $('#tablaTodo tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tablaTodo thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tablaTodo').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -341,10 +393,9 @@ $(function () {
                         title: 'Reporte Zolid',
                     }
                 ],
-                 select: true,
+                select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    
-                    
+
                 columnDefs: [{
                         // targets: -1,
                         // visible: false,
@@ -395,138 +446,136 @@ $(function () {
                     + '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-eye"></span></a>'
                     + '</div>';
             return boton;
+        },
+        individualColumnSearching: function () {
+            $('#tablaTodo tfoot th').each(function () {
+                $(this).html('<input type="text" placeholder="Buscar" />');
+            });
         }
     };
     todo.init();
     /************************************************FIN TODO************************************************/
     /*********************************************TABLA INCONSISTENCIAS**************************************/
-
-
     tab_inconsis = {
-                chk : $('#check_all').data('check'),
-                 init: function () {
-                     tab_inconsis.events();
-                     tab_inconsis.listInconsi()
-                     
-                 },
-         
-                 //Eventos de la ventana.
-                 events: function () {
-                    $('#tabla_inconsistencias').on('click', 'button#check_all', tab_inconsis.all_select_check);
-                 },
-                 listInconsi: function () {
-                 $.post(baseurl + '/User/c_print_table_incons',
-                        {
-                            // clave: 'valor' // parametros que se envian
-                        },
-                        function (data) {
-                            var obj = JSON.parse(data);
-                            tab_inconsis.print_tab(obj);
-                        });
-             },
+        chk: $('#check_all').data('check'),
+        init: function () {
+            tab_inconsis.events();
+            tab_inconsis.listInconsi()
 
-                print_tab: function (data){
-                 tab_inconsis.tablaInconsistencias = $('#tabla_inconsistencias').DataTable(tab_inconsis.configTable(data, [
-                    {title: "OT Padre", data: "ot_padre"},
-                    {title: "Id Orden Trabajo Hija", data: "ot_hija"},
-                    {title: "Nombre Cliente", data: "cliente"},
-                    {title: "Trabajo", data: "trabajo"},
-                    {title: "Servicio", data: "servicio"},
-                    {title: "Fecha de creacion", data: "fecha_creacion"},
-                    {title: "Tipo", data: "tipo"},
-                    {title: "Estado", data: "estado"},
-                    {title: "Nombre de usuario", data: "nombre_usuario"},
-                    {title: "Fecha modificacion", data: "fecha_modificacion"},
-                    {title: "Zolid", data: "zolid"},
-                    {title: "Excel", data: "excel"},
-                    {title: `<button type="button" id="check_all" data-check="0" class="btn_check" title="Select All"> *</button>`, data: tab_inconsis.getcheck},
-                    ]));
-                },   
-                configTable: function (data, columns, onDraw) {
-                    return {
-                      data: data,
-                      columns: columns,
-                      //lenguaje del plugin
-                      /*"language": { 
-                          "url": baseurl + "assets/plugins/datatables/lang/es.json"
-                      },*/
-                       dom: 'Blfrtip',
-                       buttons: [{
+        },
+
+        //Eventos de la ventana.
+        events: function () {
+            $('#tabla_inconsistencias').on('click', 'button#check_all', tab_inconsis.all_select_check);
+        },
+        listInconsi: function () {
+            $.post(baseurl + '/User/c_print_table_incons',
+                    {
+                        // clave: 'valor' // parametros que se envian
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        tab_inconsis.print_tab(obj);
+                    });
+        },
+
+        print_tab: function (data) {
+            tab_inconsis.tablaInconsistencias = $('#tabla_inconsistencias').DataTable(tab_inconsis.configTable(data, [
+                {title: "OT Padre", data: "ot_padre"},
+                {title: "Id Orden Trabajo Hija", data: "ot_hija"},
+                {title: "Nombre Cliente", data: "cliente"},
+                {title: "Trabajo", data: "trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Fecha de creacion", data: "fecha_creacion"},
+                {title: "Tipo", data: "tipo"},
+                {title: "Estado", data: "estado"},
+                {title: "Nombre de usuario", data: "nombre_usuario"},
+                {title: "Fecha modificacion", data: "fecha_modificacion"},
+                {title: "Zolid", data: "zolid"},
+                {title: "Excel", data: "excel"},
+                {title: `<button type="button" id="check_all" data-check="0" class="btn_check" title="Select All"> *</button>`, data: tab_inconsis.getcheck},
+            ]));
+        },
+        configTable: function (data, columns, onDraw) {
+            return {
+                data: data,
+                columns: columns,
+                //lenguaje del plugin
+                /*"language": { 
+                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
+                 },*/
+                dom: 'Blfrtip',
+                buttons: [{
                         text: 'Ocultar seleccionados',
                         className: 'btn-cami_cool',
                         action: tab_inconsis.hiddenRows
-                        }],
-                      columnDefs: [{
-                              defaultContent: "",
-                              targets: -1,
-                              orderable: false,
-                          }],
-                      order: [[3, 'asc']],
-                      drawCallback: onDraw
-                    }
-                },
+                    }],
+                columnDefs: [{
+                        defaultContent: "",
+                        targets: -1,
+                        orderable: false,
+                    }],
+                order: [[3, 'asc']],
+                drawCallback: onDraw
+            }
+        },
 
-                //Son los chekecds de datatables
-                getcheck: function(obj){
-                    return `<label class=" S_check">
+        //Son los chekecds de datatables
+        getcheck: function (obj) {
+            return `<label class=" S_check">
                           <input type="checkbox" class="all_select" data-idchk="${obj.id_inc}">
                           <span class="checkmark" ></span>
                         </label>`;
-                },
+        },
 
-                
-                all_select_check: function(){
-                    if (tab_inconsis.chk == 0) {
-                        tab_inconsis.chk = 1;
-                    }else {
-                        tab_inconsis.chk = 0
-                    }
-                    var all_checks = document.querySelectorAll('.all_select');
-                    all_checks.forEach(function(input){
-                        if (tab_inconsis.chk == 0) {
-                            input.checked = true;
-                            $('#check_all').removeClass('btn_check');
-                            $('#check_all').addClass('btn_checkeado');
+        all_select_check: function () {
+            if (tab_inconsis.chk == 0) {
+                tab_inconsis.chk = 1;
+            } else {
+                tab_inconsis.chk = 0
+            }
+            var all_checks = document.querySelectorAll('.all_select');
+            all_checks.forEach(function (input) {
+                if (tab_inconsis.chk == 0) {
+                    input.checked = true;
+                    $('#check_all').removeClass('btn_check');
+                    $('#check_all').addClass('btn_checkeado');
 
-                        } else {
-                            input.checked = false;
-                            $('#check_all').addClass('btn_check');
-                            $('#check_all').removeClass('btn_checkeado');
-                        }
-                    });
-                },
+                } else {
+                    input.checked = false;
+                    $('#check_all').addClass('btn_check');
+                    $('#check_all').removeClass('btn_checkeado');
+                }
+            });
+        },
 
-                //comentar faber
-                hiddenRows: function(event){
-                    var all_checks = $('.all_select');
-                    $.each(all_checks, function(i, input){
-                        if (input.checked) {
-                            // alert seguro?
+        //comentar faber
+        hiddenRows: function (event) {
+            var all_checks = $('.all_select');
+            $.each(all_checks, function (i, input) {
+                if (input.checked) {
+                    // alert seguro?
 
 
-                            $.post('/path/to/file', 
-                                {
-                                    registro: input.dataset.idchk,
-                                }, 
-                            function(data) {
+                    $.post('/path/to/file',
+                            {
+                                registro: input.dataset.idchk,
+                            },
+                            function (data) {
                                 // si es json_encode
                                 // var obj = JSON.parse(data);
 
                                 //ya se tubo q haber actualizado
-                            });                            
-                        }
-                    }); 
+                            });
+                }
+            });
 
 
-                },
+        },
 
+    };
 
-             };
-
-        tab_inconsis.init();
-
-
-
+//    tab_inconsis.init();
 });
 
 var tabla_cont_out;
@@ -585,8 +634,8 @@ function showModalDetResInTimes(idTipo) {
 
 //Funcionamiento del Scroll para el segundo modal
 
-$('#Modal_detalle').on("hidden.bs.modal", function (e) { 
-    if ($('.modal:visible').length) { 
+$('#Modal_detalle').on("hidden.bs.modal", function (e) {
+    if ($('.modal:visible').length) {
         $('body').addClass('modal-open');
     }
 });
