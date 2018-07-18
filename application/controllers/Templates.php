@@ -207,7 +207,7 @@ class Templates extends CI_Controller {
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
         $this->email->to($pt['mail_envio']); // change it to yours
         $this->email->cc($correos);
-        $this->email->subject("Notificación de Servicio");
+        $this->email->subject("Notificación de Servicio de la orden ". $pt['nro_ot_onyx'] . "-". $pt['id_orden_trabajo_hija'] );
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";
