@@ -65,7 +65,18 @@ class Dao_user_model extends CI_Model {
             ");
         return $query->row();
     }
-
+    public function fill_with_eingenieer(){
+        $query =$this->db->query("    
+                SELECT 
+                CONCAT(n_name_user, ' ', n_last_name_user) AS nombre, 
+                n_mail_user AS mail, 
+                cell_phone AS telefono  
+                FROM user
+                WHERE 
+                n_role_user = 'ingeniero' AND n_group = 'GESTION OTS ESTANDAR';                        
+                                ");
+        return $query->result();
+    }
 
 
 }

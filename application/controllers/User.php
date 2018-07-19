@@ -450,9 +450,11 @@ class User extends CI_Controller {
     $this->Dao_ot_hija_model->upVerTo_0();
     echo json_encode($data);
   }
-
-
-
+  //trae nombre, email y telefono de los ingenieros de la tabla user
+  public function c_get_eingenieer(){
+    $data = $this->Dao_user_model->fill_with_eingenieer();
+    echo json_encode($data);
+  }
 
 }
 

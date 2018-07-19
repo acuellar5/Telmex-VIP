@@ -197,9 +197,8 @@ $(function () {
                         defaultContent: "",
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
-                    }],                
-                ordering: false,
-                // order: [[8, 'desc']],
+                    }],
+                order: [[7, 'desc']],
                 // drawCallback: onDraw,
                 // order: [[0, 'desc']], //ardenaniento
                 "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
@@ -337,7 +336,7 @@ $(function () {
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
-                        targets: 0,
+                        // targets: -1,
                         orderable: false,
                     }],
                 ordering: false,
@@ -677,6 +676,8 @@ $(function () {
 
 
 
+
+
             },
             onClickShowModalEdit: function () {
                 var aLinkLog = $(this);
@@ -739,6 +740,13 @@ $(function () {
                             $('#btnUpdOt').attr('disabled', true);
                             $('.ins_servicio').show();
                                 $('#ins_servicio').on('change', function(){
+                                    eventos.get_eingenieer();
+
+                                    // para llenar inputs de ingeniero 1 en el modal
+                                    $('#ingeniero1').on('change', eventos.fill_information);
+                                    $('#ingeniero2').on('change', eventos.fill_information);
+                                    $('#ingeniero3').on('change', eventos.fill_information);
+
                                     var otra = $('#ins_servicio').val();
                                     switch (otra) {
                                            case "0":
@@ -1040,7 +1048,7 @@ $(function () {
                                 <div class="widget bg_white m-t-25 display-block cliente">
                                             <fieldset class="col-md-6 control-label">
                                                <div class="form-group existente">
-                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1195,7 +1203,7 @@ $(function () {
                                 <div class="widget bg_white m-t-25 display-block cliente">
                                     <fieldset class="col-md-6 control-label">
                                       <div class="form-group existente">
-                                            <label for="existente" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                            <label for="existente" class="col-md-3 control-label">Existente: &nbsp;</label>
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1243,7 +1251,7 @@ $(function () {
                     form += `<div class="widget bg_white m-t-25 display-block cliente">
                                             <fieldset class="col-md-6 control-label">
                                                <div class="form-group existente">
-                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1310,7 +1318,7 @@ $(function () {
                     form += `<div class="widget bg_white m-t-25 display-block cliente">
                                             <fieldset class="col-md-6 control-label">
                                                <div class="form-group existente">
-                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1376,7 +1384,7 @@ $(function () {
                          form += `<div class="widget bg_white m-t-25 display-block cliente">
                                     <fieldset class="col-md-6 control-label">
                                        <div class="form-group existente">
-                                            <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                            <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1442,7 +1450,7 @@ $(function () {
                         form += `<div class="widget bg_white m-t-25 display-block cliente">
                                             <fieldset class="col-md-6 control-label">
                                                <div class="form-group existente">
-                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1509,7 +1517,7 @@ $(function () {
                         form += `<div class="widget bg_white m-t-25 display-block cliente">
                                             <fieldset class="col-md-6 control-label">
                                                <div class="form-group existente">
-                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1575,7 +1583,7 @@ $(function () {
                         form += `<div class="widget bg_white m-t-25 display-block cliente">
                                             <fieldset class="col-md-6 control-label">
                                                <div class="form-group existente">
-                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Exsistente: &nbsp;</label>
+                                                    <label for="proveedor_ultima_milla" class="col-md-3 control-label">Existente: &nbsp;</label>
                                                     <div class="col-md-8 selectContainer">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
@@ -1653,7 +1661,8 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <select name="ingeniero1" id="ingeniero1" class="form-control" type="text" required >
+                                                                <select name="ingeniero1" id="ingeniero1" class="form-control class_fill_eingenieer" type="text" required >
+                                                                <option>Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1663,7 +1672,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero1_tel" id="ingeniero1_tel" class="form-control" type="number" required>
+                                                                <input name="ingeniero1_tel" id="ingeniero1_tel" class="form-control class_fill_eingenieer" type="number" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1672,7 +1681,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero1_email" id="ingeniero1_email" class="form-control" type="email"required>
+                                                                <input name="ingeniero1_email" id="ingeniero1_email" class="form-control class_fill_eingenieer" type="email"required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1682,11 +1691,13 @@ $(function () {
                                                 <!--  inicio seccion derecha form---->
                                                 <fieldset>
                                                      <div class="form-group ingeniero2 ">
-                                                        <label for="proveedor_ultima_milla" class="col-md-3 control-label">Ingeniero 2: &nbsp;</label>
+                                                        <label for="ingeniero2" class="col-md-3 control-label">Ingeniero 2: &nbsp;</label>
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero2" id="ingeniero2" class="form-control" type="text" >
+                                                                <select name="ingeniero2" id="ingeniero2" class="form-control class_fill_eingenieer" type="text" >
+                                                                <option>Seleccionar</opction>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1695,7 +1706,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero2_tel" id="ingeniero2_tel" class="form-control" type="number" >
+                                                                <input name="ingeniero2_tel" id="ingeniero2_tel" class="form-control class_fill_eingenieer" type="number" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1704,7 +1715,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero2_email" id="ingeniero2_email" class="form-control" type="email" >
+                                                                <input name="ingeniero2_email" id="ingeniero2_email" class="form-control class_fill_eingenieer" type="email" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1713,7 +1724,9 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero3" id="ingeniero3" class="form-control" type="text" >
+                                                                <select name="ingeniero3" id="ingeniero3" class="form-control class_fill_eingenieer" type="text" >
+                                                                <option>Seleccionar</opction>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1722,7 +1735,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero3_tel" id="ingeniero3_tel" class="form-control" type="number" >
+                                                                <input name="ingeniero3_tel" id="ingeniero3_tel" class="form-control class_fill_eingenieer" type="number" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1731,7 +1744,7 @@ $(function () {
                                                         <div class="col-md-8 selectContainer">
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-                                                                <input name="ingeniero3_email" id="ingeniero3_email" class="form-control" type="email" >
+                                                                <input name="ingeniero3_email" id="ingeniero3_email" class="form-control class_fill_eingenieer" type="email" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1917,7 +1930,25 @@ $(function () {
                         {data: "fecha_mod"}
                     ]));
             },
+            //llena el select de ingeniero
+            get_eingenieer: function(){
+                $.post( baseurl + '/User/c_get_eingenieer',{
 
+                },
+                function(data){
+                    var ingeniero = JSON.parse(data);
+                     $.each(ingeniero,function(i,item){
+                  $('.class_fill_eingenieer').append('<option data-tel="'+item.telefono+'" data-email="'+item.mail+'" value="'+item.nombre+'" >'+item.nombre+'</option>');
+                    });
+
+                });
+
+            },
+            fill_information: function(event){
+                 var ing = event.target.id;
+                 $('#'+ing+'_tel').val($(this).find(':selected').data('tel'));
+                 $('#'+ing+'_email').val($(this).find(':selected').data('email'));
+            },
         };
         eventos.init();
 
