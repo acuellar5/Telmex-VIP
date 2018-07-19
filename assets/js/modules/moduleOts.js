@@ -11,35 +11,32 @@ $(function () {
             
         },
         listOtsCurrent: function () {
-            $.post(baseurl + '/OtHija/c_getOtsAssigned',
-                    {
-                        // clave: 'valor' // parametros que se envian
-                    },
-                    function (data) {
-                        $('#bdg_hoy').html(data['count']);
-                        hoy.printTableOtsCurrent(data['data']);
-                    });
+            // $.post(baseurl + '/OtHija/c_getOtsAssigned',
+            //         {
+            //             // clave: 'valor' // parametros que se envian
+            //         },
+            //         function (data) {
+            //             $('#bdg_hoy').html(data['count']);
+            //             hoy.printTableOtsCurrent(data['data']);
+            //         });
+            hoy.tablaEditOts = $('#tablaEditOts').DataTable(hoy.printTableOtsCurrent("/OtHija/c_getOtsAssigned", "tablaEditOts"));
 
 
         },
-        printTableOtsCurrent: function (data) {
-            ///lleno la tabla con los valores enviados
-            hoy.tablaEditOts = $('#tablaEditOts').DataTable(hoy.configTable(data, [
-                {title: "OT Padre", data: "nro_ot_onyx"},
-                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Ot Hija", data: "ot_hija"},
-                {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Ingeniero Responsable", data: "ingeniero"},
-                {title: "Recurrente", data: "MRC"},
-                {title: "opc", data: hoy.getButtons},
-            ]));
-        },
-        // Datos de configuracion del datatable
-        configTable: function (data, columns, onDraw) {
+        printTableOtsCurrent: function (url, table) {
             return {
+                columns: [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                    {title: "Fecha Programación", data: "fecha_programacion"},
+                    {title: "Ot Hija", data: "ot_hija"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
+                    {title: "Recurrente", data: "MRC"},
+                    {title: "opc", data: hoy.getButtons},
+                ],
                 initComplete: function () {
                     var r = $('#tablaEditOts tfoot tr');
                     r.find('th').each(function () {
@@ -62,8 +59,6 @@ $(function () {
                         });
                     });
                 },
-                data: data,
-                columns: columns,
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -85,19 +80,33 @@ $(function () {
                 ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    
-                    
                 columnDefs: [{
-                        // targets: -1,
-                        // visible: false,
                         defaultContent: "",
-                        // targets: -1,
+                        //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
                         orderable: false,
                     }],
                 order: [[7, 'desc']],
-                drawCallback: onDraw
-            }
-        },
+                // drawCallback: onDraw,
+                // order: [[0, 'desc']], //ardenaniento
+                "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+                "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+
+
+                drawCallback: function (data) {
+                    if ($('#bdg_hoy').html() == "...") {
+                        $('#bdg_hoy').html(data.json.recordsFiltered);                        
+                    }
+                    
+                },
+                "ajax": {
+                    url: baseurl + '/' + url, // json datasource
+                    type: "POST", // type of method  , by default would be get
+                    error: function () {  // error handling code
+                        $("#employee_grid_processing").css("display", "none");
+                    }
+                }
+            };
+        }, 
         getButtons: function (obj) {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
@@ -264,35 +273,32 @@ $(function () {
         events: function () {
         },
         listOtsNew: function () {
-            $.post(baseurl + '/OtHija/c_getOtsNew',
-                    {
-                        // clave: 'valor' // parametros que se envian
-                    },
-                    function (data) {
-                        $('#bdg_nuevas').html(data['count']);
-                        nueva.printTableOtsNew(data['data']);
-                    });
+            // $.post(baseurl + '/OtHija/c_getOtsNew',
+            //         {
+            //             // clave: 'valor' // parametros que se envian
+            //         },
+            //         function (data) {
+            //             $('#bdg_nuevas').html(data['count']);
+            //             nueva.printTableOtsNew(data['data']);
+            //         });
+             nueva.tablaNewOts = $('#tablaNewOts').DataTable(nueva.printTableOtsNew("/OtHija/c_getOtsNew", "tablaNewOts"));
 
 
         },
-        printTableOtsNew: function (data) {
-            ///lleno la tabla con los valores enviados
-            nueva.tablaNewOts = $('#tablaNewOts').DataTable(nueva.configTable(data, [
-                {title: "OT Padre", data: "nro_ot_onyx"},
-                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Ot Hija", data: "ot_hija"},
-                {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Ingeniero Responsable", data: "ingeniero"},
-                {title: "Recurrente", data: "MRC"},
-                {title: "opc", data: nueva.getButtons},
-            ]));
-        },
-        // Datos de configuracion del datatable
-        configTable: function (data, columns, onDraw) {
+        printTableOtsNew: function (url, table) {
             return {
+                columns: [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                    {title: "Fecha Programación", data: "fecha_programacion"},
+                    {title: "Ot Hija", data: "ot_hija"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
+                    {title: "Recurrente", data: "MRC"},
+                    {title: "opc", data: nueva.getButtons},
+                ],
                 initComplete: function () {
                     var r = $('#tablaNewOts tfoot tr');
                     r.find('th').each(function () {
@@ -315,8 +321,7 @@ $(function () {
                         });
                     });
                 },
-                data: data,
-                columns: columns,
+                // lenguaje
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -343,10 +348,31 @@ $(function () {
                         // targets: -1,
                         orderable: false,
                     }],
-                order: [[7, 'desc']],
-                drawCallback: onDraw
-            }
+                ordering: false,
+                // order: [[8, 'desc']],
+                // drawCallback: onDraw,
+                // order: [[0, 'desc']], //ardenaniento
+                "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+                "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+
+
+                drawCallback: function (data) {
+                    if ($('#bdg_nuevas').html() == "...") {
+                        $('#bdg_nuevas').html(data.json.recordsFiltered);                        
+                    }
+                    
+                },
+                "ajax": {
+                    url: baseurl + '/' + url, // json datasource
+                    type: "POST", // type of method  , by default would be get
+                    error: function () {  // error handling code
+                        $("#employee_grid_processing").css("display", "none");
+                    }
+                }
+            };
+
         },
+
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
             // console.log(obj);
@@ -377,36 +403,33 @@ $(function () {
         events: function () {
         },
         listOtsChange: function () {
-            $.post(baseurl + '/OtHija/c_getOtsChange',
-                    {
-                        // clave: 'valor' // parametros que se envian
-                    },
-                    function (data) {
-                        $('#bdg_cambios').html(data['count']);
-                        cambio.printTableOtsChange(data['data']);
-                    });
+            // $.post(baseurl + '/OtHija/c_getOtsChange',
+            //         {
+            //             // clave: 'valor' // parametros que se envian
+            //         },
+            //         function (data) {
+            //             $('#bdg_cambios').html(data['count']);
+            //             cambio.printTableOtsChange(data['data']);
+            //         });
+            cambio.tablaChangesOts = $('#tablaChangesOts').DataTable(cambio.printTableOtsChange("/OtHija/c_getOtsChange", "tablaChangesOts"));
 
 
         },
-        printTableOtsChange: function (data) {
-            ///lleno la tabla con los valores enviados
-            cambio.tablaChangesOts = $('#tablaChangesOts').DataTable(cambio.configTable(data, [
-                {title: "OT Padre", data: "nro_ot_onyx"},
-                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Ot Hija", data: "ot_hija"},
-                {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Ingeniero Responsable", data: "ingeniero"},
-                {title: "Recurrente", data: "MRC"},
-                {title: "opc", data: cambio.getButtons}
-            ]));
-        },
-        // Datos de configuracion del datatable
-        configTable: function (data, columns, onDraw) {
+        printTableOtsChange: function (url, table) {            
             return {
-                initComplete: function () {
+                columns: [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                    {title: "Fecha Programación", data: "fecha_programacion"},
+                    {title: "Ot Hija", data: "ot_hija"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
+                    {title: "Recurrente", data: "MRC"},
+                    {title: "opc", data: cambio.getButtons}
+                ],
+                 initComplete: function () {
                     var r = $('#tablaChangesOts tfoot tr');
                     r.find('th').each(function () {
                         $(this).css('padding', 8);
@@ -428,8 +451,7 @@ $(function () {
                         });
                     });
                 },
-                data: data,
-                columns: columns,
+                // lenguaje
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -453,13 +475,35 @@ $(function () {
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
-                        // targets: -1,
+                        targets: 0,
                         orderable: false,
                     }],
-                order: [[7, 'desc']],
-                drawCallback: onDraw
-            }
+                ordering: false,
+                // order: [[8, 'desc']],
+                // drawCallback: onDraw,
+                // order: [[0, 'desc']], //ardenaniento
+                "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+                "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+
+
+                drawCallback: function (data) {
+                    if ($('#bdg_cambios').html() == "...") {
+                        $('#bdg_cambios').html(data.json.recordsFiltered);                        
+                    }
+                    
+                },
+                "ajax": {
+                    url: baseurl + '/' + url, // json datasource
+                    type: "POST", // type of method  , by default would be get
+                    error: function () {  // error handling code
+                        $("#employee_grid_processing").css("display", "none");
+                    }
+                }
+            };
+
         },
+
+
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
             // console.log(obj);
@@ -494,38 +538,38 @@ $(function () {
         events: function () {
         },
         listOtsFiteenDays: function () {
-            $.post(baseurl + '/OtHija/c_getOtsFiteenDays',
-                    {
-                        // clave: 'valor' // parametros que se envian
-                    },
-                    function (data) {
-                        // console.log(data);
-                        $('#bdg_15').html(data['count']);
-                        quinceDias.printTableOtsFiteenDays(data['data']);
+            // $.post(baseurl + '/OtHija/c_getOtsFiteenDays',
+            //         {
+            //             // clave: 'valor' // parametros que se envian
+            //         },
+            //         function (data) {
+            //             // console.log(data);
+            //             $('#bdg_15').html(data['count']);
+            //             quinceDias.printTableOtsFiteenDays(data['data']);
 
-                    });
+            //         });
+            quinceDias.tablaFiteenDaysOts = $('#tablaFiteenDaysOts').DataTable(quinceDias.printTableOtsFiteenDays("/OtHija/c_getOtsFiteenDays", "tablaFiteenDaysOts"));
 
 
         },
-        printTableOtsFiteenDays: function (data) {
+        printTableOtsFiteenDays: function (url, table) {
             ///lleno la tabla con los valores enviados
-            quinceDias.tablaFiteenDaysOts = $('#tablaFiteenDaysOts').DataTable(quinceDias.configTable(data, [
-                {title: "OT Padre", data: "nro_ot_onyx"},
-                {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
-                {title: "Nombre Cliente", data: "nombre_cliente"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Ot Hija", data: "ot_hija"},
-                {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                {title: "Ingeniero Responsable", data: "ingeniero"},
-                {title: "Recurrente", data: "MRC"},
-                {title: "opc", data: quinceDias.getButtons}
-            ]));
-        },
-        // Datos de configuracion del datatable
-        configTable: function (data, columns, onDraw) {
+
+
             return {
-                initComplete: function () {
+                columns: [
+                    {title: "OT Padre", data: "nro_ot_onyx"},
+                    {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "nombre_cliente"},
+                    {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                    {title: "Fecha Programación", data: "fecha_programacion"},
+                    {title: "Ot Hija", data: "ot_hija"},
+                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
+                    {title: "Ingeniero Responsable", data: "ingeniero"},
+                    {title: "Recurrente", data: "MRC"},
+                    {title: "opc", data: quinceDias.getButtons}
+                ],
+                 initComplete: function () {
                     var r = $('#tablaFiteenDaysOts tfoot tr');
                     r.find('th').each(function () {
                         $(this).css('padding', 8);
@@ -547,8 +591,7 @@ $(function () {
                         });
                     });
                 },
-                data: data,
-                columns: columns,
+                // lenguaje
                 "language": {
                     "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
@@ -572,12 +615,32 @@ $(function () {
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 columnDefs: [{
                         defaultContent: "",
-                        // targets: -1,
+                        targets: 0,
                         orderable: false,
                     }],
-                order: [[7, 'desc']],
-                drawCallback: onDraw
-            }
+                ordering: false,
+                // order: [[8, 'desc']],
+                // drawCallback: onDraw,
+                // order: [[0, 'desc']], //ardenaniento
+                "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+                "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
+
+
+                drawCallback: function (data) {
+                    if ($('#bdg_15').html() == "...") {
+                        $('#bdg_15').html(data.json.recordsFiltered);                        
+                    }
+                    
+                },
+                "ajax": {
+                    url: baseurl + '/' + url, // json datasource
+                    type: "POST", // type of method  , by default would be get
+                    error: function () {  // error handling code
+                        $("#employee_grid_processing").css("display", "none");
+                    }
+                }
+            };
+
         },
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
