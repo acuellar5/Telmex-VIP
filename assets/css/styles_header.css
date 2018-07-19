@@ -52,7 +52,7 @@
     margin: 18px 0px;   
     padding: 25px;
  }
-/* css head de implementacion de servicio*/
+/* css head */
 .telmexVIP_header .tamaniomin>li>a {
     min-width: 222px;
 }
@@ -128,8 +128,8 @@
  .contenedor {
     z-index: 1;
     background-color: #fff;
-    width: 183px;
-    height: 180px;
+    width: 150px;
+    height: 142px;
     border-style: solid;
     border-color: #084c6f;
     position: fixed;

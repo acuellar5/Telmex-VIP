@@ -66,17 +66,25 @@
         </div>        
 
         <ul class="nav navbar-nav menu_nav_header">
-            <li class="active"><a class="home" href="<?= URL::to('paginaPrincipal') ?>">Home</a></li>
+            <!-- <li class="active"><a class="home" href="<?= URL::to('paginaPrincipal') ?>">Home</a> -->
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Home<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<?= URL::to('OTP') ?>">OTP</a></li>
+                <li><a href="<?= URL::to('paginaPrincipal') ?>">OTH</a></li>
+              </ul>
+            </li>
               <?php
               if (Auth::user()->n_project == 'Gestion') {
                 ?>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('editarOts') ?>">Work Management</a></li>
+                    <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
+                    <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
                   </ul>
                 </li>
-                <?php if (Auth::user()->n_role_user == 'administrador'): ?>
+                <!-- que el boton restore apareza solo en administrativo y que sea OTS Hija -->
+                <?php if (Auth::user()->n_role_user == 'administrador' && $this->uri->segment(1) == 'paginaPrincipal'): ?>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
