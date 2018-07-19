@@ -381,6 +381,7 @@ class Dao_ot_hija_model extends CI_Model {
             $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
             $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
             $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
             $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
             $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
 
@@ -422,7 +423,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ot.ano_ingreso_estado, 
                 ot.mes_ngreso_estado, 
                 DATE_FORMAT(ot.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
-                ot.usuario_asignado, 
+                ot.usuario_asignado AS ingeniero, 
                 ot.grupo_asignado, 
                 ot.ingeniero_provisioning, 
                 ot.cargo_arriendo, 
@@ -462,14 +463,11 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC,
-                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
-                INNER JOIN user 
-                ON user.k_id_user = ot.k_id_user 
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 WHERE 1 = 1 
@@ -477,7 +475,8 @@ class Dao_ot_hija_model extends CI_Model {
 
                 $limit_start_length 
             ");
-        // print_r($this->db->last_query());
+        // Para imprimir la consulta
+        $last_query = $this->db->last_query();
         // cant de registros es necesaria para saber cuanto es el total de registros sin filtros existentes en la consulta
         $cant = $this->db->query("
                 SELECT count(1) cant 
@@ -485,8 +484,8 @@ class Dao_ot_hija_model extends CI_Model {
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
-
-                " . $srch . " " . $condicion . " 
+                WHERE 1 = 1 
+                " . $srch . " " . $condicion . " ".$search_col." 
             ");
         // en cantidad solo necesito la cantidad numerica
         $cantidad = $cant->row()->cant;
@@ -494,6 +493,7 @@ class Dao_ot_hija_model extends CI_Model {
 
         // retorno el objeto de la primera consulta entre ellos ->result() y -> num_rows() en la posicion datos y la cantidad total
         $retorno = array(
+            "query" => $last_query,
             "numDataTotal" => $cantidad,
             "datos" => $query
         );
@@ -501,50 +501,261 @@ class Dao_ot_hija_model extends CI_Model {
         return $retorno;
     }
 
-    public function getOtsNew() {
-        try {
-            $db = new DB();
-            $condicion = "";
+    public function getOtsNew($parameters, $search_col) {
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
+        $condicion = "";
+        if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND oh.k_id_user = $usuario_session";
-            }
-            $query = $this->db->query("
-                        SELECT oh.*, eo.k_id_tipo , eo.i_orden,
-                        CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
-                        CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
-                        FROM ot_hija oh
-                        INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
-                        INNER JOIN user ON user.k_id_user = oh.k_id_user
-                        WHERE estado_mod = 0
-                        $condicion ORDER BY tipo_trascurrido DESC
-                    ");
-            return $query;
-        } catch (DeplynException $ex) {
-            return $ex;
+            $condicion = " AND ot.k_id_user = $usuario_session ";
         }
+        if($search){
+            $srch  = "AND (ot.nombre_cliente LIKE '%".$search."%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
+
+        } else {
+            $srch = "";
+        }
+        $query = $this->db->query("
+                SELECT 
+                DISTINCT ot.k_id_register, 
+                ot.id_orden_trabajo_hija, 
+                ot.k_id_estado_ot, 
+                ot.k_id_user, 
+                ot.id_cliente_onyx, 
+                ot.nombre_cliente, 
+                ot.grupo_objetivo, 
+                ot.segmento, 
+                ot.nivel_atencion, 
+                ot.ciudad, 
+                ot.departamento, 
+                ot.grupo, 
+                ot.consultor_comercial, 
+                ot.grupo2, 
+                ot.consultor_postventa, 
+                ot.proy_instalacion, 
+                ot.ing_responsable, 
+                ot.id_enlace, 
+                ot.alias_enlace, 
+                ot.orden_trabajo, 
+                ot.nro_ot_onyx, 
+                ot.servicio, 
+                ot.familia, 
+                ot.producto, 
+                DATE_FORMAT(ot.fecha_creacion, '%Y-%m-%d') AS fecha_creacion, 
+                ot.tiempo_incidente, 
+                ot.estado_orden_trabajo, 
+                ot.tiempo_estado, 
+                ot.ano_ingreso_estado, 
+                ot.mes_ngreso_estado, 
+                DATE_FORMAT(ot.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
+                ot.usuario_asignado AS ingeniero, 
+                ot.grupo_asignado, 
+                ot.ingeniero_provisioning, 
+                ot.cargo_arriendo, 
+                ot.cargo_mensual, 
+                ot.monto_moneda_local_arriendo, 
+                ot.monto_moneda_local_cargo_mensual, 
+                ot.cargo_obra_civil, 
+                ot.descripcion, 
+                ot.direccion_origen, 
+                ot.ciudad_incidente, 
+                ot.direccion_destino, 
+                ot.ciudad_incidente3, 
+                DATE_FORMAT(ot.fecha_compromiso, '%Y-%m-%d') AS fecha_compromiso, 
+                DATE_FORMAT(ot.fecha_programacion, '%Y-%m-%d') AS fecha_programacion, 
+                DATE_FORMAT(ot.fecha_realizacion, '%Y-%m-%d') AS fecha_realizacion, 
+                ot.resolucion_1, 
+                ot.resolucion_2, 
+                ot.resolucion_3, 
+                ot.resolucion_4, 
+                DATE_FORMAT(ot.fecha_creacion_ot_hija, '%Y-%m-%d') AS fecha_creacion_ot_hija, 
+                ot.proveedor_ultima_milla, 
+                ot.usuario_asignado4, 
+                ot.resolucion_15, 
+                ot.resolucion_26, 
+                ot.resolucion_37, 
+                ot.resolucion_48, 
+                ot.ot_hija, 
+                ot.estado_orden_trabajo_hija, 
+                DATE_FORMAT(ot.fec_actualizacion_onyx_hija, '%Y-%m-%d') AS fec_actualizacion_onyx_hija, 
+                ot.tipo_trascurrido, 
+                DATE_FORMAT(ot.fecha_actual, '%Y-%m-%d') AS fecha_actual, 
+                ot.estado_mod, 
+                e.k_id_tipo, 
+                e.n_name_estado_ot, 
+                e.i_orden,
+                case
+                    when l.id_ot_hija IS NULL THEN '0'
+                    ELSE 1 
+                END AS 'function',
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e 
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                LEFT JOIN log l 
+                ON ot.id_orden_trabajo_hija = l.id_ot_hija 
+                WHERE estado_mod = 0 
+                ".$srch." ".$condicion." ".$search_col."
+
+                $limit_start_length 
+            ");
+        $last_query = $this->db->last_query();
+        $cant = $this->db->query("
+                SELECT count(1) cant 
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e 
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                WHERE estado_mod = 0 
+                " . $srch . " " . $condicion . " ".$search_col." 
+            ");
+        $cantidad = $cant->row()->cant;
+        $retorno = array(
+            "query" => $last_query,
+            "numDataTotal" => $cantidad,
+            "datos" => $query
+        );
+        return $retorno;
     }
 
-    public function getOtsChange() {
-        try {
-            $db = new DB();
-            $condicion = "";
+                                // -- WHERE estado_mod = 1
+    public function getOtsChange($parameters, $search_col) {
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
+        $condicion = "";
+        if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            if (Auth::user()->n_role_user == 'ingeniero') {
-                $condicion = "AND oh.k_id_user = $usuario_session";
-            }
-            $query = $this->db->query("SELECT oh.*, eo.k_id_tipo, eo.i_orden,
-                                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
-                                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
-                                FROM ot_hija oh
-                                INNER JOIN estado_ot eo ON oh.k_id_estado_ot = eo.k_id_estado_ot
-                                INNER JOIN user ON user.k_id_user = oh.k_id_user
-                                WHERE estado_mod = 1
-                                $condicion ORDER BY tipo_trascurrido DESC");
-            return $query;
-        } catch (DeplynException $ex) {
-            return $ex;
+            $condicion = " AND ot.k_id_user = $usuario_session ";
         }
+        if($search){
+            $srch  = "AND (ot.nombre_cliente LIKE '%".$search."%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
+
+        } else {
+            $srch = "";
+        }
+        $query = $this->db->query("
+                SELECT 
+                DISTINCT ot.k_id_register, 
+                ot.id_orden_trabajo_hija, 
+                ot.k_id_estado_ot, 
+                ot.k_id_user, 
+                ot.id_cliente_onyx, 
+                ot.nombre_cliente, 
+                ot.grupo_objetivo, 
+                ot.segmento, 
+                ot.nivel_atencion, 
+                ot.ciudad, 
+                ot.departamento, 
+                ot.grupo, 
+                ot.consultor_comercial, 
+                ot.grupo2, 
+                ot.consultor_postventa, 
+                ot.proy_instalacion, 
+                ot.ing_responsable, 
+                ot.id_enlace, 
+                ot.alias_enlace, 
+                ot.orden_trabajo, 
+                ot.nro_ot_onyx, 
+                ot.servicio, 
+                ot.familia, 
+                ot.producto, 
+                DATE_FORMAT(ot.fecha_creacion, '%Y-%m-%d') AS fecha_creacion, 
+                ot.tiempo_incidente, 
+                ot.estado_orden_trabajo, 
+                ot.tiempo_estado, 
+                ot.ano_ingreso_estado, 
+                ot.mes_ngreso_estado, 
+                DATE_FORMAT(ot.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
+                ot.usuario_asignado AS ingeniero, 
+                ot.grupo_asignado, 
+                ot.ingeniero_provisioning, 
+                ot.cargo_arriendo, 
+                ot.cargo_mensual, 
+                ot.monto_moneda_local_arriendo, 
+                ot.monto_moneda_local_cargo_mensual, 
+                ot.cargo_obra_civil, 
+                ot.descripcion, 
+                ot.direccion_origen, 
+                ot.ciudad_incidente, 
+                ot.direccion_destino, 
+                ot.ciudad_incidente3, 
+                DATE_FORMAT(ot.fecha_compromiso, '%Y-%m-%d') AS fecha_compromiso, 
+                DATE_FORMAT(ot.fecha_programacion, '%Y-%m-%d') AS fecha_programacion, 
+                DATE_FORMAT(ot.fecha_realizacion, '%Y-%m-%d') AS fecha_realizacion, 
+                ot.resolucion_1, 
+                ot.resolucion_2, 
+                ot.resolucion_3, 
+                ot.resolucion_4, 
+                DATE_FORMAT(ot.fecha_creacion_ot_hija, '%Y-%m-%d') AS fecha_creacion_ot_hija, 
+                ot.proveedor_ultima_milla, 
+                ot.usuario_asignado4, 
+                ot.resolucion_15, 
+                ot.resolucion_26, 
+                ot.resolucion_37, 
+                ot.resolucion_48, 
+                ot.ot_hija, 
+                ot.estado_orden_trabajo_hija, 
+                DATE_FORMAT(ot.fec_actualizacion_onyx_hija, '%Y-%m-%d') AS fec_actualizacion_onyx_hija, 
+                ot.tipo_trascurrido, 
+                DATE_FORMAT(ot.fecha_actual, '%Y-%m-%d') AS fecha_actual, 
+                ot.estado_mod, 
+                e.k_id_tipo, 
+                e.n_name_estado_ot, 
+                e.i_orden,
+                case
+                    when l.id_ot_hija IS NULL THEN '0'
+                    ELSE 1 
+                END AS 'function',
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e 
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                LEFT JOIN log l 
+                ON ot.id_orden_trabajo_hija = l.id_ot_hija 
+                WHERE estado_mod = 1 
+                ".$srch." ".$condicion." ".$search_col."
+
+                $limit_start_length 
+            ");
+        $last_query = $this->db->last_query();
+        $cant = $this->db->query("
+                SELECT count(1) cant 
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e 
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                WHERE estado_mod = 1 
+                " . $srch . " " . $condicion . " ".$search_col." 
+            ");
+        $cantidad = $cant->row()->cant;
+        $retorno = array(
+            "query" => $last_query,
+            "numDataTotal" => $cantidad,
+            "datos" => $query
+        );
+        return $retorno;
     }
 
     public function getOtsReportPrincipalAdmin() {

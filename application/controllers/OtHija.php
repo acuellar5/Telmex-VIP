@@ -70,7 +70,7 @@ class OtHija extends CI_Controller {
                // 'columm' => $this->input->post('columns')[$columm_num]['data']// column es la columna q se le dio click(ordenamiento)
               );
 
-        $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+        $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
         $search_col = ""; 
         $cant_colum = count($this->input->post('columns'));
 
@@ -94,7 +94,8 @@ class OtHija extends CI_Controller {
             "draw"            => intval($this->input->post('draw')), // necesario para la seguridad de datatables
             "recordsTotal"    => intval($totalDatoObtenido), // total de registros obtenidos con el filtro
             "recordsFiltered" => intval($totalDatos), // total de registros obtenidos sin el filtro
-            "data"            => $resultado->result_array() // registros obtenidos en la consulta con el filtro
+            "data"            => $resultado->result_array(), // registros obtenidos en la consulta con el filtro
+            "query" => $result['query']
             );
         echo json_encode($json_data);        
     }
@@ -103,12 +104,31 @@ class OtHija extends CI_Controller {
         $response = null;
         if (Auth::check()) {
             ini_set('memory_limit', '-1');
-            $otHijaModel = new Dao_ot_hija_model();
-            $data = $otHijaModel->getOtsNew();
-            $res['data'] = $data->result();
-            $res['count'] = $data->num_rows();
-
-            $this->json($res);
+            $parameters = array(
+               'start'  => $this->input->post('start'),//start se usa para la paginacion ('desde')
+               'length' => $this->input->post('length'),//length para la cantidad ('cuantos')... lo controla el select de mostrar
+               'search' => $this->input->post('search')['value'],// search para lo que ingresa el usuario en el buscador
+              );
+            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+            $search_col = ""; 
+            $cant_colum = count($this->input->post('columns'));
+            for ($i=0; $i < $cant_colum; $i++) { 
+                if ($this->input->post('columns')[$i]['search']['value'] !== "") {
+                    $search_col .= " AND (". $col_names[$i] ." LIKE '%".$this->input->post('columns')[$i]['search']['value']."%') ";
+                }
+            }            
+            $result = $this->Dao_ot_hija_model->getOtsNew($parameters, $search_col);
+            $resultado  = $result['datos'];
+            $totalDatos = $result['numDataTotal'];
+            $totalDatoObtenido = $resultado->num_rows();
+            $json_data = array(
+                "draw"            => intval($this->input->post('draw')), // necesario para la seguridad de datatables
+                "recordsTotal"    => intval($totalDatoObtenido), // total de registros obtenidos con el filtro
+                "recordsFiltered" => intval($totalDatos), // total de registros obtenidos sin el filtro
+                "data"            => $resultado->result_array(), // registros obtenidos en la consulta con el filtro
+                "query" => $result['query']
+                );
+            echo json_encode($json_data);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
             return;
@@ -119,11 +139,32 @@ class OtHija extends CI_Controller {
         $response = null;
         if (Auth::check()) {
             ini_set('memory_limit', '-1');
-            $otHijaModel = new Dao_ot_hija_model();
-            $data = $otHijaModel->getOtsChange();
-            $res['data'] = $data->result();
-            $res['count'] = $data->num_rows();
-            $this->json($res);
+            $parameters = array(
+               'start'  => $this->input->post('start'),//start se usa para la paginacion ('desde')
+               'length' => $this->input->post('length'),//length para la cantidad ('cuantos')... lo controla el select de mostrar
+               'search' => $this->input->post('search')['value'],// search para lo que ingresa el usuario en el buscador
+              );
+            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+            $search_col = ""; 
+            $cant_colum = count($this->input->post('columns'));
+            for ($i=0; $i < $cant_colum; $i++) { 
+                if ($this->input->post('columns')[$i]['search']['value'] !== "") {
+                    $search_col .= " AND (". $col_names[$i] ." LIKE '%".$this->input->post('columns')[$i]['search']['value']."%') ";
+                }
+            }            
+            $result = $this->Dao_ot_hija_model->getOtsChange($parameters, $search_col);
+            $resultado  = $result['datos'];
+            $totalDatos = $result['numDataTotal'];
+            $totalDatoObtenido = $resultado->num_rows();
+            $json_data = array(
+                "draw"            => intval($this->input->post('draw')), // necesario para la seguridad de datatables
+                "recordsTotal"    => intval($totalDatoObtenido), // total de registros obtenidos con el filtro
+                "recordsFiltered" => intval($totalDatos), // total de registros obtenidos sin el filtro
+                "data"            => $resultado->result_array(), // registros obtenidos en la consulta con el filtro
+                "query" => $result['query']
+                );
+            echo json_encode($json_data);
+
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
             return;
