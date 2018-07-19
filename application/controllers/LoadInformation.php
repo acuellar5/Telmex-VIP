@@ -11,6 +11,7 @@ class LoadInformation extends CI_Controller {
         $this->load->model('data/Dao_tipo_ot_hija_model');
         $this->load->model('data/Dao_estado_ot_model');
         $this->load->model('data/Dao_log_model');
+        $this->load->model('data/Dao_ot_padre_model');
     }
 
     public function uploadfile() {
@@ -138,6 +139,7 @@ class LoadInformation extends CI_Controller {
                     $data = array();
                     //valido si el id del excel existe en la base de datos
                     $exist = $this->Dao_ot_hija_model->getExistIdOtHija($this->getValueCell($sheet, 'AW' . $row));
+
                     // si existe...
                     if ($exist) {
                         $cambioStatusMod = [];
@@ -149,11 +151,13 @@ class LoadInformation extends CI_Controller {
                         // SELECCIONO LAS COLUMNAS DEL EXCEL A COMPARAR
                         $dataExcel = array(
                             // 'usuario_asignado'                 => $this->getValueCell($sheet, 'AB'. $row),
+                            // comparacion para ot_padre
                             'estado_orden_trabajo'             => $this->getValueCell($sheet, 'W'. $row),
-                            'tiempo_estado'                    => $this->getValueCell($sheet, 'X'. $row),
-                            'descripcion'                      => $this->getValueCell($sheet, 'AJ'. $row),
                             'fecha_compromiso'                 => $this->getDatePHPExcel($sheet, 'AO'. $row),
                             'fecha_programacion'               => $this->getDatePHPExcel($sheet, 'AP'. $row),
+                            // comparacion para ot_hija
+                            'tiempo_estado'                    => $this->getValueCell($sheet, 'X'. $row),
+                            'descripcion'                      => $this->getValueCell($sheet, 'AJ'. $row),
                             'fecha_realizacion'                => $this->getDatePHPExcel($sheet, 'AQ'. $row),
                             'estado_orden_trabajo_hija'        => $this->getValueCell($sheet, 'AZ'. $row),
                             'fec_actualizacion_onyx_hija'      => $this->getDatePHPExcel($sheet, 'BF'. $row),
@@ -229,10 +233,25 @@ class LoadInformation extends CI_Controller {
                             }
                         }
                         if ($updates) {
-                                $actualizar = $this->Dao_ot_hija_model->update_ot_hija_mod($updates);
+                                $up_otp = [];
+                                $up_oth = [];
+
+                                foreach ($updates as $indice => $value) {
+                                    if ($indice == 'estado_orden_trabajo' || $indice == 'fecha_compromiso' || $indice == 'fecha_programacion')  {
+                                        $up_otp[$indice] = $value;
+                                    } else {
+                                        $up_oth[$indice] = $value;
+                                    }
+                                }
+
+                                $actualizar_oth = $this->Dao_ot_hija_model->update_ot_hija_mod($up_oth);
+    
+                                if ($up_otp) {
+                                    $actualizar_otp = $this->Dao_ot_padre_model->update_ot_padre($up_otp,$this->getValueCell($sheet, 'Q' . $row));
+                                }
                                 
                             // Si se actualizó  el estado a sin cambios retorna 1 
-                            if ($actualizar === 1) {
+                            if (($actualizar_oth === 1) || ($actualizar_oth === 1 && $actualizar_otp === 1)) {
                                 $actualizados++;
                             }
                             // si retorna error lo captura, + el id 
@@ -243,21 +262,42 @@ class LoadInformation extends CI_Controller {
 
                         }
                     }
-
-
-
-
                     //si no existe lo inserto en la db tabla ot_hija
                     else {
-                        
+                        //*******************VALIDACION DE OT PADRE*******************
+                        $existe_otp = $this->Dao_ot_padre_model->exist_otp_by_id($this->getValueCell($sheet, 'Q' . $row));
+                        // verificamos si existe la ot padre
+                        if (!$existe_otp) {
+                            // Se debe insertar en tabla ot_padre
+                            $dataotp = array(
+                                'k_id_ot_padre'         => $this->getValueCell($sheet, 'Q' . $row),
+                                'k_id_user'             => $this->cedula_del_inegeniero(str_replace(array("ñ", "Ñ"), 'N',$this->getValueCell($sheet, 'AB'. $row)), $list_inges),
+                                'id_cliente_onyx'       => $this->getValueCell($sheet, 'A'. $row),
+                                'n_nombre_cliente'      => $this->getValueCell($sheet, 'B' . $row),
+                                'tipo_ot_padre'         => $this->getValueCell($sheet, 'P' . $row),
+                                'servicio'              => $this->getValueCell($sheet, 'R' . $row),
+                                'estado_orden_trabajo'  => $this->getValueCell($sheet, 'W' . $row),
+                                'fecha_creacion'        => $this->getDatePHPExcel($sheet, 'U'. $row),
+                                'fecha_compromiso'      => $this->getDatePHPExcel($sheet, 'AO' . $row),
+                                'fecha_programacion'    => $this->getDatePHPExcel($sheet, 'AP' . $row),
+                                'lista_observaciones'   => NULL,
+                                'observacion'           => NULL,
+                                'fecha_actualizacion'   => NULL,
+                                'usuario_actualizacion' => NULL
+                            );
+                            // funcion para insertar datos otp
+                            $this->Dao_ot_padre_model->insert_data_otp($dataotp);                            
+                        }
+
+
+
+
                         $id_estado = $this->get_estado_by_name_ot_hiha($this->getValueCell($sheet, 'AV'. $row), $this->getValueCell($sheet, 'AZ'. $row));                    
                         //LLENO EL ARRAY LETRAS CON LOS VARORES DE LA FILA DEL EXCEL EN LA QUE VA EL WHILE
                         $data = array(
+                                'nro_ot_onyx'                      => $this->getValueCell($sheet, 'Q' . $row),
                                 'id_orden_trabajo_hija'            => $this->getValueCell($sheet, 'AW'. $row),
                                 'k_id_estado_ot'                   => $id_estado->k_id_estado_ot,
-                                'k_id_user'                        => $this->cedula_del_inegeniero(str_replace(array("ñ", "Ñ"), 'N',$this->getValueCell($sheet, 'AB'. $row)), $list_inges),
-                                'id_cliente_onyx'                  => $this->getValueCell($sheet, 'A'. $row),
-                                'nombre_cliente'                   => $this->getValueCell($sheet, 'B'. $row),
                                 'grupo_objetivo'                   => $this->getValueCell($sheet, 'C'. $row),
                                 'segmento'                         => $this->getValueCell($sheet, 'D'. $row),
                                 'nivel_atencion'                   => $this->getValueCell($sheet, 'E'. $row),
@@ -271,14 +311,9 @@ class LoadInformation extends CI_Controller {
                                 'ing_responsable'                  => $this->getValueCell($sheet, 'M'. $row),
                                 'id_enlace'                        => $this->getValueCell($sheet, 'N'. $row),
                                 'alias_enlace'                     => $this->getValueCell($sheet, 'O'. $row),
-                                'orden_trabajo'                    => $this->getValueCell($sheet, 'P'. $row),
-                                'nro_ot_onyx'                      => $this->getValueCell($sheet, 'Q'. $row),
-                                'servicio'                         => $this->getValueCell($sheet, 'R'. $row),
                                 'familia'                          => $this->getValueCell($sheet, 'S'. $row),
                                 'producto'                         => $this->getValueCell($sheet, 'T'. $row),
-                                'fecha_creacion'                   => $this->getDatePHPExcel($sheet, 'U'. $row),
                                 'tiempo_incidente'                 => $this->getValueCell($sheet, 'V'. $row),
-                                'estado_orden_trabajo'             => $this->getValueCell($sheet, 'W'. $row),
                                 'tiempo_estado'                    => $this->getValueCell($sheet, 'X'. $row),
                                 'ano_ingreso_estado'               => $this->getValueCell($sheet, 'Y'. $row),
                                 'mes_ngreso_estado'                => $this->getValueCell($sheet, 'Z'. $row),
@@ -296,8 +331,6 @@ class LoadInformation extends CI_Controller {
                                 'ciudad_incidente'                 => $this->getValueCell($sheet, 'AL'. $row),
                                 'direccion_destino'                => $this->getValueCell($sheet, 'AM'. $row),
                                 'ciudad_incidente3'                => $this->getValueCell($sheet, 'AN'. $row),
-                                'fecha_compromiso'                 => $this->getDatePHPExcel($sheet, 'AO'. $row),
-                                'fecha_programacion'               => $this->getDatePHPExcel($sheet, 'AP'. $row),
                                 'fecha_realizacion'                => $this->getDatePHPExcel($sheet, 'AQ'. $row),
                                 'resolucion_1'                     => $this->getValueCell($sheet, 'AR'. $row),
                                 'resolucion_2'                     => $this->getValueCell($sheet, 'AS'. $row),
@@ -331,7 +364,6 @@ class LoadInformation extends CI_Controller {
                             array_push($errorInsert, array($insert, $this->getValueCell($sheet, 'AW' . $row) ));
                         }
                     }
-
                     $row++;
                 }
 

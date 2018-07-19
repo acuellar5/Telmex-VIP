@@ -287,13 +287,13 @@ class Dao_ot_hija_model extends CI_Model {
             SELECT 
             ot.id_orden_trabajo_hija,
             ot.k_id_estado_ot,
-            ot.k_id_user,
+            otp.k_id_user,
             ot.usuario_asignado,
-            ot.estado_orden_trabajo,
+            otp.estado_orden_trabajo,
             ot.tiempo_estado,
             ot.descripcion,
-            ot.fecha_compromiso,
-            ot.fecha_programacion,
+            otp.fecha_compromiso,
+            otp.fecha_programacion,
             ot.fecha_realizacion,
             ot.estado_orden_trabajo_hija,
             ot.fec_actualizacion_onyx_hija,
@@ -303,7 +303,9 @@ class Dao_ot_hija_model extends CI_Model {
             FROM 
             ot_hija ot
             LEFT JOIN estado_ot e
-            ON ot.k_id_estado_ot = e.k_id_estado_ot
+            ON ot.k_id_estado_ot = e.k_id_estado_ot 
+            INNER JOIN ot_padre otp 
+            ON ot.nro_ot_onyx = otp.k_id_ot_padre
             WHERE 
             ot.id_orden_trabajo_hija = $id
         ");

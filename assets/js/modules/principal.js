@@ -430,7 +430,7 @@ $(function () {
             $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
-            var record = todo.tablaTodo.row(trParent).data();
+            var record = todo.tableTotal.row(trParent).data();
             $('#Modal_detalle').modal('show');
             fTiempos.fillFormModal(record);
         },
