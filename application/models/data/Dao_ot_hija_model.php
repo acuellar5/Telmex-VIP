@@ -50,14 +50,31 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
-    public function getOtsAssigned() {
-        try {
-            $condicion = "";
-            if (Auth::user()->n_role_user == 'ingeniero') {
-                $usuario_session = Auth::user()->k_id_user;
-                $condicion = "AND ot.k_id_user = $usuario_session";
-            }
-            $query = $this->db->query("
+    public function getOtsAssigned($parameters, $search_col) { 
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
+        $condicion = "";
+        if (Auth::user()->n_role_user == 'ingeniero') {
+            $usuario_session = Auth::user()->k_id_user;
+            $condicion = " AND ot.k_id_user = $usuario_session ";
+        }
+        if($search){
+            $srch  = "AND (ot.nombre_cliente LIKE '%".$search."%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
+
+        } else {
+            $srch = "";
+        }
+        $query = $this->db->query("
                 SELECT 
                 DISTINCT ot.k_id_register, 
                 ot.id_orden_trabajo_hija, 
@@ -90,7 +107,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ot.ano_ingreso_estado, 
                 ot.mes_ngreso_estado, 
                 DATE_FORMAT(ot.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
-                ot.usuario_asignado, 
+                ot.usuario_asignado AS ingeniero, 
                 ot.grupo_asignado, 
                 ot.ingeniero_provisioning, 
                 ot.cargo_arriendo, 
@@ -130,23 +147,38 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
-                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
-                INNER JOIN user
-                ON user.k_id_user = ot.k_id_user
                 LEFT JOIN log l 
                 ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 WHERE ot.fecha_actual = CURDATE() 
                 $condicion ORDER BY tipo_trascurrido DESC
+                ".$srch." ".$condicion." ".$search_col."
+
+                $limit_start_length 
             ");
-            return $query;
-        } catch (DeplynException $ex) {
-            return $ex;
-        }
+        $last_query = $this->db->last_query();
+        $cant = $this->db->query("
+                SELECT count(1) cant 
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e 
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                WHERE ot.fecha_actual = CURDATE() 
+                $condicion ORDER BY tipo_trascurrido DESC
+                " . $srch . " " . $condicion . " ".$search_col." 
+            ");
+        $cantidad = $cant->row()->cant;
+        $retorno = array(
+            "query" => $last_query,
+            "numDataTotal" => $cantidad,
+            "datos" => $query
+        );
+        return $retorno;
+    
     }
 
     //
@@ -183,12 +215,37 @@ class Dao_ot_hija_model extends CI_Model {
 //             return $ex;
 //         }
 //     }
-
-    public function getOtsFiteenDays() {
+                //                     WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
+                // AND ot.k_id_estado_ot = 1 
+    public function getOtsFiteenDays($parameters, $search_col) {
+        // $condicion = "";
+        // if (Auth::user()->n_role_user == 'ingeniero') {
+        //     $usuario_session = Auth::user()->k_id_user;
+        //     $condicion = "AND ot.k_id_user = $usuario_session";
+        // }
+        
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
+        $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion = "AND ot.k_id_user = $usuario_session";
+            $condicion = " AND ot.k_id_user = $usuario_session ";
+        }
+        if($search){
+            $srch  = "AND (ot.nombre_cliente LIKE '%".$search."%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_compromiso LIKE '%".$search."%' OR ";
+            $srch .= "ot.fecha_programacion LIKE '%".$search."%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
+
+        } else {
+            $srch = "";
         }
         $query = $this->db->query("
                 SELECT 
@@ -223,7 +280,7 @@ class Dao_ot_hija_model extends CI_Model {
                 ot.ano_ingreso_estado, 
                 ot.mes_ngreso_estado, 
                 DATE_FORMAT(ot.fecha_ingreso_estado, '%Y-%m-%d') AS fecha_ingreso_estado, 
-                ot.usuario_asignado, 
+                ot.usuario_asignado AS ingeniero, 
                 ot.grupo_asignado, 
                 ot.ingeniero_provisioning, 
                 ot.cargo_arriendo, 
@@ -255,7 +312,6 @@ class Dao_ot_hija_model extends CI_Model {
                 DATE_FORMAT(ot.fec_actualizacion_onyx_hija, '%Y-%m-%d') AS fec_actualizacion_onyx_hija, 
                 ot.tipo_trascurrido, 
                 DATE_FORMAT(ot.fecha_actual, '%Y-%m-%d') AS fecha_actual, 
-                DATE_FORMAT(ot.fecha_insercion_zolid, '%Y-%m-%d') AS fecha_insercion_zolid,
                 ot.estado_mod, 
                 e.k_id_tipo, 
                 e.n_name_estado_ot, 
@@ -264,21 +320,38 @@ class Dao_ot_hija_model extends CI_Model {
                     when l.id_ot_hija IS NULL THEN '0'
                     ELSE 1 
                 END AS 'function',
-                CONCAT('$ ',FORMAT(monto_moneda_local_arriendo + monto_moneda_local_cargo_mensual,2)) AS MRC,
-                CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
+                CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM 
                 ot_hija ot
                 INNER JOIN estado_ot e 
                 ON ot.k_id_estado_ot = e.k_id_estado_ot 
-                INNER JOIN user
-                ON user.k_id_user = ot.k_id_user
                 LEFT JOIN log l 
-                ON ot.id_orden_trabajo_hija = l.id_ot_hija
+                ON ot.id_orden_trabajo_hija = l.id_ot_hija 
                 WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
                 AND ot.k_id_estado_ot = 1 
-                $condicion
+                ".$srch." ".$condicion." ".$search_col."
+
+                $limit_start_length 
             ");
-        return $query;
+        $last_query = $this->db->last_query();
+        $cant = $this->db->query("
+                SELECT count(1) cant 
+                FROM 
+                ot_hija ot
+                INNER JOIN estado_ot e 
+                ON ot.k_id_estado_ot = e.k_id_estado_ot 
+                WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
+                AND ot.k_id_estado_ot = 1 
+                " . $srch . " " . $condicion . " ".$search_col." 
+            ");
+        $cantidad = $cant->row()->cant;
+        $retorno = array(
+            "query" => $last_query,
+            "numDataTotal" => $cantidad,
+            "datos" => $query
+        );
+        return $retorno;
+    
     }
 
     // llama el primer elemento dependiendo el id rf
@@ -353,7 +426,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Consulta controlada para el data tables usado con server side prossesing
-    public function getAllOtPS($parameters, $search_col){
+    public function     getAllOtPS($parameters, $search_col){
 
         // reasigno las variables para q sean mas dicientes y manejables
         $start = $parameters['start'];
