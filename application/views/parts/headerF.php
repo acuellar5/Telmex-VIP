@@ -52,7 +52,11 @@
         <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . time()) ?>" />
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
+     <?php } ?>
+  <?php if ($this->uri->segment(1) == 'OTP') { ?>
+        <link rel="stylesheet" href="<?= URL::to('assets/css/style_principal_otp.css?v=' . time()) ?>" />
   <?php } ?>
+
 </head>
 
 <body style="padding: 0;" data-base="<?= URL::base() ?>" >  

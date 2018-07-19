@@ -39,5 +39,19 @@ class Dao_ot_padre_model extends CI_Model {
             return 1;
         }
 	}
+
+	// Retorna ots de ingenieros sin estado cancelada, cerrada ni terminada
+	public function get_otp_by_id_user($id){
+		$query = $this->db->query("
+				SELECT 
+				k_id_ot_padre, estado_orden_trabajo  
+				FROM 
+				ot_padre
+				WHERE
+				k_id_user = '$id' AND 
+				estado_orden_trabajo != 'otp_cerrada'
+			");
+		return $query->result();
+	}
 	  
 }
