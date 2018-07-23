@@ -40,4 +40,11 @@ class OtPadre extends CI_Controller {
 
   }
   
+  // TABLA QUE TRAE LA INFORMACION DE OTPADRE
+  public function getListOtsOtPadre(){
+    $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadre();
+    echo json_encode($otPadreList);
+    
+  }
+
 }

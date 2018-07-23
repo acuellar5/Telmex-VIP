@@ -39,7 +39,7 @@
 	<?php } ?>
 		
 </table>
-<!-- ***************************TABLA DE INCONSISTENCIAS*************************** -->
+<!-- ***************************TABLA DE REGISTRO CON TIPO INDEFINIDO *************************** -->
 <h3>Tabla de registro con tipo Indefinido</h3>
 <table id="table_undefined" class="table table-hover table-bordered table-striped dataTable_camilo "></table>
 

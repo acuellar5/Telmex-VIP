@@ -50,8 +50,20 @@ class Dao_ot_padre_model extends CI_Model {
 				WHERE
 				k_id_user = '$id' AND 
 				estado_orden_trabajo != 'otp_cerrada'
-			");
+		");
 		return $query->result();
 	}
+	    // tabla de lista de OTS Padre
+    public function getListOtsOtPadre(){
+   		$query = $this->db->query("
+				SELECT k_id_ot_padre,  n_nombre_cliente, tipo_ot_padre, 
+				servicio, estado_orden_trabajo, fecha_programacion, 
+				fecha_compromiso,  fecha_creacion, ot_padre.k_id_user, user.n_name_user,
+				CONCAT(n_name_user, ' ' , n_last_name_user) AS ingeniero
+				FROM ot_padre
+				INNER JOIN user ON ot_padre.k_id_user = user.k_id_user;
+    	");
+    	return $query->result();
+  }
 	  
 }
