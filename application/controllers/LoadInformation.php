@@ -274,7 +274,7 @@ class LoadInformation extends CI_Controller {
                                 'k_id_user'             => $this->cedula_del_inegeniero(str_replace(array("ñ", "Ñ"), 'N',$this->getValueCell($sheet, 'AB'. $row)), $list_inges),
                                 'id_cliente_onyx'       => $this->getValueCell($sheet, 'A'. $row),
                                 'n_nombre_cliente'      => $this->getValueCell($sheet, 'B' . $row),
-                                'tipo_ot_padre'         => $this->getValueCell($sheet, 'P' . $row),
+                                'orden_trabajo'         => $this->getValueCell($sheet, 'P' . $row),
                                 'servicio'              => $this->getValueCell($sheet, 'R' . $row),
                                 'estado_orden_trabajo'  => $this->getValueCell($sheet, 'W' . $row),
                                 'fecha_creacion'        => $this->getDatePHPExcel($sheet, 'U'. $row),
@@ -441,7 +441,6 @@ class LoadInformation extends CI_Controller {
      private function get_estado_by_name_ot_hiha($name_type, $status){
            
         $id_tipo =  $this->Dao_tipo_ot_hija_model->get_tipo_ot_hija_by_name($name_type);
-
         if ($id_tipo) {
             $id_estado = $this->Dao_estado_ot_model->get_status_by_idtipo_and_name_status($id_tipo->id_tipo, $status);
         } else {

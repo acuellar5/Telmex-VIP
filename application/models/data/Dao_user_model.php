@@ -65,6 +65,7 @@ class Dao_user_model extends CI_Model {
             ");
         return $query->row();
     }
+    // retorna lista de ingenieros
     public function fill_with_eingenieer(){
         $query =$this->db->query("    
                 SELECT 
@@ -75,6 +76,20 @@ class Dao_user_model extends CI_Model {
                 WHERE 
                 n_role_user = 'ingeniero' AND n_group = 'GESTION OTS ESTANDAR';                        
                                 ");
+        return $query->result();
+    }
+
+    // retorna ingenieros con ots asignadas
+    public function get_eng_trabajanding(){
+        $query = $this->db->query("
+                    SELECT 
+                    DISTINCT otp.k_id_user, CONCAT(u.n_name_user, ' ', u.n_last_name_user) AS nombre
+                    FROM 
+                    ot_padre otp
+                    INNER JOIN
+                    user u
+                    ON u.k_id_user = otp.k_id_user
+                ;");
         return $query->result();
     }
 
