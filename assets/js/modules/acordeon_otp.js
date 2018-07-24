@@ -29,11 +29,11 @@ $(function () {
         },
 
         // Activa o desactiva la clase active
-        act_desact: function(event){
+       act_desact: function(event){
             // variable para diferenciar si le dan clic para expandir o para otra accion
             var def = event.target.dataset.iduser;
             var icono = $(this).children('img');
-			// var panel  = this.nextElementSibling;
+            // var panel  = this.nextElementSibling;
             var panel = $(this).next();
             //  si quiere expandir dif estará definida, sino será undefined
             if (def) {                

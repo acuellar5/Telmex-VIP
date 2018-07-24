@@ -1042,6 +1042,35 @@ class Dao_ot_hija_model extends CI_Model {
         $this->db->update('inconcistencia', $data);
   }
 
+
+    public function getothija($idOth){
+    $query = $this->db->query("
+        SELECT oth.k_id_estado_ot, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
+        oth.nivel_atencion, oth.ciudad, oth.departamento, oth.grupo,
+        oth.consultor_comercial, oth.grupo2, oth.consultor_postventa, 
+        oth.proy_instalacion, oth.ing_responsable, oth.id_enlace, 
+        oth.alias_enlace, otp.servicio, otp.orden_trabajo,
+        oth.familia, oth.producto, otp.fecha_creacion, oth.tiempo_incidente,
+        otp.estado_orden_trabajo, oth.tiempo_estado, oth.ano_ingreso_estado,
+        oth.mes_ngreso_estado, oth.fecha_ingreso_estado, oth.usuario_asignado,
+        oth.grupo_asignado, oth.ingeniero_provisioning, oth.cargo_arriendo,
+        oth.cargo_mensual, oth.monto_moneda_local_arriendo, oth.cargo_obra_civil,
+        oth.monto_moneda_local_cargo_mensual, oth.descripcion, oth.direccion_origen,
+        oth.ciudad_incidente, oth.direccion_destino, oth.ciudad_incidente3,
+        otp.fecha_compromiso, otp.fecha_programacion, oth.fecha_realizacion,
+        oth.resolucion_1, oth.resolucion_2, oth.resolucion_3, oth.resolucion_4, 
+        oth.ot_hija, oth.estado_orden_trabajo_hija, oth.fecha_creacion_ot_hija,
+        oth.usuario_asignado4, oth.resolucion_15, oth.resolucion_26, oth.resolucion_37,
+        oth.resolucion_48, oth.fec_actualizacion_onyx_hija, oth.tipo_trascurrido, 
+        oth.nro_ot_onyx, otp.k_id_ot_padre, oth.proveedor_ultima_milla
+        FROM ot_hija oth
+        INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
+        WHERE oth.id_orden_trabajo_hija = $idOth
+    ");
+    return $query->row();
+  }
+
+
   //retorna oth filtradas por id usuario, una otpadre, y un idtipo
   public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo){
       $query = $this->db->query("
@@ -1063,7 +1092,7 @@ class Dao_ot_hija_model extends CI_Model {
       return $query->result();
   }
 
-  // trae oth filtradas por los argumentos
+  // trae otp filtradas por los argumentos
   public function get_oth_where($iduser, $otp, $idtipo, $oth){
     $where = "";
     $where .= ($iduser)? "AND otp.k_id_user = '$iduser' " : "";
@@ -1088,8 +1117,40 @@ class Dao_ot_hija_model extends CI_Model {
             WHERE 1=1 
             $where
         ");
-      return $query->result();
+
+
+    $where2 = ""; 
+    $where2 .= ($iduser)? "AND otp.k_id_user = '$iduser' " : "";
+    $where2 .= ($otp) ? " AND otp.k_id_ot_padre = '$otp' " : "";
+
+    $query2 = $this->db->query("
+            SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, 
+            otp.orden_trabajo, otp.servicio, 
+            otp.estado_orden_trabajo,  otp.fecha_programacion,
+            otp.fecha_compromiso, otp.fecha_creacion, 
+            u.k_id_user, CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre
+            FROM 
+            ot_padre otp 
+            INNER JOIN user u 
+            ON otp.k_id_user = u.k_id_user
+            $where2
+        ");
+
+
+
+
+
+      $data = array(
+          'oth' => $query->result(),
+          'otp' => $query2->result()
+      );
+      
+      return $data;
   }
+  //
+   // public function get_oth_where($iduser, $otp, $){
+       
+   // } 
 
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */

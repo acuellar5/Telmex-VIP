@@ -250,6 +250,18 @@ class OtHija extends CI_Controller {
         }
     }
 
+    public function c_fillmodals() {
+        $response = null;
+        if (Auth::check()) {
+            $idOth = $this->input->post('idOth');
+            $otHijaModel = new Dao_ot_hija_model();
+            $res = $otHijaModel->getothija($idOth);
+            $this->json($res);
+        } else {
+            $this->json(new Response(EMessages::SESSION_INACTIVE));
+            return;
+        }
+    }
     // obtiene oth por iduser idtipo idotp
     public function c_get_oth_by_iduser_otp_idtipo(){
         $iduser = $this->input->post('iduser');
