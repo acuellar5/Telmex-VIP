@@ -82,7 +82,7 @@ class OtHija extends CI_Controller {
                'length' => $this->input->post('length'),//length para la cantidad ('cuantos')... lo controla el select de mostrar
                'search' => $this->input->post('search')['value'],// search para lo que ingresa el usuario en el buscador
               );
-            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'otp.n_nombre_cliente', 'otp.fecha_compromiso', 'otp.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
             $search_col = ""; 
             $cant_colum = count($this->input->post('columns'));
             for ($i=0; $i < $cant_colum; $i++) { 
@@ -162,7 +162,7 @@ class OtHija extends CI_Controller {
                'length' => $this->input->post('length'),//length para la cantidad ('cuantos')... lo controla el select de mostrar
                'search' => $this->input->post('search')['value'],// search para lo que ingresa el usuario en el buscador
               );
-            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'otp.n_nombre_cliente', 'otp.fecha_compromiso', 'otp.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
             $search_col = ""; 
             $cant_colum = count($this->input->post('columns'));
             for ($i=0; $i < $cant_colum; $i++) { 
@@ -197,7 +197,7 @@ class OtHija extends CI_Controller {
                'length' => $this->input->post('length'),//length para la cantidad ('cuantos')... lo controla el select de mostrar
                'search' => $this->input->post('search')['value'],// search para lo que ingresa el usuario en el buscador
               );
-            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'ot.nombre_cliente', 'ot.fecha_compromiso', 'ot.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
+            $col_names = ['ot.nro_ot_onyx', 'ot.id_orden_trabajo_hija', 'otp.n_nombre_cliente', 'otp.fecha_compromiso', 'otp.fecha_programacion', 'ot.ot_hija', 'ot.estado_orden_trabajo_hija', 'ot.usuario_asignado', 'CONCAT("$" ,FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2))', 'ot.usuario_asignado'];
             $search_col = ""; 
             $cant_colum = count($this->input->post('columns'));
             for ($i=0; $i < $cant_colum; $i++) { 
