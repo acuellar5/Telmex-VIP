@@ -90,6 +90,30 @@ class Dao_tipo_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+    //retorna los tipos de ot hija que tiene una otp por id de usuario
+    public function get_types_by_iduser_otp($otp, $iduser){
+        $query = $this->db->query("
+                SELECT 
+                oth.id_orden_trabajo_hija, oth.nro_ot_onyx, e.k_id_tipo, t.n_name_tipo
+                FROM 
+                ot_hija oth
+                INNER JOIN 
+                ot_padre otp
+                ON oth.nro_ot_onyx = otp.k_id_ot_padre 
+                INNER JOIN 
+                estado_ot e 
+                ON oth.k_id_estado_ot = e.k_id_estado_ot 
+                INNER JOIN 
+                tipo_ot_hija t 
+                ON e.k_id_tipo = t.k_id_tipo 
+                WHERE 
+                otp.k_id_user = '$iduser' AND 
+                oth.nro_ot_onyx = '$otp' 
+                GROUP BY t.n_name_tipo  
+            ");
+        return $query->result();
+    }
+
 
 
 

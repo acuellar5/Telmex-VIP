@@ -1404,6 +1404,55 @@ class Dao_ot_hija_model extends CI_Model {
         $this->db->update('inconcistencia', $data);
   }
 
+  //retorna oth filtradas por id usuario, una otpadre, y un idtipo
+  public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo){
+      $query = $this->db->query("
+            SELECT 
+            oth.id_orden_trabajo_hija, oth.k_id_estado_ot
+            FROM 
+            ot_hija oth
+            INNER JOIN 
+            ot_padre otp
+            ON oth.nro_ot_onyx = otp.k_id_ot_padre 
+            INNER JOIN 
+            estado_ot e 
+            ON oth.k_id_estado_ot = e.k_id_estado_ot 
+            WHERE 
+            otp.k_id_user = '$iduser' AND 
+            oth.nro_ot_onyx = '$otp' AND 
+            e.k_id_tipo = '$idtipo'        
+        ");
+      return $query->result();
+  }
+
+  // trae oth filtradas por los argumentos
+  public function get_oth_where($iduser, $otp, $idtipo, $oth){
+    $where = "";
+    $where .= ($iduser)? "AND otp.k_id_user = '$iduser' " : "";
+    $where .= ($otp) ? " AND oth.nro_ot_onyx = '$otp' " : "";
+    $where .= ($idtipo) ? " AND e.k_id_tipo = '$idtipo'" : "";
+    $where .= ($oth) ? " AND oth.id_orden_trabajo_hija = '$oth'" : "";
+
+      $query = $this->db->query("
+            SELECT 
+            otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, otp.servicio, 
+            otp.estado_orden_trabajo, otp.fecha_programacion,
+            otp.fecha_compromiso, otp.fecha_creacion, CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre,
+            oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija
+            FROM 
+            ot_hija oth
+            INNER JOIN ot_padre otp 
+            ON oth.nro_ot_onyx = otp.k_id_ot_padre
+            INNER JOIN estado_ot e 
+            ON oth.k_id_estado_ot = e.k_id_estado_ot 
+            INNER JOIN user u 
+            ON otp.k_id_user = u.k_id_user
+            WHERE 1=1 
+            $where
+        ");
+      return $query->result();
+  }
+
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
     /*     * *********************************************************************************************************** */
