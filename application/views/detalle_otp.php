@@ -40,5 +40,5 @@ for ($i=0; $i < count($registros); $i++) {
 	$(document).ready( function () {
 	    $('#tablaDetalles').DataTable();
 	} );
-	
+
 </script>
