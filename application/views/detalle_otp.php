@@ -87,8 +87,4 @@ for ($i=0; $i < count($registros['oth']); $i++) {
 	    $('#detalles_oth').DataTable();
 
 	} );
-	
 </script>
-
-
-
