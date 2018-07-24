@@ -153,6 +153,9 @@ $(function () {
             fTiempos.fillFormModal(record);
         },
         fillFormModal: function (registros) {
+
+
+            
             $.each(registros, function (i, item) {
                 $('#mdl_' + i).val(item);
             });

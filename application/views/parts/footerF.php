@@ -30,7 +30,6 @@
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to("assets/js/modules/moduleOts.js?v=" . time()) ?>"></script>    
-
     
 <?php endif ?>
 
@@ -82,7 +81,13 @@
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
 <?php endif ?>
 
-
+<?php if ($this->uri->segment(1) == 'managementOtp'): ?>
+<!-- **********************************************VISTA OTPADRE *********************************************-->
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
+    <script src="<?= URL::to("assets/js/modules/moduleOtpadre.js?v=" . time()) ?>"></script>    
+    
+<?php endif ?>
 
 </body>
 </html>
