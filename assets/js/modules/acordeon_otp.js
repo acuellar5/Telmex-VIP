@@ -29,22 +29,22 @@ $(function () {
         },
 
         // Activa o desactiva la clase active
-        act_desact: function(event){
+       act_desact: function(event){
             // variable para diferenciar si le dan clic para expandir o para otra accion
             var def = event.target.dataset.iduser;
             var icono = $(this).children('img');
-			// this.classList.toggle("active");
-			var panel  = this.nextElementSibling;
+            // var panel  = this.nextElementSibling;
+            var panel = $(this).next();
             //  si quiere expandir dif estará definida, sino será undefined
             if (def) {                
-                if (panel.style.display === "block") {
+                if (panel.css('display') === "block") {
                     $(this).removeClass('active');
-                    panel.style.display = "none";
+                    panel.hide(300);
                     icono.attr('src', baseurl + '/assets/images/plus.png');
 
                 } else {
                     $(this).addClass('active');
-                    panel.style.display = "block";
+                    panel.show(300);
                     icono.attr('src', baseurl + '/assets/images/minus.png');
                 }
             }

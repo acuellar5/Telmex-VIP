@@ -15,7 +15,11 @@
 }
 
 .active, .accordion:hover {
+<<<<<<< HEAD
     background-color: #1f4c6f;
+=======
+    background-color: #1f4c6f82;
+>>>>>>> 6ee9d0ef929da7b540f32d07972f1f614193d1ac
     color: #fff;
 }
 
