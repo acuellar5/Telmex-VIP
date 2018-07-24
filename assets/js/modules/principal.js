@@ -153,12 +153,15 @@ $(function () {
             fTiempos.fillFormModal(record);
         },
         fillFormModal: function (registros) {
-
-
-            
-            $.each(registros, function (i, item) {
-                $('#mdl_' + i).val(item);
-            });
+            $.post(baseurl + '/OtHija/c_fillmodals',
+                    {
+                        idOth: registros.id_orden_trabajo_hija // parametros que se envian
+                    },
+                    function (data) {
+                       $.each(data, function (i, item) {
+                            $('#mdl_' + i).val(item);
+                        }); 
+                    });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
         },
