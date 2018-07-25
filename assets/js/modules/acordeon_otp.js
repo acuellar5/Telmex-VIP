@@ -137,7 +137,7 @@ $(function () {
                     panel.append(`<legend class="sub-title-acord">Numero OTH</legend>`)
                     $.each(ots, function(i, oth) {
                          panel.append(`
-                                <div class='bg' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija}<a class='rigth btn btn-default' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth btn btn-default' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
+                                <div class='bg' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth btn btn-default' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth btn btn-default' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
                             `);
                     });
                 }
