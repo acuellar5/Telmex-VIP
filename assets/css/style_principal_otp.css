@@ -59,16 +59,33 @@
 }
 .in_time{
     background: #00800094;
-    width: 25px;
-    border-radius: 20px;
+    padding: 8px 7px;
+    min-width: 19px;
+    width: 30px;
+    border-radius: 50%;
 }
 .out_time{
     background: #ff0000a3;
-    width: 25px;
-    border-radius: 20px;
+    padding: 8px 7px;
+    min-width: 19px;
+    width: 30px;
+    border-radius: 50%;
 }
 .today{
     background: #ffa500b8;
-    width: 25px;
-    border-radius: 20px;
+    padding: 8px 7px;
+    min-width: 19px;
+    width: 30px;
+    border-radius: 50%;
+}
+.all {
+    min-width: 19px;
+    padding: 8px 7px;
+    border-radius: 50%;
+}
+.h4_for{
+    width: 140px;
+    margin-left: 394px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
