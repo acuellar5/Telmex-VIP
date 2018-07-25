@@ -58,21 +58,21 @@
     padding-left: 20px;
 }
 .in_time{
-    background: #00800094;
+    background: #00800050;
     padding: 8px 7px;
     min-width: 19px;
     width: 30px;
     border-radius: 50%;
 }
 .out_time{
-    background: #ff0000a3;
+    background: #ff000054;
     padding: 8px 7px;
     min-width: 19px;
     width: 30px;
     border-radius: 50%;
 }
 .today{
-    background: #ffa500b8;
+    background: #ffa50075;
     padding: 8px 7px;
     min-width: 19px;
     width: 30px;
