@@ -1147,10 +1147,59 @@ class Dao_ot_hija_model extends CI_Model {
       
       return $data;
   }
-  //
-   // public function get_oth_where($iduser, $otp, $){
-       
-   // } 
+
+
+    //retorna las oths y si estan en tiempo omite canceladas cerradas y terminadas
+    public function get_ots_times(){
+        $query = $this->db->query("
+                SELECT 
+                u.k_id_user,
+                CONCAT(u.n_name_user, ' ', u.n_last_name_user) AS nombre,
+                otp.k_id_ot_padre,
+                e.k_id_tipo, 
+                t.n_name_tipo, 
+                t.i_orden, 
+                oth.id_orden_trabajo_hija, 
+                e.k_id_estado_ot, 
+                e.n_name_estado_ot, 
+                oth.fecha_creacion_ot_hija, 
+                CASE
+                    WHEN e.k_id_tipo = 1 then  DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
+                    
+                    WHEN e.k_id_tipo = 2 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 7 DAY))
+                    WHEN e.k_id_tipo = 3 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                    WHEN e.k_id_tipo = 4 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 5 DAY)) 
+                    WHEN e.k_id_tipo = 6 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 1 DAY)) 
+                    WHEN e.k_id_tipo = 7 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 15 DAY)) 
+                    WHEN e.k_id_tipo = 8 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 20 DAY)) 
+                    WHEN e.k_id_tipo = 9 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                    WHEN e.k_id_tipo = 37 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
+                    WHEN e.k_id_tipo = 47 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                    WHEN e.k_id_tipo = 48 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                    WHEN e.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                    WHEN e.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 6 DAY)) 
+                    WHEN e.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 7 DAY))  
+                ELSE -999
+                END as tiempo
+                FROM 
+                ot_hija oth
+                INNER JOIN ot_padre otp 
+                ON oth.nro_ot_onyx = otp.k_id_ot_padre
+                INNER JOIN estado_ot e 
+                ON oth.k_id_estado_ot = e.k_id_estado_ot 
+                INNER JOIN tipo_ot_hija t 
+                ON e.k_id_tipo = t.k_id_tipo 
+                INNER JOIN user u 
+                ON otp.k_id_user = u.k_id_user
+                where 
+                oth.estado_orden_trabajo_hija <> 'Cancelada' AND
+                oth.estado_orden_trabajo_hija <> 'Cerrada' AND
+                oth.estado_orden_trabajo_hija <> '3- Terminada'
+                order by nombre,t.i_orden desc,k_id_ot_padre
+            ");
+        return $query->result();
+    }
+
 
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */

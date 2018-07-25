@@ -1,5 +1,4 @@
 <h1 id="como_vamos">¿Cómo vamos?</h1>
-<h4 align="center">Total: &nbsp;&nbsp;&nbsp;&nbsp;<input class="in_time">En tiempo: &nbsp;&nbsp;&nbsp;<input class="out_time">Fuera de tiempo: &nbsp;&nbsp;&nbsp;<input class="today">Hoy: </h4><br><br>
 <div class="container_accordeon">
 	<h4 align="center">Total: &nbsp;&nbsp;&nbsp;&nbsp;<input class="in_time">En tiempo: &nbsp;&nbsp;&nbsp;<input class="out_time">Fuera de tiempo: &nbsp;&nbsp;&nbsp;<input class="today">Hoy: </h4><br>
 	<?php 
