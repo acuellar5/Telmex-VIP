@@ -1154,15 +1154,15 @@ class Dao_ot_hija_model extends CI_Model {
         $query = $this->db->query("
                 SELECT 
                 u.k_id_user,
-                CONCAT(u.n_name_user, ' ', u.n_last_name_user) AS nombre,
+                -- CONCAT(u.n_name_user, ' ', u.n_last_name_user) AS nombre,
                 otp.k_id_ot_padre,
-                e.k_id_tipo, 
-                t.n_name_tipo, 
+                -- e.k_id_tipo, 
+                -- t.n_name_tipo, 
                 t.i_orden, 
                 oth.id_orden_trabajo_hija, 
-                e.k_id_estado_ot, 
-                e.n_name_estado_ot, 
-                oth.fecha_creacion_ot_hija, 
+                -- e.k_id_estado_ot, 
+                -- e.n_name_estado_ot, 
+                -- oth.fecha_creacion_ot_hija, 
                 CASE
                     WHEN e.k_id_tipo = 1 then  DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
                     
@@ -1195,7 +1195,7 @@ class Dao_ot_hija_model extends CI_Model {
                 oth.estado_orden_trabajo_hija <> 'Cancelada' AND
                 oth.estado_orden_trabajo_hija <> 'Cerrada' AND
                 oth.estado_orden_trabajo_hija <> '3- Terminada'
-                order by nombre,t.i_orden desc,k_id_ot_padre
+                order by t.i_orden desc,k_id_ot_padre
             ");
         return $query->result();
     }
