@@ -56,7 +56,7 @@ class Dao_ot_padre_model extends CI_Model {
 	    // tabla de lista de OTS Padre
     public function getListOtsOtPadre(){
    		$query = $this->db->query("
-				SELECT k_id_ot_padre,  n_nombre_cliente, tipo_ot_padre, 
+				SELECT k_id_ot_padre,  n_nombre_cliente, orden_trabajo, 
 				servicio, estado_orden_trabajo, fecha_programacion, 
 				fecha_compromiso,  fecha_creacion, ot_padre.k_id_user, user.n_name_user,
 				CONCAT(n_name_user, ' ' , n_last_name_user) AS ingeniero
