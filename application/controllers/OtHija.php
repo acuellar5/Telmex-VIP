@@ -250,6 +250,44 @@ class OtHija extends CI_Controller {
         }
     }
 
+    public function c_fillmodals() {
+        $response = null;
+        if (Auth::check()) {
+            $idOth = $this->input->post('idOth');
+            $otHijaModel = new Dao_ot_hija_model();
+            $res = $otHijaModel->getothija($idOth);
+            $this->json($res);
+        } else {
+            $this->json(new Response(EMessages::SESSION_INACTIVE));
+            return;
+        }
+    }
+    // obtiene oth por iduser idtipo idotp
+    public function c_get_oth_by_iduser_otp_idtipo(){
+        $iduser = $this->input->post('iduser');
+        $otp    = $this->input->post('otp');
+        $idtipo    = $this->input->post('idtipo');
+        $otsh = $this->Dao_ot_hija_model->get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo);
+        echo json_encode($otsh);
+    }
+
+    //funcion para pintar en tabla detalle
+    public function detalle($iduser=null, $otp=null, $idtipo=null, $oth=null){
+        $data['registros'] = $this->Dao_ot_hija_model->get_oth_where($iduser, $otp, $idtipo, $oth);
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $data['title'] = 'detalle';
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('detalle_otp');
+        $this->load->view('parts/footerF');
+    }
+
+    // funcion para exportar a excel tabla detalle
+    public function exportar($iduser=null, $otp=null, $idtipo=null, $oth=null){
+        $this->load->helper('camilo');
+        $data['registros'] = $this->Dao_ot_hija_model->get_oth_where($iduser, $otp, $idtipo, $oth);
+        $this->load->view('export', $data);
+    }
+
 
 
     /**************************************************************************************************************/

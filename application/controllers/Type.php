@@ -126,15 +126,26 @@ class Type extends CI_Controller {
     echo json_encode($respuesta);
   }
 
-// TABLA DE INCONSISTENCIA
-public function getListOtsUndefined(){
-  $UndefinedOts = $this->Dao_ot_hija_model->getAllOtsUndefined();
-  echo json_encode($UndefinedOts);
-}
-// tabla de null
-public function getListOtsNull(){
-  $NullOts = $this->Dao_ot_hija_model->getListOtsNull();
-  echo json_encode($NullOts);
-}   
-  
+  // TABLA DE INCONSISTENCIA
+  public function getListOtsUndefined(){
+    $UndefinedOts = $this->Dao_ot_hija_model->getAllOtsUndefined();
+    echo json_encode($UndefinedOts);
+  }
+  // tabla de null
+  public function getListOtsNull(){
+    $NullOts = $this->Dao_ot_hija_model->getListOtsNull();
+    echo json_encode($NullOts);
+  }
+
+  // trae los diferentes tipos de oth que tiene una ot padre|
+  public function c_get_types_by_iduser_otp(){
+    $otp    = $this->input->post('otp');
+    $iduser = $this->input->post('iduser');
+    $tipos = $this->Dao_tipo_ot_hija_model->get_types_by_iduser_otp($otp, $iduser);
+    echo json_encode($tipos);
+  }
+
+
+
+
 }

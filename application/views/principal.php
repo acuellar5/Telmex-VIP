@@ -187,7 +187,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="nombre_cliente" class="col-md-12 control-label ubicacionLetra">Nombre Cliente: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group ubicacionLetra">
-                                            <textarea name="nombre_cliente" id="mdl_nombre_cliente" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="n_nombre_cliente" id="mdl_n_nombre_cliente" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>
                                             <!-- <input name="nombre_cliente" id="mdl_nombre_cliente" class="form-control"  disabled="true" type="text" required> -->
                                         </div>
@@ -331,7 +331,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="orden_trabajo" class="col-md-12 control-label ubicacionLetra">Orden Trabajo: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <textarea name="orden_trabajo" id="mdl_orden_trabajo" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="estado_orden_trabajo" id="mdl_estado_orden_trabajo" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>
                                             <!-- <input name="orden_trabajo" id="mdl_orden_trabajo" class="form-control" minlength="3" disabled="true" type="text" required> -->
                                         </div>
@@ -398,7 +398,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="estado_orden_trabajo" class="col-md-12 control-label ubicacionLetra">Estado Orden Trabajo: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <input name="estado_orden_trabajo" id="mdl_estado_orden_trabajo" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
+                                            <input name="orden_trabajo" id="mdl_orden_trabajo" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div> 
@@ -537,7 +537,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="direccion_origen" class="col-md-12 control-label ubicacionLetra">Dirección Origen: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <textarea name="direccion_origen" id="mdl_direccion_origen" rows="3" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="direccion_origen" id="mdl_direccion_origen" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>
                                             <!-- <input name="direccion_origen" id="mdl_direccion_origen" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
@@ -679,29 +679,19 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="proveedor_ultima_milla" class="col-md-12 control-label ubicacionLetra">Proveedor Ultima Milla: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <textarea name="proveedor_ultima_milla" id="mdl_proveedor_ultima_milla" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="proveedor_ultima_milla" id="mdl_proveedor_ultima_milla" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>   
                                             <!-- <input name="proveedor_ultima_milla" id="mdl_proveedor_ultima_milla" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
                                 </div> 
 
-                                <div class="form-group col-md-12">
-                                    <label for="estado_orden_trabajo_hija" class="col-md-12 control-label ubicacionLetra">Estado Orden Trabajo Hija: &nbsp;</label>
-                                    <div class="col-md-12 selectContainer">
-                                        <div class="input-group">
-                                            <textarea name="estado_orden_trabajo_hija" id="mdl_estado_orden_trabajo_hija" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>  
-                                            <!-- <input name="estado_orden_trabajo_hija" id="mdl_estado_orden_trabajo_hija"  class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="usuario_asignado4" class="col-md-12 control-label ubicacionLetra">Usuario Asignado 4: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">                                         
-                                            <textarea name="usuario_asignado4" id="mdl_usuario_asignado4" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="usuario_asignado4" id="mdl_usuario_asignado4" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>  
                                             <!-- <input name="usuario_asignado4" id="mdl_usuario_asignado4" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
@@ -712,7 +702,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="resolucion_15" class="col-md-12 control-label ubicacionLetra">Resolución 15: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <textarea name="resolucion_15" id="mdl_resolucion_15" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="resolucion_15" id="mdl_resolucion_15" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>  
                                             <!-- <input name="resolucion_15" id="mdl_resolucion_15" class="form-control ubicacionLetra" minlength="5" disabled="true" type="text" required> -->
                                         </div>
@@ -764,7 +754,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <label for="Tipo_transcurrido" class="col-md-12 control-label ubicacionLetra">Tiempo transcurrido: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <input name="Tipo_transcurrido" id="mdl_Tipo_transcurrido"  class="form-control ubicacionLetra" minlength="5" disabled="true" type="text" required>
+                                            <input name="tipo_trascurrido" id="mdl_tipo_trascurrido"  class="form-control ubicacionLetra" minlength="5" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div>

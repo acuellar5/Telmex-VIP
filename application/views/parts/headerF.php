@@ -90,7 +90,7 @@
                   </ul>
                 </li>
                 <!-- que el boton restore apareza solo en administrativo y que sea OTS Hija -->
-                <?php if (Auth::user()->n_role_user == 'administrador' && $this->uri->segment(1) == 'paginaPrincipal'): ?>
+                <?php if (Auth::user()->n_role_user == 'administrador' ): ?>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>

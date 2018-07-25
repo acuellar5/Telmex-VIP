@@ -2,18 +2,21 @@
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 5px;
+    padding: 10px;
     width: 100%;
-    border: none;
+    border: 1px solid #ccc;
     text-align: left;
     outline: none;
     font-size: 12px;
-    transition: 0.4s;
+    transition: 0.0s;
     border-bottom: 1px solid #fff;
+    padding-left: 25px;
+
 }
 
 .active, .accordion:hover {
-    background-color: #ccc; 
+    background-color: #1f4c6f82;
+    color: #fff;
 }
 
 .panel {
@@ -21,9 +24,51 @@
     display: none;
     background-color: white;
     overflow: hidden;
+    border: 1px solid #cccccc;
+    padding-bottom: 20px;
 }
 
 .rigth {
     float: right;
     padding-right: 10px;
+}
+
+.bg {
+    background-color: transparent;
+    border: 1px solid #eeeeee;
+    padding: 10px;
+    padding-left: 25px;
+    
+}
+
+.container_accordeon {
+    background-color: transparent;
+    padding: 30px;
+    border: 2px solid #cccccc;
+    border-radius: 15px;
+    transition: 10s;
+}
+
+.sub-title-acord {
+    background-color: #1f4c6f73;
+    color:#fff;
+    margin: 0;
+    font-size: 14px;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+.in_time{
+    background: #00800094;
+    width: 25px;
+    border-radius: 20px;
+}
+.out_time{
+    background: #ff0000a3;
+    width: 25px;
+    border-radius: 20px;
+}
+.today{
+    background: #ffa500b8;
+    width: 25px;
+    border-radius: 20px;
 }
