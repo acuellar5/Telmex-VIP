@@ -15,11 +15,7 @@
 }
 
 .active, .accordion:hover {
-<<<<<<< HEAD
-    background-color: #1f4c6f;
-=======
     background-color: #1f4c6f82;
->>>>>>> 6ee9d0ef929da7b540f32d07972f1f614193d1ac
     color: #fff;
 }
 
@@ -60,4 +56,19 @@
     font-size: 14px;
     margin-top: 20px;
     padding-left: 20px;
+}
+.in_time{
+    background: #00800094;
+    width: 25px;
+    border-radius: 20px;
+}
+.out_time{
+    background: #ff0000a3;
+    width: 25px;
+    border-radius: 20px;
+}
+.today{
+    background: #ffa500b8;
+    width: 25px;
+    border-radius: 20px;
 }
