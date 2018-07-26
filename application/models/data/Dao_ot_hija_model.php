@@ -1045,7 +1045,7 @@ class Dao_ot_hija_model extends CI_Model {
     // obtiene toda la informacion de una ot hija y otp por id de oth
     public function getothija($idOth){
     $query = $this->db->query("
-        SELECT oth.k_id_estado_ot, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
+        SELECT oth.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
         oth.nivel_atencion, oth.ciudad, oth.departamento, oth.grupo,
         oth.consultor_comercial, oth.grupo2, oth.consultor_postventa, 
         oth.proy_instalacion, oth.ing_responsable, oth.id_enlace, 
@@ -1101,11 +1101,9 @@ class Dao_ot_hija_model extends CI_Model {
     $where .= ($oth) ? " AND oth.id_orden_trabajo_hija = '$oth'" : "";
 
       $query = $this->db->query("
-            SELECT 
-            otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, otp.servicio, 
-            otp.estado_orden_trabajo, otp.fecha_programacion,
-            otp.fecha_compromiso, otp.fecha_creacion, CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre,
-            oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija
+             SELECT 
+            oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.fecha_creacion_ot_hija,
+            CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre
             FROM 
             ot_hija oth
             INNER JOIN ot_padre otp 
@@ -1127,12 +1125,15 @@ class Dao_ot_hija_model extends CI_Model {
             SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, 
             otp.orden_trabajo, otp.servicio, 
             otp.estado_orden_trabajo,  otp.fecha_programacion,
-            otp.fecha_compromiso, otp.fecha_creacion, 
+            otp.fecha_compromiso, otp.fecha_creacion, oth.ciudad,
+            CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS recurrente,
             u.k_id_user, CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre
             FROM 
-            ot_padre otp 
+            ot_padre otp
+            INNER JOIN ot_hija oth
+            ON otp.k_id_ot_padre = oth.nro_ot_onyx
             INNER JOIN user u 
-            ON otp.k_id_user = u.k_id_user
+            ON otp.k_id_user = u.k_id_user 
             $where2
         ");
 
