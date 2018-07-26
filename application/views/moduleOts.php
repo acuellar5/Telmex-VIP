@@ -156,7 +156,7 @@
                                         <div class="col-md-8 selectContainer">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
-                                                <input name="nombre_cliente" id="nombre_cliente" class="form-control" type="text" disabled="true">
+                                                <input name="n_nombre_cliente" id="n_nombre_cliente" class="form-control" type="text" disabled="true">
                                             </div>
                                         </div>
                                     </div>

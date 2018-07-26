@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'local';
+$active_group = 'faber';
 
 $query_builder = TRUE;
 
