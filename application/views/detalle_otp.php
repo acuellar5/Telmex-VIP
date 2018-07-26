@@ -53,6 +53,7 @@ for ($i=0; $i < count($registros['otp']); $i++) {
 		<th>Estado OTH</th>
 		<th>Creación OTH</th>
 		<th>Ingeniero</th>
+		<th>Detalle</th>
 	</thead>
 <?php 
 //$registros
@@ -63,19 +64,17 @@ for ($i=0; $i < count($registros['oth']); $i++) {
 		echo "<td>".$registros['oth'][$i]->estado_orden_trabajo_hija."</td>";
 		echo "<td>".$registros['oth'][$i]->fecha_creacion_ot_hija."</td>";
 		echo "<td>".$registros['oth'][$i]->nombre."</td>";
+                echo "<td>
+                        <div class='btn-group'>
+                            <a class='btn btn-default btn-xs ver-det btn_datatable_cami' title='Detalle Ot' onclick='showModalDetalles(" . $registros['oth'][$i]->id_orden_trabajo_hija . ");'><span class='fa fa-fw fa-eye'></span></a>
+                        </div>
+                    </td>";
 	echo "</tr>";
 			
 }
 ?>
 <tfoot>
     <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
         <th></th>
         <th></th>
         <th></th>
