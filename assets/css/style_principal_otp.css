@@ -84,8 +84,30 @@
     border-radius: 50%;
 }
 .h4_for{
-    width: 140px;
-    margin-left: 394px;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    float: right;
+    margin-right: 23%;
+        
+}
+.span_all{
+    color: black;
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+.span_in_time{
+    color: #008000;
+}
+.span_out_time{
+    color: #ff0000;
+}
+.span_today{
+    color: #ffa509;
+}
+.span_all, .span_in_time, .span_out_time, .span_today{
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid black;
 }
