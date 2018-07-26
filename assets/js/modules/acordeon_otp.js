@@ -32,7 +32,10 @@ $(function () {
 
         // pinto los badge del semaforo
         fill_counts: function(obj){
-            
+            $('#all_otp').html(obj.cant_otp);
+            $('#in_time_otp').html(obj.cant_in);
+            $('#out_time_otp').html(obj.cant_out);
+            $('#today_otp').html(obj.cant_hoy);
         },
 
         
