@@ -1045,7 +1045,8 @@ class Dao_ot_hija_model extends CI_Model {
     // obtiene toda la informacion de una ot hija y otp por id de oth
     public function getothija($idOth){
     $query = $this->db->query("
-        SELECT oth.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
+        
+        SELECT e.k_id_tipo, e.i_orden, oth.id_orden_trabajo_hija, oth.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
         oth.nivel_atencion, oth.ciudad, oth.departamento, oth.grupo,
         oth.consultor_comercial, oth.grupo2, oth.consultor_postventa, 
         oth.proy_instalacion, oth.ing_responsable, oth.id_enlace, 
@@ -1065,6 +1066,7 @@ class Dao_ot_hija_model extends CI_Model {
         oth.nro_ot_onyx, otp.k_id_ot_padre, oth.proveedor_ultima_milla
         FROM ot_hija oth
         INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
+        INNER JOIN estado_ot e ON oth.k_id_estado_ot = e.k_id_estado_ot 
         WHERE oth.id_orden_trabajo_hija = $idOth
     ");
     return $query->row();
