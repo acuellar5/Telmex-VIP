@@ -103,6 +103,17 @@ class OtPadre extends CI_Controller {
             $cont_total_otp++;
           }
         }
+
+        $ingenieros[$general[$i]->k_id_user]['all'] = $ingenieros[$general[$i]->k_id_user]['in'] + $ingenieros[$general[$i]->k_id_user]['hoy'] + $ingenieros[$general[$i]->k_id_user]['out'];
+
+        if ($ingenieros[$general[$i]->k_id_user]['out'] > 0) {
+          $ingenieros[$general[$i]->k_id_user]['color'] = "btn_red";
+        } else if ($ingenieros[$general[$i]->k_id_user]['hoy'] > 0 ) {
+          $ingenieros[$general[$i]->k_id_user]['color'] = "btn_orange";
+        } else {
+          $ingenieros[$general[$i]->k_id_user]['color'] = "btn_green";
+        }
+
     }
 
     $retorno = array(

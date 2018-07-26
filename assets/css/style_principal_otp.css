@@ -2,7 +2,7 @@
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 10px;
+    padding: 3px 16px;
     width: 100%;
     border: 1px solid #ccc;
     text-align: left;
@@ -11,11 +11,10 @@
     transition: 0.0s;
     border-bottom: 1px solid #fff;
     padding-left: 25px;
-
 }
 
 .active, .accordion:hover {
-    background-color: #1f4c6f82;
+    background-color: #1f4c6f !important;
     color: #fff;
 }
 
@@ -57,44 +56,35 @@
     margin-top: 20px;
     padding-left: 20px;
 }
-.in_time{
-    background: #00800050;
+.in_time, .out_time, .today, .all{
+    background: #06a006;
     padding: 8px 0px;
-    min-width: 19px;
     width: 30px;
     border-radius: 50%;
 }
 .out_time{
-    background: #ff000054;
-    padding: 8px 7px;
-    min-width: 19px;
-    width: 30px;
-    border-radius: 50%;
+    background: #bf2222;
 }
 .today{
-    background: #ffa50075;
-    padding: 8px 7px;
-    min-width: 19px;
-    width: 30px;
-    border-radius: 50%;
+    background: #fda953;
 }
 .all {
-    min-width: 19px;
-    padding: 8px 7px;
-    border-radius: 50%;
+    background: #767676;
 }
 .h4_for{
     float: right;
-    margin-right: 23%;
+    margin-right: 25%;
+    #background: #fff;
         
 }
+.h4_for span {
+
+    width: 50px;
+    margin-right:5px;
+    display: inline-block;
+}
 .span_all{
-    color: black;
-    font-size: 16px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    color: #000;
 }
 .span_in_time{
     color: #008000;
@@ -106,8 +96,45 @@
     color: #ffa509;
 }
 .span_all, .span_in_time, .span_out_time, .span_today{
-    font-size: 16px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-right: 1px solid black;
+    text-align:center;
+    font-size: 13px;
+    background: #fafaff;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+
+}
+
+.con_semaf {
+    background: #1f4c6f;
+    padding: 13px;
+    border: 1px solid #ccc;
+    color:  #fff;
+}
+
+.fontsize10 {
+    background:#fff;
+    text-align:center;
+    padding: 3px 5px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-right: 4px;
+    color: #1f4c6f;
+}
+
+.fontsize10 :hover {
+    
+    color: #000;
+    
+}
+
+.btn_red {
+    background-color:#ff959599;
+}
+
+.btn_orange {
+    background-color:#ffa5005e;
+}
+
+.btn_green {
+    background-color:#c7f3be78;
 }
