@@ -1,26 +1,48 @@
 $(function () {
     acord = {
         init: function () {
-            acord.events();
-            acord.collapse_fun();
+            $.post( baseurl + '/OtPadre/in_today_out', 
+            function(data) {
+                acord.obj = JSON.parse(data);
+                acord.events();
+                acord.collapse_fun();
+                acord.fill_counts(acord.obj);
+                
+
+
+
+
+
+            });
+
             
         },
 
         //Eventos de la ventana.
         events: function () {
-        	$('.accordion').on('click', function(event){
+            $('.accordion').on('click', function(event){
                 var contenido = $(this).next();
                 var iduser = event.currentTarget.dataset.iduser;
                 
-                    acord.nivel_ot_padre(iduser, contenido);
-                
+                    acord.nivel_ot_padre(iduser, contenido);              
 
 
             });
         },
 
+        // pinto los badge del semaforo
+        fill_counts: function(obj){
+            $('#all_otp').html(obj.cant_otp);
+            $('#in_time_otp').html(obj.cant_in);
+            $('#out_time_otp').html(obj.cant_out);
+            $('#today_otp').html(obj.cant_hoy);
+        },
+
+        
+
         //funcion para activar funcionalidad de los acordeones
-        collapse_fun: function(){            
+        collapse_fun: function(){
+            console.log(acord.obj);
 			var acc = document.getElementsByClassName("accordion");
 			var i;
 			for (i = 0; i < acc.length; i++) {

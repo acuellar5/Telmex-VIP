@@ -738,18 +738,21 @@ $(function () {
             fillFormModal: function(registro){
                 // console.log(registro);
                 // limpiar el formulario...
-                 $('#general').html("");
+                $('#general').html("");
                 $('#k_id_estado_ot').html("");
 
-                $.each(registro,function(i,item){
-                    $('#' + i).val(item);
-                }); 
+                $.post(baseurl + '/OtHija/c_fillmodals',
+                    {
+                        idOth: registro.k_id_estado_ot// parametros que se envian
+                    },
+                    function (data) {
+                        $.each(registro,function(i,item){
+                            $('#' + i).val(item);
+                        }); 
+                    });
 
                 $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
-
-
-                    $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
-
+                $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
 
                 eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
 
