@@ -27,7 +27,7 @@ class OtPadre extends CI_Controller {
 
   //trae los contadores de cantidades en tiempos y fuera de tiempos y hoy
   public function in_today_out(){
-    header('Content-Type: text/plain');
+    // header('Content-Type: text/plain');
     $general    = $this->Dao_ot_hija_model->get_ots_times();
     $total_reg          = count($general);
     
