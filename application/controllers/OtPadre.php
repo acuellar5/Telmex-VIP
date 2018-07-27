@@ -113,7 +113,6 @@ class OtPadre extends CI_Controller {
         } else {
           $ingenieros[$general[$i]->k_id_user]['color'] = "btn_green";
         }
-
     }
 
     $retorno = array(
