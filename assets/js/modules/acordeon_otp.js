@@ -171,11 +171,24 @@ $(function () {
                 }, 
                 function(data) {
                     var ots = JSON.parse(data);
+                    var color = "";
+
+                    
                     panel.html("");
-                    panel.append(`<legend class="sub-title-acord">Numero OTH</legend>`)
+                    panel.append(`<legend class="sub-title-acord">Numero OTH</legend>`);
                     $.each(ots, function(i, oth) {
+                        color = "";
+                        if (oth.n_name_estado_ot != 'Cancelada' &&  oth.n_name_estado_ot != 'Cerrada' && oth.n_name_estado_ot != '3- Terminada') {   
+                            if (oth.tiempo > 1) {
+                                color = 'btn_red';
+                            } else if (oth.tiempo == 0) {
+                                color = 'btn_orange'; 
+                            } else {
+                                color = 'btn_green';
+                            }
+                        }
                          panel.append(`
-                                <div class='bg' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
+                                <div class='bg ${color}' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
                             `);
                     });
                 }
