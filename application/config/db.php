@@ -83,7 +83,7 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-        'mysqlserv' => [
+        'test' => [
             'driver' => 'mysql',
             'host' => 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com',
             'port' => '3306',

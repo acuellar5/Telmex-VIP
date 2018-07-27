@@ -14,5 +14,5 @@
         });
     });
 </script>
-<script src="<?= URL::to("assets/js/modules/loadInformation.js") ?>" type="text/javascript"></script>
+<script src="<?= URL::to("assets/js/modules/loadInformation.js?v=" . time()) ?>" type="text/javascript"></script>
     
