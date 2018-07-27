@@ -62,6 +62,7 @@ $(function () {
                     icono.attr('src', baseurl + '/assets/images/plus.png');
 
                 } else {
+                    console.log($(this));
                     $(this).addClass('active');
                     panel.show(300);
                     icono.attr('src', baseurl + '/assets/images/minus.png');

@@ -1,5 +1,6 @@
 <h1 id="como_vamos">¿Cómo vamos?</h1>
 <div class="container_accordeon">
+	<h4> <small> Última actualización: </small> <strong><?= $last_time->last_time ?></strong></h4>
 	<h4 align="center" class="con_semaf">Total OTP: <span id="all_otp"class="badge all">...</span> &nbsp;&nbsp;&nbsp;En tiempo: <span id="in_time_otp" class="badge in_time">...</span>&nbsp;&nbsp;&nbsp;Fuera de tiempo: <span id="out_time_otp" class="badge out_time">...</span>&nbsp;&nbsp;&nbsp;Hoy: <span id="today_otp" class="badge today">...</span></h4><br>
 	<?php 
 		for ($i=0; $i < count($ingenieros); $i++) { 
