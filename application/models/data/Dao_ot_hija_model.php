@@ -1145,18 +1145,19 @@ class Dao_ot_hija_model extends CI_Model {
 
     $query2 = $this->db->query("
             SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, 
-            otp.orden_trabajo, otp.servicio, 
-            otp.estado_orden_trabajo,  otp.fecha_programacion,
-            otp.fecha_compromiso, otp.fecha_creacion, oth.ciudad,
-            CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS recurrente,
-            u.k_id_user, CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre
-            FROM 
-            ot_padre otp
-            INNER JOIN ot_hija oth
-            ON otp.k_id_ot_padre = oth.nro_ot_onyx
-            INNER JOIN user u 
-            ON otp.k_id_user = u.k_id_user 
-            $where2
+                        otp.orden_trabajo, otp.servicio, 
+                        otp.estado_orden_trabajo,  otp.fecha_programacion,
+                        otp.fecha_compromiso, otp.fecha_creacion, oth.ciudad,
+                        CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS recurrente,
+                        u.k_id_user, CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre
+                        FROM 
+                        ot_padre otp
+                        INNER JOIN ot_hija oth
+                        ON otp.k_id_ot_padre = oth.nro_ot_onyx
+                        INNER JOIN user u 
+                        ON otp.k_id_user = u.k_id_user 
+                        $where2
+                        GROUP BY otp.k_id_ot_padre 
         ");
 
 
