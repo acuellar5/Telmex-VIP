@@ -141,8 +141,49 @@ class Type extends CI_Controller {
   public function c_get_types_by_iduser_otp(){
     $otp    = $this->input->post('otp');
     $iduser = $this->input->post('iduser');
-    $tipos = $this->Dao_tipo_ot_hija_model->get_types_by_iduser_otp($otp, $iduser);
-    echo json_encode($tipos);
+    $general = $this->Dao_tipo_ot_hija_model->get_types_by_iduser_otp($otp, $iduser);
+
+    // print_r($general);
+    $tipos = [];
+
+    // ORDENAR POR JERARQUIA DE TIPOS PONIENDO INDICE I_ORDEN Y PASANDO EL TIPO DENTRO DEL ARRAY
+
+
+    for ($i=0; $i < count($general); $i++) {
+      // caso1: si el tiempo del registro es mayor a 1 estará vencido (predomina el estado 1)
+      if ($general[$i]->tiempo > 0) {
+            $tipos[$general[$i]->i_orden] =  array('tiempo' => 1, 'name' => $general[$i]->n_name_tipo, 'k_id_tipo' =>$general[$i]->k_id_tipo );
+      } 
+      // caso2: si el tiempo del registro es 0 o sea (hoy) estará para hoy (predomina el estado 1)
+      if ($general[$i]->tiempo == 0) {
+        if (!array_key_exists($general[$i]->k_id_tipo, $tipos)) {
+            $tipos[$general[$i]->i_orden] =  array('tiempo' => 0, 'name' => $general[$i]->n_name_tipo, 'k_id_tipo' =>$general[$i]->k_id_tipo );
+        } else {
+            // si es el mismo (hoy) o 1 (vencido) no lo cambia si es -1 (en tiempo) lo cambia a hoy
+            if ($tipos[$general[$i]->i_orden]['tiempo'] == -1) {
+              $tipos[$general[$i]->i_orden] =  array('tiempo' => 0, 'name' => $general[$i]->n_name_tipo, 'k_id_tipo' =>$general[$i]->k_id_tipo );
+            }
+        }
+      }
+
+      if ($general[$i]->tiempo < 0) {
+        if (!array_key_exists($general[$i]->k_id_tipo, $tipos)) {
+            $tipos[$general[$i]->i_orden] =  array('tiempo' => -1, 'name' => $general[$i]->n_name_tipo, 'k_id_tipo' =>$general[$i]->k_id_tipo );
+        }
+      }
+
+    }
+    $indices = [];
+    foreach ($tipos as $key => $value) {
+      array_push($indices, $key);
+    }
+
+    rsort($indices);
+    $retorno = array(
+      'indices' => $indices,
+      'tipos' => $tipos,
+    );
+    echo json_encode($retorno);
   }
 
 

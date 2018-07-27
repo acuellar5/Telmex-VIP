@@ -22,7 +22,6 @@ $(function () {
 
         // pinto los badge del semaforo
         fill_counts: function(obj){
-            console.log(obj);
             // lleno los contadores del semaforo ppal
             $('#all_otp').html(obj.cant_otp);
             $('#in_time_otp').html(obj.cant_in);
@@ -72,14 +71,24 @@ $(function () {
 
         // llena la seccion para ots padres
         nivel_ot_padre: function(id, panel){
-            console.log(acord.obj.ing[id]);
+            var valores = acord.obj.ing[id];
+            // deber.sort()
             var color = "";
             panel.html("");
             panel.append(`<legend class="sub-title-acord">OTP</legend>`);
 			// var ots = JSON.parse(data);
-			$.each(acord.obj.ing[id], function(i, ot) {
-                color = (ot == 1) ? "btn_red" : (ot == 0) ? "btn_orange" : "btn_green";
-                // console.log(i);
+			$.each(valores, function(i, ot) {
+
+                if (ot == 1) {
+                    color = 'btn_red';
+                } else if (ot == 0) {
+                    color = 'btn_orange'; 
+                } else {
+                    color = 'btn_green';
+                }
+
+
+
                 if (i != 'all' && i != 'color' && i != 'hoy' && i != 'in' && i != 'out') {
     				panel.append(`
     						<button class='accordion show_type ${color}' data-iduser='${id}' data-ot='${i}'>${i}<img class='rigth' src='${baseurl}/assets/images/plus.png'><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${id}/${i}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${id}/${i}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></button>
@@ -111,16 +120,27 @@ $(function () {
                     otp: otp
                 }, 
                 function(data) {
-                    var tipos = JSON.parse(data);
+                    var general = JSON.parse(data);
+
+                    var color = "";
                     panel.html("");
                     panel.append(`<legend class="sub-title-acord">Tipo OTH</legend>`);
 
-                    $.each(tipos, function(i, tipo) {
-                         panel.append(`
-                                <button class='accordion show_oth' data-idtipo='${tipo.k_id_tipo}' data-iduser='${iduser}' data-ot='${otp}'>${tipo.n_name_tipo}<img class='rigth' src='${baseurl}/assets/images/plus.png'><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${tipo.k_id_tipo}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${tipo.k_id_tipo}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></button>
+                    for (var i = 0; i < general.indices.length; i++) {
+                        
+                        if (general.tipos[general.indices[i]].tiempo == 1) {
+                            color = 'btn_red';
+                        } else if (general.tipos[general.indices[i]].tiempo == 0) {
+                            color = 'btn_orange'; 
+                        } else {
+                            color = 'btn_green';
+                        }
+                        panel.append(`
+                                <button class='accordion show_oth ${color}' data-idtipo='${general.tipos[general.indices[i]].k_id_tipo}' data-iduser='${iduser}' data-ot='${otp}'>${general.tipos[general.indices[i]].name}<img class='rigth' src='${baseurl}/assets/images/plus.png'><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${general.tipos[general.indices[i]].k_id_tipo}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${general.tipos[general.indices[i]].k_id_tipo}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></button>
                                 <div class='panel'></div>
                             `);
-                    });
+                    }
+
                 acord.collapse_fun();
                 acord.panel_oth();
                 }
@@ -131,7 +151,6 @@ $(function () {
         panel_oth: function(){
             $('.show_oth').on('click', function(){
                 var contenido = $(this).next();
-                console.log("contenido", contenido);
 
                 var iduser    = $(this).data('iduser');
                 var otp       = $(this).data('ot');
@@ -152,11 +171,24 @@ $(function () {
                 }, 
                 function(data) {
                     var ots = JSON.parse(data);
+                    var color = "";
+
+                    
                     panel.html("");
-                    panel.append(`<legend class="sub-title-acord">Numero OTH</legend>`)
+                    panel.append(`<legend class="sub-title-acord">Numero OTH</legend>`);
                     $.each(ots, function(i, oth) {
+                        color = "";
+                        if (oth.n_name_estado_ot != 'Cancelada' &&  oth.n_name_estado_ot != 'Cerrada' && oth.n_name_estado_ot != '3- Terminada') {   
+                            if (oth.tiempo > 1) {
+                                color = 'btn_red';
+                            } else if (oth.tiempo == 0) {
+                                color = 'btn_orange'; 
+                            } else {
+                                color = 'btn_green';
+                            }
+                        }
                          panel.append(`
-                                <div class='bg' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
+                                <div class='bg ${color}' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
                             `);
                     });
                 }
