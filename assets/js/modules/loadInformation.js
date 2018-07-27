@@ -52,7 +52,7 @@ var vista = {
                 })
                 .start();
     },
-    limit: 100,
+    limit: 1500,
     indexTemp: 0,
     index: 2,
     linesFile: -1,

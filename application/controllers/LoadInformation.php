@@ -126,8 +126,9 @@ class LoadInformation extends CI_Controller {
 
                 //fecha Actual
                 date_default_timezone_set("America/Bogota");
-                $fActual = date('Y-m-d');
-                $list_inges = $this->Dao_user_model->getArrayAllEngineers();
+                $fActual      = date('Y-m-d');
+                $fActual_hora = date('Y-m-d H:i:s');
+                $list_inges   = $this->Dao_user_model->getArrayAllEngineers();
 
                 //Inicializamos un objeto de PHPExcel para escritura...
                 //while para recorrer filas del excel...
@@ -332,7 +333,7 @@ class LoadInformation extends CI_Controller {
                             'fec_actualizacion_onyx_hija'      => $this->getDatePHPExcel($sheet, 'BF' . $row),
                             'tipo_trascurrido'                 => $this->getValueCell($sheet, 'BG' . $row),
                             'fecha_actual'                     => $fActual,
-                            'fecha_insercion_zolid'            => $fActual,
+                            'fecha_insercion_zolid'            => $fActual_hora,
                             'estado_mod'                       => 0
                         );
 
