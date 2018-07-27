@@ -1077,7 +1077,27 @@ class Dao_ot_hija_model extends CI_Model {
   public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo){
       $query = $this->db->query("
             SELECT 
-            oth.id_orden_trabajo_hija, oth.k_id_estado_ot, e.n_name_estado_ot
+            oth.id_orden_trabajo_hija, oth.k_id_estado_ot, e.n_name_estado_ot, 
+            
+            CASE
+                WHEN e.k_id_tipo = 1 then  DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
+                
+                WHEN e.k_id_tipo = 2 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 7 DAY))
+                WHEN e.k_id_tipo = 3 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                WHEN e.k_id_tipo = 4 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 5 DAY)) 
+                WHEN e.k_id_tipo = 6 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 1 DAY)) 
+                WHEN e.k_id_tipo = 7 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 15 DAY)) 
+                WHEN e.k_id_tipo = 8 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 20 DAY)) 
+                WHEN e.k_id_tipo = 9 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                WHEN e.k_id_tipo = 37 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
+                WHEN e.k_id_tipo = 47 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                WHEN e.k_id_tipo = 48 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                WHEN e.k_id_tipo = 52 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 14 DAY)) 
+                WHEN e.k_id_tipo = 53 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 6 DAY)) 
+                WHEN e.k_id_tipo = 58 THEN DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 7 DAY))  
+            ELSE -999
+            END as tiempo
+
             FROM 
             ot_hija oth
             INNER JOIN 
