@@ -19,6 +19,7 @@
 //$registros
 for ($i=0; $i < count($registros['otp']); $i++) { 
 	echo "<tr>";
+
 		echo "<td>".$registros['otp'][$i]->k_id_ot_padre."</td>";
 		echo "<td>".$registros['otp'][$i]->n_nombre_cliente."</td>";
 		echo "<td>".$registros['otp'][$i]->orden_trabajo."</td>";
@@ -101,13 +102,12 @@ for ($i=0; $i < count($registros['otp']); $i++) {
                     echo "<option value='TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN'>TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN</option>"; 
                     echo "<option value='TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA'>TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA</option>"; 
 				echo "</select></td>";
-		echo "<td><textarea rows='1'></textarea></td>";
+		echo "<td><textarea rows='1'></textarea> <button type='submit' form='form_detail' title='Guardar' id='btn_observacion' class='glyphicon glyphicon-save button_observacion btn-cami_cool'></button> </td>";
 	echo "</tr>";
 			
 }
 ?>
 </table>
-
 
 
 

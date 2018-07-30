@@ -877,7 +877,7 @@ $(function () {
                 //     });
                 // },
                 //limpia el modal cada vez que se cierra
-                clearModal: function(){   
+                clearModal: function(){  
                      $('#formModal')[0].reset();
                      $("label.error").remove();
                 },
