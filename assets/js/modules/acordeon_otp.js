@@ -62,7 +62,6 @@ $(function () {
                     icono.attr('src', baseurl + '/assets/images/plus.png');
 
                 } else {
-                    console.log($(this));
                     $(this).addClass('active');
                     panel.show(300);
                     icono.attr('src', baseurl + '/assets/images/minus.png');
@@ -171,14 +170,17 @@ $(function () {
                     idtipo: idtipo
                 }, 
                 function(data) {
-                    var ots = JSON.parse(data);
+                    var ots   = JSON.parse(data);
                     var color = "";
-
+                    var dias;
+                    var fecha_entrega;
                     
                     panel.html("");
                     panel.append(`<legend class="sub-title-acord">Numero OTH</legend>`);
                     $.each(ots, function(i, oth) {
                         color = "";
+                        dias = "";
+                        fecha_entrega = "";
                         if (oth.n_name_estado_ot != 'Cancelada' &&  oth.n_name_estado_ot != 'Cerrada' && oth.n_name_estado_ot != '3- Terminada') {   
                             if (oth.tiempo > 1) {
                                 color = 'btn_red';
@@ -187,13 +189,38 @@ $(function () {
                             } else {
                                 color = 'btn_green';
                             }
+                            dias = (oth.tiempo == -999) ? 'siempre en tiempos' : oth.tiempo;
+                            fecha_entrega = (oth.tiempo == -999) ? "" : acord.sumar_dias(formato_fecha, oth.tiempo);
+
                         }
+
                          panel.append(`
-                                <div class='bg ${color}' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></div>
+                                <div class='bg ${color}' data-oth='${oth.id_orden_trabajo_hija}' data-idtipo='${idtipo}' data-iduser='${iduser}' data-ot='${otp}'>${oth.id_orden_trabajo_hija} <span style='margin-left:40%;'>${oth.n_name_estado_ot}</span><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${iduser}/${otp}/${idtipo}/${oth.id_orden_trabajo_hija}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a> <span class='rigth'> ${dias}</span><span class='rigth'> ${fecha_entrega}</span></div>
                             `);
                     });
                 }
             );         
+        },
+
+        // sumar dias a una fecha
+        sumar_dias: function(fecha, dias){
+            var f = new Date(fecha);
+            f.setDate(f.getDate() - dias);
+
+             return acord.formato_aaaa_mm_dd(f);
+        },
+
+        //**********************************/////////////////////////////*******************************************************
+        formato_aaaa_mm_dd: function(date){
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');            
         },
 
 

@@ -269,10 +269,10 @@ class OtHija extends CI_Controller {
         $idtipo    = $this->input->post('idtipo');
         $otsh = $this->Dao_ot_hija_model->get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo);
 
+        // print_r($otsh);
 
 
 
-        
         echo json_encode($otsh);
     }
 

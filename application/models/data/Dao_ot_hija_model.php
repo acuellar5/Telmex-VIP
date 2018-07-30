@@ -1077,7 +1077,7 @@ class Dao_ot_hija_model extends CI_Model {
   public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo){
       $query = $this->db->query("
             SELECT 
-            oth.id_orden_trabajo_hija, oth.k_id_estado_ot, e.n_name_estado_ot, 
+            oth.id_orden_trabajo_hija, oth.k_id_estado_ot, e.n_name_estado_ot, oth.fecha_creacion_ot_hija, 
             
             CASE
                 WHEN e.k_id_tipo = 1 then  DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
