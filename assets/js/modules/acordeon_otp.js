@@ -7,6 +7,7 @@ $(function () {
                 acord.events();
                 acord.collapse_fun();
                 acord.fill_counts(acord.obj);
+                acord.grafics(acord.obj.grafics);
             });            
         },
 
@@ -221,6 +222,168 @@ $(function () {
             if (day.length < 2) day = '0' + day;
 
             return [year, month, day].join('-');            
+        },
+
+        // comienzo a pintar las graficas
+        grafics: function(params){
+
+            var ctx = $("#graficsTotal");
+
+            // Chart.defaults.global.defaultFontFamily = "Lato";
+            // Chart.defaults.global.defaultFontSize = 12;
+            Chart.defaults.global.defaultFontColor = '#000';
+
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: params.g_inges, //horizontal
+                    datasets: [
+                        {
+                            //Total
+                            label: 'Total',
+                            fill: true,
+                            lineTension: 0.4,
+                            backgroundColor: "rgba(125, 125, 125, 0.1)",
+                            borderColor: "rgba(125, 125, 125, 1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(125, 125, 125, 1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 8,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(125, 125, 125, 1)",
+                            pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                            pointHoverBorderWidth: 5,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: params.g_all, //vertical
+                            // type: 'line',
+                            spanGaps: false,
+                            borderWidth: 2,
+                        },
+                        {
+                            //Fuera de Tiempos
+                            label: 'Fuera de Tiempos',
+                            fill: true,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(255, 0, 0, 0.2)",
+                            borderColor: "rgba(255, 0, 0, 1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(255, 0, 0, 1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 8,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(255, 0, 0, 1)",
+                            pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                            pointHoverBorderWidth: 5,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: params.g_out, //vertical
+                            spanGaps: false,
+                            borderWidth: 2,
+                        },
+                        {
+                            //Hoy
+                            label: 'Hoy',
+                            fill: true,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(255, 255, 0, 1)",
+                            borderColor: "rgba(255, 255, 0, 1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(255, 255, 0, 1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 8,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(255, 255, 0, 1)",
+                            pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                            pointHoverBorderWidth: 5,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: params.g_hoy, //vertical
+                            spanGaps: false,
+                            borderWidth: 2,
+                        }, {
+                            //en tiempos
+                            label: 'en tiempos',
+                            fill: true,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(0, 255, 0, 0.8)",
+                            borderColor: "rgba(0, 255, 0, 1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(0, 255, 0, 1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 8,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(0, 255, 0, 1)",
+                            pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                            pointHoverBorderWidth: 5,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: params.g_in, //vertical
+                            spanGaps: false,
+                            borderWidth: 2,
+                        }
+                    ]
+                },
+                options: {
+                    // onClick: vista.clickEventGrafics,
+                    title: {
+                    display: true,
+                    text: 'Cantidad OTP Ingeniero'
+                  },
+
+                    scales: {
+                       xAxes: [{
+                              gridLines: {
+                                // display: false,
+                                color: '#ccc'
+                              },
+                            display: true,
+                            // stacked: true,
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'CANTIDAD DE ORDENES'
+                            },
+
+
+                            ticks: {
+                                // min: 60 // Edit the value according to what you need
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                // display: false,
+                                color: '#ccc'
+                              },
+                            display: true,
+                            stacked: true,
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'NOMBRE INGENIERO'
+                            },
+                            ticks: {
+                              // beginAtZero: true,
+                            }
+                        }]
+                    }
+                }
+            });
+
+
+
+
+
         },
 
 

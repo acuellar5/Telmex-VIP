@@ -58,6 +58,7 @@
 
 <?php if ($this->uri->segment(1) == 'OTP'): ?>
 <!-- ***********************************JS PARA ACORDEON OT PADRE*****************************************-->
+    <script src="<?= URL::to('assets/plugins/charjs/chart.min.js'); ?>"></script>
     <script src="<?= URL::to('assets/js/modules/acordeon_otp.js?v='. time()) ?>"></script>
 <?php endif ?>
 
