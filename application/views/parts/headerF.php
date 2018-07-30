@@ -33,6 +33,8 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
 <?php endif ?>
+            
+        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
 
   <!-- ********************************VISTA VALIDADOR IP *********************************************-->
   <?php if ($this->uri->segment(1) == 'validadorIp'): ?>
@@ -45,7 +47,6 @@
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/animsition/css/animsition.min.css') ?>">
         <!--==============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
 
   <?php endif ?>
     <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija') { ?>

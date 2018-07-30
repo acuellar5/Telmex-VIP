@@ -89,6 +89,7 @@
     <script src="<?= URL::to('assets/js/modules/detalle_otp.js?v='. time()) ?>"></script>
 <?php endif ?>
 
+    <script src="<?= URL::to('assets/plugins/select2/select2.js') ?>"></script>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <h3 align="center">Tabla de Detalles OTP ING: <?= $registros['otp'][0]->nombre ?></h3>
 
-<table id="detalles_otp" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+<table id="detalles_otp" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
 	<thead>
 		<th>OTP</th>
 		<th>Nombre cliente</th>
@@ -29,7 +29,7 @@ for ($i=0; $i < count($registros['otp']); $i++) {
 		echo "<td>".$registros['otp'][$i]->fecha_creacion."</td>";
 		echo "<td>".$registros['otp'][$i]->ciudad."</td>";
 		echo "<td>".$registros['otp'][$i]->recurrente."</td>";
-		echo "<td><select class='form-control'>";					
+		echo "<td><select class='form-control select2_js_detalles max_width_select' name='states[]' >";					
                     echo "<option value='EN PROCESOS CIERRE KO'>EN PROCESOS CIERRE KO</option>"; 
                     echo "<option value='ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>"; 
                     echo "<option value='ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO'>ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO</option>"; 
@@ -836,3 +836,11 @@ for ($i=0; $i < count($registros['oth']); $i++) {
         </div>
     </div> 
 </div>
+
+
+
+<script>
+    $(document).ready(function() {
+    $('.select2_js_detalles').select2();
+});
+</script>
