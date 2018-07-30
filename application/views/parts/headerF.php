@@ -115,7 +115,7 @@
            <!--  <li><a href="#">facturacion</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome  </b> <?php echo Auth::user()->n_last_name_user; ?><br>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome  </b> <?php echo Auth::user()->n_name_user . ' ' . Auth::user()->n_last_name_user; ?><br>
               </a>
           </li>
           <li><a href="<?= URL::to('User/logout') ?>"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>
