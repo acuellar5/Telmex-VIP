@@ -674,7 +674,7 @@ $(function () {
             events: function () {
                 $('#contenido_tablas').on('click', 'a.ver-al', eventos.onClickShowModalEdit);
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
-                // $('#ins_servicio').on('change', eventos.selectFormulary );
+                $('#ins_servicio').on('change', eventos.selectFormulary );
                 $('.cerrar').on('click', eventos.clearModal);
                 $('#btnUpdOt').on('click', eventos.clicOnButton);
 
@@ -734,118 +734,110 @@ $(function () {
                  // console.log(record);
             },
 
+            //llenamos los input del modal con la informacion a la q le dio click
+            fillFormModal: function(registro){
+                // console.log(registro);
+                // limpiar el formulario...
+                $('#general').html("");
+                $('#k_id_estado_ot').html("");
 
-            //llenamos los input del modal con la informacion a la q le dio click
-            //llenamos los input del modal con la informacion a la q le dio click
-            fillFormModal: function(data){
                 $.post(baseurl + '/OtHija/c_fillmodals',
                     {
-                        idOth: data.id_orden_trabajo_hija// parametros que se envian
+                        idOth: registro.k_id_estado_ot// parametros que se envian
                     },
-                    function (registro) {
-                                        
-                        // console.log(registro);
-                        // limpiar el formulario...
-                         $('#general').html("");
-                        $('#k_id_estado_ot').html("");
-
+                    function (data) {
                         $.each(registro,function(i,item){
                             $('#' + i).val(item);
                         }); 
+                    });
 
-                        $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
+                $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
 
-                            $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
+                $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
+
+                eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
+
+                // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
+                // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
+                // console.log($('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true));
 
 
-                        eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
+                var algo = $('#k_id_estado_ot').val() ;
+                if (registro.k_id_tipo == 1) {
+                  $('#k_id_estado_ot').on('change', function(){
+                    // $('')
+                        $('#general').html("");
+                        if ($('#k_id_estado_ot').val() == 3 )
+                        {
+                            $('#btnUpdOt').attr('disabled', true);
+                            $('.ins_servicio').show();
+                                $('#ins_servicio').on('change', function(){
+                                    eventos.get_eingenieer();
 
-                        // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
-                        // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
-                        // console.log($('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true));
+                                    // para llenar inputs de ingeniero 1 en el modal
+                                    $('#ingeniero1').on('change', eventos.fill_information);
+                                    $('#ingeniero2').on('change', eventos.fill_information);
+                                    $('#ingeniero3').on('change', eventos.fill_information);
 
+                                    var otra = $('#ins_servicio').val();
+                                    switch (otra) {
+                                           case "0":
+                                             $('#btnUpdOt').attr('disabled', true);   
+                                             break 
+                                           case "1":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/1');
+                                             $('#btnUpdOt').attr('disabled', false);  
+                                             $("#nombre").attr("required", true);
+                                             break;
+                                           case "2":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/2');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "3":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/3');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "4":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/4');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "5":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/5');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "6":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/6');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "7":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/7');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "8":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/8');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "9":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/9');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                           case "10":
+                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/10');
+                                             $('#btnUpdOt').attr('disabled', false);
+                                             break;
+                                       
+                                         }
+                        });                   
+                        }else{
+                            $('.ins_servicio').hide();
+                            $('#btnUpdOt').attr('disabled', false);
+                        }
+                    });
 
-                        var algo = $('#k_id_estado_ot').val() ;
-                        if (registro.k_id_tipo == 1) {
-                          $('#k_id_estado_ot').on('change', function(){
-                            // $('')
-                                $('#general').html("");
-                                if ($('#k_id_estado_ot').val() == 3 )
-                                {
-                                    $('#btnUpdOt').attr('disabled', true);
-                                    $('.ins_servicio').show();
-                                        $('#ins_servicio').on('change', function(){
-                                            eventos.get_eingenieer();
+                } 
 
-                                            // para llenar inputs de ingeniero 1 en el modal
-                                            $('#ingeniero1').on('change', eventos.fill_information);
-                                            $('#ingeniero2').on('change', eventos.fill_information);
-                                            $('#ingeniero3').on('change', eventos.fill_information);
-
-                                            var otra = $('#ins_servicio').val();
-                                            switch (otra) {
-                                                   case "0":
-                                                     $('#btnUpdOt').attr('disabled', true);   
-                                                     break 
-                                                   case "1":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/1');
-                                                     $('#btnUpdOt').attr('disabled', false);  
-                                                     $("#nombre").attr("required", true);
-                                                     break;
-                                                   case "2":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/2');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "3":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/3');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "4":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/4');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "5":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/5');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "6":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/6');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "7":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/7');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "8":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/8');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "9":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/9');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                                   case "10":
-                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/10');
-                                                     $('#btnUpdOt').attr('disabled', false);
-                                                     break;
-                                               
-                                                 }
-                                });                   
-                                }else{
-                                    $('.ins_servicio').hide();
-                                    $('#btnUpdOt').attr('disabled', false);
-                                }
-                            });
-
-                        } 
-                        console.log(registro);
-                        $('#ins_servicio').on('change', function(){
-                            eventos.selectFormulary(registro.n_nombre_cliente, registro.direccion_destino)
-                        });
-
-                        $('.ins_servicio').hide();
-                        $('#modalEditTicket').modal('show');
-                });
+                $('.ins_servicio').hide();
+                $('#modalEditTicket').modal('show');
             },
                 // updateStatusOt: function(){
 
@@ -884,12 +876,12 @@ $(function () {
 
 
 
-                selectFormulary: function (nombre_cliente, direccion_destino) {
+                selectFormulary: function () {
                 $('#general').html("");
 
-                // var nombre_cliente = $('#nombre_cliente').val();
+                var nombre_cliente = $('#nombre_cliente').val();
                 var servicio_val = $("#ins_servicio option:selected").html();
-                // var direccion_destino = $('#direccion_destino').val();
+                var direccion_destino = $('#direccion_destino').val();
 
                 // // a continuacion creamos la fecha en la variable date
                 // var date = new Date()

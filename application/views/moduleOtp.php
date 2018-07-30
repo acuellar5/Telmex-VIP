@@ -22,4 +22,8 @@
 		}
 	 ?>
 </div>
-<!-- badge -->
+<br><br><br>
+<h1 id="como_vamos" align="center"> Grafica actividades en proceso </h1>
+<div class="cont_graf">
+<canvas id="graficsTotal" width="400" height="180"></canvas>
+</div>

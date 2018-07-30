@@ -116,12 +116,46 @@ class OtPadre extends CI_Controller {
         }
     }
 
+
+    // Seccion para el tratamiento de la grafica ppalo
+    
+    $grafics = [];
+    
+    $grafics['g_inges'] = [];
+    $grafics['g_in']    = [];
+    $grafics['g_hoy']   = [];
+    $grafics['g_out']   = [];
+    $grafics['g_all']   = [];
+    $n_i                = []; // nombre ingeniero
+
+
+    // print_r($ingenieros);
+    
+    $array_list_inge = $this->Dao_user_model->get_eng_trabajanding();
+    // print_r($array_list_inge);
+    for ($i=0; $i < count($array_list_inge); $i++) { 
+      $n_i[$array_list_inge[$i]->k_id_user] = $array_list_inge[$i]->nombre; 
+    }
+
+
+
+    foreach ($ingenieros as $cc => $value) {
+      array_push($grafics['g_inges'], $n_i[$cc]);
+      array_push($grafics['g_in'], $value['in']);
+      array_push($grafics['g_hoy'], $value['hoy']);
+      array_push($grafics['g_out'], $value['out']);
+      array_push($grafics['g_all'], $value['all']);
+    }
+
+
+
     $retorno = array(
       'cant_otp' => $cont_total_otp,
       'cant_in' => $cont_total_in_otp,
       'cant_hoy' => $cont_total_hoy_otp,
       'cant_out' => $cont_total_out_otp,
-      'ing' => $ingenieros
+      'ing' => $ingenieros,
+      'grafics' => $grafics
     );
 
     echo json_encode($retorno);
@@ -167,5 +201,6 @@ class OtPadre extends CI_Controller {
     echo json_encode($otPadreList);
     
   }
+
 
 }
