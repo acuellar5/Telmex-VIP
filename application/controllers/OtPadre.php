@@ -187,6 +187,20 @@ class OtPadre extends CI_Controller {
     echo json_encode($otPadreList);
     
   }
+  
+  // TABLA QUE TRAE LA INFORMACION DE OTPADRE QUE TENGAN FECHA DE COMPROMISO PARA HOY
+  public function getListOtsOtPadreHoy(){
+    $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreHoy();
+    echo json_encode($otPadreList);
+    
+  }
+  
+// TABLA QUE TRAE LA INFORMACION DE OTPADRE QUE TENGAN FECHA DE COMPROMISO VENCIDA
+  public function getListOtsOtPadreVencidas(){
+    $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreVencidas();
+    echo json_encode($otPadreList);
+    
+  }
 
 
 }
