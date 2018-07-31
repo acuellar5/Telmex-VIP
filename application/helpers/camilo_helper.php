@@ -339,9 +339,9 @@
                     $CI =& get_instance();
                     $CI->load->database();
                     if ($CI->db->hostname == 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com') {
-                        $version = time();
-                    } else {
                         $version = '1.1';
+                    } else {
+                        $version = time();
                     }
                     
                     return $version;
