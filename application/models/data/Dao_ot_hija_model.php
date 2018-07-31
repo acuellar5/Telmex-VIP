@@ -120,7 +120,6 @@ class Dao_ot_hija_model extends CI_Model {
                 $condicion 
                 $srch
                 $search_col
-                ORDER BY tipo_trascurrido DESC
             ");
         $cantidad = $cant->row()->cant;
         $retorno = array(
