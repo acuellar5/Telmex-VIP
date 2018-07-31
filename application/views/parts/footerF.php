@@ -56,7 +56,7 @@
     <script src="<?= URL::to('assets/js/modules/status_restore.js?v='. time()) ?>"></script>
 <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'OTP'): ?>
+<?php if ($this->uri->segment(1) == 'OTP'|| $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User'): ?>
 <!-- ***********************************JS PARA ACORDEON OT PADRE*****************************************-->
     <script src="<?= URL::to('assets/plugins/charjs/chart.min.js'); ?>"></script>
     <script src="<?= URL::to('assets/js/modules/acordeon_otp.js?v='. time()) ?>"></script>

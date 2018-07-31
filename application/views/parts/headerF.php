@@ -54,7 +54,7 @@
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
      <?php } ?>
-  <?php if ($this->uri->segment(1) == 'OTP') { ?>
+  <?php if ($this->uri->segment(1) == 'OTP'|| $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/style_principal_otp.css?v=' . time()) ?>" />
   <?php } ?>
 
@@ -65,7 +65,7 @@
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid menu_nav_header" >
         <div class="navbar-header">          
-          <a class="navbar-brand" href="<?= URL::to('paginaPrincipal') ?>">
+          <a class="navbar-brand" href="<?= URL::to('OTP') ?>">
             <img class="logo_header" src="<?= URL::to('assets/img/LogoZTENav.png'); ?>"> 
           </a>
         </div>        

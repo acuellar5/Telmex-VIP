@@ -836,7 +836,9 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-                <button type="submit" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
+                <?php if (Auth::user()->n_role_user != 'claro'): ?>
+                    <button type="submit" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
+                <?php endif ?>
             </div>
         </div>
     </div>
@@ -879,6 +881,4 @@
         var urlbase = "<?php echo URL::base(); ?>";
         swal('OK', 'se actualizó correctamente', 'success');
     </script>
-    <?php
-
- endif ?>
+<?php endif ?>
