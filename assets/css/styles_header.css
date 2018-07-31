@@ -377,7 +377,9 @@ margin-left: -53%;
     font-size: 12px !important;
     padding: 0px !important;
 }
-.datatables_detalles{
-    width: 100% !important;
-    margin-left: -86px !important;
+.button_observacion{
+    margin-top: 28%;
+}
+.algo {
+    font-size: 13.5px !important ;
 }

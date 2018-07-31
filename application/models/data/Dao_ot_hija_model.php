@@ -1143,7 +1143,7 @@ class Dao_ot_hija_model extends CI_Model {
     $where2 .= ($otp) ? " AND otp.k_id_ot_padre = '$otp' " : "";
 
     $query2 = $this->db->query("
-            SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, 
+            SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.lista_observaciones, otp.observacion, 
                         otp.orden_trabajo, otp.servicio, 
                         otp.estado_orden_trabajo,  otp.fecha_programacion,
                         otp.fecha_compromiso, otp.fecha_creacion, oth.ciudad,

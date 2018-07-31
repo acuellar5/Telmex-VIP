@@ -112,8 +112,23 @@ class Dao_ot_padre_model extends CI_Model {
                                 WHERE otp.fecha_compromiso > CURDATE()
                                 $condicion
     	");
-        return $query->result();
-    }
+    	return $query->result();
+  }
+  //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles  
+  public function update_new_data($data){
+  		$this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
+  		$this->db->update('ot_padre', $data);
+
+  		$error = $this->db->error();
+        if ($error['message']) {
+            // print_r($error);
+            return $error['message'];
+        } else {
+            return 1;
+        }
+  }
+        // return $query->result();
+ }
 
     // trae otp segun opcion de ot padre
     public function getOtpByOpcList($opcion){
