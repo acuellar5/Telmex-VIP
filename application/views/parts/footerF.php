@@ -1,22 +1,22 @@
-	<!-- CIERRE CONTAINER-->   
-	</div>
-	<!-- INICIO FOOTER-->
-	<div class="footerF">
-		<p class="margenDelFooter">©1998-2018 ZTE Corporation - ZTE Colombia. All rights reserved</p>
-	</div>
-	<script> 
-		var baseurl = "<?php echo URL::base(); ?>";
-		const meses_anual = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-		var formato_fecha=new Date();
-		var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
-	</script>
-	<!-- BOOTSTRAP CORE SCRIPT-->
-	<script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js') ?>" /></script>
-	<!-- SCRIPTS DEL FOOTER-->
-	<script src="<?= URL::to('assets/plugins/jquery/jquery.min.js')?>"></script>
-	<script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js')?>"></script>
-	<!-- STYLES  FOOTER -->
-	<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_footer.css'); ?>">
+<!-- CIERRE CONTAINER-->   
+    </div>
+    <!-- INICIO FOOTER-->
+    <div class="footerF">
+        <p class="margenDelFooter">©1998-2018 ZTE Corporation - ZTE Colombia. All rights reserved</p>
+    </div>
+    <script> 
+        var baseurl = "<?php echo URL::base(); ?>";
+        const meses_anual = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        var formato_fecha=new Date();
+        var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
+    </script>
+    <!-- BOOTSTRAP CORE SCRIPT-->
+    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js') ?>" /></script>
+    <!-- SCRIPTS DEL FOOTER-->
+    <script src="<?= URL::to('assets/plugins/jquery/jquery.min.js')?>"></script>
+    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js')?>"></script>
+    <!-- STYLES  FOOTER -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_footer.css'); ?>">
 
 
 <?php if ($this->uri->segment(1) == 'cargarOts'): ?>
@@ -48,15 +48,19 @@
 <?php endif ?>
 <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
 <!-- ***********************************REPARAR TIPOS Y ESTADOS*****************************************-->
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/js/modules/type_restore.js?v='. time()) ?>"></script>
     <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap-selet.min.js') ?>"></script>
 <?php endif ?>
     
 <?php if ($this->uri->segment(1) == 'status_restore' || $this->uri->segment(1) == 'Status'): ?>
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/js/modules/status_restore.js?v='. time()) ?>"></script>
 <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'OTP'|| $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User'): ?>
+<?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser'): ?>
 <!-- ***********************************JS PARA ACORDEON OT PADRE*****************************************-->
     <script src="<?= URL::to('assets/plugins/charjs/chart.min.js'); ?>"></script>
     <script src="<?= URL::to('assets/js/modules/acordeon_otp.js?v='. time()) ?>"></script>
