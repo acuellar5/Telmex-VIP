@@ -1,109 +1,40 @@
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?> "></script>
 <h3 align="center">Tabla de Detalles OTP ING: <?= $registros['otp'][0]->nombre ?></h3>
 
 <table id="detalles_otp" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
-	<thead>
-		<th>OTP</th>
-		<th>Nombre cliente</th>
-		<th>Tipo OTP</th>
-		<th>Servicio</th>
-		<th>Estado OTP</th>
-		<th>Programado</th>
-		<th>Compromiso</th>
-		<th>Creacion</th>
-		<th>Ciudad</th>
-		<th>Recurrente</th>
-		<th>Lista</th>
-		<th>Observacion</th>
-	</thead>
+    <thead>
+        <th>OTP</th>
+        <th>Nombre cliente</th>
+        <th>Tipo OTP</th>
+        <th>Servicio</th>
+        <th>Estado OTP</th>
+        <th>Programado</th>
+        <th>Compromiso</th>
+        <th>Creacion</th>
+        <th>Ciudad</th>
+        <th>Recurrente</th>
+        <th>Lista</th>
+        <th>Observacion</th>
+    </thead>
 <?php 
 //$registros
 for ($i=0; $i < count($registros['otp']); $i++) { 
-	echo "<tr>";
-		echo "<td>".$registros['otp'][$i]->k_id_ot_padre."</td>";
-		echo "<td>".$registros['otp'][$i]->n_nombre_cliente."</td>";
-		echo "<td>".$registros['otp'][$i]->orden_trabajo."</td>";
-		echo "<td>".$registros['otp'][$i]->servicio."</td>";
-		echo "<td>".$registros['otp'][$i]->estado_orden_trabajo."</td>";
-		echo "<td>".$registros['otp'][$i]->fecha_programacion."</td>";
-		echo "<td>".$registros['otp'][$i]->fecha_compromiso."</td>";
-		echo "<td>".$registros['otp'][$i]->fecha_creacion."</td>";
-		echo "<td>".$registros['otp'][$i]->ciudad."</td>";
-		echo "<td>".$registros['otp'][$i]->recurrente."</td>";
-		echo "<td><select class='form-control select2_js_detalles max_width_select' name='states[]' >";					
-                    echo "<option value='EN PROCESOS CIERRE KO'>EN PROCESOS CIERRE KO</option>"; 
-                    echo "<option value='ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>"; 
-                    echo "<option value='ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO'>ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO</option>"; 
-                    echo "<option value='ASIGNADO LIDER TECNICO'>ASIGNADO LIDER TECNICO</option>"; 
-                    echo "<option value='CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)'>CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)</option>"; 
-                    echo "<option value='CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA'>CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA</option>"; 
-                    echo "<option value='CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL'>CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE CIERRE DE KO'>CLIENTE - NO PERMITE CIERRE DE KO</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO '>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO </option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES</option>"; 
-                    echo "<option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC</option>"; 
-                    echo "<option value='CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO'>CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO</option>"; 
-                    echo "<option value='CLIENTE - PROGRAMADA_POSTERIOR '>CLIENTE - PROGRAMADA_POSTERIOR </option>"; 
-                    echo "<option value='CLIENTE - SIN CONTRATO FIRMADO'>CLIENTE - SIN CONTRATO FIRMADO</option>"; 
-                    echo "<option value='CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )'>CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )</option>"; 
-                    echo "<option value='CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)'>CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)</option>"; 
-                    echo "<option value='CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO'>CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO</option>"; 
-                    echo "<option value='COEX - EN PROCESO DE CONFIGURACIÓN BACKEND'>COEX - EN PROCESO DE CONFIGURACIÓN BACKEND</option>"; 
-                    echo "<option value='COEX -ATRASO CONFIGURACIÓN BACKEND'>COEX -ATRASO CONFIGURACIÓN BACKEND</option>"; 
-                    echo "<option value='COMERCIAL - ESCALADO ORDEN DE REEMPLAZO'>COMERCIAL - ESCALADO ORDEN DE REEMPLAZO</option>"; 
-                    echo "<option value='COMERCIAL - ESCALADO PENDIENTE INGRESO OTS'>COMERCIAL - ESCALADO PENDIENTE INGRESO OTS</option>"; 
-                    echo "<option value='CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN'>CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN</option>"; 
-                    echo "<option value='CSM - Retiro equipos - Renovación de Contrato'>CSM - Retiro equipos - Renovación de Contrato</option>"; 
-                    echo "<option value='DATACENTER  CLARO- CABLEADO SIN EJECUTAR'>DATACENTER  CLARO- CABLEADO SIN EJECUTAR</option>"; 
-                    echo "<option value='DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER'>DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER</option>"; 
-                    echo "<option value='DATACENTER CLARO- CABLEADO EN CURSO'>DATACENTER CLARO- CABLEADO EN CURSO</option>"; 
-                    echo "<option value='ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE'>ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE</option>"; 
-                    echo "<option value='ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS'>ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS</option>"; 
-                    echo "<option value='ENTREGA Y/O SOPORTE PROGRAMADO'>ENTREGA Y/O SOPORTE PROGRAMADO</option>"; 
-                    echo "<option value='EQUIPOS - DEFECTUOSOS'>EQUIPOS - DEFECTUOSOS</option>"; 
-                    echo "<option value='EQUIPOS - EN COMPRAS'>EQUIPOS - EN COMPRAS</option>"; 
-                    echo "<option value='ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE'>ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE</option>"; 
-                    echo "<option value='ESTADO CANCELADO'>ESTADO CANCELADO</option>"; 
-                    echo "<option value='ESTADO CANCELADO'>ESTADO CANCELADO</option>"; 
-                    echo "<option value='ESTADO PENDIENTE CLIENTE'>ESTADO PENDIENTE CLIENTE</option>"; 
-                    echo "<option value='GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO'>GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO</option>"; 
-                    echo "<option value='GPC - EN PROCESO DE CANCELACIÓN'>GPC - EN PROCESO DE CANCELACIÓN</option>"; 
-                    echo "<option value='GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE'>GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE</option>"; 
-                    echo "<option value='GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR'>GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR</option>"; 
-                    echo "<option value='GPC - SIN ALCANCE PARA FABRICA'>GPC - SIN ALCANCE PARA FABRICA</option>"; 
-                    echo "<option value='IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR'>IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR</option>"; 
-                    echo "<option value='INCONVENIENTE TECNICO'>INCONVENIENTE TECNICO</option>"; 
-                    echo "<option value='LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO'>LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO</option>"; 
-                    echo "<option value='LIDER TECNICO - PENDIENTE PLAN TECNICO'>LIDER TECNICO - PENDIENTE PLAN TECNICO</option>"; 
-                    echo "<option value='LIDER TECNICO - SOLUCIÓN NO ESTANDAR'>LIDER TECNICO - SOLUCIÓN NO ESTANDAR</option>"; 
-                    echo "<option value='LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN'>LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN</option>"; 
-                    echo "<option value='PASO A PENDIENTE CLIENTE'>PASO A PENDIENTE CLIENTE</option>"; 
-                    echo "<option value='PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>"; 
-                    echo "<option value='PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO'>PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO</option>"; 
-                    echo "<option value='PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC'>PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC</option>"; 
-                    echo "<option value='PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD'>PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD</option>"; 
-                    echo "<option value='PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE'>PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE</option>"; 
-                    echo "<option value='PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL'>PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL</option>"; 
-                    echo "<option value='PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES'>PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES</option>"; 
-                    echo "<option value='PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>"; 
-                    echo "<option value='PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS'>PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS</option>"; 
-                    echo "<option value='PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC'>PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC</option>"; 
-                    echo "<option value='PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA'>PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA</option>"; 
-                    echo "<option value='PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS'>PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS</option>"; 
-                    echo "<option value='PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR'>PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR</option>"; 
-                    echo "<option value='PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS'>PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS</option>"; 
-                    echo "<option value='PROYECTO ÉXITO ANTIGUO'>PROYECTO ÉXITO ANTIGUO</option>"; 
-                    echo "<option value='TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO'>TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO</option>"; 
-                    echo "<option value='TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>"; 
-                    echo "<option value='TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN'>TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN</option>"; 
-                    echo "<option value='TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA'>TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA</option>"; 
-				echo "</select></td>";
-		echo "<td><textarea rows='1'></textarea></td>";
-	echo "</tr>";
-			
+    echo "<tr>";
+
+        echo "<td>".$registros['otp'][$i]->k_id_ot_padre."</td>";
+        echo "<td>".$registros['otp'][$i]->n_nombre_cliente."</td>";
+        echo "<td>".$registros['otp'][$i]->orden_trabajo."</td>";
+        echo "<td>".$registros['otp'][$i]->servicio."</td>";
+        echo "<td>".$registros['otp'][$i]->estado_orden_trabajo."</td>";
+        echo "<td>".$registros['otp'][$i]->fecha_programacion."</td>";
+        echo "<td>".$registros['otp'][$i]->fecha_compromiso."</td>";
+        echo "<td>".$registros['otp'][$i]->fecha_creacion."</td>";
+        echo "<td>".$registros['otp'][$i]->ciudad."</td>";
+        echo "<td>".$registros['otp'][$i]->recurrente."</td>";
+        echo "<td>".$registros['otp'][$i]->lista_observaciones."</td>";                   
+        echo "<td>".$registros['otp'][$i]->observacion." <button type='button' form='form_detail' title='Guardar' id='btn_observacion' class='glyphicon glyphicon-save button_observacion btn-cami_cool'></button> </td>";                   
+    echo "</tr>";
+            
 }
 ?>
 </table>
@@ -176,40 +107,32 @@ for ($i=0; $i < count($registros['otp']); $i++) {
 
 
 
-
-
-
-
-
-
-
-
 <h3 align="center">Tabla de Detalles OTH</h3>
 <table id="detalles_oth" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
-	<thead>
-		<th>OTH</th>
-		<th>Tipo OTH</th>
-		<th>Estado OTH</th>
-		<th>Creación OTH</th>
-		<th>Ingeniero</th>
-		<th>Detalle</th>
-	</thead>
+    <thead>
+        <th>OTH</th>
+        <th>Tipo OTH</th>
+        <th>Estado OTH</th>
+        <th>Creación OTH</th>
+        <th>Ingeniero</th>
+        <th>Detalle</th>
+    </thead>
 <?php 
 //$registros
 for ($i=0; $i < count($registros['oth']); $i++) { 
-	echo "<tr>";
-		echo "<td>".$registros['oth'][$i]->id_orden_trabajo_hija."</td>";
-		echo "<td>".$registros['oth'][$i]->ot_hija."</td>";
-		echo "<td>".$registros['oth'][$i]->estado_orden_trabajo_hija."</td>";
-		echo "<td>".$registros['oth'][$i]->fecha_creacion_ot_hija."</td>";
-		echo "<td>".$registros['oth'][$i]->nombre."</td>";
+    echo "<tr>";
+        echo "<td>".$registros['oth'][$i]->id_orden_trabajo_hija."</td>";
+        echo "<td>".$registros['oth'][$i]->ot_hija."</td>";
+        echo "<td>".$registros['oth'][$i]->estado_orden_trabajo_hija."</td>";
+        echo "<td>".$registros['oth'][$i]->fecha_creacion_ot_hija."</td>";
+        echo "<td>".$registros['oth'][$i]->nombre."</td>";
                 echo "<td>
                         <div class='btn-group'>
                             <a class='btn btn-default btn-xs ver-det btn_datatable_cami' title='Detalle Ot' onclick='showModalDetalles(" . $registros['oth'][$i]->id_orden_trabajo_hija . ");'><span class='fa fa-fw fa-eye'></span></a>
                         </div>
                     </td>";
-	echo "</tr>";
-			
+    echo "</tr>";
+            
 }
 ?>
 <tfoot>

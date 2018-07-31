@@ -187,6 +187,28 @@ class OtPadre extends CI_Controller {
     echo json_encode($otPadreList);
     
   }
+
+  //inserta los datos (lista y observaciones )de la vista detalles
+  public function update_data(){
+
+      $fecha_actual = new DateTime();
+      $ingeniero = Auth::user()->k_id_user;
+      $data = array(
+        'k_id_ot_padre' => $this->input->post('id'),
+        'lista_observaciones' => $this->input->post('lista'),
+        'observacion' => $this->input->post('observacion'),
+        'fecha_actualizacion' => $fecha_actual->format('Y-m-d'),
+        'usuario_actualizacion' => $ingeniero
+      );
+
+      // print_r($data);
+      
+
+    $res = $this->Dao_ot_padre_model->update_new_data($data);
+
+    echo json_encode($res);
+  }
+
   
   // TABLA QUE TRAE LA INFORMACION DE OTPADRE QUE TENGAN FECHA DE COMPROMISO PARA HOY
   public function getListOtsOtPadreHoy(){
@@ -201,6 +223,15 @@ class OtPadre extends CI_Controller {
     echo json_encode($otPadreList);
     
   }
+
+  // Trae registro otp por opcion de lista
+  public function c_getOtpByOpcList(){
+    $opcion = $this->input->post('opcion');
+    $otPadreList = $this->Dao_ot_padre_model->getOtpByOpcList($opcion);
+
+    echo json_encode($otPadreList);
+  }
+
 
 
 }

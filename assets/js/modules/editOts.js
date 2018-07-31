@@ -848,7 +848,8 @@ $(function () {
 
         //limpia el modal cada vez que se cierra
         clearModal: function(){   
-             $('#formModal')[0].reset();
+             $('#formModal').reset();
+             $('#n_observacion_cierre').reset();
              $("label.error").remove();
         },
 

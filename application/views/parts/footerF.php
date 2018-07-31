@@ -1,22 +1,22 @@
-	<!-- CIERRE CONTAINER-->   
-	</div>
-	<!-- INICIO FOOTER-->
-	<div class="footerF">
-		<p class="margenDelFooter">©1998-2018 ZTE Corporation - ZTE Colombia. All rights reserved</p>
-	</div>
-	<script> 
-		var baseurl = "<?php echo URL::base(); ?>";
-		const meses_anual = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-		var formato_fecha=new Date();
-		var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
-	</script>
-	<!-- BOOTSTRAP CORE SCRIPT-->
-	<script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js') ?>" /></script>
-	<!-- SCRIPTS DEL FOOTER-->
-	<script src="<?= URL::to('assets/plugins/jquery/jquery.min.js')?>"></script>
-	<script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js')?>"></script>
-	<!-- STYLES  FOOTER -->
-	<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_footer.css'); ?>">
+<!-- CIERRE CONTAINER-->   
+    </div>
+    <!-- INICIO FOOTER-->
+    <div class="footerF">
+        <p class="margenDelFooter">©1998-2018 ZTE Corporation - ZTE Colombia. All rights reserved</p>
+    </div>
+    <script> 
+        var baseurl = "<?php echo URL::base(); ?>";
+        const meses_anual = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+        var formato_fecha=new Date();
+        var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
+    </script>
+    <!-- BOOTSTRAP CORE SCRIPT-->
+    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js') ?>" /></script>
+    <!-- SCRIPTS DEL FOOTER-->
+    <script src="<?= URL::to('assets/plugins/jquery/jquery.min.js')?>"></script>
+    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js')?>"></script>
+    <!-- STYLES  FOOTER -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_footer.css'); ?>">
 
 
 <?php $this->load->helper('camilo'); ?>        
@@ -61,7 +61,7 @@
     <script src="<?= URL::to('assets/js/modules/status_restore.js?v='. time()) ?>"></script>
 <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'OTP'): ?>
+<?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser'): ?>
 <!-- ***********************************JS PARA ACORDEON OT PADRE*****************************************-->
     <script src="<?= URL::to('assets/plugins/charjs/chart.min.js'); ?>"></script>
     <script src="<?= URL::to('assets/js/modules/acordeon_otp.js?v='. time()) ?>"></script>
@@ -96,6 +96,6 @@
 <?php endif ?>
 
     <script src="<?= URL::to('assets/plugins/select2/select2.js') ?>"></script>
-
+    
 </body>
 </html>

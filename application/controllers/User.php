@@ -30,10 +30,12 @@ class User extends CI_Controller {
         //Comprobamos si el Auth ha encontrado válida las credenciales consultadas...
         if ($res) {
             $data['title'] = 'Home';
-            $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
-            $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+            $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
+            $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
+            $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
+            $data['title']      = 'OTP';// cargar el  titulo en la pestaña de la pagina para otp
             $this->load->view('parts/headerF', $data);
-            $this->load->view('principal');
+            $this->load->view('moduleOtp');
             $this->load->view('parts/footerF');
         } else {
             $answer['error'] = "error";
