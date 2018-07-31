@@ -54,7 +54,7 @@
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
      <?php } ?>
-  <?php if ($this->uri->segment(1) == 'OTP') { ?>
+  <?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/style_principal_otp.css?v=' . time()) ?>" />
   <?php } ?>
 
