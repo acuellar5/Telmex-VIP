@@ -1,17 +1,16 @@
 // ****************************SECCION PARA AGREGAR ESTADOS A UN TIPO DE ESTADO****************************
-function showModalNewType(name) {
+function showModalNewType(name, nameStatus) {
     $.post(baseurl + '/Status/c_getNewStatusByType',
             {name: name},
             function (data) {
                 var obj = JSON.parse(data);
-                fillModalNewType(obj, name);
+                fillModalNewType(obj, name, nameStatus);
             }
     );
 }
 
 var flag = 0;
-function fillModalNewType(estados_existentes, name) {
-    $('#mdl_new_type').modal('show');
+function fillModalNewType(estados_existentes, name, nameStatus) {
     $('#mdl_tbl_title_tipo').html("<strong>" + name + "</strong>");
     $('#mdl_tbl_name_type').val(name);
 
@@ -20,11 +19,19 @@ function fillModalNewType(estados_existentes, name) {
 
         $('#mdl_tbl_new_type').append('<tr>'
                                             + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.n_name_estado_ot + '" readonly></td>'
-                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control jsStatusPlus"></td>'
+                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control "></td>'
                                         + '</tr>'
                 );
         flag++;
     });
+    
+    $('#mdl_tbl_new_type').append('<tr>'
+                                            + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + nameStatus + '" readonly></td>'
+                                            + '<td><input type="number" name="jerarquia[]" id="exist' + flag + '" class="form-control jsStatusPlus"></td>'
+                                        + '</tr>'
+                );
+        
+    $('#mdl_new_type').modal('show');
 }
 // Al darle clic a añadir nuevo estadoi del modal
 $('#añadir_estado').click(function () {

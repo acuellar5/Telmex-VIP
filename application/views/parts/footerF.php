@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_footer.css'); ?>">
 
 
+<?php $this->load->helper('camilo'); ?>        
 <?php if ($this->uri->segment(1) == 'cargarOts'): ?>
 <!-- **********************************************VISTA EDITAR OTS *********************************************-->
     <script src="<?= URL::to("assets/js/utils/app.global.js?v=1.2") ?>" type="text/javascript"></script>
@@ -48,11 +49,15 @@
 <?php endif ?>
 <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
 <!-- ***********************************REPARAR TIPOS Y ESTADOS*****************************************-->
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/js/modules/type_restore.js?v='. time()) ?>"></script>
     <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap-selet.min.js') ?>"></script>
 <?php endif ?>
     
 <?php if ($this->uri->segment(1) == 'status_restore' || $this->uri->segment(1) == 'Status'): ?>
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to('assets/js/modules/status_restore.js?v='. time()) ?>"></script>
 <?php endif ?>
 
