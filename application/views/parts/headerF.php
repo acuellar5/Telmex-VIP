@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
 <?php endif ?>
 
-  <script scr="<?= URL::to("assets/plugins/sweetalert-master/dist/sweetalert.min.js") ?>" ></script>
+  <script src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js') ?> "></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -115,7 +115,7 @@
            <!--  <li><a href="#">facturacion</a></li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome  </b> <?php echo Auth::user()->n_last_name_user; ?><br>
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span><b> Welcome  </b> <?php echo Auth::user()->n_name_user . ' ' . Auth::user()->n_last_name_user; ?><br>
               </a>
           </li>
           <li><a href="<?= URL::to('User/logout') ?>"><span class="glyphicon glyphicon-log-in"></span> Sign out</a></li>

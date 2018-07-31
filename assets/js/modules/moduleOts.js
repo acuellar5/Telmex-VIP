@@ -232,7 +232,6 @@ $(function () {
 
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
@@ -375,7 +374,6 @@ $(function () {
 
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             botones += '</div>';
@@ -506,7 +504,6 @@ $(function () {
 
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
@@ -543,7 +540,6 @@ $(function () {
             //             // clave: 'valor' // parametros que se envian
             //         },
             //         function (data) {
-            //             // console.log(data);
             //             $('#bdg_15').html(data['count']);
             //             quinceDias.printTableOtsFiteenDays(data['data']);
 
@@ -644,7 +640,6 @@ $(function () {
         },
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
@@ -729,9 +724,7 @@ $(function () {
                         record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
                         break;                
                 }
-// console.log(record);
                 eventos.fillFormModal(record);
-                 // console.log(record);
             },
 
 
@@ -744,7 +737,6 @@ $(function () {
                     },
                     function (registro) {
                                         
-                        // console.log(registro);
                         // limpiar el formulario...
                          $('#general').html("");
                         $('#k_id_estado_ot').html("");
@@ -762,7 +754,6 @@ $(function () {
 
                         // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
                         // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
-                        // console.log($('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true));
 
 
                         var algo = $('#k_id_estado_ot').val() ;
@@ -838,7 +829,6 @@ $(function () {
                             });
 
                         } 
-                        console.log(registro);
                         $('#ins_servicio').on('change', function(){
                             eventos.selectFormulary(registro.n_nombre_cliente, registro.direccion_destino)
                         });
@@ -864,9 +854,7 @@ $(function () {
                 //         estado_mod: estado_mod,
                 //     },
                 //     function(data){
-                //          console.log(data);
                 //          var res = JSON.parse(data);
-                //          // console.log(res);
                 //          if (res == 1) {
                 //              swal("Se actualizo correctamente!", "", "success");
                 //              setTimeout('document.location.reload()',1500);
@@ -877,7 +865,7 @@ $(function () {
                 //     });
                 // },
                 //limpia el modal cada vez que se cierra
-                clearModal: function(){  
+                clearModal: function(){   
                      $('#formModal')[0].reset();
                      $("label.error").remove();
                 },
@@ -1798,7 +1786,6 @@ $(function () {
          },
 
             fillSelect: function(idtipo, val_estado , orden){
-                // console.log(idtipo);
 
               $.ajaxSetup({async:false});
               $.post(baseurl + "/User/c_getStatusByType",
@@ -1814,10 +1801,8 @@ $(function () {
                             $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" selected>'+item.n_name_estado_ot+'</option>');                            
                         }else {
                             if (parseInt(item.i_orden) < parseInt(orden)) {
-                                // console.log(item.n_name_estado_ot+  " " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" disabled>'+item.n_name_estado_ot+'</option>');                                
                             } else {
-                                // console.log(item.n_name_estado_ot+  "  " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
                             }
                         }
