@@ -232,7 +232,6 @@ $(function () {
 
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
@@ -375,7 +374,6 @@ $(function () {
 
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             botones += '</div>';
@@ -506,7 +504,6 @@ $(function () {
 
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
@@ -543,7 +540,6 @@ $(function () {
             //             // clave: 'valor' // parametros que se envian
             //         },
             //         function (data) {
-            //             // console.log(data);
             //             $('#bdg_15').html(data['count']);
             //             quinceDias.printTableOtsFiteenDays(data['data']);
 
@@ -644,7 +640,6 @@ $(function () {
         },
         //retorna botones para las opciones de la tabla
         getButtons: function(obj){
-            // console.log(obj);
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
@@ -674,7 +669,7 @@ $(function () {
             events: function () {
                 $('#contenido_tablas').on('click', 'a.ver-al', eventos.onClickShowModalEdit);
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
-                $('#ins_servicio').on('change', eventos.selectFormulary );
+                // $('#ins_servicio').on('change', eventos.selectFormulary );
                 $('.cerrar').on('click', eventos.clearModal);
                 $('#btnUpdOt').on('click', eventos.clicOnButton);
 
@@ -729,115 +724,118 @@ $(function () {
                         record = quinceDias.tablaFiteenDaysOts.row(trParent).data();                    
                         break;                
                 }
-// console.log(record);
                 eventos.fillFormModal(record);
-                 // console.log(record);
             },
 
-            //llenamos los input del modal con la informacion a la q le dio click
-            fillFormModal: function(registro){
-                // console.log(registro);
-                // limpiar el formulario...
-                $('#general').html("");
-                $('#k_id_estado_ot').html("");
 
+            //llenamos los input del modal con la informacion a la q le dio click
+            //llenamos los input del modal con la informacion a la q le dio click
+            fillFormModal: function(data){
                 $.post(baseurl + '/OtHija/c_fillmodals',
                     {
-                        idOth: registro.k_id_estado_ot// parametros que se envian
+                        idOth: data.id_orden_trabajo_hija// parametros que se envian
                     },
-                    function (data) {
+                    function (registro) {
+                                        
+                        // limpiar el formulario...
+                         $('#general').html("");
+                        $('#k_id_estado_ot').html("");
+
                         $.each(registro,function(i,item){
                             $('#' + i).val(item);
                         }); 
-                    });
 
-                $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
+                        $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
 
-                $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
-
-                eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
-
-                // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
-                // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
-                // console.log($('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true));
+                            $('#id_ot_modal').text(registro.id_orden_trabajo_hija);
 
 
-                var algo = $('#k_id_estado_ot').val() ;
-                if (registro.k_id_tipo == 1) {
-                  $('#k_id_estado_ot').on('change', function(){
-                    // $('')
-                        $('#general').html("");
-                        if ($('#k_id_estado_ot').val() == 3 )
-                        {
-                            $('#btnUpdOt').attr('disabled', true);
-                            $('.ins_servicio').show();
-                                $('#ins_servicio').on('change', function(){
-                                    eventos.get_eingenieer();
+                        eventos.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
 
-                                    // para llenar inputs de ingeniero 1 en el modal
-                                    $('#ingeniero1').on('change', eventos.fill_information);
-                                    $('#ingeniero2').on('change', eventos.fill_information);
-                                    $('#ingeniero3').on('change', eventos.fill_information);
+                        // $('#k_id_estado_ot option[value="'+registro.k_id_estado_ot+'"]').attr('selected', true);
+                        // $(`#k_id_estado_ot option [value= "${registro.k_id_estado_ot}"]`).attr("selected", true);
 
-                                    var otra = $('#ins_servicio').val();
-                                    switch (otra) {
-                                           case "0":
-                                             $('#btnUpdOt').attr('disabled', true);   
-                                             break 
-                                           case "1":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/1');
-                                             $('#btnUpdOt').attr('disabled', false);  
-                                             $("#nombre").attr("required", true);
-                                             break;
-                                           case "2":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/2');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "3":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/3');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "4":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/4');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "5":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/5');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "6":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/6');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "7":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/7');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "8":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/8');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "9":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/9');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                           case "10":
-                                             $('#formModal').attr('action', 'Templates/c_updateStatusOt/10');
-                                             $('#btnUpdOt').attr('disabled', false);
-                                             break;
-                                       
-                                         }
-                        });                   
-                        }else{
-                            $('.ins_servicio').hide();
-                            $('#btnUpdOt').attr('disabled', false);
-                        }
-                    });
 
-                } 
+                        var algo = $('#k_id_estado_ot').val() ;
+                        if (registro.k_id_tipo == 1) {
+                          $('#k_id_estado_ot').on('change', function(){
+                            // $('')
+                                $('#general').html("");
+                                if ($('#k_id_estado_ot').val() == 3 )
+                                {
+                                    $('#btnUpdOt').attr('disabled', true);
+                                    $('.ins_servicio').show();
+                                        $('#ins_servicio').on('change', function(){
+                                            eventos.get_eingenieer();
 
-                $('.ins_servicio').hide();
-                $('#modalEditTicket').modal('show');
+                                            // para llenar inputs de ingeniero 1 en el modal
+                                            $('#ingeniero1').on('change', eventos.fill_information);
+                                            $('#ingeniero2').on('change', eventos.fill_information);
+                                            $('#ingeniero3').on('change', eventos.fill_information);
+
+                                            var otra = $('#ins_servicio').val();
+                                            switch (otra) {
+                                                   case "0":
+                                                     $('#btnUpdOt').attr('disabled', true);   
+                                                     break 
+                                                   case "1":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/1');
+                                                     $('#btnUpdOt').attr('disabled', false);  
+                                                     $("#nombre").attr("required", true);
+                                                     break;
+                                                   case "2":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/2');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "3":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/3');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "4":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/4');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "5":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/5');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "6":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/6');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "7":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/7');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "8":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/8');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "9":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/9');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                                   case "10":
+                                                     $('#formModal').attr('action', 'Templates/c_updateStatusOt/10');
+                                                     $('#btnUpdOt').attr('disabled', false);
+                                                     break;
+                                               
+                                                 }
+                                });                   
+                                }else{
+                                    $('.ins_servicio').hide();
+                                    $('#btnUpdOt').attr('disabled', false);
+                                }
+                            });
+
+                        } 
+                        $('#ins_servicio').on('change', function(){
+                            eventos.selectFormulary(registro.n_nombre_cliente, registro.direccion_destino)
+                        });
+
+                        $('.ins_servicio').hide();
+                        $('#modalEditTicket').modal('show');
+                });
             },
                 // updateStatusOt: function(){
 
@@ -856,9 +854,7 @@ $(function () {
                 //         estado_mod: estado_mod,
                 //     },
                 //     function(data){
-                //          console.log(data);
                 //          var res = JSON.parse(data);
-                //          // console.log(res);
                 //          if (res == 1) {
                 //              swal("Se actualizo correctamente!", "", "success");
                 //              setTimeout('document.location.reload()',1500);
@@ -876,12 +872,12 @@ $(function () {
 
 
 
-                selectFormulary: function () {
+                selectFormulary: function (nombre_cliente, direccion_destino) {
                 $('#general').html("");
 
-                var nombre_cliente = $('#nombre_cliente').val();
+                // var nombre_cliente = $('#nombre_cliente').val();
                 var servicio_val = $("#ins_servicio option:selected").html();
-                var direccion_destino = $('#direccion_destino').val();
+                // var direccion_destino = $('#direccion_destino').val();
 
                 // // a continuacion creamos la fecha en la variable date
                 // var date = new Date()
@@ -1790,7 +1786,6 @@ $(function () {
          },
 
             fillSelect: function(idtipo, val_estado , orden){
-                // console.log(idtipo);
 
               $.ajaxSetup({async:false});
               $.post(baseurl + "/User/c_getStatusByType",
@@ -1806,10 +1801,8 @@ $(function () {
                             $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" selected>'+item.n_name_estado_ot+'</option>');                            
                         }else {
                             if (parseInt(item.i_orden) < parseInt(orden)) {
-                                // console.log(item.n_name_estado_ot+  " " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'" disabled>'+item.n_name_estado_ot+'</option>');                                
                             } else {
-                                // console.log(item.n_name_estado_ot+  "  " + item.i_orden + " orden = " + orden );
                                 $('.llenarEstadosJS').append('<option value="'+item.k_id_estado_ot+'">'+item.n_name_estado_ot+'</option>');
                             }
                         }
