@@ -202,5 +202,13 @@ class OtPadre extends CI_Controller {
     
   }
 
+  // Trae registro otp por opcion de lista
+  public function c_getOtpByOpcList(){
+    $opcion = $this->input->post('opcion');
+    $otPadreList = $this->Dao_ot_padre_model->getOtpByOpcList($opcion);
+
+    echo json_encode($otPadreList);
+  }
+
 
 }
