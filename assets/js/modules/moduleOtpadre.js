@@ -38,8 +38,8 @@ $(function () {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: vista.getSelect},
-                {title: "Observación", data: vista.getObservaciones},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observación", data: "observacion"},
             ]));
         },
         // Datos de configuracion del datatable
