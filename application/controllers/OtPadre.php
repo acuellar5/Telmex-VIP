@@ -190,13 +190,13 @@ class OtPadre extends CI_Controller {
 
   //inserta los datos (lista y observaciones )de la vista detalles
   public function update_data(){
-
+        
       $fecha_actual = new DateTime();
       $ingeniero = Auth::user()->k_id_user;
       $data = array(
-        'k_id_ot_padre' => $this->input->post('id'),
-        'lista_observaciones' => $this->input->post('lista'),
-        'observacion' => $this->input->post('observacion'),
+        'k_id_ot_padre' => $this->security->xss_clean(strip_tags($this->input->post('id'))),
+        'lista_observaciones' => $this->security->xss_clean(strip_tags($this->input->post('lista'))),
+        'observacion' => $this->security->xss_clean(strip_tags($this->input->post('observacion'))),
         'fecha_actualizacion' => $fecha_actual->format('Y-m-d'),
         'usuario_actualizacion' => $ingeniero
       );

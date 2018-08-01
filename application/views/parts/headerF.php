@@ -4,16 +4,17 @@
   <title><?php echo $title ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php $this->load->helper('camilo'); ?> 
   <!--   ICONO PAGINA    -->
   <link rel="icon" href="<?= URL::to('assets/img/logo_zte.png'); ?>">
   <!-- STYLES HEADER FOOTER  -->
-  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_header.css?v='.time()); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/styles_header.css?v='.validarEnProduccion()); ?>">
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/bootstrap/css/bootstrap.min.css') ?>"/>
   <link rel="stylesheet" href="<?= URL::to('assets/plugins/font-awesome/css/font-awesome.min.css') ?>"/>
 
   <!-- STYLES DATATABLES CAMILO -->
-  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css?v='.time()); ?>">
+  <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/datatables_camilo.css?v='.validarEnProduccion()); ?>">
   <!-- STYLES MODULES PRINCIPAL -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- STYLES  FOOTER  -->
@@ -50,12 +51,12 @@
 
   <?php endif ?>
     <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija') { ?>
-        <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . time()) ?>" />
+        <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . validarEnProduccion()) ?>" />
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
      <?php } ?>
   <?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser') { ?>
-        <link rel="stylesheet" href="<?= URL::to('assets/css/style_principal_otp.css?v=' . time()) ?>" />
+        <link rel="stylesheet" href="<?= URL::to('assets/css/style_principal_otp.css?v=' . validarEnProduccion()) ?>" />
   <?php } ?>
 
 </head>

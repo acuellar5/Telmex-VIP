@@ -67,14 +67,15 @@ class Dao_ot_padre_model extends CI_Model {
 				SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
 				otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
 				otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero
+				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                                otp.lista_observaciones, otp.observacion
 				FROM ot_padre otp
 				INNER JOIN user ON otp.k_id_user = user.k_id_user
                                 $condicion
     	");
         return $query->result();
     }
-    
+
     // tabla que lista las OT Padre que tengan fecha de compromiso para hoy
     public function getListOtsOtPadreHoy() {
         $condicion = "";
@@ -86,7 +87,8 @@ class Dao_ot_padre_model extends CI_Model {
 				SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
 				otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
 				otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero
+				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                                otp.lista_observaciones, otp.observacion
 				FROM ot_padre otp
 				INNER JOIN user ON otp.k_id_user = user.k_id_user
                                 WHERE otp.fecha_compromiso = CURDATE()
@@ -94,7 +96,7 @@ class Dao_ot_padre_model extends CI_Model {
     	");
         return $query->result();
     }
-    
+
     // tabla que lista las OT Padre que tengan fecha de compromiso vencida
     public function getListOtsOtPadreVencidas() {
         $condicion = "";
@@ -106,7 +108,8 @@ class Dao_ot_padre_model extends CI_Model {
 				SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
 				otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
 				otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero
+				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                                otp.lista_observaciones, otp.observacion
 				FROM ot_padre otp
 				INNER JOIN user ON otp.k_id_user = user.k_id_user
                                 WHERE otp.fecha_compromiso > CURDATE()
@@ -116,22 +119,30 @@ class Dao_ot_padre_model extends CI_Model {
   }
   //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles  
   public function update_new_data($data){
-  		$this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
-  		$this->db->update('ot_padre', $data);
+        if (Auth::user()->n_role_user == 'administrador') {
+            $this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
+            $this->db->update('ot_padre', $data);
+        }else{
+            $this->db->where('k_id_user', Auth::user()->k_id_user);
+            $this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
+            $this->db->update('ot_padre', $data);
+        }
 
-  		$error = $this->db->error();
-        if ($error['message']) {
-            // print_r($error);
-            return $error['message'];
+
+        if ($this->db->affected_rows() > 0) {
+            // print_r($this->db->last_query());
+            return true;
         } else {
-            return 1;
+            // print_r($this->db->last_query());
+            return false;
         }
   }
-        // return $query->result();
 
+    
 
+    // return $query->result();
     // trae otp segun opcion de ot padre
-    public function getOtpByOpcList($opcion){
+    public function getOtpByOpcList($opcion) {
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
@@ -148,7 +159,6 @@ class Dao_ot_padre_model extends CI_Model {
                                 $condicion
         ");
         return $query->result();
-        
     }
 
 }

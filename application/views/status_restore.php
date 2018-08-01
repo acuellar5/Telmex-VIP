@@ -24,7 +24,7 @@
         <td><?php echo $estados[$i]->cant; ?></td>
         <td>
             <div class="btn-group">
-                <a class="btn btn-default btn-xs ver-det btn-success" title="Agregar Estado" onclick="showModalNewType(<?= "'" . $estados[$i]->ot_hija . "'"; ?>)">
+                <a class="btn btn-default btn-xs ver-det btn-success" title="Agregar Estado" onclick="showModalNewType(<?= "'" . $estados[$i]->ot_hija . "'"; ?>,<?= "'" . $estados[$i]->estado_orden_trabajo_hija . "'"; ?>)">
                     <span class="fa fa-plus"></span>
                 </a>
             </div>
