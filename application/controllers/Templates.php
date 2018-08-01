@@ -14,6 +14,8 @@ class Templates extends CI_Controller {
 
 
     public function c_updateStatusOt($servicio = null) {
+      // header('Content-Type: text/plain');
+      // print_r($this->input->post());
       if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
         $data_template = $this->fill_formulary($servicio, $_POST);
         switch ($servicio) {
@@ -80,11 +82,61 @@ class Templates extends CI_Controller {
             'ahora' => $text_estado,
             'columna' => 'estado_orden_trabajo_hija',
             'fecha_mod' => $fActual,
-        );        
+        );
 
-        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
 
-        header('Location: ' . URL::base() . '/editarOts?msj=ok');
+        $destinatarios = $pt['mail_envio'];
+        if (isset($pt['mail_cc'])) {
+          for ($i=0; $i < count($pt['mail_cc']); $i++) { 
+            $destinatarios .= "";
+          }
+        }
+
+
+
+        $dataLogMail = array(
+            'k_id_ot_padre'              => $pt['nro_ot_onyx'],
+            'id_orden_trabajo_hija'      => null,
+            'clase'                      => null,
+            'destinatarios'              => null,
+            'usuario_sesion'             => null,
+            'nombre'                     => null,
+            'nombre_cliente'             => null,
+            'servicio'                   => null,
+            'fecha'                      => null,
+            'direccion_instalacion'      => null,
+            'direccion_instalacion_des1' => null,
+            'direccion_instalacion_des2' => null,
+            'direccion_instalacion_des3' => null,
+            'existente'                  => null,
+            'nuevo'                      => null,
+            'ancho_banda'                => null,
+            'interfaz_entrega'           => null,
+            'equipos_intalar_camp1'      => null,
+            'equipos_intalar_camp2'      => null,
+            'equipos_intalar_camp3'      => null,
+            'fecha_servicio'             => null,
+            'ingeniero1'                 => null,
+            'ingeniero1_tel'             => null,
+            'ingeniero1_email'           => null,
+            'ingeniero2'                 => null,
+            'ingeniero2_tel'             => null,
+            'ingeniero2_email'           => null,
+            'ingeniero3'                 => null,
+            'ingeniero3_tel'             => null,
+            'ingeniero3_email'           => null
+               
+             );
+               
+
+        header('Content-Type: text/plain');
+        print_r($pt);
+
+
+
+        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
+
+        // header('Location: ' . URL::base() . '/editarOts?msj=ok');
     }
 
 
@@ -177,7 +229,7 @@ class Templates extends CI_Controller {
         array_push($correos, $email_user);
       }
 
-      if ($pt['mail_cc']) {
+      if (isset($pt['mail_cc'])) {
         for ($i=0; $i < count($pt['mail_cc']); $i++) { 
           array_push($correos, $pt['mail_cc'][$i]);
         }

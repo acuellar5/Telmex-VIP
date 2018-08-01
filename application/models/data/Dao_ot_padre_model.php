@@ -136,7 +136,9 @@ class Dao_ot_padre_model extends CI_Model {
             // print_r($this->db->last_query());
             return false;
         }
-    }
+  }
+
+    
 
     // return $query->result();
     // trae otp segun opcion de ot padre
