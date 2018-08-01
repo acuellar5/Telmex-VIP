@@ -379,6 +379,8 @@ margin-left: -53%;
 }
 .button_observacion{
     margin-top: 28%;
+    display: block !important;
+    margin-left: 19px;
 }
 .algo {
     font-size: 13.5px !important ;

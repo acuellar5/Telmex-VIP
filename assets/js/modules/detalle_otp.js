@@ -174,10 +174,7 @@
                    confirmButtonText: 'Guardar!'
                })        
                 .then((result1) => {
-                    console.log(result);
-                   if (result.value) {
-                    console.log(result.value[0]);
-                    console.log(result.value[1]);
+                   if (result1.value) {
                     $.post(baseurl + '/OtPadre/update_data',
                         {
                             // clave: 'valor' // parametros que se envian
