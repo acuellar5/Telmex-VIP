@@ -128,7 +128,7 @@ class Dao_ot_padre_model extends CI_Model {
         }
   }
         // return $query->result();
- }
+
 
     // trae otp segun opcion de ot padre
     public function getOtpByOpcList($opcion){
