@@ -9,6 +9,8 @@
         const meses_anual = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
         var formato_fecha=new Date();
         var fecha_actual = formato_fecha.getDate() + " de " + meses_anual[formato_fecha.getMonth()] + " de " + formato_fecha.getFullYear();
+        var role_session = "<?php echo Auth::user()->n_role_user ?>";
+        var id_session = "<?php echo Auth::user()->k_id_user ?>";
     </script>
     <!-- BOOTSTRAP CORE SCRIPT-->
     <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js') ?>" /></script>

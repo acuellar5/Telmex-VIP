@@ -116,15 +116,17 @@ class Dao_ot_padre_model extends CI_Model {
   }
   //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles  
   public function update_new_data($data){
-  		$this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
-  		$this->db->update('ot_padre', $data);
+        $this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
+  		$this->db->where('k_id_user', Auth::user()->k_id_user);
+        $this->db->update('ot_padre', $data);
 
-  		$error = $this->db->error();
-        if ($error['message']) {
+        if ($this->db->affected_rows() > 0) {
             // print_r($error);
-            return $error['message'];
+            // print_r($this->db->last_query());
+            return true;
         } else {
-            return 1;
+            // print_r($this->db->last_query());
+            return false;
         }
   }
         // return $query->result();

@@ -31,19 +31,14 @@ for ($i=0; $i < count($registros['otp']); $i++) {
         echo "<td>".$registros['otp'][$i]->fecha_creacion."</td>";
         echo "<td>".$registros['otp'][$i]->ciudad."</td>";
         echo "<td>".$registros['otp'][$i]->recurrente."</td>";
-        echo "<td>".$registros['otp'][$i]->lista_observaciones."</td>";                   
-        echo "<td>".$registros['otp'][$i]->observacion." <button type='button' form='form_detail' title='Guardar' id='btn_observacion' class='glyphicon glyphicon-save button_observacion btn-cami_cool'></button> </td>";                   
+        echo "<td>".$registros['otp'][$i]->lista_observaciones."</td>";                 
+        echo "<td>".$registros['otp'][$i]->observacion."
+         <button type='button' form='form_detail' title='Guardar' id='btn_observacion' class='glyphicon glyphicon-save button_observacion btn-cami_cool'></button> </td>";                   
     echo "</tr>";
             
 }
 ?>
 </table>
-
-
-
-
-
-
 
 
 
