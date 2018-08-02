@@ -138,6 +138,7 @@
                         <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
+                        <input name="c_email" id="c_email" type="hidden">
                         <fieldset>
                             <div class="widget bg_white m-t-25 display-block">
                                 <fieldset class="col-md-6">
@@ -856,16 +857,45 @@
             </div>
             <div class="modal-body" id="cuerpoModal">
                 <div class="container2">
-                    <h4>Tabla Log</h4>
-                    <table id="tableHistorialLog" class='table table-bordered table-striped  col-sm-12'  width='100%'>
-                        <thead>
-                        <th>ORDEN</th>
-                        <th>ANTES</th>
-                        <th>AHORA</th>
-                        <th>COLUMNA CAMBIADA</th>
-                        <th>FECHA MODIFICACION</th>
-                        </thead>
-                    </table>
+                    <!--*********************  MODULO PESTAÑAS  *********************-->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab_log">Historial Log</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab_log_mail">Historial Mail</a></li>
+                    </ul>
+                    
+                    <!--*********************  CONTENIDO PESTAÑAS  *********************-->
+                    <div class="tab-content">
+                    
+                        <div id="tab_log" class="tab-pane fade in active">
+                            <h3>Tabla Log</h3>
+                            <table id="tableHistorialLog" class='table table-bordered table-striped  col-sm-12'  width='100%'>
+                                <thead>
+                                    <th>ORDEN</th>
+                                    <th>ANTES</th>
+                                    <th>AHORA</th>
+                                    <th>COLUMNA CAMBIADA</th>
+                                    <th>FECHA MODIFICACION</th>
+                                </thead>
+                            </table>
+                            
+                        </div>
+                    
+                        <div id="tab_log_mail" class="tab-pane fade">
+                            <h3>Historial Mail</h3>
+                            <table id="table_log_mail" class='table table-bordered table-striped' width='100%'>
+                                <thead>
+                                    <th>FECHA</th>
+                                    <th>CLASE</th>
+                                    <th>SERVICIO</th>
+                                    <th>ENVIADO POR</th>
+                                    <th>DESTINATARIOS</th>
+                                    <th>DIRIGIDO A</th>
+                                </thead>
+                            </table>
+                        </div>
+                    
+                    
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

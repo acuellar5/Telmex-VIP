@@ -136,7 +136,8 @@ class Dao_ot_padre_model extends CI_Model {
             // print_r($this->db->last_query());
             return false;
         }
-    }
+  }
+  
 
     // return $query->result();
     // trae otp segun opcion de ot padre
@@ -150,7 +151,8 @@ class Dao_ot_padre_model extends CI_Model {
                 SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
                 otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero
+                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                otp.lista_observaciones, otp.observacion
                 FROM ot_padre otp
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
                                 WHERE lista_observaciones = '$opcion' 

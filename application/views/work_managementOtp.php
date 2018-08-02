@@ -25,6 +25,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -46,6 +47,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -56,6 +58,7 @@
         <table id="table_otPadreListVencidas" class="table table-hover table-bordered table-striped dataTable_camilo">
             <tfoot>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -150,6 +153,7 @@
         <table id="table_list_opc" class="table table-hover table-bordered table-striped dataTable_camilo">
             <tfoot>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
