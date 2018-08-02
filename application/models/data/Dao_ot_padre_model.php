@@ -187,4 +187,14 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
+    //Trae todas las othijas de una otp en especifico
+    public function getothofothp($idOtp){
+    $query = $this->db->query("
+    SELECT id_orden_trabajo_hija, ot_hija,  estado_orden_trabajo_hija
+    FROM telmex_vip.ot_hija
+    WHERE nro_ot_onyx = $idOtp;
+    ");
+    return $query->result();
+  }
+
 }

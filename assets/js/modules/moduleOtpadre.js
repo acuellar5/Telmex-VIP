@@ -108,7 +108,8 @@ $(function () {
         },
         getButtons: function () {
             var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami' title='Editar Ots'><span class='fa fa-fw fa-edit'></span></a>"
+                   ///////////////////////////////////////////////////////////se cambio la linea del boton
+                        + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='Ver OTH'><span class='fa fa-fw fa-eye'></span></a>"
                     + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami' title='Editar Ots'><span class='fa fa-fw fa-edit'></span></a>"
                     + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
                     + "</div>";
@@ -556,5 +557,107 @@ $(function () {
     };
     eventos.init();
 
+// ******************************************TABLA QUE TRAER TODAS LAS OTHS DE UNA OTP SELECCIONADA ***************************
+
+    listoth = {
+         
+        init: function () {
+            listoth.events();
+            //listoth.getothofothp();  
+        },
+        //Eventos de la ventana.
+        events: function () {
+        // al darle clic al boton de opciones traiga el modal
+            $('#contenido_tablas').on('click', 'a.btnoths', listoth.onClickShowModal);
+        },
+
+        onClickShowModal: function () {
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var tabla = aLinkLog.parents('table').attr('id');
+            var record;
+            switch (tabla) {
+                case 'table_otPadreList':
+                    record = vista.table_otPadreList.row(trParent).data();
+                    break;
+                case 'table_otPadreListHoy':
+                    record = hoy.table_otPadreListHoy.row(trParent).data();
+                    break;
+                case 'table_otPadreListVencidas':
+                    record = vencidas.table_otPadreListVencidas.row(trParent).data();
+                    break;
+                case 'table_list_opc':
+                    record = lista.tableOpcList.row(trParent).data();
+                    break;
+            }
+            listoth.showModalOthDeOthp(record);
+        },
+
+        getothofothp: function (data) {
+            //metodo ajax (post)
+            $.post(baseurl + '/OtPadre/getothofothp',
+                    {
+                        idOtp: data.k_id_ot_padre
+                    },
+                    // funcion que recibe los datos 
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                listoth.printTable(obj);
+                            }
+                    );
+                },
+
+
+        // Muestra modal con todas las ots hija de la otp seleccionada
+        showModalOthDeOthp: function(data){
+            listoth.getothofothp(data);
+            // resetea el formulario y lo deja vacio
+            document.getElementById("formModalOTHS").reset();
+            //pinta el titulo del modal y cambia dependiendo de la otp seleccionada
+            $('#myModalLabel').html('<strong> Lista OTH de la OTP N.' + data.k_id_ot_padre + '</strong>');
+            $('#modalOthDeOtp').modal('show');
+        },
+
+        //pintar tabla
+        printTable: function(data){
+            //funcion para limpiar el modal 
+            if (listoth.table_oths_otp) {
+                var tabla = listoth.table_oths_otp;
+                tabla.clear().draw();
+                tabla.rows.add(data);
+                tabla.columns.adjust().draw();
+                return;
+            }
+
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            listoth.table_oths_otp = $('#table_oths_otp').DataTable(listoth.configTable(data, [
+
+                    {title: "OTH", data: "id_orden_trabajo_hija"},
+                    {title: "Tipo OTH", data: "ot_hija"},
+                    {title: "Estado OTH", data: "estado_orden_trabajo_hija"},  
+                   
+                ]));
+        },
+        // Datos de configuracion del datatable
+        configTable: function (data, columns, onDraw) {
+            return {
+              data: data,
+              columns: columns,
+              //lenguaje del plugin
+              /*"language": { 
+                  "url": baseurl + "assets/plugins/datatables/lang/es.json"
+              },*/
+              columnDefs: [{
+                      defaultContent: "",
+                      targets: -1,
+                      orderable: false,
+                  }],
+              order: [[0, 'asc']],
+              drawCallback: onDraw
+            }
+        }
+    };
+    listoth.init();
 });
 

@@ -245,5 +245,12 @@ class OtPadre extends CI_Controller {
 //
         echo json_encode($respuesta);
     }
+    // TABLA QUE TRAE TODAS LAS OTH DE UNA OTP
+    public function getothofothp(){
+    $idOtp = $this->input->post('idOtp');
+    $listotps = $this->Dao_ot_padre_model->getothofothp($idOtp);
+    echo json_encode($listotps);
+    
+    }
 
 }
