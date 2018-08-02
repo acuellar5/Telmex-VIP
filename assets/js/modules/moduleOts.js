@@ -111,7 +111,7 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {    
-                if (obj.c_email) {
+                if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
@@ -239,7 +239,7 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
-                if (obj.c_email) {
+                if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
@@ -651,7 +651,7 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
-                if (obj.c_email) {
+                if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';

@@ -1050,7 +1050,7 @@ class Dao_ot_hija_model extends CI_Model {
     public function getothija($idOth){
     $query = $this->db->query("
         
-        SELECT e.k_id_tipo, e.i_orden, oth.id_orden_trabajo_hija, oth.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, 
+        SELECT e.k_id_tipo, e.i_orden, oth.id_orden_trabajo_hija, oth.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, oth.c_email, 
         oth.nivel_atencion, oth.ciudad, oth.departamento, oth.grupo,
         oth.consultor_comercial, oth.grupo2, oth.consultor_postventa, 
         oth.proy_instalacion, oth.ing_responsable, oth.id_enlace, 
