@@ -1948,8 +1948,9 @@ $(function () {
             // Muestra modal detalle historial log por id
             showModalHistorial: function(obj){
                 $('#ModalHistorialLog').modal('show');
-                $('#titleEventHistory').html('Historial Cambios de orden ' + obj[0].id_ot_hija + '');
-                eventos.printTableHistory(obj);
+                $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+                eventos.printTableHistory(obj.log);
+                eventos.printTableLogMail(obj.mail);
             },
              //pintamos la tabla de log
             printTableHistory: function(data){
@@ -1967,6 +1968,26 @@ $(function () {
                         {data: "fecha_mod"}
                     ]));
             },
+
+             //pintamos la tabla de log de correos
+            printTableLogMail: function(data){
+                // limpio el cache si ya habia pintado otra tabla
+                if(eventos.tableModalLogMail){
+                    //si ya estaba inicializada la tabla la destruyo
+                    eventos.tableModalLogMail.destroy();
+                }
+                ///lleno la tabla con los valores enviados
+                eventos.tableModalLogMail = $('#table_log_mail').DataTable(total.configTableLog(data,[                                       
+                        {data: "fecha"},
+                        {data: "clase"},
+                        {data: "servicio"},
+                        {data: "usuario_sesion"},
+                        {data: "destinatarios"},
+                        {data: "nombre"}
+                    ]));
+            },
+
+
             //llena el select de ingeniero
             get_eingenieer: function(){
                 $.post( baseurl + '/User/c_get_eingenieer',{
