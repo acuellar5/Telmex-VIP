@@ -111,7 +111,7 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {    
-                if (obj.c_email) {
+                if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
@@ -239,7 +239,7 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
-                if (obj.c_email) {
+                if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
@@ -651,7 +651,7 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
             if (obj.function != 0) {                
-                if (obj.c_email) {
+                if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
@@ -1702,7 +1702,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero1" id="ingeniero1" class="form-control class_fill_eingenieer" type="text" required >
-                                                                <option>Seleccionar</opction>
+                                                                <option value="">Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1736,7 +1736,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero2" id="ingeniero2" class="form-control class_fill_eingenieer" type="text" >
-                                                                <option>Seleccionar</opction>
+                                                                <option value="">Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1765,7 +1765,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero3" id="ingeniero3" class="form-control class_fill_eingenieer" type="text" >
-                                                                <option>Seleccionar</opction>
+                                                                <option value="">Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1887,7 +1887,7 @@ $(function () {
                                 $('#formModal').submit();
                                 response = true;
                             } else {
-                                swal("¡Cancelaste la opración!",{
+                                swal("¡Cancelaste la operación!",{
                                     icon: "error",
                                     dangerMode: true,
                                 });
@@ -1948,8 +1948,9 @@ $(function () {
             // Muestra modal detalle historial log por id
             showModalHistorial: function(obj){
                 $('#ModalHistorialLog').modal('show');
-                $('#titleEventHistory').html('Historial Cambios de orden ' + obj[0].id_ot_hija + '');
-                eventos.printTableHistory(obj);
+                $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+                eventos.printTableHistory(obj.log);
+                eventos.printTableLogMail(obj.mail);
             },
              //pintamos la tabla de log
             printTableHistory: function(data){
@@ -1967,6 +1968,26 @@ $(function () {
                         {data: "fecha_mod"}
                     ]));
             },
+
+             //pintamos la tabla de log de correos
+            printTableLogMail: function(data){
+                // limpio el cache si ya habia pintado otra tabla
+                if(eventos.tableModalLogMail){
+                    //si ya estaba inicializada la tabla la destruyo
+                    eventos.tableModalLogMail.destroy();
+                }
+                ///lleno la tabla con los valores enviados
+                eventos.tableModalLogMail = $('#table_log_mail').DataTable(total.configTableLog(data,[                                       
+                        {data: "fecha"},
+                        {data: "clase"},
+                        {data: "servicio"},
+                        {data: "usuario_sesion"},
+                        {data: "destinatarios"},
+                        {data: "nombre"}
+                    ]));
+            },
+
+
             //llena el select de ingeniero
             get_eingenieer: function(){
                 $.post( baseurl + '/User/c_get_eingenieer',{

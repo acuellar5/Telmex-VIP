@@ -8,6 +8,7 @@ class Templates extends CI_Controller {
         parent::__construct();
         $this->load->model('data/Dao_ot_hija_model');
         $this->load->model('data/Dao_estado_ot_model');
+        $this->load->model('data/Dao_log_correo_model');
     }
 
 //
@@ -62,81 +63,95 @@ class Templates extends CI_Controller {
     }
 
     //Actualiza el estato (hay que enviarle el post)
-    private function update_status($pt){
+    private function update_status($pt, $is_mail = false){
+      date_default_timezone_set("America/Bogota");
+      $fActual = date('Y-m-d H:i:s');
+
+      $cant_mails = $pt['c_email'];
+      if ($is_mail) {
+
+          $cant_mails = $pt['c_email'] + 1;
+
+          $destinatarios = $pt['mail_envio'];
+          
+          if (isset($pt['mail_cc'])) {
+            for ($i=0; $i < count($pt['mail_cc']); $i++) { 
+              $destinatarios .= ", " . $pt['mail_cc'][$i];
+            }
+          }
+
+          $dataLogMail = array(
+              'id_orden_trabajo_hija'      => null,
+              'nombre'                     => null,
+              'nombre_cliente'             => null,
+              'servicio'                   => null,
+              'direccion_instalacion'      => null,
+              'direccion_instalacion_des1' => null,
+              'direccion_instalacion_des2' => null,
+              'direccion_instalacion_des3' => null,
+              'direccion_instalacion_des4' => null,
+              'existente'                  => null,
+              'nuevo'                      => null,
+              'ancho_banda'                => null,
+              'interfaz_entrega'           => null,
+              'equipos_intalar_camp1'      => null,
+              'equipos_intalar_camp2'      => null,
+              'equipos_intalar_camp3'      => null,
+              'fecha_servicio'             => null,
+              'ingeniero1'                 => null,
+              'ingeniero1_tel'             => null,
+              'ingeniero1_email'           => null,
+              'ingeniero2'                 => null,
+              'ingeniero2_tel'             => null,
+              'ingeniero2_email'           => null,
+              'ingeniero3'                 => null,
+              'ingeniero3_tel'             => null,
+              'ingeniero3_email'           => null               
+               );
+
+          foreach ($dataLogMail as $key => $value) {
+            if (isset($pt[$key])) {
+              $dataLogMail[$key] = $pt[$key];
+            }
+          }
+                 
+          $dataLogMail['k_id_ot_padre']  =  $pt['nro_ot_onyx'];
+          $dataLogMail['clase']          =  'cierre_ko';
+          $dataLogMail['destinatarios']  =  $destinatarios;
+          $dataLogMail['usuario_sesion'] =  Auth::user()->k_id_user;
+          $dataLogMail['fecha']          =  $fActual;
+        
+          $this->Dao_log_correo_model->insert_data($dataLogMail);
+      }
+
+
+
+
         $text_estado = $this->Dao_estado_ot_model->getNameStatusById($pt['k_id_estado_ot']);
 
-        date_default_timezone_set("America/Bogota");
-        $fActual = date('Y-m-d');
+
         $data = array(
-            'id_orden_trabajo_hija' => $pt['id_orden_trabajo_hija'],
-            'k_id_estado_ot' => $pt['k_id_estado_ot'],
+            'id_orden_trabajo_hija'     => $pt['id_orden_trabajo_hija'],
+            'k_id_estado_ot'            => $pt['k_id_estado_ot'],
             'estado_orden_trabajo_hija' => $text_estado,
-            'fecha_actual' => $fActual,
-            'estado_mod' => 1,
-            'n_observacion_cierre' => $pt['n_observacion_cierre']
+            'fecha_actual'              => $fActual,
+            'estado_mod'                => 1,
+            'n_observacion_cierre'      => $pt['n_observacion_cierre'],
+            'c_email'                   => $cant_mails
         );
 
         $dataLog = array(
             'id_ot_hija' => $pt['id_orden_trabajo_hija'],
-            'antes' => $pt['estado_orden_trabajo_hija'],
-            'ahora' => $text_estado,
-            'columna' => 'estado_orden_trabajo_hija',
-            'fecha_mod' => $fActual,
+            'antes'      => $pt['estado_orden_trabajo_hija'],
+            'ahora'      => $text_estado,
+            'columna'    => 'estado_orden_trabajo_hija',
+            'fecha_mod'  => $fActual,
         );
+      
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
 
-        $destinatarios = $pt['mail_envio'];
-        if (isset($pt['mail_cc'])) {
-          for ($i=0; $i < count($pt['mail_cc']); $i++) { 
-            $destinatarios .= "";
-          }
-        }
-
-
-
-        $dataLogMail = array(
-            'k_id_ot_padre'              => $pt['nro_ot_onyx'],
-            'id_orden_trabajo_hija'      => null,
-            'clase'                      => null,
-            'destinatarios'              => null,
-            'usuario_sesion'             => null,
-            'nombre'                     => null,
-            'nombre_cliente'             => null,
-            'servicio'                   => null,
-            'fecha'                      => null,
-            'direccion_instalacion'      => null,
-            'direccion_instalacion_des1' => null,
-            'direccion_instalacion_des2' => null,
-            'direccion_instalacion_des3' => null,
-            'existente'                  => null,
-            'nuevo'                      => null,
-            'ancho_banda'                => null,
-            'interfaz_entrega'           => null,
-            'equipos_intalar_camp1'      => null,
-            'equipos_intalar_camp2'      => null,
-            'equipos_intalar_camp3'      => null,
-            'fecha_servicio'             => null,
-            'ingeniero1'                 => null,
-            'ingeniero1_tel'             => null,
-            'ingeniero1_email'           => null,
-            'ingeniero2'                 => null,
-            'ingeniero2_tel'             => null,
-            'ingeniero2_email'           => null,
-            'ingeniero3'                 => null,
-            'ingeniero3_tel'             => null,
-            'ingeniero3_email'           => null
-               
-             );
-               
-
-        header('Content-Type: text/plain');
-        print_r($pt);
-
-
-
-        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog); 
-
-        // header('Location: ' . URL::base() . '/editarOts?msj=ok');
+        header('Location: ' . URL::base() . '/editarOts?msj=ok');
     }
 
 
@@ -146,74 +161,75 @@ class Templates extends CI_Controller {
       switch (true) {
         case ($s == 1 || $s == 2):
             $argumentos = array(
-                'nombre' => $p['nombre'],
-                'nombre_cliente' => $p['nombre_cliente'],
-                'servicio' => $p['servicio'],
-                'fecha' => $p['fecha'],
+                'nombre'                => $p['nombre'],
+                'nombre_cliente'        => $p['nombre_cliente'],
+                'servicio'              => $p['servicio'],
+                'fecha'                 => $p['fecha'],
                 'direccion_instalacion' => $p['direccion_instalacion'],
-                'ancho_banda' => $p['ancho_banda'] . " MHz",
-                'interfaz_entrega' => $p['interfaz_entrega'],
-                'fecha_servicio' => $p['fecha_servicio'],
-                'ingeniero1' => $p['ingeniero1'],
-                'ingeniero1_tel' => $p['ingeniero1_tel'],
-                'ingeniero1_email' => $p['ingeniero1_email'],
-                'ingeniero2' => $p['ingeniero2'],
-                'ingeniero2_tel' => $p['ingeniero2_tel'],
-                'ingeniero2_email' => $p['ingeniero2_email'],
-                'ingeniero3' => $p['ingeniero3'],
-                'ingeniero3_tel' => $p['ingeniero3_tel'],
-                'ingeniero3_email' => $p['ingeniero3_email']
+                'ancho_banda'           => $p['ancho_banda'] . " MHz",
+                'interfaz_entrega'      => $p['interfaz_entrega'],
+                'fecha_servicio'        => $p['fecha_servicio'],
+                'ingeniero1'            => $p['ingeniero1'],
+                'ingeniero1_tel'        => $p['ingeniero1_tel'],
+                'ingeniero1_email'      => $p['ingeniero1_email'],
+                'ingeniero2'            => $p['ingeniero2'],
+                'ingeniero2_tel'        => $p['ingeniero2_tel'],
+                'ingeniero2_email'      => $p['ingeniero2_email'],
+                'ingeniero3'            => $p['ingeniero3'],
+                'ingeniero3_tel'        => $p['ingeniero3_tel'],
+                'ingeniero3_email'      => $p['ingeniero3_email']
             );          
           break;
         case ($s == 4):
             $argumentos = array(
-                'nombre' => $p['nombre'],
-                'nombre_cliente' => $p['nombre_cliente'],
-                'servicio' => $p['servicio'],
-                'fecha' => $p['fecha'],
+                'nombre'                     => $p['nombre'],
+                'nombre_cliente'             => $p['nombre_cliente'],
+                'servicio'                   => $p['servicio'],
+                'fecha'                      => $p['fecha'],
                 'direccion_instalacion_des1' => $p['direccion_instalacion_des1'],
                 'direccion_instalacion_des2' => $p['direccion_instalacion_des2'],
                 'direccion_instalacion_des3' => $p['direccion_instalacion_des3'],
-                'existente' => $p['existente'],
-                'nuevo' => $p['nuevo'],
-                'ancho_banda' => $p['ancho_banda']. " MHz",
-                'interfaz_entrega' => $p['interfaz_entrega'],
-                'equipos_intalar_camp1' => $p['equipos_intalar_camp1'],
-                'equipos_intalar_camp2' => $p['equipos_intalar_camp2'],
-                'equipos_intalar_camp3' => $p['equipos_intalar_camp3'],
-                'fecha_servicio' => $p['fecha_servicio'],
-                'ingeniero1' => $p['ingeniero1'],
-                'ingeniero1_tel' => $p['ingeniero1_tel'],
-                'ingeniero1_email' => $p['ingeniero1_email'],
-                'ingeniero2' => $p['ingeniero2'],
-                'ingeniero2_tel' => $p['ingeniero2_tel'],
-                'ingeniero2_email' => $p['ingeniero2_email'],
-                'ingeniero3' => $p['ingeniero3'],
-                'ingeniero3_tel' => $p['ingeniero3_tel'],
-                'ingeniero3_email' => $p['ingeniero3_email'] 
+                'direccion_instalacion_des4' => $p['direccion_instalacion_des4'],
+                'existente'                  => $p['existente'],
+                'nuevo'                      => $p['nuevo'],
+                'ancho_banda'                => $p['ancho_banda']. " MHz",
+                'interfaz_entrega'           => $p['interfaz_entrega'],
+                'equipos_intalar_camp1'      => $p['equipos_intalar_camp1'],
+                'equipos_intalar_camp2'      => $p['equipos_intalar_camp2'],
+                'equipos_intalar_camp3'      => $p['equipos_intalar_camp3'],
+                'fecha_servicio'             => $p['fecha_servicio'],
+                'ingeniero1'                 => $p['ingeniero1'],
+                'ingeniero1_tel'             => $p['ingeniero1_tel'],
+                'ingeniero1_email'           => $p['ingeniero1_email'],
+                'ingeniero2'                 => $p['ingeniero2'],
+                'ingeniero2_tel'             => $p['ingeniero2_tel'],
+                'ingeniero2_email'           => $p['ingeniero2_email'],
+                'ingeniero3'                 => $p['ingeniero3'],
+                'ingeniero3_tel'             => $p['ingeniero3_tel'],
+                'ingeniero3_email'           => $p['ingeniero3_email'] 
             );
           break;
         case ($s == 3 || $s == 5 || $s == 6 || $s == 7 || $s == 8 || $s == 9 || $s == 10 ):
             $argumentos = array(
-                'nombre' => $p['nombre'],
-                'nombre_cliente' => $p['nombre_cliente'],
-                'servicio' => $p['servicio'],
-                'fecha' => $p['fecha'],
+                'nombre'                => $p['nombre'],
+                'nombre_cliente'        => $p['nombre_cliente'],
+                'servicio'              => $p['servicio'],
+                'fecha'                 => $p['fecha'],
                 'direccion_instalacion' => $p['direccion_instalacion'],
-                'existente' => $p['existente'],
-                'nuevo' => $p['nuevo'],
-                'ancho_banda' => $p['ancho_banda']. " MHz",
-                'interfaz_entrega' => $p['interfaz_entrega'],
-                'fecha_servicio' => $p['fecha_servicio'],
-                'ingeniero1' => $p['ingeniero1'],
-                'ingeniero1_tel' => $p['ingeniero1_tel'],
-                'ingeniero1_email' => $p['ingeniero1_email'],
-                'ingeniero2' => $p['ingeniero2'],
-                'ingeniero2_tel' => $p['ingeniero2_tel'],
-                'ingeniero2_email' => $p['ingeniero2_email'],
-                'ingeniero3' => $p['ingeniero3'],
-                'ingeniero3_tel' => $p['ingeniero3_tel'],
-                'ingeniero3_email' => $p['ingeniero3_email']
+                'existente'             => $p['existente'],
+                'nuevo'                 => $p['nuevo'],
+                'ancho_banda'           => $p['ancho_banda']. " MHz",
+                'interfaz_entrega'      => $p['interfaz_entrega'],
+                'fecha_servicio'        => $p['fecha_servicio'],
+                'ingeniero1'            => $p['ingeniero1'],
+                'ingeniero1_tel'        => $p['ingeniero1_tel'],
+                'ingeniero1_email'      => $p['ingeniero1_email'],
+                'ingeniero2'            => $p['ingeniero2'],
+                'ingeniero2_tel'        => $p['ingeniero2_tel'],
+                'ingeniero2_email'      => $p['ingeniero2_email'],
+                'ingeniero3'            => $p['ingeniero3'],
+                'ingeniero3_tel'        => $p['ingeniero3_tel'],
+                'ingeniero3_email'      => $p['ingeniero3_email']
                 
             );
           break;
@@ -239,19 +255,18 @@ class Templates extends CI_Controller {
 
         $config = Array(
             // 'smtp_crypto' => 'ssl', //protocolo de encriptado
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'zolid.telmex.vip@gmail.com',
-            'smtp_pass' => 'z0l1dTelmex',
+            'protocol'        => 'smtp',
+            'smtp_host'       => 'ssl://smtp.googlemail.com',
+            'smtp_port'       => 465,
+            'smtp_user'       => 'zolid.telmex.vip@gmail.com',
+            'smtp_pass'       => 'z0l1dTelmex',
             // 'smtp_timeout' => 5, //tiempo de conexion maxima 5 segundos
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'priority' => 1,
+            'mailtype'        => 'html',
+            'charset'         => 'utf-8',
+            'priority'        => 1,
         );
         // $argumentos = $this->_post($this->input->post('servicio'));
         // $cuerpo = $this->internet_dedicado_empresarial($argumentos);
-        $asunto = 'esta es la prueba';
 
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
@@ -262,7 +277,7 @@ class Templates extends CI_Controller {
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";
-            $this->update_status($pt);
+            $this->update_status($pt, true);
           }else{
 
             echo ":( Hubo un error en el envio del correo";
