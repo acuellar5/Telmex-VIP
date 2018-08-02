@@ -122,6 +122,7 @@ class Templates extends CI_Controller {
                 'direccion_instalacion_des1' => $p['direccion_instalacion_des1'],
                 'direccion_instalacion_des2' => $p['direccion_instalacion_des2'],
                 'direccion_instalacion_des3' => $p['direccion_instalacion_des3'],
+                'direccion_instalacion_des4' => $p['direccion_instalacion_des4'],
                 'existente' => $p['existente'],
                 'nuevo' => $p['nuevo'],
                 'ancho_banda' => $p['ancho_banda']. " MHz",

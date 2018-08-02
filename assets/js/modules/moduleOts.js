@@ -1690,7 +1690,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero1" id="ingeniero1" class="form-control class_fill_eingenieer" type="text" required >
-                                                                <option>Seleccionar</opction>
+                                                                <option value="">Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1724,7 +1724,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero2" id="ingeniero2" class="form-control class_fill_eingenieer" type="text" >
-                                                                <option>Seleccionar</opction>
+                                                                <option value="">Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1753,7 +1753,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero3" id="ingeniero3" class="form-control class_fill_eingenieer" type="text" >
-                                                                <option>Seleccionar</opction>
+                                                                <option value="">Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1875,7 +1875,7 @@ $(function () {
                                 $('#formModal').submit();
                                 response = true;
                             } else {
-                                swal("¡Cancelaste la opración!",{
+                                swal("¡Cancelaste la operación!",{
                                     icon: "error",
                                     dangerMode: true,
                                 });

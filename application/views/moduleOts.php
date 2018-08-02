@@ -789,7 +789,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                     <select class="form-control" id="ins_servicio" class="form-control">
-                                                        <option value="0">select...</option>
+                                                        <option value="">select...</option>
                                                         <option value="1">Internet Dedicado Empresarial</option>
                                                         <option value="2">Internet Dedicado </option>
                                                         <option value="3">MPLS Avanzado Intranet</option>
