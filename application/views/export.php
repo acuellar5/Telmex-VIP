@@ -21,6 +21,8 @@
 						<td>Creacion</td>
 						<td>Ciudad</td>
 						<td>Recurrente</td>
+						<td>Lista observaciones</td>
+						<td>Observacion</td>
 					</tr>
 				<?php 
 				//$registros
@@ -36,6 +38,8 @@
 						echo "<td>".elimina_acentos($registros['otp'][$i]->fecha_creacion)."</td>";
 						echo "<td>".elimina_acentos($registros['otp'][$i]->ciudad)."</td>";
 						echo "<td>".elimina_acentos($registros['otp'][$i]->recurrente)."</td>";
+						echo "<td>".elimina_acentos($registros['otp'][$i]->lista_observaciones)."</td>";
+						echo "<td>".elimina_acentos($registros['otp'][$i]->observacion)."</td>";
 					echo "</tr>";
 							
 				}
