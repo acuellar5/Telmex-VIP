@@ -4,7 +4,7 @@
     <li class=""><a data-toggle="tab" href="#total">Total <span class="badge badge_cami" id="bdg_total">...</span></a></li>
     <li class=""><a data-toggle="tab" href="#nuevas">Nuevas <span class="badge badge_cami" id="bdg_nuevas">...</span></a></li>
     <li class=""><a data-toggle="tab" href="#cambio">Cambios <span class="badge badge_cami" id="bdg_cambios">...</span></a></li>
-    <li class=""><a data-toggle="tab" href="#dias_15">KickOff 15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li>
+<!--     <li class=""><a data-toggle="tab" href="#dias_15">KickOff 15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li> -->
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -102,7 +102,7 @@
         </table>
     </div>
 
-    <div id="dias_15" class="tab-pane fade">
+<!--     <div id="dias_15" class="tab-pane fade">
         <h3>15 Días</h3>
         <table id="tablaFiteenDaysOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
             <tfoot>
@@ -120,7 +120,7 @@
                 </tr>
             </tfoot>
         </table>
-    </div>
+    </div> -->
 
 </div>
 
