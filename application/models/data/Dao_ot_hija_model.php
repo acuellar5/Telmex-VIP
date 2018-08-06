@@ -1270,6 +1270,21 @@ class Dao_ot_hija_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    // OBTENER LAS OTH QUE LLEVEN CERRADAS MAS DE 8 DIAS 
+    public function getListOtsEigtDay(){
+        $query = $this->db->query("
+                SELECT otp.k_id_ot_padre, oth.nro_ot_onyx,oth.id_orden_trabajo_hija, otp.n_nombre_cliente, otp.fecha_compromiso,
+                otp.fecha_programacion, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.usuario_asignado AS ingeniero
+                FROM ot_hija oth
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
+                WHERE 
+                k_id_estado_ot = 3 AND 
+                MOD(DATEDIFF(CURDATE(), fecha_mod), 7) = 0 AND 
+                CURDATE() <> fecha_mod;
+
+            ");
+        return $query->result();
+    }
 
 
 

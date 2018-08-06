@@ -90,6 +90,14 @@
 <!-- ***********************faber*********************************** -->
 <?php endif ?>
 
+<?php if ($this->uri->segment(1) == 'ReporteActualizacion'): ?>
+<!-- ***********************************REPORTE ACTUALIZACIONES *****************************************-->
+    <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
+    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script> -->
+    <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
+    <script src="<?= URL::to('assets/js/modules/reporteActualizacion.js?v='. validarEnProduccion()) ?>"></script>
+<?php endif ?>
+
 <?php if ($this->uri->segment(1) == 'OtHija'): ?>
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
