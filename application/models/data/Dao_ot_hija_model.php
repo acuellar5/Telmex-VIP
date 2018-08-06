@@ -104,8 +104,6 @@ class Dao_ot_hija_model extends CI_Model {
                 $srch
                 $condicion
                 $search_col
-                ORDER BY tipo_trascurrido DESC
-
                 $limit_start_length 
             ");
         $last_query = $this->db->last_query();

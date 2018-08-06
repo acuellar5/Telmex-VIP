@@ -1,7 +1,6 @@
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#hoy">Actuales <span class="badge badge_cami" id="bdg_hoy">...</span></a></li>
-    <li class=""><a data-toggle="tab" href="#total">Total <span class="badge badge_cami" id="bdg_total">...</span></a></li>
+    <li class="active"><a data-toggle="tab" href="#total">Total <span class="badge badge_cami" id="bdg_total">...</span></a></li>
     <li class=""><a data-toggle="tab" href="#nuevas">Nuevas <span class="badge badge_cami" id="bdg_nuevas">...</span></a></li>
     <li class=""><a data-toggle="tab" href="#cambio">Cambios <span class="badge badge_cami" id="bdg_cambios">...</span></a></li>
 <!--     <li class=""><a data-toggle="tab" href="#dias_15">KickOff 15 Días <span class="badge badge_cami" id="bdg_15">...</span></a></li> -->
@@ -9,28 +8,7 @@
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
 <div class="tab-content" id="contenido_tablas">
-
-    <div id="hoy" class="tab-pane fade in active">
-        <h3>Actuales</h3>
-        <table id="tablaEditOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
-            <tfoot>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-
-    <div id="total" class="tab-pane fade">
+    <div id="total" class="tab-pane fade in active">
         <h3>Total</h3>
         <table id="tabla_total" class='table table-bordered table-striped dataTable_camilo' width='100%'>
             <thead>
