@@ -87,7 +87,7 @@
                     <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
                     <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
                     <?php if (Auth::user()->n_role_user == 'administrador'): ?>
-                    <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización</a></li>
+                    <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización <span class="badge"><?php echo $cantidad['afeterEigtDays'][0]->cant ?></span></a></li>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
                     <?php endif ?>
                   </ul>

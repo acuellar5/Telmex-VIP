@@ -23,7 +23,9 @@ $(function () {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
                                 // s
-                                vista.printTable(obj);
+                                vista.printTable(obj.data);
+                                $('#bdg_after8days').html(obj.cant);
+
                             }
                     );
                 },
