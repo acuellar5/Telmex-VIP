@@ -796,6 +796,7 @@ class Dao_ot_hija_model extends CI_Model {
         $data['nulos'] = $this->getCantNull();
         $data['new_types'] = $this->cant_new_types();
         $data['new_status'] = $this->cant_new_status();
+        $data['afeterEigtDays'] = $this->cant_after_eigt_days();
         return $data;
     }
 
@@ -886,6 +887,20 @@ class Dao_ot_hija_model extends CI_Model {
             ");
         return $query->result();
     }
+    ////Retorna la cantidad de OTH que esten cerrada mas de 8 dias////////////
+    public function cant_after_eigt_days() {
+        $query = $this->db->query("
+                SELECT count(1) as cant
+                FROM ot_hija oth
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
+                WHERE 
+                k_id_estado_ot = 3 AND 
+                MOD(DATEDIFF(CURDATE(), fecha_mod), 7) = 0 AND 
+                CURDATE() <> fecha_mod;
+        ");
+        return $query->result();
+    }
+
 
     //trae registros estado indefinido por nombre de estado y ot_hija (tipo)
     public function update_regis_indef_by_estado($id_type, $type, $name_status) {
@@ -1268,6 +1283,21 @@ class Dao_ot_hija_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    // OBTENER LAS OTH QUE LLEVEN CERRADAS MAS DE 8 DIAS 
+    public function getListOtsEigtDay(){
+        $query = $this->db->query("
+                SELECT otp.k_id_ot_padre, oth.nro_ot_onyx,oth.id_orden_trabajo_hija, otp.n_nombre_cliente, otp.fecha_compromiso,
+                otp.fecha_programacion, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.usuario_asignado AS ingeniero
+                FROM ot_hija oth
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
+                WHERE 
+                k_id_estado_ot = 3 AND 
+                MOD(DATEDIFF(CURDATE(), fecha_mod), 7) = 0 AND 
+                CURDATE() <> fecha_mod;
+
+            ");
+        return $query;
+    }
 
 
 

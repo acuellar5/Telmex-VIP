@@ -15,7 +15,7 @@ class ReporteActualizacion extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-        $data['title'] = 'updateReport'; // cargar el  titulo en la pestaña de la pagina para otp
+        $data['title'] = 'update Report'; // cargar el  titulo en la pestaña de la pagina para otp
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('reporteActualizacion');
@@ -24,8 +24,14 @@ class ReporteActualizacion extends CI_Controller {
 
     // TABLA DE OTS QUE ESTEN CERRADAS Y MAS DE 8 DIAS
     public function getListOtsEigtDay(){
-    $UndefinedOts = $this->Dao_ot_hija_model->getListOtsEigtDaygetListOtsEigtDay();
-    echo json_encode($UndefinedOts);
+    $otsEigtDay = $this->Dao_ot_hija_model->getListOtsEigtDay();
+
+    $data = array (
+        'data' => $otsEigtDay->result(),
+        'cant' => $otsEigtDay->num_rows()
+    );
+    echo json_encode($data);
+
   }
 
 }
