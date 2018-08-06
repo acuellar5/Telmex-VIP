@@ -670,6 +670,10 @@ $(function () {
     quinceDias.init();
     //******************************************************** FIN 15 DIAS ********************************************************************//
 
+    //********************************************************************************************************************************************
+    //******************************************************** INICIO EVENTOS ********************************************************************
+    //********************************************************************************************************************************************
+
         eventos = {
             init: function () {
                 eventos.events();
@@ -682,6 +686,7 @@ $(function () {
                 $('#contenido_tablas').on('click', 'a.ver-al', eventos.onClickShowModalEdit);
                 $('#contenido_tablas').on('click', 'a.ver-log', eventos.onClickVerLogTrChanges);
                 // $('#ins_servicio').on('change', eventos.selectFormulary );
+                $('#table_log_mail').on('click', 'button.ver-mail', eventos.onClickVerLogMail);
                 $('.cerrar').on('click', eventos.clearModal);
                 $('#btnUpdOt').on('click', eventos.clicOnButton);
 
@@ -1702,7 +1707,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero1" id="ingeniero1" class="form-control class_fill_eingenieer" type="text" required >
-                                                                <option>Seleccionar</opction>
+                                                                <option value=''>Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1736,7 +1741,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero2" id="ingeniero2" class="form-control class_fill_eingenieer" type="text" >
-                                                                <option>Seleccionar</opction>
+                                                                <option value=''>Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1765,7 +1770,7 @@ $(function () {
                                                             <div class="input-group">
                                                                 <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
                                                                 <select name="ingeniero3" id="ingeniero3" class="form-control class_fill_eingenieer" type="text" >
-                                                                <option>Seleccionar</opction>
+                                                                <option value=''>Seleccionar</opction>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1983,10 +1988,42 @@ $(function () {
                         {data: "servicio"},
                         {data: "usuario_sesion"},
                         {data: "destinatarios"},
-                        {data: "nombre"}
+                        {data: "nombre"},
+                        {data: eventos.getButonsPrint}
                     ]));
+
             },
 
+            //
+            onClickVerLogMail: function(){
+                var tr = $(this).parents('tr');
+                var record = eventos.tableModalLogMail.row(tr).data();
+                eventos.generarPDF(record);
+            },
+
+            // generar pdf redireccionar
+            generarPDF: function(data){
+                console.log(data);
+                $.post(baseurl + '/Templates/generatePDF', 
+                    {
+                        data: data
+                    }, 
+                    function(data) {
+                   
+                });
+
+
+                // window.open('http://ejemplo.com/archivo.pdf', '_blank');
+            },
+
+            // creamos los botones para imprimir el correo enviado
+            getButonsPrint: function(obj){
+                // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
+
+                var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
+                return button;
+
+            },
 
             //llena el select de ingeniero
             get_eingenieer: function(){

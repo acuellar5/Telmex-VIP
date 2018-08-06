@@ -51,7 +51,7 @@ class Templates extends CI_Controller {
                  $template = $this->mpls_transaccional_3g($data_template);
                  break;
            
-             }  
+        }  
              // print_r($template);   
              $this->enviar_email($template, $_POST);
 
@@ -66,6 +66,7 @@ class Templates extends CI_Controller {
     private function update_status($pt, $is_mail = false){
       date_default_timezone_set("America/Bogota");
       $fActual = date('Y-m-d H:i:s');
+      $fActual2 = date('Y-m-d');
 
       $cant_mails = $pt['c_email'];
       if ($is_mail) {
@@ -119,7 +120,7 @@ class Templates extends CI_Controller {
           $dataLogMail['clase']          =  'cierre_ko';
           $dataLogMail['destinatarios']  =  $destinatarios;
           $dataLogMail['usuario_sesion'] =  Auth::user()->k_id_user;
-          $dataLogMail['fecha']          =  $fActual;
+          $dataLogMail['fecha']          =  $fActual2;
         
           $this->Dao_log_correo_model->insert_data($dataLogMail);
       }
@@ -134,7 +135,7 @@ class Templates extends CI_Controller {
             'id_orden_trabajo_hija'     => $pt['id_orden_trabajo_hija'],
             'k_id_estado_ot'            => $pt['k_id_estado_ot'],
             'estado_orden_trabajo_hija' => $text_estado,
-            'fecha_actual'              => $fActual,
+            'fecha_mod'                 => $fActual,
             'estado_mod'                => 1,
             'n_observacion_cierre'      => $pt['n_observacion_cierre'],
             'c_email'                   => $cant_mails
@@ -152,6 +153,71 @@ class Templates extends CI_Controller {
 
 
         header('Location: ' . URL::base() . '/editarOts?msj=ok');
+    }
+
+    // Arma el pdf para mostrar el correo enviado
+    public function generatePDF(){
+      $data = $this->input->post('data');
+      // header('Content-Type: text/plain');
+      // print_r($data);
+        switch ($data['servicio']) {
+               case 'Internet Dedicado Empresarial':
+                 $template = $this->internet_dedicado_empresarial($data);
+                 break;
+               case 'Internet Dedicado ':
+                 $template = $this->internet_dedicado($data);
+                 break;
+               case 'MPLS Avanzado Intranet':
+                 $template = $this->mpls_avanzado_intranet($data);
+                 break;
+               case 'MPLS Avanzado Intranet - Varios Puntos':
+                 $template = $this->mpls_avanzado_intranet_varios_puntos($data);
+                 break;
+               case 'MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2':
+                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data);
+                 break;
+               case 'MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1':
+                 $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data);
+                 break;
+               case 'MPLS Avanzado Extranet':
+                 $template = $this->avanzado_extranet($data);
+                 break;
+               case 'Backend MPLS':
+                 $template = $this->backend_mpls($data);
+                 break;
+               case 'MPLS Avanzado con Componente Datacenter Claro':
+                 $template = $this->mpls_avanzado_componente_datacenter_claro($data);
+                 break;
+               case 'MPLS Transaccional 3G':
+                 $template = $this->mpls_transaccional_3g($data);
+                 break;
+           
+        }
+
+        // require_once ('models/bin/dompdf/dompdf_config.inc.php');
+
+
+        $this->load->model('bin/dompdf/lib/html5lib/Parser');
+        $this->load->model('bin/dompdf/lib/php-font-lib/src/FontLib/Autoloader');
+        $this->load->model('bin/dompdf/lib/php-svg-lib/src/autoload');
+        $this->load->model('bin/dompdf/src/Autoloader');
+
+
+        // $this->load->model('bin/mpdf/mpdf');
+        // require_once  APPPATH . 'models/bin/mpdf/mpdf.php';
+        // $mpdf = new mPDF(); // tamaño de la hoja
+        // $mpdf|->writeHTML('<div>hola.........</div>');
+        // $mpdf->Output('reporte.pdf', 'I');
+
+
+
+        print_r($template);
+
+
+
+
+
+
     }
 
 

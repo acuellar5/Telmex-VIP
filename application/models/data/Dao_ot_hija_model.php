@@ -1240,6 +1240,36 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->row();
     }
 
+    // obtiene la ultima fecha de carga
+    public function getUltimaFechaCarga(){
+        $query = $this->db->query("
+                SELECT max(fecha_actual) AS fecha
+                FROM 
+                ot_hija
+
+            ");
+        return $query->row();
+    }
+
+    // obtiene la penultima fecha de carga
+    public function getPenultimaFechaCarga(){
+        $query = $this->db->query("
+                SELECT max(fecha_actual) AS fecha
+                FROM 
+                ot_hija
+                WHERE 
+                fecha_actual < (SELECT MAX(fecha_actual) FROM ot_hija)
+
+            ");
+        return $query->row();
+    }
+
+    // ELIMINA REGISTROS POR FECHA ACTUAL
+    public function delete_oth_by_fecha($fecha){
+        $this->db->delete('ot_hija', array('k_id_register >' => 0, 'fecha_actual' => $fecha));
+        return $this->db->affected_rows();
+    }
+
 
 
 
