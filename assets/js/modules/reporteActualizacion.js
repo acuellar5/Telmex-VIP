@@ -1,56 +1,67 @@
 $(function () {
    /**********************************************INICIO 08 DIAS*********************************************/
-    quinceDias = {
+   
+ vista = {
         init: function () {
-            quinceDias.events();
-            quinceDias.listOtsFiteenDays();
-            quinceDias.individualColumnSearching();
-        },
+            vista.events();
+            vista.getListOtsEigtDay();
 
+        },
         //Eventos de la ventana.
         events: function () {
-        },
-        listOtsFiteenDays: function () {
-            // $.post(baseurl + '/OtHija/c_getOtsFiteenDays',
-            //         {
-            //             // clave: 'valor' // parametros que se envian
-            //         },
-            //         function (data) {
-            //             $('#bdg_15').html(data['count']);
-            //             quinceDias.printTableOtsFiteenDays(data['data']);
-
-            //         });
-            quinceDias.tablaFiteenDaysOts = $('#tablaFiteenDaysOts').DataTable(quinceDias.printTableOtsFiteenDays("/OtHija/c_getOtsFiteenDays", "tablaFiteenDaysOts"));
-
 
         },
-        printTableOtsFiteenDays: function (url, table) {
-            ///lleno la tabla con los valores enviados
+        getListOtsEigtDay: function () {
+            //metodo ajax (post)
+            $.post(baseurl + '/ReporteActualizacion/getListOtsEigtDay',
+                    {
+                        //parametros
+                        
+                    },
+                    // funcion que recibe los datos (callback)
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                // s
+                                vista.printTable(obj.data);
+                                $('#bdg_after8days').html(obj.cant);
 
+                            }
+                    );
+                },
+        printTable: function (data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            vista.tablaEigtDaysOts = $('#tablaEigtDaysOts').DataTable(vista.configTable(data, [
 
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "ID OT Hija", data: "id_orden_trabajo_hija"},
+                {title: "Nombre del Cliente", data: "n_nombre_cliente"},
+                {title: "Fecha de Programación", data: "fecha_compromiso"},
+                {title: "OT Hija", data: "ot_hija"},
+                {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsbale", data: "ingeniero"},
+                {title: "Opciones", data: vista.getButtons},
+   
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTable: function (data, columns, onDraw) {
             return {
-                columns: [
-                    {title: "OT Padre", data: "nro_ot_onyx"},
-                    {title: "Id OT Hija", data: "id_orden_trabajo_hija"},
-                    {title: "Nombre Cliente", data: "nombre_cliente"},
-                    {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                    {title: "Fecha Programación", data: "fecha_programacion"},
-                    {title: "Ot Hija", data: "ot_hija"},
-                    {title: "Estado Orden Trabajo Hija", data: "estado_orden_trabajo_hija"},
-                    {title: "Ingeniero Responsable", data: "ingeniero"},
-                    {title: "Recurrente", data: "MRC"},
-                    {title: "opc", data: quinceDias.getButtons}
-                ],
-                 initComplete: function () {
-                    var r = $('#tablaFiteenDaysOts tfoot tr');
+                initComplete: function () {
+                    //es para crear los campos para buscar
+                    $('#tablaEigtDaysOts tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+                    //subir los espacios para buscar la informacion
+                    var r = $('#tablaEigtDaysOts tfoot tr');
                     r.find('th').each(function () {
                         $(this).css('padding', 8);
                     });
-                    $('#tablaFiteenDaysOts thead').append(r);
+                    $('#tablaEigtDaysOts thead').append(r);
                     $('#search_0').css('text-align', 'center');
 
-                    // DataTable
-                    var table = $('#tablaFiteenDaysOts').DataTable();
+                    // DataTable 
+                    var table = $('#tablaEigtDaysOts').DataTable();
 
                     // Apply the search
                     table.columns().every(function () {
@@ -63,78 +74,29 @@ $(function () {
                         });
                     });
                 },
-                // lenguaje
-                "language": {
-                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
-                },
-                dom: 'Blfrtip',
-                buttons: [
-                    {
-                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
-                        className: 'btn-cami_cool',
-                        extend: 'excel',
-                        title: 'ZOLID EXCEL',
-                        filename: 'zolid ' + fecha_actual
-                    },
-                    {
-                        text: 'Imprimir <span class="fa fa-print"></span>',
-                        className: 'btn-cami_cool',
-                        extend: 'print',
-                        title: 'Reporte Zolid',
-                    }
-                ],
-                select:true,
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                data: data,
+                columns: columns,
+                //lenguaje del plugin
+                /*"language": { 
+                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
+                 },*/
                 columnDefs: [{
                         defaultContent: "",
-                        targets: 0,
+                        targets: -1,
                         orderable: false,
                     }],
-                ordering: false,
-                // order: [[8, 'desc']],
-                // drawCallback: onDraw,
-                // order: [[0, 'desc']], //ardenaniento
-                "bProcessing": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
-                "serverSide": true, /*IMPORTANTES PARA TRABAJAR SERVER SIDE PROSSESING*/
-
-
-                drawCallback: function (data) {
-                    if ($('#bdg_15').html() == "...") {
-                        $('#bdg_15').html(data.json.recordsFiltered);                        
-                    }
-                    
-                },
-                "ajax": {
-                    url: baseurl + '/' + url, // json datasource
-                    type: "POST", // type of method  , by default would be get
-                    error: function () {  // error handling code
-                        $("#employee_grid_processing").css("display", "none");
-                    }
-                }
-            };
-
-        },
-        //retorna botones para las opciones de la tabla
-        getButtons: function(obj){
-            var botones = '<div class="btn-group" style="display: inline-flex;">';
-            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
-            if (obj.function != 0) {                
-                if (obj.c_email > 0) {
-                    botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
-                } else {
-                    botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
-                }
+                order: [[3, 'asc']],
+                drawCallback: onDraw
             }
-
-            botones += '</div>';
-            return botones;
         },
-        individualColumnSearching: function () {
-            $('#tablaFiteenDaysOts tfoot th').each(function () {
-                $(this).html('<input type="text" placeholder="Buscar" />');
-            });
+
+        getButtons: function () {
+            var botones = "<div class='btn-group-vertical'>"
+                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>"  
+                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami' title='Inf. Correos'><span class='fa fa-info'></span></a>"                                   
+                    + "</div>";
+            return botones;
         }
     };
-    quinceDias.init();
+    vista.init();
 });
-

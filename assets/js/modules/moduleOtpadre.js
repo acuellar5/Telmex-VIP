@@ -12,7 +12,7 @@ $(function () {
         },
         getListOtsOtPadre: function () {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getListOtsOtPadre',
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadre',
                     {
                         //parametros
 
@@ -40,7 +40,7 @@ $(function () {
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observación", data: "observacion"},
-                {title: "Opciones", data: vista.getButtons},
+                {title: "Opc", data: vista.getButtons},
             ]));
         },
         // Datos de configuracion del datatable
@@ -106,12 +106,22 @@ $(function () {
                 drawCallback: onDraw
             }
         },
-        getButtons: function () {
+        getButtons: function (obj) {
+            var span = '';
+            var title = '';
+            if (obj.cant_mails != 0) {
+                span = "<span class='fa fa-fw '>" + obj.cant_mails + "</span>";
+                title = (obj.cant_mails == 1) ? obj.cant_mails + " correo enviado" : obj.cant_mails + " correos enviados";
+            } else {
+                span = "<span class='fa fa-fw fa-eye'></span>";
+                title = "ver OT Hijas";
+            }
+
             var botones = "<div class='btn-group-vertical'>"
-                   ///////////////////////////////////////////////////////////se cambio la linea del boton
-                        + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='Ver OTH'><span class='fa fa-fw fa-eye'></span></a>"
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami' title='Editar Ots'><span class='fa fa-fw fa-edit'></span></a>"
-                    + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
+                    ///////////////////////////////////////////////////////////se cambio la linea del boton
+                    + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='" + title + "'>" + span + "</a>"
+                    + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
+//                    + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
                     + "</div>";
             return botones;
         }
@@ -131,7 +141,7 @@ $(function () {
         },
         getListOtsOtPadreHoy: function () {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getListOtsOtPadreHoy',
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreHoy',
                     {
                         //parametros
 
@@ -232,16 +242,16 @@ $(function () {
     vencidas = {
         init: function () {
             vencidas.events();
-            vencidas.getListOtsOtPadreHoy();
+            vencidas.getListOtsOtPadreVencidas();
 
         },
         //Eventos de la ventana.
         events: function () {
 
         },
-        getListOtsOtPadreHoy: function () {
+        getListOtsOtPadreVencidas: function () {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getListOtsOtPadreVencidas',
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreVencidas',
                     {
                         //parametros
 
@@ -474,6 +484,8 @@ $(function () {
         //Eventos de la ventana.
         events: function () {
             $('#contenido_tablas').on('click', 'a.close-otp', eventos.onClickBtnCloseOtp);
+            $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
+            $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
         },
         onClickBtnCloseOtp: function () {
             var aLinkLog = $(this);
@@ -494,27 +506,27 @@ $(function () {
                     record = lista.tableOpcList.row(trParent).data();
                     break;
             }
+
             eventos.closeOtp(record);
         },
 
         closeOtp: function (data) {
-            swal({
-                title: "Advertencia",
-                text: 'Esta seguro que desea cerrar la OT Padre ' + data.k_id_ot_padre,
-                icon: "warning",
-                buttons: true,
+            const swalWithBootstrapButtons = swal.mixin({
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false,
+            })
 
-                dangerMode: true,
-                buttons: {
-                    cancel: "Cancelar!",
-                    continuar: {
-                        text: "Continuar!",
-                        value: "continuar",
-                        className: "btn_continuar",
-                    },
-                },
-            }).then((continuar) => {
-                if (continuar) {
+            swalWithBootstrapButtons({
+                title: 'Advertencia',
+                text: 'Esta seguro que desea cerrar la OT Padre ' + data.k_id_ot_padre,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Continuar!',
+                cancelButtonText: 'Cancelar!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
                     $.post(baseurl + '/OtPadre/c_closeOtp',
                             {
                                 idOtp: data.k_id_ot_padre// parametros que se envian
@@ -522,52 +534,272 @@ $(function () {
                             function (data) {
                                 var registro = JSON.parse(data);
                                 if (registro.response == 'success') {
-                                    swal({
-                                        position: 'top-end',
-                                        type: 'success',
-                                        title: 'OT padre Cerrada',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    })
+                                    swalWithBootstrapButtons(
+                                            'OT padre Cerrada!',
+                                            '',
+                                            'success'
+                                            )
                                 } else {
                                     var oth = "";
                                     $.each(registro.oth_abiertas, function (i, item) {
-                                        oth += item.id_orden_trabajo_hija + "\n";
+                                        oth += item.id_orden_trabajo_hija + "<br>";
                                     });
-                                    swal({
-                                        title: "No es posible cerrar la OT padre",
-                                        text: "La OT padre tiene " + registro.cant_oth_abiertas + " OT hijas abiertas, por favor cierre las siguientes OT hijas para poder cerrar la OT padre: \n" + oth,
-                                        icon: "error",
-                                        dangerMode: true,
-                                    });
+                                    swalWithBootstrapButtons(
+                                            "No es posible cerrar la OT padre",
+                                            "La OT padre tiene " + registro.cant_oth_abiertas + " OT hijas abiertas, por favor cierre las siguientes OT hijas para poder cerrar la OT padre: \n" + oth,
+                                            "error"
+                                            );
                                     response = false;
                                     return false;
                                 }
                             });
-                } else {
-                    swal("¡Cancelaste la operación!", {
-                        icon: "error",
-                        dangerMode: true,
-                    });
-                    response = false;
-                    return false;
+                } else if (
+                        // Read more about handling dismissals
+                        result.dismiss === swal.DismissReason.cancel
+                        ) {
+                    swalWithBootstrapButtons(
+                            '¡Cancelaste la operación!',
+                            '',
+                            'error'
+                            )
                 }
             });
-        }
+        },
+        onClickBtnEditOtp: function () {
+            var btn_obs = $(this);
+            var tr = btn_obs.parents('tr');
+            var id_otp = tr.find('td').eq(0).html();
+
+            swal.mixin({
+                input: 'text',
+                confirmButtonText: 'Siguiente &rarr;',
+                showCancelButton: true,
+                progressSteps: ['1', '2']
+            }).queue([
+                {
+                    title: 'Lista',
+                    text: 'Seleccione una opcion de la lista',
+                    input: 'select',
+                    inputClass: 'algo',
+                    inputOptions: {
+
+                        'EN PROCESOS CIERRE KO': 'EN PROCESOS CIERRE KO',
+                        'ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO': 'ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO',
+                        'ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO': 'ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO',
+                        'ASIGNADO LIDER TECNICO': 'ASIGNADO LIDER TECNICO',
+                        'CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)': 'CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)',
+                        'CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA': 'CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA',
+                        'CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL': 'CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL',
+                        'CLIENTE - NO PERMITE CIERRE DE KO': 'CLIENTE - NO PERMITE CIERRE DE KO',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO ': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO ',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES',
+                        'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC',
+                        'CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO': 'CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO',
+                        'CLIENTE - PROGRAMADA_POSTERIOR ': 'CLIENTE - PROGRAMADA_POSTERIOR ',
+                        'CLIENTE - SIN CONTRATO FIRMADO': 'CLIENTE - SIN CONTRATO FIRMADO',
+                        'CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )': 'CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )',
+                        'CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)': 'CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)',
+                        'CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO': 'CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO',
+                        'COEX - EN PROCESO DE CONFIGURACIÓN BACKEND': 'COEX - EN PROCESO DE CONFIGURACIÓN BACKEND',
+                        'COEX -ATRASO CONFIGURACIÓN BACKEND': 'COEX -ATRASO CONFIGURACIÓN BACKEND',
+                        'COMERCIAL - ESCALADO ORDEN DE REEMPLAZO': 'COMERCIAL - ESCALADO ORDEN DE REEMPLAZO',
+                        'COMERCIAL - ESCALADO PENDIENTE INGRESO OTS': 'COMERCIAL - ESCALADO PENDIENTE INGRESO OTS',
+                        'CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN': 'CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN',
+                        'CSM - Retiro equipos - Renovación de Contrato': 'CSM - Retiro equipos - Renovación de Contrato',
+                        'DATACENTER  CLARO- CABLEADO SIN EJECUTAR': 'DATACENTER  CLARO- CABLEADO SIN EJECUTAR',
+                        'DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER': 'DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER',
+                        'DATACENTER CLARO- CABLEADO EN CURSO': 'DATACENTER CLARO- CABLEADO EN CURSO',
+                        'ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE': 'ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE',
+                        'ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS': 'ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS',
+                        'ENTREGA Y/O SOPORTE PROGRAMADO': 'ENTREGA Y/O SOPORTE PROGRAMADO',
+                        'EQUIPOS - DEFECTUOSOS': 'EQUIPOS - DEFECTUOSOS',
+                        'EQUIPOS - EN COMPRAS': 'EQUIPOS - EN COMPRAS',
+                        'ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE': 'ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE',
+                        'ESTADO CANCELADO': 'ESTADO CANCELADO',
+                        'ESTADO PENDIENTE CLIENTE': 'ESTADO PENDIENTE CLIENTE',
+                        'GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO': 'GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO',
+                        'GPC - EN PROCESO DE CANCELACIÓN': 'GPC - EN PROCESO DE CANCELACIÓN',
+                        'GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE': 'GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE',
+                        'GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR': 'GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR',
+                        'GPC - SIN ALCANCE PARA FABRICA': 'GPC - SIN ALCANCE PARA FABRICA',
+                        'IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR': 'IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR',
+                        'INCONVENIENTE TECNICO': 'INCONVENIENTE TECNICO',
+                        'LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO': 'LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO',
+                        'LIDER TECNICO - PENDIENTE PLAN TECNICO': 'LIDER TECNICO - PENDIENTE PLAN TECNICO',
+                        'LIDER TECNICO - SOLUCIÓN NO ESTANDAR': 'LIDER TECNICO - SOLUCIÓN NO ESTANDAR',
+                        'LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN': 'LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN',
+                        'PASO A PENDIENTE CLIENTE': 'PASO A PENDIENTE CLIENTE',
+                        'PENDIENTE SOLICITAR ENTREGA DEL SERVICIO': 'PENDIENTE SOLICITAR ENTREGA DEL SERVICIO',
+                        'PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO': 'PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO',
+                        'PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC': 'PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC',
+                        'PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD': 'PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD',
+                        'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE': 'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE',
+                        'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL': 'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL',
+                        'PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES': 'PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES',
+                        'PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO': 'PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO',
+                        'PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS': 'PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS',
+                        'PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC': 'PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC',
+                        'PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA': 'PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA',
+                        'PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS': 'PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS',
+                        'PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR': 'PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR',
+                        'PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS': 'PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS',
+                        'PROYECTO ÉXITO ANTIGUO': 'PROYECTO ÉXITO ANTIGUO',
+                        'TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO': 'TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO',
+                        'TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO': 'TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO',
+                        'TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN': 'TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN',
+                        'TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILL': 'TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA'
+                    },
+                    inputPlaceholder: 'Seleccione...',
+                    showCancelButton: true
+                },
+                {
+                    title: 'Observaciones',
+                    text: '¿Desea guardar observaciones?',
+                    input: 'textarea',
+                    // inputClass: 'algo' ,
+                    confirmButtonText: 'Guardar!',
+                    inputOptions: {
+
+                    },
+                    inputPlaceholder: 'Observaciones...',
+                    showCancelButton: true
+                },
+            ]).then((result) => {
+                if (result.value) {
+                    if (!result.value[0] == "") {
+
+                        swal({
+                            title: 'Desea guardar?',
+                            text: "Se actualizará esta informacion en esta OTP",
+                            type: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Guardar!'
+                        }).then((result1) => {
+                            if (result1.value) {
+                                $.post(baseurl + '/OtPadre/update_data',
+                                        {
+                                            // clave: 'valor' // parametros que se envian
+                                            id: id_otp,
+                                            lista: result.value[0],
+                                            observacion: result.value[1]
+                                        },
+                                        function (data) {
+                                            var res = JSON.parse(data);
+                                            console.log(res);
+                                            if (res == true) {
+                                                swal(
+                                                        'Guardado!',
+                                                        'Actualizo correctamente los campos',
+                                                        'success'
+                                                        )
+                                                setTimeout("location.reload()", 1500);
+                                            } else {
+                                                swal('Error',
+                                                        'No tiene permiso para esta accíon',
+                                                        'error'
+                                                        )
+                                            }
+                                        });
+                            } else {
+                                swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'No se actuallizo ningun campo!',
+                                })
+                            }
+                        })
+                    } else {
+                        swal({
+                            type: 'error',
+                            title: 'Error',
+                            text: 'No selecciono ningun registro de la lista',
+                        })
+                    }
+                }
+
+            })
+        },
+        onClickShowEmailOth: function (obj) {
+            console.log(obj);
+            $.post(baseurl + '/Log/getLogById',
+                    {
+                        id: obj.id_orden_trabajo_hija
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        eventos.showModalHistorial(obj);
+                    }
+            );
+        },
+        // Muestra modal detalle historial log por id
+        showModalHistorial: function (obj) {
+            $('#ModalHistorialLog').modal('show');
+            $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+            eventos.printTableHistory(obj.log);
+            eventos.printTableLogMail(obj.mail);
+        },
+        //pintamos la tabla de log
+        printTableHistory: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (eventos.tableModalHistory) {
+                //si ya estaba inicializada la tabla la destruyo
+                eventos.tableModalHistory.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            eventos.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data, [
+                {data: "id_ot_hija"},
+                {data: "antes"},
+                {data: "ahora"},
+                {data: "columna"},
+                {data: "fecha_mod"}
+            ]));
+        },
+
+        //pintamos la tabla de log de correos
+        printTableLogMail: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (eventos.tableModalLogMail) {
+                //si ya estaba inicializada la tabla la destruyo
+                eventos.tableModalLogMail.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            eventos.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data, [
+                {data: "fecha"},
+                {data: "clase"},
+                {data: "servicio"},
+                {data: "usuario_sesion"},
+                {data: "destinatarios"},
+                {data: "nombre"},
+                {data: eventos.getButonsPrint}
+            ]));
+
+        },
+        // creamos los botones para imprimir el correo enviado
+        getButonsPrint: function (obj) {
+            var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
+            return button;
+
+        },
     };
     eventos.init();
 
 // ******************************************TABLA QUE TRAER TODAS LAS OTHS DE UNA OTP SELECCIONADA ***************************
 
     listoth = {
-         
+
         init: function () {
             listoth.events();
             //listoth.getothofothp();  
         },
         //Eventos de la ventana.
         events: function () {
-        // al darle clic al boton de opciones traiga el modal
+            // al darle clic al boton de opciones traiga el modal
             $('#contenido_tablas').on('click', 'a.btnoths', listoth.onClickShowModal);
         },
 
@@ -595,7 +827,7 @@ $(function () {
 
         getothofothp: function (data) {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getothofothp',
+            $.post(baseurl + '/OtPadre/c_getOthOfOtp',
                     {
                         idOtp: data.k_id_ot_padre
                     },
@@ -608,9 +840,8 @@ $(function () {
                     );
                 },
 
-
         // Muestra modal con todas las ots hija de la otp seleccionada
-        showModalOthDeOthp: function(data){
+        showModalOthDeOthp: function (data) {
             listoth.getothofothp(data);
             // resetea el formulario y lo deja vacio
             document.getElementById("formModalOTHS").reset();
@@ -620,7 +851,7 @@ $(function () {
         },
 
         //pintar tabla
-        printTable: function(data){
+        printTable: function (data) {
             //funcion para limpiar el modal 
             if (listoth.table_oths_otp) {
                 var tabla = listoth.table_oths_otp;
@@ -633,29 +864,43 @@ $(function () {
             // nombramos la variable para la tabla y llamamos la configuiracion
             listoth.table_oths_otp = $('#table_oths_otp').DataTable(listoth.configTable(data, [
 
-                    {title: "OTH", data: "id_orden_trabajo_hija"},
-                    {title: "Tipo OTH", data: "ot_hija"},
-                    {title: "Estado OTH", data: "estado_orden_trabajo_hija"},  
-                   
-                ]));
+                {title: "OTH", data: "id_orden_trabajo_hija"},
+                {title: "Tipo OTH", data: "ot_hija"},
+                {title: "Estado OTH", data: "estado_orden_trabajo_hija"},
+                {title: "Opc", data: listoth.getButtonsOth},
+            ]));
         },
         // Datos de configuracion del datatable
         configTable: function (data, columns, onDraw) {
             return {
-              data: data,
-              columns: columns,
-              //lenguaje del plugin
-              /*"language": { 
-                  "url": baseurl + "assets/plugins/datatables/lang/es.json"
-              },*/
-              columnDefs: [{
-                      defaultContent: "",
-                      targets: -1,
-                      orderable: false,
-                  }],
-              order: [[0, 'asc']],
-              drawCallback: onDraw
+                data: data,
+                columns: columns,
+                //lenguaje del plugin
+                /*"language": { 
+                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
+                 },*/
+                columnDefs: [{
+                        defaultContent: "",
+                        targets: -1,
+                        orderable: false,
+                    }],
+                order: [[0, 'asc']],
+                drawCallback: onDraw
             }
+        },
+        getButtonsOth: function (obj) {
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            if (obj.function != 0) {
+                if (obj.c_email > 0) {
+                    botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">' + obj.c_email + '</span></a>';
+                } else {
+                    botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+                }
+            }
+
+            botones += '</div>';
+            return botones;
         }
     };
     listoth.init();
