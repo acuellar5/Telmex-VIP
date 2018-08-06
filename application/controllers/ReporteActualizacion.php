@@ -22,4 +22,10 @@ class ReporteActualizacion extends CI_Controller {
         $this->load->view('parts/footerF');
     }
 
+    // TABLA DE OTS QUE ESTEN CERRADAS Y MAS DE 8 DIAS
+    public function getListOtsEigtDay(){
+    $UndefinedOts = $this->Dao_ot_hija_model->getListOtsEigtDaygetListOtsEigtDay();
+    echo json_encode($UndefinedOts);
+  }
+
 }
