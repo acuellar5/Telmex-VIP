@@ -397,6 +397,19 @@ table.dataTable_camilo thead input{
     background-color: #084c6fb8 !important;
     color: #fff;
 }
+
+.btn_datatable_cami2{
+    color: #1d4565;
+    margin: 0;
+    border: 0;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    border-bottom: 2px solid #ccc;
+    border-right: 2px solid #ccc; 
+    font-size: 15px;
+}
+
 /* badges */
 .badge_cami {
     background-color: #99b5c4;
@@ -446,6 +459,27 @@ table.dataTable_camilo .btn_datatable_cami:hover{
     background: #084c6f;
     color: #ffffff;
 }
+
+.btn-cami_warning {
+    background: #2d6f1f;
+    border-radius: 0;
+    border: 1px solid #2d6f1f;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 6px 35px;
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-left: 20%;
+
+}
+.btn-cami_warning:hover {
+    background: #2d6f1f00;
+    color: #2d6f1f;
+    box-shadow: inset 0 0 5px #2d6f1f;
+}
+
+
 /*CSS PARA BOTON PRESIONABLE*/
 .btn_check{
     background: #084c6f;

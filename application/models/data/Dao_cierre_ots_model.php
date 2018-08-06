@@ -24,5 +24,27 @@ class Dao_cierre_ots_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    // trae las ots padre en cierre
+    public function getOtpCierre(){
+        $query = $this->db->query("
+            SELECT 
+            otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, otp.servicio, 
+            REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, 
+            otp.fecha_programacion, otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, 
+            CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+            otp.lista_observaciones, otp.observacion                
+            FROM cierre_ots c 
+            INNER JOIN ot_padre otp
+            ON c.nro_ot_onyx = otp.k_id_ot_padre
+            INNER JOIN user 
+            ON otp.k_id_user = user.k_id_user 
+            GROUP BY nro_ot_onyx
+            order by otp.k_id_user, c.k_id
+        ");
+
+        return $query->result();
+
+    }
+
   
 }

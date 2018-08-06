@@ -99,7 +99,17 @@
                     <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
                     <li><a href="<?= URL::to('status_restore') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
                   </ul>
-                </li>                  
+                </li> 
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Cicle Close <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL::to('cierre_ots') ?>">Cierre </a></li>
+                    <li><a href="#">Facturacion </a></li>
+                  </ul>
+                </li>   
+
+
+
                 <?php endif ?>
                 
               <?php
