@@ -65,7 +65,7 @@ class Dao_ot_padre_model extends CI_Model {
         }
         $query = $this->db->query("
 				SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-				otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
+				otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
 				otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
 				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                                 otp.lista_observaciones, otp.observacion
@@ -85,7 +85,7 @@ class Dao_ot_padre_model extends CI_Model {
         }
         $query = $this->db->query("
 				SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-				otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
+				otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
 				otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
 				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                                 otp.lista_observaciones, otp.observacion
@@ -106,7 +106,7 @@ class Dao_ot_padre_model extends CI_Model {
         }
         $query = $this->db->query("
 				SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-				otp.servicio, otp.estado_orden_trabajo, otp.fecha_programacion, 
+				otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
 				otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
 				CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                                 otp.lista_observaciones, otp.observacion
@@ -160,5 +160,41 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->result();
     }
+    
+    //trae la cantidad de ot hijas en ejecucion de una ot padre
+    public function getCantOthInExecutionByIdOtp($idOtp) {
+        $query = $this->db->query("
+                SELECT COUNT(k_id_register) AS cant
+                FROM ot_hija oth
+                WHERE nro_ot_onyx = $idOtp
+                AND estado_orden_trabajo_hija != 'Cerrada' 
+                AND estado_orden_trabajo_hija != 'Cancelada' 
+                AND estado_orden_trabajo_hija != '3- Terminada' 
+        ");
+        return $query->row();
+    }
+    
+//trae las ot hijas en ejecucion de una ot padre
+    public function getOthInExecutionByIdOtp($idOtp) {
+        $query = $this->db->query("
+                SELECT id_orden_trabajo_hija
+                FROM ot_hija oth
+                WHERE nro_ot_onyx = $idOtp
+                AND estado_orden_trabajo_hija != 'Cerrada' 
+                AND estado_orden_trabajo_hija != 'Cancelada' 
+                AND estado_orden_trabajo_hija != '3- Terminada' 
+        ");
+        return $query->result();
+    }
+
+    //Trae todas las othijas de una otp en especifico
+    public function getothofothp($idOtp){
+    $query = $this->db->query("
+    SELECT id_orden_trabajo_hija, ot_hija,  estado_orden_trabajo_hija
+    FROM telmex_vip.ot_hija
+    WHERE nro_ot_onyx = $idOtp;
+    ");
+    return $query->result();
+  }
 
 }

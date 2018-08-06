@@ -141,7 +141,7 @@
        },
 
        {
-        title: 'Onservaciones',
+        title: 'Observaciones',
         text: '¿Desea guardar observaciones?',
         input: 'textarea',
             // inputClass: 'algo' ,

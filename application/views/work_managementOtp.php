@@ -169,9 +169,34 @@
             </tfoot>
         </table>
     </div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
+<div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+    <div class="modal-dialog modal-lg2" style="width: 1100px;">
+        <div class="modal-content">
+            <div class="modal-header csstypesubtitle">
+                <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
+                <h3 class="modal-title" id="myModalLabel"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form class="well form-horizontal" id="formModalOTHS" method="post" novalidate="novalidate">
+                        <fieldset>
+                            <table class="table table-hover table-bordered table-striped dataTable_camilo csstable" id="table_oths_otp"  cellspacing="2"></table>
+                        </fieldset>
+
+                    </form>
+                </div>
+            </div>
 
 
-
-
+            <div class="modal-footer cssnewtypem">
+                <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-------------------------------------- MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->

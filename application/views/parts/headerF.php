@@ -66,7 +66,7 @@
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid menu_nav_header" >
         <div class="navbar-header">          
-          <a class="navbar-brand" href="<?= URL::to('paginaPrincipal') ?>">
+          <a class="navbar-brand" href="<?= URL::to('OTP') ?>">
             <img class="logo_header" src="<?= URL::to('assets/img/LogoZTENav.png'); ?>"> 
           </a>
         </div>        
@@ -87,6 +87,7 @@
                     <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
                     <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
                     <?php if (Auth::user()->n_role_user == 'administrador'): ?>
+                    <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización</a></li>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
                     <?php endif ?>
                   </ul>
