@@ -12,7 +12,7 @@ $(function () {
         },
         getListOtsOtPadre: function () {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getListOtsOtPadre',
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadre',
                     {
                         //parametros
 
@@ -106,10 +106,20 @@ $(function () {
                 drawCallback: onDraw
             }
         },
-        getButtons: function () {
+        getButtons: function (obj) {
+            var span = '';
+            var title = '';
+            if (obj.cant_mails != 0) {
+                span = "<span class='fa fa-fw '>" + obj.cant_mails + "</span>";
+                title = (obj.cant_mails == 1) ? obj.cant_mails + " correo enviado" : obj.cant_mails + " correos enviados";
+            } else {
+                span = "<span class='fa fa-fw fa-eye'></span>";
+                title = "ver OT Hijas";
+            }
+
             var botones = "<div class='btn-group-vertical'>"
                     ///////////////////////////////////////////////////////////se cambio la linea del boton
-                    + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='Ver OTH'><span class='fa fa-fw fa-eye'></span></a>"
+                    + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='" + title + "'>" + span + "</a>"
                     + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
 //                    + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
                     + "</div>";
@@ -131,7 +141,7 @@ $(function () {
         },
         getListOtsOtPadreHoy: function () {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getListOtsOtPadreHoy',
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreHoy',
                     {
                         //parametros
 
@@ -232,16 +242,16 @@ $(function () {
     vencidas = {
         init: function () {
             vencidas.events();
-            vencidas.getListOtsOtPadreHoy();
+            vencidas.getListOtsOtPadreVencidas();
 
         },
         //Eventos de la ventana.
         events: function () {
 
         },
-        getListOtsOtPadreHoy: function () {
+        getListOtsOtPadreVencidas: function () {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getListOtsOtPadreVencidas',
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreVencidas',
                     {
                         //parametros
 
@@ -475,6 +485,7 @@ $(function () {
         events: function () {
             $('#contenido_tablas').on('click', 'a.close-otp', eventos.onClickBtnCloseOtp);
             $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
+            $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
         },
         onClickBtnCloseOtp: function () {
             var aLinkLog = $(this);
@@ -495,6 +506,7 @@ $(function () {
                     record = lista.tableOpcList.row(trParent).data();
                     break;
             }
+
             eventos.closeOtp(record);
         },
 
@@ -523,20 +535,20 @@ $(function () {
                                 var registro = JSON.parse(data);
                                 if (registro.response == 'success') {
                                     swalWithBootstrapButtons(
-                                        'OT padre Cerrada!',
-                                        '',
-                                        'success'
-                                      )
+                                            'OT padre Cerrada!',
+                                            '',
+                                            'success'
+                                            )
                                 } else {
                                     var oth = "";
                                     $.each(registro.oth_abiertas, function (i, item) {
                                         oth += item.id_orden_trabajo_hija + "<br>";
                                     });
                                     swalWithBootstrapButtons(
-                                        "No es posible cerrar la OT padre",
-                                        "La OT padre tiene " + registro.cant_oth_abiertas + " OT hijas abiertas, por favor cierre las siguientes OT hijas para poder cerrar la OT padre: \n" + oth,
-                                        "error"
-                                    );
+                                            "No es posible cerrar la OT padre",
+                                            "La OT padre tiene " + registro.cant_oth_abiertas + " OT hijas abiertas, por favor cierre las siguientes OT hijas para poder cerrar la OT padre: \n" + oth,
+                                            "error"
+                                            );
                                     response = false;
                                     return false;
                                 }
@@ -552,63 +564,6 @@ $(function () {
                             )
                 }
             });
-
-
-//            swal({
-//                title: "Advertencia",
-//                text: 'Esta seguro que desea cerrar la OT Padre ' + data.k_id_ot_padre,
-//                icon: "warning",
-//                buttons: true,
-//
-//                dangerMode: true,
-//                buttons: {
-//                    cancel: "Cancelar!",
-//                    continuar: {
-//                        text: "Continuar!",
-//                        value: "continuar",
-//                        className: "btn_continuar",
-//                    },
-//                },
-//            }).then((continuar) => {
-//                if (continuar) {
-//                    $.post(baseurl + '/OtPadre/c_closeOtp',
-//                            {
-//                                idOtp: data.k_id_ot_padre// parametros que se envian
-//                            },
-//                            function (data) {
-//                                var registro = JSON.parse(data);
-//                                if (registro.response == 'success') {
-//                                    swal({
-//                                        position: 'top-end',
-//                                        type: 'success',
-//                                        title: 'OT padre Cerrada',
-//                                        showConfirmButton: false,
-//                                        timer: 1500
-//                                    })
-//                                } else {
-//                                    var oth = "";
-//                                    $.each(registro.oth_abiertas, function (i, item) {
-//                                        oth += item.id_orden_trabajo_hija + "\n";
-//                                    });
-//                                    swal({
-//                                        title: "No es posible cerrar la OT padre",
-//                                        text: "La OT padre tiene " + registro.cant_oth_abiertas + " OT hijas abiertas, por favor cierre las siguientes OT hijas para poder cerrar la OT padre: \n" + oth,
-//                                        icon: "error",
-//                                        dangerMode: true,
-//                                    });
-//                                    response = false;
-//                                    return false;
-//                                }
-//                            });
-//                } else {
-//                    swal("¡Cancelaste la operación!", {
-//                        icon: "error",
-//                        dangerMode: true,
-//                    });
-//                    response = false;
-//                    return false;
-//                }
-//            });
         },
         onClickBtnEditOtp: function () {
             var btn_obs = $(this);
@@ -769,7 +724,68 @@ $(function () {
                 }
 
             })
-        }
+        },
+        onClickShowEmailOth: function (obj) {
+            console.log(obj);
+            $.post(baseurl + '/Log/getLogById',
+                    {
+                        id: obj.id_orden_trabajo_hija
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        eventos.showModalHistorial(obj);
+                    }
+            );
+        },
+        // Muestra modal detalle historial log por id
+        showModalHistorial: function (obj) {
+            $('#ModalHistorialLog').modal('show');
+            $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+            eventos.printTableHistory(obj.log);
+            eventos.printTableLogMail(obj.mail);
+        },
+        //pintamos la tabla de log
+        printTableHistory: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (eventos.tableModalHistory) {
+                //si ya estaba inicializada la tabla la destruyo
+                eventos.tableModalHistory.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            eventos.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data, [
+                {data: "id_ot_hija"},
+                {data: "antes"},
+                {data: "ahora"},
+                {data: "columna"},
+                {data: "fecha_mod"}
+            ]));
+        },
+
+        //pintamos la tabla de log de correos
+        printTableLogMail: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (eventos.tableModalLogMail) {
+                //si ya estaba inicializada la tabla la destruyo
+                eventos.tableModalLogMail.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            eventos.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data, [
+                {data: "fecha"},
+                {data: "clase"},
+                {data: "servicio"},
+                {data: "usuario_sesion"},
+                {data: "destinatarios"},
+                {data: "nombre"},
+                {data: eventos.getButonsPrint}
+            ]));
+
+        },
+        // creamos los botones para imprimir el correo enviado
+        getButonsPrint: function (obj) {
+            var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
+            return button;
+
+        },
     };
     eventos.init();
 
@@ -811,7 +827,7 @@ $(function () {
 
         getothofothp: function (data) {
             //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/getothofothp',
+            $.post(baseurl + '/OtPadre/c_getOthOfOtp',
                     {
                         idOtp: data.k_id_ot_padre
                     },
@@ -851,6 +867,7 @@ $(function () {
                 {title: "OTH", data: "id_orden_trabajo_hija"},
                 {title: "Tipo OTH", data: "ot_hija"},
                 {title: "Estado OTH", data: "estado_orden_trabajo_hija"},
+                {title: "Opc", data: listoth.getButtonsOth},
             ]));
         },
         // Datos de configuracion del datatable
@@ -870,6 +887,20 @@ $(function () {
                 order: [[0, 'asc']],
                 drawCallback: onDraw
             }
+        },
+        getButtonsOth: function (obj) {
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            if (obj.function != 0) {
+                if (obj.c_email > 0) {
+                    botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">' + obj.c_email + '</span></a>';
+                } else {
+                    botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+                }
+            }
+
+            botones += '</div>';
+            return botones;
         }
     };
     listoth.init();

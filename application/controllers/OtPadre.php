@@ -176,7 +176,7 @@ class OtPadre extends CI_Controller {
     }
 
     // TABLA QUE TRAE LA INFORMACION DE OTPADRE
-    public function getListOtsOtPadre() {
+    public function c_getListOtsOtPadre() {
         $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadre();
         echo json_encode($otPadreList);
     }
@@ -203,13 +203,13 @@ class OtPadre extends CI_Controller {
     }
 
     // TABLA QUE TRAE LA INFORMACION DE OTPADRE QUE TENGAN FECHA DE COMPROMISO PARA HOY
-    public function getListOtsOtPadreHoy() {
+    public function c_getListOtsOtPadreHoy() {
         $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreHoy();
         echo json_encode($otPadreList);
     }
 
 // TABLA QUE TRAE LA INFORMACION DE OTPADRE QUE TENGAN FECHA DE COMPROMISO VENCIDA
-    public function getListOtsOtPadreVencidas() {
+    public function c_getListOtsOtPadreVencidas() {
         $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreVencidas();
         echo json_encode($otPadreList);
     }
@@ -246,7 +246,7 @@ class OtPadre extends CI_Controller {
         echo json_encode($respuesta);
     }
     // TABLA QUE TRAE TODAS LAS OTH DE UNA OTP
-    public function getothofothp(){
+    public function c_getOthOfOtp(){
     $idOtp = $this->input->post('idOtp');
     $listotps = $this->Dao_ot_padre_model->getothofothp($idOtp);
     echo json_encode($listotps);
