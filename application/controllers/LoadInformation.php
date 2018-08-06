@@ -12,6 +12,7 @@ class LoadInformation extends CI_Controller {
         $this->load->model('data/Dao_estado_ot_model');
         $this->load->model('data/Dao_log_model');
         $this->load->model('data/Dao_ot_padre_model');
+        $this->load->model('data/Dao_cierre_ots_model');
     }
 
     public function uploadfile() {
@@ -121,14 +122,16 @@ class LoadInformation extends CI_Controller {
                 $errorUpdate   = [];
                 $errorNoChange = [];
                 $actualizar    = 0;
-                $actualizados = 0;
-
+                $actualizados  = 0;
 
                 //fecha Actual
                 date_default_timezone_set("America/Bogota");
                 $fActual      = date('Y-m-d');
                 $fActual_hora = date('Y-m-d H:i:s');
                 $list_inges   = $this->Dao_user_model->getArrayAllEngineers();
+                // fecha de carga anterior
+
+                // $fecha_max = $this->Dao_ot_hija_model->getUltimaFechaCarga()->fecha;
 
                 //Inicializamos un objeto de PHPExcel para escritura...
                 //while para recorrer filas del excel...
@@ -274,9 +277,6 @@ class LoadInformation extends CI_Controller {
                             $this->Dao_ot_padre_model->insert_data_otp($dataotp);
                         }
 
-
-
-
                         $id_estado = $this->get_estado_by_name_ot_hiha($this->getValueCell($sheet, 'AV' . $row), $this->getValueCell($sheet, 'AZ' . $row));
                         //LLENO EL ARRAY LETRAS CON LOS VARORES DE LA FILA DEL EXCEL EN LA QUE VA EL WHILE
                         $data = array(
@@ -367,12 +367,19 @@ class LoadInformation extends CI_Controller {
                     "row"                     => ($row - $request->index),
                     "data"                    => $this->objs
                 ]);
+
+                $this->insertar_cierre_ots();
+
             } catch (DeplynException $ex) {
                 $response = new Response(EMessages::ERROR, "Error al procesar el archivo.");
             }
         } else {
             $response = new Response(EMessages::ERROR, "No se encontró el archivo " . $file);
         }
+
+
+
+
 
         $this->json($response);
         // $this->load->view('viewRF');
@@ -433,6 +440,19 @@ class LoadInformation extends CI_Controller {
         }
 
         return $id_estado;
+    }
+
+    // inserta registros antiguos de tabla ot hija en cierre ots
+    private function insertar_cierre_ots(){
+        $penultima = $this->Dao_ot_hija_model->getPenultimaFechaCarga()->fecha;
+        if ($penultima) {
+            $traslado = $this->Dao_cierre_ots_model->trasladar_oth($penultima);
+            if ($traslado > 0) {
+                $delete = $this->Dao_ot_hija_model->delete_oth_by_fecha($penultima);
+
+            }
+        }
+
     }
 
 }
