@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class cierre_ots extends CI_Controller {
+class Cierre_ots extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -25,6 +25,25 @@ class cierre_ots extends CI_Controller {
 	public function c_getOtsCierre(){
 		$data = $this->Dao_cierre_ots_model->getOtpCierre();
 		echo json_encode($data);	
+	}
+
+	// ELimina registros de cierre_ots y ot_ padre
+	public function c_eliminar_registros(){
+		$delete_otp = 0;
+		$otp    = $this->input->post('otp');
+		$delete = $this->Dao_cierre_ots_model->eliminar_registros($otp); // cantidad de registros eliminados en cierre_ots
+		if ($delete) {
+			// Eliminar en ot padre
+			$delete_otp = $this->Dao_ot_padre_model->deleteById($otp);
+		}
+
+		$ret = array(
+			'del' => $delete,
+			'del_otp' => $delete_otp
+		);
+		
+		echo json_encode($ret);
+
 	}
   
   

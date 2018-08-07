@@ -38,11 +38,24 @@ class Dao_cierre_ots_model extends CI_Model {
             ON c.nro_ot_onyx = otp.k_id_ot_padre
             INNER JOIN user 
             ON otp.k_id_user = user.k_id_user 
+            WHERE c.estado_zte = 'pendiente_cierre' 
             GROUP BY nro_ot_onyx
-            order by otp.k_id_user, c.k_id
+            ORDER BY otp.k_id_user, c.k_id
         ");
 
         return $query->result();
+
+    }
+
+    // eLIMINA LOS REGISTROS DE TABLA CIERRE_OTP
+    public function eliminar_registros($otp){
+        $this->db->where_in('nro_ot_onyx', $otp);
+        $this->db->delete('cierre_ots');
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
 
     }
 

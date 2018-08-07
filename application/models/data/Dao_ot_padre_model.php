@@ -65,16 +65,16 @@ class Dao_ot_padre_model extends CI_Model {
         }
         $query = $this->db->query("
 				SELECT 
-                                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
-                                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-                                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
-                                FROM ot_hija oth 
-                                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
-                                INNER JOIN user ON otp.k_id_user = user.k_id_user 
-                                $condicion
-                                GROUP BY nro_ot_onyx
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
+                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                FROM ot_hija oth 
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
+                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                $condicion
+                GROUP BY nro_ot_onyx
     	");
         return $query->result();
     }
@@ -88,17 +88,17 @@ class Dao_ot_padre_model extends CI_Model {
         }
         $query = $this->db->query("
 				SELECT 
-                                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
-                                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-                                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
-                                FROM ot_hija oth 
-                                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
-                                INNER JOIN user ON otp.k_id_user = user.k_id_user
-                                WHERE otp.fecha_compromiso = CURDATE()
-                                $condicion
-                                GROUP BY nro_ot_onyx
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
+                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                FROM ot_hija oth 
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
+                INNER JOIN user ON otp.k_id_user = user.k_id_user
+                WHERE otp.fecha_compromiso = CURDATE()
+                $condicion
+                GROUP BY nro_ot_onyx
     	");
         return $query->result();
     }
@@ -112,17 +112,17 @@ class Dao_ot_padre_model extends CI_Model {
         }
         $query = $this->db->query("
 				SELECT 
-                                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
-                                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
-                                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
-                                FROM ot_hija oth 
-                                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
-                                INNER JOIN user ON otp.k_id_user = user.k_id_user 
-                                WHERE otp.fecha_compromiso > CURDATE()
-                                $condicion
-                                GROUP BY nro_ot_onyx
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
+                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                FROM ot_hija oth 
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
+                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                WHERE otp.fecha_compromiso > CURDATE()
+                $condicion
+                GROUP BY nro_ot_onyx
     	");
     	return $query->result();
   }
@@ -211,5 +211,21 @@ class Dao_ot_padre_model extends CI_Model {
     ");
     return $query->result();
   }
+
+  // eliminar de tabla ot padre, pasar id otp o array con ids otp
+  public function deleteById($otp){
+      $this->db->where_in('k_id_ot_padre', $otp);
+    $this->db->delete('ot_padre');
+    if ($this->db->affected_rows() > 0) {
+        return $this->db->affected_rows();
+    } else {
+        return 0;
+    }
+  }
+
+
+
+
+
 
 }
