@@ -181,10 +181,10 @@ class Templates extends CI_Controller {
         // require_once ('models/bin/dompdf/dompdf_config.inc.php');
 
 
-        $this->load->model('bin/dompdf/lib/html5lib/Parser');
-        $this->load->model('bin/dompdf/lib/php-font-lib/src/FontLib/Autoloader');
-        $this->load->model('bin/dompdf/lib/php-svg-lib/src/autoload');
-        $this->load->model('bin/dompdf/src/Autoloader');
+        // $this->load->model('bin/dompdf/lib/html5lib/Parser');
+        // $this->load->model('bin/dompdf/lib/php-font-lib/src/FontLib/Autoloader');
+        // $this->load->model('bin/dompdf/lib/php-svg-lib/src/autoload');
+        // $this->load->model('bin/dompdf/src/Autoloader');
 
 
         // $this->load->model('bin/mpdf/mpdf');

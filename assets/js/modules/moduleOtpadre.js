@@ -486,6 +486,7 @@ $(function () {
             $('#contenido_tablas').on('click', 'a.close-otp', eventos.onClickBtnCloseOtp);
             $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
             $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
+            $('#table_oths_otp').on('click', 'a.ver-det', eventos.onClickShowModalDetEvent);
         },
         onClickBtnCloseOtp: function () {
             var aLinkLog = $(this);
@@ -726,10 +727,12 @@ $(function () {
             })
         },
         onClickShowEmailOth: function (obj) {
-            console.log(obj);
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var record = listoth.table_oths_otp.row(trParent).data();
             $.post(baseurl + '/Log/getLogById',
                     {
-                        id: obj.id_orden_trabajo_hija
+                        id: record.id_orden_trabajo_hija
                     },
                     function (data) {
                         var obj = JSON.parse(data);
@@ -752,7 +755,7 @@ $(function () {
                 eventos.tableModalHistory.destroy();
             }
             ///lleno la tabla con los valores enviados
-            eventos.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data, [
+            eventos.tableModalHistory = $('#tableHistorialLog').DataTable(listoth.configTable(data, [
                 {data: "id_ot_hija"},
                 {data: "antes"},
                 {data: "ahora"},
@@ -769,7 +772,7 @@ $(function () {
                 eventos.tableModalLogMail.destroy();
             }
             ///lleno la tabla con los valores enviados
-            eventos.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data, [
+            eventos.tableModalLogMail = $('#table_log_mail').DataTable(listoth.configTable(data, [
                 {data: "fecha"},
                 {data: "clase"},
                 {data: "servicio"},
@@ -785,6 +788,27 @@ $(function () {
             var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
             return button;
 
+        },
+        onClickShowModalDetEvent: function () {
+            document.getElementById("formModal_detalle").reset();
+            $('#title_modal').html('');
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var record = listoth.table_oths_otp.row(trParent).data();
+            eventos.fillFormModalDetEvent(record);
+        },
+        fillFormModalDetEvent: function (registros) {
+            $.post(baseurl + '/OtHija/c_fillmodals',
+                    {
+                        idOth: registros.id_orden_trabajo_hija // parametros que se envian
+                    },
+                    function (data) {
+                       $.each(data, function (i, item) {
+                            $('#mdl_' + i).val(item);
+                        }); 
+                    });
+            $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
+            $('#Modal_detalle').modal('show');
         },
     };
     eventos.init();
@@ -825,11 +849,11 @@ $(function () {
             listoth.showModalOthDeOthp(record);
         },
 
-        getothofothp: function (data) {
+        getothofothp: function (obj) {
             //metodo ajax (post)
             $.post(baseurl + '/OtPadre/c_getOthOfOtp',
                     {
-                        idOtp: data.k_id_ot_padre
+                        idOtp: obj.k_id_ot_padre
                     },
                     // funcion que recibe los datos 
                             function (data) {
@@ -867,7 +891,10 @@ $(function () {
                 {title: "OTH", data: "id_orden_trabajo_hija"},
                 {title: "Tipo OTH", data: "ot_hija"},
                 {title: "Estado OTH", data: "estado_orden_trabajo_hija"},
-                {title: "Opc", data: listoth.getButtonsOth},
+                {title: "Recurrente", data: "MRC"},
+                {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                {title: "Fecha Programacion", data: "fecha_programacion"},
+                {title: "Opc", data: listoth.getButtonsOth}, 
             ]));
         },
         // Datos de configuracion del datatable
@@ -890,7 +917,7 @@ $(function () {
         },
         getButtonsOth: function (obj) {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
-            botones += '<a class="btn btn-default btn-xs ver-al btn_datatable_cami" title="Editar Ots"><span class="fa fa-fw fa-edit"></span></a>';
+            botones += '<a class="btn btn-default btn-xs ver-det btn_datatable_cami" title="Ver Detalle Oth"><span class="fa fa-fw fa-eye"></span></a>';
             if (obj.function != 0) {
                 if (obj.c_email > 0) {
                     botones += '<a class="btn btn-default btn-xs ver-log btn_datatable_cami" title="Historial"><span class="fa fa-fw">' + obj.c_email + '</span></a>';
