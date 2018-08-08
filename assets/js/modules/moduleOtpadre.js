@@ -894,7 +894,7 @@ $(function () {
                 {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programacion", data: "fecha_programacion"},
-                {title: "Opc", data: listoth.getButtonsOth},
+                {title: "Opc", data: listoth.getButtonsOth}, 
             ]));
         },
         // Datos de configuracion del datatable
