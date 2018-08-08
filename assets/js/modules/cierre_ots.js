@@ -124,8 +124,6 @@ $(function () {
             var botones = "<div class='btn-group'>"
                    ///////////////////////////////////////////////////////////se cambio la linea del boton
                         + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='Ver OTH'><span class='fa fa-fw fa-eye'></span></a>"
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami' title='Editar Ots'><span class='fa fa-fw fa-edit'></span></a>"
-                    // + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
                     + "</div>";
             return botones;
         },
@@ -138,15 +136,66 @@ $(function () {
 
         // enrutar la orden
         enrutar_otp: function(e){
-        	var cosas = cierre.tables_cierre.rows( { selected: true } ).data();// los datos de los elem seleccionados
         	// var cosas = cierre.tables_cierre.rows( { selected: true } ).nodes();// los elementos seleccionados
         	// var cosas = cierre.tables_cierre.rows( { selected: true } ).count();// cuantos filas se seleccionaron
-        	// var cosas = cierre.tables_cierre.rows( { selected: true } ).any();// booleanos q indica si hay algo seleccionado
-
         	// table.rows( { selected: true } ).data();
+        	let hay_sel = cierre.tables_cierre.rows( { selected: true } ).any();// booleanos q indica si hay algo seleccionado
+        	var seleccionadas = cierre.tables_cierre.rows( { selected: true } ).data();// los datos de los elem seleccionados
+        	if (hay_sel) {
+        		cierre.modalSeleccionadas(seleccionadas);
+        		$('#mdl_cierre').modal('show');
 
-        	console.log(cosas);
+        	} else {
+        		const toast = swal.mixin({
+                            toast: true,
+                            position: 'top',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        toast({
+                            type: 'error',
+                            title: 'No seleccionaste ninguna fila!'
+                        });
+        	}
 
+        },
+
+        //
+        modalSeleccionadas: function(data){
+
+        	cierre.table_selected = $('#table_selected').DataTable(cierre.configTableSelect(data, [
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "OTP", data: "k_id_ot_padre"},
+                {title: "Cliente", data: "n_nombre_cliente"},
+                {title: "Tipo", data: "orden_trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Estado OTP", data: "estado_orden_trabajo"},
+                {title: "program", data: "fecha_programacion"},
+                {title: "comprom", data: "fecha_compromiso"},
+                {title: "creación", data: "fecha_creacion"},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observación", data: "observacion"},
+                {title: "<button class='btn_datatable_cami2' title='seleccionar todo' id='btn_check_all' data-check='false'><i class='fa fa-flag-checkered' aria-hidden='true'></i></button>", data: cierre.getButtonsCierre},
+            ]));
+            
+        },
+
+        configTableSelect: function (data, columns, onDraw) {
+            return {
+                data: data,
+                columns: columns,
+                //lenguaje del plugin
+                /*"language": { 
+                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
+                 },*/
+                columnDefs: [{
+                        defaultContent: "",
+                        targets: -1,
+                        orderable: false,
+                    }],
+                order: [[3, 'asc']],
+                drawCallback: onDraw
+            }
         },
 
         // selecciona todas las filas de la tabla y  las deselecciona
