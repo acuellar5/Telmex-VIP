@@ -14,7 +14,6 @@ class Log extends CI_Controller {
 		$id = $this->input->post('id');
 		$data['log'] = $this->Dao_log_model->getLogById($id);
 		$data['mail'] = $this->Dao_log_correo_model->getLogMailById($id);
-
 		echo json_encode($data);
 	}
 

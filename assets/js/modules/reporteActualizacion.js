@@ -99,8 +99,17 @@ $(function () {
                     + "</div>";
             return botones;
         },
-        email_ko_15: function () {
+        email_ko_15: function (e) {
+            var record = vista.tablaEigtDaysOts.row( $(this).parents('tr') ).data();
+
+            $('#formModal #id_orden_trabajo_hija').val(record.id_orden_trabajo_hija);
+            $('#formModal #nro_ot_onyx').val(record.nro_ot_onyx);
+            $('#formModal #c_email').val(record.c_email);
+            $('#modalEmail_15dias #myModalLabel').html(`Orden Ot Hija N ${record.id_orden_trabajo_hija}`);
+
             $('#modalEmail_15dias').modal('show');
+            console.log(record);
+
         },
         clear_form: function (){
             $('#formModal')[0].reset();

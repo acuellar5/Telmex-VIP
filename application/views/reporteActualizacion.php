@@ -48,8 +48,9 @@
                 <div>
                     <form class="well form-horizontal" id="formModal" action="Templates/ko_15d" method="post" novalidate="novalidate">
                         <fieldset>
-                            <input  name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" hidden>
-                            <input  name="nro_ot_onyx" id="nro_ot_onyx" hidden>
+                            <input value="" name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" hidden>
+                            <input value="" name="nro_ot_onyx" id="nro_ot_onyx" hidden>
+                            <input value="" name="c_email" id="c_email" hidden>
                             <div class="widget bg_white m-t-25 display-block">
                                 <fieldset class="col-md-6">
                                     <div class="form-group">
