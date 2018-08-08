@@ -40,7 +40,7 @@ $(function () {
                 {title: "OT Hija", data: "ot_hija"},
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
-                {title: "Opciones", data: vista.getButtons},
+                {title: "Opc.", data: vista.getButtons},
    
             ]));
         },
