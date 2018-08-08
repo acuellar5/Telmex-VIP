@@ -80,6 +80,7 @@
         </table>
     </div>
 
+
 '<!--     <div id="dias_15" class="tab-pane fade">
         <h3>15 Días</h3>
         <table id="tablaFiteenDaysOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
@@ -99,6 +100,7 @@
             </tfoot>
         </table>
     </div> -->'
+
 
 </div>
 

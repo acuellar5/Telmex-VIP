@@ -198,6 +198,66 @@
     </div>
 </div>
 
+<!-- Modal tabla log -->
+<div class="modal fade" id="ModalHistorialLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                <h4 class="modal-title" id="titleEventHistory">Modal Historial</h4>
+            </div>
+            <div class="modal-body" id="cuerpoModal">
+                <div class="container2">
+                    <!--*********************  MODULO PESTAÑAS  *********************-->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab_log">Historial Log</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab_log_mail">Historial Mail</a></li>
+                    </ul>
+                    
+                    <!--*********************  CONTENIDO PESTAÑAS  *********************-->
+                    <div class="tab-content">
+                    
+                        <div id="tab_log" class="tab-pane fade in active">
+                            <h3>Tabla Log</h3>
+                            <table id="tableHistorialLog" class='table table-bordered table-striped  col-sm-12'  width='100%'>
+                                <thead>
+                                    <th>ORDEN</th>
+                                    <th>ANTES</th>
+                                    <th>AHORA</th>
+                                    <th>COLUMNA CAMBIADA</th>
+                                    <th>FECHA MODIFICACION</th>
+                                </thead>
+                            </table>
+                            
+                        </div>
+                    
+                        <div id="tab_log_mail" class="tab-pane fade">
+                            <h3>Historial Mail</h3>
+                            <table id="table_log_mail" class='table table-bordered table-striped' width='100%'>
+                                <thead>
+                                    <th>FECHA</th>
+                                    <th>CLASE</th>
+                                    <th>SERVICIO</th>
+                                    <th>ENVIADO POR</th>
+                                    <th>DESTINATARIOS</th>
+                                    <th>DIRIGIDO A</th>
+                                    <th>opc</th>
+                                </thead>
+                            </table>
+                        </div>
+                    
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <h4 class="foot">Zolid By ZTE Colombia | All Right Reserved</h4>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar  <i class="glyphicon glyphicon-chevron-up"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-------------------------------------- MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
 <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?> "></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>-->
