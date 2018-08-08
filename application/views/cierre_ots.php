@@ -31,8 +31,9 @@
                 <table id="table_selected" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-                <button type="button" class="btn btn-success" id="mdl-cierre-send"><i class='glyphicon glyphicon-send'></i>&nbsp;enviar</button>
+                <button type="button" class="btn btn-danger" id="mdl-cierre-eliminar" style="float: left;"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+                <button type="button" class="btn btn-success" id="mdl-cierre-facturacion"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Facturacion</button>
             </div>
         </div>
     </div>

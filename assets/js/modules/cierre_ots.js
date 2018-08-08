@@ -8,6 +8,11 @@ $(function () {
         //Eventos de la ventana.
         events: function () {
         	$('#tables_cierre').on('click', 'button#btn_check_all', cierre.selectAll);
+        	$('#table_selected').on('click', 'img.quitar_fila', cierre.quitarFila);
+        	$('#mdl_cierre').on('click', 'button#mdl-cierre-eliminar', cierre.eliminarRegistros);
+
+        	
+        	
         
         },
 
@@ -98,7 +103,7 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: 'Enrutar',
+                        text: 'Enrutar <span class="fa fa-code-fork" aria-hidden="true"></span>',
                         className: 'btn-cami_warning',
 		                action: cierre.enrutar_otp,
                     },
@@ -162,6 +167,13 @@ $(function () {
 
         //
         modalSeleccionadas: function(data){
+        	if (cierre.table_selected) {
+                var tabla = cierre.table_selected;
+                tabla.clear().draw();
+                tabla.rows.add(data);
+                tabla.columns.adjust().draw();
+                return;
+            }
 
         	cierre.table_selected = $('#table_selected').DataTable(cierre.configTableSelect(data, [
                 {title: "Ingeniero", data: "ingeniero"},
@@ -170,12 +182,10 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OTP", data: "estado_orden_trabajo"},
-                {title: "program", data: "fecha_programacion"},
-                {title: "comprom", data: "fecha_compromiso"},
-                {title: "creación", data: "fecha_creacion"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observación", data: "observacion"},
-                {title: "<button class='btn_datatable_cami2' title='seleccionar todo' id='btn_check_all' data-check='false'><i class='fa fa-flag-checkered' aria-hidden='true'></i></button>", data: cierre.getButtonsCierre},
+                {title: "Quitar", data: cierre.getButtonQuitar},
+
             ]));
             
         },
@@ -209,6 +219,37 @@ $(function () {
         	}
 
         },
+
+        // retorna el boton para quitar registro
+        getButtonQuitar: function(obj){
+            const button = `<img src="${baseurl}/assets/images/minus.png" alt="quitar" class="quitar_fila"/>`;
+            return button;
+        },
+
+        // elimina la fila 
+        quitarFila: function(e){
+            cierre.table_selected.row( $(this).parents('tr') ).remove().draw();
+        },
+
+        // Eliminar todos los registros
+        eliminarRegistros: function(e){
+        	var registro;
+            var rows = $('#table_selected tr');
+
+            $.each(rows, function(i, item) {
+            	registro = cierre.table_selected.row(item).data();
+            	if (typeof registro !== 'undefined') {
+            		alert(registro.k_id_ot_padre);
+            	}
+            });
+
+
+        },
+
+       
+
+
+
     };
     cierre.init();
 });

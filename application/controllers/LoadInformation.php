@@ -354,6 +354,7 @@ class LoadInformation extends CI_Controller {
 
                 if (($limit - $row) >= 2) {
                     $response->setCode(2);
+                    $this->insertar_cierre_ots();
                 }
 
 
@@ -368,7 +369,6 @@ class LoadInformation extends CI_Controller {
                     "data"                    => $this->objs
                 ]);
 
-                $this->insertar_cierre_ots();
 
             } catch (DeplynException $ex) {
                 $response = new Response(EMessages::ERROR, "Error al procesar el archivo.");
