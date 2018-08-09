@@ -167,8 +167,11 @@ class Dao_ot_padre_model extends CI_Model {
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
                 WHERE lista_observaciones = '$opcion' 
-                $condicion
+                $condicion 
+                GROUP BY oth.nro_ot_onyx
+
         ");
+        // print_r($this->db->last_query());
         return $query->result();
     }
 
