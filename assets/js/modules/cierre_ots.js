@@ -7,10 +7,10 @@ $(function () {
 
         //Eventos de la ventana.
         events: function () {
-            $('#tables_cierre').on('click', 'button#btn_check_all', cierre.selectAll);
-            $('#table_selected').on('click', 'img.quitar_fila', cierre.quitarFila);
+        	$('#tables_cierre').on('click', 'button#btn_check_all', cierre.selectAll);
+        	$('#table_selected').on('click', 'img.quitar_fila', cierre.quitarFila);
             $('#mdl_cierre').on('click', 'button#mdl-cierre-eliminar', cierre.eliminarRegistros);
-
+        	$('#mdl_cierre').on('click', 'button#mdl-cierre-facturacion', cierre.enviarFacturacion);
         },
 
         // trae las ot 
@@ -225,7 +225,6 @@ $(function () {
 
         // Eliminar todos los registros
         eliminarRegistros: function(e){
-        	var registro;
         	var e_rows = cierre.table_selected.rows().nodes();
             var rows = cierre.table_selected.rows().data();
             let cont = rows.length;
@@ -241,6 +240,7 @@ $(function () {
 
         },
 
+
        // confirmar la eliminacion
        confirmDelete: function(cont, otp, e_rows){
            swal({
@@ -255,7 +255,7 @@ $(function () {
         })
                 .then((result) => {
                     if (result.value) {
-                        $.post(baseurl + '/cierre_ots/c_eliminar_registros',
+                        $.post(baseurl + '/Cierre_ots/c_eliminar_registros',
                                 {
                                     otp: otp
                                 },
@@ -286,6 +286,69 @@ $(function () {
                     }
                 });
        },
+
+        // enviar registros a facturacion, cambiar de estado
+        enviarFacturacion: function(e){
+            var e_rows = cierre.table_selected.rows().nodes();
+            var rows = cierre.table_selected.rows().data();
+            let cont = rows.length;
+            let otp = [];
+            $.each(rows, function(i, item) {
+                otp.push(item.k_id_ot_padre);
+            });
+
+            if (cont > 0) {
+                cierre.confirmFacturar(cont, otp);
+            }
+        },
+
+        //
+        confirmFacturar: function(cont, otp){
+            swal({
+            title: `¿Desea enviar ${cont} registros a facturación?`,
+            html: `Las OT no podran ser editadas luego! <br> <b>¿continuar?</b>`,
+            type: "question",
+            showCancelButton: true,
+            confirmButtonColor: '#5cb85c',
+            cancelButtonColor: '#ccc',
+            confirmButtonText: 'Sí, Continuar!',
+            cancelButtonText: 'No, Cancelar!',
+        })
+                .then((result) => {
+                    if (result.value) {
+                        $.post(baseurl + '/Cierre_ots/c_enviar_a_facturacion',
+                                {
+                                    otp: otp
+                                },
+                                function (data) {
+                                    var obj = JSON.parse(data);
+                                    swal('OK!', `Se enviaros <b>${cont}</b> OT padre y ${obj} Ot hija a facturación`, 'success'); 
+                                    $('#mdl-cierre-cerrar').click();
+
+
+                                    var seleccionadas = cierre.tables_cierre.rows( { selected: true } ).nodes();
+                                    // console.log(seleccionadas);
+                                    $.each(seleccionadas, function(i, item) {
+                                        cierre.tables_cierre.row( item ).remove().draw();
+                                    });
+
+
+
+                                });
+                    } else {
+                        const toast = swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        toast({
+                            type: 'error',
+                            title: 'Acción Cancelada'
+                        });
+                    }
+                });
+        },
 
 
 

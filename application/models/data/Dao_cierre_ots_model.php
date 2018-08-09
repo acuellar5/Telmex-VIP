@@ -47,10 +47,23 @@ class Dao_cierre_ots_model extends CI_Model {
 
     }
 
-    // eLIMINA LOS REGISTROS DE TABLA CIERRE_OTP
+    // eLIMINA LOS REGISTROS DE TABLA CIERRE_OTP PASARLE LAS OTP EN UN ARRAY
     public function eliminar_registros($otp){
         $this->db->where_in('nro_ot_onyx', $otp);
         $this->db->delete('cierre_ots');
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
+
+    }
+
+
+    // Cambia el estado de los registros a facturacion, enviarle ot(s) padre
+    public function up_to_facturacion($otp, $data){
+        $this->db->where_in('nro_ot_onyx', $otp);
+        $this->db->update('cierre_ots', $data);
         if ($this->db->affected_rows() > 0) {
             return $this->db->affected_rows();
         } else {
