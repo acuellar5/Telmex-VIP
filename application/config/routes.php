@@ -66,3 +66,4 @@ $route['status_restore'] = 'Status/status_restore';
 $route['generarMarcaciones'] = 'User/markings';
 $route['validadorIp'] = 'User/routingVerification';
 $route['login'] = 'welcome/index';
+$route['facturacion'] = 'Facturacion_ots/index';
