@@ -1,6 +1,6 @@
 // ****************************SECCION PARA AGREGAR ESTADOS A UN TIPO DE ESTADO****************************
 function showModalNewType(name, nameStatus) {
-    $.post(baseurl + '/Status/c_getNewStatusByType',
+    $.post(baseurl + '/Status/c_getAllStatusByType',
             {name: name},
             function (data) {
                 var obj = JSON.parse(data);
@@ -13,10 +13,10 @@ var flag = 0;
 function fillModalNewType(estados_existentes, name, nameStatus) {
     $('#mdl_tbl_title_tipo').html("<strong>" + name + "</strong>");
     $('#mdl_tbl_name_type').val(name);
-
     $('#mdl_tbl_new_type').html("");
-    $.each(estados_existentes, function (i, estado) {
-
+    var estados = [];
+    $.each(estados_existentes.estados_existen, function (i, estado) {
+        estados.push(estado.n_name_estado_ot);
         $('#mdl_tbl_new_type').append('<tr>'
                                             + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.n_name_estado_ot + '" readonly></td>'
                                             + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control "></td>'
@@ -25,12 +25,17 @@ function fillModalNewType(estados_existentes, name, nameStatus) {
         flag++;
     });
     
-    $('#mdl_tbl_new_type').append('<tr>'
-                                            + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + nameStatus + '" readonly></td>'
-                                            + '<td><input type="number" name="jerarquia[]" id="exist' + flag + '" class="form-control jsStatusPlus"></td>'
+    $.each(estados_existentes.estados_no_existen, function (i, estado) {
+        if (jQuery.inArray( estado.estado_orden_trabajo_hija, estados) === -1) {
+            $('#mdl_tbl_new_type').append('<tr>'
+                                            + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.estado_orden_trabajo_hija + '" readonly></td>'
+                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control "></td>'
                                         + '</tr>'
                 );
-        
+            flag++;
+        }
+    });
+    
     $('#mdl_new_type').modal('show');
 }
 // Al darle clic a añadir nuevo estadoi del modal

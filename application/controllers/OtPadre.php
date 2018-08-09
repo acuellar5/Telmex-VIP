@@ -233,7 +233,7 @@ class OtPadre extends CI_Controller {
             );
 
             $this->db->where('k_id_ot_padre', $idOtp);
-            
+
             if ($this->db->update('ot_padre', $data)) {
                 $respuesta['response'] = 'success';
             }
@@ -245,12 +245,19 @@ class OtPadre extends CI_Controller {
 //
         echo json_encode($respuesta);
     }
+
     // TABLA QUE TRAE TODAS LAS OTH DE UNA OTP
-    public function c_getOthOfOtp(){
-    $idOtp = $this->input->post('idOtp');
-    $listotps = $this->Dao_ot_padre_model->getothofothp($idOtp);
-    echo json_encode($listotps);
+    public function c_getOthOfOtp() {
+        $idOtp = $this->input->post('idOtp');
+        $listotps = $this->Dao_ot_padre_model->getothofothp($idOtp);
+        echo json_encode($listotps);
+    }
     
+    // TABLA QUE TRAE TODAS LAS OTH QUE ESTEN EN LA TABLA CIERRE_OTS DE UNA OTP
+    public function c_getOthOfOtpCierre() {
+        $idOtp = $this->input->post('idOtp');
+        $listotps = $this->Dao_ot_padre_model->getOthOfOtpCierre($idOtp);
+        echo json_encode($listotps);
     }
 
 }
