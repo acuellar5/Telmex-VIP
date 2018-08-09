@@ -1289,6 +1289,24 @@ class Dao_ot_hija_model extends CI_Model {
             ");
         return $query;
     }
+    //
+    public function send_today(){
+        $query = $this->db->query("
+            SELECT  otp.k_id_ot_padre, oth.nro_ot_onyx, oth.id_orden_trabajo_hija, oth.c_email , otp.n_nombre_cliente, otp.fecha_compromiso, otp.fecha_programacion, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.usuario_asignado AS ingeniero
+
+                FROM ot_hija oth
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
+                LEFT JOIN log_correo lc ON oth.id_orden_trabajo_hija = lc.id_orden_trabajo_hija 
+                WHERE 
+                (oth.k_id_estado_ot = 3 AND 
+                MOD(DATEDIFF(CURDATE(), fecha_mod), 7) = 0 AND 
+                CURDATE() <> oth.fecha_mod) 
+                AND (lc.fecha IS NOT NULL AND lc.fecha = CURDATE())  
+                GROUP BY oth.id_orden_trabajo_hija
+
+            ");
+        return $query;
+    }
 
     // obtiene toda la informacion de una ot hija y otp por id de oth
     public function getothijaCierre($idOth) {
