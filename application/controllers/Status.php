@@ -67,5 +67,13 @@ class Status extends CI_Controller {
         $types = $this->Dao_tipo_ot_hija_model->get_list_types();
         echo json_encode($types);
     }
+    
+    //Obtiene todos los estados existentes y no existentes por el nombre del tipo
+    public function c_getAllStatusByType() {
+        $nombre_tipo = $this->input->post('name');
+        $estados['estados_existen'] = $this->Dao_ot_hija_model->geStatusByType($nombre_tipo);
+        $estados['estados_no_existen'] = $this->Dao_ot_hija_model->getStatusByTypeForOth($nombre_tipo);
+        echo json_encode($estados);
+    }
 
 }

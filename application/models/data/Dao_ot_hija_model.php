@@ -50,7 +50,7 @@ class Dao_ot_hija_model extends CI_Model {
         }
     }
 
-    public function getOtsAssigned($parameters, $search_col) { 
+    public function getOtsAssigned($parameters, $search_col) {
         $start = $parameters['start'];
         $length = $parameters['length'];
         $search = $parameters['search'];
@@ -60,17 +60,16 @@ class Dao_ot_hija_model extends CI_Model {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
-        if($search){
-            $srch  = "AND (otp.n_nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_compromiso LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_programacion LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
-
+        if ($search) {
+            $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_compromiso LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_programacion LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%" . $search . "%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%')";
         } else {
             $srch = "";
         }
@@ -127,7 +126,6 @@ class Dao_ot_hija_model extends CI_Model {
             "datos" => $query
         );
         return $retorno;
-    
     }
 
     //
@@ -164,8 +162,8 @@ class Dao_ot_hija_model extends CI_Model {
 //             return $ex;
 //         }
 //     }
-                //                     WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
-                // AND ot.k_id_estado_ot = 1 
+    //                     WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE() 
+    // AND ot.k_id_estado_ot = 1 
     public function getOtsFiteenDays($parameters, $search_col) {
         $start = $parameters['start'];
         $length = $parameters['length'];
@@ -176,17 +174,16 @@ class Dao_ot_hija_model extends CI_Model {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
-        if($search){
-            $srch  = "AND (otp.n_nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_compromiso LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_programacion LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
-
+        if ($search) {
+            $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_compromiso LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_programacion LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%" . $search . "%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%')";
         } else {
             $srch = "";
         }
@@ -244,7 +241,6 @@ class Dao_ot_hija_model extends CI_Model {
             "datos" => $query
         );
         return $retorno;
-    
     }
 
     // llama el primer elemento dependiendo el id rf
@@ -321,7 +317,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //Consulta controlada para el data tables usado con server side prossesing
-    public function     getAllOtPS($parameters, $search_col){
+    public function getAllOtPS($parameters, $search_col) {
 
         // reasigno las variables para q sean mas dicientes y manejables
         $start = $parameters['start'];
@@ -329,12 +325,9 @@ class Dao_ot_hija_model extends CI_Model {
         $search = $parameters['search'];
         // $order = $parameters['order'];
         // $columm = $parameters['columm'];
-
         // Cuando le da all genera un -1
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
         // $order_by = ($columm == 'function') ? "" : "ORDER BY $columm $order";
-
-
         // Cuando el usuario logueado es un ingeniero... si es admin puede ver todo
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
@@ -342,17 +335,16 @@ class Dao_ot_hija_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         // si el usuario escribio algo en el buscador se concatena el where + lo que debe buscar
-        if($search){
-            $srch  = "AND (otp.n_nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_compromiso LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_programacion LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
-
+        if ($search) {
+            $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_compromiso LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_programacion LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%" . $search . "%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%')";
         } else {
             // Si no escribio nada en el buscador se pasa vacio
             $srch = "";
@@ -429,17 +421,16 @@ class Dao_ot_hija_model extends CI_Model {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
-        if($search){
-            $srch  = "AND (otp.n_nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_compromiso LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_programacion LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
-
+        if ($search) {
+            $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_compromiso LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_programacion LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%" . $search . "%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%')";
         } else {
             $srch = "";
         }
@@ -497,7 +488,7 @@ class Dao_ot_hija_model extends CI_Model {
         return $retorno;
     }
 
-                                // -- WHERE estado_mod = 1
+    // -- WHERE estado_mod = 1
     public function getOtsChange($parameters, $search_col) {
         $start = $parameters['start'];
         $length = $parameters['length'];
@@ -508,17 +499,16 @@ class Dao_ot_hija_model extends CI_Model {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
-        if($search){
-            $srch  = "AND (otp.n_nombre_cliente LIKE '%".$search."%' OR ";
-            $srch .= "ot.nro_ot_onyx LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_compromiso LIKE '%".$search."%' OR ";
-            $srch .= "otp.fecha_programacion LIKE '%".$search."%' OR ";
-            $srch .= "ot.id_orden_trabajo_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.ot_hija LIKE '%".$search."%' OR ";
-            $srch .= "ot.usuario_asignado LIKE '%".$search."%' OR ";
-            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%".$search."%' OR ";
-            $srch .= "ot.estado_orden_trabajo_hija LIKE '%".$search."%')";
-
+        if ($search) {
+            $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.nro_ot_onyx LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_compromiso LIKE '%" . $search . "%' OR ";
+            $srch .= "otp.fecha_programacion LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.id_orden_trabajo_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.ot_hija LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.usuario_asignado LIKE '%" . $search . "%' OR ";
+            $srch .= "CONCAT('$ ',FORMAT(ot.monto_moneda_local_arriendo + ot.monto_moneda_local_cargo_mensual,2)) LIKE '%" . $search . "%' OR ";
+            $srch .= "ot.estado_orden_trabajo_hija LIKE '%" . $search . "%')";
         } else {
             $srch = "";
         }
@@ -887,6 +877,7 @@ class Dao_ot_hija_model extends CI_Model {
             ");
         return $query->result();
     }
+
     ////Retorna la cantidad de OTH que esten cerrada mas de 8 dias////////////
     public function cant_after_eigt_days() {
         $query = $this->db->query("
@@ -900,7 +891,6 @@ class Dao_ot_hija_model extends CI_Model {
         ");
         return $query->result();
     }
-
 
     //trae registros estado indefinido por nombre de estado y ot_hija (tipo)
     public function update_regis_indef_by_estado($id_type, $type, $name_status) {
@@ -1036,10 +1026,10 @@ class Dao_ot_hija_model extends CI_Model {
     ");
         return $query->result();
     }
-    
+
 // trae las ot hijas que tengan estado en NULL
-    public function getListOtsNull(){
-    $query = $this->db->query("
+    public function getListOtsNull() {
+        $query = $this->db->query("
         SELECT oth.nro_ot_onyx, 
         oth.id_orden_trabajo_hija, 
         otp.n_nombre_cliente AS nombre_cliente, 
@@ -1051,17 +1041,18 @@ class Dao_ot_hija_model extends CI_Model {
         ON otp.k_id_ot_padre = oth.nro_ot_onyx
         WHERE oth.k_id_estado_ot IS NULL
     ");
-    return $query->result();
-  }
-  //actualiza la columna ver a 0
-  public function upVerTo_0(){
+        return $query->result();
+    }
+
+    //actualiza la columna ver a 0
+    public function upVerTo_0() {
         $this->db->where('k_id_inconsistencia', $data['k_id_inconsistencia']);
         $this->db->update('inconcistencia', $data);
-  }
+    }
 
     // obtiene toda la informacion de una ot hija y otp por id de oth
-    public function getothija($idOth){
-    $query = $this->db->query("
+    public function getothija($idOth) {
+        $query = $this->db->query("
         
         SELECT e.k_id_tipo, e.i_orden, oth.id_orden_trabajo_hija, oth.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, oth.grupo_objetivo, oth.segmento, oth.c_email, 
         oth.nivel_atencion, oth.ciudad, oth.departamento, oth.grupo,
@@ -1086,13 +1077,12 @@ class Dao_ot_hija_model extends CI_Model {
         INNER JOIN estado_ot e ON oth.k_id_estado_ot = e.k_id_estado_ot 
         WHERE oth.id_orden_trabajo_hija = $idOth
     ");
-    return $query->row();
-  }
+        return $query->row();
+    }
 
-
-  //retorna oth filtradas por id usuario, una otpadre, y un idtipo
-  public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo){
-      $query = $this->db->query("
+    //retorna oth filtradas por id usuario, una otpadre, y un idtipo
+    public function get_oth_by_iduser_otp_idtipo($iduser, $otp, $idtipo) {
+        $query = $this->db->query("
             SELECT 
             oth.id_orden_trabajo_hija, oth.k_id_estado_ot, e.n_name_estado_ot, oth.fecha_creacion_ot_hija, 
             
@@ -1128,18 +1118,18 @@ class Dao_ot_hija_model extends CI_Model {
             oth.nro_ot_onyx = '$otp' AND 
             e.k_id_tipo = '$idtipo'        
         ");
-      return $query->result();
-  }
+        return $query->result();
+    }
 
-  // trae otp filtradas por los argumentos
-  public function get_oth_where($iduser, $otp, $idtipo, $oth){
-    $where = "";
-    $where .= ($iduser)? "AND otp.k_id_user = '$iduser' " : "";
-    $where .= ($otp) ? " AND oth.nro_ot_onyx = '$otp' " : "";
-    $where .= ($idtipo) ? " AND e.k_id_tipo = '$idtipo'" : "";
-    $where .= ($oth) ? " AND oth.id_orden_trabajo_hija = '$oth'" : "";
+    // trae otp filtradas por los argumentos
+    public function get_oth_where($iduser, $otp, $idtipo, $oth) {
+        $where = "";
+        $where .= ($iduser) ? "AND otp.k_id_user = '$iduser' " : "";
+        $where .= ($otp) ? " AND oth.nro_ot_onyx = '$otp' " : "";
+        $where .= ($idtipo) ? " AND e.k_id_tipo = '$idtipo'" : "";
+        $where .= ($oth) ? " AND oth.id_orden_trabajo_hija = '$oth'" : "";
 
-      $query = $this->db->query("
+        $query = $this->db->query("
              SELECT 
             oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.fecha_creacion_ot_hija,
             CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS nombre
@@ -1156,11 +1146,11 @@ class Dao_ot_hija_model extends CI_Model {
         ");
 
 
-    $where2 = ""; 
-    $where2 .= ($iduser)? "AND otp.k_id_user = '$iduser' " : "";
-    $where2 .= ($otp) ? " AND otp.k_id_ot_padre = '$otp' " : "";
+        $where2 = "";
+        $where2 .= ($iduser) ? "AND otp.k_id_user = '$iduser' " : "";
+        $where2 .= ($otp) ? " AND otp.k_id_ot_padre = '$otp' " : "";
 
-    $query2 = $this->db->query("
+        $query2 = $this->db->query("
             SELECT otp.k_id_ot_padre, otp.n_nombre_cliente, otp.lista_observaciones, otp.observacion, 
                         otp.orden_trabajo, otp.servicio, 
                         otp.estado_orden_trabajo,  otp.fecha_programacion,
@@ -1181,17 +1171,16 @@ class Dao_ot_hija_model extends CI_Model {
 
 
 
-      $data = array(
-          'oth' => $query->result(),
-          'otp' => $query2->result()
-      );
-      
-      return $data;
-  }
+        $data = array(
+            'oth' => $query->result(),
+            'otp' => $query2->result()
+        );
 
+        return $data;
+    }
 
     //retorna las oths y si estan en tiempo omite canceladas cerradas y terminadas
-    public function get_ots_times(){
+    public function get_ots_times() {
         $query = $this->db->query("
                 SELECT 
                 u.k_id_user,
@@ -1241,9 +1230,8 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
-
     // Retorna fecha/hora ultimo excel cargado
-    public function get_last_time_import(){
+    public function get_last_time_import() {
         $query = $this->db->query("
                 SELECT 
                 MAX(fecha_insercion_zolid) AS last_time  
@@ -1254,7 +1242,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     // obtiene la ultima fecha de carga
-    public function getUltimaFechaCarga(){
+    public function getUltimaFechaCarga() {
         $query = $this->db->query("
                 SELECT max(fecha_actual) AS fecha
                 FROM 
@@ -1265,7 +1253,7 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     // obtiene la penultima fecha de carga
-    public function getPenultimaFechaCarga(){
+    public function getPenultimaFechaCarga() {
         $query = $this->db->query("
                 SELECT max(fecha_actual) AS fecha
                 FROM 
@@ -1278,13 +1266,13 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     // ELIMINA REGISTROS POR FECHA ACTUAL
-    public function delete_oth_by_fecha($fecha){
+    public function delete_oth_by_fecha($fecha) {
         $this->db->delete('ot_hija', array('k_id_register >' => 0, 'fecha_actual' => $fecha));
         return $this->db->affected_rows();
     }
 
     // OBTENER LAS OTH QUE LLEVEN CERRADAS MAS DE 8 DIAS 
-    public function getListOtsEigtDay(){
+    public function getListOtsEigtDay() {
         $query = $this->db->query("
                 SELECT otp.k_id_ot_padre, oth.nro_ot_onyx, oth.id_orden_trabajo_hija, oth.c_email , otp.n_nombre_cliente, otp.fecha_compromiso, otp.fecha_programacion, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.usuario_asignado AS ingeniero
 
@@ -1302,8 +1290,43 @@ class Dao_ot_hija_model extends CI_Model {
         return $query;
     }
 
+    // obtiene toda la informacion de una ot hija y otp por id de oth
+    public function getothijaCierre($idOth) {
+        $query = $this->db->query("
+        SELECT e.k_id_tipo, e.i_orden, cot.id_orden_trabajo_hija, cot.k_id_estado_ot,otp.id_cliente_onyx, otp.n_nombre_cliente, cot.grupo_objetivo, cot.segmento, cot.c_email, 
+        cot.nivel_atencion, cot.ciudad, cot.departamento, cot.grupo,
+        cot.consultor_comercial, cot.grupo2, cot.consultor_postventa, 
+        cot.proy_instalacion, cot.ing_responsable, cot.id_enlace, 
+        cot.alias_enlace, otp.servicio, otp.orden_trabajo,
+        cot.familia, cot.producto, otp.fecha_creacion, cot.tiempo_incidente,
+        otp.estado_orden_trabajo, cot.tiempo_estado, cot.ano_ingreso_estado,
+        cot.mes_ngreso_estado, cot.fecha_ingreso_estado, cot.usuario_asignado,
+        cot.grupo_asignado, cot.ingeniero_provisioning, cot.cargo_arriendo,
+        cot.cargo_mensual, cot.monto_moneda_local_arriendo, cot.cargo_obra_civil,
+        cot.monto_moneda_local_cargo_mensual, cot.descripcion, cot.direccion_origen,
+        cot.ciudad_incidente, cot.direccion_destino, cot.ciudad_incidente3,
+        otp.fecha_compromiso, otp.fecha_programacion, cot.fecha_realizacion,
+        cot.resolucion_1, cot.resolucion_2, cot.resolucion_3, cot.resolucion_4, 
+        cot.ot_hija, cot.estado_orden_trabajo_hija, cot.fecha_creacion_ot_hija,
+        cot.usuario_asignado4, cot.resolucion_15, cot.resolucion_26, cot.resolucion_37,
+        cot.resolucion_48, cot.fec_actualizacion_onyx_hija, cot.tipo_trascurrido, 
+        cot.nro_ot_onyx, otp.k_id_ot_padre, cot.proveedor_ultima_milla
+        FROM cierre_ots cot
+        INNER JOIN ot_padre otp ON cot.nro_ot_onyx= otp.k_id_ot_padre
+        INNER JOIN estado_ot e ON cot.k_id_estado_ot = e.k_id_estado_ot 
+        WHERE cot.id_orden_trabajo_hija = $idOth
+    ");
+        return $query->row();
+    }
 
-
+    public function getStatusByTypeForOth($name) {
+        $query = $this->db->query("
+                SELECT distinct(estado_orden_trabajo_hija)
+                FROM ot_hija
+                WHERE ot_hija = '$name'
+            ");
+        return $query->result();
+    }
 
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
