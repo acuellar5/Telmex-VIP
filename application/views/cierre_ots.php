@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="mdl-cierre-eliminar" style="float: left;"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Eliminar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+                <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
                 <button type="button" class="btn btn-success" id="mdl-cierre-facturacion"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Facturacion</button>
             </div>
         </div>

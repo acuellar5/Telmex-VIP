@@ -12,7 +12,46 @@ class Templates extends CI_Controller {
     }
 
 //
+    //
+    public function ko_15d ($servicio = null){
+      
+      date_default_timezone_set("America/Bogota");
+      $fActual2 = date('Y-m-d');
+      
+      $data_template = $this->fill_formulary_ko_15($_POST);
+      $template = $this->correo_ko_15_dias($data_template);
+      $data = $this->dataLogMail();
 
+       // $data = data();
+
+          foreach ($data as $key => $value) {
+            if (isset($_POST[$key])) {
+              $data[$key] = $_POST[$key];
+            }
+          }
+                 
+          $data['k_id_ot_padre']  =  $_POST['nro_ot_onyx'];
+          $data['destinatarios']  =  $_POST['mail_envio'];
+          $data['usuario_sesion'] =  Auth::user()->k_id_user;
+          $data['fecha']          =  $fActual2;   
+          $data['clase']          =  'ko_8d';   
+
+          $this->Dao_log_correo_model->insert_data($data);
+
+          $this->enviar_email($template, $_POST, $flag = false);
+
+
+          $data_oth = array(
+            'c_email' => $_POST['c_email'] + 1,
+            'id_orden_trabajo_hija' => $_POST['id_orden_trabajo_hija']
+          );
+          
+
+          $up = $this->Dao_ot_hija_model->update_ot_hija_mod($data_oth);
+
+    
+
+    }
 
     public function c_updateStatusOt($servicio = null) {
       // header('Content-Type: text/plain');
@@ -50,6 +89,7 @@ class Templates extends CI_Controller {
                case '10':
                  $template = $this->mpls_transaccional_3g($data_template);
                  break;
+
            
         }  
              // print_r($template);   
@@ -81,34 +121,7 @@ class Templates extends CI_Controller {
             }
           }
 
-          $dataLogMail = array(
-              'id_orden_trabajo_hija'      => null,
-              'nombre'                     => null,
-              'nombre_cliente'             => null,
-              'servicio'                   => null,
-              'direccion_instalacion'      => null,
-              'direccion_instalacion_des1' => null,
-              'direccion_instalacion_des2' => null,
-              'direccion_instalacion_des3' => null,
-              'direccion_instalacion_des4' => null,
-              'existente'                  => null,
-              'nuevo'                      => null,
-              'ancho_banda'                => null,
-              'interfaz_entrega'           => null,
-              'equipos_intalar_camp1'      => null,
-              'equipos_intalar_camp2'      => null,
-              'equipos_intalar_camp3'      => null,
-              'fecha_servicio'             => null,
-              'ingeniero1'                 => null,
-              'ingeniero1_tel'             => null,
-              'ingeniero1_email'           => null,
-              'ingeniero2'                 => null,
-              'ingeniero2_tel'             => null,
-              'ingeniero2_email'           => null,
-              'ingeniero3'                 => null,
-              'ingeniero3_tel'             => null,
-              'ingeniero3_email'           => null               
-               );
+          $dataLogMail = $this->dataLogMail();
 
           foreach ($dataLogMail as $key => $value) {
             if (isset($pt[$key])) {
@@ -120,7 +133,7 @@ class Templates extends CI_Controller {
           $dataLogMail['clase']          =  'cierre_ko';
           $dataLogMail['destinatarios']  =  $destinatarios;
           $dataLogMail['usuario_sesion'] =  Auth::user()->k_id_user;
-          $dataLogMail['fecha']          =  $fActual2;
+          $dataLogMail['fecha']          =  $fActual2;       
         
           $this->Dao_log_correo_model->insert_data($dataLogMail);
       }
@@ -159,7 +172,7 @@ class Templates extends CI_Controller {
     public function generatePDF(){
       $data = $this->input->post('data');
       // header('Content-Type: text/plain');
-      // print_r($data);
+      if ($data['clase'] == 'cierre_ko') {
         switch ($data['servicio']) {
                case 'Internet Dedicado Empresarial':
                  $template = $this->internet_dedicado_empresarial($data);
@@ -191,29 +204,18 @@ class Templates extends CI_Controller {
                case 'MPLS Transaccional 3G':
                  $template = $this->mpls_transaccional_3g($data);
                  break;
-           
         }
+      } else if ($data['clase'] == 'ko_8d') {
+        $template = $this->correo_ko_15_dias($data);
 
-        // require_once ('models/bin/dompdf/dompdf_config.inc.php');
+      }
 
-
-        // $this->load->model('bin/dompdf/lib/html5lib/Parser');
-        // $this->load->model('bin/dompdf/lib/php-font-lib/src/FontLib/Autoloader');
-        // $this->load->model('bin/dompdf/lib/php-svg-lib/src/autoload');
-        // $this->load->model('bin/dompdf/src/Autoloader');
-
-
-        // $this->load->model('bin/mpdf/mpdf');
-        // require_once  APPPATH . 'models/bin/mpdf/mpdf.php';
-        // $mpdf = new mPDF(); // tamaño de la hoja
-        // $mpdf|->writeHTML('<div>hola.........</div>');
-        // $mpdf->Output('reporte.pdf', 'I');
-
+ 
 
 
         print_r($template);
 
-
+ 
 
 
 
@@ -221,8 +223,40 @@ class Templates extends CI_Controller {
     }
 
 
+    //llena el formulario de kick of 15 dias
+    public function fill_formulary_ko_15 ($pt){
+      
+      $argumentos = array(
+
+            'nombre'                           => $pt['nombre'],
+            'ots_nombre'                       => $pt['ots_nombre'],
+            'ampliacion_enlaces'               => $pt['ampliacion_enlaces'],
+            'direccion_servicio'               => $pt['direccion_servicio'],
+            'servicio'                         => $pt['servicio'],
+            'vista_obra_civil'                 => $pt['vista_obra_civil'],
+            'envio_cotizacion_obra_civil'      => $pt['envio_cotizacion_obra_civil'],
+            'aprobacion_cotizacion_obra_civil' => $pt['aprobacion_cotizacion_obra_civil'],
+            'ejecucion_obra_civil'             => $pt['ejecucion_obra_civil'],
+            'empalmes'                         => $pt['empalmes'],
+            'configuracion'                    => $pt['configuracion'],
+            'entrega_servicio'                 => $pt['entrega_servicio'],
+            
+            // VARIABLES Y CAMPOS REUTILIZADOS DE OTRA PLANTILLA PARA LA BD
+            'equipos_intalar_camp1'            => $pt['equipos'],
+            'ingeniero1'                       => $pt['ingeniero_implementacion_responsable_cuenta'],
+            'ingeniero1_tel'                   => $pt['celular'],
+            'ingeniero1_email'                 => $pt['mail_envio']
+      );
+
+      return $argumentos;
+
+    } 
+
     // se llenan los argumentos dependiendo el servicio
     public function fill_formulary($s, $p) {
+
+
+
 
       switch (true) {
         case ($s == 1 || $s == 2):
@@ -303,8 +337,64 @@ class Templates extends CI_Controller {
       return $argumentos;
     }
 
+
+    
+    //
+    private function dataLogMail(){
+
+        $data = array(                
+                 'k_id_log_correo'                  => null,
+                 'k_id_ot_padre'                    => null,
+                 'id_orden_trabajo_hija'            => null,
+                 'clase'                            => null,
+                 'destinatarios'                    => null,
+                 'usuario_sesion'                   => null,
+                 'nombre'                           => null,
+                 'nombre_cliente'                   => null,
+                 'servicio'                         => null,
+                 'fecha'                            => null,
+                 'direccion_instalacion'            => null,
+                 'direccion_instalacion_des1'       => null,
+                 'direccion_instalacion_des2'       => null,
+                 'direccion_instalacion_des3'       => null,
+                 'direccion_instalacion_des4'       => null,
+                 'existente'                        => null,
+                 'nuevo'                            => null,
+                 'ancho_banda'                      => null,
+                 'interfaz_entrega'                 => null,
+                 'equipos_intalar_camp1'            => null,
+                 'equipos_intalar_camp2'            => null,
+                 'equipos_intalar_camp3'            => null,
+                 'fecha_servicio'                   => null,
+                 'ingeniero1'                       => null,
+                 'ingeniero1_tel'                   => null,
+                 'ingeniero1_email'                 => null,
+                 'ingeniero2'                       => null,
+                 'ingeniero2_tel'                   => null,
+                 'ingeniero2_email'                 => null,
+                 'ingeniero3'                       => null,
+                 'ingeniero3_tel'                   => null,
+                 'ingeniero3_email'                 => null,
+                 'ots_nombre'                       => null,
+                 'ampliacion_enlaces'               => null,
+                 'vista_obra_civil'                 => null,
+                 'envio_cotizacion_obra_civil'      => null,
+                 'aprobacion_cotizacion_obra_civil' => null,
+                 'ejecucion_obra_civil'             => null,
+                 'empalmes'                         => null,
+                 'configuracion'                    => null,
+                 'entrega_servicio'                 => null,
+                 'direccion_servicio'               => null
+               );      
+
+        return $data;
+      
+    }
+
+
+
 //
-    public function enviar_email($cuerpo , $pt) {
+    public function enviar_email($cuerpo , $pt, $flag = true) {
       $email_user = Auth::user()->n_mail_user;
       $correos = [];
       if (Auth::user()->n_mail_user || Auth::user()->n_mail_user != "") {
@@ -343,12 +433,22 @@ class Templates extends CI_Controller {
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";
-            $this->update_status($pt, true);
+              if ($flag) {
+                $this->update_status($pt, true);
+              } else {
+                $this->load->view('principal');
+              }
           }else{
 
             echo ":( Hubo un error en el envio del correo";
           }
     }
+
+
+
+
+
+
 
     public function internet_dedicado_empresarial($argumentos) {
         return ' 
@@ -5341,5 +5441,116 @@ Contacto:<span></span></span></b></p>
 
 ';
     }
+
+    /*--**************************************************************PLANTILLA CORREO KICKOFF 15 DIAS***********************************************************************--*/
+
+
+//correo para kick of 15 dias
+public function correo_ko_15_dias($argumentos){
+return
+'<div class=""><div class="aHl"></div><div id=":m2" tabindex="-1"></div><div id=":md" class="ii gt"><div id=":me" class="a3s aXjCH m164fc5b537463e95"><div dir="ltr"><div class="adM">
+</div><p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Cordial Saludo Señores,<span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">'. $argumentos['nombre'] .'<span></span></span></b></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Comprometidos
+con el servicio y el cumplimiento de sus solicitudes me permito notificar los
+avances de los asuntos en curso.</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Es de suma
+importancia que sea revisado y nos retroalimente con sus comentarios, ya que al
+término de 2 días hábiles este reporte se dará por aceptado.</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">&nbsp;</span><b><u><span lang="ES-CO" style="font-family:Garamond,serif">OTS
+'. $argumentos['ots_nombre'] .' – AMPLIACIÓN ENLACES '. $argumentos['ampliacion_enlaces'] .' A 200M</span></u></b><span lang="ES-CO" style="font-size:11pt;color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Garamond,serif">Dirección de servicio: '. $argumentos['direccion_servicio'] .'</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-size:8pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">SERVICIO
+'. $argumentos['servicio'] .'</span></b><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Visita Obra Civil: '.$argumentos['vista_obra_civil'].' </span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Envió Cotización Obra Civil: '. $argumentos['envio_cotizacion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Aprobación Cotización Obra Civil: '. $argumentos['aprobacion_cotizacion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Ejecución de Obra Civil: '. $argumentos['ejecucion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Empalmes: '. $argumentos['empalmes'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Configuración: '. $argumentos['configuracion'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Equipos: '. $argumentos['equipos_intalar_camp1'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Entrega del servicio: '. $argumentos['entrega_servicio'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO">&nbsp;<span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span>&nbsp;</span><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Nivel de Contacto 1:</span></b><span lang="ES-CO" style="font-family:Arial,sans-serif"> Para cualquier duda o
+inquietud sobre el proceso de instalación en Curso.</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+Implementación Responsable Cuenta:</span></b><span lang="ES-CO" style="font-family:Arial,sans-serif"> </span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">'. $argumentos['ingeniero1'] .'</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+Aprovisionamiento Estándar</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Celular: '. $argumentos['ingeniero1_tel'] .'</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
+electrónico:</span></b><span lang="ES-CO"> </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="'. $argumentos['ingeniero1_email'] .'" style="color:blue;text-decoration:underline" target="_blank">'. $argumentos['ingeniero1_email'] .'</a></span></b></span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Calibri,sans-serif">&nbsp;</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">&nbsp;Nivel
+de Contacto 2: En caso de que no se obtenga respuesta por parte del Nivel de
+Contacto 1.</span></b><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Coordinador
+Estándar: </span></b><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Alejandra
+Rendon Calderon &nbsp;</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Teléfono.
+7569858 Ext &nbsp;2008</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
+electrónico</span><span lang="ES-CO">: </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="mailto:alejandra.rendon.ext@claro.com.co" style="color:blue;text-decoration:underline" target="_blank">alejandra.rendon.ext@claro.<wbr>com.co</a></span></b></span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO">&nbsp;<span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Nivel
+de Contacto 3: En caso de que no se obtenga respuesta por parte del Nivel de
+Contacto 2.</span></b><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+Implementación Claro: </span></b><span lang="ES-CO" style="font-family:Arial,sans-serif">Vivian
+Rodriguez</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+Aprovisionamiento Estándar</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Celular:
+3138892717</span><span lang="ES-CO"><span></span></span></p>
+
+<p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
+electrónico:</span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="mailto:vivian.rodriguez@claro.com.co" style="color:blue;text-decoration:underline" target="_blank">vivian.rodriguez@claro.com.co</a></span></b></span><span lang="ES-CO"><span></span></span></p><div class="yj6qo"></div><div class="adL">
+
+<br></div></div><div class="adL">
+</div></div></div><div id=":ly" class="ii gt" style="display:none"><div id=":lx" class="a3s aXjCH undefined"></div></div><div class="hi"></div></div>';
+
+
+}
+
+/************************************************************************ FIN PLANTILLA ******************************************************************************************/
+
+
+
 
 }

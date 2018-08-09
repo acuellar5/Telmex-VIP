@@ -11,9 +11,6 @@ $(function () {
             $('#table_selected').on('click', 'img.quitar_fila', cierre.quitarFila);
             $('#mdl_cierre').on('click', 'button#mdl-cierre-eliminar', cierre.eliminarRegistros);
 
-
-
-
         },
 
         // trae las ot 
@@ -126,8 +123,7 @@ $(function () {
         // obtengo los botones 
         getButtonsCierre: function (obj) {
             var botones = "<div class='btn-group'>"
-                    ///////////////////////////////////////////////////////////se cambio la linea del boton
-                    + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='Ver OTH'><span class='fa fa-fw fa-eye'></span></a>"
+                        + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='Ver OTH'><span class='fa fa-fw fa-eye'></span></a>"
                     + "</div>";
             return botones;
         },
@@ -191,10 +187,9 @@ $(function () {
             return {
                 data: data,
                 columns: columns,
-                //lenguaje del plugin
-                /*"language": { 
-                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
-                 },*/
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                },
                 columnDefs: [{
                         defaultContent: "",
                         targets: -1,
@@ -229,19 +224,70 @@ $(function () {
         },
 
         // Eliminar todos los registros
-        eliminarRegistros: function (e) {
-            var registro;
-            var rows = $('#table_selected tr');
-
-            $.each(rows, function (i, item) {
-                registro = cierre.table_selected.row(item).data();
-                if (typeof registro !== 'undefined') {
-                    alert(registro.k_id_ot_padre);
-                }
+        eliminarRegistros: function(e){
+        	var registro;
+        	var e_rows = cierre.table_selected.rows().nodes();
+            var rows = cierre.table_selected.rows().data();
+            let cont = rows.length;
+            let otp = [];
+            $.each(rows, function(i, item) {
+            	otp.push(item.k_id_ot_padre);
             });
+
+            if (cont > 0) {
+            	cierre.confirmDelete(cont, otp);
+            }
 
 
         },
+
+       // confirmar la eliminacion
+       confirmDelete: function(cont, otp, e_rows){
+           swal({
+            title: "¿Está Seguro?",
+            html: `Se eliminaran  <b>'${cont}'</b> registros <br> <b>¿continuar?</b>`,
+            type: "question",
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#ccc',
+            confirmButtonText: 'Sí, Eliminar!',
+            cancelButtonText: 'No, Cancelar!',
+        })
+                .then((result) => {
+                    if (result.value) {
+                        $.post(baseurl + '/cierre_ots/c_eliminar_registros',
+                                {
+                                    otp: otp
+                                },
+                                function (data) {
+                                    var obj = JSON.parse(data);
+                                    swal('OK!', `Se eliminaron <b>${obj.del_otp}</b> OT Padre y<br> ${obj.del} OT hija de la plataforma.`, 'success'); 
+                                    $('#mdl-cierre-cerrar').click();
+                                    var seleccionadas = cierre.tables_cierre.rows( { selected: true } ).nodes();
+                                    // console.log(seleccionadas);
+                                    $.each(seleccionadas, function(i, item) {
+                                    	cierre.tables_cierre.row( item ).remove().draw();
+                                    });
+
+
+
+                                });
+                    } else {
+                        const toast = swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        toast({
+                            type: 'error',
+                            title: 'Acción Cancelada'
+                        });
+                    }
+                });
+       },
+
+
 
     };
     cierre.init();

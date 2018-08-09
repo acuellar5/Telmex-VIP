@@ -1998,6 +1998,8 @@ $(function () {
             onClickVerLogMail: function(){
                 var tr = $(this).parents('tr');
                 var record = eventos.tableModalLogMail.row(tr).data();
+                console.log(record);
+
                 eventos.generarPDF(record);
             },
 
