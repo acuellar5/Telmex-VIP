@@ -169,7 +169,7 @@ $(function () {
                           showCancelButton: true,
                           confirmButtonColor: '#3085d6',
                           cancelButtonColor: '#d33',
-                          confirmButtonText: 'no, no, no... bueno si!'
+                          confirmButtonText: 'Si!'
                         }).then((continuar) => {
                           if (continuar.value) {
                             swal(

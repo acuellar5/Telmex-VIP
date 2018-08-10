@@ -16,8 +16,8 @@ class Templates extends CI_Controller {
     public function ko_15d ($servicio = null){
       
       date_default_timezone_set("America/Bogota");
-      $fActual = date('Y-m-d H:i:s');
-      // $fActual2 = date('Y-m-d');
+      // $fActual = date('Y-m-d H:i:s');
+      $fActual2 = date('Y-m-d');
       
       $data_template = $this->fill_formulary_ko_15($_POST);
       $template = $this->correo_ko_15_dias($data_template);
@@ -34,7 +34,7 @@ class Templates extends CI_Controller {
           $data['k_id_ot_padre']  =  $_POST['nro_ot_onyx'];
           $data['destinatarios']  =  $_POST['mail_envio'];
           $data['usuario_sesion'] =  Auth::user()->k_id_user;
-          $data['fecha']          =  $fActual;   
+          $data['fecha']          =  $fActual2;   
           $data['clase']          =  'ko_8d';   
 
           $this->Dao_log_correo_model->insert_data($data);

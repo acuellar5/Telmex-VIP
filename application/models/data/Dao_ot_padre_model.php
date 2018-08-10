@@ -120,7 +120,7 @@ class Dao_ot_padre_model extends CI_Model {
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
-                WHERE otp.fecha_compromiso > CURDATE()
+                WHERE otp.fecha_compromiso < CURDATE()
                 $condicion
                 GROUP BY nro_ot_onyx
     	");

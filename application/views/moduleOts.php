@@ -81,7 +81,7 @@
     </div>
 
 
-'<!--     <div id="dias_15" class="tab-pane fade">
+<!--     <div id="dias_15" class="tab-pane fade">
         <h3>15 Días</h3>
         <table id="tablaFiteenDaysOts" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
             <tfoot>
@@ -99,13 +99,13 @@
                 </tr>
             </tfoot>
         </table>
-    </div> -->'
+    </div> -->
 
 
 </div>
 
 <!-- Modal editar OTs -->
-<div id="modalEditTicket" class="modal fa de" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="modalEditTicket" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
     <div class="modal-dialog modal-lg2" style="width: 1100px;">
         <div class="modal-content">
             <div class="modal-header">
