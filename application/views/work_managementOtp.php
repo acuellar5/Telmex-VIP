@@ -172,7 +172,7 @@
 </div>
 
 <!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
-<div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="modalOthDeOtp" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
     <div class="modal-dialog modal-lg2" style="width: 1100px;">
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">
