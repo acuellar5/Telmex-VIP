@@ -91,7 +91,7 @@ $(function(){
         },
         getListOtsNull: function(){
             //metodo ajax (post)
-            $.post( baseurl + '/Type/getListOtsNull', 
+            $.post( baseurl + '/Type/c_getListOtsNull', 
                 {
                     //parametros
                     //param1: 'value1'//enviar parametros a la funcion de la ruta

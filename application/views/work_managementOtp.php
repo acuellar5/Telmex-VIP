@@ -4,6 +4,7 @@
     <li class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>
     <li class=""><a data-toggle="tab" href="#vencidas">Vencida</a></li>
     <li class=""><a data-toggle="tab" href="#por_lista">Por Lista</a></li>
+    <li class=""><a data-toggle="tab" href="#lista_email">Email Enviados</a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -151,6 +152,28 @@
             </select>
         </div>
         <table id="table_list_opc" class="table table-hover table-bordered table-striped dataTable_camilo">
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    
+    <div id="lista_email" class="tab-pane fade">
+        <h3>Emails Enviados</h3>
+        <table id="table_otPadreListEmails" class="table table-hover table-bordered table-striped dataTable_camilo">
             <tfoot>
                 <tr>
                     <th></th>

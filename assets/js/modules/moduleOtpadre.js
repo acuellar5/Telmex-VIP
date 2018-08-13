@@ -845,6 +845,9 @@ $(function () {
                 case 'table_list_opc':
                     record = lista.tableOpcList.row(trParent).data();
                     break;
+                case 'table_otPadreListEmails':
+                    record = emails.table_otPadreListEmails.row(trParent).data();
+                    break;
             }
             listoth.showModalOthDeOthp(record);
         },
@@ -931,5 +934,115 @@ $(function () {
         }
     };
     listoth.init();
+    
+    //*********************************** lista las  ot padres con emails enviados
+    emails = {
+        init: function () {
+            emails.events();
+            emails.getListOtsOtPadreEmail();
+
+        },
+        //Eventos de la ventana.
+        events: function () {
+
+        },
+        getListOtsOtPadreEmail: function () {
+            //metodo ajax (post)
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreEmail',
+                    {
+                        //parametros
+
+                    },
+                    // funcion que recibe los datos 
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                emails.printTableEmail(obj);
+                            }
+                    );
+                },
+        printTableEmail: function (data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            emails.table_otPadreListEmails = $('#table_otPadreListEmails').DataTable(emails.configTableEmail(data, [
+
+                {title: "Ot Padre", data: "k_id_ot_padre"},
+                {title: "Nombre Cliente", data: "n_nombre_cliente"},
+                {title: "Tipo", data: "orden_trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Estado OT Padre", data: "estado_orden_trabajo"},
+                {title: "Fecha Programación", data: "fecha_programacion"},
+                {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observación", data: "observacion"},
+                {title: "Opc", data: vista.getButtons},
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTableEmail: function (data, columns, onDraw) {
+            return {
+                initComplete: function () {
+                    $('#table_otPadreListEmails tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+                    var r = $('#table_otPadreListEmails tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#table_otPadreListEmails thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#table_otPadreListEmails').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                ordering: false,
+                columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
+                        defaultContent: "",
+                        // targets: -1,
+                        orderable: false,
+                    }],
+                order: [[7, 'desc']],
+                drawCallback: onDraw
+            }
+        },
+    };
+    emails.init();
 });
 

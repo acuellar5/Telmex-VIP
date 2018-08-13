@@ -214,7 +214,7 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->result();
     }
-    
+
     //Trae todas las ot hijas que se encuentren en la tabla cierre de una otp en especifico
     public function getOthOfOtpCierre($idOtp) {
         $query = $this->db->query("
@@ -229,20 +229,40 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
-  // eliminar de tabla ot padre, pasar id otp o array con ids otp
-  public function deleteById($otp){
-      $this->db->where_in('k_id_ot_padre', $otp);
-    $this->db->delete('ot_padre');
-    if ($this->db->affected_rows() > 0) {
-        return $this->db->affected_rows();
-    } else {
-        return 0;
+    // eliminar de tabla ot padre, pasar id otp o array con ids otp
+    public function deleteById($otp) {
+        $this->db->where_in('k_id_ot_padre', $otp);
+        $this->db->delete('ot_padre');
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
     }
-  }
-
-
-
-
-
+    
+    // tabla de lista de OTS Padre
+    public function getListOtsOtPadreEmail() {
+        $condicion = "";
+        if (Auth::user()->n_role_user == 'ingeniero') {
+            $usuario_session = Auth::user()->k_id_user;
+            $condicion = " AND otp.k_id_user = $usuario_session ";
+        }
+        $query = $this->db->query("
+                SELECT 
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
+                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                FROM ot_hija oth 
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
+                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                $condicion
+                GROUP BY nro_ot_onyx
+                HAVING cant_mails > 0
+                ORDER BY cant_mails DESC
+    	");
+        return $query->result();
+    }
 
 }
