@@ -172,6 +172,8 @@ class Templates extends CI_Controller {
     // Arma el pdf para mostrar el correo enviado
     public function generatePDF(){
       $data = $this->input->post('data');
+
+      // print_r("x".$data['servicio']."x");
       // header('Content-Type: text/plain');
       if ($data['clase'] == 'cierre_ko') {
         switch ($data['servicio']) {
@@ -196,7 +198,7 @@ class Templates extends CI_Controller {
                case 'MPLS Avanzado Extranet':
                  $template = $this->avanzado_extranet($data);
                  break;
-               case 'Backend MPLS':
+               case 'Backend MPLS ':
                  $template = $this->backend_mpls($data);
                  break;
                case 'MPLS Avanzado con Componente Datacenter Claro':
@@ -210,13 +212,7 @@ class Templates extends CI_Controller {
         $template = $this->correo_ko_15_dias($data);
 
       }
-
       echo json_encode($template);
-
-
-
- 
-
 
 
 
@@ -429,7 +425,11 @@ class Templates extends CI_Controller {
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
         $this->email->to($pt['mail_envio']); // change it to yours
         $this->email->cc($correos);
+        if ($flag) {
         $this->email->subject("Notificación de Servicio de la orden ". $pt['nro_ot_onyx'] . "-". $pt['id_orden_trabajo_hija'] );
+        }else{
+        $this->email->subject("Reporte de actualización de la orden ". $pt['nro_ot_onyx'] . "-". $pt['id_orden_trabajo_hija'] );
+        }
         $this->email->message($cuerpo);
         if($this->email->send())
           { echo "se envio";

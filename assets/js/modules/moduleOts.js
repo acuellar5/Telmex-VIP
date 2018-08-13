@@ -757,10 +757,10 @@ $(function () {
                         // limpiar el formulario...
                          $('#general').html("");
                         $('#k_id_estado_ot').html("");
-
                         $.each(registro,function(i,item){
                             $('#' + i).val(item);
                         }); 
+
 
                         $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
 
