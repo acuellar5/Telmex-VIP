@@ -41,7 +41,7 @@
 <!---------------------------------------- FIN MODAL DE ORDENES SELECCIONADAS PARA CIERRE-------------------------------------- -->
 
 <!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
-<div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">

@@ -491,13 +491,18 @@ $(function () {
 
             $('#table_oths_otp').on('click', 'a.ver-det', eventos.onClickShowModalDetEvent);
             // correccion scroll modal sobre modal
-            $('#modalOthDeOtp').on("hidden.bs.modal", function (e) {
-                if ($('.modal:visible').length) {
-                    $('body').addClass('modal-open');
-                }
-            });
-
+            $('#Modal_detalle').on("hidden.bs.modal", eventos.modal_sobre_modal);
+            $('#ModalHistorialLog').on("hidden.bs.modal", eventos.modal_sobre_modal);
         },
+
+
+        // funcion para correcion modal sobre modal
+        modal_sobre_modal: function(event){
+            if ($('.modal:visible').length) {
+                $('body').addClass('modal-open');
+            }
+        },
+
         onClickBtnCloseOtp: function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
