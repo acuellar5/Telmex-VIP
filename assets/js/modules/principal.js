@@ -126,7 +126,7 @@ $(function () {
                 ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-
+                ordering: true,
                 columnDefs: [{
                         // targets: -1,
                         // visible: false,
@@ -259,7 +259,7 @@ $(function () {
                 ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                ordering: false,
+                ordering: true,
                 columnDefs: [{
                         // targets: -1,
                         // visible: false,

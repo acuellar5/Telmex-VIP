@@ -214,7 +214,7 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->result();
     }
-
+    
     //Trae todas las ot hijas que se encuentren en la tabla cierre de una otp en especifico
     public function getOthOfOtpCierre($idOtp) {
         $query = $this->db->query("
@@ -229,18 +229,17 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
-    // eliminar de tabla ot padre, pasar id otp o array con ids otp
-    public function deleteById($otp) {
-        $this->db->where_in('k_id_ot_padre', $otp);
-        $this->db->delete('ot_padre');
-        if ($this->db->affected_rows() > 0) {
-            return $this->db->affected_rows();
-        } else {
-            return 0;
-        }
+  // eliminar de tabla ot padre, pasar id otp o array con ids otp
+  public function deleteById($otp){
+      $this->db->where_in('k_id_ot_padre', $otp);
+    $this->db->delete('ot_padre');
+    if ($this->db->affected_rows() > 0) {
+        return $this->db->affected_rows();
+    } else {
+        return 0;
     }
-    
-    // tabla de lista de OTS Padre
+  }
+
     public function getListOtsOtPadreEmail() {
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
@@ -261,8 +260,11 @@ class Dao_ot_padre_model extends CI_Model {
                 GROUP BY nro_ot_onyx
                 HAVING cant_mails > 0
                 ORDER BY cant_mails DESC
-    	");
+        ");
         return $query->result();
     }
+
+
+
 
 }

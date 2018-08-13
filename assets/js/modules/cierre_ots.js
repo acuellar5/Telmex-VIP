@@ -264,7 +264,6 @@ $(function () {
                                     swal('OK!', `Se eliminaron <b>${obj.del_otp}</b> OT Padre y<br> ${obj.del} OT hija de la plataforma.`, 'success'); 
                                     $('#mdl-cierre-cerrar').click();
                                     var seleccionadas = cierre.tables_cierre.rows( { selected: true } ).nodes();
-                                    // console.log(seleccionadas);
                                     $.each(seleccionadas, function(i, item) {
                                     	cierre.tables_cierre.row( item ).remove().draw();
                                     });
@@ -331,7 +330,6 @@ $(function () {
 
 
                                     var seleccionadas = cierre.tables_cierre.rows( { selected: true } ).nodes();
-                                    // console.log(seleccionadas);
                                     $.each(seleccionadas, function(i, item) {
                                         cierre.tables_cierre.row( item ).remove().draw();
                                     });
@@ -484,7 +482,6 @@ $(function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = listoth.table_oths_otp.row(trParent).data();
-//            console.log(record);
             $.post(baseurl + '/Log/getLogById',
                     {
                         id: record.id_orden_trabajo_hija

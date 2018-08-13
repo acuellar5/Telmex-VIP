@@ -4,7 +4,7 @@
     <li class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>
     <li class=""><a data-toggle="tab" href="#vencidas">Vencida</a></li>
     <li class=""><a data-toggle="tab" href="#por_lista">Por Lista</a></li>
-    <li class=""><a data-toggle="tab" href="#lista_email">Email Enviados</a></li>
+    <li class=""><a data-toggle="tab" href="#lista_email">Cant emails</a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -170,9 +170,9 @@
             </tfoot>
         </table>
     </div>
-    
+
     <div id="lista_email" class="tab-pane fade">
-        <h3>Emails Enviados</h3>
+        <h3>Por cantidad de emails enviados</h3>
         <table id="table_otPadreListEmails" class="table table-hover table-bordered table-striped dataTable_camilo">
             <tfoot>
                 <tr>
@@ -195,7 +195,7 @@
 </div>
 
 <!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
-<div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
+<div id="modalOthDeOtp" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
     <div class="modal-dialog modal-lg2" style="width: 1100px;">
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">

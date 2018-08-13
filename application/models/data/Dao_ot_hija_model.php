@@ -1071,7 +1071,7 @@ class Dao_ot_hija_model extends CI_Model {
         oth.ot_hija, oth.estado_orden_trabajo_hija, oth.fecha_creacion_ot_hija,
         oth.usuario_asignado4, oth.resolucion_15, oth.resolucion_26, oth.resolucion_37,
         oth.resolucion_48, oth.fec_actualizacion_onyx_hija, oth.tipo_trascurrido, 
-        oth.nro_ot_onyx, otp.k_id_ot_padre, oth.proveedor_ultima_milla
+        oth.nro_ot_onyx, otp.k_id_ot_padre, oth.proveedor_ultima_milla,oth.n_observacion_cierre
         FROM ot_hija oth
         INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
         INNER JOIN estado_ot e ON oth.k_id_estado_ot = e.k_id_estado_ot 
@@ -1274,16 +1274,16 @@ class Dao_ot_hija_model extends CI_Model {
     // OBTENER LAS OTH QUE LLEVEN CERRADAS MAS DE 8 DIAS 
     public function getListOtsEigtDay() {
         $query = $this->db->query("
-                SELECT otp.k_id_ot_padre, oth.nro_ot_onyx, oth.id_orden_trabajo_hija, oth.c_email , otp.n_nombre_cliente, otp.fecha_compromiso, otp.fecha_programacion, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.usuario_asignado AS ingeniero
+                SELECT  otp.k_id_ot_padre, oth.nro_ot_onyx, oth.id_orden_trabajo_hija, oth.c_email , otp.n_nombre_cliente, otp.fecha_compromiso, otp.fecha_programacion, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.usuario_asignado AS ingeniero
 
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
-                LEFT JOIN log_correo lc ON oth.id_orden_trabajo_hija = lc.id_orden_trabajo_hija 
+                LEFT JOIN log_correo lc ON oth.id_orden_trabajo_hija = lc.id_orden_trabajo_hija and lc.fecha != CURDATE()
                 WHERE 
                 (oth.k_id_estado_ot = 3 AND 
                 MOD(DATEDIFF(CURDATE(), fecha_mod), 7) = 0 AND 
-                CURDATE() <> oth.fecha_mod) 
-                AND (lc.fecha is null or lc.fecha != CURDATE())                
+                CURDATE() <> oth.fecha_mod ) AND
+                oth.last_send != CURDATE()
                 GROUP BY oth.id_orden_trabajo_hija
 
             ");

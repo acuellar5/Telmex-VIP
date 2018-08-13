@@ -259,7 +259,7 @@ class OtPadre extends CI_Controller {
         $listotps = $this->Dao_ot_padre_model->getOthOfOtpCierre($idOtp);
         echo json_encode($listotps);
     }
-    
+
     // TABLA QUE TRAE LA INFORMACION DE OTPADRE
     public function c_getListOtsOtPadreEmail() {
         $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreEmail();
