@@ -1,3 +1,5 @@
+// ===============================================WORK MANAGEMENT OTH===============================================
+
 $(function () {
 
     /**********************************************INICIO TOTAL*********************************************/
@@ -1856,7 +1858,7 @@ $(function () {
                     eventos.tableModalLogMail.destroy();
                 }
                 ///lleno la tabla con los valores enviados
-                eventos.tableModalLogMail = $('#table_log_mail').DataTable(total.configTableLog(data,[                                       
+                eventos.tableModalLogMail = $('#table_log_mail').DataTable(eventos.configTableLog(data,[                                       
                         {data: "fecha"},
                         {data: "clase"},
                         {data: "servicio"},
@@ -1867,6 +1869,26 @@ $(function () {
                     ]));
 
             },
+
+            configTableLog: function (data, columns, onDraw) {
+                return {
+                  data: data,
+                  columns: columns,
+                  "language": {
+                      "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                  },
+                  dom: 'Blfrtip',
+                    buttons: [
+                        {
+                            text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                            className: 'btn-cami_cool',
+                            extend: 'excel',
+                            title: 'ZOLID EXCEL',
+                            filename: 'zolid ' + fecha_actual
+                        },
+                    ],
+                   }
+                },
 
             //
             onClickVerLogMail: function(){

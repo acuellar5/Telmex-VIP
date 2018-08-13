@@ -11,6 +11,8 @@ $(function () {
         events: function () {
            $('#tablaEigtDaysOts').on('click', 'a.btn_email_ko15', vista.email_ko_15);
            $('#contenedor').on('click', 'a.email_send', vista.onClickVerLogTrChanges);
+           $('#ModalHistorialLog').on('click', 'button.ver-mail', vista.onClickVerLogMailReporte);
+
            $('.cerrar').on('click', vista.clear_form);
            $('#bnt_ko').on('click', vista.btn_enviar);
         },
@@ -270,7 +272,7 @@ $(function () {
                                 {data: "fecha"},
                                 {data: "clase"},
                                 {data: "servicio"},
-                                {data: "usuario_sesion"},
+                                {data: "usuario_en_sesion"},
                                 {data: "destinatarios"},
                                 {data: "nombre"},
                                 {data: vista.getButonsPrint}
@@ -290,27 +292,37 @@ $(function () {
                         }
                     },
 
-                    //
-                    // onClickVerLogMail: function(){
-                    //     var tr = $(this).parents('tr');
-                    //     var record = vista.tableModalLogMail.row(tr).data();
+                    
+                    onClickVerLogMailReporte: function(){
+                        var tr = $(this).parents('tr');
+                        var record = vista.tableModalLogMail.row(tr).data();
 
-                    //     vista.generarPDF(record);
-                    // },
+                        vista.generarPDF(record);
+                    },
 
-                    // // generar pdf redireccionar
-                    // generarPDF: function(data){
-                    //     $.post(baseurl + '/Templates/generatePDF', 
-                    //         {
-                    //             data: data
-                    //         }, 
-                    //         function(data) {
+                    // generar pdf redireccionar
+                    generarPDF: function(data){
+                        $.post(baseurl + '/Templates/generatePDF', 
+                            {
+                                data: data
+                            }, 
+                            function(data) {
+                            var plantilla = JSON.parse(data);
+                            $('body').append(
+                                    `
+                                        <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
+                                            <textarea name="txt_template" id="txt_template"></textarea>
+                                            <input type="submit" value="e" id="smt_ver_correo">
+                                        </form>
+                                    `
+                                );
+                            $('#txt_template').val(plantilla);
+                            $('#smt_ver_correo').click();
+
                            
-                    //     });
+                        });
 
-
-                    //     // window.open('http://ejemplo.com/archivo.pdf', '_blank');
-                    // },
+                    },
 
                     // creamos los botones para imprimir el correo enviado
                     getButonsPrint: function(obj){
@@ -474,27 +486,6 @@ $(function () {
 
             },
 
-            //
-            onClickVerLogMail: function(){
-                var tr = $(this).parents('tr');
-                var record = send.tableModalLogMail.row(tr).data();
-
-                send.generarPDF(record);
-            },
-
-            // generar pdf redireccionar
-            generarPDF: function(data){
-                $.post(baseurl + '/Templates/generatePDF', 
-                    {
-                        data: data
-                    }, 
-                    function(data) {
-                   
-                });
-
-
-                // window.open('http://ejemplo.com/archivo.pdf', '_blank');
-            },
 
             // creamos los botones para imprimir el correo enviado
             getButonsPrint: function(obj){

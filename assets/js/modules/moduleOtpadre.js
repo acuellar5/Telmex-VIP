@@ -40,7 +40,7 @@ $(function () {
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observación", data: "observacion"},
-                {title: "Opc", data: vista.getButtons},
+                {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },
         // Datos de configuracion del datatable
@@ -106,7 +106,7 @@ $(function () {
                 drawCallback: onDraw
             }
         },
-        getButtons: function (obj) {
+        getButtonsOTP: function (obj) {
             var span = '';
             var title = '';
             if (obj.cant_mails != 0) {
@@ -169,7 +169,7 @@ $(function () {
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observación", data: "observacion"},
-                {title: "Opciones", data: vista.getButtons},
+                {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
         // Datos de configuracion del datatable
@@ -279,7 +279,7 @@ $(function () {
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observación", data: "observacion"},
-                {title: "Opciones", data: vista.getButtons},
+                {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
         // Datos de configuracion del datatable
@@ -400,7 +400,7 @@ $(function () {
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observación", data: "observacion"},
-                {title: "Opciones", data: vista.getButtons},
+                {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
         // Datos de configuracion del datatable
@@ -486,7 +486,17 @@ $(function () {
             $('#contenido_tablas').on('click', 'a.close-otp', eventos.onClickBtnCloseOtp);
             $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
             $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
+
+            $('#ModalHistorialLog').on('click', 'button.ver-mail', eventos.onClickVerLogMailOTP);// ver detalles de correo btn impresora
+
             $('#table_oths_otp').on('click', 'a.ver-det', eventos.onClickShowModalDetEvent);
+            // correccion scroll modal sobre modal
+            $('#modalOthDeOtp').on("hidden.bs.modal", function (e) {
+                if ($('.modal:visible').length) {
+                    $('body').addClass('modal-open');
+                }
+            });
+
         },
         onClickBtnCloseOtp: function () {
             var aLinkLog = $(this);
@@ -505,6 +515,9 @@ $(function () {
                     break;
                 case 'table_list_opc':
                     record = lista.tableOpcList.row(trParent).data();
+                    break;
+                case 'table_otPadreListEmails':
+                    record = emails.table_otPadreListEmails.row(trParent).data();
                     break;
             }
 
@@ -735,14 +748,14 @@ $(function () {
                     },
                     function (data) {
                         var obj = JSON.parse(data);
-                        eventos.showModalHistorial(obj);
+                        eventos.showModalHistorial(obj, record.id_orden_trabajo_hija);
                     }
             );
         },
         // Muestra modal detalle historial log por id
-        showModalHistorial: function (obj) {
+        showModalHistorial: function (obj, id_orden_trabajo_hija) {
             $('#ModalHistorialLog').modal('show');
-            $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+            $('#titleEventHistory').html('Historial Cambios de orden ' + id_orden_trabajo_hija + '');
             eventos.printTableHistory(obj.log);
             eventos.printTableLogMail(obj.mail);
         },
@@ -775,7 +788,7 @@ $(function () {
                 {data: "fecha"},
                 {data: "clase"},
                 {data: "servicio"},
-                {data: "usuario_sesion"},
+                {data: "usuario_en_sesion"},
                 {data: "destinatarios"},
                 {data: "nombre"},
                 {data: eventos.getButonsPrint}
@@ -788,6 +801,39 @@ $(function () {
             return button;
 
         },
+
+
+        onClickVerLogMailOTP: function(){
+            var tr = $(this).parents('tr');
+            var record = eventos.tableModalLogMail.row(tr).data();
+
+            eventos.generarPDF(record);
+        },
+
+        // generar pdf redireccionar
+        generarPDF: function(data){
+            $.post(baseurl + '/Templates/generatePDF', 
+                {
+                    data: data
+                }, 
+                function(data) {
+                var plantilla = JSON.parse(data);
+                $('body').append(
+                        `
+                            <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
+                                <textarea name="txt_template" id="txt_template"></textarea>
+                                <input type="submit" value="e" id="smt_ver_correo">
+                            </form>
+                        `
+                    );
+                $('#txt_template').val(plantilla);
+                $('#smt_ver_correo').click();
+
+               
+            });
+
+        },
+
         onClickShowModalDetEvent: function () {
             document.getElementById("formModal_detalle").reset();
             $('#title_modal').html('');
@@ -843,6 +889,9 @@ $(function () {
                     break;
                 case 'table_list_opc':
                     record = lista.tableOpcList.row(trParent).data();
+                    break;
+                case 'table_otPadreListEmails':
+                    record = emails.table_otPadreListEmails.row(trParent).data();
                     break;
             }
             listoth.showModalOthDeOthp(record);
@@ -930,10 +979,117 @@ $(function () {
         }
     };
     listoth.init();
+
+    //*********************************** lista las  ot padres con emails enviados
+    emails = {
+        init: function () {
+            emails.events();
+            emails.getListOtsOtPadreEmail();
+
+        },
+        //Eventos de la ventana.
+        events: function () {
+
+        },
+        getListOtsOtPadreEmail: function () {
+            //metodo ajax (post)
+            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreEmail',
+                    {
+                        //parametros
+
+                    },
+                    // funcion que recibe los datos 
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                emails.printTableEmail(obj);
+                            }
+                    );
+                },
+        printTableEmail: function (data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            emails.table_otPadreListEmails = $('#table_otPadreListEmails').DataTable(emails.configTableEmail(data, [
+
+                {title: "Ot Padre", data: "k_id_ot_padre"},
+                {title: "Nombre Cliente", data: "n_nombre_cliente"},
+                {title: "Tipo", data: "orden_trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Estado OT Padre", data: "estado_orden_trabajo"},
+                {title: "Fecha Programación", data: "fecha_programacion"},
+                {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observación", data: "observacion"},
+                {title: "Opc", data: vista.getButtonsOTP},
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTableEmail: function (data, columns, onDraw) {
+            return {
+                initComplete: function () {
+                    $('#table_otPadreListEmails tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+                    var r = $('#table_otPadreListEmails tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#table_otPadreListEmails thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#table_otPadreListEmails').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                ordering: true,
+                columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
+                        defaultContent: "",
+                        // targets: -1,
+                        orderable: false,
+                    }],
+                order: [[11, 'desc']],
+                drawCallback: onDraw
+            }
+        }
+    };
+    emails.init();
+
 });
 
-$('#modalOthDeOtp').on("hidden.bs.modal", function (e) {
-    if ($('.modal:visible').length) {
-        $('body').addClass('modal-open');
-    }
-});
+
