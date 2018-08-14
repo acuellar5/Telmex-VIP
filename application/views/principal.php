@@ -1,4 +1,10 @@
 <?php if (Auth::user()->n_project == 'Gestion') { ?>
+    <div class="cssparaeldiv">
+        <div class="alert alert-warning alert-dismissible col-md-8 col-sm-12" align="center">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> La información mostrada en este modulo no incluye las ordenes que se encuentren en estado. Cerrada, Cancelada o Terminada <span class="fa fa-exclamation-triangle"></span>
+        </div>
+    </div>
     <h1 id="como_vamos">¿Cómo vamos?</h1>
     <h2 align="center"> Grafica actividades en proceso </h2>
 

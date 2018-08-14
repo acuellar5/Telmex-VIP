@@ -14,10 +14,10 @@ $(function () {
             $('#search_0').css('text-align', 'center');
 
             // DataTable
-            var table = $('#detalles_oth').DataTable();
+             tableDetalle = $('#detalles_oth').DataTable();
 
             // Apply the search
-            table.columns().every(function () {
+            tableDetalle.columns().every(function () {
                 var that = this;
 
                 $('input', this.footer()).on('keyup change', function () {
@@ -212,6 +212,131 @@ $('.button_observaciones').on('click', function () {
 
         }
 
-    })
+    });
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
+/************************************************************************LOG************************************************************************/
+     $('.ver-log').on('click', onClickVerLogTrChanges);
+
+     function onClickVerLogTrChanges(e){
+        var tr = tableDetalle.row($(this).parents('tr')).data();
+
+        getLogById(tr);
+     }
+
+     function  getLogById(obj){
+        $.post( baseurl + '/Log/getLogById',
+            {
+                id: obj[0]
+            },
+            function(data) {
+            var obj = JSON.parse(data);
+            showModalHistorial(obj);
+            }
+        );
+     }
+    // Muestra modal detalle historial log por id
+    function showModalHistorial(obj){
+        $('#ModalHistorialLog').modal('show');
+        // $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+        printTableHistory(obj.log);
+        printTableLogMail(obj.mail);
+    }
+    function printTableHistory(data){
+        // limpio el cache si ya habia pintado otra tabla
+    if(typeof tableModalHistory != 'undefined'){
+            //si ya estaba inicializada la tabla la destruyo
+        tableModalHistory.destroy();
+    }
+        //lleno la tabla con los valores enviados
+        tableModalHistory = $('#tableHistorialLog').DataTable(configTableLog(data,[
+                {data: "id_ot_hija"},
+                {data: "antes"},
+                {data: "ahora"},
+                {data: "columna"},
+                {data: "fecha_mod"}
+            ]));
+    }
+    //pintamos la tabla de log de correos
+    function printTableLogMail(data){
+    // limpio el cache si ya habia pintado otra tabla
+    if(typeof tableModalLogMail != 'undefined'){
+        //si ya estaba inicializada la tabla la destruyo
+        tableModalLogMail.destroy();
+    }
+    //lleno la tabla con los valores enviados
+        tableModalLogMail = $('#table_log_mail').DataTable(configTableLog(data,[
+                {data: "fecha"},
+                {data: "clase"},
+                {data: "servicio"},
+                {data: "usuario_en_sesion"},
+                {data: "destinatarios"},
+                {data: "nombre"},
+                {data: getButonsPrint}
+            ]));
+
+        }
+    function configTableLog(data, columns, onDraw) {
+        return {
+          data: data,
+          columns: columns,
+          "language": {
+              "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+          },
+
+
+            }
+        }
+
+
+        function onClickVerLogMailReporte(){
+            var tr = $(this).parents('tr');
+            var record = tableModalLogMail.row(tr).data();
+
+            generarPDF(record);
+        }
+
+        // generar pdf redireccionar
+        function generarPDF(data){
+            $.post(baseurl + '/Templates/generatePDF',
+                {
+                    data: data
+                },
+                function(data) {
+                var plantilla = JSON.parse(data);
+                $('body').append(
+                        `
+                            <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
+                                <textarea name="txt_template" id="txt_template"></textarea>
+                                <input type="submit" value="e" id="smt_ver_correo">
+                            </form>
+                        `
+                    );
+                $('#txt_template').val(plantilla);
+                $('#smt_ver_correo').click();
+
+
+            });
+
+        }
+
+        // creamos los botones para imprimir el correo enviado
+        function getButonsPrint(obj){
+            // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
+
+            var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
+            return button;
+
+        }

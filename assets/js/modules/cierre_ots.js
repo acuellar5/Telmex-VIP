@@ -11,7 +11,10 @@ $(function () {
         	$('#table_selected').on('click', 'img.quitar_fila', cierre.quitarFila);
             $('#mdl_cierre').on('click', 'button#mdl-cierre-eliminar', cierre.eliminarRegistros);
         	$('#mdl_cierre').on('click', 'button#mdl-cierre-facturacion', cierre.enviarFacturacion);
+            // correccion scroll modal sobre modal
+            
         },
+
 
         // trae las ot 
         list_ot: function () {
@@ -379,7 +382,18 @@ $(function () {
             $('#tables_cierre').on('click', 'a.btnoths', listoth.onClickShowModalCloseOts);
             $('#table_oths_otp').on('click', 'a.ver-det', listoth.onClickShowModalDetCierre);
             $('#table_oths_otp').on('click', 'a.ver-log', listoth.onClickShowEmailOthCierre);
+            // correccion scroll modal sobre modal
+            $('#ModalHistorialLog').on("hidden.bs.modal", listoth.modal_sobre_modal);
+            $('#Modal_detalle').on("hidden.bs.modal", listoth.modal_sobre_modal);
         },
+        // funcion para correcion modal sobre modal
+        modal_sobre_modal: function(event){
+            if ($('.modal:visible').length) {
+                $('body').addClass('modal-open');
+            }
+        },
+
+
         getOthOfOtpCierre: function (obj) {
             //metodo ajax (post)
             $.post(baseurl + '/OtPadre/c_getOthOfOtpCierre',

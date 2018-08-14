@@ -24,5 +24,12 @@ class Facturacion_ots extends CI_Controller {
         $data = $this->Dao_facturacion_ots_model->getOtpFacturacion();
         echo json_encode($data);
     }
+    
+    public function c_searchOtpByDate() {
+        $fdesde = $this->input->post('fdesde');
+        $fhasta = $this->input->post('fhasta');
+        $data = $this->Dao_facturacion_ots_model->searchOtpByDate($fdesde, $fhasta);
+        echo json_encode($data);
+    }
 
 }

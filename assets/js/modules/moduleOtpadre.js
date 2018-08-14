@@ -17,7 +17,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -173,7 +173,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -283,7 +283,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -394,7 +394,7 @@ $(function () {
                         opcion: opcion
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -518,13 +518,18 @@ $(function () {
 
             $('#table_oths_otp').on('click', 'a.ver-det', eventos.onClickShowModalDetEvent);
             // correccion scroll modal sobre modal
-            $('#modalOthDeOtp').on("hidden.bs.modal", function (e) {
-                if ($('.modal:visible').length) {
-                    $('body').addClass('modal-open');
-                }
-            });
-
+            $('#Modal_detalle').on("hidden.bs.modal", eventos.modal_sobre_modal);
+            $('#ModalHistorialLog').on("hidden.bs.modal", eventos.modal_sobre_modal);
         },
+
+
+        // funcion para correcion modal sobre modal
+        modal_sobre_modal: function(event){
+            if ($('.modal:visible').length) {
+                $('body').addClass('modal-open');
+            }
+        },
+
         onClickBtnCloseOtp: function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
@@ -839,10 +844,10 @@ $(function () {
 
         // generar pdf redireccionar
         generarPDF: function(data){
-            $.post(baseurl + '/Templates/generatePDF', 
+            $.post(baseurl + '/Templates/generatePDF',
                 {
                     data: data
-                }, 
+                },
                 function(data) {
                 var plantilla = JSON.parse(data);
                 $('body').append(
@@ -856,7 +861,7 @@ $(function () {
                 $('#txt_template').val(plantilla);
                 $('#smt_ver_correo').click();
 
-               
+
             });
 
         },
@@ -877,7 +882,7 @@ $(function () {
                     function (data) {
                        $.each(data, function (i, item) {
                             $('#mdl_' + i).val(item);
-                        }); 
+                        });
                     });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
@@ -891,7 +896,7 @@ $(function () {
 
         init: function () {
             listoth.events();
-            //listoth.getothofothp();  
+            //listoth.getothofothp();
         },
         //Eventos de la ventana.
         events: function () {
@@ -930,7 +935,7 @@ $(function () {
                     {
                         idOtp: obj.k_id_ot_padre
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -951,7 +956,7 @@ $(function () {
 
         //pintar tabla
         printTable: function (data) {
-            //funcion para limpiar el modal 
+            //funcion para limpiar el modal
             if (listoth.table_oths_otp) {
                 var tabla = listoth.table_oths_otp;
                 tabla.clear().draw();
@@ -969,7 +974,7 @@ $(function () {
                 {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programacion", data: "fecha_programacion"},
-                {title: "Opc", data: listoth.getButtonsOth}, 
+                {title: "Opc", data: listoth.getButtonsOth},
             ]));
         },
         // Datos de configuracion del datatable
@@ -978,7 +983,7 @@ $(function () {
                 data: data,
                 columns: columns,
                 //lenguaje del plugin
-                /*"language": { 
+                /*"language": {
                  "url": baseurl + "assets/plugins/datatables/lang/es.json"
                  },*/
                 columnDefs: [{
@@ -1025,7 +1030,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -1118,5 +1123,3 @@ $(function () {
     emails.init();
 
 });
-
-
