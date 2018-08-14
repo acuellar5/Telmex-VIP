@@ -1,23 +1,70 @@
-<h3>OTS En Facturación</h3>
-<table id="tables_billing" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
-    <tfoot>
-    <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-    </tfoot>
-</table>
+<!--*********************  MODULO PESTAÑAS  *********************-->
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#EnFacturacion">En Facturación</a></li>
+    <li class=""><a data-toggle="tab" href="#FiltroFechas">Filtro Fechas</a></li>
+</ul>
 
+<!--*********************  CONTENIDO PESTAÑAS  *********************-->
+<div class="tab-content" id="contenido_tablas">
+    <div id="EnFacturacion" class="tab-pane fade in active">
+        <h3>OTS En Facturación</h3>
+        <table id="tables_billing" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="FiltroFechas" class="tab-pane fade">
+        <h3>Filtro Por Fechas</h3>
+        <div align="center">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="fdesde">Desde:</label>
+                    <input type="date" class="form-control" id="fdesde">
+                </div>
+                <div class="form-group">
+                    <label for="fhasta">Hasta:</label>
+                    <input type="date" class="form-control" id="fhasta">
+                </div>
+                <br><br>
+            </form>
+            <button class="btn btn-success" id="btnBuscar">Buscar</button>
+            <br><br>
+        </div>
+        <table id="tables_filter" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 <!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
 <div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
     <div class="modal-dialog modal-lg2" style="width: 1100px;">
@@ -673,40 +720,40 @@
                         <li class="active"><a data-toggle="tab" href="#tab_log">Historial Log</a></li>
                         <li class=""><a data-toggle="tab" href="#tab_log_mail">Historial Mail</a></li>
                     </ul>
-                    
+
                     <!--*********************  CONTENIDO PESTAÑAS  *********************-->
                     <div class="tab-content">
-                    
+
                         <div id="tab_log" class="tab-pane fade in active">
                             <h3>Tabla Log</h3>
                             <table id="tableHistorialLog" class='table table-bordered table-striped  col-sm-12'  width='100%'>
                                 <thead>
-                                    <th>ORDEN</th>
-                                    <th>ANTES</th>
-                                    <th>AHORA</th>
-                                    <th>COLUMNA CAMBIADA</th>
-                                    <th>FECHA MODIFICACION</th>
+                                <th>ORDEN</th>
+                                <th>ANTES</th>
+                                <th>AHORA</th>
+                                <th>COLUMNA CAMBIADA</th>
+                                <th>FECHA MODIFICACION</th>
                                 </thead>
                             </table>
-                            
+
                         </div>
-                    
+
                         <div id="tab_log_mail" class="tab-pane fade">
                             <h3>Historial Mail</h3>
                             <table id="table_log_mail" class='table table-bordered table-striped' width='100%'>
                                 <thead>
-                                    <th>FECHA</th>
-                                    <th>CLASE</th>
-                                    <th>SERVICIO</th>
-                                    <th>ENVIADO POR</th>
-                                    <th>DESTINATARIOS</th>
-                                    <th>DIRIGIDO A</th>
-                                    <th>opc</th>
+                                <th>FECHA</th>
+                                <th>CLASE</th>
+                                <th>SERVICIO</th>
+                                <th>ENVIADO POR</th>
+                                <th>DESTINATARIOS</th>
+                                <th>DIRIGIDO A</th>
+                                <th>opc</th>
                                 </thead>
                             </table>
                         </div>
-                    
-                    
+
+
                     </div>
                 </div>
             </div>

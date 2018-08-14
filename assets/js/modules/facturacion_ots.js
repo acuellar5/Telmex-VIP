@@ -279,4 +279,132 @@ $(function () {
         },
     };
     billing.init();
+    
+    filter = {
+        init: function () {
+            filter.events();
+            filter.listOtpFilter();
+        },
+
+        //Eventos de la ventana.
+        events: function () {
+            $('#tables_filter').on('click', 'a.btnoths', billing.onClickShowModalOthFacturacion);
+            $('#btnBuscar').on('click', filter.searchOtpByDate);
+        },
+
+        // trae las ot padres que esten en estado facturacion 
+        listOtpFilter: function () {
+            $.post(baseurl + '/Facturacion_ots/c_getOtpFacturacion',
+                    {
+                        // idTipo: null // parametros que se envian
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        filter.printTableFilter(obj);
+                    });
+        },
+        searchOtpByDate: function () {
+            $.post(baseurl + '/Facturacion_ots/c_searchOtpByDate',
+                    {
+                         fdesde: $("#fdesde").val(), // parametros que se envian
+                         fhasta: $("#fhasta").val() // parametros que se envian
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        filter.printTableFilter(obj);
+                    });
+        },
+
+        printTableFilter: function (data) {
+            if (filter.tables_filter) {
+                var tabla = filter.tables_filter;
+                tabla.clear().draw();
+                tabla.rows.add(data);
+                tabla.columns.adjust().draw();
+                return;
+            }
+            
+            ///lleno la tabla con los valores enviados
+            filter.tables_filter = $('#tables_filter').DataTable(filter.configTableFilter(data, [
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "OTP", data: "k_id_ot_padre"},
+                {title: "Cliente", data: "n_nombre_cliente"},
+                {title: "Tipo", data: "orden_trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Estado OTP", data: "estado_orden_trabajo"},
+                {title: "program", data: "fecha_programacion"},
+                {title: "comprom", data: "fecha_compromiso"},
+                {title: "creación", data: "fecha_creacion"},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observación", data: "observacion"},
+                {title: "Opc", data: billing.getButtonsFacturacion},
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTableFilter: function (data, columns, onDraw) {
+            return {
+                initComplete: function () {
+                    $('#tables_filter  tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+
+                    var r = $('#tables_filter tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tables_filter thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tables_filter').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json",
+                },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                select: true,
+
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+                columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
+                        defaultContent: "",
+                        // targets: -1,
+                        orderable: false,
+                    }],
+//                order: [[7, 'desc']],
+                drawCallback: onDraw
+            }
+        }
+    };
+    filter.init();
 });
