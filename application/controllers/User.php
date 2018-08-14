@@ -69,8 +69,20 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-
           $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
+
+          // $data['grafics']['total'] = [];
+          // $data['grafics']['tipo']  = [];
+          // $data['grafics']['in']    = [];
+          // $data['grafics']['out']   = [];
+
+          // foreach ($data['registros'] as $key => $value) {
+          //   array_push($data['grafics']['total'], $value->count);
+          //   array_push($data['grafics']['tipo'], $value->n_name_tipo);
+          //   array_push($data['grafics']['in'], $value->en_tiempo);
+          //   array_push($data['grafics']['out'], $value->fuera_tiempo);      
+          // }
+
           $data['title'] = 'Home';
           $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
           $this->load->view('parts/headerF', $data);

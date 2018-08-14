@@ -1296,12 +1296,12 @@ class Dao_ot_hija_model extends CI_Model {
 
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
-                LEFT JOIN log_correo lc ON oth.id_orden_trabajo_hija = lc.id_orden_trabajo_hija 
+                LEFT JOIN log_correo lc ON oth.id_orden_trabajo_hija = lc.id_orden_trabajo_hija and lc.fecha != CURDATE()
                 WHERE 
                 (oth.k_id_estado_ot = 3 AND 
                 MOD(DATEDIFF(CURDATE(), fecha_mod), 7) = 0 AND 
-                CURDATE() <> oth.fecha_mod) 
-                AND (lc.fecha IS NOT NULL AND lc.fecha = CURDATE())  
+                CURDATE() <> oth.fecha_mod ) AND
+                oth.last_send = CURDATE()
                 GROUP BY oth.id_orden_trabajo_hija
 
             ");

@@ -142,6 +142,10 @@ $(function () {
             var seleccionadas = cierre.tables_cierre.rows({selected: true}).data();// los datos de los elem seleccionados
             if (hay_sel) {
                 cierre.modalSeleccionadas(seleccionadas);
+
+                var cuantas = cierre.tables_cierre.rows( { selected: true } ).count();
+                $('#mdl-title-cierre').html(`<b>${cuantas}</b> ORDENES SELECCIONADAS`);
+
                 $('#mdl_cierre').modal('show');
 
             } else {
@@ -221,6 +225,9 @@ $(function () {
         // elimina la fila 
         quitarFila: function (e) {
             cierre.table_selected.row($(this).parents('tr')).remove().draw();// remover de la tabla modal
+            var cuantas = cierre.table_selected.rows().count();
+            $('#mdl-title-cierre').html(`<b>${cuantas}</b> ORDENES SELECCIONADAS`);
+
         },
 
         // Eliminar todos los registros

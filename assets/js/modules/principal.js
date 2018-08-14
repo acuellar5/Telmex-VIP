@@ -462,6 +462,166 @@ $(function () {
     };
     todo.init();
     /************************************************FIN TODO************************************************/
+
+    //==================================================================================================================
+    /************************************************INICIO GRAFICAS OTH************************************************/
+    //==================================================================================================================
+    graficas = {
+        init: function () {
+            graficas.events();
+            graficas.printGrafics(ladoA, 'grafica_a');
+            graficas.printGrafics(ladoB, 'grafica_b');
+            
+        },
+
+        //Eventos de la ventana.
+        events: function () {
+            
+        },
+
+        //funcion para pintar las graficas
+        printGrafics: function(params, div){
+
+            console.log(params.total);
+
+            var g_tipos = $(`#${div}`);
+            // definicion de algunos atributos de css
+            // Chart.defaults.global.defaultFontFamily = "Lato";
+            Chart.defaults.global.defaultFontSize = 11;
+            Chart.defaults.global.defaultFontColor = '#000';
+            var myChart = new Chart(g_tipos, {
+                type: 'horizontalBar',
+                data: {
+                    labels: params.tipo, //horizontal
+                    datasets: [
+                        // {
+                        //     //Total
+                        //     label: 'Total',
+                        //     fill: true,
+                        //     lineTension: 0.4,
+                        //     backgroundColor: "rgba(125, 125, 125, 0.1)",
+                        //     borderColor: "rgba(125, 125, 125, 1)",
+                        //     borderCapStyle: 'butt',
+                        //     borderDash: [],
+                        //     borderDashOffset: 0.0,
+                        //     borderJoinStyle: 'miter',
+                        //     pointBorderColor: "rgba(125, 125, 125, 1)",
+                        //     pointBackgroundColor: "#fff",
+                        //     pointBorderWidth: 8,
+                        //     pointHoverRadius: 5,
+                        //     pointHoverBackgroundColor: "rgba(125, 125, 125, 1)",
+                        //     pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                        //     pointHoverBorderWidth: 5,
+                        //     pointRadius: 1,
+                        //     pointHitRadius: 10,
+                        //     data: params.total, //vertical
+                        //     // type: 'line',
+                        //     spanGaps: false,
+                        //     borderWidth: 2,
+                        // },
+                        {
+                            //Fuera de Tiempos
+                            label: 'Fuera de Tiempos',
+                            fill: true,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(255, 0, 0, 0.2)",
+                            borderColor: "rgba(255, 0, 0, 1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(255, 0, 0, 1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 8,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(255, 0, 0, 1)",
+                            pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                            pointHoverBorderWidth: 5,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: params.out, //vertical
+                            spanGaps: false,
+                            borderWidth: 2,
+                        },
+                        {
+                            //en tiempos
+                            label: 'en tiempos',
+                            fill: true,
+                            lineTension: 0.1,
+                            backgroundColor: "rgba(0, 255, 0, 0.8)",
+                            borderColor: "rgba(0, 255, 0, 1)",
+                            borderCapStyle: 'butt',
+                            borderDash: [],
+                            borderDashOffset: 0.0,
+                            borderJoinStyle: 'miter',
+                            pointBorderColor: "rgba(0, 255, 0, 1)",
+                            pointBackgroundColor: "#fff",
+                            pointBorderWidth: 8,
+                            pointHoverRadius: 5,
+                            pointHoverBackgroundColor: "rgba(0, 255, 0, 1)",
+                            pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                            pointHoverBorderWidth: 5,
+                            pointRadius: 1,
+                            pointHitRadius: 10,
+                            data: params.in, //vertical
+                            spanGaps: false,
+                            borderWidth: 2,
+                        }
+                    ]
+                },
+                options: {
+                    // onClick: vista.clickEventGrafics,
+                    title: {
+                    display: true,
+                    text: 'Cantidad OTP Ingeniero'
+                  },
+
+                    scales: {
+                       xAxes: [{
+                              gridLines: {
+                                display: false,
+                                color: '#ccc'
+                              },
+                            display: true,
+                            // stacked: true,
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'CANTIDAD DE ORDENES'
+                            },
+
+
+                            ticks: {
+                                min: 0.5 // Edit the value according to what you need
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                // display: false,
+                                color: '#ccc'
+                              },
+                            display: true,
+                            stacked: false,
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'NOMBRE TIPO'
+                            },
+                            ticks: {
+                              // beginAtZero: true,
+                            }
+                        }]
+                    }
+                }
+            });
+        },
+    };
+    graficas.init();
+    
+
+
+
+
+
+
 });
 
 //**********************************************JHON*********************

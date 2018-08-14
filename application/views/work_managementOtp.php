@@ -1,4 +1,4 @@
-<!--*********************  MODULO PESTAÑAS  *********************-->
+  <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#total">Total</a></li>
     <li class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>

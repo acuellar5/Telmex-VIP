@@ -21,8 +21,10 @@ class Log extends CI_Controller {
 
 	//
 	public function view_email(){
-		$fun = $this->input->post('txt_template');
-		print_r($fun);
+		$fun['cuerpo'] = $this->input->post('txt_template');
+
+		$this->load->view('print_mail', $fun);
+		// print_r($fun);
 	}
 
 }		

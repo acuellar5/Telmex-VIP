@@ -34,6 +34,11 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
 <?php endif ?>
+
+<?php if ($this->uri->segment(1) == 'managementOtp'): ?>
+<!-- ************************************** WORK MANAGEMENT OTP CSS ********************************************* -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/tooltip.css") ?>">
+<?php endif ?>
             
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
 
