@@ -1,7 +1,10 @@
 <?php if (Auth::user()->n_project == 'Gestion') { ?>
-    <!--        <div>
-                <script type='text/javascript' src='http://181.49.46.6/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 619px;'><object class='tableauViz' width='100%' height='619' style='display:none;'><param name='host_url' value='http%3A%2F%2F181.49.46.6%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TVIPInstalaciones&#47;EstadodeOTs' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
-            </div>-->
+    <div class="cssparaeldiv">
+        <div class="alert alert-warning alert-dismissible col-md-8 col-sm-12" align="center">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span class="fa fa-exclamation-triangle"> </span> <strong> Importante! </strong> La información mostrada en este modulo no incluye las ordenes que se encuentren en estado. Cerrada, Cancelada o Terminada <span class="fa fa-exclamation-triangle"></span>
+        </div>
+    </div>
     <h1 id="como_vamos">¿Cómo vamos?</h1>
     <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 1</div>
     <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 2</div>

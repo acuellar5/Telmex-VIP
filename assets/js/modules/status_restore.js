@@ -19,7 +19,7 @@ function fillModalNewType(estados_existentes, name, nameStatus) {
         estados.push(estado.n_name_estado_ot);
         $('#mdl_tbl_new_type').append('<tr>'
                                             + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.n_name_estado_ot + '" readonly></td>'
-                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control "></td>'
+                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control jsStatusPlus"></td>'
                                         + '</tr>'
                 );
         flag++;
@@ -29,7 +29,7 @@ function fillModalNewType(estados_existentes, name, nameStatus) {
         if (jQuery.inArray( estado.estado_orden_trabajo_hija, estados) === -1) {
             $('#mdl_tbl_new_type').append('<tr>'
                                             + '<td><input type="text" name="name_status[]" id="estado_' + flag + '" class="form-control" value="' + estado.estado_orden_trabajo_hija + '" readonly></td>'
-                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control "></td>'
+                                            + '<td><input type="number" name="jerarquia[]" id="exist' + i + '" class="form-control jsStatusPlus"></td>'
                                         + '</tr>'
                 );
             flag++;

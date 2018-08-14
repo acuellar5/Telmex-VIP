@@ -836,11 +836,11 @@ class Dao_ot_hija_model extends CI_Model {
     public function cant_new_status() {
         $query = $this->db->query("
             SELECT 
-            COUNT(DISTINCT(CONCAT(ot_hija, estado_orden_trabajo_hija))) AS cant 
+            COUNT(DISTINCT(ot_hija)) AS cant 
             FROM 
             ot_hija 
             WHERE 
-            k_id_estado_ot is NULL 
+            k_id_estado_ot is NULL
         ");
 
         return $query->row()->cant;
