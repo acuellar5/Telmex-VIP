@@ -44,6 +44,7 @@
 <?php if ($this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User'): ?>
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
+    <script src="<?= URL::to('assets/plugins/charjs/chart.min.js'); ?>"></script>
     <script src="<?= URL::to('assets/js/modules/principal.js?v='. validarEnProduccion()) ?>"></script>
 <?php endif ?>
 <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
@@ -60,7 +61,7 @@
     <script src="<?= URL::to('assets/js/modules/status_restore.js?v='. validarEnProduccion()) ?>"></script>
 <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser'): ?>
+<?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser' || $this->uri->segment(2)): ?>
 <!-- ***********************************JS PARA ACORDEON OT PADRE*****************************************-->
     <script src="<?= URL::to('assets/plugins/charjs/chart.min.js'); ?>"></script>
     <script src="<?= URL::to('assets/js/modules/acordeon_otp.js?v='. validarEnProduccion()) ?>"></script>

@@ -6,8 +6,19 @@
         </div>
     </div>
     <h1 id="como_vamos">¿Cómo vamos?</h1>
-    <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 1</div>
-    <div class="col col-md-6" style="height: 300px; border: 1px solid;">Grafica 2</div>
+    <h2 align="center"> Grafica actividades en proceso </h2>
+
+
+
+    <div class="col col-md-6" style="height: 520px; border: 1px solid #ccc;">
+        <canvas id="grafica_a" width="100%" height="100%"></canvas>
+    </div>
+    <div class="col col-md-6" style="height: 520px; border: 1px solid #ccc;">
+        <canvas id="grafica_b" width="100%" height="100%"></canvas>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="col col-md-12">
         <h2 id="Tareas_progreso">Resumen Tareas en Progreso</h2>
         <table class="table table-bordered dataTable_camilo" id="tabla_resumen">
@@ -25,6 +36,17 @@
             </thead>
             <tbody>
                 <?php
+                // variables para graficas
+                $ladoA['total'] = [];
+                $ladoA['tipo'] = [];
+                $ladoA['in'] = [];
+                $ladoA['out'] = [];
+
+                $ladoB['total'] = [];
+                $ladoB['tipo'] = [];
+                $ladoB['in'] = [];
+                $ladoB['out'] = [];
+
                 $total = count($registros);
                 $mitad = ($total / 2);
                 for ($i = 0; $i < $total; $i = $i + 2) {
@@ -34,12 +56,24 @@
                     echo " <td>" . $registros[$i]->count . "</td>";
                     echo " <td><a onclick='showModalDetResInTimes(" . $registros[$i]->k_id_tipo . ");'>" . $terna . "</a></td>";
                     echo " <td><a onclick='showModalDetResOutTime(" . $registros[$i]->k_id_tipo . ");'>" . $registros[$i]->fuera_tiempo . "</a></td>";
+
+                        array_push($ladoA['total'], $registros[$i]->count);
+                        array_push($ladoA['tipo'], $registros[$i]->n_name_tipo);
+                        array_push($ladoA['in'], $terna);
+                        array_push($ladoA['out'], $registros[$i]->fuera_tiempo);
+
                     if (isset($registros[$i + 1])) {
                         $terna1 = ($registros[$i + 1]->en_tiempo == 0 && $registros[$i + 1]->fuera_tiempo == 0) ? $registros[$i + 1]->count : $registros[$i + 1]->en_tiempo;
                         echo " <td><b>" . $registros[$i + 1]->n_name_tipo . "</b></td>";
                         echo " <td>" . $registros[$i + 1]->count . "</td>";
                         echo " <td><a onclick='showModalDetResInTimes(" . $registros[$i + 1]->k_id_tipo . ");'>" . $terna1 . "</a></td>";
                         echo " <td><a onclick='showModalDetResOutTime(" . $registros[$i + 1]->k_id_tipo . ");'>" . $registros[$i + 1]->fuera_tiempo . "</a></td>";
+
+                        array_push($ladoB['total'], $registros[$i + 1]->count);
+                        array_push($ladoB['tipo'], $registros[$i + 1]->n_name_tipo);
+                        array_push($ladoB['in'], $terna1);
+                        array_push($ladoB['out'], $registros[$i + 1]->fuera_tiempo);
+
                     }
                     echo "</tr>";
                 }
@@ -816,3 +850,10 @@ if (Auth::user()->n_project == 'Implementacion') {
         </div>
     </div> 
 </div>
+
+<script>
+    var objA = new Array('<?php echo json_encode($ladoA) ?>');
+    var ladoA = JSON.parse(objA);
+    var objB = new Array('<?php echo json_encode($ladoB) ?>');
+    var ladoB = JSON.parse(objB);
+</script>

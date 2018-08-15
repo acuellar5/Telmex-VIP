@@ -17,7 +17,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -39,7 +39,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observación", data: "observacion"},
+                {title: "Observaciónes_dejadas", data: vista.getObservacionTotal},
                 {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },
@@ -106,6 +106,33 @@ $(function () {
                 drawCallback: onDraw
             }
         },
+
+        // observacion con funcion de mostrar mas
+        getObservacionTotal: function(obj){
+
+            if (typeof obj.observacion == 'string') {
+                var array_cadena = obj.observacion.split(" ");
+                var cadena = "";
+                    console.log("array_cadena.length", array_cadena.length);
+                if (array_cadena.length > 10) {
+                    
+                    for (var i = 0; i < 10; i++) {
+                        cadena += array_cadena[i] + " ";
+                    }
+
+                    
+                        // console.log("cadena", cadena);
+
+                   return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
+                              <span class="tooltiptext">${obj.observacion}</span>
+                            </div>
+                            `;
+
+                }               
+            }
+            return obj.observacion;
+        },
+
         getButtonsOTP: function (obj) {
             var span = '';
             var title = '';
@@ -146,7 +173,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -168,7 +195,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observación", data: "observacion"},
+                {title: "Observaciónes_dejadas", data: "observacion"},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -256,7 +283,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -278,7 +305,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observación", data: "observacion"},
+                {title: "Observaciónes_dejadas", data: "observacion"},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -367,7 +394,7 @@ $(function () {
                         opcion: opcion
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -399,7 +426,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observación", data: "observacion"},
+                {title: "Observaciónes_dejadas", data: "observacion"},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -618,7 +645,7 @@ $(function () {
                         'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES',
                         'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC': 'CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC',
                         'CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO': 'CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO',
-                        'CLIENTE - PROGRAMADA_POSTERIOR ': 'CLIENTE - PROGRAMADA_POSTERIOR ',
+                        'CLIENTE - PROGRAMADA POSTERIOR ': 'CLIENTE - PROGRAMADA POSTERIOR ',
                         'CLIENTE - SIN CONTRATO FIRMADO': 'CLIENTE - SIN CONTRATO FIRMADO',
                         'CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )': 'CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )',
                         'CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)': 'CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)',
@@ -632,12 +659,12 @@ $(function () {
                         'DATACENTER  CLARO- CABLEADO SIN EJECUTAR': 'DATACENTER  CLARO- CABLEADO SIN EJECUTAR',
                         'DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER': 'DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER',
                         'DATACENTER CLARO- CABLEADO EN CURSO': 'DATACENTER CLARO- CABLEADO EN CURSO',
-                        'ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE': 'ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE',
+                        'ENTREGA - SERVICIO ENTREGADO PROCESO DE CIERRE': 'ENTREGA - SERVICIO ENTREGADO PROCESO DE CIERRE',
                         'ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS': 'ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS',
                         'ENTREGA Y/O SOPORTE PROGRAMADO': 'ENTREGA Y/O SOPORTE PROGRAMADO',
                         'EQUIPOS - DEFECTUOSOS': 'EQUIPOS - DEFECTUOSOS',
                         'EQUIPOS - EN COMPRAS': 'EQUIPOS - EN COMPRAS',
-                        'ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE': 'ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE',
+                        'ESCALADO LIDER IMPLEMENTACIÓN PASO A PENDIENTE CLIENTE': 'ESCALADO LIDER IMPLEMENTACIÓN PASO A PENDIENTE CLIENTE',
                         'ESTADO CANCELADO': 'ESTADO CANCELADO',
                         'ESTADO PENDIENTE CLIENTE': 'ESTADO PENDIENTE CLIENTE',
                         'GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO': 'GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO',
@@ -655,9 +682,9 @@ $(function () {
                         'PENDIENTE SOLICITAR ENTREGA DEL SERVICIO': 'PENDIENTE SOLICITAR ENTREGA DEL SERVICIO',
                         'PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO': 'PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO',
                         'PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC': 'PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC',
-                        'PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD': 'PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD',
-                        'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE': 'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE',
-                        'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL': 'PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL',
+                        'PLANTA EXTERNA - ESCALADO IFO RESULTADO DE ACTIVIDAD': 'PLANTA EXTERNA - ESCALADO IFO RESULTADO DE ACTIVIDAD',
+                        'PLANTA EXTERNA - ESCALADO IFO SOLICITUD DE DESBORDE': 'PLANTA EXTERNA - ESCALADO IFO SOLICITUD DE DESBORDE',
+                        'PLANTA EXTERNA - ESCALADO IFO SOLICITUD DE PERSONAL': 'PLANTA EXTERNA - ESCALADO IFO SOLICITUD DE PERSONAL',
                         'PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES': 'PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES',
                         'PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO': 'PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO',
                         'PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS': 'PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS',
@@ -817,10 +844,10 @@ $(function () {
 
         // generar pdf redireccionar
         generarPDF: function(data){
-            $.post(baseurl + '/Templates/generatePDF', 
+            $.post(baseurl + '/Templates/generatePDF',
                 {
                     data: data
-                }, 
+                },
                 function(data) {
                 var plantilla = JSON.parse(data);
                 $('body').append(
@@ -834,7 +861,7 @@ $(function () {
                 $('#txt_template').val(plantilla);
                 $('#smt_ver_correo').click();
 
-               
+
             });
 
         },
@@ -855,7 +882,7 @@ $(function () {
                     function (data) {
                        $.each(data, function (i, item) {
                             $('#mdl_' + i).val(item);
-                        }); 
+                        });
                     });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
@@ -869,7 +896,7 @@ $(function () {
 
         init: function () {
             listoth.events();
-            //listoth.getothofothp();  
+            //listoth.getothofothp();
         },
         //Eventos de la ventana.
         events: function () {
@@ -908,7 +935,7 @@ $(function () {
                     {
                         idOtp: obj.k_id_ot_padre
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -929,7 +956,7 @@ $(function () {
 
         //pintar tabla
         printTable: function (data) {
-            //funcion para limpiar el modal 
+            //funcion para limpiar el modal
             if (listoth.table_oths_otp) {
                 var tabla = listoth.table_oths_otp;
                 tabla.clear().draw();
@@ -947,7 +974,7 @@ $(function () {
                 {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programacion", data: "fecha_programacion"},
-                {title: "Opc", data: listoth.getButtonsOth}, 
+                {title: "Opc", data: listoth.getButtonsOth},
             ]));
         },
         // Datos de configuracion del datatable
@@ -956,7 +983,7 @@ $(function () {
                 data: data,
                 columns: columns,
                 //lenguaje del plugin
-                /*"language": { 
+                /*"language": {
                  "url": baseurl + "assets/plugins/datatables/lang/es.json"
                  },*/
                 columnDefs: [{
@@ -1003,7 +1030,7 @@ $(function () {
                         //parametros
 
                     },
-                    // funcion que recibe los datos 
+                    // funcion que recibe los datos
                             function (data) {
                                 // convertir el json a objeto de javascript
                                 var obj = JSON.parse(data);
@@ -1025,7 +1052,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observación", data: "observacion"},
+                {title: "Observaciónes_dejadas", data: "observacion"},
                 {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },
@@ -1096,5 +1123,3 @@ $(function () {
     emails.init();
 
 });
-
-
