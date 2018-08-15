@@ -4,6 +4,7 @@ $(function () {
             fTiempos.events();
             fTiempos.listOutTime();
             fTiempos.individualColumnSearching();
+            alert('estas en el modulo como vamos oth');
         },
 
         //Eventos de la ventana.
