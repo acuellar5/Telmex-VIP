@@ -64,6 +64,7 @@ for ($i=0; $i < count($registros['oth']); $i++) {
                 echo "<td>
                         <div class='btn-group'>
                             <a class='btn btn-default btn-xs ver-det btn_datatable_cami' title='Detalle Ot' onclick='showModalDetalles(" . $registros['oth'][$i]->id_orden_trabajo_hija . ");'><span class='fa fa-fw fa-eye'></span></a>
+                            <a class='btn btn-default btn-xs ver-log btn_datatable_cami' title='Historial'><span class='fa fa-fw fa-info'></span></a>
                         </div>
                     </td>";
     echo "</tr>";
@@ -695,6 +696,74 @@ for ($i=0; $i < count($registros['oth']); $i++) {
     </div> 
 </div>
 
+<!-- LOG -->
+<!-- MODAL -->
+<div class="modal fade" id="ModalHistorialLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header csstypesubtitle">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                    <h4 class="modal-title" id="titleEventHistory">Modal Historial</h4>
+                </div>
+                <div class="modal-body" id="cuerpoModal">
+                    <div class="container2">
+                        <!--*********************  MODULO PESTAÑAS  *********************-->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab_log">Historial Log</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab_log_mail">Historial Mail</a></li>
+                        </ul>
+                        
+                        <!--*********************  CONTENIDO PESTAÑAS  *********************-->
+                        <div class="tab-content">
+                        
+                            <div id="tab_log" class="tab-pane fade in active">
+                                <h3>Tabla Log</h3>
+                                <table id="tableHistorialLog" class='table table-bordered table-striped  col-sm-12'  width='100%'>
+                                    <thead>
+                                        <th>ORDEN</th>
+                                        <th>ANTES</th>
+                                        <th>AHORA</th>
+                                        <th>COLUMNA CAMBIADA</th>
+                                        <th>FECHA MODIFICACION</th>
+                                    </thead>
+                                </table>
+                                
+                            </div>
+                        
+                            <div id="tab_log_mail" class="tab-pane fade">
+                                <h3>Historial Mail</h3>
+                                <table id="table_log_mail" class='table table-bordered table-striped' width='100%'>
+                                    <thead>
+                                        <th>FECHA</th>
+                                        <th>CLASE</th>
+                                        <th>SERVICIO</th>
+                                        <th>ENVIADO POR</th>
+                                        <th>DESTINATARIOS</th>
+                                        <th>DIRIGIDO A</th>
+                                        <th>opc</th>
+                                    </thead>
+                                </table>
+                            </div>
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer csstypesubtitle">
+                    <h4 class="foot">Zolid By ZTE Colombia | All Right Reserved</h4>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar  <i class="glyphicon glyphicon-chevron-up"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<?php if (isset($_GET['msj'])): ?>
+    <script>
+        var urlbase = "<?php echo URL::base(); ?>";
+        swal('OK', 'se actualizó correctamente', 'success');
+    </script>
+<?php endif ?>
 
 
 <script>

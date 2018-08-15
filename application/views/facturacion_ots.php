@@ -1,7 +1,7 @@
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#EnFacturacion">En Facturación</a></li>
-    <li class=""><a data-toggle="tab" href="#FiltroFechas">Filtro Fechas</a></li>
+    <!-- <li class=""><a data-toggle="tab" href="#FiltroFechas">Filtro Fechas</a></li> -->
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
