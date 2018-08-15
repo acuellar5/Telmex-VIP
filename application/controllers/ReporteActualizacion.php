@@ -33,5 +33,15 @@ class ReporteActualizacion extends CI_Controller {
     echo json_encode($data);
 
   }
+  //data para los correos enviados 
+  public function mail_send_today(){
+    $mail_today = $this->Dao_ot_hija_model->send_today();
+
+    $data = array (
+        'data' => $mail_today->result(),
+        'cant' => $mail_today->num_rows()
+    );
+    echo json_encode($data);      
+  }
 
 }
