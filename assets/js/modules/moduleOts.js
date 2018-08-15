@@ -2011,11 +2011,21 @@ $(function () {
                         data: data
                     }, 
                     function(data) {
+                    var plantilla = JSON.parse(data);
+                    $('body').append(
+                            `
+                                <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
+                                    <textarea name="txt_template" id="txt_template"></textarea>
+                                    <input type="submit" value="e" id="smt_ver_correo">
+                                </form>
+                            `
+                        );
+                    $('#txt_template').val(plantilla);
+                    $('#smt_ver_correo').click();
+
                    
                 });
 
-
-                // window.open('http://ejemplo.com/archivo.pdf', '_blank');
             },
 
             // creamos los botones para imprimir el correo enviado

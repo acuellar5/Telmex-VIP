@@ -19,6 +19,7 @@ class Dao_log_correo_model extends CI_Model {
     public function getLogMailById($id){
     	// $query = $this->db->order_by('k_id_tipo ASC, i_orden ASC');
     	$query = $this->db->get_where('log_correo', array('id_orden_trabajo_hija' => $id));
+//        echo $this->db->last_query();
     	return $query->result();
     }
 

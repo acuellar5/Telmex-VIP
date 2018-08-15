@@ -17,4 +17,10 @@ class Log extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	//
+	public function view_email(){
+		$fun = $this->input->post('txt_template');
+		print_r($fun);
+	}
+
 }		

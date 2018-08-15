@@ -124,14 +124,15 @@ class Dao_ot_padre_model extends CI_Model {
                 $condicion
                 GROUP BY nro_ot_onyx
     	");
-    	return $query->result();
-  }
-  //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles  
-  public function update_new_data($data){
+        return $query->result();
+    }
+
+    //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles  
+    public function update_new_data($data) {
         if (Auth::user()->n_role_user == 'administrador') {
             $this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
             $this->db->update('ot_padre', $data);
-        }else{
+        } else {
             $this->db->where('k_id_user', Auth::user()->k_id_user);
             $this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
             $this->db->update('ot_padre', $data);
@@ -145,8 +146,7 @@ class Dao_ot_padre_model extends CI_Model {
             // print_r($this->db->last_query());
             return false;
         }
-  }
-  
+    }
 
     // return $query->result();
     // trae otp segun opcion de ot padre
@@ -171,7 +171,7 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->result();
     }
-    
+
     //trae la cantidad de ot hijas en ejecucion de una ot padre
     public function getCantOthInExecutionByIdOtp($idOtp) {
         $query = $this->db->query("
@@ -184,7 +184,7 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->row();
     }
-    
+
 //trae las ot hijas en ejecucion de una ot padre
     public function getOthInExecutionByIdOtp($idOtp) {
         $query = $this->db->query("
@@ -199,18 +199,32 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     //Trae todas las othijas de una otp en especifico
-    public function getothofothp($idOtp){
-    $query = $this->db->query("
-    SELECT oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.c_email,
-        CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC,
-        otp.fecha_compromiso, otp.fecha_programacion
-    FROM ot_hija oth
-    INNER JOIN ot_padre otp
-    ON otp.k_id_ot_padre = oth.nro_ot_onyx
-    WHERE oth.nro_ot_onyx = $idOtp
-    ");
-    return $query->result();
-  }
+    public function getothofothp($idOtp) {
+        $query = $this->db->query("
+            SELECT oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija, oth.c_email,
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC,
+                otp.fecha_compromiso, otp.fecha_programacion
+            FROM ot_hija oth
+            INNER JOIN ot_padre otp
+            ON otp.k_id_ot_padre = oth.nro_ot_onyx
+            WHERE oth.nro_ot_onyx = $idOtp
+        ");
+        return $query->result();
+    }
+    
+    //Trae todas las ot hijas que se encuentren en la tabla cierre de una otp en especifico
+    public function getOthOfOtpCierre($idOtp) {
+        $query = $this->db->query("
+            SELECT cot.id_orden_trabajo_hija, cot.ot_hija, cot.estado_orden_trabajo_hija, cot.c_email,
+                CONCAT('$ ',FORMAT(cot.monto_moneda_local_arriendo + cot.monto_moneda_local_cargo_mensual,2)) AS MRC,
+                otp.fecha_compromiso, otp.fecha_programacion
+            FROM cierre_ots cot
+            INNER JOIN ot_padre otp
+            ON otp.k_id_ot_padre = cot.nro_ot_onyx
+            WHERE cot.nro_ot_onyx = $idOtp
+        ");
+        return $query->result();
+    }
 
   // eliminar de tabla ot padre, pasar id otp o array con ids otp
   public function deleteById($otp){

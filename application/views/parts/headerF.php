@@ -104,7 +104,7 @@
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Cicle Close <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('cierre_ots') ?>">Cierre </a></li>
-                    <li><a href="#">Facturacion </a></li>
+                    <li><a href="<?= URL::to('facturacion') ?>">Facturacion </a></li>
                   </ul>
                 </li>   
 

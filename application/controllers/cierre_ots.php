@@ -36,14 +36,24 @@ class Cierre_ots extends CI_Controller {
 			// Eliminar en ot padre
 			$delete_otp = $this->Dao_ot_padre_model->deleteById($otp);
 		}
-
 		$ret = array(
 			'del' => $delete,
 			'del_otp' => $delete_otp
 		);
-		
 		echo json_encode($ret);
+	}
 
+	// Se envia los registros a facturacion (estado)
+	public function c_enviar_a_facturacion(){
+		$fActual = date('Y-m-d H:i:s');
+		$otp = $this->input->post('otp');
+		$data = array(
+			'estado_zte' => 'facturacion',
+			'fecha_actual' => $fActual
+		);
+		
+		$up = $this->Dao_cierre_ots_model->up_to_facturacion($otp, $data);
+		echo json_encode($up);
 	}
   
   

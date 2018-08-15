@@ -210,10 +210,9 @@ class Templates extends CI_Controller {
 
       }
 
- 
+      echo json_encode($template);
 
 
-        print_r($template);
 
  
 
