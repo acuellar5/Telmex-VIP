@@ -757,7 +757,6 @@ for ($i=0; $i < count($registros['oth']); $i++) {
         </div>
     </div>
 </div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php if (isset($_GET['msj'])): ?>
     <script>
         var urlbase = "<?php echo URL::base(); ?>";
