@@ -4,6 +4,7 @@ $(function () {
             fTiempos.events();
             fTiempos.listOutTime();
             fTiempos.individualColumnSearching();
+          
         },
 
         //Eventos de la ventana.

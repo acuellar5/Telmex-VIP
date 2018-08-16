@@ -1,7 +1,7 @@
 $(function () {
-   /**********************************************INICIO 08 DIAS*********************************************/
+    /**********************************************INICIO 08 DIAS*********************************************/
 
- vista = {
+    vista = {
         init: function () {
             vista.events();
             vista.getListOtsEigtDay();
@@ -9,12 +9,12 @@ $(function () {
         },
         //eventos de la ventana.
         events: function () {
-           $('#tablaEigtDaysOts').on('click', 'a.btn_email_ko15', vista.email_ko_15);
-           $('#contenedor').on('click', 'a.email_send', vista.onClickVerLogTrChanges);
-           $('#ModalHistorialLog').on('click', 'button.ver-mail', vista.onClickVerLogMailReporte);
+            $('#tablaEigtDaysOts').on('click', 'a.btn_email_ko15', vista.email_ko_15);
+            $('#contenedor').on('click', 'a.email_send', vista.onClickVerLogTrChanges);
+            $('#ModalHistorialLog').on('click', 'button.ver-mail', vista.onClickVerLogMailReporte);
 
-           $('.cerrar').on('click', vista.clear_form);
-           $('#bnt_ko').on('click', vista.btn_enviar);
+            $('.cerrar').on('click', vista.clear_form);
+            $('#bnt_ko').on('click', vista.btn_enviar);
         },
         getListOtsEigtDay: function () {
             //metodo ajax (post)
@@ -46,7 +46,6 @@ $(function () {
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
                 {title: "Opc.", data: vista.getButtonsko8d},
-
             ]));
         },
         // Datos de configuracion del datatable
@@ -97,23 +96,37 @@ $(function () {
 
         getButtonsko8d: function (obj) {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
-                botones += "<a class='btn btn-default btn-xs btn_email_ko15 btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>";
-                    // + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"
+            botones += "<a class='btn btn-default btn-xs btn_email_ko15 btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>";
+            // + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"
 
             if (obj.function != 0) {
                 if (obj.c_email > 0) {
-                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">' + obj.c_email + '</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
                 }
             }
-             botones += "</div>";
+            botones += "</div>";
             return botones;
         },
         /***********************************************FIN PINTAR TABLA GRANDE***********************************************/
         /***********************************************INICIO ENVIAR CORREO MODAL FORMULARIO***********************************************/
         email_ko_15: function (e) {
-            var record = vista.tablaEigtDaysOts.row( $(this).parents('tr') ).data();
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var tabla = aLinkLog.parents('table').attr('id');
+            var record;
+
+            switch (tabla) {
+                case 'tablaEigtDaysOts':
+                    record = vista.tablaEigtDaysOts.row(trParent).data();
+                    break;
+                case 'tableKickoffCerradas':
+                    record = cerradas.tableKickoffCerradas.row(trParent).data();
+                    break;
+            }
+            
+//            var record = vista.tablaEigtDaysOts.row($(this).parents('tr')).data();
 
             $('#formModal #id_orden_trabajo_hija').val(record.id_orden_trabajo_hija);
             $('#formModal #nro_ot_onyx').val(record.nro_ot_onyx);
@@ -123,217 +136,214 @@ $(function () {
             $('#modalEmail_15dias').modal('show');
 
         },
-        clear_form: function (){
+        clear_form: function () {
             $('#formModal')[0].reset();
         },
-        btn_enviar: function() {
-             var msj = false;
-                    var response = true;
-                    var mail = $('#mail_envio1').val();
-                    var expresiones = /\w+@\w+\.+[a-z]/;
-                    var inputs = [  $('#nombre'),
-                                    $('#ots_nombre'),
-                                    $('#ampliacion_enlaces'),
-                                    $('#direccion_servicio'),
-                                    $('#servicio'),
-                                    $('#vista_obra_civil'),
-                                    $('#envio_cotizacion_obra_civil'),
-                                    $('#aprobacion_cotizacion_obra_civil'),
-                                    $('#ejecucion_obra_civil'),
-                                    $('#empalmes'),
-                                    $('#configuracion'),
-                                    $('#equipos'),
-                                    $('#ingeniero1_email'),
-                                    $('#entrega_servicio'),
-                                    $('#ingeniero_implementacion_responsable_cuenta'),
-                                    $('#celular'),
-                                    $('#mail_envio1')
-                                ];
-                    inputs.forEach(function(input){
-                        if (input.val() == '') {
-                            msj = true;
-                            input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
-                            return false;
-                        }else {
-                            input.css("box-shadow", "none");
-                        }
-                    });
-                    if (msj) {
-                        swal('Error', 'Complete correctamente los campos', 'error');
-                        response = false;
-                        return false;
-                    }
-
-                    if (!expresiones.test(mail)) {
-                        swal('Error', 'El formato del correo está mal', 'error');
-                        response = false;
-                        return false;
-                    }
-
-                    if(response){
-                        swal({
-                          title: '¿Esta seguro?',
-                          text: 'El correo '+mail+' es correcto',
-                          type: 'question',
-                          showCancelButton: true,
-                          confirmButtonColor: '#3085d6',
-                          cancelButtonColor: '#d33',
-                          confirmButtonText: 'Si!'
-                        }).then((continuar) => {
-                          if (continuar.value) {
-                            swal(
-                              'Enviado!',
-                              'El correo se envio correctamente!',
-                              'success'
-                            )
-                            $('#formModal').submit();
-                                response = true;
-                                setTimeout('document.location.reload()',1500);
-                          }else{
-                          swal('Error', 'Se he cancelado el envio', 'error');
-                        }
-
-                        })
-                    }
+        btn_enviar: function () {
+            var msj = false;
+            var response = true;
+            var mail = $('#mail_envio1').val();
+            var expresiones = /\w+@\w+\.+[a-z]/;
+            var inputs = [$('#nombre'),
+                $('#ots_nombre'),
+                $('#ampliacion_enlaces'),
+                $('#direccion_servicio'),
+                $('#servicio'),
+                $('#vista_obra_civil'),
+                $('#envio_cotizacion_obra_civil'),
+                $('#aprobacion_cotizacion_obra_civil'),
+                $('#ejecucion_obra_civil'),
+                $('#empalmes'),
+                $('#configuracion'),
+                $('#equipos'),
+                $('#ingeniero1_email'),
+                $('#entrega_servicio'),
+                $('#ingeniero_implementacion_responsable_cuenta'),
+                $('#celular'),
+                $('#mail_envio1')
+            ];
+            inputs.forEach(function (input) {
+                if (input.val() == '') {
+                    msj = true;
+                    input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
+                    return false;
+                } else {
+                    input.css("box-shadow", "none");
+                }
+            });
+            if (msj) {
+                swal('Error', 'Complete correctamente los campos', 'error');
+                response = false;
                 return false;
+            }
+
+            if (!expresiones.test(mail)) {
+                swal('Error', 'El formato del correo está mal', 'error');
+                response = false;
+                return false;
+            }
+
+            if (response) {
+                swal({
+                    title: '¿Esta seguro?',
+                    text: 'El correo ' + mail + ' es correcto',
+                    type: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si!'
+                }).then((continuar) => {
+                    if (continuar.value) {
+                        swal(
+                                'Enviado!',
+                                'El correo se envio correctamente!',
+                                'success'
+                                )
+                        $('#formModal').submit();
+                        response = true;
+                        setTimeout('document.location.reload()', 1500);
+                    } else {
+                        swal('Error', 'Se he cancelado el envio', 'error');
+                    }
+
+                })
+            }
+            return false;
+        },
+        /*************************************************FIN ENVIAR CORREO*************************************************/
+
+        //************************************LOG**************************************
+
+        onClickVerLogTrChanges: function () {
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var tabla = aLinkLog.parents('table').attr('id');
+            var record;
+
+            switch (tabla) {
+                case 'tablaEigtDaysOts':
+                    record = vista.tablaEigtDaysOts.row(trParent).data();
+                    break;
+                case 'mail_send_today':
+                    record = send.mail_send_today.row(trParent).data();
+                    break;
+                case 'tableKickoffCerradas':
+                    record = cerradas.tableKickoffCerradas.row(trParent).data();
+                    break;
+            }
+
+
+            vista.getLogById(record);
+        },
+
+        getLogById: function (obj) {
+            $.post(baseurl + '/Log/getLogById',
+                    {
+                        id: obj.id_orden_trabajo_hija
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        vista.showModalHistorial(obj);
+                    }
+            );
+        },
+
+        // Muestra modal detalle historial log por id
+        showModalHistorial: function (obj) {
+            $('#ModalHistorialLog').modal('show');
+            // $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+            vista.printTableHistory(obj.log);
+            vista.printTableLogMail(obj.mail);
+        },
+        //pintamos la tabla de log
+        printTableHistory: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (vista.tableModalHistory) {
+                //si ya estaba inicializada la tabla la destruyo
+                vista.tableModalHistory.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            vista.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data, [
+                {data: "id_ot_hija"},
+                {data: "antes"},
+                {data: "ahora"},
+                {data: "columna"},
+                {data: "fecha_mod"}
+            ]));
+        },
+
+        //pintamos la tabla de log de correos
+        printTableLogMail: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (vista.tableModalLogMail) {
+                //si ya estaba inicializada la tabla la destruyo
+                vista.tableModalLogMail.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            vista.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data, [
+                {data: "fecha"},
+                {data: "clase"},
+                {data: "servicio"},
+                {data: "usuario_en_sesion"},
+                {data: "destinatarios"},
+                {data: "nombre"},
+                {data: vista.getButonsPrint}
+            ]));
+
+        },
+
+        configTableLog: function (data, columns, onDraw) {
+            return {
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
                 },
-            /*************************************************FIN ENVIAR CORREO*************************************************/
 
-                    //************************************LOG**************************************
+            }
+        },
 
-                    onClickVerLogTrChanges: function () {
-                        var aLinkLog = $(this);
-                        var trParent = aLinkLog.parents('tr');
-                        var tabla = aLinkLog.parents('table').attr('id');
-                        var record;
+        onClickVerLogMailReporte: function () {
+            var tr = $(this).parents('tr');
+            var record = vista.tableModalLogMail.row(tr).data();
 
-                        switch(tabla) {
-                            case 'tablaEigtDaysOts':
-                                record = vista.tablaEigtDaysOts.row(trParent).data();
-                                break;
-                            case 'mail_send_today':
-                                record = send.mail_send_today.row(trParent).data();
-                                break;
-                        }
+            vista.generarPDF(record);
+        },
 
+        // generar pdf redireccionar
+        generarPDF: function (data) {
 
-                        vista.getLogById(record);
+            $.post(baseurl + '/Templates/generatePDF',
+                    {
+                        data: data
                     },
-
-
-
-
-                    getLogById: function(obj){
-                        $.post( baseurl + '/Log/getLogById',
-                            {
-                                id: obj.id_orden_trabajo_hija
-                            },
-                            function(data) {
-                            var obj = JSON.parse(data);
-                            vista.showModalHistorial(obj);
-                            }
-                        );
-                    },
-
-
-                    // Muestra modal detalle historial log por id
-                    showModalHistorial: function(obj){
-                        $('#ModalHistorialLog').modal('show');
-                        // $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
-                        vista.printTableHistory(obj.log);
-                        vista.printTableLogMail(obj.mail);
-                    },
-                     //pintamos la tabla de log
-                    printTableHistory: function(data){
-                        // limpio el cache si ya habia pintado otra tabla
-                        if(vista.tableModalHistory){
-                            //si ya estaba inicializada la tabla la destruyo
-                            vista.tableModalHistory.destroy();
-                        }
-                        ///lleno la tabla con los valores enviados
-                        vista.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data,[
-                                {data: "id_ot_hija"},
-                                {data: "antes"},
-                                {data: "ahora"},
-                                {data: "columna"},
-                                {data: "fecha_mod"}
-                            ]));
-                    },
-
-                     //pintamos la tabla de log de correos
-                    printTableLogMail: function(data){
-                        // limpio el cache si ya habia pintado otra tabla
-                        if(vista.tableModalLogMail){
-                            //si ya estaba inicializada la tabla la destruyo
-                            vista.tableModalLogMail.destroy();
-                        }
-                        ///lleno la tabla con los valores enviados
-                        vista.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data,[
-                                {data: "fecha"},
-                                {data: "clase"},
-                                {data: "servicio"},
-                                {data: "usuario_en_sesion"},
-                                {data: "destinatarios"},
-                                {data: "nombre"},
-                                {data: vista.getButonsPrint}
-                            ]));
-
-                    },
-
-                    configTableLog: function (data, columns, onDraw) {
-                    return {
-                      data: data,
-                      columns: columns,
-                      "language": {
-                          "url": baseurl + "/assets/plugins/datatables/lang/es.json"
-                      },
-
-
-                        }
-                    },
-
-                    onClickVerLogMailReporte: function(){
-                        var tr = $(this).parents('tr');
-                        var record = vista.tableModalLogMail.row(tr).data();
-
-                        vista.generarPDF(record);
-                    },
-
-                    // generar pdf redireccionar
-                    generarPDF: function(data){
-
-                        $.post(baseurl + '/Templates/generatePDF',
-                            {
-                                data: data
-                            },
-
-                            function(data) {
-                            var plantilla = JSON.parse(data);
-                            $('body').append(
-                                    `
+                    function (data) {
+                        var plantilla = JSON.parse(data);
+                        $('body').append(
+                                `
                                         <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
                                             <textarea name="txt_template" id="txt_template"></textarea>
                                             <input type="submit" value="e" id="smt_ver_correo">
                                         </form>
                                     `
                                 );
-                            $('#txt_template').val(plantilla);
-                            $('#smt_ver_correo').click();
+                        $('#txt_template').val(plantilla);
+                        $('#smt_ver_correo').click();
 
-                        });
+                    });
 
-                    },
+        },
 
-                    // creamos los botones para imprimir el correo enviado
-                    getButonsPrint: function(obj){
-                        // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
+        // creamos los botones para imprimir el correo enviado
+        getButonsPrint: function (obj) {
+            // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
 
-                        var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
-                        return button;
+            var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
+            return button;
 
-                    },
+        },
 
-           };
+    };
     vista.init();
 });
 /***************************************************TABLA EMAILS ENVIADOS HOY*************************************************************/
@@ -367,7 +377,7 @@ $(function () {
 
                             }
                     );
-        },
+                },
         printTable_mail: function (data) {
             // nombramos la variable para la tabla y llamamos la configuiracion
             send.mail_send_today = $('#mail_send_today').DataTable(send.configTable_mail(data, [
@@ -380,10 +390,9 @@ $(function () {
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
                 {title: "Opc.", data: send.getButtonsSend},
-
             ]));
         },
-         // Datos de configuracion del datatable
+        // Datos de configuracion del datatable
         configTable_mail: function (data, columns, onDraw) {
             return {
                 initComplete: function () {
@@ -429,78 +438,153 @@ $(function () {
             var botones = '<div class="btn-group" style="display: inline-flex;">';
             if (obj.function != 0) {
                 if (obj.c_email > 0) {
-                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">' + obj.c_email + '</span></a>';
                 } else {
                     botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
                 }
             }
-             botones += "</div>";
+            botones += "</div>";
             return botones;
         },
 
+        // Muestra modal detalle historial log por id
+        showModalHistorial: function (obj) {
+            $('#ModalHistorialLog').modal('show');
+            // $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
+            send.printTableHistory(obj.log);
+            send.printTableLogMail(obj.mail);
+        },
+        //pintamos la tabla de log
+        printTableHistory: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (send.tableModalHistory) {
+                //si ya estaba inicializada la tabla la destruyo
+                send.tableModalHistory.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            send.tableModalHistory = $('#tableHistorialLog').DataTable(send.configTableLog(data, [
+                {data: "id_ot_hija"},
+                {data: "antes"},
+                {data: "ahora"},
+                {data: "columna"},
+                {data: "fecha_mod"}
+            ]));
+        },
 
+        //pintamos la tabla de log de correos
+        printTableLogMail: function (data) {
+            // limpio el cache si ya habia pintado otra tabla
+            if (send.tableModalLogMail) {
+                //si ya estaba inicializada la tabla la destruyo
+                send.tableModalLogMail.destroy();
+            }
+            ///lleno la tabla con los valores enviados
+            send.tableModalLogMail = $('#table_log_mail').DataTable(send.configTableLog(data, [
+                {data: "fecha"},
+                {data: "clase"},
+                {data: "servicio"},
+                {data: "usuario_sesion"},
+                {data: "destinatarios"},
+                {data: "nombre"},
+                {data: send.getButonsPrint}
+            ]));
 
+        },
 
+        // creamos los botones para imprimir el correo enviado
+        getButonsPrint: function (obj) {
+            // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
 
-            // Muestra modal detalle historial log por id
-            showModalHistorial: function(obj){
-                $('#ModalHistorialLog').modal('show');
-                // $('#titleEventHistory').html('Historial Cambios de orden ' + obj.log[0].id_ot_hija + '');
-                send.printTableHistory(obj.log);
-                send.printTableLogMail(obj.mail);
-            },
-             //pintamos la tabla de log
-            printTableHistory: function(data){
-                // limpio el cache si ya habia pintado otra tabla
-                if(send.tableModalHistory){
-                    //si ya estaba inicializada la tabla la destruyo
-                    send.tableModalHistory.destroy();
-                }
-                ///lleno la tabla con los valores enviados
-                send.tableModalHistory = $('#tableHistorialLog').DataTable(send.configTableLog(data,[
-                        {data: "id_ot_hija"},
-                        {data: "antes"},
-                        {data: "ahora"},
-                        {data: "columna"},
-                        {data: "fecha_mod"}
-                    ]));
-            },
+            var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
+            return button;
 
-             //pintamos la tabla de log de correos
-            printTableLogMail: function(data){
-                // limpio el cache si ya habia pintado otra tabla
-                if(send.tableModalLogMail){
-                    //si ya estaba inicializada la tabla la destruyo
-                    send.tableModalLogMail.destroy();
-                }
-                ///lleno la tabla con los valores enviados
-                send.tableModalLogMail = $('#table_log_mail').DataTable(send.configTableLog(data,[
-                        {data: "fecha"},
-                        {data: "clase"},
-                        {data: "servicio"},
-                        {data: "usuario_sesion"},
-                        {data: "destinatarios"},
-                        {data: "nombre"},
-                        {data: send.getButonsPrint}
-                    ]));
-
-            },
-
-
-            // creamos los botones para imprimir el correo enviado
-            getButonsPrint: function(obj){
-                // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
-
-                var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
-                return button;
-
-            },
-
-
-
-
-
+        },
 
     };
     send.init();
+
+    cerradas = {
+        init: function () {
+            cerradas.events();
+            cerradas.getListKickoffCerradas();
+        },
+        //Eventos de la ventana.
+        events: function () {
+            $('#tableKickoffCerradas').on('click', 'a.btn_email_ko15', vista.email_ko_15);
+        },
+        getListKickoffCerradas: function () {
+            //metodo ajax (post)
+            $.post(baseurl + '/ReporteActualizacion/c_getListOtsKickoffCerradas',
+                    {
+                        //parametros
+                        //param1: 'value1'//enviar parametros a la funcion de la ruta
+                    },
+                    // funcion que recibe los datos (callback)
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                cerradas.printTableKicikoffCerradas(obj);
+                            }
+                    );
+                },
+        printTableKicikoffCerradas: function (data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            cerradas.tableKickoffCerradas = $('#tableKickoffCerradas').DataTable(cerradas.configTableKicikoffCerradas(data, [
+                {title: "OT Padre", data: "nro_ot_onyx"},
+                {title: "ID OT Hija", data: "id_orden_trabajo_hija"},
+                {title: "Nombre del Cliente", data: "n_nombre_cliente"},
+                {title: "Fecha de Programación", data: "fecha_compromiso"},
+                {title: "OT Hija", data: "ot_hija"},
+                {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
+                {title: "Ingeniero Responsbale", data: "ingeniero"},
+                {title: "Opc.", data: vista.getButtonsko8d},
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTableKicikoffCerradas: function (data, columns, onDraw) {
+            return {
+                initComplete: function () {
+                    //es para crear los campos para buscar
+                    $('#tableKickoffCerradas tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+                    //subir los espacios para buscar la informacion
+                    var r = $('#tableKickoffCerradas tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#tableKickoffCerradas thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#tableKickoffCerradas').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
+                data: data,
+                columns: columns,
+                //lenguaje del plugin
+                /*"language": {
+                 "url": baseurl + "assets/plugins/datatables/lang/es.json"
+                 },*/
+                columnDefs: [{
+                        defaultContent: "",
+                        targets: -1,
+                        orderable: false,
+                    }],
+                order: [[3, 'asc']],
+                drawCallback: onDraw
+            }
+        },
+    };
+    cerradas.init();
 });
