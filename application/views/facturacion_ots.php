@@ -1,7 +1,7 @@
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#EnFacturacion">En Facturación</a></li>
-    <!-- <li class=""><a data-toggle="tab" href="#FiltroFechas">Filtro Fechas</a></li> -->
+    <li class=""><a data-toggle="tab" href="#FiltroFechas">Filtro Fechas</a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -28,6 +28,9 @@
         </table>
     </div>
 
+    <!-- *********************************filtro por fechas********************************* -->
+    
+
     <div id="FiltroFechas" class="tab-pane fade">
         <h3>Filtro Por Fechas</h3>
         <div align="center">
@@ -40,11 +43,25 @@
                     <label for="fhasta">Hasta:</label>
                     <input type="date" class="form-control" id="fhasta">
                 </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!--*********************  SELECT  *********************-->
+                <div class="form-group">
+                    <label for="sel_meses">Por mes : &nbsp;</label>
+                            <select name="sel_meses" id="sel_meses" class="form-control">
+                            </select>
+                </div>
                 <br><br>
             </form>
+
+
+
+            
+            
+
+
             <button class="btn btn-success" id="btnBuscar">Buscar</button>
-            <br><br>
         </div>
+            <br><br>
         <table id="tables_filter" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
             <tfoot>
                 <tr>
@@ -92,8 +109,9 @@
     </div>
 </div>
 
+
 <!-- ****************************MODAL DE DETALLE ************************************************ -->
-<div id="Modal_detalle" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="z-index: 9999999999 !important;">
+<div id="Modal_detalle" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="col-md-12">
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">
@@ -763,3 +781,7 @@
         </div>
     </div>
 </div>
+
+
+
+<script> var f_min = '<?php echo $this->session->userdata('date_min_fact'); ?>'; </script>
