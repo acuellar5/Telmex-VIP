@@ -65,7 +65,6 @@ $(function () {
                     },
                     function (data) {
 
-//                        console.log(data);
                         principalCodes = (capa == 'huawei') ? data.huawei_zte : data.alcatel.split(".").join(",").split("_").join("-");
                         $("input[name='BackupCode[]']").each(function () {
                             BackupCodes += $(this).val() + ',';

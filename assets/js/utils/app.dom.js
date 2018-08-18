@@ -170,7 +170,6 @@ var dom = {
         hms_inicio = formatDate(hms_inicio, 'HH:mm:ss');
         hms_fin = formatDate(hms_fin, 'HH:mm:ss');
         hms_referencia = formatDate(hms_referencia, 'HH:mm:ss');
-//        console.log(hms_referencia);
         var h, m, s;
         //HORA INICIO.
         hms_inicio = hms_inicio.split(/[^\d]+/);

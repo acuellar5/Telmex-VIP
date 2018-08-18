@@ -51,7 +51,6 @@ var rg = {
                     idRTicket: tr.attr('data-id')
                 })
                         .success(function (response) {
-                            console.log(response);
                             if (app.successResponse(response)) {
                                 swal('Removido', 'Se ha removido correctamente la relación', 'success');
                                 tr.remove();
@@ -105,7 +104,6 @@ var rg = {
         }
         var obj = rg.dataEstaciones[estacion];
         content.find('.no-found').remove();
-        console.log(obj);
         obj.i = content.find('tr').length + 1;
         content.append(dom.fillString('<tr data-i="{k_id_onair}"><td>{i}</td><td><a href="' + app.urlTo($('#link_view_ticket')+'?id=') + '{k_id_onair}" target="_blank">#{k_id_onair} - {k_id_station.n_name_station} / {k_id_technology.n_name_technology} / {k_id_band.n_name_band}</td><td><div class="btn-group"><a href="' + app.urlTo('User/trackingDetails?id=') + '{k_id_onair}" target="_blank" class="btn btn-xs btn-default" title="Ver ticket"><i class="fa fa-fw fa-eye"></i></a><button class="btn btn-xs btn-danger btn-delete-relation" title="Eliminar"><i class="fa fa-fw fa-times"></i></button></div></td></tr>', obj));
     },

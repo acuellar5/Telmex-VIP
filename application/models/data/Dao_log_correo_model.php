@@ -26,7 +26,7 @@ class Dao_log_correo_model extends CI_Model {
                 INNER JOIN user u
                 ON lc.usuario_sesion = u.k_id_user
                 WHERE 
-                LC.id_orden_trabajo_hija = $id
+                lc.id_orden_trabajo_hija = $id
             ");
     	return $query->result();
     }
