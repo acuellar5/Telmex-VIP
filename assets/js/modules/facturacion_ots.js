@@ -279,17 +279,26 @@ $(function () {
         },
     };
     billing.init();
+
     
     filter = {
         init: function () {
             filter.events();
             filter.listOtpFilter();
+            filter.fill_select_mounth();
+            filter.buscar_por_mes();
         },
 
         //Eventos de la ventana.
         events: function () {
+            // detalle ot padre
             $('#tables_filter').on('click', 'a.btnoths', billing.onClickShowModalOthFacturacion);
-            $('#btnBuscar').on('click', filter.searchOtpByDate);
+            // buscar 
+            $('#btnBuscar').on('click', filter.searchOtpByDateE);
+            // on change select por mes
+            $('#sel_meses').on('change', filter.buscar_por_mes);
+
+
         },
 
         // trae las ot padres que esten en estado facturacion 
@@ -303,7 +312,7 @@ $(function () {
                         filter.printTableFilter(obj);
                     });
         },
-        searchOtpByDate: function () {
+        searchOtpByDateE: function () {
             $.post(baseurl + '/Facturacion_ots/c_searchOtpByDate',
                     {
                          fdesde: $("#fdesde").val(), // parametros que se envian
@@ -404,7 +413,62 @@ $(function () {
 //                order: [[7, 'desc']],
                 drawCallback: onDraw
             }
-        }
+        },
+
+        // llena el select de meses 
+        fill_select_mounth: function(){
+            var ini = new Date(f_min);
+                m_ini = ini.getMonth()+1;
+            var m_fin = formato_fecha.getMonth() + 1;
+            var a_min = ini.getFullYear();
+            var a_max = formato_fecha.getFullYear();
+
+            var n_meses = ['','Enero', 'Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+           var flag;
+           var flag2;
+            // primer for recorre los años
+            for (var i = a_min; i <= a_max ; i++) {
+                // si yaq vamos en el año maximo quevale al mes maximo, sino a 12    
+                flag = (i == a_max) ? m_fin : 12;
+                flag2 = (i == a_min) ? m_ini : 1;
+                // se añade los grupos de option (por año)
+                $('#sel_meses').append(`<optgroup label="${i}">`);
+                for (var j = flag2; j <= flag ; j++) {
+                    $('#sel_meses').append(`
+                               <option value="${i}-${j}">${n_meses[j]}</option>
+                       `);
+                }
+                $('#sel_meses').append(`</optgroup>`);
+            }
+
+            var aa = $(`#sel_meses option[value="${i - 1}-${j - 1}"]`).attr('selected', true);
+        },
+
+        // al cambiar el valor del select se llena los inputs
+        buscar_por_mes: function(){
+            var n_dias  = [0,31,28,31,30,31,30,31,31,30,31,30,31];
+            var desde = filter.formatDate($('#sel_meses').val());
+            var d = new Date(desde);
+            var max = n_dias[(d.getMonth() + 2)];
+            var hasta = filter.formatDate($('#sel_meses').val() + '-' + max);
+            $('#fdesde').val(desde);
+            $('#fhasta').val(hasta);
+            $('#btnBuscar').click();
+        },
+
+        // retorna fecha en AAAA-mm-dd
+        formatDate: function(date){
+            var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        },
     };
     filter.init();
 });

@@ -45,8 +45,8 @@ class Dao_facturacion_ots_model extends CI_Model {
             ON c.nro_ot_onyx = otp.k_id_ot_padre
             INNER JOIN user 
             ON otp.k_id_user = user.k_id_user 
-            WHERE c.estado_zte = 'facturacion' AND
-            fecha_actual BETWEEN '$fdesde' AND '$fhasta'
+            WHERE c.estado_zte = ('facturacion') AND
+            (fecha_actual BETWEEN '$fdesde' AND '$fhasta')
             GROUP BY nro_ot_onyx
             ORDER BY c.fecha_actual DESC
         ");

@@ -29,11 +29,25 @@ class User extends CI_Controller {
         }
         //Comprobamos si el Auth ha encontrado válida las credenciales consultadas...
         if ($res) {
+            $this->load->model('data/Dao_cierre_ots_model');
+
             $data['title'] = '¿Cómo vamos OTP?';
             $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
             $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
             $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
             $data['title']      = 'OTP';// cargar el  titulo en la pestaña de la pagina para otp
+
+            if ($this->session->has_userdata('date_min_fact')) {
+              $this->session->unset_userdata('date_min_fact');
+            }
+
+
+            $data_session = array(
+              'date_min_fact' => $this->Dao_cierre_ots_model->get_date_min_facturada()
+            );           
+
+             $this->session->set_userdata($data_session);
+
             $this->load->view('parts/headerF', $data);
             $this->load->view('moduleOtp');
             $this->load->view('parts/footerF');

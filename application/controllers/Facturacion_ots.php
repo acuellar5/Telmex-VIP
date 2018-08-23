@@ -26,8 +26,9 @@ class Facturacion_ots extends CI_Controller {
     }
     
     public function c_searchOtpByDate() {
+        $this->load->helper('camilo');
         $fdesde = $this->input->post('fdesde');
-        $fhasta = $this->input->post('fhasta');
+        $fhasta = sumarORestarDiasAFecha($this->input->post('fhasta'), 1, '+');
         $data = $this->Dao_facturacion_ots_model->searchOtpByDate($fdesde, $fhasta);
         echo json_encode($data);
     }

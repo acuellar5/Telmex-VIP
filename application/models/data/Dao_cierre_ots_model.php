@@ -72,5 +72,18 @@ class Dao_cierre_ots_model extends CI_Model {
 
     }
 
+
+    // obtiene la fecha de facturacion minima
+    public function get_date_min_facturada(){
+        $query = $this->db->query("
+                    SELECT MIN(fecha_actual) as f_min 
+                    FROM 
+                    cierre_ots
+                    WHERE
+                    estado_zte = 'facturacion'
+            ");
+        return $query->row()->f_min;
+    }
+
   
 }

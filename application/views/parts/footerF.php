@@ -12,12 +12,6 @@
         var role_session = "<?php echo Auth::user()->n_role_user ?>";
         var id_session = "<?php echo Auth::user()->k_id_user ?>";
     </script>
-    <!-- BOOTSTRAP CORE SCRIPT-->
-    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js') ?>" /></script>
-    <!-- SCRIPTS DEL FOOTER-->
-    <script src="<?= URL::to('assets/plugins/jquery/jquery.min.js')?>"></script>
-    <script src="<?= URL::to('assets/plugins/bootstrap/js/bootstrap.min.js')?>"></script>
-
 
 <?php if ($this->uri->segment(1) == 'cargarOts'): ?>
 <!-- **********************************************VISTA EDITAR OTS *********************************************-->

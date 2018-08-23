@@ -566,13 +566,12 @@ $(function () {
         //funcion para pintar las graficas
         printGrafics: function(params, div){
 
-            console.log(params.total);
-
             var g_tipos = $(`#${div}`);
             // definicion de algunos atributos de css
             // Chart.defaults.global.defaultFontFamily = "Lato";
             Chart.defaults.global.defaultFontSize = 11;
             Chart.defaults.global.defaultFontColor = '#000';
+
             var myChart = new Chart(g_tipos, {
                 type: 'horizontalBar',
                 data: {
@@ -656,9 +655,9 @@ $(function () {
                 options: {
                     // onClick: vista.clickEventGrafics,
                     title: {
-                    display: true,
-                    text: 'Cantidad OTP Ingeniero'
-                  },
+                        display: true,
+                        text: 'Cantidad OTH por Tipos'
+                    },
 
                     scales: {
                        xAxes: [{
@@ -711,15 +710,19 @@ $(function () {
 //**********************************************JHON*********************
 var tabla_cont_out;
 function showModalDetResOutTime(idTipo) {
-    if (tabla_cont_out) {
-        tabla_cont_out.destroy();
-    }
     $.post(baseurl + '/OtHija/c_getOtsOutTime',
             {
                 idTipo: idTipo // parametros que se envian
             },
             function (data) {
-//                todo.printTableAllOts(data['data']);
+                // limpiar y reiniciar la tabla si ya estaba inicializada
+                if (tabla_cont_out) {
+                            tabla_cont_out.clear().draw();
+                            tabla_cont_out.rows.add(data);
+                            tabla_cont_out.columns.adjust().draw();
+                            return;
+                }
+
                 tabla_cont_out = $('#tablaDetalleResOutTimes').DataTable(fTiempos.configTable(data, [
                     {title: "OT Padre", data: "nro_ot_onyx"},
                     {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
@@ -738,15 +741,19 @@ function showModalDetResOutTime(idTipo) {
 
 var tabla_cont_in;
 function showModalDetResInTimes(idTipo) {
-    if (tabla_cont_in) {
-        tabla_cont_in.destroy();
-    }
     $.post(baseurl + '/OtHija/c_getOtsInTimes',
             {
                 idTipo: idTipo // parametros que se envian
             },
             function (data) {
-//                todo.printTableAllOts(data['data']);
+                // limpiar y reiniciar la tabla si ya estaba inicializada
+                if (tabla_cont_in) {
+                    tabla_cont_in.clear().draw();
+                    tabla_cont_in.rows.add(data);
+                    tabla_cont_in.columns.adjust().draw();
+                    return;
+                }
+
                 tabla_cont_in = $('#tablaDetalleResInTimes').DataTable(eTiempos.configTable(data, [
                     {title: "OT Padre", data: "nro_ot_onyx"},
                     {title: "Id Orden Trabajo Hija", data: "id_orden_trabajo_hija"},
