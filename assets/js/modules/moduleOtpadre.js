@@ -113,7 +113,7 @@ $(function () {
             if (typeof obj.observacion == 'string') {
                 var array_cadena = obj.observacion.split(" ");
                 var cadena = "";
-                    console.log("array_cadena.length", array_cadena.length);
+//                    console.log("array_cadena.length", array_cadena.length);
                 if (array_cadena.length > 10) {
                     
                     for (var i = 0; i < 10; i++) {
