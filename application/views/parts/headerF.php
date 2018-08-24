@@ -73,10 +73,10 @@
 
         <ul class="nav navbar-nav menu_nav_header">
             <!-- <li class="active"><a class="home" href="<?= URL::to('paginaPrincipal') ?>">Home</a> -->
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Home<span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">¿Cómo vamos?<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="<?= URL::to('OTP') ?>">OTP</a></li>
-                <li><a href="<?= URL::to('paginaPrincipal') ?>">OTH</a></li>
+                <li><a href="<?= URL::to('OTP') ?>">¿Cómo vamos OTP?</a></li>
+                <li><a href="<?= URL::to('paginaPrincipal') ?>">¿Cómo vamos OTH?</a></li>
               </ul>
             </li>
               <?php
@@ -86,8 +86,8 @@
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
                     <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
-                    <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                     <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización <span class="badge"><?php echo $cantidad['afeterEigtDays'][0]->cant ?></span></a></li>
+                    <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
                     <?php endif ?>
                   </ul>
@@ -101,10 +101,10 @@
                   </ul>
                 </li> 
 
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Cicle Close <span class="caret"></span></a>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Facturación <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('cierre_ots') ?>">Cierre </a></li>
-                    <li><a href="<?= URL::to('facturacion') ?>">Facturacion </a></li>
+                    <li><a href="<?= URL::to('facturacion') ?>">Facturados </a></li>
                   </ul>
                 </li>   
 

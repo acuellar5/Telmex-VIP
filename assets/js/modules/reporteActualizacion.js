@@ -1,6 +1,6 @@
 $(function () {
    /**********************************************INICIO 08 DIAS*********************************************/
-   
+
  vista = {
         init: function () {
             vista.events();
@@ -11,6 +11,8 @@ $(function () {
         events: function () {
            $('#tablaEigtDaysOts').on('click', 'a.btn_email_ko15', vista.email_ko_15);
            $('#contenedor').on('click', 'a.email_send', vista.onClickVerLogTrChanges);
+           $('#ModalHistorialLog').on('click', 'button.ver-mail', vista.onClickVerLogMailReporte);
+
            $('.cerrar').on('click', vista.clear_form);
            $('#bnt_ko').on('click', vista.btn_enviar);
         },
@@ -19,7 +21,7 @@ $(function () {
             $.post(baseurl + '/ReporteActualizacion/getListOtsEigtDay',
                     {
                         //parametros
-                        
+
                     },
                     // funcion que recibe los datos (callback)
                             function (data) {
@@ -43,8 +45,8 @@ $(function () {
                 {title: "OT Hija", data: "ot_hija"},
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
-                {title: "Opc.", data: vista.getButtons},
-   
+                {title: "Opc.", data: vista.getButtonsko8d},
+
             ]));
         },
         // Datos de configuracion del datatable
@@ -63,7 +65,7 @@ $(function () {
                     $('#tablaEigtDaysOts thead').append(r);
                     $('#search_0').css('text-align', 'center');
 
-                    // DataTable 
+                    // DataTable
                     var table = $('#tablaEigtDaysOts').DataTable();
 
                     // Apply the search
@@ -80,7 +82,7 @@ $(function () {
                 data: data,
                 columns: columns,
                 //lenguaje del plugin
-                /*"language": { 
+                /*"language": {
                  "url": baseurl + "assets/plugins/datatables/lang/es.json"
                  },*/
                 columnDefs: [{
@@ -93,11 +95,19 @@ $(function () {
             }
         },
 
-        getButtons: function () {
-            var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs btn_email_ko15 btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>"  
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"                                   
-                    + "</div>";
+        getButtonsko8d: function (obj) {
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+                botones += "<a class='btn btn-default btn-xs btn_email_ko15 btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>";
+                    // + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"
+
+            if (obj.function != 0) {
+                if (obj.c_email > 0) {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
+                } else {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+                }
+            }
+             botones += "</div>";
             return botones;
         },
         /***********************************************FIN PINTAR TABLA GRANDE***********************************************/
@@ -111,7 +121,6 @@ $(function () {
             $('#modalEmail_15dias #myModalLabel').html(`Orden Ot Hija N ${record.id_orden_trabajo_hija}`);
 
             $('#modalEmail_15dias').modal('show');
-            console.log(record);
 
         },
         clear_form: function (){
@@ -146,13 +155,13 @@ $(function () {
                             input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
                             return false;
                         }else {
-                            input.css("box-shadow", "none");                        
+                            input.css("box-shadow", "none");
                         }
                     });
                     if (msj) {
                         swal('Error', 'Complete correctamente los campos', 'error');
-                        response = false; 
-                        return false; 
+                        response = false;
+                        return false;
                     }
 
                     if (!expresiones.test(mail)) {
@@ -160,7 +169,7 @@ $(function () {
                         response = false;
                         return false;
                     }
-                    
+
                     if(response){
                         swal({
                           title: '¿Esta seguro?',
@@ -191,7 +200,7 @@ $(function () {
             /*************************************************FIN ENVIAR CORREO*************************************************/
 
                     //************************************LOG**************************************
-                    
+
                     onClickVerLogTrChanges: function () {
                         var aLinkLog = $(this);
                         var trParent = aLinkLog.parents('tr');
@@ -200,11 +209,11 @@ $(function () {
 
                         switch(tabla) {
                             case 'tablaEigtDaysOts':
-                                record = vista.tablaEigtDaysOts.row(trParent).data();                    
+                                record = vista.tablaEigtDaysOts.row(trParent).data();
                                 break;
                             case 'mail_send_today':
-                                record = send.mail_send_today.row(trParent).data();                    
-                                break;              
+                                record = send.mail_send_today.row(trParent).data();
+                                break;
                         }
 
 
@@ -218,15 +227,15 @@ $(function () {
                         $.post( baseurl + '/Log/getLogById',
                             {
                                 id: obj.id_orden_trabajo_hija
-                            }, 
+                            },
                             function(data) {
                             var obj = JSON.parse(data);
                             vista.showModalHistorial(obj);
                             }
-                        );            
+                        );
                     },
 
-                    
+
                     // Muestra modal detalle historial log por id
                     showModalHistorial: function(obj){
                         $('#ModalHistorialLog').modal('show');
@@ -242,7 +251,7 @@ $(function () {
                             vista.tableModalHistory.destroy();
                         }
                         ///lleno la tabla con los valores enviados
-                        vista.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data,[                                       
+                        vista.tableModalHistory = $('#tableHistorialLog').DataTable(vista.configTableLog(data,[
                                 {data: "id_ot_hija"},
                                 {data: "antes"},
                                 {data: "ahora"},
@@ -259,11 +268,11 @@ $(function () {
                             vista.tableModalLogMail.destroy();
                         }
                         ///lleno la tabla con los valores enviados
-                        vista.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data,[                                       
+                        vista.tableModalLogMail = $('#table_log_mail').DataTable(vista.configTableLog(data,[
                                 {data: "fecha"},
                                 {data: "clase"},
                                 {data: "servicio"},
-                                {data: "usuario_sesion"},
+                                {data: "usuario_en_sesion"},
                                 {data: "destinatarios"},
                                 {data: "nombre"},
                                 {data: vista.getButonsPrint}
@@ -283,29 +292,37 @@ $(function () {
                         }
                     },
 
-                    //
-                    // onClickVerLogMail: function(){
-                    //     var tr = $(this).parents('tr');
-                    //     var record = vista.tableModalLogMail.row(tr).data();
-                    //     console.log(record);
 
-                    //     vista.generarPDF(record);
-                    // },
+                    onClickVerLogMailReporte: function(){
+                        var tr = $(this).parents('tr');
+                        var record = vista.tableModalLogMail.row(tr).data();
 
-                    // // generar pdf redireccionar
-                    // generarPDF: function(data){
-                    //     console.log(data);
-                    //     $.post(baseurl + '/Templates/generatePDF', 
-                    //         {
-                    //             data: data
-                    //         }, 
-                    //         function(data) {
-                           
-                    //     });
+                        vista.generarPDF(record);
+                    },
+
+                    // generar pdf redireccionar
+                    generarPDF: function(data){
+                        $.post(baseurl + '/Templates/generatePDF',
+                            {
+                                data: data
+                            },
+                            function(data) {
+                            var plantilla = JSON.parse(data);
+                            $('body').append(
+                                    `
+                                        <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
+                                            <textarea name="txt_template" id="txt_template"></textarea>
+                                            <input type="submit" value="e" id="smt_ver_correo">
+                                        </form>
+                                    `
+                                );
+                            $('#txt_template').val(plantilla);
+                            $('#smt_ver_correo').click();
 
 
-                    //     // window.open('http://ejemplo.com/archivo.pdf', '_blank');
-                    // },
+                        });
+
+                    },
 
                     // creamos los botones para imprimir el correo enviado
                     getButonsPrint: function(obj){
@@ -314,8 +331,8 @@ $(function () {
                         var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver correo"><span class="fa fa-fw fa-print"></span></button>'
                         return button;
 
-                    },           
-                
+                    },
+
            };
     vista.init();
 });
@@ -325,20 +342,20 @@ $(function () {
         init: function () {
             send.events();
             send.get_mail_send_today();
-            
+
         },
 
         //Eventos de la ventana.
         events: function () {
             // $('#mail_send_today').on('click', 'a.email_send', send.onClickVerLogTrChanges);
             // $('#contenido_tablas').on('click', 'a.al', send.onClickVerLogTrChanges);
-        
+
         },
         get_mail_send_today: function () {
             $.post(baseurl + '/ReporteActualizacion/mail_send_today',
                     {
                         //parametros
-                        
+
                     },
                     // funcion que recibe los datos (callback)
                             function (data) {
@@ -362,7 +379,7 @@ $(function () {
                 {title: "OT Hija", data: "ot_hija"},
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
-                {title: "Opc.", data: send.getButtons},
+                {title: "Opc.", data: send.getButtonsSend},
 
             ]));
         },
@@ -382,7 +399,7 @@ $(function () {
                     $('#mail_send_today thead').append(r);
                     $('#search_0').css('text-align', 'center');
 
-                    // DataTable 
+                    // DataTable
                     var table = $('#mail_send_today').DataTable();
 
                     // Apply the search
@@ -408,17 +425,23 @@ $(function () {
                 drawCallback: onDraw
             }
         },
-        getButtons: function () {
-            var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"                                   
-                    + "</div>";
+        getButtonsSend: function (obj) {
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            if (obj.function != 0) {
+                if (obj.c_email > 0) {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
+                } else {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+                }
+            }
+             botones += "</div>";
             return botones;
         },
-       
 
-         
-          
-            
+
+
+
+
             // Muestra modal detalle historial log por id
             showModalHistorial: function(obj){
                 $('#ModalHistorialLog').modal('show');
@@ -434,7 +457,7 @@ $(function () {
                     send.tableModalHistory.destroy();
                 }
                 ///lleno la tabla con los valores enviados
-                send.tableModalHistory = $('#tableHistorialLog').DataTable(send.configTableLog(data,[                                       
+                send.tableModalHistory = $('#tableHistorialLog').DataTable(send.configTableLog(data,[
                         {data: "id_ot_hija"},
                         {data: "antes"},
                         {data: "ahora"},
@@ -451,7 +474,7 @@ $(function () {
                     send.tableModalLogMail.destroy();
                 }
                 ///lleno la tabla con los valores enviados
-                send.tableModalLogMail = $('#table_log_mail').DataTable(send.configTableLog(data,[                                       
+                send.tableModalLogMail = $('#table_log_mail').DataTable(send.configTableLog(data,[
                         {data: "fecha"},
                         {data: "clase"},
                         {data: "servicio"},
@@ -463,29 +486,6 @@ $(function () {
 
             },
 
-            //
-            onClickVerLogMail: function(){
-                var tr = $(this).parents('tr');
-                var record = send.tableModalLogMail.row(tr).data();
-                console.log(record);
-
-                send.generarPDF(record);
-            },
-
-            // generar pdf redireccionar
-            generarPDF: function(data){
-                console.log(data);
-                $.post(baseurl + '/Templates/generatePDF', 
-                    {
-                        data: data
-                    }, 
-                    function(data) {
-                   
-                });
-
-
-                // window.open('http://ejemplo.com/archivo.pdf', '_blank');
-            },
 
             // creamos los botones para imprimir el correo enviado
             getButonsPrint: function(obj){
@@ -498,7 +498,7 @@ $(function () {
 
 
 
-        
+
 
 
     };

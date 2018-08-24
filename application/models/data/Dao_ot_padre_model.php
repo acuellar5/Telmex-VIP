@@ -240,7 +240,29 @@ class Dao_ot_padre_model extends CI_Model {
     }
   }
 
-
+    public function getListOtsOtPadreEmail() {
+        $condicion = "";
+        if (Auth::user()->n_role_user == 'ingeniero') {
+            $usuario_session = Auth::user()->k_id_user;
+            $condicion = " AND otp.k_id_user = $usuario_session ";
+        }
+        $query = $this->db->query("
+                SELECT 
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
+                CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                FROM ot_hija oth 
+                INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
+                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                $condicion
+                GROUP BY nro_ot_onyx
+                HAVING cant_mails > 0
+                ORDER BY cant_mails DESC
+        ");
+        return $query->result();
+    }
 
 
 

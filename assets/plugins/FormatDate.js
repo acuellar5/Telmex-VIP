@@ -196,7 +196,6 @@ function formatDate(date, format, formatDate) {
             result = result + token;
         }
     }
-//    console.log(result);
     if (result.search('NaN') >= 0) {
         result = 'Indefinido';
     }

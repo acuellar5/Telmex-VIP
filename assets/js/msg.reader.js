@@ -159,7 +159,6 @@
   // convert binary data to dictionary
   function parseMsgData(ds) {
     var msgData = headerData(ds);
-  //  console.log(msgData);
     msgData.batData = batData(ds, msgData);
     msgData.sbatData = sbatData(ds, msgData);
     if (msgData.xbatCount > 0) {

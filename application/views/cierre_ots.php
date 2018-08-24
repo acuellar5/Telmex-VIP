@@ -42,7 +42,7 @@
 
 <!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
 <div id="modalOthDeOtp" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
-    <div class="modal-dialog modal-lg2" style="width: 1100px;">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">
                 <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
