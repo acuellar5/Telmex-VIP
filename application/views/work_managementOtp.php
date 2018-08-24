@@ -195,22 +195,18 @@
 </div>
 
 <!------------------------------------------ MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
-<div id="modalOthDeOtp" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" style="overflow: auto">
-    <div class="modal-dialog modal-lg2" style="width: 1100px;">
+<div id="modalOthDeOtp" class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" style="overflow: auto">
+    <div class="modal-dialog modal-lg" width='100%'>
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">
                 <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
                 <h3 class="modal-title" id="myModalLabel"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
             </div>
-            <div class="modal-body">
-                <div>
+            <div class="modal-body">                
                     <form class="well form-horizontal" id="formModalOTHS" method="post" novalidate="novalidate">
-                        <fieldset>
-                            <table class="table table-hover table-bordered table-striped dataTable_camilo csstable" id="table_oths_otp"  cellspacing="2"></table>
-                        </fieldset>
-
-                    </form>
-                </div>
+                        
+                            <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_oths_otp"  cellspacing="2"></table>
+                    </form>                
             </div>
 
 

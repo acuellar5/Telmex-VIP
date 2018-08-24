@@ -19,7 +19,7 @@ class OtPadre extends CI_Controller {
         $data['last_time'] = $this->Dao_ot_hija_model->get_last_time_import();
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
-        $data['title'] = 'OTP'; // cargar el  titulo en la pestaña de la pagina para otp
+        $data['title'] = '¿Cómo vamos OTP?'; // cargar el  titulo en la pestaña de la pagina para otp
         $this->load->view('parts/headerF', $data);
         $this->load->view('moduleOtp');
         $this->load->view('parts/footerF');

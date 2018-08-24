@@ -29,7 +29,7 @@ class User extends CI_Controller {
         }
         //Comprobamos si el Auth ha encontrado válida las credenciales consultadas...
         if ($res) {
-            $data['title'] = 'Home';
+            $data['title'] = '¿Cómo vamos OTP?';
             $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
             $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
             $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();

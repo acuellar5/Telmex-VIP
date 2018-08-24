@@ -292,7 +292,6 @@ $(function () {
                         }
                     },
 
-
                     onClickVerLogMailReporte: function(){
                         var tr = $(this).parents('tr');
                         var record = vista.tableModalLogMail.row(tr).data();
@@ -302,10 +301,12 @@ $(function () {
 
                     // generar pdf redireccionar
                     generarPDF: function(data){
+
                         $.post(baseurl + '/Templates/generatePDF',
                             {
                                 data: data
                             },
+
                             function(data) {
                             var plantilla = JSON.parse(data);
                             $('body').append(
@@ -318,7 +319,6 @@ $(function () {
                                 );
                             $('#txt_template').val(plantilla);
                             $('#smt_ver_correo').click();
-
 
                         });
 
