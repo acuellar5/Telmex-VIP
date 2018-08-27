@@ -97,6 +97,8 @@
                     <?php endif ?>
                   </ul>
                 </li>
+
+
                 <!-- que el boton restore apareza solo en administrativo y que sea OTS Hija -->
                 <?php if (Auth::user()->n_role_user == 'administrador' ): ?>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
@@ -128,6 +130,13 @@
                   </ul>
                 </li>
               <?php } ?>
+
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.   Cambios<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL::to('cierre_ots') ?>">Cambios</a></li>
+                    
+                  </ul>
+                </li>
            <!--  <li><a href="#">agendamiento</a></li> -->   
            <!--  <li><a href="#">facturacion</a></li> -->
         </ul>
