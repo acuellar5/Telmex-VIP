@@ -184,7 +184,7 @@
 										</div>
 									</fieldset>
 								</div>
-								<!-- fin seccion izquierda form -->
+								fin seccion izquierda form
 								<div class="widget bg_white m-t-25 display-block">
 									<fieldset class="col-md-6 control-label">
 										<div class="form-group">
@@ -289,6 +289,224 @@
 							</fieldset>
 						</form>
 					</div>
+
+					
+				<!--============================================= NUEVO INTENTO =============================================-->
+				<!--***************************** FORMULARIO *****************************-->
+				<form class="well form-horizontal" id="id_form" action="class/function"  method="post">
+				    <fieldset>
+				        <div class="widget">
+				            <h4>
+				                <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;&nbsp; title 1
+				            </h4>
+				            <!--************************** inicio seccion izquierda **************************-->
+				            <fieldset class="col-md-6 control-label">
+				                <!-- valores ocultos -->
+				                <input type="hidden" id="id_hidden" value="" name="">                	
+				                 &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="text">
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT TEXT ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="text">
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT TEXT ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="text">
+				                        </div>
+				                    </div>
+				                </div>
+				            </fieldset>
+				            <!--*******************************  fin seccion izquierda *******************************-->
+				
+				            <!--*******************************  inicio seccion derecha *******************************-->
+				            <fieldset>
+				                <!--****** SELECT ******-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
+				                            <select name="nombre" id="nombre" class="form-control">
+				                                <option value="">Seleccione</option>
+				                                <option value="1">opcion1</option>
+				                            </select>
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT TEXT ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="text">
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT TEXT ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="text">
+				                        </div>
+				                    </div>
+				                </div>
+				            </fieldset>
+				        </div>
+				        <!--************************** inicio seccion derecha **************************-->
+				        <!--************************** inicio seccion izquierda **************************-->
+				        <div class="widget">
+				            <h4>
+				                <i class="glyphicon glyphicon-ok-circle"></i> Title 2
+				            </h4>
+				            <fieldset class="col-md-6 control-label">
+				                <!--****** SELECT ******-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                        <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+				                            <select name="nombre" id="nombre" class="form-control">
+				                              <option value="">Seleccione</option>
+				                              <option value="1">opcion1</option>
+				                            </select>
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT DATE ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="date">
+				                        </div>
+				                    </div>
+				                </div>
+				            </fieldset>
+				            <!-- *************************** fin seccion izquierda ***************************---->
+				            <!--***************************  inicio seccion derecha ***************************---->
+				            <fieldset>
+				                <!--****** SELECT ******-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+				                            <select name="nombre" id="nombre" class="form-control">
+				                               <option value="">Seleccione</option>
+				                               <option value="1">opcion1</option>
+				                            </select>
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT DATE ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="date">
+				                        </div>
+				                    </div>
+				                </div>
+				            </fieldset>
+				        </div>
+				        <div class="widget">
+				            <h4>
+				                <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;&nbsp; title 3
+				            </h4>
+				            <fieldset class="col-md-6 control-label">
+				                <!--****** SELECT ******-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+				                            <select name="nombre" id="nombre" class="form-control">
+				                                <option value="">Seleccione</option>
+				                                <option value="1">opcion1</option>
+				                            </select>
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT DATE ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="date">
+				                        </div>
+				                    </div>
+				                </div>
+				            </fieldset>
+				            <!--  fin seccion izquierda form---->
+				            <!--  inicio seccion derecha form---->
+				            <fieldset>
+				                <!--****** SELECT ******-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
+				                            <select name="nombre" id="nombre" class="form-control">
+				                                <option value="">Seleccione</option>
+				                                <option value="1">opcion1</option>
+				                            </select>
+				                        </div>
+				                    </div>
+				                </div>
+				                <!--************ INPUT DATE ************-->
+				                <div class="form-group">
+				                    <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                    <div class="col-md-8 selectContainer">
+				                        <div class="input-group">
+				                            <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+				                            <input name="nombre" id="nombre" class="form-control" type="date">
+				                        </div>
+				                    </div>
+				                </div>
+				            </fieldset>
+				        </div>
+				        <!--************ TEXT AREA ************-->
+				        <div class="widget">
+				            <div class="form-group">
+				                <label for="nombre" class="col-md-3 control-label">Nombre: &nbsp;</label>
+				                <div class="col-md-10 selectContainer">
+				                    <div class="input-group">
+				                        <span class="input-group-addon"><i class='glyphicon glyphicon-edit'></i></span>
+				                        <textarea name="nombre" id="nombre" class="form-control" placeholder="Observaciones" rows="5"></textarea>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </fieldset>
+				</form>
+
+
+
+
+
+
 					
 					<!-- *************************INICIO SEGUNDA PESTAÑA************************* -->
 					<div id="log_otp" class="tab-pane fade">

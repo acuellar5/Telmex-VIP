@@ -55,7 +55,7 @@
         <!--==============================================================================================-->
 
   <?php endif ?>
-    <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija' || $this->uri->segment(1) == 'Sede') { ?>
+    <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . validarEnProduccion()) ?>" />
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
