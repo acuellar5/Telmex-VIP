@@ -45,8 +45,7 @@ class User extends CI_Controller {
             $data_session = array(
               'date_min_fact' => $this->Dao_cierre_ots_model->get_date_min_facturada()
             );           
-
-             $this->session->set_userdata($data_session);
+            $this->session->set_userdata($data_session);
 
             $this->load->view('parts/headerF', $data);
             $this->load->view('moduleOtp');
