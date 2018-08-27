@@ -27,6 +27,12 @@ class Sede extends CI_Controller {
         $data = $this->Dao_sede_otp_model->getListoffices_Table();
         echo json_encode($data);
     }
+
+    //carga el dao para mostrar la tabla de OTP para el modulo de control de cambio
+    public function c_getListOTPTable() {
+        $dataOtp = $this->Dao_sede_otp_model->c_getListOTPTable();
+        echo json_encode($dataOtp);
+    }
     
 
 }
