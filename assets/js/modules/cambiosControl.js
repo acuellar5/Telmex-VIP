@@ -12,7 +12,7 @@ $(function () {
         },
         getListHeadquarters_table: function () {
             //metodo ajax (post)
-            $.post(base_url + '/Ticket/c_getListpending_table',
+            $.post(base_url + '/sede/c_getListoffices_table',
                     {
                         //parametros
 

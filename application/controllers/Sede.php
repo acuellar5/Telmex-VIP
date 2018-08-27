@@ -21,4 +21,11 @@ class Sede extends CI_Controller {
         $this->load->view('parts/footerF');
 	}
 
+	//carga el dao para mostrar la tabla de sede en el modulo de control de cambio
+    public function c_getListoffices_table() {
+        $data = $this->Dao_sede_otp_model->getListofficesTable();
+        echo json_encode($data);
+    }
+    
+
 }

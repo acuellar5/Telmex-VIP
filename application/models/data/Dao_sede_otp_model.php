@@ -11,7 +11,7 @@ class Dao_sede_otp_model extends CI_Model {
     }
 
     // Retorna registro otp por id de ot padre
-    public function exist_otp_by_id($id) {
+    public function getListofficesTable($id) {
         $query = $this->db->query("
                 SELECT sede, ciudad, departamento, direccion, clasificacion, tipo_oficina FROM sede;
             ");
