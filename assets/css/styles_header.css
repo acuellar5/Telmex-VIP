@@ -386,6 +386,12 @@ margin-left: -53%;
     font-size: 13.5px !important ;
 }
 
+.tamanoColumOpc{
+
+    width: 29px;
+}
+
+
 /* ESTILOS FABER PARA FORMULARIO DE MODAL*/
 .input_mdl_form_control{
     border-radius: 7px !important;
@@ -404,3 +410,4 @@ margin-left: -53%;
 .select_cc_tiempos{
     margin-top: 25px;
 }
+

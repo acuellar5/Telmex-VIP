@@ -19,6 +19,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                     <th></th>                    
                 </tr>
             </tfoot>
@@ -35,9 +36,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
-                    <th></th>
-                    
+                    <th class="tamanoColumOpc"></th>                    
                 </tr>
             </tfoot>
         </table>
