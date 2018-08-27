@@ -13,6 +13,7 @@ class Dao_sede_otp_model extends CI_Model {
     // Retorna los datos de las sedes 
     public function getListoffices_Table() {
         $query = $this->db->query("
+
                 SELECT id_sede, nombre_sede, ciudad, departamento, direccion, clasificacion, tipo_oficina 
                 FROM sede;
            ");
