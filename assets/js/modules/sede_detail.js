@@ -1,6 +1,6 @@
 	
-function showFormControl(otp, cliente, sede){
-	$('#myModalLabel').html(`Orden de trabajo ${otp}, Cliente ${cliente}, Sede ${sede}`);
+function showFormControl(otp, cliente){
+	$('#myModalLabel').html(`Orden de trabajo ${otp}`);
 	$('#mdl-control_cambios').modal('show');
 }
 

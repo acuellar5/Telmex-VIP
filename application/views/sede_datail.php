@@ -1,14 +1,14 @@
-<h3 align="center">Detalle de la sede <?= $otp[0]->nombre_sede ?> Cliente <?= $otp[0]->n_nombre_cliente ?></h3>
+<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
-	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp	">tabla OTP</a></li>
+	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp">tabla OTP</a></li>
 	<li class=""><a data-toggle="tab" href="#pestana_log">control de cambios</a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
 <div class="tab-content">
 
-	<div id="pestana_tabla_otp	" class="tab-pane fade in active">
+	<div id="pestana_tabla_otp" class="tab-pane fade in active">
 		<h3>tabla OTP</h3>
 		<!-- INICIO TABLA DE OTP DE UNA SEDE -->
 		<table id="table_sede_otp" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
@@ -26,38 +26,31 @@
 				<td><?= $item_otp->servicio ?></td>
 				<td><?= $item_otp->estado_orden_trabajo ?></td>		
 				<td><div class='btn-group'>
-		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>, <?= $item_otp->n_nombre_cliente ?>, <?= $item_otp->nombre_sede ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
 		            </div>
 		        </td>		
 			</tr>
 		<?php endforeach ?>
-			<tfoot>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-			</tfoot>
 		</table>
 	</div>
 	<!-- ***********************************************INICIO DE PESTAÑA 2*********************************************** -->
 	<div id="pestana_log" class="tab-pane fade">
 		<h3>control de cambios</h3>
-		<table id="table_log_ctrl_cambios" class='table table-bordered table-striped' width='100%'>
+		<table id="table_log_ctrl_cambios" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
 			<thead>
-				<th>OTP</th>
-				<th>RESPONSABLE</th>
-				<th>CAUSA</th>
-				<th>NUMERO control</th>
-				<th>COMPROMISO</th>
-				<th>FECHA PROGRAMACION INICIAL</th>
-				<th>NUEVA FECHA PROGRAMACION</th>
-				<th>NARRATIVA ESCALAMIENTO</th>
-				<th>ESTADO</th>
-				<th>OBSERVACIONES</th>
-				<th>FALTANTES</th>
-				<th>EN_TIEMPOS</th>
-				<th>CREADO</th>
+				<th>otp</th>
+				<th>responsable</th>
+				<th>causa</th>
+				<th>numero control</th>
+				<th>compromiso</th>
+				<th>fecha programacion inicial</th>
+				<th>nueva fecha programacion</th>
+				<th>narrativa escalamiento</th>
+				<th>estado</th>
+				<th>observaciones</th>
+				<th>faltantes</th>
+				<th>en_tiempos</th>
+				<th>creado</th>
 			</thead>
 		<?php foreach ($log as $item_log): ?>
 			<tr>
@@ -99,7 +92,7 @@
 
 <!-- MODAL FORMULARIO + LOG -->
 <div id="mdl-control_cambios" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
-    <div class="modal-dialog modal-lg2" style="width: 1100px;">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
@@ -191,14 +184,14 @@
 										</div>
 									</fieldset>
 								</div>
-								fin seccion izquierda form
+								<!-- fin seccion izquierda form -->
 								<div class="widget bg_white m-t-25 display-block">
 									<fieldset class="col-md-6 control-label">
 										<div class="form-group">
 											<label for="consultor_comercial" class="col-md-3 control-label">Narrativa de escalamiento: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
+											<div class="col-md-6 selectContainer ">
 												<div class="input-group">
-													<textarea name="">  </textarea>
+													<textarea name="" class="form-control">  </textarea>
 												</div>
 											</div>
 										</div>
