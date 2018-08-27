@@ -131,9 +131,9 @@
                 </li>
               <?php } ?>
 
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.   Cambios<span class="caret"></span></a>
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.Cambios<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('cierre_ots') ?>">Cambios</a></li>
+                    <li><a href="<?= URL::to('Sede') ?>">Control de Cambios</a></li>
                     
                   </ul>
                 </li>

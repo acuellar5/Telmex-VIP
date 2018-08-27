@@ -5,12 +5,20 @@ class Sede extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+		$this->load->model('data/Dao_ot_hija_model');
 	}
 
 
-	// carga en la nueva pestaña las distintas otp  de la sede
-	public function otps_sede($id_sede){
-		
+	// Cargar la vista principal para el modulo de Control de cambios (sede)
+	public function index(){
+		if (!Auth::check()) {
+            Redirect::to(URL::base());
+        }
+        $data['title'] = 'Sedes'; // cargar el  titulo en la pestaña de la pagina para sede
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('contolDeCambios');
+        $this->load->view('parts/footerF');
 	}
 
 }
