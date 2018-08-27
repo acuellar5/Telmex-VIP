@@ -14,7 +14,7 @@ class Sede extends CI_Controller {
 		if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-        $data['title'] = 'Sedes'; // cargar el  titulo en la pestaña de la pagina para sede
+        $data['title'] = 'ControlDeCambios'; // cargar el  titulo en la pestaña de la pagina para sede
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('contolDeCambios');
