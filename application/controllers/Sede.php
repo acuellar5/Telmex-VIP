@@ -8,6 +8,7 @@ class Sede extends CI_Controller {
 		$this->load->model('data/Dao_ot_padre_model');
 		$this->load->model('data/Dao_ot_hija_model');
 		$this->load->model('data/Dao_log_model');
+		$this->load->model('data/Dao_sede_otp_model');
 	}
 
 
@@ -25,5 +26,23 @@ class Sede extends CI_Controller {
 	}
 
 
+	// Cargar la vista principal para el modulo de Control de cambios (sede)
+	public function index(){
+		if (!Auth::check()) {
+            Redirect::to(URL::base());
+        }
+        $data['title'] = 'Control De Cambios'; // cargar el  titulo en la pestaña de la pagina para sede
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('contolDeCambios');
+        $this->load->view('parts/footerF');
+	}
+
+	//carga el dao para mostrar la tabla de sede en el modulo de control de cambio
+    public function c_getListofficesTable() {
+        $data = $this->Dao_sede_otp_model->getListoffices_Table();
+        echo json_encode($data);
+    }
+    
 
 }

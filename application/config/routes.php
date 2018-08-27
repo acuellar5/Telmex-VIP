@@ -59,6 +59,7 @@ $route['paginaPrincipal'] = 'User/principalView';
 $route['editarOts'] = 'OtHija/editOts';
 $route['managementOtp'] = 'OtPadre/managementOtp';
 $route['ReporteActualizacion'] = 'ReporteActualizacion/updateReport';
+$route['ControlDeCambios'] = 'ControlDeCambios/track_changes';
 $route['OTP'] = 'OtPadre/view_otp';
 $route['cargarOts'] = 'User/loadInformation';
 $route['type_restore'] = 'Type/type_restore';
