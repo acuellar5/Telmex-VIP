@@ -12,7 +12,7 @@ $(function () {
         },
         getListHeadquarters_table: function () {
             //metodo ajax (post)
-            $.post(base_url + '/sede/c_getListoffices_table',
+            $.post(baseurl + '/Sede/c_getListofficesTable',
                     {
                         //parametros
 
@@ -27,35 +27,34 @@ $(function () {
                 },
         printTable: function (data) {
             // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
-            trackChangesHeadquarters.track_changes_office = $('#track_changes_office').DataTable(helper.configTableHeadquarters(data, [
+            trackChangesHeadquarters.trackChanges_Office = $('#trackChanges_Office').DataTable(trackChangesHeadquarters.configTableHeadquarters(data, [
 
-                {title: "Sede", data: "sede"},
+                {title: "Nombre de la sede", data: "nombre_sede"},
                 {title: "Ciudad", data: "ciudad"},
                 {title: "Departamento", data: "departamento"},
                 {title: "Dierección", data: "direccion"},
                 {title: "Clasificación", data: "clasificacion"},
                 {title: "Tipo de Oficina", data: "tipo_oficina"},
-                 {title: "Opc.", data: send.getButtonsSend},
+                {title: "Opc.", data: trackChangesHeadquarters.getButonsPrintOffice},
             ]));
         },
         // Datos de configuracion del datatable
         configTableHeadquarters: function (data, columns, onDraw) {
             return {
                 initComplete: function () {
-                    //es para crear los campos para buscar
-                    $('#track_changes_office tfoot th').each(function () {
+                    $('#trackChanges_Office  tfoot th').each(function () {
                         $(this).html('<input type="text" placeholder="Buscar" />');
                     });
-                    //subir los espacios para buscar la informacion
-                    var r = $('#track_changes_office tfoot tr');
+
+                    var r = $('#trackChanges_Office tfoot tr');
                     r.find('th').each(function () {
                         $(this).css('padding', 8);
                     });
-                    $('#track_changes_office thead').append(r);
+                    $('#trackChanges_Office thead').append(r);
                     $('#search_0').css('text-align', 'center');
 
                     // DataTable
-                    var table = $('#track_changes_office').DataTable();
+                    var table = $('#trackChanges_Office').DataTable();
 
                     // Apply the search
                     table.columns().every(function () {
@@ -70,27 +69,46 @@ $(function () {
                 },
                 data: data,
                 columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json",
+                },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                select: true,
+
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
 
                 columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
                         defaultContent: "",
-                        targets: -1,
+                        // targets: -1,
                         orderable: false,
                     }],
-                order: [[3, 'asc']],
+                order: [[0, 'desc']],
                 drawCallback: onDraw
             }
         },
-        getButtonsSend: function (obj) {
-            var botones = '<div class="btn-group" style="display: inline-flex;">';
-            if (obj.function != 0) {
-                if (obj.c_email > 0) {
-                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">' + obj.c_email + '</span></a>';
-                } else {
-                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
-                }
-            }
-            botones += "</div>";
-            return botones;
+
+        getButonsPrintOffice: function (obj) {
+            // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
+
+            var button = '<button class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP"><span class="   glyphicon glyphicon-eye-open"></span></button>'
+            return button;
 
         },
     };

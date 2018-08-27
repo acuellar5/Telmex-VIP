@@ -6,6 +6,7 @@ class Sede extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('data/Dao_ot_hija_model');
+		$this->load->model('data/Dao_sede_otp_model');
 	}
 
 
@@ -22,8 +23,8 @@ class Sede extends CI_Controller {
 	}
 
 	//carga el dao para mostrar la tabla de sede en el modulo de control de cambio
-    public function c_getListoffices_table() {
-        $data = $this->Dao_sede_otp_model->getListofficesTable();
+    public function c_getListofficesTable() {
+        $data = $this->Dao_sede_otp_model->getListoffices_Table();
         echo json_encode($data);
     }
     

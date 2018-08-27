@@ -10,7 +10,7 @@
 	<!--*********************  Contendio de la pestaña OTP por sedes *********************-->
     <div id="track_changes_office" class="tab-pane fade in active">
         <h3>Sedes</h3>
-        <table id="office_table" class="table table-hover table-bordered table-striped dataTable_camilo">            
+        <table id="trackChanges_Office" class="table table-hover table-bordered table-striped dataTable_camilo">            
             <tfoot>
                 <tr>
                     <th></th>
@@ -27,7 +27,7 @@
     <!--*********************  Contendio de la pestaña de OTP *********************-->
     <div id="track_changes_OTP" class="tab-pane fade">
         <h3>OTP</h3>
-        <table id="OTP_Table" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+        <table id="trackChanges_OTP" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
             <tfoot>
                 <tr>
                     <th></th>
