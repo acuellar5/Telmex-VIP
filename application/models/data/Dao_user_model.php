@@ -95,5 +95,3 @@ class Dao_user_model extends CI_Model {
 
 
 }
-
-?>

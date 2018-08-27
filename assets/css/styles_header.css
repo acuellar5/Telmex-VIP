@@ -385,3 +385,22 @@ margin-left: -53%;
 .algo {
     font-size: 13.5px !important ;
 }
+
+/* ESTILOS FABER PARA FORMULARIO DE MODAL*/
+.input_mdl_form_control{
+    border-radius: 7px !important;
+}
+.select_observaciones{
+
+    width: 350px;
+}
+.text_aling{
+    text-align: left !important;
+}
+.select_fech_progr{
+    width: 150px;
+    text-align: left !important;
+}
+.select_cc_tiempos{
+    margin-top: 25px;
+}

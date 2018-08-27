@@ -264,6 +264,32 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
+    // obtiene las otp de una sede (pasarle el id de la sede)
+    public function get_otp_by_idsede($idsede){
+       $query = $this->db->query("
+            SELECT 
+            k_id_ot_padre, 
+            k_id_user, 
+            id_cliente_onyx, 
+            n_nombre_cliente, 
+            orden_trabajo, 
+            servicio, 
+            estado_orden_trabajo, 
+            fecha_creacion, 
+            fecha_compromiso, 
+            fecha_programacion
+            FROM 
+            ot_padre otp 
+            INNER JOIN sede s ON otp.id_sede = s.id_sede 
+            WHERE 
+            otp.id_sede = $idsede
+        "); 
+
+       return $query->result();
+    }
+
+
+
 
 
 
