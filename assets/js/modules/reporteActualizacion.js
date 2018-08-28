@@ -43,7 +43,7 @@ $(function () {
                 {title: "OT Hija", data: "ot_hija"},
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
-                {title: "Opc.", data: vista.getButtons},
+                {title: "Opc.", data: vista.getButtonsko8d},
    
             ]));
         },
@@ -93,11 +93,19 @@ $(function () {
             }
         },
 
-        getButtons: function () {
-            var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs btn_email_ko15 btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>"  
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"                                   
-                    + "</div>";
+        getButtonsko8d: function (obj) {
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+                botones += "<a class='btn btn-default btn-xs btn_email_ko15 btn_datatable_cami' title='Enviar Correo'><span class='fa fa-envelope-o'></span></a>";
+                    // + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"                                   
+
+            if (obj.function != 0) {                
+                if (obj.c_email > 0) {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
+                } else {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+                }
+            }
+             botones += "</div>";
             return botones;
         },
         /***********************************************FIN PINTAR TABLA GRANDE***********************************************/
@@ -111,7 +119,6 @@ $(function () {
             $('#modalEmail_15dias #myModalLabel').html(`Orden Ot Hija N ${record.id_orden_trabajo_hija}`);
 
             $('#modalEmail_15dias').modal('show');
-            console.log(record);
 
         },
         clear_form: function (){
@@ -287,14 +294,12 @@ $(function () {
                     // onClickVerLogMail: function(){
                     //     var tr = $(this).parents('tr');
                     //     var record = vista.tableModalLogMail.row(tr).data();
-                    //     console.log(record);
 
                     //     vista.generarPDF(record);
                     // },
 
                     // // generar pdf redireccionar
                     // generarPDF: function(data){
-                    //     console.log(data);
                     //     $.post(baseurl + '/Templates/generatePDF', 
                     //         {
                     //             data: data
@@ -362,7 +367,7 @@ $(function () {
                 {title: "OT Hija", data: "ot_hija"},
                 {title: "Estado orden trabajo Hija", data: "estado_orden_trabajo_hija"},
                 {title: "Ingeniero Responsbale", data: "ingeniero"},
-                {title: "Opc.", data: send.getButtons},
+                {title: "Opc.", data: send.getButtonsSend},
 
             ]));
         },
@@ -408,10 +413,16 @@ $(function () {
                 drawCallback: onDraw
             }
         },
-        getButtons: function () {
-            var botones = "<div class='btn-group-vertical'>"
-                    + "<a class='btn btn-default btn-xs ver-al btn_datatable_cami email_send' title='Inf. Correos'><span class='fa fa-info'></span></a>"                                   
-                    + "</div>";
+        getButtonsSend: function (obj) {
+            var botones = '<div class="btn-group" style="display: inline-flex;">';
+            if (obj.function != 0) {                
+                if (obj.c_email > 0) {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw">'+ obj.c_email +'</span></a>';
+                } else {
+                    botones += '<a class="btn btn-default btn-xs email_send btn_datatable_cami" title="Historial"><span class="fa fa-fw fa-info"></span></a>';
+                }
+            }
+             botones += "</div>";
             return botones;
         },
        
@@ -467,14 +478,12 @@ $(function () {
             onClickVerLogMail: function(){
                 var tr = $(this).parents('tr');
                 var record = send.tableModalLogMail.row(tr).data();
-                console.log(record);
 
                 send.generarPDF(record);
             },
 
             // generar pdf redireccionar
             generarPDF: function(data){
-                console.log(data);
                 $.post(baseurl + '/Templates/generatePDF', 
                     {
                         data: data

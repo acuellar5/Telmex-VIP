@@ -219,7 +219,6 @@ $(function () {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var record = billing.table_oths_otp.row(trParent).data();
-//            console.log(record);
             $.post(baseurl + '/Log/getLogById',
                     {
                         id: record.id_orden_trabajo_hija

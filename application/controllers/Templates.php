@@ -44,11 +44,13 @@ class Templates extends CI_Controller {
 
           $data_oth = array(
             'c_email' => $_POST['c_email'] + 1,
-            'id_orden_trabajo_hija' => $_POST['id_orden_trabajo_hija']
+            'id_orden_trabajo_hija' => $_POST['id_orden_trabajo_hija'],
+            'last_send' => $fActual2
           );
           
 
           $up = $this->Dao_ot_hija_model->update_ot_hija_mod($data_oth);
+
 
     
 
@@ -152,7 +154,8 @@ class Templates extends CI_Controller {
             'fecha_mod'                 => $fActual,
             'estado_mod'                => 1,
             'n_observacion_cierre'      => $pt['n_observacion_cierre'],
-            'c_email'                   => $cant_mails
+            'c_email'                   => $cant_mails,
+            'last_send'                   => $fActual2
         );
 
         $dataLog = array(

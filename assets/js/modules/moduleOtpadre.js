@@ -692,7 +692,6 @@ $(function () {
                                         },
                                         function (data) {
                                             var res = JSON.parse(data);
-                                            console.log(res);
                                             if (res == true) {
                                                 swal(
                                                         'Guardado!',
