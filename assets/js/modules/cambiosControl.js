@@ -150,6 +150,7 @@ $(function () {
             // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
             controlCOTP.trackChanges_Office = $('#trackChanges_OTP').DataTable(controlCOTP.configTableHeadquarters(data, [
 
+                {title: "Sede", data: "id_sede"},
                 {title: "ID OTP", data: "k_id_ot_padre"},
                 {title: "Nombre Cliente", data: "n_nombre_cliente"},
                 {title: "Tipo", data: "orden_trabajo"},

@@ -22,10 +22,14 @@ class Dao_sede_otp_model extends CI_Model {
 
 
     // Retorna los datos de los OTP 
-    public function c_getListOTPTable() {
+    public function c_getListOTP_Table() {
         $query = $this->db->query("
-                SELECT k_id_ot_padre, n_nombre_cliente, orden_trabajo, servicio, estado_orden_trabajo 
-                FROM ot_padre;               
+                SELECT otp.k_id_ot_padre, s.id_sede, otp.n_nombre_cliente, otp.orden_trabajo, 
+                otp.servicio, otp.estado_orden_trabajo 
+                FROM ot_padre otp
+                INNER JOIN sede s 
+                ON otp.id_sede = s.id_sede
+                ;              
            ");
         return $query->result();
     }
