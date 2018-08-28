@@ -263,6 +263,11 @@ and open the template in the editor.
 .p-r-40{
     padding-right: 40px;
 }
+
+.p-r-10pc{
+    padding-right: 10%;
+}
+
 /*PADDING*/
 /*END HELPER CLASS*/
 .text-bold{
@@ -383,4 +388,89 @@ a.link-normal:hover{
 }
 .error{
     color: #cc0033;
+}
+
+.clr-98c2d8{
+    color:#98c2d8;
+}
+
+/* ESTILOS PARA CHECK BOX ANIMADOS */
+.check_cami input[type="checkbox"]{
+position: absolute;
+right: 9000px;
+}
+
+.check_cami input[type="checkbox"] + .label-text:before{
+content: "\f096";
+font-family: "FontAwesome";
+speak: none;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+-webkit-font-smoothing:antialiased;
+width: 1em;
+display: inline-block;
+margin-right: 5px;
+}
+
+.check_cami input[type="checkbox"]:checked + .label-text:before{
+    content: "\f14a";
+    color: #2980b9;
+    animation: effect 250ms ease-in;
+}
+
+.check_cami input[type="checkbox"]:disabled + .label-text{
+    color: #aaa;
+}
+
+.check_cami input[type="checkbox"]:disabled + .label-text:before{
+    content: "\f0c8";
+    color: #ccc;
+}
+
+
+@keyframes effect{
+    0%{transform: scale(0);}
+    25%{transform: scale(1.3);}
+    75%{transform: scale(1.4);}
+    100%{transform: scale(1);}
+}
+
+/* ESTILOS PARA RADIO BUTTONS */
+    .form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: #666;
+     top: 10px;
+     height: 30px;
+     width: 30px;
+     border: 1px solid #ccc;
+     border-radius: 50px;
+     cursor: pointer;     
+     margin-right: 7px;
+     outline: none;
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 13px/1 'Open Sans', sans-serif;
+     left: 11px;
+     top: 7px;
+     content: '\02143';
+     transform: rotate(40deg);
+}
+.form-radio:hover
+{
+     background-color: #f7f7f7;
+}
+.form-radio:checked
+{
+     background-color: #f1f1f1;
 }

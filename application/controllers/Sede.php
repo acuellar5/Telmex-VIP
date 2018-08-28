@@ -8,7 +8,8 @@ class Sede extends CI_Controller {
 		$this->load->model('data/Dao_ot_padre_model');
 		$this->load->model('data/Dao_ot_hija_model');
 		$this->load->model('data/Dao_log_model');
-		$this->load->model('data/Dao_sede_otp_model');
+		$this->load->model('data/Dao_sede_model');
+		$this->load->model('data/Dao_control_cambios_model');
 	}
 
 
@@ -16,6 +17,8 @@ class Sede extends CI_Controller {
 	public function otps_sede($id_sede){
 		$otp['otp'] = $this->Dao_ot_padre_model->get_otp_by_idsede($id_sede);
 		$otp['log'] = $this->Dao_log_model->get_log_by_idsede($id_sede);
+		$otp['responsable'] = $this->Dao_control_cambios_model->getAllResponsable();
+		$otp['causa'] = $this->Dao_control_cambios_model->getAllCausa();
 
 		$data['last_time'] = $this->Dao_ot_hija_model->get_last_time_import();
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
@@ -40,13 +43,13 @@ class Sede extends CI_Controller {
 
 	//carga el dao para mostrar la tabla de sede en el modulo de control de cambio
     public function c_getListofficesTable() {
-        $data = $this->Dao_sede_otp_model->getListoffices_Table();
+        $data = $this->Dao_sede_model->getListoffices_Table();
         echo json_encode($data);
     }
 
     //carga el dao para mostrar la tabla de OTP para el modulo de control de cambio
     public function c_getListOTPTable() {
-        $dataOtp = $this->Dao_sede_otp_model->c_getListOTP_Table();
+        $dataOtp = $this->Dao_sede_model->c_getListOTP_Table();
         echo json_encode($dataOtp);
     }
     

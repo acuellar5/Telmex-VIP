@@ -1,115 +1,3 @@
-<style type="text/css">
-	input[type="checkbox"], input[type="radio"]{
-	position: absolute;
-	right: 9000px;
-}
-
-/*Check box*/
-input[type="checkbox"] + .label-text:before{
-	content: "\f096";
-	font-family: "FontAwesome";
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing:antialiased;
-	width: 1em;
-	display: inline-block;
-	margin-right: 5px;
-}
-
-input[type="checkbox"]:checked + .label-text:before{
-	content: "\f14a";
-	color: #2980b9;
-	animation: effect 250ms ease-in;
-}
-
-input[type="checkbox"]:disabled + .label-text{
-	color: #aaa;
-}
-
-input[type="checkbox"]:disabled + .label-text:before{
-	content: "\f0c8";
-	color: #ccc;
-}
-
-/*Radio box*/
-
-input[type="radio"] + .label-text:before{
-	content: "\f10c";
-	font-family: "FontAwesome";
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing:antialiased;
-	width: 1em;
-	display: inline-block;
-	margin-right: 5px;
-}
-
-input[type="radio"]:checked + .label-text:before{
-	content: "\f192";
-	color: #8e44ad;
-	animation: effect 250ms ease-in;
-}
-
-input[type="radio"]:disabled + .label-text{
-	color: #aaa;
-}
-
-input[type="radio"]:disabled + .label-text:before{
-	content: "\f111";
-	color: #ccc;
-}
-
-/*Radio Toggle*/
-
-.toggle input[type="radio"] + .label-text:before{
-	content: "\f204";
-	font-family: "FontAwesome";
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing:antialiased;
-	width: 1em;
-	display: inline-block;
-	margin-right: 10px;
-}
-
-.toggle input[type="radio"]:checked + .label-text:before{
-	content: "\f205";
-	color: #16a085;
-	animation: effect 250ms ease-in;
-}
-
-.toggle input[type="radio"]:disabled + .label-text{
-	color: #aaa;
-}
-
-.toggle input[type="radio"]:disabled + .label-text:before{
-	content: "\f204";
-	color: #ccc;
-}
-
-
-@keyframes effect{
-	0%{transform: scale(0);}
-	25%{transform: scale(1.3);}
-	75%{transform: scale(1.4);}
-	100%{transform: scale(1);}
-}
-
-</style>
-
-
 <h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
@@ -138,7 +26,7 @@ input[type="radio"]:disabled + .label-text:before{
 				<td><?= $item_otp->servicio ?></td>
 				<td><?= $item_otp->estado_orden_trabajo ?></td>		
 				<td><div class='btn-group'>
-		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?> ");'><i class="fa fa-bars" aria-hidden="true"></i></a>
 		            </div>
 		        </td>		
 			</tr>
@@ -202,7 +90,7 @@ input[type="radio"]:disabled + .label-text:before{
 </div>
 
 
-<!-- MODAL FORMULARIO + LOG -->
+<!-- ==============================================MODAL FORMULARIO + LOG ==============================================-->
 <div id="mdl-control_cambios" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -221,12 +109,12 @@ input[type="radio"]:disabled + .label-text:before{
 				<div class="tab-content">
 				
 					<div id="form" class="tab-pane fade in active">
-						<h3>Formulario</h3>
+						<h3>Nuevo Control de Cambio</h3>
 
 				          <form class="well form-horizontal" id="formModal" action=""  method="post" data-action="FOR_UPDATE" novalidate="novalidate">
 				            <fieldset>
 				              <div class="widget bg_white m-t-25 display-block">
-				                <h2 class="h4 mp">
+				                <h2 class="h4 mp clr-98c2d8">
 				                  <i class="fa fa-fw fa-question-circle"></i>&nbsp;&nbsp; General
 				                </h2>
 				                <fieldset class="col-md-6 control-label">
@@ -373,30 +261,33 @@ input[type="radio"]:disabled + .label-text:before{
 				                </fieldset>
 				              </div>
 
-				              <div class="widget bg_white m-t-25 display-block col-md-12 text_aling">
+				              <div class="widget bg_white m-t-25 display-block col-md-12 p-r-10pc">
+				                <h2 class="h4 mp clr-98c2d8">
+				                  <i class="fa fa-fw fa-check"></i>&nbsp;&nbsp; Faltantes
+				                </h2>
 				                
 				                <fieldset class="col-md-6 control-label">
 				                	<div class="col-md-6">
-					                	<div class="form-check">
-											<label>
-												<input type="checkbox" name="check" checked> <span class="label-text">UM</span>
+					                	<div class="form-check check_cami">
+											<label>UM
+												<input id="UM" type="checkbox" name="faltantes"> <span class="label-text"></span>
 											</label>
 										</div>
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check"> <span class="label-text">CT</span>
+										<div class="form-check check_cami">
+											<label>CT
+												<input id="CT" type="checkbox" name="faltantes"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check"> <span class="label-text">Configuración</span>
+										<div class="form-check check_cami">
+											<label>Configuración
+												<input id="Configuración" type="checkbox" name="faltantes"> <span class="label-text"></span>
 											</label>
 										</div>
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check" disabled> <span class="label-text">Equipos</span>
+										<div class="form-check check_cami">
+											<label>Equipos
+												<input id="Equipos" type="checkbox" name="faltantes"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
@@ -405,151 +296,67 @@ input[type="radio"]:disabled + .label-text:before{
 
 				                <!--  inicio seccion derecha form---->
 				                <fieldset class="col-md-6 control-label">
-				                	<div class="col-md-6">
-					                	<div class="form-check">
-											<label>
-												<input type="checkbox" name="check" checked> <span class="label-text">PDT</span>
+				                	<div class="col-md-4">
+					                	<div class="form-check check_cami">
+											<label>PDT
+												<input id="PDT" type="checkbox" name="faltantes"> <span class="label-text"></span>
 											</label>
 										</div>
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check"> <span class="label-text">Incump fecha</span>
-											</label>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check"> <span class="label-text">cupos saturación</span>
-											</label>
-										</div>
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check" disabled> <span class="label-text">ES</span>
-											</label>
-										</div>
-										<div class="form-check">
-											<label>
-												<input type="checkbox" name="check" disabled> <span class="label-text">SIAO</span>
+										<div class="form-check check_cami">
+											<label>Incump f
+												<input id="Incump fecha" type="checkbox" name="faltantes"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
+									<div class="col-md-4">
+										<div class="form-check check_cami">
+											<label>ES
+												<input id="ES" type="checkbox" name="faltantes"> <span class="label-text"></span>
+											</label>
+										</div>
+										<div class="form-check check_cami">
+											<label>a SIAO
+												<input id="a SIAO" type="checkbox" name="faltantes"> <span class="label-text"></span>
+											</label>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-check check_cami">
+											<label>cupos sat
+												<input id="cupos saturación" type="checkbox" name="faltantes"> <span class="label-text"></span>
+											</label>
+										</div>
+									</div>
 				                </fieldset>
 				              </div>
 
-				              <div class="widget bg_white m-t-25 display-block">
-				                <div class="form-group" id="formCenter">
-				                  <!-- <label for="mtxtObservaciones" class="col-md-3 control-label">Observaciones: &nbsp;</label> -->
-				                  <div class="col-md-10 selectContainer">
-				                    <div class="input-group">
-				                      <span class="input-group-addon"><i class='glyphicon glyphicon-edit'></i></span>
-				                      <input name="mtxtObservaciones" id="mtxtObservaciones" class="form-control" type="text" placeholder="Observaciones">
-				                    </div>
-				                  </div>
-				                </div>                
+				              <div class="widget bg_white m-t-25 display-block col-md-12">
+								<fieldset class="col-md-2 control-label widget m-r-20">
+					                 <b>¿en tiempos?</b>
+									<input type="radio" name="demo" value="one" id="radio-one" class="form-radio" checked><label for="radio-one">SI</label>
+									<input type="radio" name="demo" value="one" id="radio-one" class="form-radio"><label for="radio-one">NO</label>
+								</fieldset>
+
+								<fieldset class="col-md-19 widget control-label">
+									<!--********************* TEXT AREA *********************-->
+									<div class="form-group">
+										<label for="narrativa_escalamiento" class="col-md-3 control-label">Narrativa de escalamiento:</label>
+										<div class="col-md-9 selectContainer">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												<textarea class="form-control" name="narrativa_escalamiento" id="narrativa_escalamiento" rows="2"></textarea>
+											</div>
+										</div>
+									</div>
+									
+								</fieldset>
 				              </div>
-
-
-
-
-				              <!-- espacio para adicionar tecnicos -->
-				              <div class="widget bg_white m-t-25 display-block">
-
-				                <fieldset class="col-md-6 control-label" id="fieldsetIT">
-				                  <div id="newItSeccion"></div>
-
-				                </fieldset>
-				                <!--  fin seccion izquierda form---->
-
-				                <!--  inicio seccion derecha form---->
-				                <fieldset id="fieldsetAA">
-				                  <span class="mg-20"><b> Añadir Técnico </b></span>
-				                  <div id="newAASeccion"></div>
-				                </fieldset>
-
-				              </div>
-
 				            </fieldset>
+				            <center >
+				            	<input type="submit" name="" value="guardar" class="btn-cami_cool m-t-20">
+				            </center>
 				          </form>
 
-
-
-
-
-						<!-- <form class="well form-horizontal" id="formModal" action="" method="post" novalidate="novalidate">
-							<fieldset>
-								
-								
-										<div class="form-group">
-											<label for="consultor_comercial" class="col-md-3 control-label">Narrativa de escalamiento: &nbsp;</label>
-											<div class="col-md-6 selectContainer ">
-												<div class="input-group">
-													<textarea name="" class="form-control">  </textarea>
-												</div>
-											</div>
-										</div>
-
-										
-										<div class="form-group">
-											<label for="grupo" class="col-md-3 control-label">Faltantes para ES: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group text_aling">
-													<fieldset>
-														<div>
-															<input type="radio" id="UM" value="UM" />
-															<label for="UM">UM</label>
-														</div>
-														<div>
-															<input type="radio" id="CT" value="CT" />
-															<label for="CT">CT</label>
-														</div>
-														<div>
-															<input type="radio" id="CONGIGURACIÓN" value="CONGIGURACIÓN" m/>
-															<label for="CONGIGURACIÓN">CONGIGURACIÓN</label>
-														</div>
-														<div>
-															<input type="radio" id="EQUIPOS" value="EQUIPOS"/>
-															<label for="EQUIPOS">EQUIPOS</label>
-														</div>
-														<div>
-															<input type="radio" id="PDT" value="PDT" />
-															<label for="PDT">PDT</label>
-														</div>
-														<div>
-															<input type="radio" id="INCUMPulMIENTO FECHA" value="INCUMPulMIENTO FECHA" />
-															<label for="INCUMPulMIENTO FECHA">INCUMPulMIENTO FECHA</label>
-														</div>
-														<div>
-															<input type="radio" id="CUPOS SATURACIÓN" value="CUPOS SATURACIÓN" />
-															<label for="CUPOS SATURACIÓN">CUPOS SATURACIÓN</label>
-														</div>
-														<div>
-															<input type="radio" id="ES" value="ES" />
-															<label for="ES">ES</label>
-														</div>
-														<div>
-															<input type="radio" id="PASO A SIAO" value="PASO A SIAO" />
-															<label for="PASO A SIAO">PASO A SIAO</label>
-														</div>
-													</fieldset>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="consultor_comercial" class="col-md-3 control-label">¿CC En tiempos?: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group ">
-													<select name="" class="select_cc_tiempos">
-														<option value="">SI</option>
-														<option value="">NO</option>
-													</select>
-												</div>
-											</div>
-										</div>
-									</fieldset>
-								</div>
-							</fieldset>
-						</form> -->
 					</div>
 					
 					<!-- *************************INICIO SEGUNDA PESTAÑA************************* -->
@@ -557,22 +364,12 @@ input[type="radio"]:disabled + .label-text:before{
 						<h3>Hitorial</h3>
 						<!-- cxamilo -->
 						<table id="tableServicios" class='table table-bordered table-striped' width='100%'></table>
-
-
-
 					</div>
-				
 				</div>
-
-
-
 			</div>
-                               
             <div class="modal-footer">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-                <?php if (Auth::user()->n_role_user != 'claro'): ?>
-                    <button type="submit" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
-                <?php endif ?>
+                <
             </div>
         </div>
     </div>
@@ -582,21 +379,9 @@ input[type="radio"]:disabled + .label-text:before{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+	var responsable_list = <?= json_encode($responsable) ?>;
+	console.log("responsable_list", responsable_list);
+	var causa_list = <?= json_encode($causa) ?>;
+	console.log("causa_list", causa_list);
+</script>
