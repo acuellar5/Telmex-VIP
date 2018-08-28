@@ -1,3 +1,115 @@
+<style type="text/css">
+	input[type="checkbox"], input[type="radio"]{
+	position: absolute;
+	right: 9000px;
+}
+
+/*Check box*/
+input[type="checkbox"] + .label-text:before{
+	content: "\f096";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+input[type="checkbox"]:checked + .label-text:before{
+	content: "\f14a";
+	color: #2980b9;
+	animation: effect 250ms ease-in;
+}
+
+input[type="checkbox"]:disabled + .label-text{
+	color: #aaa;
+}
+
+input[type="checkbox"]:disabled + .label-text:before{
+	content: "\f0c8";
+	color: #ccc;
+}
+
+/*Radio box*/
+
+input[type="radio"] + .label-text:before{
+	content: "\f10c";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+input[type="radio"]:checked + .label-text:before{
+	content: "\f192";
+	color: #8e44ad;
+	animation: effect 250ms ease-in;
+}
+
+input[type="radio"]:disabled + .label-text{
+	color: #aaa;
+}
+
+input[type="radio"]:disabled + .label-text:before{
+	content: "\f111";
+	color: #ccc;
+}
+
+/*Radio Toggle*/
+
+.toggle input[type="radio"] + .label-text:before{
+	content: "\f204";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.toggle input[type="radio"]:checked + .label-text:before{
+	content: "\f205";
+	color: #16a085;
+	animation: effect 250ms ease-in;
+}
+
+.toggle input[type="radio"]:disabled + .label-text{
+	color: #aaa;
+}
+
+.toggle input[type="radio"]:disabled + .label-text:before{
+	content: "\f204";
+	color: #ccc;
+}
+
+
+@keyframes effect{
+	0%{transform: scale(0);}
+	25%{transform: scale(1.3);}
+	75%{transform: scale(1.4);}
+	100%{transform: scale(1);}
+}
+
+</style>
+
+
 <h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
@@ -122,7 +234,7 @@
 				                  <!-- <input type="hidden" id="mtxtTicket" value=""> -->
 
 				                  <div class="form-group">
-				                    <label for="id_ot_padre" class="col-md-3 control-label">otp: </label>
+				                    <label for="id_ot_padre" class="col-md-3 control-label">otp:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class="fa fa-braille" aria-hidden="true"></i></span>
@@ -132,7 +244,7 @@
 				                  </div>
 
 				                  <div class="form-group">
-				                    <label for="n_nombre_cliente" class="col-md-3 control-label">Cliente: </label>
+				                    <label for="n_nombre_cliente" class="col-md-3 control-label">Cliente:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
@@ -142,7 +254,7 @@
 				                  </div>
 
 				                  <div class="form-group">
-				                    <label for="numero_control" class="col-md-3 control-label">N° control: </label>
+				                    <label for="numero_control" class="col-md-3 control-label">N° control:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class="fa fa-contao" aria-hidden="true"></i></span>
@@ -156,7 +268,7 @@
 				                <fieldset>
 
 				                  <div class="form-group">
-				                    <label for="id_responsable" class="col-md-3 control-label">Responsable CC: &nbsp;</label>
+				                    <label for="id_responsable" class="col-md-3 control-label">Responsable CC:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-street-view" aria-hidden="true"></i></span>
@@ -169,7 +281,7 @@
 
 				                  
 				                  <div class="form-group">
-				                    <label for="id_causa" class="col-md-3 control-label">Responsable CC: &nbsp;</label>
+				                    <label for="id_causa" class="col-md-3 control-label">Causa CC:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-th-list" aria-hidden="true"></i></span>
@@ -180,44 +292,39 @@
 				                    </div>
 				                  </div>
 
-				                  
-
 				                  <div class="form-group">
-				                    <label for="mtxtFinMant" class="col-md-3 control-label">Fin Manten: &nbsp;</label>
+				                    <label for="fecha_compromiso" class="col-md-3 control-label">Compromiso:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-				                        <input name="mtxtFinMant" id="mtxtFinMant" class="form-control" type="text" disabled="true">
+				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+				                        <input name="fecha_compromiso" id="fecha_compromiso" class="form-control" type="date">
 				                      </div>
 				                    </div>
-				                  </div>                 
+				                  </div>
+
 				                </fieldset>
 				                <!--  fin seccion derecha form---->
 				              </div>
 
 				              <div class="widget bg_white m-t-25 display-block">
-				                <h2 class="h4 mp">
-				                  <i class="fa fa-fw fa-question-circle"></i>IT
-				                </h2>
+				         
 				                <fieldset class="col-md-6 control-label">
 				                  <div class="form-group">
-				                    <label for="mtxtTecIT" class="col-md-3 control-label">Téc IT: &nbsp;</label>
+				                    <label for="fecha_programacion_inicial" class="col-md-3 control-label">Programación Inicial:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-				                        <select name="mtxtTecIT" id="mtxtTecIT" class="form-control">
-				                          <option value=""></option>
-				                        </select>
+				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+				                        <input name="fecha_programacion_inicial" id="fecha_programacion_inicial" class="form-control" type="date">
 				                      </div>
 				                    </div>
 				                  </div>
 
 				                  <div class="form-group">
-				                    <label for="mtxtIniIT" class="col-md-3 control-label">Inicio IT: &nbsp;</label>
+				                    <label for="nueva_fecha_programacion" class="col-md-3 control-label">Nueva Programación:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="mtxtIniIT" id="mtxtIniIT" class="form-control" type="date">
+				                        <input name="nueva_fecha_programacion" id="nueva_fecha_programacion" class="form-control" type="date">
 				                      </div>
 				                    </div>
 				                  </div>
@@ -227,83 +334,106 @@
 				                <!--  inicio seccion derecha form---->
 				                <fieldset>
 				                  <div class="form-group">
-				                    <label for="mtxtAuxIT" class="col-md-3 control-label">Aux IT: &nbsp;</label>
+				                    <label for="estado_cc" class="col-md-3 control-label">Estado:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-				                        <select name="mtxtAuxIT" id="mtxtAuxIT" class="form-control mtxtTecnico">
-				                          <option value=""></option>
+				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-list" aria-hidden="true"></i></span>
+				                        <select name="estado_cc" id="estado_cc" class="form-control">
+					                        <option value="">Seleccione</option>
+					                        <option value="NO INICIADO">NO INICIADO</option>
+											<option value="EJECUTADO">EJECUTADO</option>
+											<option value="RECHAZADO">RECHAZADO</option>
+											<option value="PTE. CORRECCION">PTE. CORRECCION</option>
+											<option value="ESCALADO CLARO">ESCALADO CLARO</option>
 				                        </select>
 				                      </div>
 				                    </div>
 				                  </div>
 
 				                  <div class="form-group">
-				                    <label for="mtxtFinIT" class="col-md-3 control-label">Fin IT: &nbsp;</label>
+				                    <label for="observaciones_cc" class="col-md-3 control-label">Observaciones:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="mtxtFinIT" id="mtxtFinIT" class="form-control" type="date">
+				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-list" aria-hidden="true"></i></span>
+				                        <select name="observaciones_cc" id="observaciones_cc" class="form-control">
+					                        <option value="pte- correccion -se requiere fecha de finalización del pendiente para ajustar">pte- correccion -se requiere fecha de finalización del pendiente para ajustar</option>
+											<option value="cc- rechazado - sin gestion del ing de es">cc- rechazado - sin gestion del ing de es</option>
+											<option value="cc- rechazado - corrección no realizada en tiempos">cc- rechazado - corrección no realizada en tiempos</option>
+											<option value="cc- rechazado - linea de escalamiento fuera de tiempo">cc- rechazado - linea de escalamiento fuera de tiempo</option>
+											<option value="cc- rechazado - causa no aplica debe ser por cliente">cc- rechazado - causa no aplica debe ser por cliente</option>
+											<option value="cc- rechazado - tipificación no aplica deacuerdo a la narraiva del escalamiento">cc- rechazado - tipificación no aplica deacuerdo a la narraiva del escalamiento</option>
+											<option value="cc- rechazado - ot en sia - no requiere cc">cc- rechazado - ot en sia - no requiere cc</option>
+											<option value="cc- rechazado - se solicitan las mismas fechas de cc anterior">cc- rechazado - se solicitan las mismas fechas de cc anterior</option>
+											<option value="cc- rechazado - sin linea de escalamiento">cc- rechazado - sin linea de escalamiento</option>
+											<option value="cc- rechazado - cc duplicado">cc- rechazado - cc duplicado</option>
+				                        </select>
 				                      </div>
 				                    </div>
 				                  </div>
 				                </fieldset>
 				              </div>
 
-				              <div class="widget bg_white m-t-25 display-block">
-				                <h2 class="h4 mp">
-				                  <i class="fa fa-fw fa-question-circle"></i>&nbsp;&nbsp; AA
-				                </h2>
+				              <div class="widget bg_white m-t-25 display-block col-md-12 text_aling">
+				                
 				                <fieldset class="col-md-6 control-label">
-
-				                  <div class="form-group">
-				                    <label for="mtxtTecAA" class="col-md-3 control-label">Téc AA: &nbsp;</label>
-				                    <div class="col-md-8 selectContainer">
-				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-				                        <select name="mtxtTecAA" id="mtxtTecAA" class="form-control mtxtTecnico">
-				                          <option value=""></option>
-				                        </select>
-				                      </div>
-				                    </div>
-				                  </div>
-
-				                  <div class="form-group">
-				                    <label for="mtxtIniAA" class="col-md-3 control-label">Inicio AA: &nbsp;</label>
-				                    <div class="col-md-8 selectContainer">
-				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="mtxtIniAA" id="mtxtIniAA" class="form-control" type="date">
-				                      </div>
-				                    </div>
-				                  </div>
+				                	<div class="col-md-6">
+					                	<div class="form-check">
+											<label>
+												<input type="checkbox" name="check" checked> <span class="label-text">UM</span>
+											</label>
+										</div>
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check"> <span class="label-text">CT</span>
+											</label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check"> <span class="label-text">Configuración</span>
+											</label>
+										</div>
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check" disabled> <span class="label-text">Equipos</span>
+											</label>
+										</div>
+									</div>
 				                </fieldset>
 				                <!--  fin seccion izquierda form---->
 
 				                <!--  inicio seccion derecha form---->
-				                <fieldset>
-
-				                  <div class="form-group">
-				                    <label for="mtxtAuxAA" class="col-md-3 control-label">Aux AA: &nbsp;</label>
-				                    <div class="col-md-8 selectContainer">
-				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-				                        <select name="mtxtAuxAA" id="mtxtAuxAA" class="form-control mtxtTecnico">
-				                          <option value=""></option>
-				                        </select>
-				                      </div>
-				                    </div>
-				                  </div>
-
-				                  <div class="form-group">
-				                    <label for="mtxtFinAA" class="col-md-3 control-label">Fin AA: &nbsp;</label>
-				                    <div class="col-md-8 selectContainer">
-				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="mtxtFinAA" id="mtxtFinAA" class="form-control" type="date">
-				                      </div>
-				                    </div>
-				                  </div>
+				                <fieldset class="col-md-6 control-label">
+				                	<div class="col-md-6">
+					                	<div class="form-check">
+											<label>
+												<input type="checkbox" name="check" checked> <span class="label-text">PDT</span>
+											</label>
+										</div>
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check"> <span class="label-text">Incump fecha</span>
+											</label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check"> <span class="label-text">cupos saturación</span>
+											</label>
+										</div>
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check" disabled> <span class="label-text">ES</span>
+											</label>
+										</div>
+										<div class="form-check">
+											<label>
+												<input type="checkbox" name="check" disabled> <span class="label-text">SIAO</span>
+											</label>
+										</div>
+									</div>
 				                </fieldset>
 				              </div>
 
@@ -348,49 +478,8 @@
 
 						<!-- <form class="well form-horizontal" id="formModal" action="" method="post" novalidate="novalidate">
 							<fieldset>
-								<div class="widget bg_white m-t-25 display-block">
-									<fieldset class="col-md-6">
-										
-										
-										<div class="form-group">
-											<label for="causas" class="col-md-3 control-label">Causas CC: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group">
-													<select name="" class="fill_select_causa">
-														<option value=""></option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="ciudad" class="col-md-3 control-label">Fecha de compromiso: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group">
-													<input name="ciudad" id="ciudad" class="input_mdl_form_control form-control" type="date">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="departamento" class="col-md-3 control-label">Fecha de programacion inicial : &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group">
-													<input name="departamento" id="departamento" class="input_mdl_form_control form-control" type="date">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="grupo" class="col-md-3 control-label">Nueva fecha de programacion: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group">
-													<input name="grupo" id="grupo" class="input_mdl_form_control form-control" type="date">
-												</div>
-											</div>
-										</div>
-									</fieldset>
-								</div>
-								fin seccion izquierda form
-								<div class="widget bg_white m-t-25 display-block">
-									<fieldset class="col-md-6 control-label">
+								
+								
 										<div class="form-group">
 											<label for="consultor_comercial" class="col-md-3 control-label">Narrativa de escalamiento: &nbsp;</label>
 											<div class="col-md-6 selectContainer ">
@@ -399,39 +488,8 @@
 												</div>
 											</div>
 										</div>
-										<div class="form-group">
-											<label for="departamento" class="col-md-3 control-label">Estado CC: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group">
-													<select name="" class="select_fech_progr">
-														<option value="NO INICIADO">NO INICIADO</option>
-														<option value="EJECUTADO">EJECUTADO</option>
-														<option value="RECHAZADO">RECHAZADO</option>
-														<option value="PTE. CORRECCION">PTE. CORRECCION</option>
-														<option value="ESCALADO CLARO">ESCALADO CLARO</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="consultor_comercial" class="col-md-3 control-label">Observaciones CC: &nbsp;</label>
-											<div class="col-md-8 selectContainer">
-												<div class="input-group">
-													<select name="" class="select_observaciones">
-														<option value="PTE- CORRECCION -SE REQUIERE FECHA DE FINALIZACIÓN DEL PENDIENTE PARA AJUSTAR">PTE- CORRECCION -SE REQUIERE FECHA DE FINALIZACIÓN DEL PENDIENTE PARA AJUSTAR</option>
-														<option value="CC- RECHAZADO - SIN GESTION DEL ING DE ES">CC- RECHAZADO - SIN GESTION DEL ING DE ES</option>
-														<option value="CC- RECHAZADO - CORRECCIÓN NO REALIZADA EN TIEMPOS">CC- RECHAZADO - CORRECCIÓN NO REALIZADA EN TIEMPOS</option>
-														<option value="CC- RECHAZADO - LINEA DE ESCALAMIENTO FUERA DE TIEMPO">CC- RECHAZADO - LINEA DE ESCALAMIENTO FUERA DE TIEMPO</option>
-														<option value="CC- RECHAZADO - CAUSA NO APLICA DEBE SER POR CLIENTE">CC- RECHAZADO - CAUSA NO APLICA DEBE SER POR CLIENTE</option>
-														<option value="CC- RECHAZADO - TIPIFICACIÓN NO APLICA DEACUERDO A LA NARRAIVA DEL ESCALAMIENTO">CC- RECHAZADO - TIPIFICACIÓN NO APLICA DEACUERDO A LA NARRAIVA DEL ESCALAMIENTO</option>
-														<option value="CC- RECHAZADO - OT EN SIA - NO REQUIERE CC">CC- RECHAZADO - OT EN SIA - NO REQUIERE CC</option>
-														<option value="CC- RECHAZADO - SE SOLICITAN LAS MISMAS FECHAS DE CC ANTERIOR">CC- RECHAZADO - SE SOLICITAN LAS MISMAS FECHAS DE CC ANTERIOR</option>
-														<option value="CC- RECHAZADO - SIN LINEA DE ESCALAMIENTO">CC- RECHAZADO - SIN LINEA DE ESCALAMIENTO</option>
-														<option value="CC- RECHAZADO - CC DUPLICADO">CC- RECHAZADO - CC DUPLICADO</option>
-													</select>
-												</div>
-											</div>
-										</div>
+
+										
 										<div class="form-group">
 											<label for="grupo" class="col-md-3 control-label">Faltantes para ES: &nbsp;</label>
 											<div class="col-md-8 selectContainer">
