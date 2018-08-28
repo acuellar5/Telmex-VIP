@@ -116,6 +116,13 @@
                 </li>   
 
 
+              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.Cambios<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL::to('Sede') ?>">Control de Cambios</a></li>
+                    
+                  </ul>
+              </li>
+
 
                 <?php endif ?>
                 
@@ -131,12 +138,6 @@
                 </li>
               <?php } ?>
 
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.Cambios<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('Sede') ?>">Control de Cambios</a></li>
-                    
-                  </ul>
-                </li>
            <!--  <li><a href="#">agendamiento</a></li> -->   
            <!--  <li><a href="#">facturacion</a></li> -->
         </ul>
