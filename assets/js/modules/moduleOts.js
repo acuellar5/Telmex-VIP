@@ -76,6 +76,7 @@ $(function () {
                 ],
                 select: true,
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                ordering: false,
                 columnDefs: [{
                         defaultContent: "",
                         //targets: 1, / pARA EL ORDENAMIENTO POR COLUMNAS SI SE DEJA EN 0 NO SE PODRIA ORDENAR POR LA PRIMERA COLUMNA /
@@ -630,10 +631,10 @@ $(function () {
                         // limpiar el formulario...
                          $('#general').html("");
                         $('#k_id_estado_ot').html("");
-
                         $.each(registro,function(i,item){
                             $('#' + i).val(item);
                         }); 
+
 
                         $('#k_id_estado_ot_value').val(registro.k_id_estado_ot);
 

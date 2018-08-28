@@ -1071,7 +1071,7 @@ class Dao_ot_hija_model extends CI_Model {
         oth.ot_hija, oth.estado_orden_trabajo_hija, oth.fecha_creacion_ot_hija,
         oth.usuario_asignado4, oth.resolucion_15, oth.resolucion_26, oth.resolucion_37,
         oth.resolucion_48, oth.fec_actualizacion_onyx_hija, oth.tipo_trascurrido, 
-        oth.nro_ot_onyx, otp.k_id_ot_padre, oth.proveedor_ultima_milla
+        oth.nro_ot_onyx, otp.k_id_ot_padre, oth.proveedor_ultima_milla,oth.n_observacion_cierre
         FROM ot_hija oth
         INNER JOIN ot_padre otp ON oth.nro_ot_onyx= otp.k_id_ot_padre
         INNER JOIN estado_ot e ON oth.k_id_estado_ot = e.k_id_estado_ot 
