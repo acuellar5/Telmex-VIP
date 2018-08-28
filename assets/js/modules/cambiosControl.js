@@ -107,10 +107,11 @@ $(function () {
 
         getButonsPrintOffice: function (obj) {
             // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
+            var button = '<div class="btn-group" style="display: inline-flex;">';
 
-
-            var button = '<a href="'+ baseurl +'/Sede/otps_sede/'+obj.id_sede+'" target="_blank" class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP"><span class="   glyphicon glyphicon-eye-open"></span></a>'
-            var button = '<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP"><span class="   glyphicon glyphicon-eye-open"></span></a>'
+            button += '<a href="'+ baseurl +'/Sede/otps_sede/'+obj.id_sede+'" target="_blank" class="btn btn-default btn-xs btn_datatable_cami" title="ver OTP"><span class="glyphicon glyphicon-eye-open"></span></a>';
+            button += '<a class="btn btn-default btn-xs btn_datatable_cami" title="Evidencias"><span class="glyphicon glyphicon-file"></span></a>';
+            button +='</div>';
 
             return button;
 
