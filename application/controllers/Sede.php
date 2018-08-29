@@ -20,7 +20,6 @@ class Sede extends CI_Controller {
 		$otp['responsable'] = $this->Dao_control_cambios_model->getAllResponsable();
 		$otp['causa'] = $this->Dao_control_cambios_model->getAllCausa();
 
-		$data['last_time'] = $this->Dao_ot_hija_model->get_last_time_import();
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $data['title'] = 'ots sede';
         $this->load->view('parts/headerF', $data);
@@ -34,10 +33,13 @@ class Sede extends CI_Controller {
 		if (!Auth::check()) {
             Redirect::to(URL::base());
         }
+        $otp['responsable'] = $this->Dao_control_cambios_model->getAllResponsable();
+        $otp['causa'] = $this->Dao_control_cambios_model->getAllCausa();
+
         $data['title'] = 'Control De Cambios'; // cargar el  titulo en la pestaña de la pagina para sede
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
-        $this->load->view('contolDeCambios');
+        $this->load->view('contolDeCambios', $otp);
         $this->load->view('parts/footerF');
 	}
 
@@ -53,5 +55,47 @@ class Sede extends CI_Controller {
         echo json_encode($dataOtp);
     }
     
+    // inserta un nuevo control de cambio
+    public function insert_control(){
+        $id_sede = $this->input->post('id_sede');
+    	$faltantes_post = $this->input->post('faltantes');
+    	$faltantes = "";
+    	if ($faltantes_post) {
+    		for ($i=0; $i < count($faltantes_post) - 1 ; $i++) { 
+	    		$faltantes .= $faltantes_post[$i] . ", ";
+    		}
+    		$faltantes .= $faltantes_post[$i];
+    	}
+
+    	date_default_timezone_set("America/Bogota");
+    	$fActual = date('Y-m-d H:i:s');
+
+    	$data = array(
+			'id_ot_padre'                => $this->input->post('id_ot_padre'),
+			'id_responsable'             => $this->input->post('id_responsable'),
+			'id_causa'                   => $this->input->post('id_causa'),
+			'numero_control'             => $this->input->post('numero_control'),
+			'fecha_compromiso'           => $this->input->post('fecha_compromiso'),
+			'fecha_programacion_inicial' => $this->input->post('fecha_programacion_inicial'),
+			'nueva_fecha_programacion'   => $this->input->post('nueva_fecha_programacion'),
+			'narrativa_escalamiento'     => $this->input->post('narrativa_escalamiento'),
+			'estado_cc'                  => $this->input->post('estado_cc'),
+			'observaciones_cc'           => $this->input->post('observaciones_cc'),
+			'faltantes'                  => $faltantes,
+			'en_tiempos'                 => $this->input->post('en_tiempos'),
+			'fecha_creacion_cc'          => $fActual
+    		);
+    	
+    	$ins = $this->Dao_control_cambios_model->insert_control_cambios($data);
+        $this->session->set_flashdata('ok', 'ok');
+        header('location: ' .URL::base()."/Sede/otps_sede/".$id_sede);
+
+    }
+
+    // trae de la tabla control de cambios por id de ot padre
+    public function getCCByOtp(){
+        $otp = $this->input->post('otp');
+        $cc = $this->Dao_control_cambios_model->get_cc_by_otp($otp);
+    }
 
 }

@@ -19,5 +19,14 @@ class Dao_control_cambios_model extends CI_Model {
 		return $query->result();	
 	}
 
+	// Inserta nuevo registrpo en tabla control de cambios
+	public function insert_control_cambios($data){
+		if ($this->db->insert('control_cambios', $data)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
 }

@@ -57,7 +57,8 @@ class Dao_log_model extends CI_Model {
                 cc.en_tiempos, 
                 cc.fecha_creacion_cc, 
                 r.nombre_responsable, 
-                c.nombre_causa
+                c.nombre_causa,
+                otp.id_sede
                 FROM 
                 control_cambios cc 
                 INNER JOIN ot_padre otp ON cc.id_ot_padre = otp.k_id_ot_padre 
