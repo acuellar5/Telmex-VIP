@@ -1,3 +1,25 @@
+$.each(responsable_list, function(i, item) {
+	$('#id_responsable').append(`
+			<option value="${item.id_responsable}">${item.nombre_responsable}</option>
+		`);
+});
+
+$.each(causa_list, function(i, item) {
+	$('#id_causa').append(`
+			<option value="${item.id_causa}">${item.nombre_causa}</option>
+		`);
+});
+
+function showFormControl(otp, cliente){
+	$('#myModalLabel').html(`Orden de trabajo ${otp}`);
+	document.getElementById("formModal").reset();
+	$('#id_ot_padre').val(otp);
+	$('#id_sede').val(id_sede);
+	$('#n_nombre_cliente').val(cliente);
+	$('#mdl-control_cambios').modal('show');
+}
+
+
 // Funcion para pasar las tablas en php a datatables para control de cambios
 $(function () {
 	// Configuracion de datatables para la tabla de control de cambios 
@@ -124,17 +146,4 @@ $(function () {
 
 });
 
-function showFormControl(otp, cliente){
-	$('#myModalLabel').html(`Orden de trabajo ${otp}`);
-	document.getElementById("formModal").reset();
-	$('#id_ot_padre').val(otp);
 
-	$('#n_nombre_cliente').val(cliente);
-
-
-
-
-
-
-	$('#mdl-control_cambios').modal('show');
-}

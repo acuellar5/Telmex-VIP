@@ -1,6 +1,7 @@
 <?php if (isset($otp[0]->nombre_sede)): ?>
 	<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 <?php endif ?>
+
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp">tabla OTP</a></li>
@@ -28,7 +29,7 @@
 				<td><?= $item_otp->servicio ?></td>
 				<td><?= $item_otp->estado_orden_trabajo ?></td>		
 				<td><div class='btn-group'>
-		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?> ");'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?>","<?= $item_otp->id_sede ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
 		            </div>
 		        </td>		
 			</tr>
@@ -113,7 +114,7 @@
 					<div id="form" class="tab-pane fade in active">
 						<h3>Nuevo Control de Cambio</h3>
 
-				          <form class="well form-horizontal" id="formModal" action=""  method="post" data-action="FOR_UPDATE" novalidate="novalidate">
+				          <form class="well form-horizontal" id="formModal" novalidate action="<?= URL::to("sede/insert_control") ?>"  method="post">
 				            <fieldset>
 				              <div class="widget bg_white m-t-25 display-block">
 				                <h2 class="h4 mp clr-98c2d8">
@@ -121,7 +122,7 @@
 				                </h2>
 				                <fieldset class="col-md-6 control-label">
 				                  <!-- valores ocultos -->
-				                  <!-- <input type="hidden" id="mtxtTicket" value=""> -->
+				                  <input type="hidden" id="id_sede" name="id_sede" value="">
 
 				                  <div class="form-group">
 				                    <label for="id_ot_padre" class="col-md-3 control-label">otp:</label>
@@ -148,7 +149,7 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class="fa fa-contao" aria-hidden="true"></i></span>
-				                        <input name="numero_control" id="numero_control" class="form-control" type="text">
+				                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" required>
 				                      </div>
 				                    </div>
 				                  </div>
@@ -162,7 +163,7 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-street-view" aria-hidden="true"></i></span>
-				                        <select name="id_responsable" id="id_responsable" class="form-control">
+				                        <select name="id_responsable" id="id_responsable" class="form-control" required>
 				                          <option value="">Seleccione</option>
 				                        </select>
 				                      </div>
@@ -175,7 +176,7 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-th-list" aria-hidden="true"></i></span>
-				                        <select name="id_causa" id="id_causa" class="form-control">
+				                        <select name="id_causa" id="id_causa" class="form-control" required>
 				                          <option value="">Seleccione</option>
 				                        </select>
 				                      </div>
@@ -187,7 +188,7 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="fecha_compromiso" id="fecha_compromiso" class="form-control" type="date">
+				                        <input name="fecha_compromiso" id="fecha_compromiso" class="form-control" type="date" required>
 				                      </div>
 				                    </div>
 				                  </div>
@@ -204,7 +205,7 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="fecha_programacion_inicial" id="fecha_programacion_inicial" class="form-control" type="date">
+				                        <input name="fecha_programacion_inicial" id="fecha_programacion_inicial" class="form-control" type="date" required>
 				                      </div>
 				                    </div>
 				                  </div>
@@ -214,21 +215,21 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-				                        <input name="nueva_fecha_programacion" id="nueva_fecha_programacion" class="form-control" type="date">
+				                        <input name="nueva_fecha_programacion" id="nueva_fecha_programacion" class="form-control" type="date" required>
 				                      </div>
 				                    </div>
 				                  </div>
 				                </fieldset>
 				                <!--  fin seccion izquierda form---->
 
-				                <!--  inicio seccion derecha form---->
+				                <!-- inicio seccion derecha form-- -->
 				                <fieldset>
 				                  <div class="form-group">
 				                    <label for="estado_cc" class="col-md-3 control-label">Estado:</label>
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-list" aria-hidden="true"></i></span>
-				                        <select name="estado_cc" id="estado_cc" class="form-control">
+				                        <select name="estado_cc" id="estado_cc" class="form-control" required>
 					                        <option value="">Seleccione</option>
 					                        <option value="NO INICIADO">NO INICIADO</option>
 											<option value="EJECUTADO">EJECUTADO</option>
@@ -239,6 +240,7 @@
 				                      </div>
 				                    </div>
 				                  </div>
+								<!-- FIN REQUERIDOS -->
 
 				                  <div class="form-group">
 				                    <label for="observaciones_cc" class="col-md-3 control-label">Observaciones:</label>
@@ -272,24 +274,24 @@
 				                	<div class="col-md-6">
 					                	<div class="form-check check_cami">
 											<label>UM
-												<input id="UM" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="UM" type="checkbox" name="faltantes[]" value="UM"> <span class="label-text"></span>
 											</label>
 										</div>
 										<div class="form-check check_cami">
 											<label>CT
-												<input id="CT" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="CT" type="checkbox" name="faltantes[]" value="CT"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-check check_cami">
 											<label>Configuración
-												<input id="Configuración" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="Configuración" type="checkbox" name="faltantes[]" value="configuracion"> <span class="label-text"></span>
 											</label>
 										</div>
 										<div class="form-check check_cami">
 											<label>Equipos
-												<input id="Equipos" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="Equipos" type="checkbox" name="faltantes[]" value="equipos"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
@@ -301,31 +303,31 @@
 				                	<div class="col-md-4">
 					                	<div class="form-check check_cami">
 											<label>PDT
-												<input id="PDT" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="PDT" type="checkbox" name="faltantes[]" value="PDT"> <span class="label-text"></span>
 											</label>
 										</div>
 										<div class="form-check check_cami">
 											<label>Incump f
-												<input id="Incump fecha" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="Incump fecha" type="checkbox" name="faltantes[]" value="incumplimiento_fecha"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-check check_cami">
 											<label>ES
-												<input id="ES" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="ES" type="checkbox" name="faltantes[]" value="ES"> <span class="label-text"></span>
 											</label>
 										</div>
 										<div class="form-check check_cami">
 											<label>a SIAO
-												<input id="a SIAO" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="a SIAO" type="checkbox" name="faltantes[]" value="paso_a_SIAO"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-check check_cami">
 											<label>cupos sat
-												<input id="cupos saturación" type="checkbox" name="faltantes"> <span class="label-text"></span>
+												<input id="cupos saturación" type="checkbox" name="faltantes[]" value="cupos_saturacion"> <span class="label-text"></span>
 											</label>
 										</div>
 									</div>
@@ -335,8 +337,8 @@
 				              <div class="widget bg_white m-t-25 display-block col-md-12">
 								<fieldset class="col-md-2 control-label widget m-r-20">
 					                 <b>¿en tiempos?</b>
-									<input type="radio" name="demo" value="one" id="radio-one" class="form-radio" checked><label for="radio-one">SI</label>
-									<input type="radio" name="demo" value="one" id="radio-one" class="form-radio"><label for="radio-one">NO</label>
+									<input type="radio" name="en_tiempos" value="si" id="radio-one" class="form-radio" checked><label for="radio-one">SI</label>
+									<input type="radio" name="en_tiempos" value="no" id="radio-one" class="form-radio"><label for="radio-one">NO</label>
 								</fieldset>
 
 								<fieldset class="col-md-19 widget control-label">
@@ -346,7 +348,7 @@
 										<div class="col-md-9 selectContainer">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-												<textarea class="form-control" name="narrativa_escalamiento" id="narrativa_escalamiento" rows="2"></textarea>
+												<textarea class="form-control" name="narrativa_escalamiento" id="narrativa_escalamiento" rows="2" required></textarea>
 											</div>
 										</div>
 									</div>
@@ -377,13 +379,21 @@
     </div>
 </div>
 
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
+<?php 
+	$correcto = $this->session->flashdata('ok');
+	if ($correcto) {  ?>
+		<script>
+			swal('Correcto','se inserto Nuevo control de cambios', 'success');
+
+		</script>
+<?php } ?>
+
 
 
 
 
 <script>
 	var responsable_list = <?= json_encode($responsable) ?>;
-	console.log("responsable_list", responsable_list);
 	var causa_list = <?= json_encode($causa) ?>;
-	console.log("causa_list", causa_list);
 </script>

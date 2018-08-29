@@ -1,10 +1,36 @@
-// ****************************SECCION PARAAGREGAR LAS SEDES EN EL MODULO DE CONTROL DE CAMBIO****************************
+/************************* MOSTRAR MODAL FORMULARIO*************************/
+//LISTAR SELECTS
+$.each(responsable_list, function(i, item) {
+    $('#id_responsable').append(`
+            <option value="${item.id_responsable}">${item.nombre_responsable}</option>
+        `);
+});
+
+$.each(causa_list, function(i, item) {
+    $('#id_causa').append(`
+            <option value="${item.id_causa}">${item.nombre_causa}</option>
+        `);
+});
+// MOSTRAR MODAL
+function showFormControl(otp, cliente, id_sede){
+    table_historial(otp);
+    $('#myModalLabel').html(`Orden de trabajo ${otp}`);
+    document.getElementById("formModal").reset();
+    $('#id_ot_padre').val(otp);
+    $('#id_sede').val(id_sede);
+    $('#n_nombre_cliente').val(cliente);
+    $('#mdl-control_cambios').modal('show');
+}
+
+
+
+
+// ****************************SECCION PARA AGREGAR LAS SEDES EN EL MODULO DE CONTROL DE CAMBIO****************************
 $(function () {
     trackChangesHeadquarters = {
         init: function () {
             trackChangesHeadquarters.events();
             trackChangesHeadquarters.getListHeadquarters_table();
-
         },
         //Eventos de la ventana.
         events: function () {
@@ -227,12 +253,8 @@ $(function () {
         },
 
         getButonsPrintOTP: function (obj) {
-            // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
-
-            var button = '<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP"><span class="   glyphicon glyphicon-eye-open"></span></a>'
- 
-
-            // var button = '<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP"><span class="   glyphicon glyphicon-eye-open"></span></a>'
+            console.log(obj);
+            var button = `<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP" onclick="showFormControl('${obj.k_id_ot_padre}', '${obj.n_nombre_cliente}', '${obj.id_sede}')"><i class="fa fa-bars" aria-hidden="true"></i></a>`
             return button;
 
         },    
