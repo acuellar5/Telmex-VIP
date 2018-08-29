@@ -12,7 +12,7 @@
 <div class="tab-content">
 
 	<div id="pestana_tabla_otp" class="tab-pane fade in active">
-		<h3>tabla OTP</h3>
+		<h3>Tabla OTP</h3>
 		<!-- INICIO TABLA DE OTP DE UNA SEDE -->
 		<table id="table_sede_otp" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
 			<thead>
