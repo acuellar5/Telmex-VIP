@@ -191,6 +191,7 @@ $(function () {
             /*************************************************FIN ENVIAR CORREO*************************************************/
 
                     //************************************LOG**************************************
+                    
                     onClickVerLogTrChanges: function () {
                         var aLinkLog = $(this);
                         var trParent = aLinkLog.parents('tr');

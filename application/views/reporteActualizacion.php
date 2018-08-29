@@ -61,7 +61,7 @@
     <div id="modalEmail_15dias" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" >
         <div class="modal-dialog modal-lg2" style="width: 1100px;">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header csstypesubtitle">
                     <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                     <h3 class="modal-title" id="myModalLabel">    Orden Ot Hija N <label id="id_ot_modal"></label></h3>
                 </div>
@@ -245,7 +245,7 @@
                             </div>
                         </div>
                         <!--  fin seccion derecha form---->
-                        <div class="modal-footer">
+                        <div class="modal-footer csstypesubtitle">
                             <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
                             <?php if (Auth::user()->n_role_user != 'claro'): ?>
                             <button type="submit" form="formModal" class="btn btn-info" id="bnt_ko"><i class='glyphicon glyphicon-send'></i>&nbsp;Enviar</button>
@@ -265,7 +265,7 @@
     <div class="modal fade" id="ModalHistorialLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header csstypesubtitle">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-sign"></span></button>
                     <h4 class="modal-title" id="titleEventHistory">Modal Historial</h4>
                 </div>
@@ -313,7 +313,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer csstypesubtitle">
                     <h4 class="foot">Zolid By ZTE Colombia | All Right Reserved</h4>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar  <i class="glyphicon glyphicon-chevron-up"></i></button>
                 </div>
