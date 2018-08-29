@@ -1,4 +1,6 @@
-<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
+<?php if (isset($otp[0]->nombre_sede)): ?>
+	<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
+<?php endif ?>
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp">tabla OTP</a></li>
@@ -9,7 +11,7 @@
 <div class="tab-content">
 
 	<div id="pestana_tabla_otp" class="tab-pane fade in active">
-		<h3>tabla OTP</h3>
+		<h3>Tabla OTP</h3>
 		<!-- INICIO TABLA DE OTP DE UNA SEDE -->
 		<table id="table_sede_otp" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
 			<thead>
