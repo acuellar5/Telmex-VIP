@@ -108,26 +108,26 @@ $(function () {
         },
 
         // observacion con funcion de mostrar mas
-        getObservacionTotal: function(obj){
+        getObservacionTotal: function (obj) {
 
             if (typeof obj.observacion == 'string') {
                 var array_cadena = obj.observacion.split(" ");
                 var cadena = "";
                 if (array_cadena.length > 10) {
-                    
+
                     for (var i = 0; i < 10; i++) {
                         cadena += array_cadena[i] + " ";
                     }
 
-                    
-                        // console.log("cadena", cadena);
 
-                   return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
+                    // console.log("cadena", cadena);
+
+                    return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
                               <span class="tooltiptext">${obj.observacion}</span>
                             </div>
                             `;
 
-                }               
+                }
             }
             return obj.observacion;
         },
@@ -147,7 +147,8 @@ $(function () {
                     ///////////////////////////////////////////////////////////se cambio la linea del boton
                     + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='" + title + "'>" + span + "</a>"
                     + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
-//                    + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
+                    + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-header'></span></a>"
+//                    + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' data-btn='close' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
                     + "</div>";
             return botones;
         }
@@ -519,17 +520,17 @@ $(function () {
             // correccion scroll modal sobre modal
             $('#Modal_detalle').on("hidden.bs.modal", eventos.modal_sobre_modal);
             $('#ModalHistorialLog').on("hidden.bs.modal", eventos.modal_sobre_modal);
+            $('#contenido_tablas').on('click', 'a.hitos-otp', eventos.onClickBtnCloseOtp);
         },
 
-
         // funcion para correcion modal sobre modal
-        modal_sobre_modal: function(event){
+        modal_sobre_modal: function (event) {
             if ($('.modal:visible').length) {
                 $('body').addClass('modal-open');
             }
         },
 
-        onClickBtnCloseOtp: function () {
+        onClickBtnCloseOtp: function (e) {
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
             var tabla = aLinkLog.parents('table').attr('id');
@@ -551,8 +552,21 @@ $(function () {
                     record = emails.table_otPadreListEmails.row(trParent).data();
                     break;
             }
+            
+            var btn_clas = e.currentTarget;
+            
 
-            eventos.closeOtp(record);
+            switch (btn_clas.dataset.btn) {
+                case 'close':
+                    eventos.closeOtp(record);
+                    break;
+
+                case 'hito':
+                    eventos.showModalHitosOthp(record);
+                    break;
+            }
+
+//            eventos.closeOtp(record);
         },
 
         closeOtp: function (data) {
@@ -833,8 +847,7 @@ $(function () {
 
         },
 
-
-        onClickVerLogMailOTP: function(){
+        onClickVerLogMailOTP: function () {
             var tr = $(this).parents('tr');
             var record = eventos.tableModalLogMail.row(tr).data();
 
@@ -842,26 +855,26 @@ $(function () {
         },
 
         // generar pdf redireccionar
-        generarPDF: function(data){
+        generarPDF: function (data) {
             $.post(baseurl + '/Templates/generatePDF',
-                {
-                    data: data
-                },
-                function(data) {
-                var plantilla = JSON.parse(data);
-                $('body').append(
-                        `
+                    {
+                        data: data
+                    },
+                    function (data) {
+                        var plantilla = JSON.parse(data);
+                        $('body').append(
+                                `
                             <form action="${baseurl}/Log/view_email" method="POST" target="_blank" hidden>
                                 <textarea name="txt_template" id="txt_template"></textarea>
                                 <input type="submit" value="e" id="smt_ver_correo">
                             </form>
                         `
-                    );
-                $('#txt_template').val(plantilla);
-                $('#smt_ver_correo').click();
+                                );
+                        $('#txt_template').val(plantilla);
+                        $('#smt_ver_correo').click();
 
 
-            });
+                    });
 
         },
 
@@ -879,12 +892,24 @@ $(function () {
                         idOth: registros.id_orden_trabajo_hija // parametros que se envian
                     },
                     function (data) {
-                       $.each(data, function (i, item) {
+                        $.each(data, function (i, item) {
                             $('#mdl_' + i).val(item);
                         });
                     });
             $('#title_modal').html('<b>Detalle de la orden  ' + registros.id_orden_trabajo_hija + '</b>');
             $('#Modal_detalle').modal('show');
+        },
+        // Muestra los hitos de la ot padre seleccionada
+        showModalHitosOthp: function (data) {
+//            listoth.getothofothp(data);
+            // resetea el formulario y lo deja vacio
+            document.getElementById("formModalHitosOTP").reset();
+            //pinta el titulo del modal y cambia dependiendo de la otp seleccionada
+            $('#myModalLabelHitos').html('<strong> Hitos de la OTP N.' + data.k_id_ot_padre + '</strong>');
+            $('#servivio_hito').html('<strong> OT ' + data.k_id_ot_padre + ' - ' + data.servicio + '</strong>');
+            $('#cliente_hito').html('<strong> CLIENTE: ' + data.n_nombre_cliente + '</strong>');
+            $('#ciudad_hito').html('<strong> CIUDAD: BARRANQUILLA - Vía Cordialidad # 8E1 - 238</strong>');
+            $('#modalHitosOtp').modal('show');
         },
     };
     eventos.init();
@@ -901,6 +926,7 @@ $(function () {
         events: function () {
             // al darle clic al boton de opciones traiga el modal
             $('#contenido_tablas').on('click', 'a.btnoths', listoth.onClickShowModal);
+
         },
 
         onClickShowModal: function () {
@@ -925,6 +951,7 @@ $(function () {
                     record = emails.table_otPadreListEmails.row(trParent).data();
                     break;
             }
+
             listoth.showModalOthDeOthp(record);
         },
 
@@ -952,7 +979,6 @@ $(function () {
             $('#myModalLabel').html('<strong> Lista OTH de la OTP N.' + data.k_id_ot_padre + '</strong>');
             $('#modalOthDeOtp').modal('show');
         },
-
         //pintar tabla
         printTable: function (data) {
             //funcion para limpiar el modal
@@ -1040,7 +1066,6 @@ $(function () {
         printTableEmail: function (data) {
             // nombramos la variable para la tabla y llamamos la configuiracion
             emails.table_otPadreListEmails = $('#table_otPadreListEmails').DataTable(emails.configTableEmail(data, [
-
                 {title: "Ot Padre", data: "k_id_ot_padre"},
                 {title: "Nombre Cliente", data: "n_nombre_cliente"},
                 {title: "Tipo", data: "orden_trabajo"},

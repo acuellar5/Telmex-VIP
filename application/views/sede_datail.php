@@ -47,7 +47,7 @@
 	</div>
 	<!-- ***********************************************INICIO DE PESTAÑA 2*********************************************** -->
 	<div id="pestana_log" class="tab-pane fade">
-		<h3>control de cambios</h3>
+		<h3>Control de cambios</h3>
 		<table id="table_log_ctrl_cambios" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
 			<thead>
 				<th>otp</th>
