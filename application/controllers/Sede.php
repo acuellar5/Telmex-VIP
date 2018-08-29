@@ -98,4 +98,10 @@ class Sede extends CI_Controller {
         $cc = $this->Dao_control_cambios_model->get_cc_by_otp($otp);
     }
 
+    //carga el dao para mostrar la tabla con todos los Controles de Cambios realizados para el modulo de control de cambio
+    public function c_getList_All_Table() {
+        $data_All_CC = $this->Dao_sede_model->c_getListAllCC_Table();
+        echo json_encode($data_All_CC);
+    }
+
 }

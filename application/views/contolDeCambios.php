@@ -48,8 +48,8 @@
 
     <!--*********************  Contendio de la pestaña de Control de Cambio *********************-->
     <div id="track_changes_OTPAll" class="tab-pane fade">
-        <h3>OTP</h3>
-        <table id="trackChangesAll" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+        <h3>Control de Cambio</h3>
+        <table id="trackChanges_All" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
             <tfoot>
                 <tr>
                     <th></th>
@@ -58,7 +58,11 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th class="tamanoColumOpc"></th>                    
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>              
                 </tr>
             </tfoot>
         </table>
@@ -360,4 +364,3 @@
     var responsable_list = <?= json_encode($responsable) ?>;
     var causa_list = <?= json_encode($causa) ?>;
 </script>
->>>>>>> 00de59a96fde30e6874e28c2fe534c652b340882

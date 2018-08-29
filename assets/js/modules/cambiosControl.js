@@ -260,4 +260,117 @@ $(function () {
         },    
     };
     controlCOTP.init();
+
+// ****************************SECCION DE MODULO DE CONTROL DE CAMBIO ****************************
+
+     controlCambioAll = {
+        init: function () {
+            controlCambioAll.events();
+            controlCambioAll.getListAllCc_table();
+
+        },
+        //Eventos de la ventana.
+        events: function () {
+
+        },
+        getListAllCc_table: function () {
+            //metodo ajax (post)
+            $.post(baseurl + '/Sede/c_getList_All_Table',
+                    {
+                        //parametros
+
+                    },
+                    // función que recibe los datos
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                controlCambioAll.printTable(obj);
+                            }
+                    );
+                },
+        printTable: function (data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
+            controlCambioAll.trackChanges_All = $('#trackChanges_All').DataTable(controlCambioAll.configTableHeadquarters(data, [
+
+                {title: "ID OTP", data: "id_ot_padre"},
+                {title: "Responsable", data: "nombre_responsable"},
+                {title: "Causa", data: "nombre_causa"},
+                {title: "Número de Control", data: "numero_control"},
+                {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                {title: "Fecha Programación Inicial", data: "fecha_programacion_inicial"},
+                {title: "Narrativa Escalamiento", data: "narrativa_escalamiento"},
+                {title: "Estado", data: "estado_cc"},
+                {title: "Faltantes", data: "faltantes"},
+                {title: "A Tiempo", data: "en_tiempos"},
+                {title: "Fecha Creación", data: "fecha_creacion_cc"},
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTableHeadquarters: function (data, columns, onDraw) {
+            return {
+                initComplete: function () {
+                    $('#trackChanges_All  tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+
+                    var r = $('#trackChanges_All tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#trackChanges_All thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#trackChanges_All').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json",
+                },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    }
+                ],
+                select: true,
+
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+                columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
+                        defaultContent: "",
+                        // targets: -1,
+                        orderable: false,
+                    }],
+                order: [[1, 'desc']],
+                drawCallback: onDraw
+            }
+        },
+   
+    };
+    controlCambioAll.init();
 });
