@@ -220,7 +220,7 @@ $(function () {
 
         // elimina la fila 
         quitarFila: function (e) {
-            cierre.table_selected.row($(this).parents('tr')).remove().draw();
+            cierre.table_selected.row($(this).parents('tr')).remove().draw();// remover de la tabla modal
         },
 
         // Eliminar todos los registros
@@ -268,6 +268,10 @@ $(function () {
                                     $.each(seleccionadas, function(i, item) {
                                     	cierre.tables_cierre.row( item ).remove().draw();
                                     });
+
+                                    if (seleccionadas.length > obj.del_otp) {
+                                        setTimeout("location.reload()", 1500);
+                                    }
 
 
 
@@ -331,6 +335,10 @@ $(function () {
                                     $.each(seleccionadas, function(i, item) {
                                         cierre.tables_cierre.row( item ).remove().draw();
                                     });
+
+                                    if (seleccionadas.length > obj.del_otp) {
+                                        setTimeout("location.reload()", 1500);
+                                    }
 
 
 
