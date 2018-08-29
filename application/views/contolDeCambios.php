@@ -1,3 +1,4 @@
+
 <!--*********************  Modulo de pestañas para control de cambios  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#track_changes_office">Sedes</a></li>
@@ -65,7 +66,7 @@
                     <div id="form" class="tab-pane fade in active">
                         <h3>Nuevo Control de Cambio</h3>
 
-                          <form class="well form-horizontal" id="formModal" novalidate action="<?= URL::to("sede/insert_control") ?>"  method="post">
+                          <form class="well form-horizontal" id="formModal" action="<?= URL::to("sede/insert_control") ?>"  method="post">
                             <fieldset>
                               <div class="widget bg_white m-t-25 display-block">
                                 <h2 class="h4 mp clr-98c2d8">
@@ -317,7 +318,8 @@
                     <!-- *************************INICIO SEGUNDA PESTAÑA************************* -->
                     <div id="log_otp" class="tab-pane fade">
                         <h3>Hitorial</h3>
-                        <table id="tabla_Historial" class='table table-bordered table-striped' width='100%'></table>
+                        <table id="tabla_Historial" class='table table-hover table-bordered table-striped dataTable_camilo' width="100%">
+                        </table>
                     </div>
                 </div>
             </div>

@@ -90,6 +90,7 @@
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to("assets/js/modules/cambiosControl.js?v=" . validarEnProduccion()) ?>"></script>
+
     <?php if ($this->uri->segment(2) == 'otps_sede'): ?>
         <script src="<?= URL::to("assets/js/modules/sede_detail.js?v=" . validarEnProduccion()) ?>"></script>      
     <?php endif ?>

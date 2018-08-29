@@ -15,6 +15,9 @@ class Sede extends CI_Controller {
 
 	// carga en la nueva pestaña las distintas otp  de la sede
 	public function otps_sede($id_sede){
+        if (!Auth::check()) {
+            Redirect::to(URL::base());
+        }
 		$otp['otp'] = $this->Dao_ot_padre_model->get_otp_by_idsede($id_sede);
 		$otp['log'] = $this->Dao_log_model->get_log_by_idsede($id_sede);
 		$otp['responsable'] = $this->Dao_control_cambios_model->getAllResponsable();
@@ -57,6 +60,7 @@ class Sede extends CI_Controller {
     
     // inserta un nuevo control de cambio
     public function insert_control(){
+
         $id_sede = $this->input->post('id_sede');
     	$faltantes_post = $this->input->post('faltantes');
     	$faltantes = "";
@@ -86,16 +90,22 @@ class Sede extends CI_Controller {
 			'fecha_creacion_cc'          => $fActual
     		);
     	
+        $this->load->library( 'user_agent' );
     	$ins = $this->Dao_control_cambios_model->insert_control_cambios($data);
         $this->session->set_flashdata('ok', 'ok');
-        header('location: ' .URL::base()."/Sede/otps_sede/".$id_sede);
 
+        if ($this->agent->referrer () == URL::base()."/Sede") {
+           header('location: ' .$this->agent->referrer ());
+        }else{
+            header('location: ' .URL::base()."/Sede/otps_sede/".$id_sede);
+        }
     }
 
     // trae de la tabla control de cambios por id de ot padre
     public function getCCByOtp(){
         $otp = $this->input->post('otp');
         $cc = $this->Dao_control_cambios_model->get_cc_by_otp($otp);
+        echo json_encode($cc);
     }
 
 }
