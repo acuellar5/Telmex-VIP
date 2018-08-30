@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
 <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'managementOtp'): ?>
+<?php if ($this->uri->segment(1) == 'managementOtp'|| $this->uri->segment(1) == 'Sede'): ?>
 <!-- ************************************** WORK MANAGEMENT OTP CSS ********************************************* -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/tooltip.css") ?>">
 <?php endif ?>

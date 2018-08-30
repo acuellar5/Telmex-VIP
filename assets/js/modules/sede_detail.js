@@ -48,7 +48,7 @@ function print_table_historial(data){
             {title: "compromiso", data: "fecha_compromiso", visible:false},//4
             {title: "fecha programacion inicial", data: "fecha_programacion_inicial", visible:false},//5
             {title: "nueva fecha programacion", data: "nueva_fecha_programacion", visible:false},//6
-            {title: "narrativa escalamiento", data: "narrativa_escalamiento"},//7
+            {title: "narrativa escalamiento", data: getNarrativaTotalLog},//7
             {title: "estado", data: "estado_cc"},//8
             {title: "observaciones", data: "observaciones_cc"},//9
             {title: "faltantes", data: "faltantes"},//10
@@ -56,6 +56,31 @@ function print_table_historial(data){
             {title: "creado", data: "fecha_creacion_cc"}//12
 
         ]));
+}
+
+function getNarrativaTotalLog(obj){
+
+    // console.log(obj);
+            if (typeof obj.narrativa_escalamiento == 'string') {
+                var array_cadena = obj.narrativa_escalamiento.split(" ");
+                var cadena = "";
+                if (array_cadena.length > 10) {
+
+                    for (var i = 0; i < 10; i++) {
+                        cadena += array_cadena[i] + " ";
+                    }
+
+
+                    // console.log("cadena", cadena);
+
+                    return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
+                              <span class="tooltiptext">${obj.narrativa_escalamiento}</span>
+                            </div>
+                            `;
+
+                }
+            }
+            return obj.narrativa_escalamiento;
 }
 
 function configTableHistorial(data, columns, onDraw) {
