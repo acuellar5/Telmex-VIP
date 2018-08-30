@@ -227,6 +227,8 @@ class OtHija extends CI_Controller {
             $idTipo = $this->input->post('idTipo');
             $otHijaModel = new Dao_ot_hija_model();
             $res = $otHijaModel->getOtsOutTime($idTipo);
+            // echo '<pre>'; print_r($res); echo '</pre>';
+            
             $this->json($res);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));

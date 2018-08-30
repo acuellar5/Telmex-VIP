@@ -279,7 +279,11 @@ class Dao_ot_padre_model extends CI_Model {
             otp.fecha_compromiso, 
             otp.fecha_programacion, 
             s.id_sede, 
-            s.nombre_sede
+            s.nombre_sede, 
+            (
+                SELECT COUNT(*) FROM control_cambios cc
+                WHERE cc.id_ot_padre = otp.k_id_ot_padre
+            ) AS num_ctrl
             FROM 
             ot_padre otp 
             INNER JOIN sede s ON otp.id_sede = s.id_sede 

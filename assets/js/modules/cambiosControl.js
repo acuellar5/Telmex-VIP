@@ -12,12 +12,14 @@ $.each(causa_list, function(i, item) {
         `);
 });
 // MOSTRAR MODAL
-function showFormControl(otp, cliente, id_sede){
+function showFormControl(otp, cliente, id_sede, num_ctrl){
     table_historial(otp);
     $('#myModalLabel').html(`Orden de trabajo ${otp}`);
     document.getElementById("formModal").reset();
     $('#id_ot_padre').val(otp);
     $('#id_sede').val(id_sede);
+    $('#bdg_historial').html(num_ctrl);
+    $('#numero_control').val(parseInt(num_ctrl) + 1);
     $('#n_nombre_cliente').val(cliente);
     $('#mdl-control_cambios').modal('show');
 }
@@ -33,7 +35,6 @@ function table_historial(otp){
 
 function print_table_historial(data){
     if (typeof tabla_Historiales == 'object' ) {
-        console.log(typeof tabla_Historiales);
         var tabla = tabla_Historiales;
         tabla.clear().draw();
         tabla.rows.add(data);
@@ -95,12 +96,14 @@ function configTableHistorial(data, columns, onDraw) {
         buttons: [
             {
                 extend: 'colvisGroup',
+                className: 'btn',
                 text: 'items',
                 show: [ 0,1,2,3,4,5],
                 hide: [6,7,8,9,10,11]
             },
             {
                 extend: 'colvisGroup',
+                className: 'btn',
                 text: 'items 2',
                 show: [6,7,8,9,10,11],
                 hide: [ 0,1,2,3,4,5]
@@ -176,7 +179,7 @@ $(function () {
                 {title: "Departamento", data: "departamento"},
                 {title: "Dierección", data: "direccion"},
                 {title: "Clasificación", data: "clasificacion"},
-                {title: "Tipo de Oficina", data: "tipo_oficina"},
+                {title: "Cant Ctrl Camb", data: "num_ctrl_camb"},
                 {title: "Opc.", data: trackChangesHeadquarters.getButonsPrintOffice},
             ]));
         },
@@ -247,11 +250,10 @@ $(function () {
         },
 
         getButonsPrintOffice: function (obj) {
-            // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
             var button = '<div class="btn-group" style="display: inline-flex;">';
 
-            button += '<a href="'+ baseurl +'/Sede/otps_sede/'+obj.id_sede+'" target="_blank" class="btn btn-default btn-xs btn_datatable_cami" title="ver OTP"><span class="glyphicon glyphicon-eye-open"></span></a>';
-            button += '<a class="btn btn-default btn-xs btn_datatable_cami" title="Evidencias"><span class="glyphicon glyphicon-file"></span></a>';
+            button += '<a href="'+ baseurl +'/Sede/otps_sede/'+obj.id_sede+'" target="_blank" class="btn btn-default btn-xs btn_datatable_cami" title="cantidad OTP"><span class="glyphicon">'+obj.cant_otp+'</span></a>';
+            button += '<a class="btn btn-default btn-xs btn_datatable_cami btn_file" title="Evidencias"><span class="glyphicon glyphicon-file"></span></a>';
             button +='</div>';
 
             return button;
@@ -298,6 +300,7 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OTP", data: "estado_orden_trabajo"},
+                {title: "Cant Ctrl Camb", data: "num_ctrl"},
                 {title: "Opc.", data: controlCOTP.getButonsPrintOTP},
             ]));
         },
@@ -368,7 +371,7 @@ $(function () {
         },
 
         getButonsPrintOTP: function (obj) {
-            var button = `<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP" onclick="showFormControl('${obj.k_id_ot_padre}', '${obj.n_nombre_cliente}', '${obj.id_sede}')"><i class="fa fa-bars" aria-hidden="true"></i></a>`
+            var button = `<a class="btn btn-default btn-xs btn_datatable_cami" title="ver OTP" onclick="showFormControl('${obj.k_id_ot_padre}', '${obj.n_nombre_cliente}', '${obj.id_sede}', '${obj.num_ctrl}')"><i class="fa fa-bars" aria-hidden="true"></i></a>`
             return button;
 
         },    
@@ -409,14 +412,16 @@ $(function () {
                 {title: "ID OTP", data: "id_ot_padre"},
                 {title: "Responsable", data: "nombre_responsable"},
                 {title: "Causa", data: "nombre_causa"},
-                {title: "Número de Control", data: "numero_control"},
+                {title: "N° Control", data: "numero_control"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación Inicial", data: "fecha_programacion_inicial"},
+                {title: "Nueva Programación", data: "nueva_fecha_programacion"},
                 {title: "Narrativa Escalamiento", data: "narrativa_escalamiento"},
                 {title: "Estado", data: "estado_cc"},
+                {title: "Observaciones", data: "observaciones_cc"},
                 {title: "Faltantes", data: "faltantes"},
-                {title: "A Tiempo", data: "en_tiempos"},
-                {title: "Fecha Creación", data: "fecha_creacion_cc"},
+                {title: "En tiem", data: "en_tiempos"},
+                {title: "Creada", data: "fecha_creacion_cc"},
             ]));
         },
         // Datos de configuracion del datatable
@@ -487,4 +492,81 @@ $(function () {
    
     };
     controlCambioAll.init();
+});
+
+
+
+
+// subir archivos
+$(function () {
+    upload = {
+        init: function () {
+            upload.events();
+        },
+
+        //Eventos de la ventana.
+        events: function () {
+          $("#upFile").on("click", upload.clic_on_button);
+          $("#getFile").on("change", upload.style_icon);
+          $("#clArchivo").on("click", upload.clArchivo);
+          $("form").on("submit", upload.submit_form);
+          $('#getFile').on("change", upload.get_Name);
+          $('#trackChanges_Office').on("click", 'a.btn_file', upload.show_mdl_file);
+        },
+        clic_on_button: function (){
+          $('#getFile').click();
+          return false;
+        },
+        style_icon: function () {
+         $("#upFile").removeClass("btn-light");
+          $("#upFile").addClass("btn-primary");
+          $("#ico-btn-file").removeClass("fa-upload");
+          $("#ico-btn-file").addClass("fa-check");
+         $("#upFile").attr('disabled', true);
+          
+            return false;
+        },
+        clArchivo: function(){
+          $("#upFile").addClass("btn-light");
+          $("#upFile").removeClass("btn-primary");
+         $("#ico-btn-file").addClass("fa-upload");
+          $("#ico-btn-file").removeClass("fa-check");
+         $("#upFile").attr('disabled', false);
+        },
+        submit_form: function(e){
+          e.preventDefault(); 
+             
+              var datos = $(this).serializeArray(); //datos serializados
+              var archivos = new FormData($("#formArchivos")[0]);
+
+              //agergaremos los datos serializados al objecto archivos
+              $.each(datos,function(key,input){
+                archivos.append(input.name,input.value);
+              });
+              
+              $.ajax({
+               type:'post', 
+               url: baseurl+'/Upload/insertFiles' ,
+               data:archivos, //enviamos archivos
+               contentType:false,
+               processData:false
+             }).done(function(valor){
+               alert(valor);
+               // location.reload();  
+               
+             }).fail(function(data){
+                alert("Error");
+                
+             });
+        },
+        get_Name: function(){
+            var archivo = $('#getFile').val();
+            var nombre = archivo.substring(archivo.lastIndexOf("\\")+1); 
+            $('#input_file').val(nombre);
+        },
+        show_mdl_file: function(){
+            $('#modal_file').modal('show');
+        },
+    };
+    upload.init();
 });

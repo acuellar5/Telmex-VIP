@@ -20,6 +20,7 @@ class Sede extends CI_Controller {
         }
 		$otp['otp'] = $this->Dao_ot_padre_model->get_otp_by_idsede($id_sede);
 		$otp['log'] = $this->Dao_log_model->get_log_by_idsede($id_sede);
+        
 		$otp['responsable'] = $this->Dao_control_cambios_model->getAllResponsable();
 		$otp['causa'] = $this->Dao_control_cambios_model->getAllCausa();
 

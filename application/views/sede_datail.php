@@ -5,7 +5,7 @@
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp">tabla OTP</a></li>
-	<li class=""><a data-toggle="tab" href="#pestana_log">control de cambios</a></li>
+	<li class=""><a data-toggle="tab" href="#pestana_log">control de cambios <span class="badge badge_cami"><?= count($log) ?></span></a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -20,6 +20,7 @@
 				<th>TIPO</th>
 				<th>SERVICIO</th>
 				<th>ESTADO</th>
+				<th width="1%">Cant Ctrl Camb</th>
 				<th>OPC</th>
 			</thead>
 		<?php foreach ($otp as $item_otp): ?>
@@ -27,15 +28,17 @@
 				<td><?= $item_otp->k_id_ot_padre ?></td>
 				<td><?= $item_otp->orden_trabajo ?></td>
 				<td><?= $item_otp->servicio ?></td>
-				<td><?= $item_otp->estado_orden_trabajo ?></td>		
+				<td><?= $item_otp->estado_orden_trabajo ?></td>
+				<td><?= $item_otp->num_ctrl ?></td>
 				<td><div class='btn-group'>
-		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?>","<?= $item_otp->id_sede ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?>","<?= $item_otp->id_sede ?>", "<?= $item_otp->num_ctrl ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
 		            </div>
 		        </td>		
 			</tr>
 		<?php endforeach ?>
 			<tfoot>
 				<tr>
+					<th></th>
 					<th></th>
 					<th></th>
 					<th></th>
@@ -48,7 +51,7 @@
 	<!-- ***********************************************INICIO DE PESTAÑA 2*********************************************** -->
 	<div id="pestana_log" class="tab-pane fade">
 		<h3>Control de cambios</h3>
-		<table id="table_log_ctrl_cambios" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo" width="100%">
+		<table id="table_log_ctrl_cambios" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo f-s-10" width="100%">
 			<thead>
 				<th>otp</th>
 				<th>responsable</th>
@@ -61,7 +64,7 @@
 				<th>estado</th>
 				<th>observaciones</th>
 				<th>faltantes</th>
-				<th>en_tiempos</th>
+				<th>en tiem</th>
 				<th>creado</th>
 			</thead>
 		<?php foreach ($log as $item_log): ?>
@@ -114,7 +117,8 @@
 				<!--*********************  MODULO PESTAÑAS  *********************-->
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#form">Formulario</a></li>
-					<li class=""><a data-toggle="tab" href="#log_otp">Hitorial</a></li>
+					<li class=""><a data-toggle="tab" href="#log_otp">Hitorial <span class="badge badge_cami" id="bdg_historial">...</span></a></li>
+                </ul></a></li>
 				</ul>
 				
 				<!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -158,7 +162,7 @@
 				                    <div class="col-md-8 selectContainer">
 				                      <div class="input-group">
 				                        <span class="input-group-addon"><i class="fa fa-contao" aria-hidden="true"></i></span>
-				                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" required>
+				                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" readonly>
 				                      </div>
 				                    </div>
 				                  </div>
@@ -257,6 +261,7 @@
 				                      <div class="input-group">
 				                        <span class="input-group-addon" id="statusColor"><i class="fa fa-list" aria-hidden="true"></i></span>
 				                        <select name="observaciones_cc" id="observaciones_cc" class="form-control">
+					                        <option value="">Seleccione</option>
 					                        <option value="pte- correccion -se requiere fecha de finalización del pendiente para ajustar">pte- correccion -se requiere fecha de finalización del pendiente para ajustar</option>
 											<option value="cc- rechazado - sin gestion del ing de es">cc- rechazado - sin gestion del ing de es</option>
 											<option value="cc- rechazado - corrección no realizada en tiempos">cc- rechazado - corrección no realizada en tiempos</option>
@@ -382,7 +387,6 @@
 			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-                <
             </div>
         </div>
     </div>
