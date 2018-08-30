@@ -21,7 +21,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
+                    <th width="1%"></th>
                     <th></th>                    
                 </tr>
             </tfoot>
@@ -40,7 +40,8 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th class="tamanoColumOpc"></th>                    
+                    <th width="1%"></th>
+                    <th></th>                    
                 </tr>
             </tfoot>
         </table>
@@ -50,7 +51,7 @@
     <!--*********************  Contendio de la pestaña de Control de Cambio *********************-->
     <div id="track_changes_OTPAll" class="tab-pane fade">
         <h3>Control de Cambio</h3>
-        <table id="trackChanges_All" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%">
+        <table id="trackChanges_All" class="table table-hover table-bordered table-striped dataTable_camilo f-s-10" width="100%">
             <tfoot>
                 <tr>
                     <th></th>
@@ -63,6 +64,8 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>              
+                    <th></th>              
                     <th></th>              
                 </tr>
             </tfoot>
@@ -84,7 +87,7 @@
                 <!--*********************  MODULO PESTAÑAS  *********************-->
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#form">Formulario</a></li>
-                    <li class=""><a data-toggle="tab" href="#log_otp">Hitorial</a></li>
+                    <li class=""><a data-toggle="tab" href="#log_otp">Hitorial <span class="badge badge_cami" id="bdg_historial">...</span></a></li>
                 </ul>
                 
                 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -128,7 +131,7 @@
                                     <div class="col-md-8 selectContainer">
                                       <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-contao" aria-hidden="true"></i></span>
-                                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" required>
+                                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" readonly >
                                       </div>
                                     </div>
                                   </div>
@@ -227,6 +230,7 @@
                                       <div class="input-group">
                                         <span class="input-group-addon" id="statusColor"><i class="fa fa-list" aria-hidden="true"></i></span>
                                         <select name="observaciones_cc" id="observaciones_cc" class="form-control">
+                                            <option value="">Seleccione</option>
                                             <option value="pte- correccion -se requiere fecha de finalización del pendiente para ajustar">pte- correccion -se requiere fecha de finalización del pendiente para ajustar</option>
                                             <option value="cc- rechazado - sin gestion del ing de es">cc- rechazado - sin gestion del ing de es</option>
                                             <option value="cc- rechazado - corrección no realizada en tiempos">cc- rechazado - corrección no realizada en tiempos</option>
@@ -352,11 +356,93 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-                <
             </div>
         </div>
     </div>
 </div>
+
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
+<?php 
+    $correcto = $this->session->flashdata('ok');
+    if ($correcto) {  ?>
+        <script>
+            swal('Correcto','se inserto Nuevo control de cambios', 'success');
+
+        </script>
+<?php } ?>
+
+
+
+
+
+
+
+<!-- Modal para ver y subir los archivos -->
+<div class="modal fade" id="modal_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <h1>Evidencias de la sede :</h1>
+          <table id="tabla-archivos" class="dataTable_camilo  table-bordered table_files">
+            <thead>
+              <tr>
+                <th class="bg-primary">Descripción del archivo adjunto</th>
+                <th class="text-center bg-primary">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td class="text-center"></td>
+                  <td class="text-center">
+                    <a class="btn btn-primary btn-xs" target="_blank"><i class="btn_show fa fa-eye" aria-hidden="true"></i></a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+
+
+          <form  autocomplete="off" class="form-inline"  id="formArchivos" enctype="multipart/form-data">
+            <center class="div_upload_files">
+              <label>Nombre del documento: </label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-file" aria-hidden="true"></i>
+                </span>
+                <input type="text" id="input_file" name="nombre_archivo" placeholder="Nombre del documento" class="form-control" required="required"/>
+              </div>
+              <button class="btn btn-light btn-sm" id="upFile"><i class="fa fa-upload" id="ico-btn-file" aria-hidden="true"></i></button>
+              <input type="file" name="archivo" id="getFile" class="hidden"  required="required" accept="*" />
+              <input type="submit" form="formArchivos" id="smtArchivo" class="btn btn-success btn-sm" value="Agregar" />
+              <input type="submit" id="clArchivo" class="btn btn-danger btn-sm" value="Limpiar" /><br />
+            </center>
+          </form>
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 

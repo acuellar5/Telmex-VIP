@@ -12,12 +12,14 @@ $.each(causa_list, function(i, item) {
         `);
 });
 // MOSTRAR MODAL
-function showFormControl(otp, cliente, id_sede){
+function showFormControl(otp, cliente, id_sede, num_ctrl){
     table_historial(otp);
     $('#myModalLabel').html(`Orden de trabajo ${otp}`);
     document.getElementById("formModal").reset();
     $('#id_ot_padre').val(otp);
     $('#id_sede').val(id_sede);
+    $('#bdg_historial').html(num_ctrl);
+    $('#numero_control').val(parseInt(num_ctrl) + 1);
     $('#n_nombre_cliente').val(cliente);
     $('#mdl-control_cambios').modal('show');
 }
@@ -121,12 +123,14 @@ function configTableHistorial(data, columns, onDraw) {
             {
                 extend: 'colvisGroup',
                 text: 'items',
+                className: 'btn',
                 show: [ 0,1,2,3,4,5],
                 hide: [6,7,8,9,10,11]
             },
             {
                 extend: 'colvisGroup',
                 text: 'items 2',
+                className: 'btn',
                 show: [6,7,8,9,10,11],
                 hide: [ 0,1,2,3,4,5]
             },

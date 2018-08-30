@@ -16,6 +16,14 @@ and open the template in the editor.
 }
 /*BEGIN:: HELPER CLASS*/
 /*MARGIN*/
+/* font size */
+.f-s-10{
+    font-size: 10px !important;
+}
+
+/* fin font size */
+
+
 .m-all-0{
     margin: 0px;
 }
