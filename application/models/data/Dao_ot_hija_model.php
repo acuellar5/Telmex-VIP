@@ -1190,6 +1190,7 @@ class Dao_ot_hija_model extends CI_Model {
                 otp.k_id_ot_padre,
                 -- e.k_id_tipo, 
                 -- t.n_name_tipo, 
+                otp.n_nombre_cliente,
                 t.i_orden, 
                 oth.id_orden_trabajo_hija, 
                 -- e.k_id_estado_ot, 

@@ -73,6 +73,9 @@ $(function () {
         // llena la seccion para ots padres
         nivel_ot_padre: function(id, panel){
             var valores = acord.obj.ing[id];
+            console.log(acord.obj);
+           
+
             // deber.sort()
             var color = "";
             panel.html("");
@@ -80,9 +83,9 @@ $(function () {
 			// var ots = JSON.parse(data);
 			$.each(valores, function(i, ot) {
 
-                if (ot == 1) {
+                if (ot.time == 1) {
                     color = 'btn_red';
-                } else if (ot == 0) {
+                } else if (ot.time == 0) {
                     color = 'btn_orange'; 
                 } else {
                     color = 'btn_green';
@@ -92,7 +95,7 @@ $(function () {
 
                 if (i != 'all' && i != 'color' && i != 'hoy' && i != 'in' && i != 'out') {
     				panel.append(`
-    						<button class='accordion show_type ${color}' data-iduser='${id}' data-ot='${i}'>${i}<img class='rigth' src='${baseurl}/assets/images/plus.png'><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${id}/${i}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${id}/${i}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></button>
+    						<button class='accordion show_type ${color}' data-iduser='${id}' data-ot='${i}'>${i}<span style='margin-left:40%;'>${ot.cliente}</span><img class='rigth' src='${baseurl}/assets/images/plus.png'><a class='rigth fontsize10' target='_blank' href='${baseurl}/OtHija/detalle/${id}/${i}'><span class='glyphicon glyphicon-eye-open' title='ver detalle'></span></a> <a class='rigth fontsize10' href='${baseurl}/OtHija/exportar/${id}/${i}'><span class='glyphicon glyphicon-export' title='exportar a excel'></span></a></button>
     							<div class='panel'></div>
     				 	`);
                 }
