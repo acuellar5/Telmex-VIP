@@ -558,7 +558,7 @@ $(function () {
           $("#upFile").on("click", upload.clic_on_button);
           $("#getFile").on("change", upload.style_icon);
           $("#clArchivo").on("click", upload.clArchivo);
-          $("form").on("submit", upload.submit_form);
+          $("#formArchivos").on("submit", upload.submit_form);
           $('#getFile').on("change", upload.get_Name);
           $('#trackChanges_Office').on("click", 'a.btn_file', upload.show_mdl_file);
         },
@@ -576,14 +576,19 @@ $(function () {
             return false;
         },
         clArchivo: function(){
-          $("#upFile").addClass("btn-light");
-          $("#upFile").removeClass("btn-primary");
-         $("#ico-btn-file").addClass("fa-upload");
-          $("#ico-btn-file").removeClass("fa-check");
-         $("#upFile").attr('disabled', false);
+            $("#upFile").addClass("btn-light");
+            $("#upFile").removeClass("btn-primary");
+            $("#ico-btn-file").addClass("fa-upload");
+            $("#ico-btn-file").removeClass("fa-check");
+            $("#upFile").attr('disabled', false);
+            $('#input_file').val('');
+
         },
         submit_form: function(e){
-          e.preventDefault(); 
+            e.preventDefault(); 
+
+            var algo = $('#input_file').val();
+            console.log("algo", algo);
              
               var datos = $(this).serializeArray(); //datos serializados
               var archivos = new FormData($("#formArchivos")[0]);
@@ -600,8 +605,12 @@ $(function () {
                contentType:false,
                processData:false
              }).done(function(valor){
-               alert(valor);
-               // location.reload();  
+               var res = JSON.parse(valor);
+               if (res == 1) {
+                var carpeta = $('#mdl_sede').val();
+                 upload.getFileName(carpeta);
+               }
+
                
              }).fail(function(data){
                 alert("Error");
@@ -612,10 +621,56 @@ $(function () {
             var archivo = $('#getFile').val();
             var nombre = archivo.substring(archivo.lastIndexOf("\\")+1); 
             $('#input_file').val(nombre);
+            $('#smtArchivo').attr('disabled', false);
+            // $('#smtArchivo').attr('disabed', false);
         },
         show_mdl_file: function(){
+            const sede = trackChangesHeadquarters.trackChanges_Office.row($(this).parents("tr")).data().nombre_sede;
+            upload.getFileName(sede);
+            $('#mdl_sede').val(sede);
+            $('#title_sede').html(sede);
             $('#modal_file').modal('show');
         },
+
+        // Obtiene los nombres de la carpeta
+        getFileName: function(carpeta){
+            upload.clArchivo();
+            $('#tabla-archivos tbody').html('');
+            $('#smtArchivo').attr('disabled', true);
+            $.post(baseurl + '/Upload/c_getFillName', 
+                {
+                    carpeta: carpeta
+                }, function(data) {
+                    var files = JSON.parse(data);
+                    $.each(files, function(i, archivo) {
+                        $('#tabla-archivos tbody').append(`
+                                <tr>
+                                    <td class="text-center">${archivo}</td>
+                                    <td><a href="${baseurl}/uploads/${carpeta}/${archivo}" class="btn btn-primary btn-xs" target="_blank"><i class="btn_show fa fa-download" aria-hidden="true"></i></a></td>
+                                </tr>
+
+                            `);
+                        
+
+                    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                });
+        },
+
+
     };
     upload.init();
 });

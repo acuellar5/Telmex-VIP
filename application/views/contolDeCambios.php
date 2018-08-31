@@ -377,36 +377,16 @@
 
 
 
-<!-- Modal para ver y subir los archivos -->
-<div class="modal fade" id="modal_file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+<div id="modal_file" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+        <h3 class="modal-title" id="modal_title">Evidencias de la sede <strong id="title_sede"></strong></h3>
       </div>
       <div class="modal-body">
-
-        <h1>Evidencias de la sede :</h1>
-          <table id="tabla-archivos" class="dataTable_camilo  table-bordered table_files">
-            <thead>
-              <tr>
-                <th class="bg-primary">Descripción del archivo adjunto</th>
-                <th class="text-center bg-primary">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
-                  <td class="text-center"></td>
-                  <td class="text-center">
-                    <a class="btn btn-primary btn-xs" target="_blank"><i class="btn_show fa fa-eye" aria-hidden="true"></i></a>
-                  </td>
-                </tr>
-            </tbody>
-          </table>
-
+          <br>
 
           <form  autocomplete="off" class="form-inline"  id="formArchivos" enctype="multipart/form-data">
             <center class="div_upload_files">
@@ -415,32 +395,37 @@
                 <span class="input-group-addon">
                   <i class="fa fa-file" aria-hidden="true"></i>
                 </span>
-                <input type="text" id="input_file" name="nombre_archivo" placeholder="Nombre del documento" class="form-control" required="required"/>
+                <input type="hidden" name="mdl_sede" id="mdl_sede" value="">
+                <input type="text" id="input_file" name="nombre_archivo" placeholder="Nombre del documento" class="form-control" required="required"/ readonly>
               </div>
               <button class="btn btn-light btn-sm" id="upFile"><i class="fa fa-upload" id="ico-btn-file" aria-hidden="true"></i></button>
-              <input type="file" name="archivo" id="getFile" class="hidden"  required="required" accept="*" />
-              <input type="submit" form="formArchivos" id="smtArchivo" class="btn btn-success btn-sm" value="Agregar" />
-              <input type="submit" id="clArchivo" class="btn btn-danger btn-sm" value="Limpiar" /><br />
+              <input type="file" name="archivo" id="getFile" class="hidden"  required="required" accept="*" /><br><br>
+              <input type="submit" form="formArchivos" id="smtArchivo" disabled class="btn btn-success btn-sm" value="Agregar" />
+              <input type="button" id="clArchivo" class="btn btn-danger btn-sm" value="Limpiar" /><br />
             </center>
           </form>
-
-
-
-
-
-
-
-
+          <br><br>
+        
+          <table id="tabla-archivos" class="dataTable_camilo  table-bordered table_files">
+            <thead>
+              <tr>
+                <th class="bg-primary">Descripción del archivo adjunto</th>
+                <th class="text-center bg-primary">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+          </table>
+          <br>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <input type="button" data-dismiss="modal" class="btn btn-default btn-sm" value="Cancelar" /><br />
       </div>
     </div>
   </div>
 </div>
-
 
 
 
