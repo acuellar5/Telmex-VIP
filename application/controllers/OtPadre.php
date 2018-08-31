@@ -265,5 +265,20 @@ class OtPadre extends CI_Controller {
         $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreEmail();
         echo json_encode($otPadreList);
     }
+    
+    //obtine la informacion de los hitos de una otp
+    public function c_getHitosOtp() {
+        $idOtp = $this->input->post('idOtp');
+        $hitosotp = $this->Dao_ot_padre_model->getHitosOtp($idOtp);
+        echo json_encode($hitosotp);
+    }
+    
+    //Guarda la informacion de los hitos de una OTP
+    public function c_saveHitosOtp() {
+        $idOtp = $this->input->post('idOtp');
+        $formulario = $this->input->post('formulario');
+        $res = $this->Dao_ot_padre_model->saveHitosOtp($idOtp, $formulario);
+        echo json_encode($res);
+    }
 
 }

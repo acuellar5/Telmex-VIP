@@ -150,7 +150,7 @@ $(function () {
             $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
-            var record = fTiempos.tablaFueraTiempos.row(trParent).data();
+            var record = tabla_cont_out.row(trParent).data();
             fTiempos.fillFormModal(record);
         },
         fillFormModal: function (registros) {
@@ -309,7 +309,7 @@ $(function () {
             $('#title_modal').html('');
             var aLinkLog = $(this);
             var trParent = aLinkLog.parents('tr');
-            var record = eTiempos.tablaEnTiempos.row(trParent).data();
+            var record = tabla_cont_in.row(trParent).data();
             fTiempos.fillFormModal(record);
         },
 

@@ -448,7 +448,7 @@
                                     <label for="orden_trabajo" class="col-md-12 control-label ubicacionLetra">Orden Trabajo: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <textarea name="estado_orden_trabajo" id="mdl_estado_orden_trabajo" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
+                                            <textarea name="estado" id="mdl_estado_orden_trabajo" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>
                                             <!-- <input name="orden_trabajo" id="mdl_orden_trabajo" class="form-control" minlength="3" disabled="true" type="text" required> -->
                                         </div>
@@ -778,7 +778,7 @@
                                     <label for="estado_orden_trabajo_hija" class="col-md-12 control-label ubicacionLetra">Estado Orden Trabajo Hija: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
-                                            <input name="estado_orden_trabajo_hija" id="mdl_estado_orden_trabajo_hija" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
+                                            <input name="estado" id="mdl_estado_orden_trabajo_hija" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
                                 </div> 
@@ -918,201 +918,201 @@
                             <tr>
                                 <td>KICK OFF</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_ko" id="f_compromiso_ko" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_ko" id="estado_ko" class="form-control">
+                                    <select name="estado" id="estado_ko" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_ko" id="observaciones_ko" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_ko" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>VISITA OBRA CIVIL</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_voc" id="f_compromiso_voc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_voc" id="estado_voc" class="form-control">
+                                    <select name="estado" id="estado_voc" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_voc" id="observaciones_voc" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_voc" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>VISITA OBRA CIVIL TERCEROS</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_voct" id="f_compromiso_voct" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_voct" id="estado_voct" class="form-control">
+                                    <select name="estado" id="estado_voct" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_voct" id="observaciones_voct" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_voct" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>ENVIO COTIZACION</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_ec" id="f_compromiso_ec" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_ec" id="estado_ec" class="form-control">
+                                    <select name="estado" id="estado_ec" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_ec" id="observaciones_ec" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_ec" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>APROBACION COTIZACION</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_ac" id="f_compromiso_ac" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_ac" id="estado_ac" class="form-control">
+                                    <select name="estado" id="estado_ac" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_ac" id="observaciones_ac" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_ac" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>SOLICITUD INFORMACIÓN TECNICA</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_sit" id="f_compromiso_sit" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_sit" id="estado_sit" class="form-control">
+                                    <select name="estado" id="estado_sit" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_sit" id="observaciones_sit" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_sit" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>VISITA EJECUCION OBRA CIVIL</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_veoc" id="f_compromiso_veoc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_veoc" id="estado_veoc" class="form-control">
+                                    <select name="estado" id="estado_veoc" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_veoc" id="observaciones_veoc" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_veoc" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_veoct" id="f_compromiso_veoct" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_veoct" id="estado_veoct" class="form-control">
+                                    <select name="estado" id="estado_veoct" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_veoct" id="observaciones_veoct" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_veoct" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>CONFIGURACION RED CLARO</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_crc" id="f_compromiso_crc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_crc" id="estado_crc" class="form-control">
+                                    <select name="estado" id="estado_crc" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_veoct" id="observaciones_veoct" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_crc" rows="2"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>VISITA ENTREGA UM TERCEROS</td>
                                 <td>
-                                    <input type="datetime-local" name="f_compromiso_veut" id="f_compromiso_veut" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control">
                                 </td>
                                 <td>
-                                    <select name="estado_veut" id="estado_veut" class="form-control">
+                                    <select name="estado" id="estado_veut" class="form-control">
+                                        <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
                                         <option value="APROBADA" >APROBADA</option>
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones_veut" id="observaciones_veut" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_veut" rows="2"></textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -1121,249 +1121,11 @@
             </div>
             <div class="modal-footer cssnewtypem">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnGuardarModalHitos"><i class='glyphicon glyphicon-save'></i>&nbsp;Guardar</button>
             </div>
         </div>
     </div>
 </div>
-
-<!------------------------------------------ MODAL QUE MUESTRA LOS HITOS DE UNA OT PADRES -------------------------->
-<div id="modalHitosOtp" class="modal fade" tabindex="-1" data-backdrop="static" role="dialog" style="overflow: auto">
-    <div class="modal-dialog modal-lg" width='100%'>
-        <div class="modal-content">
-            <div class="modal-header csstypesubtitle">
-                <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
-                <h3 class="modal-title" id="myModalLabelHitos"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
-            </div>
-            <div class="modal-body">                
-                <form class="well form-horizontal" id="formModalHitosOTP" method="post" novalidate="novalidate">
-                    <table class="table table-hover table-bordered  dataTable_camilo table-striped  ">
-                        <tr>
-                            <td><label id="servivio_hito"></label></td>
-                            <td><label id="cliente_hito"></label></td>
-                            <td><label id="ciudad_hito"></label></td>
-                        </tr>
-                    </table>
-                    <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_hitos_otp"  cellspacing="2">
-                        <thead>
-                            <tr>
-                                <th>ACTIVIDAD</th>
-                                <th>FECHA COMPROMISO </th>
-                                <th>ESTADO</th>
-                                <th>OBSERVACIONES</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>KICK OFF</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_ko" id="f_compromiso_ko" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_ko" id="estado_ko" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_ko" id="observaciones_ko" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>VISITA OBRA CIVIL</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_voc" id="f_compromiso_voc" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_voc" id="estado_voc" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_voc" id="observaciones_voc" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>VISITA OBRA CIVIL TERCEROS</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_voct" id="f_compromiso_voct" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_voct" id="estado_voct" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_voct" id="observaciones_voct" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ENVIO COTIZACION</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_ec" id="f_compromiso_ec" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_ec" id="estado_ec" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_ec" id="observaciones_ec" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>APROBACION COTIZACION</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_ac" id="f_compromiso_ac" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_ac" id="estado_ac" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_ac" id="observaciones_ac" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>SOLICITUD INFORMACIÓN TECNICA</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_sit" id="f_compromiso_sit" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_sit" id="estado_sit" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_sit" id="observaciones_sit" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>VISITA EJECUCION OBRA CIVIL</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_veoc" id="f_compromiso_veoc" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_veoc" id="estado_veoc" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_veoc" id="observaciones_veoc" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_veoct" id="f_compromiso_veoct" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_veoct" id="estado_veoct" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_veoct" id="observaciones_veoct" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CONFIGURACION RED CLARO</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_crc" id="f_compromiso_crc" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_crc" id="estado_crc" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_veoct" id="observaciones_veoct" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>VISITA ENTREGA UM TERCEROS</td>
-                                <td>
-                                    <input type="datetime-local" name="f_compromiso_veut" id="f_compromiso_veut" class="form-control">
-                                </td>
-                                <td>
-                                    <select name="estado_veut" id="estado_veut" class="form-control">
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="ENVIADA" >ENVIADA</option>
-                                        <option value="APROBADA" >APROBADA</option>
-                                        <option value="CONFIGURADO" >CONFIGURADO</option>
-                                        <option value="EJECUTADA" >EJECUTADA</option>
-                                        <option value="PENDIENTE" >PENDIENTE</option>
-                                        <option value="CERRADA" >CERRADA</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <textarea name="observaciones_veut" id="observaciones_veut" rows="2"></textarea>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>                
-            </div>
-            <div class="modal-footer cssnewtypem">
-                <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-------------------------------------- MODAL QUE MUESTRA TODAS LAS OTS HIJA DE LAS OTS PADRES -------------------------->
 

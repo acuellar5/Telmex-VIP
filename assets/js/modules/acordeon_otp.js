@@ -79,6 +79,7 @@ $(function () {
             panel.append(`<legend class="sub-title-acord">OTP</legend>`);
 			// var ots = JSON.parse(data);
 			$.each(valores, function(i, ot) {
+                        console.log(i);
 
                 if (ot == 1) {
                     color = 'btn_red';

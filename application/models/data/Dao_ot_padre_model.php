@@ -58,7 +58,7 @@ class Dao_ot_padre_model extends CI_Model {
 
     // tabla de lista de OTS Padre
     public function getListOtsOtPadre() {
-        $condicion = "";
+        $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
@@ -81,7 +81,7 @@ class Dao_ot_padre_model extends CI_Model {
 
     // tabla que lista las OT Padre que tengan fecha de compromiso para hoy
     public function getListOtsOtPadreHoy() {
-        $condicion = "";
+        $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
@@ -105,7 +105,7 @@ class Dao_ot_padre_model extends CI_Model {
 
     // tabla que lista las OT Padre que tengan fecha de compromiso vencida
     public function getListOtsOtPadreVencidas() {
-        $condicion = "";
+        $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
@@ -151,7 +151,7 @@ class Dao_ot_padre_model extends CI_Model {
     // return $query->result();
     // trae otp segun opcion de ot padre
     public function getOtpByOpcList($opcion) {
-        $condicion = "";
+        $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
@@ -214,7 +214,7 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->result();
     }
-    
+
     //Trae todas las ot hijas que se encuentren en la tabla cierre de una otp en especifico
     public function getOthOfOtpCierre($idOtp) {
         $query = $this->db->query("
@@ -229,19 +229,19 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
-  // eliminar de tabla ot padre, pasar id otp o array con ids otp
-  public function deleteById($otp){
-      $this->db->where_in('k_id_ot_padre', $otp);
-    $this->db->delete('ot_padre');
-    if ($this->db->affected_rows() > 0) {
-        return $this->db->affected_rows();
-    } else {
-        return 0;
+    // eliminar de tabla ot padre, pasar id otp o array con ids otp
+    public function deleteById($otp) {
+        $this->db->where_in('k_id_ot_padre', $otp);
+        $this->db->delete('ot_padre');
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
     }
-  }
 
     public function getListOtsOtPadreEmail() {
-        $condicion = "";
+        $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
@@ -265,8 +265,8 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     // obtiene las otp de una sede (pasarle el id de la sede)
-    public function get_otp_by_idsede($idsede){
-       $query = $this->db->query("
+    public function get_otp_by_idsede($idsede) {
+        $query = $this->db->query("
             SELECT 
             otp.k_id_ot_padre, 
             otp.k_id_user, 
@@ -285,14 +285,78 @@ class Dao_ot_padre_model extends CI_Model {
             INNER JOIN sede s ON otp.id_sede = s.id_sede 
             WHERE 
             otp.id_sede = $idsede
-        "); 
+        ");
 
-       return $query->result();
+        return $query->result();
     }
 
+    public function getHitosOtp($idOtp) {
+        $query = $this->db->query("
+            SELECT f_compromiso_ko, estado_ko, observaciones_ko,
+                f_compromiso_voc, estado_voc, observaciones_voc,
+                f_compromiso_voct, estado_voct, observaciones_voct,
+                f_compromiso_ec, estado_ec, observaciones_ec,
+                f_compromiso_ac, estado_ac, observaciones_ac,
+                f_compromiso_sit, estado_sit, observaciones_sit,
+                f_compromiso_veoc, estado_veoc, observaciones_veoc,
+                f_compromiso_veoct, estado_veoct, observaciones_veoct,
+                f_compromiso_crc, estado_crc, observaciones_crc,
+                f_compromiso_veut, estado_veut, observaciones_veut
+            FROM 
+            ot_padre
+            WHERE 
+            k_id_ot_padre = $idOtp
+        ");
 
+        return $query->row();
+    }
 
+    public function saveHitosOtp($idOtp, $formulario) {
+        $respuesta = array();
+        $query = "
+            UPDATE ot_padre SET
+            f_compromiso_ko = '" . $formulario[0]['value'] . "',
+            estado_ko = '" . $formulario[1]['value'] . "',
+            observaciones_ko = '" . $formulario[2]['value'] . "',
+            f_compromiso_voc = '" . $formulario[3]['value'] . "',
+            estado_voc = '" . $formulario[4]['value'] . "',
+            observaciones_voc = '" . $formulario[5]['value'] . "',
+            f_compromiso_voct = '" . $formulario[6]['value'] . "',
+            estado_voct = '" . $formulario[7]['value'] . "',
+            observaciones_voct = '" . $formulario[8]['value'] . "',
+            f_compromiso_ec = '" . $formulario[9]['value'] . "',
+            estado_ec = '" . $formulario[10]['value'] . "',
+            observaciones_ec = '" . $formulario[11]['value'] . "',
+            f_compromiso_ac = '" . $formulario[12]['value'] . "',
+            estado_ac = '" . $formulario[13]['value'] . "',
+            observaciones_ac = '" . $formulario[14]['value'] . "',
+            f_compromiso_sit = '" . $formulario[15]['value'] . "',
+            estado_sit = '" . $formulario[16]['value'] . "',
+            observaciones_sit = '" . $formulario[17]['value'] . "',
+            f_compromiso_veoc =' " . $formulario[18]['value'] . "',
+            estado_veoc = '" . $formulario[19]['value'] . "',
+            observaciones_veoc = '" . $formulario[20]['value'] . "',
+            f_compromiso_veoct = '" . $formulario[21]['value'] . "',
+            estado_veoct = '" . $formulario[22]['value'] . "',
+            observaciones_veoct = '" . $formulario[23]['value'] . "',
+            f_compromiso_crc = '" . $formulario[24]['value'] . "',
+            estado_crc = '" . $formulario[25]['value'] . "',
+            observaciones_crc = '" . $formulario[26]['value'] . "',
+            f_compromiso_veut = '" . $formulario[27]['value'] . "',
+            estado_veut = '" . $formulario[28]['value'] . "',
+            observaciones_veut = '" . $formulario[29]['value'] . "'
+            WHERE k_id_ot_padre = $idOtp
+        ";
 
-
+        if ($this->db->query($query)) {
+            $respuesta['response'] = 'success';
+            $respuesta['msg'] = 'Se a actualizado correctamente';
+        } else {
+            $respuesta['response'] = 'error';
+            $respuesta['msg'] = 'No se a podido actualizar correctamente loa informacion';
+        }
+        
+        return $respuesta;
+    }
 
 }
