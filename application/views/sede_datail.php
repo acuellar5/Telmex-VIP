@@ -4,8 +4,8 @@
 
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
-	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp">tabla OTP</a></li>
-	<li class=""><a data-toggle="tab" href="#pestana_log">control de cambios <span class="badge badge_cami"><?= count($log) ?></span></a></li>
+	<li class="active"><a data-toggle="tab" href="#pestana_tabla_otp">Tabla OTP</a></li>
+	<li class=""><a data-toggle="tab" href="#pestana_log">Control de cambios <span class="badge badge_cami"><?= count($log) ?></span></a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
