@@ -13,9 +13,26 @@ class Dao_sede_model extends CI_Model {
     // Retorna los datos de las sedes 
     public function getListoffices_Table() {
         $query = $this->db->query("
-
-                SELECT id_sede, nombre_sede, ciudad, departamento, direccion, clasificacion, tipo_oficina 
-                FROM sede;
+                SELECT s.id_sede, 
+                s.nombre_sede, 
+                s.ciudad, 
+                s.departamento, 
+                s.direccion, 
+                s.clasificacion, 
+                s.tipo_oficina,
+                    (
+                        SELECT COUNT(1) 
+                        FROM 
+                        control_cambios cc
+                        INNER JOIN ot_padre otp 
+                        ON cc.id_ot_padre = otp.k_id_ot_padre
+                        Where s.id_sede = otp.id_sede
+                    ) AS num_ctrl_camb, 
+                    (
+                        SELECT COUNT(1) FROM ot_padre otpa 
+                        WHERE otpa.id_sede = s.id_sede
+                    ) AS cant_otp 
+                FROM sede s
            ");
         return $query->result();
     }
@@ -24,12 +41,21 @@ class Dao_sede_model extends CI_Model {
     // Retorna los datos de los OTP 
     public function c_getListOTP_Table() {
         $query = $this->db->query("
-                SELECT s.nombre_sede, otp.id_sede, otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                otp.servicio, otp.estado_orden_trabajo 
+                SELECT s.nombre_sede, 
+                otp.id_sede, 
+                otp.k_id_ot_padre, 
+                otp.n_nombre_cliente, 
+                otp.orden_trabajo , 
+                otp.servicio, 
+                otp.estado_orden_trabajo,
+                (
+                    SELECT COUNT(*) FROM control_cambios cc
+                    WHERE cc.id_ot_padre = otp.k_id_ot_padre
+                ) AS num_ctrl
+
                 FROM ot_padre otp
                 INNER JOIN sede s 
-                ON otp.id_sede = s.id_sede
-                ;              
+                ON otp.id_sede = s.id_sede 
            ");
         return $query->result();
     }

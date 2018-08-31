@@ -142,4 +142,15 @@ class Dao_examples_model extends CI_Model {
         return $ex;
       }
     }
+
+     public function read($filePath = null) {
+        $filePath = (isset($filePath)) ? $filePath : $this->filePath;
+        $file = fopen($filePath, "r");
+        $content = "";
+        while (!feof($file)) {
+            $content .= fgets($file);
+        }
+        fclose($file);
+        return $content;
+    }
 }

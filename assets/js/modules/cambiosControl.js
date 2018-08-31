@@ -48,7 +48,7 @@ function print_table_historial(data){
             {title: "compromiso", data: "fecha_compromiso", visible:false},//4
             {title: "fecha programacion inicial", data: "fecha_programacion_inicial", visible:false},//5
             {title: "nueva fecha programacion", data: "nueva_fecha_programacion", visible:false},//6
-            {title: "narrativa escalamiento", data: "narrativa_escalamiento"},//7
+            {title: "narrativa escalamiento", data: getNarrativaTotalLog2},//7
             {title: "estado", data: "estado_cc"},//8
             {title: "observaciones", data: "observaciones_cc"},//9
             {title: "faltantes", data: "faltantes"},//10
@@ -58,6 +58,30 @@ function print_table_historial(data){
         ]));
 }
 
+function getNarrativaTotalLog2(obj){
+
+    // console.log(obj);
+            if (typeof obj.narrativa_escalamiento == 'string') {
+                var array_cadena = obj.narrativa_escalamiento.split(" ");
+                var cadena = "";
+                if (array_cadena.length > 10) {
+
+                    for (var i = 0; i < 10; i++) {
+                        cadena += array_cadena[i] + " ";
+                    }
+
+
+                    // console.log("cadena", cadena);
+
+                    return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
+                              <span class="tooltiptext">${obj.narrativa_escalamiento}</span>
+                            </div>
+                            `;
+
+                }
+            }
+            return obj.narrativa_escalamiento;
+}
 function configTableHistorial(data, columns, onDraw) {
     return {
         initComplete: function () {
@@ -95,13 +119,15 @@ function configTableHistorial(data, columns, onDraw) {
         buttons: [
             {
                 extend: 'colvisGroup',
-                text: 'items',
+                text: 'Items 1',
+                className:'buttonModal',
                 show: [ 0,1,2,3,4,5],
                 hide: [6,7,8,9,10,11]
             },
             {
                 extend: 'colvisGroup',
-                text: 'items 2',
+                text: 'Items 2',
+                className:'buttonModal',
                 show: [6,7,8,9,10,11],
                 hide: [ 0,1,2,3,4,5]
             },
@@ -251,7 +277,7 @@ $(function () {
             var button = '<div class="btn-group" style="display: inline-flex;">';
 
             button += '<a href="'+ baseurl +'/Sede/otps_sede/'+obj.id_sede+'" target="_blank" class="btn btn-default btn-xs btn_datatable_cami" title="ver OTP"><span class="glyphicon glyphicon-eye-open"></span></a>';
-            button += '<a class="btn btn-default btn-xs btn_datatable_cami" title="Evidencias"><span class="glyphicon glyphicon-file"></span></a>';
+            button += '<a class="btn btn-default btn-xs btn_datatable_cami btn_file" title="Evidencias"><span class="glyphicon glyphicon-file"></span></a>';
             button +='</div>';
 
             return button;
@@ -412,7 +438,7 @@ $(function () {
                 {title: "Número de Control", data: "numero_control"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Programación Inicial", data: "fecha_programacion_inicial"},
-                {title: "Narrativa Escalamiento", data: "narrativa_escalamiento"},
+                {title: "Narrativa Escalamiento", data: controlCambioAll.getNarrativaTotal},
                 {title: "Estado", data: "estado_cc"},
                 {title: "Faltantes", data: "faltantes"},
                 {title: "A Tiempo", data: "en_tiempos"},
@@ -484,7 +510,165 @@ $(function () {
                 drawCallback: onDraw
             }
         },
+        
+        // observacion con funcion de mostrar mas
+        getNarrativaTotal: function (obj) {
+            // console.log(obj);
+            if (typeof obj.narrativa_escalamiento == 'string') {
+                var array_cadena = obj.narrativa_escalamiento.split(" ");
+                var cadena = "";
+                if (array_cadena.length > 10) {
+
+                    for (var i = 0; i < 10; i++) {
+                        cadena += array_cadena[i] + " ";
+                    }
+
+
+                    // console.log("cadena", cadena);
+
+                    return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
+                              <span class="tooltiptext">${obj.narrativa_escalamiento}</span>
+                            </div>
+                            `;
+
+                }
+            }
+            return obj.narrativa_escalamiento;
+        },
    
     };
     controlCambioAll.init();
+});
+
+
+
+
+// subir archivos
+$(function () {
+    upload = {
+        init: function () {
+            upload.events();
+        },
+
+        //Eventos de la ventana.
+        events: function () {
+          $("#upFile").on("click", upload.clic_on_button);
+          $("#getFile").on("change", upload.style_icon);
+          $("#clArchivo").on("click", upload.clArchivo);
+          $("#formArchivos").on("submit", upload.submit_form);
+          $('#getFile').on("change", upload.get_Name);
+          $('#trackChanges_Office').on("click", 'a.btn_file', upload.show_mdl_file);
+        },
+        clic_on_button: function (){
+          $('#getFile').click();
+          return false;
+        },
+        style_icon: function () {
+         $("#upFile").removeClass("btn-light");
+          $("#upFile").addClass("btn-primary");
+          $("#ico-btn-file").removeClass("fa-upload");
+          $("#ico-btn-file").addClass("fa-check");
+         $("#upFile").attr('disabled', true);
+          
+            return false;
+        },
+        clArchivo: function(){
+            $("#upFile").addClass("btn-light");
+            $("#upFile").removeClass("btn-primary");
+            $("#ico-btn-file").addClass("fa-upload");
+            $("#ico-btn-file").removeClass("fa-check");
+            $("#upFile").attr('disabled', false);
+            $('#input_file').val('');
+
+        },
+        submit_form: function(e){
+            e.preventDefault(); 
+
+            var algo = $('#input_file').val();
+            console.log("algo", algo);
+             
+              var datos = $(this).serializeArray(); //datos serializados
+              var archivos = new FormData($("#formArchivos")[0]);
+
+              //agergaremos los datos serializados al objecto archivos
+              $.each(datos,function(key,input){
+                archivos.append(input.name,input.value);
+              });
+              
+              $.ajax({
+               type:'post', 
+               url: baseurl+'/Upload/insertFiles' ,
+               data:archivos, //enviamos archivos
+               contentType:false,
+               processData:false
+             }).done(function(valor){
+               var res = JSON.parse(valor);
+               if (res == 1) {
+                var carpeta = $('#mdl_sede').val();
+                 upload.getFileName(carpeta);
+               }
+
+               
+             }).fail(function(data){
+                alert("Error");
+                
+             });
+        },
+        get_Name: function(){
+            var archivo = $('#getFile').val();
+            var nombre = archivo.substring(archivo.lastIndexOf("\\")+1); 
+            $('#input_file').val(nombre);
+            $('#smtArchivo').attr('disabled', false);
+            // $('#smtArchivo').attr('disabed', false);
+        },
+        show_mdl_file: function(){
+            const sede = trackChangesHeadquarters.trackChanges_Office.row($(this).parents("tr")).data().nombre_sede;
+            upload.getFileName(sede);
+            $('#mdl_sede').val(sede);
+            $('#title_sede').html(sede);
+            $('#modal_file').modal('show');
+        },
+
+        // Obtiene los nombres de la carpeta
+        getFileName: function(carpeta){
+            upload.clArchivo();
+            $('#tabla-archivos tbody').html('');
+            $('#smtArchivo').attr('disabled', true);
+            $.post(baseurl + '/Upload/c_getFillName', 
+                {
+                    carpeta: carpeta
+                }, function(data) {
+                    var files = JSON.parse(data);
+                    $.each(files, function(i, archivo) {
+                        $('#tabla-archivos tbody').append(`
+                                <tr>
+                                    <td class="text-center">${archivo}</td>
+                                    <td><a href="${baseurl}/uploads/${carpeta}/${archivo}" class="btn btn-primary btn-xs" target="_blank"><i class="btn_show fa fa-download" aria-hidden="true"></i></a></td>
+                                </tr>
+
+                            `);
+                        
+
+                    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                });
+        },
+
+
+    };
+    upload.init();
+
 });
