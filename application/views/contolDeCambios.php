@@ -41,7 +41,7 @@
                     <th></th>
                     <th></th>
                     <th width="1%"></th>
-                    <th></th>                    
+                                       
                 </tr>
             </tfoot>
         </table>
@@ -64,9 +64,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>              
-                    <th></th>              
-                    <th></th>              
+                    <th></th>                                         
                 </tr>
             </tfoot>
         </table>
