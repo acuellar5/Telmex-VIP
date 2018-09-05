@@ -521,6 +521,7 @@ $(function () {
             $('#Modal_detalle').on("hidden.bs.modal", eventos.modal_sobre_modal);
             $('#ModalHistorialLog').on("hidden.bs.modal", eventos.modal_sobre_modal);
             $('#contenido_tablas').on('click', 'a.hitos-otp', eventos.onClickBtnCloseOtp);
+            $('#btnGuardarModalHitos').on('click', eventos.onClickSaveHitosOtp);// ver detalles de correo btn impresora
         },
 
         // funcion para correcion modal sobre modal
@@ -552,9 +553,9 @@ $(function () {
                     record = emails.table_otPadreListEmails.row(trParent).data();
                     break;
             }
-            
+
             var btn_clas = e.currentTarget;
-            
+
 
             switch (btn_clas.dataset.btn) {
                 case 'close':
@@ -901,15 +902,52 @@ $(function () {
         },
         // Muestra los hitos de la ot padre seleccionada
         showModalHitosOthp: function (data) {
-//            listoth.getothofothp(data);
             // resetea el formulario y lo deja vacio
             document.getElementById("formModalHitosOTP").reset();
+            $.post(baseurl + '/OtPadre/c_getHitosOtp',
+                    {
+                        idOtp: data.k_id_ot_padre
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        $.each(obj, function (i, item) {
+                            $('#' + i).val(item);
+                        });
+                    });
+
             //pinta el titulo del modal y cambia dependiendo de la otp seleccionada
-            $('#myModalLabelHitos').html('<strong> Hitos de la OTP N.' + data.k_id_ot_padre + '</strong>');
+            $('#myModalLabelHitos').html('<strong> Hitos de la OTP N.<span id="otpHIto">' + data.k_id_ot_padre + '</span></strong>');
             $('#servivio_hito').html('<strong> OT ' + data.k_id_ot_padre + ' - ' + data.servicio + '</strong>');
             $('#cliente_hito').html('<strong> CLIENTE: ' + data.n_nombre_cliente + '</strong>');
             $('#ciudad_hito').html('<strong> CIUDAD: BARRANQUILLA - Vía Cordialidad # 8E1 - 238</strong>');
             $('#modalHitosOtp').modal('show');
+        },
+        // Muestra los hitos de la ot padre seleccionada
+        onClickSaveHitosOtp: function () {
+            $.post(baseurl + '/OtPadre/c_saveHitosOtp',
+                    {
+                        idOtp: $('#otpHIto').html(),
+                        formulario: $("#formModalHitosOTP").serializeArray()
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        if (obj.response == 'success') {
+                            swal({
+                                position: 'top-end',
+                                type: 'success',
+                                title: obj.msg,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        } else {
+                            swal(
+                                    'Error',
+                                    obj.msg,
+                                    'error'
+                                )
+                        }
+
+                    });
         },
     };
     eventos.init();

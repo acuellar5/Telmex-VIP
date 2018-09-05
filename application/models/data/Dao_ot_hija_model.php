@@ -1186,16 +1186,10 @@ class Dao_ot_hija_model extends CI_Model {
         $query = $this->db->query("
                 SELECT 
                 u.k_id_user,
-                -- CONCAT(u.n_name_user, ' ', u.n_last_name_user) AS nombre,
                 otp.k_id_ot_padre,
-                -- e.k_id_tipo, 
-                -- t.n_name_tipo, 
                 otp.n_nombre_cliente,
                 t.i_orden, 
                 oth.id_orden_trabajo_hija, 
-                -- e.k_id_estado_ot, 
-                -- e.n_name_estado_ot, 
-                -- oth.fecha_creacion_ot_hija, 
                 CASE
                     WHEN e.k_id_tipo = 1 then  DATEDIFF(CURDATE(),ADDDATE(oth.fecha_creacion_ot_hija, INTERVAL 2 DAY)) 
                     
