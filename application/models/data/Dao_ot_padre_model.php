@@ -264,9 +264,9 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
-    // obtiene las otp de una sede (pasarle el id de la sede)
-    public function get_otp_by_idsede($idsede) {
-        $query = $this->db->query("
+      // obtiene las otp de una sede (pasarle el id de la sede)
+    public function get_otp_by_idsede($idsede){
+       $query = $this->db->query("
             SELECT 
             otp.k_id_ot_padre, 
             otp.k_id_user, 
@@ -279,17 +279,22 @@ class Dao_ot_padre_model extends CI_Model {
             otp.fecha_compromiso, 
             otp.fecha_programacion, 
             s.id_sede, 
-            s.nombre_sede
+            s.nombre_sede, 
+            (
+                SELECT COUNT(1) FROM control_cambios cc
+                WHERE cc.id_ot_padre = otp.k_id_ot_padre
+            ) AS num_ctrl
             FROM 
             ot_padre otp 
             INNER JOIN sede s ON otp.id_sede = s.id_sede 
             WHERE 
             otp.id_sede = $idsede
-        ");
+        "); 
 
-        return $query->result();
+       return $query->result();
     }
 
+    // retorna todos los hitos de la ot_padre
     public function getHitosOtp($idOtp) {
         $query = $this->db->query("
             SELECT f_compromiso_ko, estado_ko, observaciones_ko,

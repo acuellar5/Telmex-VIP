@@ -21,6 +21,8 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
+                    <th></th>
                     <th width="1%"></th>
                     <th></th>                    
                 </tr>

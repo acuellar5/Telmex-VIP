@@ -203,6 +203,8 @@ $(function () {
                 {title: "Dierección", data: "direccion"},
                 {title: "Clasificación", data: "clasificacion"},
                 {title: "Tipo de Oficina", data: "tipo_oficina"},
+                {title: "Cant OTP", data: "cant_otp"},
+                {title: "Cant ctrls", data: "num_ctrl_camb"},
                 {title: "Opc.", data: trackChangesHeadquarters.getButonsPrintOffice},
             ]));
         },
