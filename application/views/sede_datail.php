@@ -1,5 +1,6 @@
 <?php if (isset($otp[0]->nombre_sede)): ?>
 	<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
+	<h4 align="center">Cantidad de <b> control de cambios</b> de esta sede: <b><?= count($log) ?></b></h4>
 <?php endif ?>
 
 <!--*********************  MODULO PESTAÑAS  *********************-->
@@ -53,10 +54,10 @@
 		<h3>Control de cambios</h3>
 		<table id="table_log_ctrl_cambios" class="table datatables_detalles table-hover table-bordered table-striped dataTable_camilo f-s-10" width="100%">
 			<thead>
+				<th>Id Control Cambios</th>
 				<th>otp</th>
 				<th>responsable</th>
 				<th>causa</th>
-				<th>numero control</th>
 				<th>compromiso</th>
 				<th>fecha programacion inicial</th>
 				<th>nueva fecha programacion</th>
@@ -69,10 +70,10 @@
 			</thead>
 		<?php foreach ($log as $item_log): ?>
 			<tr>
+				<th><?=$item_log->control_cambios ?></th>
 				<th><?=$item_log->id_ot_padre ?></th>
 				<th><?=$item_log->nombre_responsable ?></th>
 				<th><?=$item_log->nombre_causa ?></th>
-				<th><?=$item_log->numero_control ?></th>
 				<th><?=$item_log->fecha_compromiso ?></th>
 				<th><?=$item_log->fecha_programacion_inicial ?></th>
 				<th><?=$item_log->nueva_fecha_programacion ?></th>

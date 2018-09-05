@@ -63,7 +63,7 @@ class Dao_sede_model extends CI_Model {
     // Retorna los datos de la tabla de control de cambio (Modulo Control de Cambio)
     public function c_getListAllCC_Table() {
         $query = $this->db->query("
-                SELECT cc.id_ot_padre, resp.nombre_responsable,
+                SELECT CONCAT('ZCC',cc.id_control_cambios) As id_control_cambios, cc.id_ot_padre, resp.nombre_responsable,
                 cs.nombre_causa, cc.numero_control, cc.fecha_compromiso,
                 cc.fecha_programacion_inicial, cc.nueva_fecha_programacion,
                 cc.narrativa_escalamiento, cc.estado_cc, cc.observaciones_cc,
