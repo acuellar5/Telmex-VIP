@@ -84,7 +84,7 @@ class OtPadre extends CI_Controller {
                     $ingenieros[$general[$i]->k_id_user]['hoy'] ++;
                     $cont_total_otp++;
                     $cont_total_hoy_otp++;
-                } else if ($ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] == -1) {
+                } else if ($ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] == -1) {  
 
                     $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] = 0;
                     $ingenieros[$general[$i]->k_id_user]['hoy'] ++;
