@@ -39,6 +39,11 @@
 <!-- ************************************** WORK MANAGEMENT OTP CSS ********************************************* -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/tooltip.css") ?>">
 <?php endif ?>
+
+    <?php if ($this->uri->segment(1) == 'managementOtp'): ?>
+<!-- ************************************** timeLine CSS ********************************************* -->
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/timeLine.css") ?>">
+<?php endif ?>
             
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
 
