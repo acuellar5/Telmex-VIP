@@ -79,7 +79,7 @@ class Sede extends CI_Controller {
 			'id_ot_padre'                => $this->input->post('id_ot_padre'),
 			'id_responsable'             => $this->input->post('id_responsable'),
 			'id_causa'                   => $this->input->post('id_causa'),
-			'numero_control'             => $this->input->post('numero_control'),
+			// 'numero_control'             => $this->input->post('numero_control'),
 			'fecha_compromiso'           => $this->input->post('fecha_compromiso'),
 			'fecha_programacion_inicial' => $this->input->post('fecha_programacion_inicial'),
 			'nueva_fecha_programacion'   => $this->input->post('nueva_fecha_programacion'),
@@ -93,7 +93,27 @@ class Sede extends CI_Controller {
     	
         $this->load->library( 'user_agent' );
     	$ins = $this->Dao_control_cambios_model->insert_control_cambios($data);
-        $this->session->set_flashdata('ok', 'ok');
+
+        if ($ins) {
+            $nombre_carpeta = $this->input->post('nombre_sede');
+            $file_name = $_FILES['archivo']['name'];
+            $file_size = $_FILES['archivo']['size'];
+            $file_tmp = $_FILES['archivo']['tmp_name'];
+            $file_type = $_FILES['archivo']['type'];    
+
+            $explode_name = explode('.',$file_name);
+            $ext = $explode_name[count($explode_name) - 1];
+            $nombre_archivo = "ZCC$ins.$ext";
+            
+            if (!is_dir("uploads/$nombre_carpeta")) {
+              mkdir("uploads/$nombre_carpeta");
+            } 
+             echo json_encode(rename("$file_tmp","uploads/$nombre_carpeta/$nombre_archivo"));
+
+        }
+        
+
+        $this->session->set_flashdata('ok', $ins);
 
         if ($this->agent->referrer () == URL::base()."/Sede") {
            header('location: ' .$this->agent->referrer ());

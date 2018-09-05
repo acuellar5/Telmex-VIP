@@ -12,7 +12,7 @@ $.each(causa_list, function(i, item) {
         `);
 });
 // MOSTRAR MODAL
-function showFormControl(otp, cliente, id_sede, num_ctrl){
+function showFormControl(otp, cliente, id_sede, num_ctrl, nombre_sede){
     table_historial(otp);
     $('#myModalLabel').html(`Orden de trabajo ${otp}`);
     document.getElementById("formModal").reset();
@@ -21,6 +21,7 @@ function showFormControl(otp, cliente, id_sede, num_ctrl){
     $('#bdg_historial').html(num_ctrl);
     $('#numero_control').val(parseInt(num_ctrl) + 1);
     $('#n_nombre_cliente').val(cliente);
+    $('#nombre_sede').val(nombre_sede);
     $('#mdl-control_cambios').modal('show');
 }
 

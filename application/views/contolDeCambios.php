@@ -97,7 +97,7 @@
                     <div id="form" class="tab-pane fade in active">
                         <h3>Nuevo Control de Cambio</h3>
 
-                          <form class="well form-horizontal" id="formModal" action="<?= URL::to("sede/insert_control") ?>"  method="post">
+                          <form class="well form-horizontal" id="formModal" action="<?= URL::to("sede/insert_control") ?>"  method="post" enctype="multipart/form-data">
                             <fieldset>
                               <div class="widget bg_white m-t-25 display-block">
                                 <h2 class="h4 mp clr-98c2d8">
@@ -106,6 +106,7 @@
                                 <fieldset class="col-md-6 control-label">
                                   <!-- valores ocultos -->
                                   <input type="hidden" id="id_sede" name="id_sede" value="">
+                                  <input type="hidden" id="nombre_sede" name="nombre_sede" value="">
 
                                   <div class="form-group">
                                     <label for="id_ot_padre" class="col-md-3 control-label">otp:</label>
@@ -127,15 +128,6 @@
                                     </div>
                                   </div>
 
-                                  <div class="form-group">
-                                    <label for="numero_control" class="col-md-3 control-label">N° control:</label>
-                                    <div class="col-md-8 selectContainer">
-                                      <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-contao" aria-hidden="true"></i></span>
-                                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" readonly >
-                                      </div>
-                                    </div>
-                                  </div>
                                 </fieldset>
                                 <!--  fin seccion izquierda form-->
                                 <!--  inicio seccion derecha form-->
@@ -338,6 +330,18 @@
                                     </div>
                                     
                                 </fieldset>
+                                <br>
+                
+                                <!--*********************  INPUT TEXT  *********************-->
+                                <div class="form-group">
+                                  <label for="archivo" class="col-md-3 control-label">Evidencia: &nbsp;</label>
+                                  <div class="col-md-8 selectContainer">
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+                                      <input type="file" name="archivo" id="archivo" class="form-control" accept="*">
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </fieldset>
                             <center >
@@ -367,17 +371,10 @@
     $correcto = $this->session->flashdata('ok');
     if ($correcto) {  ?>
         <script>
-            swal('Correcto','se inserto Nuevo control de cambios', 'success');
+            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $correcto ?></b>`, 'success');
 
         </script>
 <?php } ?>
-
-
-
-
-
-
-
 
 <div id="modal_file" class="modal fade" role="dialog">
   <div class="modal-dialog modal-md">
@@ -388,25 +385,6 @@
       </div>
       <div class="modal-body">
           <br>
-
-          <form  autocomplete="off" class="form-inline"  id="formArchivos" enctype="multipart/form-data">
-            <center class="div_upload_files">
-              <label>Nombre del documento: </label>
-              <div class="input-group">
-                <span class="input-group-addon">
-                  <i class="fa fa-file" aria-hidden="true"></i>
-                </span>
-                <input type="hidden" name="mdl_sede" id="mdl_sede" value="">
-                <input type="text" id="input_file" name="nombre_archivo" placeholder="Nombre del documento" class="form-control" required="required"/ readonly>
-              </div>
-              <button class="btn btn-light btn-sm" id="upFile"><i class="fa fa-upload" id="ico-btn-file" aria-hidden="true"></i></button>
-              <input type="file" name="archivo" id="getFile" class="hidden"  required="required" accept="*" /><br><br>
-              <input type="submit" form="formArchivos" id="smtArchivo" disabled class="btn btn-success btn-sm" value="Agregar" />
-              <input type="button" id="clArchivo" class="btn btn-danger btn-sm" value="Limpiar" /><br />
-            </center>
-          </form>
-          <br><br>
-        
           <table id="tabla-archivos" class="dataTable_camilo  table-bordered table_files">
             <thead>
               <tr>

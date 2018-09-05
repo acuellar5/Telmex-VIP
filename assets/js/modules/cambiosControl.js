@@ -12,13 +12,14 @@ $.each(causa_list, function(i, item) {
         `);
 });
 // MOSTRAR MODAL
-function showFormControl(otp, cliente, id_sede){
+function showFormControl(otp, cliente, id_sede, nombre_sede){
     table_historial(otp);
     $('#myModalLabel').html(`Orden de trabajo ${otp}`);
     document.getElementById("formModal").reset();
     $('#id_ot_padre').val(otp);
     $('#id_sede').val(id_sede);
     $('#n_nombre_cliente').val(cliente);
+    $('#nombre_sede').val(nombre_sede);
     $('#mdl-control_cambios').modal('show');
 }
 
@@ -396,7 +397,7 @@ $(function () {
         },
 
         getButonsPrintOTP: function (obj) {
-            var button = `<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP" onclick="showFormControl('${obj.k_id_ot_padre}', '${obj.n_nombre_cliente}', '${obj.id_sede}')"><i class="fa fa-bars" aria-hidden="true"></i></a>`
+            var button = `<a class="btn btn-default btn-xs ver-mail btn_datatable_cami" title="ver OTP" onclick="showFormControl('${obj.k_id_ot_padre}', '${obj.n_nombre_cliente}', '${obj.id_sede}', '${obj.nombre_sede}')"><i class="fa fa-bars" aria-hidden="true"></i></a>`
             return button;
 
         },    

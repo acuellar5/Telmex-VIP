@@ -1,0 +1,37 @@
+
+<table>
+	<tr>
+		<td>
+			<table width="100%" border="1">
+				<h3 align="center" style="color: #084c6f;">Tabla de Detalles OTP</h3>
+					<tr bgcolor="#084c6f" style="color: white;" align="center" >
+						<td>OTP</td>
+						<td>Nombre cliente</td>
+						<td>Tipo OTP</td>
+						<td>Servicio</td>
+						<td>Estado OTP</td>
+						<td>Programado</td>
+						<td>Compromiso</td>
+						<td>Creacion</td>
+						<td>Ciudad</td>
+						<td>Recurrente</td>
+						<td>Lista observaciones</td>
+						<td>Observacion</td>
+					</tr>
+				<tr><td>10105295</td><td>compania de seguros bolivar</td><td>$instalacion grandes proyectos</td><td>internet dedicado </td><td>pendiente cliente</td><td>2018-07-30 00:00:00</td><td>2018-07-30 00:00:00</td><td>2017-12-01 00:00:00</td><td>bogota, d.c.                  </td><td>$ 0.00</td><td></td><td></td></tr>			</table>
+		</td>
+		<td>   </td>
+		<td>
+			<table width="100%" border="1">
+				<h3 align="center" style="color: #084c6f;">Tabla de Detalles OTH</h3>
+				<tr bgcolor="#084c6f" style="color: white;" align="center" >
+					<td>OTH</td>
+					<td>Tipo OTH</td>
+					<td>Estado OTH</td>
+					<td>Creacion OTH</td>
+					<td>Ingeniero</td>
+				</tr>
+			<tr><td>10758263</td><td>actividad previa ins.</td><td>visita.cliente ejecucion contratista</td><td>2018-05-17 00:00:00</td><td>laura arenas nunez</td></tr>		</table>
+		</td>
+	</tr>
+</table>

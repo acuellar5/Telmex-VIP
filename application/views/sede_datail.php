@@ -31,7 +31,7 @@
 				<td><?= $item_otp->estado_orden_trabajo ?></td>
 				<td><?= $item_otp->num_ctrl ?></td>
 				<td><div class='btn-group'>
-		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?>","<?= $item_otp->id_sede ?>", "<?= $item_otp->num_ctrl ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		                <a class='btn btn-default btn-xs new_control btn_datatable_cami' title='Nuevo Control de Causa' onclick='showFormControl("<?= $item_otp->k_id_ot_padre ?>","<?= $item_otp->n_nombre_cliente ?>","<?= $item_otp->id_sede ?>", "<?= $item_otp->num_ctrl ?>", "<?= $item_otp->nombre_sede ?>");'><i class="fa fa-bars" aria-hidden="true"></i></a>
 		            </div>
 		        </td>		
 			</tr>
@@ -127,7 +127,7 @@
 					<div id="form" class="tab-pane fade in active">
 						<h3>Nuevo Control de Cambio</h3>
 
-				          <form class="well form-horizontal" id="formModal" action="<?= URL::to("sede/insert_control") ?>"  method="post">
+				          <form class="well form-horizontal" id="formModal" action="<?= URL::to("sede/insert_control") ?>"  method="post" enctype="multipart/form-data">
 				            <fieldset>
 				              <div class="widget bg_white m-t-25 display-block">
 				                <h2 class="h4 mp clr-98c2d8">
@@ -136,6 +136,7 @@
 				                <fieldset class="col-md-6 control-label">
 				                  <!-- valores ocultos -->
 				                  <input type="hidden" id="id_sede" name="id_sede" value="">
+				                  <input type="hidden" id="nombre_sede" name="nombre_sede" value="">
 
 				                  <div class="form-group">
 				                    <label for="id_ot_padre" class="col-md-3 control-label">otp:</label>
@@ -157,15 +158,6 @@
 				                    </div>
 				                  </div>
 
-				                  <div class="form-group">
-				                    <label for="numero_control" class="col-md-3 control-label">N° control:</label>
-				                    <div class="col-md-8 selectContainer">
-				                      <div class="input-group">
-				                        <span class="input-group-addon"><i class="fa fa-contao" aria-hidden="true"></i></span>
-				                        <input name="numero_control" id="numero_control" class="form-control" type="text" placeholder="Numero de control" readonly>
-				                      </div>
-				                    </div>
-				                  </div>
 				                </fieldset>
 				                <!--  fin seccion izquierda form-->
 				                <!--  inicio seccion derecha form-->
@@ -368,8 +360,22 @@
 									</div>
 									
 								</fieldset>
+								<br>
+					              <!--*********************  INPUT TEXT  *********************-->
+					              <div class="form-group">
+					              	<label for="archivo" class="col-md-3 control-label">Evidencia: &nbsp;</label>
+					              	<div class="col-md-8 selectContainer">
+					              		<div class="input-group">
+					              			<span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
+					              			<input type="file" name="archivo" id="archivo" class="form-control" accept="*" required>
+					              		</div>
+					              	</div>
+					              </div>
 				              </div>
+				              
+				              
 				            </fieldset>
+				      
 				            <center >
 				            	<input type="submit" name="" value="guardar" class="btn-cami_cool m-t-20">
 				            </center>
@@ -394,12 +400,12 @@
 
 <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 <?php 
-	$correcto = $this->session->flashdata('ok');
-	if ($correcto) {  ?>
-		<script>
-			swal('Correcto','se inserto Nuevo control de cambios', 'success');
+    $correcto = $this->session->flashdata('ok');
+    if ($correcto) {  ?>
+        <script>
+            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $correcto ?></b>`, 'success');
 
-		</script>
+        </script>
 <?php } ?>
 
 
