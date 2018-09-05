@@ -432,6 +432,7 @@ $(function () {
             // nombramos la variable para la tabla y llamamos la configuiracion que se encuentra en /assets/js/modules/helper.js
             controlCambioAll.trackChanges_All = $('#trackChanges_All').DataTable(controlCambioAll.configTableHeadquarters(data, [
 
+                {title: "Sede", data: "nombre_sede"},
                 {title: "ID OTP", data: "id_ot_padre"},
                 {title: "Responsable", data: "nombre_responsable"},
                 {title: "Causa", data: "nombre_causa"},

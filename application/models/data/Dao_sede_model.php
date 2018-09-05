@@ -67,12 +67,16 @@ class Dao_sede_model extends CI_Model {
                 cs.nombre_causa, cc.numero_control, cc.fecha_compromiso,
                 cc.fecha_programacion_inicial, cc.nueva_fecha_programacion,
                 cc.narrativa_escalamiento, cc.estado_cc, cc.observaciones_cc,
-                cc.faltantes, cc.en_tiempos, cc.fecha_creacion_cc
+                cc.faltantes, cc.en_tiempos, cc.fecha_creacion_cc, s.nombre_sede
                 FROM control_cambios cc
                 INNER JOIN responsable_cc resp
                 ON cc.id_responsable= resp.id_responsable
                 INNER JOIN causa_cc cs
                 ON cc.id_causa= cs.id_causa
+                INNER JOIN ot_padre otp 
+                ON cc.id_ot_padre = otp.k_id_ot_padre
+                INNER JOIN sede s 
+                ON otp.id_sede = s.id_sede  
                 ;              
            ");
         return $query->result();
