@@ -50,24 +50,24 @@ class OtPadre extends CI_Controller {
             // validar si oth está fuera de times 
             if ($general[$i]->tiempo > 0) {
                 if (!array_key_exists($general[$i]->k_id_ot_padre, $ingenieros[$general[$i]->k_id_user])) {
-                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = 1;
+                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = array('time' => 1, "cliente" => $general[$i]->n_nombre_cliente);
                     $ingenieros[$general[$i]->k_id_user]['out'] ++;
                     $cont_total_out_otp++;
                     $cont_total_otp++;
                 } else {
-                    switch ($ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]) {
+                    switch ($ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time']) {
                         case '1':
 
                             break;
                         case '0':
-                            $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = 1;
+                            $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] = 1;
                             $ingenieros[$general[$i]->k_id_user]['out'] ++;
                             $ingenieros[$general[$i]->k_id_user]['hoy'] --;
                             $cont_total_out_otp++;
                             $cont_total_hoy_otp--;
                             break;
                         case '-1':
-                            $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = 1;
+                            $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] = 1;
                             $ingenieros[$general[$i]->k_id_user]['out'] ++;
                             $ingenieros[$general[$i]->k_id_user]['in'] --;
                             $cont_total_out_otp++;
@@ -80,13 +80,13 @@ class OtPadre extends CI_Controller {
             // validar si oth está para now
             if ($general[$i]->tiempo == 0) {
                 if (!array_key_exists($general[$i]->k_id_ot_padre, $ingenieros[$general[$i]->k_id_user])) {
-                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = 0;
+                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = array('time' => 0, "cliente" => $general[$i]->n_nombre_cliente);
                     $ingenieros[$general[$i]->k_id_user]['hoy'] ++;
                     $cont_total_otp++;
                     $cont_total_hoy_otp++;
-                } else if ($ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] == -1) {
+                } else if ($ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] == -1) {
 
-                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = 0;
+                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre]['time'] = 0;
                     $ingenieros[$general[$i]->k_id_user]['hoy'] ++;
                     $ingenieros[$general[$i]->k_id_user]['in'] --;
                     $cont_total_hoy_otp++;
@@ -96,7 +96,7 @@ class OtPadre extends CI_Controller {
 
             if ($general[$i]->tiempo < 0) {
                 if (!array_key_exists($general[$i]->k_id_ot_padre, $ingenieros[$general[$i]->k_id_user])) {
-                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = -1;
+                    $ingenieros[$general[$i]->k_id_user][$general[$i]->k_id_ot_padre] = array('time' => -1, "cliente" => $general[$i]->n_nombre_cliente);;
                     $ingenieros[$general[$i]->k_id_user]['in'] ++;
                     $cont_total_in_otp++;
                     $cont_total_otp++;

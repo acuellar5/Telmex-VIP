@@ -908,6 +908,7 @@
                     <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_hitos_otp"  cellspacing="2">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>ACTIVIDAD</th>
                                 <th>FECHA COMPROMISO </th>
                                 <th>ESTADO</th>
@@ -916,6 +917,7 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td><span class="glyphicon glyphicon-check"></span></td>
                                 <td>KICK OFF</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control">
@@ -936,6 +938,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td rowspan="2">algo</td>
                                 <td>VISITA OBRA CIVIL</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control">
@@ -976,6 +979,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>algo</td>
                                 <td>ENVIO COTIZACION</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control">
@@ -996,6 +1000,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>algo</td>
                                 <td>APROBACION COTIZACION</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control">
@@ -1016,6 +1021,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>algo</td>
                                 <td>SOLICITUD INFORMACIÓN TECNICA</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control">
@@ -1036,6 +1042,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td rowspan="2">algo</td>
                                 <td>VISITA EJECUCION OBRA CIVIL</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control">
@@ -1076,6 +1083,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>algo</td>
                                 <td>CONFIGURACION RED CLARO</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control">
@@ -1096,6 +1104,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>algo</td>
                                 <td>VISITA ENTREGA UM TERCEROS</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control">
@@ -1126,7 +1135,7 @@
 <!--                            <div class="page-header">
                                 <h1>Horizontal timeline</h1>
                             </div>-->
-                            <div style="display:inline-block;width:70%;overflow-y:auto;">
+                            <div style="display:inline-block;width:70%;">
                                 <ul class="timeline timeline-horizontal">
                                     <li class="timeline-item">
                                         <div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
@@ -1164,6 +1173,18 @@
                                             </div>
                                         </div>
                                     </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="display:inline-block;width:70%;">
+                                <ul class="timeline timeline-horizontal">
+                                    
                                     <li class="timeline-item">
                                         <div class="timeline-badge warning"><i class="glyphicon glyphicon-check"></i></div>
                                         <div class="timeline-panel">
