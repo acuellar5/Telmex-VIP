@@ -939,6 +939,7 @@ $(function () {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
+                            $('#modalHitosOtp').modal('toggle');
                         } else {
                             swal(
                                     'Error',

@@ -1,4 +1,4 @@
-  <!--*********************  MODULO PESTAÑAS  *********************-->
+<!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#total">Total</a></li>
     <li class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>
@@ -31,7 +31,7 @@
             </tfoot>
         </table>
     </div>
-    
+
     <div id="hoy" class="tab-pane fade">
         <h3>hoy</h3>
         <table id="table_otPadreListHoy" class="table table-hover table-bordered table-striped dataTable_camilo">
@@ -53,7 +53,7 @@
             </tfoot>
         </table>
     </div>
-    
+
     <div id="vencidas" class="tab-pane fade">
         <h3>Vencidas</h3>
         <table id="table_otPadreListVencidas" class="table table-hover table-bordered table-striped dataTable_camilo">
@@ -203,10 +203,10 @@
                 <h3 class="modal-title" id="myModalLabel"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
             </div>
             <div class="modal-body">                
-                    <form class="well form-horizontal" id="formModalOTHS" method="post" novalidate="novalidate">
-                        
-                            <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_oths_otp"  cellspacing="2"></table>
-                    </form>                
+                <form class="well form-horizontal" id="formModalOTHS" method="post" novalidate="novalidate">
+
+                    <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_oths_otp"  cellspacing="2"></table>
+                </form>                
             </div>
 
 
@@ -232,40 +232,40 @@
                         <li class="active"><a data-toggle="tab" href="#tab_log">Historial Log</a></li>
                         <li class=""><a data-toggle="tab" href="#tab_log_mail">Historial Mail</a></li>
                     </ul>
-                    
+
                     <!--*********************  CONTENIDO PESTAÑAS  *********************-->
                     <div class="tab-content">
-                    
+
                         <div id="tab_log" class="tab-pane fade in active">
                             <h3>Tabla Log</h3>
                             <table id="tableHistorialLog" class='table table-bordered table-striped  col-sm-12'  width='100%'>
                                 <thead>
-                                    <th>ORDEN</th>
-                                    <th>ANTES</th>
-                                    <th>AHORA</th>
-                                    <th>COLUMNA CAMBIADA</th>
-                                    <th>FECHA MODIFICACION</th>
+                                <th>ORDEN</th>
+                                <th>ANTES</th>
+                                <th>AHORA</th>
+                                <th>COLUMNA CAMBIADA</th>
+                                <th>FECHA MODIFICACION</th>
                                 </thead>
                             </table>
-                            
+
                         </div>
-                    
+
                         <div id="tab_log_mail" class="tab-pane fade">
                             <h3>Historial Mail</h3>
                             <table id="table_log_mail" class='table table-bordered table-striped' width='100%'>
                                 <thead>
-                                    <th>FECHA</th>
-                                    <th>CLASE</th>
-                                    <th>SERVICIO</th>
-                                    <th>ENVIADO POR</th>
-                                    <th>DESTINATARIOS</th>
-                                    <th>DIRIGIDO A</th>
-                                    <th>opc</th>
+                                <th>FECHA</th>
+                                <th>CLASE</th>
+                                <th>SERVICIO</th>
+                                <th>ENVIADO POR</th>
+                                <th>DESTINATARIOS</th>
+                                <th>DIRIGIDO A</th>
+                                <th>opc</th>
                                 </thead>
                             </table>
                         </div>
-                    
-                    
+
+
                     </div>
                 </div>
             </div>
@@ -1117,7 +1117,91 @@
                             </tr>
                         </tbody>
                     </table>
-                </form>                
+                </form>
+                
+                <!------------------------------ inico timeLIme ------------------------------> 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+<!--                            <div class="page-header">
+                                <h1>Horizontal timeline</h1>
+                            </div>-->
+                            <div style="display:inline-block;width:70%;overflow-y:auto;">
+                                <ul class="timeline timeline-horizontal">
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">KICK OFF</h4>
+                                                <!--<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>-->
+                                            </div>
+<!--                                            <div class="timeline-body">
+                                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis faiz elementum girarzis, nisi eros gostis.</p>
+                                            </div>-->
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">VISITA OBRA CIVIL</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge info"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">ENVIO COTIZACION</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge danger"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">APROBACION COTIZACION</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge warning"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">SOLICITUD INFORMACIÓN TECNICA</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">VISITA EJECUCION OBRA CIVIL</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">CONFIGURACION RED CLARO</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-item">
+                                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">VISITA ENTREGA UM TERCEROS</h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------ fin timeLIme ------------------------------> 
             </div>
             <div class="modal-footer cssnewtypem">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
