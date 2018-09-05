@@ -117,7 +117,7 @@
 				<!--*********************  MODULO PESTAÑAS  *********************-->
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#form">Formulario</a></li>
-					<li class=""><a data-toggle="tab" href="#log_otp">Hitorial <span class="badge badge_cami" id="bdg_historial">...</span></a></li>
+					<li class=""><a data-toggle="tab" href="#log_otp">Historial <span class="badge badge_cami" id="bdg_historial">...</span></a></li>
                 </ul></a></li>
 				</ul>
 				
@@ -379,7 +379,7 @@
 					
 					<!-- *************************INICIO SEGUNDA PESTAÑA************************* -->
 					<div id="log_otp" class="tab-pane fade">
-						<h3>Hitorial</h3>
+						<h3>Historial</h3>
 						<table id="tabla_Historial" class='table table-hover table-bordered table-striped dataTable_camilo' width="100%">
                         </table>
 					</div>
