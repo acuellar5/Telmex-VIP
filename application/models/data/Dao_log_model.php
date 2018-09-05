@@ -42,6 +42,7 @@ class Dao_log_model extends CI_Model {
     public function get_log_by_idsede($id_sede){
         $query = $this->db->query("
                 SELECT 
+                CONCAT('ZCC',cc.id_control_cambios) As control_cambios,
                 cc.id_control_cambios, 
                 cc.id_ot_padre, 
                 cc.id_responsable, 
