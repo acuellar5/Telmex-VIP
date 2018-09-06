@@ -54,7 +54,7 @@ caption, th {
   font-style: normal;
 }
 html {
-  background-image: url(https://image.ibb.co/dB8iXb/font.jpg);
+  background-image: url('../images/font.jpg');
 
   background-attachment: fixed;
 background-repeat: no-repeat;
