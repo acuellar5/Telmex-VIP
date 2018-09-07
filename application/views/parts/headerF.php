@@ -83,15 +83,22 @@
 
         <ul class="nav navbar-nav menu_nav_header">
             <!-- <li class="active"><a class="home" href="<?= URL::to('paginaPrincipal') ?>">Home</a> -->
+            
+            <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_project == 'ingeniero'): ?>
+
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">¿Cómo vamos?<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="<?= URL::to('OTP') ?>">¿Cómo vamos OTP?</a></li>
                 <li><a href="<?= URL::to('paginaPrincipal') ?>">¿Cómo vamos OTH?</a></li>
               </ul>
             </li>
+            <?php endif ?>
+
               <?php
               if (Auth::user()->n_project == 'Gestion') {
                 ?>
+
+                <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_project == 'ingeniero'): ?>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
@@ -102,33 +109,31 @@
                     <?php endif ?>
                   </ul>
                 </li>
-
+                <?php endif ?>
 
                 <!-- que el boton restore apareza solo en administrativo y que sea OTS Hija -->
                 <?php if (Auth::user()->n_role_user == 'administrador' ): ?>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
-                    <li><a href="<?= URL::to('status_restore') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
-                  </ul>
-                </li> 
+                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-triangle"></span> restore <span class="badge"><?php echo $cantidad['indefinidos'] + $cantidad['nulos']?></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
+                      <li><a href="<?= URL::to('status_restore') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
+                    </ul>
+                  </li> 
 
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Facturación <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('cierre_ots') ?>">Cierre </a></li>
-                    <li><a href="<?= URL::to('facturacion') ?>">Facturados </a></li>
-                  </ul>
-                </li>   
+                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Facturación <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="<?= URL::to('cierre_ots') ?>">Cierre </a></li>
+                      <li><a href="<?= URL::to('facturacion') ?>">Facturados </a></li>
+                    </ul>
+                  </li>   
+                <?php endif ?>
 
-
-              <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.Cambios<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('Sede') ?>">Control de Cambios</a></li>
-                    
-                  </ul>
-              </li>
-
-
+                <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_role_user == 'clarocc'): ?>
+                  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.Cambios<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="<?= URL::to('Sede') ?>">Control de Cambios</a></li>                    
+                      </ul>
+                  </li>
                 <?php endif ?>
                 
               <?php
