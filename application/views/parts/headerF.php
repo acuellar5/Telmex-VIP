@@ -42,7 +42,7 @@
 
     <?php if ($this->uri->segment(1) == 'managementOtp'): ?>
 <!-- ************************************** timeLine CSS ********************************************* -->
-    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/timeLine.css") ?>">
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/timeLine.css?v=" . validarEnProduccion()) ?>">
 <?php endif ?>
             
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
