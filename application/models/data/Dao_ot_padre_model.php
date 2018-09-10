@@ -306,7 +306,8 @@ class Dao_ot_padre_model extends CI_Model {
                 f_compromiso_veoc, estado_veoc, observaciones_veoc,
                 f_compromiso_veoct, estado_veoct, observaciones_veoct,
                 f_compromiso_crc, estado_crc, observaciones_crc,
-                f_compromiso_veut, estado_veut, observaciones_veut
+                f_compromiso_veut, estado_veut, observaciones_veut,
+                actividad_actual
             FROM 
             ot_padre
             WHERE 
@@ -317,40 +318,40 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     public function saveHitosOtp($idOtp, $formulario) {
-        print_r($formulario);
         $respuesta = array();
         $query = "
             UPDATE ot_padre SET
-            f_compromiso_ko = '" . $formulario[0]['value'] . "',
-            estado_ko = '" . $formulario[1]['value'] . "',
-            observaciones_ko = '" . $formulario[2]['value'] . "',
-            f_compromiso_voc = '" . $formulario[3]['value'] . "',
-            estado_voc = '" . $formulario[4]['value'] . "',
-            observaciones_voc = '" . $formulario[5]['value'] . "',
-            f_compromiso_voct = '" . $formulario[6]['value'] . "',
-            estado_voct = '" . $formulario[7]['value'] . "',
-            observaciones_voct = '" . $formulario[8]['value'] . "',
-            f_compromiso_ec = '" . $formulario[9]['value'] . "',
-            estado_ec = '" . $formulario[10]['value'] . "',
-            observaciones_ec = '" . $formulario[11]['value'] . "',
-            f_compromiso_ac = '" . $formulario[12]['value'] . "',
-            estado_ac = '" . $formulario[13]['value'] . "',
-            observaciones_ac = '" . $formulario[14]['value'] . "',
-            f_compromiso_sit = '" . $formulario[15]['value'] . "',
-            estado_sit = '" . $formulario[16]['value'] . "',
-            observaciones_sit = '" . $formulario[17]['value'] . "',
-            f_compromiso_veoc =' " . $formulario[18]['value'] . "',
-            estado_veoc = '" . $formulario[19]['value'] . "',
-            observaciones_veoc = '" . $formulario[20]['value'] . "',
-            f_compromiso_veoct = '" . $formulario[21]['value'] . "',
-            estado_veoct = '" . $formulario[22]['value'] . "',
-            observaciones_veoct = '" . $formulario[23]['value'] . "',
-            f_compromiso_crc = '" . $formulario[24]['value'] . "',
-            estado_crc = '" . $formulario[25]['value'] . "',
-            observaciones_crc = '" . $formulario[26]['value'] . "',
-            f_compromiso_veut = '" . $formulario[27]['value'] . "',
-            estado_veut = '" . $formulario[28]['value'] . "',
-            observaciones_veut = '" . $formulario[29]['value'] . "'
+            f_compromiso_ko = '" . $formulario[1]['value'] . "',
+            estado_ko = '" . $formulario[2]['value'] . "',
+            observaciones_ko = '" . $formulario[3]['value'] . "',
+            f_compromiso_voc = '" . $formulario[4]['value'] . "',
+            estado_voc = '" . $formulario[5]['value'] . "',
+            observaciones_voc = '" . $formulario[6]['value'] . "',
+            f_compromiso_voct = '" . $formulario[7]['value'] . "',
+            estado_voct = '" . $formulario[8]['value'] . "',
+            observaciones_voct = '" . $formulario[9]['value'] . "',
+            f_compromiso_ec = '" . $formulario[10]['value'] . "',
+            estado_ec = '" . $formulario[11]['value'] . "',
+            observaciones_ec = '" . $formulario[12]['value'] . "',
+            f_compromiso_ac = '" . $formulario[13]['value'] . "',
+            estado_ac = '" . $formulario[14]['value'] . "',
+            observaciones_ac = '" . $formulario[15]['value'] . "',
+            f_compromiso_sit = '" . $formulario[16]['value'] . "',
+            estado_sit = '" . $formulario[17]['value'] . "',
+            observaciones_sit = '" . $formulario[18]['value'] . "',
+            f_compromiso_veoc =' " . $formulario[19]['value'] . "',
+            estado_veoc = '" . $formulario[20]['value'] . "',
+            observaciones_veoc = '" . $formulario[21]['value'] . "',
+            f_compromiso_veoct = '" . $formulario[22]['value'] . "',
+            estado_veoct = '" . $formulario[23]['value'] . "',
+            observaciones_veoct = '" . $formulario[24]['value'] . "',
+            f_compromiso_crc = '" . $formulario[25]['value'] . "',
+            estado_crc = '" . $formulario[26]['value'] . "',
+            observaciones_crc = '" . $formulario[27]['value'] . "',
+            f_compromiso_veut = '" . $formulario[28]['value'] . "',
+            estado_veut = '" . $formulario[29]['value'] . "',
+            observaciones_veut = '" . $formulario[30]['value'] . "',
+            actividad_actual = '" . $formulario[0]['value'] . "'
             WHERE k_id_ot_padre = $idOtp
         ";
 

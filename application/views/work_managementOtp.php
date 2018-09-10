@@ -936,7 +936,7 @@
                                 <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">1</div>
+                                            <div class="timeline-badge" id="act_ko">1</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -963,7 +963,7 @@
                                 <td rowspan="2">
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">2</div>
+                                            <div class="timeline-badge" id="act_voc">2</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1010,7 +1010,7 @@
                                 <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">3</div>
+                                            <div class="timeline-badge" id="act_ec">3</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1037,7 +1037,7 @@
                                 <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">4</div>
+                                            <div class="timeline-badge" id="act_ac">4</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1064,7 +1064,7 @@
                                 <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">5</div>
+                                            <div class="timeline-badge" id="act_sit">5</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1091,7 +1091,7 @@
                                 <td rowspan="2">
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">6</div>
+                                            <div class="timeline-badge" id="act_veoc">6</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1138,7 +1138,7 @@
                                 <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">7</div>
+                                            <div class="timeline-badge" id="act_crc">7</div>
                                         </li>
                                     </ul>
                                 </td>
@@ -1165,7 +1165,7 @@
                                 <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
-                                            <div class="timeline-badge">8</div>
+                                            <div class="timeline-badge" id="act_veut">8</div>
                                         </li>
                                     </ul>
                                 </td>
