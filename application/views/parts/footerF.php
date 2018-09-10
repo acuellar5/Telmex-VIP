@@ -102,15 +102,23 @@
 
 <!-- ***********************faber*********************************** -->
 <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User' || $this->uri->segment(1) == 'managementOtp' || $this->uri->segment(1) == 'cierre_ots' || $this->uri->segment(1) == 'Sede'): ?>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/dataTables.buttons.min.js') ?>"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/jszip.min.js') ?>"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/pdfmake.min.js') ?>"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/vfs_fonts.js') ?>"></script>
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/buttons.html5.min.js') ?>"></script>
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/buttons.print.min.js') ?>"></script>
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/dataTables.select.min.js') ?>"></script>
 <!-- COLVIs PARA MOSTRAR U OCULTAR COLUMNAS -->
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script> -->
+<script src="<?= URL::to('assets/plugins/datatables/js/buttons.colVis.min.js') ?>"></script>
 <!-- ***********************faber*********************************** -->
 <?php endif ?>
 
