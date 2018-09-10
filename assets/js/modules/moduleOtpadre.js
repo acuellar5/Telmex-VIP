@@ -39,7 +39,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes_dejadas", data: vista.getObservacionTotal},
+                {title: "Observaciónes dejadas", data: vista.getObservacionTotal},
                 {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },

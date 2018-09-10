@@ -12,7 +12,7 @@
 
     <div id="total" class="tab-pane fade in active">
         <h3>OT Padre</h3>
-        <table id="table_otPadreList" class="table table-hover table-bordered table-striped dataTable_camilo">
+        <table id="table_otPadreList" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
                     <th></th>
@@ -898,6 +898,22 @@
             </div>
             <div class="modal-body">                
                 <form class="well form-horizontal" id="formModalHitosOTP" method="post" novalidate="novalidate">
+                    <div class="form-group col-md-6">
+                        <label for="email">Actividad Actual:</label>
+                        <select name="actividad_actual" id="actividad_actual" class="form-control">
+                            <option value="">SELECCIONE...</option>
+                            <option value="KICK OFF">KICK OFF</option>
+                            <option value="VISITA OBRA CIVIL">VISITA OBRA CIVIL</option>
+                            <option value="VISITA OBRA CIVIL TERCEROS">VISITA OBRA CIVIL TERCEROS</option>
+                            <option value="ENVIO COTIZACION">ENVIO COTIZACION</option>
+                            <option value="APROBACION COTIZACION">APROBACION COTIZACION</option>
+                            <option value="SOLICITUD INFORMACIÓN TECNICA">SOLICITUD INFORMACIÓN TECNICA</option>
+                            <option value="VISITA EJECUCION OBRA CIVIL">VISITA EJECUCION OBRA CIVIL</option>
+                            <option value="VISITA EJECUCION OBRA CIVIL TERCERO">VISITA EJECUCION OBRA CIVIL TERCERO</option>
+                            <option value="CONFIGURACION RED CLARO">CONFIGURACION RED CLARO</option>
+                            <option value="VISITA ENTREGA UM TERCEROS">VISITA ENTREGA UM TERCEROS</option>
+                        </select>
+                    </div>
                     <table class="table table-hover table-bordered  dataTable_camilo table-striped  ">
                         <tr>
                             <td><label id="servivio_hito"></label></td>
@@ -917,7 +933,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span class="glyphicon glyphicon-check"></span></td>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">1</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>KICK OFF</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control">
@@ -938,7 +960,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td rowspan="2">algo</td>
+                                <td rowspan="2">
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">2</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>VISITA OBRA CIVIL</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control">
@@ -979,7 +1007,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>algo</td>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">3</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>ENVIO COTIZACION</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control">
@@ -1000,7 +1034,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>algo</td>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">4</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>APROBACION COTIZACION</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control">
@@ -1021,7 +1061,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>algo</td>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">5</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>SOLICITUD INFORMACIÓN TECNICA</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control">
@@ -1042,7 +1088,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td rowspan="2">algo</td>
+                                <td rowspan="2">
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">6</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>VISITA EJECUCION OBRA CIVIL</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control">
@@ -1083,7 +1135,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>algo</td>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">7</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>CONFIGURACION RED CLARO</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control">
@@ -1104,7 +1162,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>algo</td>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">8</div>
+                                        </li>
+                                    </ul>
+                                </td>
                                 <td>VISITA ENTREGA UM TERCEROS</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control">
@@ -1127,102 +1191,6 @@
                         </tbody>
                     </table>
                 </form>
-                
-                <!------------------------------ inico timeLIme ------------------------------> 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-<!--                            <div class="page-header">
-                                <h1>Horizontal timeline</h1>
-                            </div>-->
-                            <div style="display:inline-block;width:70%;">
-                                <ul class="timeline timeline-horizontal">
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">KICK OFF</h4>
-                                                <!--<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>-->
-                                            </div>
-<!--                                            <div class="timeline-body">
-                                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis faiz elementum girarzis, nisi eros gostis.</p>
-                                            </div>-->
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">VISITA OBRA CIVIL</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge info"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">ENVIO COTIZACION</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge danger"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">APROBACION COTIZACION</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="display:inline-block;width:70%;">
-                                <ul class="timeline timeline-horizontal">
-                                    
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge warning"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">SOLICITUD INFORMACIÓN TECNICA</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">VISITA EJECUCION OBRA CIVIL</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">CONFIGURACION RED CLARO</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="timeline-item">
-                                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">VISITA ENTREGA UM TERCEROS</h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!------------------------------ fin timeLIme ------------------------------> 
             </div>
             <div class="modal-footer cssnewtypem">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>

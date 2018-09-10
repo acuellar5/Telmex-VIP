@@ -317,6 +317,7 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     public function saveHitosOtp($idOtp, $formulario) {
+        print_r($formulario);
         $respuesta = array();
         $query = "
             UPDATE ot_padre SET
@@ -355,7 +356,7 @@ class Dao_ot_padre_model extends CI_Model {
 
         if ($this->db->query($query)) {
             $respuesta['response'] = 'success';
-            $respuesta['msg'] = 'Se a actualizado correctamente';
+            $respuesta['msg'] = 'Se actualizo correctamente';
         } else {
             $respuesta['response'] = 'error';
             $respuesta['msg'] = 'No se a podido actualizar correctamente loa informacion';

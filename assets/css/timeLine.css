@@ -2,7 +2,7 @@
 .timeline,
 .timeline-horizontal {
   list-style: none;
-  padding: 20px;
+  /* padding: 20px; */
   position: relative;
 }
 .timeline:before {
@@ -34,7 +34,7 @@
   line-height: 52px;
   font-size: 22px;
   text-align: center;
-  position: absolute;
+  /* position: absolute; */
   top: 18px;
   left: 50%;
   margin-left: -25px;
@@ -45,6 +45,7 @@
   border-top-left-radius: 50%;
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
+  margin-left: 0px;
 }
 .timeline .timeline-item .timeline-badge i,
 .timeline .timeline-item .timeline-badge .fa,
@@ -170,4 +171,8 @@
   top: auto;
   bottom: 0px;
   left: 43px;
+}
+
+.timeline-jhon{
+    padding-left: 0px;
 }
