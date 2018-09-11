@@ -76,34 +76,32 @@
     <nav class="navbar navbar-inverse" role="navigation">
       <div class="container-fluid menu_nav_header" >
         <div class="navbar-header">          
-          <a class="navbar-brand" href="<?= URL::to('OTP') ?>">
+          <a class="navbar-brand">
             <img class="logo_header" src="<?= URL::to('assets/img/LogoZTENav.png'); ?>"> 
           </a>
         </div>        
 
         <ul class="nav navbar-nav menu_nav_header">
-            <!-- <li class="active"><a class="home" href="<?= URL::to('paginaPrincipal') ?>">Home</a> -->
             
-            <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_project == 'ingeniero'): ?>
-
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">¿Cómo vamos?<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="<?= URL::to('OTP') ?>">¿Cómo vamos OTP?</a></li>
-                <li><a href="<?= URL::to('paginaPrincipal') ?>">¿Cómo vamos OTH?</a></li>
-              </ul>
-            </li>
-            <?php endif ?>
 
               <?php
               if (Auth::user()->n_project == 'Gestion') {
                 ?>
+                <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_role_user == 'ingeniero'): ?>
 
-                <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_project == 'ingeniero'): ?>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">¿Cómo vamos?<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<?= URL::to('OTP') ?>">¿Cómo vamos OTP?</a></li>
+                    <li><a href="<?= URL::to('paginaPrincipal') ?>">¿Cómo vamos OTH?</a></li>
+                  </ul>
+                </li>
+
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
                     <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
                     <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización <span class="badge"><?php echo $cantidad['afeterEigtDays'][0]->cant ?></span></a></li>
+
                     <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
                     <?php endif ?>
