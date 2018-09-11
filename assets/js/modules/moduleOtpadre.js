@@ -910,6 +910,7 @@ $(function () {
                     },
                     function (data) {
                         var obj = JSON.parse(data);
+                        console.log(obj);
                         $.each(obj, function (i, item) {
                             $('#' + i).val(item);
                         });
