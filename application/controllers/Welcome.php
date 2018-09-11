@@ -9,6 +9,7 @@ class Welcome extends CI_Controller
         parent::__construct();
         $this->load->model('data/Dao_examples_model');
         $this->load->model('data/Dao_user_model');
+        $this->load->model('data/Dao_ot_hija_model');
     }
 
     public function index() {
@@ -24,5 +25,4 @@ class Welcome extends CI_Controller
       $res = $dao->insert($this->request);
       $this->json($res);
     }
-
 }

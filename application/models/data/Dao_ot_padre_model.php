@@ -318,6 +318,7 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     public function saveHitosOtp($idOtp, $formulario) {
+        print_r($formulario);
         $respuesta = array();
         $query = "
             UPDATE ot_padre SET

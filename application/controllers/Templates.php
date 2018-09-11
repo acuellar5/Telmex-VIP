@@ -56,6 +56,58 @@ class Templates extends CI_Controller {
 
     }
 
+    //Correo hitos
+    public function hitos ($servicio = null){
+      
+      date_default_timezone_set("America/Bogota");
+      $fActual2 = date('Y-m-d');
+      
+      $data_template = $this->hitos_form_mail($_POST);
+      $template = $this->mail_hitos($data_template);
+      $this->enviar_email($template, $_POST, $flag = false);
+
+    }
+
+    //
+    public function hitos_form_mail($pt){
+      $argumentos = array(
+        'f_compromiso_ko' => $pt['f_compromiso_ko'],
+        'estado_ko' => $pt['estado_ko'],
+        'observaciones_ko' => $pt['observaciones_ko'],
+        'f_compromiso_voc' => $pt['f_compromiso_voc'],
+        'estado_voc' => $pt['estado_voc'],
+        'observaciones_voc' => $pt['observaciones_voc'],
+        'f_compromiso_voct' => $pt['f_compromiso_voct'],
+        'estado_voct' => $pt['estado_voct'],
+        'observaciones_voct' => $pt['observaciones_voct'],
+        'f_compromiso_ec' => $pt['f_compromiso_ec'],
+        'estado_ec' => $pt['estado_ec'],
+        'observaciones_ec' => $pt['observaciones_ec'],
+        'f_compromiso_ac' => $pt['f_compromiso_ac'],
+        'estado_ac' => $pt['estado_ac'],
+        'observaciones_ac' => $pt['observaciones_ac'],
+        'f_compromiso_sit' => $pt['f_compromiso_sit'],
+        'estado_sit' => $pt['estado_sit'],
+        'observaciones_sit' => $pt['observaciones_sit'],
+        'f_compromiso_veoc' => $pt['f_compromiso_veoc'],
+        'estado_veoc' => $pt['estado_veoc'],
+        'observaciones_veoc' => $pt['observaciones_veoc'],
+        'f_compromiso_veoct' => $pt['f_compromiso_veoct'],
+        'estado_veoct' => $pt['estado_veoct'],
+        'observaciones_veoct' => $pt['observaciones_veoct'],
+        'f_compromiso_crc' => $pt['f_compromiso_crc'],
+        'estado_crc' => $pt['estado_crc'],
+        'observaciones_crc' => $pt['observaciones_crc'],
+        'f_compromiso_veut' => $pt['f_compromiso_veut'],
+        'estado_veut' => $pt['estado_veut'],
+        'observaciones_veut' => $pt['observaciones_veut']
+      );
+      return $argumentos;
+      
+    }
+
+    //fin correo hitos
+
     public function c_updateStatusOt($servicio = null) {
       // header('Content-Type: text/plain');
       // print_r($this->input->post());
@@ -427,7 +479,7 @@ class Templates extends CI_Controller {
         $this->email->set_newline("\r\n");
         $this->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
         $this->email->to($pt['mail_envio']); // change it to yours
-        $this->email->cc($correos);
+        $this->email->cc($correos, $email_user);
         if ($flag) {
         $this->email->subject("Notificación de Servicio de la orden ". $pt['nro_ot_onyx'] . "-". $pt['id_orden_trabajo_hija'] );
         }else{
@@ -5552,7 +5604,235 @@ electrónico:</span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><spa
 }
 
 /************************************************************************ FIN PLANTILLA ******************************************************************************************/
-
+//cuerpo del correo del modal hitos
+public function mail_hitos($argumentos){
+  return `<table class="table table-hover table-bordered  dataTable_camilo table-striped  ">
+                        <tr>
+                            <td><label id="servivio_hito"></label></td>
+                            <td><label id="cliente_hito"></label></td>
+                            <td><label id="ciudad_hito"></label></td>
+                        </tr>
+                    </table>
+                    <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_hitos_otp"  cellspacing="2">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>ACTIVIDAD</th>
+                                <th>FECHA COMPROMISO </th>
+                                <th>ESTADO</th>
+                                <th>OBSERVACIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">1</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>KICK OFF</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_ko" id="f_compromiso_ko" class="form-control">
+                                    `. $argumentos['f_compromiso_ko'] .`
+                                </td>
+                                <td>
+                                    <inptut type="text" name="estado_ko" id="estado_ko" class="form-control">
+                                    `. $argumentos['estado_ko'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_ko" id="observaciones_ko" rows="2"></textarea>
+                                    `. $argumentos['observaciones_ko'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">2</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>VISITA OBRA CIVIL</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_voc" id="f_compromiso_voc" class="form-control">
+                                    `. $argumentos['f_compromiso_voc'] .`
+                                </td>
+                                <td>
+                                    <select name="estado_voc" id="estado_voc" class="form-control">
+                                    `. $argumentos['estado_voc'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_voc" id="observaciones_voc" rows="2"></textarea>
+                                    `. $argumentos['observaciones_voc'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>VISITA OBRA CIVIL TERCEROS</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_voct" id="f_compromiso_voct" class="form-control">
+                                    `. $argumentos['f_compromiso_voct'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_voct" id="estado_voct" class="form-control">
+                                    `. $argumentos['estado_voct'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_voct" id="observaciones_voct" rows="2"></textarea>
+                                    `. $argumentos['observaciones_voct'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">3</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>ENVIO COTIZACION</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_ec" id="f_compromiso_ec" class="form-control">
+                                    `. $argumentos['f_compromiso_ec'] .`
+                                </td>
+                                <td>
+                                    <select name="estado_ec" id="estado_ec" class="form-control">
+                                    `. $argumentos['estado_ec'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_ec" id="observaciones_ec" rows="2"></textarea>
+                                    `. $argumentos['observaciones_ec'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">4</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>APROBACION COTIZACION</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_ac" id="f_compromiso_ac" class="form-control">
+                                    `. $argumentos['f_compromiso_ac'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_ac" id="estado_ac" class="form-control">
+                                    `. $argumentos['estado_ac'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_ac" id="observaciones_ac" rows="2"></textarea>
+                                    `. $argumentos['observaciones_ac'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">5</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>SOLICITUD INFORMACIÓN TECNICA</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_sit" id="f_compromiso_sit" class="form-control">
+                                    `. $argumentos['f_compromiso_sit'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_sit" id="estado_sit" class="form-control">
+                                    `. $argumentos['estado_sit'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_sit" id="observaciones_sit" rows="2"></textarea>
+                                    `. $argumentos['observaciones_sit'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">6</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>VISITA EJECUCION OBRA CIVIL</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_veoc" id="f_compromiso_veoc" class="form-control">
+                                    `. $argumentos['f_compromiso_veoc'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_veoc" id="estado_veoc" class="form-control">
+                                    `. $argumentos['f_compromiso_veoc'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_veoc" id="observaciones_veoc" rows="2"></textarea>
+                                    `. $argumentos['observaciones_veoc'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_veoct" id="f_compromiso_veoct" class="form-control">
+                                    `. $argumentos['f_compromiso_veoct'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_veoct" id="estado_veoct" class="form-control">
+                                    `. $argumentos['f_compromiso_veoct'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_veoct" id="observaciones_veoct" rows="2"></textarea>
+                                    `. $argumentos['observaciones_veoct'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">7</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>CONFIGURACION RED CLARO</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_crc" id="f_compromiso_crc" class="form-control">
+                                    `. $argumentos['f_compromiso_crc'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_crc" id="estado_crc" class="form-control">
+                                    `. $argumentos['estado_crc'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_crc" id="observaciones_crc" rows="2"></textarea>
+                                    `. $argumentos['observaciones_crc'] .`
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <ul class="timeline timeline-jhon">
+                                        <li class="timeline-item">
+                                            <div class="timeline-badge">8</div>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>VISITA ENTREGA UM TERCEROS</td>
+                                <td>
+                                    <input type="date" name="f_compromiso_veut" id="f_compromiso_veut" class="form-control">
+                                    `. $argumentos['f_compromiso_veut'] .`
+                                </td>
+                                <td>
+                                    <input type="text" name="estado_veut" id="estado_veut" class="form-control">
+                                    `. $argumentos['estado_veut'] .`
+                                </td>
+                                <td>
+                                    <textarea name="observaciones_veut" id="observaciones_veut" rows="2"></textarea>
+                                    `. $argumentos['observaciones_veut'] .`
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>`;
+  }
 
 
 
