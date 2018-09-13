@@ -1400,6 +1400,17 @@ class Dao_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+    // funcion de las nuevas oth creada manualmente
+
+    public function c_get_List_OTNew_bd() {
+        $query = $this->db->query("
+                SELECT id_orden_trabajo_hija, nro_ot_onyx, estado_orden_trabajo_hija
+                FROM telmex_vip.ot_hija
+                WHERE b_flag = '1';
+        ");
+        return $query->result();
+    }
+
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
     /*     * *********************************************************************************************************** */

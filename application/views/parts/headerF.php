@@ -115,6 +115,7 @@
                     <ul class="dropdown-menu">
                       <li><a href="<?= URL::to('type_restore') ?>">Type restore <span class="badge"><?php echo $cantidad['new_types'] ?></span></a></li>
                       <li><a href="<?= URL::to('status_restore') ?>">Status restore <span class="badge"><?php echo $cantidad['new_status'] ?></span></a></li>
+                      <li><a href="<?= URL::to('creacionoth') ?>">Creacion OTS <span class="badge"></span></a></li>
                     </ul>
                   </li> 
 
