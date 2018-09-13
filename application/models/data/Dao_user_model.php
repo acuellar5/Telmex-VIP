@@ -93,5 +93,11 @@ class Dao_user_model extends CI_Model {
         return $query->result();
     }
 
+    // retorna nombre del usuario por su cedula
+    public function getUserById($id){
+        $query = $this->db->get_where('user', array('k_id_user' => $id));
+        return $query->row();
+    }
+
 
 }
