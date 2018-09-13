@@ -627,45 +627,35 @@ $(function () {
         },
         show_mdl_file: function(){
             const sede = trackChangesHeadquarters.trackChanges_Office.row($(this).parents("tr")).data().nombre_sede;
-            upload.getFileName(sede);
+            var id_sede = trackChangesHeadquarters.trackChanges_Office.row($(this).parents("tr")).data().id_sede;
+            upload.getFileName(sede, id_sede);
             $('#mdl_sede').val(sede);
             $('#title_sede').html(sede);
             $('#modal_file').modal('show');
         },
 
         // Obtiene los nombres de la carpeta
-        getFileName: function(carpeta){
+        getFileName: function(carpeta, id_sede){
             upload.clArchivo();
             $('#tabla-archivos tbody').html('');
             $('#smtArchivo').attr('disabled', true);
             $.post(baseurl + '/Upload/c_getFillName', 
                 {
-                    carpeta: carpeta
+                    carpeta: carpeta,
+                    id_sede: id_sede
                 }, function(data) {
                     var files = JSON.parse(data);
                     $.each(files, function(i, archivo) {
                         $('#tabla-archivos tbody').append(`
                                 <tr>
-                                    <td class="text-center">${archivo}</td>
-                                    <td><a href="${baseurl}/uploads/${carpeta}/${archivo}" class="btn btn-primary btn-xs" target="_blank"><i class="btn_show fa fa-download" aria-hidden="true"></i></a></td>
+                                    <td class="text-center">${archivo.nombre_archivo}</td>
+                                    <td><a href="${baseurl}/upload/download_file/${archivo.id_control_cambios}" class="btn btn-primary btn-xs" target="_blank"><i class="btn_show fa fa-download" aria-hidden="true"></i></a></td>
                                 </tr>
 
                             `);
                         
 
                     });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 });
