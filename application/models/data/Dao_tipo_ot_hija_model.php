@@ -142,6 +142,17 @@ class Dao_tipo_ot_hija_model extends CI_Model {
         return $query->result();
     }
 
+    // retorna listado de tipos de oth sin variantes
+    public function getListTypesOTH(){
+        $query = $this->db->query("
+                SELECT k_id_tipo, n_name_tipo FROM tipo_ot_hija
+                WHERE i_referencia IS NULL
+            ");
+        return $query->result();
+    }
+
+
+
 
 
 

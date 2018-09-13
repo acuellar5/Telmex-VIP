@@ -1,3 +1,4 @@
+<img src="<?= URL::to('assets/img/claro.png') ?>" class="img_claro_sticky">
 <?php if (isset($otp[0]->nombre_sede)): ?>
 	<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 	<h4 align="center">Cantidad de <b> control de cambios</b> de esta sede: <b><?= count($log) ?></b></h4>

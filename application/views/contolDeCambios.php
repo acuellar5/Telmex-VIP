@@ -1,4 +1,4 @@
-
+<img src="<?= URL::to('assets/img/claro.png') ?>" class="img_claro_sticky">
 <!--*********************  Modulo de pestañas para control de cambios  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#track_changes_office">Sedes</a></li>
