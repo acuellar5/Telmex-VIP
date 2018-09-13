@@ -318,7 +318,20 @@ class OtHija extends CI_Controller {
             return;
         }
     }
+    // Cargar la nueva vista para crear manualmente las oth
+     public function oth_creation() {
+        $data['title'] = 'Creación de OTH';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('creacionOTS');
+        $this->load->view('parts/footerF');
+    }
 
+     // Tabla que muestran todos los tickets que se encuentran asignados a un ingeniero
+    public function c_get_newoth_table() {
+        $getList_newOth_table = $this->Dao_ot_hija_model->c_get_List_OTNew_bd();
+        echo json_encode($getList_newOth_table);
+    }   
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
     /*     * *********************************************************************************************************** */
