@@ -371,9 +371,17 @@
 <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 <?php 
     $correcto = $this->session->flashdata('ok');
-    if ($correcto) {  ?>
+    $id_cc = $this->session->flashdata('id');
+    if ($correcto == 'ok') {  ?>
         <script>
-            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $correcto ?></b>`, 'success');
+            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $id_cc ?></b>`, 'success');
+
+        </script>
+<?php } 
+
+if ($correcto == 'error') {  ?>
+        <script>
+            swal('Error',`Se generó un error al insertar el registro`, 'error');
 
         </script>
 <?php } ?>

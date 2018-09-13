@@ -129,8 +129,10 @@ class Sede extends CI_Controller {
 
         }
         
+        $msj = ($ins) ? 'ok' : 'error';
 
-        $this->session->set_flashdata('ok', $ins);
+        $this->session->set_flashdata('ok', $msj);
+        $this->session->set_flashdata('id', $ins);
 
         if ($this->agent->referrer () == URL::base()."/Sede") {
            header('location: ' .$this->agent->referrer ());

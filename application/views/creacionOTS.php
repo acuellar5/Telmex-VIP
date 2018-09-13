@@ -147,7 +147,7 @@
 					    </div>
 
 					    <div class="form-group">
-					        <label for="estado_oth" class="col-md-3 control-label">Estado OTP:</label>
+					        <label for="estado_oth" class="col-md-3 control-label">Estado OTH:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
@@ -172,4 +172,23 @@
 	</div>
 </div>
 
-<!-- ******************************** Fin del modal para crear oth *******************************************************
+<!-- ******************************** Fin del modal para crear oth *******************************************************-->
+
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
+<?php 
+    $msj = $this->session->flashdata('msj');
+    // $id_cc = $this->session->flashdata('id');
+if ($msj) {
+    if ($msj == 'ok') {  ?>
+        <script>
+            swal('Correcto',`realizado exitosamente`, 'success');
+        </script>
+<?php } 
+
+else {  ?>
+        <script>
+            swal('Error',`Se generó un error en el proceso`, 'error');
+        </script>
+<?php } 
+}
+?>

@@ -531,7 +531,7 @@ class LoadInformation extends CI_Controller {
 
         $msj = ($insert === 1) ? 'ok' : $insert['message'];
 
-        $this->session->set_flashdata('ok', $msj);
+        $this->session->set_flashdata('msj', $msj);
 
         header('location: ' .URL::base()."/creacionoth");
 
