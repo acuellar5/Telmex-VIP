@@ -910,54 +910,56 @@ $(function () {
                     },
                     function (data) {
                         var obj = JSON.parse(data);
-    
-                        $(".timeline-badge").css("background-color", "#7c7c7c");
-                        
-                        switch (obj.actividad_actual) {
-                            case "KICK OFF":
-                                $("#act_ko").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "VISITA OBRA CIVIL":
-                                $("#act_voc").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "VISITA OBRA CIVIL TERCEROS":
-                                $("#act_voc").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "ENVIO COTIZACION":
-                                $("#act_ec").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "APROBACION COTIZACION":
-                                $("#act_ac").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "SOLICITUD INFORMACIÓN TECNICA":
-                                $("#act_sit").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "VISITA EJECUCION OBRA CIVIL":
-                                $("#act_veoc").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "VISITA EJECUCION OBRA CIVIL TERCERO":
-                                $("#act_veoc").css("background-color", "#4bd605");
-                                break;
-                            
-                            case "CONFIGURACION RED CLARO":
-                                $("#act_crc").css("background-color", "#4bd605");
-                                break;
-                                
-                            case "VISITA ENTREGA UM TERCEROS":
-                                $("#act_veut").css("background-color", "#4bd605");
-                                break;
+
+                        if (obj !== null) {
+                            $(".timeline-badge").css("background-color", "#7c7c7c");
+
+                            switch (obj.actividad_actual) {
+                                case "KICK OFF":
+                                    $("#act_ko").css("background-color", "#4bd605");
+                                    break;
+
+                                case "VISITA OBRA CIVIL":
+                                    $("#act_voc").css("background-color", "#4bd605");
+                                    break;
+
+                                case "VISITA OBRA CIVIL TERCEROS":
+                                    $("#act_voc").css("background-color", "#4bd605");
+                                    break;
+
+                                case "ENVIO COTIZACION":
+                                    $("#act_ec").css("background-color", "#4bd605");
+                                    break;
+
+                                case "APROBACION COTIZACION":
+                                    $("#act_ac").css("background-color", "#4bd605");
+                                    break;
+
+                                case "SOLICITUD INFORMACIÓN TECNICA":
+                                    $("#act_sit").css("background-color", "#4bd605");
+                                    break;
+
+                                case "VISITA EJECUCION OBRA CIVIL":
+                                    $("#act_veoc").css("background-color", "#4bd605");
+                                    break;
+
+                                case "VISITA EJECUCION OBRA CIVIL TERCERO":
+                                    $("#act_veoc").css("background-color", "#4bd605");
+                                    break;
+
+                                case "CONFIGURACION RED CLARO":
+                                    $("#act_crc").css("background-color", "#4bd605");
+                                    break;
+
+                                case "VISITA ENTREGA UM TERCEROS":
+                                    $("#act_veut").css("background-color", "#4bd605");
+                                    break;
+                            }
+
+                            $.each(obj, function (i, item) {
+                                $('#' + i).val(item);
+                            });
                         }
-                        
-                        $.each(obj, function (i, item) {
-                            $('#' + i).val(item);
-                        });
                     });
 
             //pinta el titulo del modal y cambia dependiendo de la otp seleccionada
@@ -990,7 +992,7 @@ $(function () {
                                     'Error',
                                     obj.msg,
                                     'error'
-                                )
+                                    )
                         }
 
                     });

@@ -1956,6 +1956,67 @@ $(function () {
 
 });
 
+// *******************************************TABLAS QUE MUESTRA LA CREACION DE OTH***************************
+
+$(function(){
+        creation_oth = {
+        init: function () {
+            creation_oth.events();
+            creation_oth.getListOtsNull();
+         
+        },
+          //Eventos de la ventana.
+        events: function () {
+                        
+        },
+        getListOtsNull: function(){
+            //metodo ajax (post)
+            $.post( baseurl + '/OtHija/c_get_newoth_table', 
+                {
+                    //parametros
+                    //param1: 'value1'//enviar parametros a la funcion de la ruta
+                },
+                // funcion que recibe los datos (callback)
+                function(data) {
+                    // convertir el json a objeto de javascript
+                    var obj = JSON.parse(data);
+                    // s
+                    creation_oth.printTable(obj); 
+                }
+            );
+        },  
+        printTable: function(data){
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            creation_oth.oth_new_List = $('#oth_new_List').DataTable(creation_oth.configTable(data, [
+
+                    {title: "ID OT", data: "id_orden_trabajo_hija"},
+                    {title: "ID OTP", data: "nro_ot_onyx"},
+                    {title: "Estado", data: "estado_orden_trabajo_hija"},
+                   
+                ]));
+        },
+        // Datos de configuracion del datatable
+        configTable: function (data, columns, onDraw) {
+            return {
+              data: data,
+              columns: columns,
+              //lenguaje del plugin
+              /*"language": { 
+                  "url": baseurl + "assets/plugins/datatables/lang/es.json"
+              },*/
+              columnDefs: [{
+                      defaultContent: "",
+                      targets: -1,
+                      orderable: false,
+                  }],
+              order: [[1, 'asc']],
+              drawCallback: onDraw
+            }
+        },
+    };
+    creation_oth.init();
+});
+
 
 
 

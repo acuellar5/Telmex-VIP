@@ -468,4 +468,8 @@ margin-left: -53%;
   opacity: 1;
   right: 0;
 }
-
+.btn_crear_oth{
+   margin-bottom: 2% !important;
+   margin-top: 2% !important;
+   font-size: 14px !important;
+}
