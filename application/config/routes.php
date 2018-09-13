@@ -58,7 +58,7 @@ $route['principal'] = 'User/principal';
 $route['paginaPrincipal'] = 'User/principalView';
 $route['editarOts'] = 'OtHija/editOts';
 $route['managementOtp'] = 'OtPadre/managementOtp';
-$route['creacionoth'] = 'OtHija/oth_creation';
+$route['creacionoth'] = 'LoadInformation/crear_orden';
 $route['ReporteActualizacion'] = 'ReporteActualizacion/updateReport';
 $route['ControlDeCambios'] = 'ControlDeCambios/track_changes';
 $route['OTP'] = 'OtPadre/view_otp';
@@ -69,3 +69,7 @@ $route['generarMarcaciones'] = 'User/markings';
 $route['validadorIp'] = 'User/routingVerification';
 $route['login'] = 'welcome/index';
 $route['facturacion'] = 'Facturacion_ots/index';
+
+$route['cierre_ots'] = 'Cierre_ots/index';
+
+

@@ -474,6 +474,14 @@ margin-left: -53%;
    font-size: 14px !important;
 }
 
+/*Quitar margin en el formulario para crear ot manualmente*/
 .spc_modal_new_ot{
     margin-bottom: 0px !important;
+}
+/* para imagen flotante de claro bajo el header */
+.img_claro_sticky {
+    position: fixed;
+    height: 72px;
+    z-index: 1;
+    left: 11px;
 }
