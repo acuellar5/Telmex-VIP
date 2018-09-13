@@ -22,7 +22,7 @@
 	    	<!-- header del modal -->
 	        <div class="modal-header cssnewtypem">
 	            <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('/assets/images/cerrar (7).png') ?>"></img></button>
-				<h3 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo OT</h3>
+				<h4 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo OT</h4>
 	        </div>
 	        <!-- fin header del modal -->
 	        <!-- body inicio del modal -->
@@ -30,7 +30,7 @@
 		    	
 		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_type" action=""  method="post" >
 					<h4>Nueva OTP</h4>
-					<fieldset>
+					<fieldset class="fielset_new_ot_mdl">
 						
 						<div class="form-group">
 					        <label for="id_otp" class="col-md-3 control-label">OTP:</label>
@@ -119,7 +119,7 @@
 
 					</fieldset>						
 					<!-- SECCION PARA OTH -->
-					<fieldset >
+					<fieldset class="fielset_new_ot_mdl">
 						<div class="form-group">
 					        <label for="id_oth" class="col-md-3 control-label">OTH:</label>
 					        <div class="col-md-8 selectContainer">

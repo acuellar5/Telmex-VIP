@@ -485,3 +485,11 @@ margin-left: -53%;
     z-index: 1;
     left: 11px;
 }
+/*Dar css dentro del fielset*/
+.fielset_new_ot_mdl{
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 24px;
+    border-radius: 15px;
+    background-color: #fff;
+}
