@@ -99,11 +99,28 @@ class Sede extends CI_Controller {
             $file_name = $_FILES['archivo']['name'];
             $file_size = $_FILES['archivo']['size'];
             $file_tmp = $_FILES['archivo']['tmp_name'];
-            $file_type = $_FILES['archivo']['type'];    
-
+            $file_type = $_FILES['archivo']['type'];
+            
+            $fp = fopen($file_tmp, 'r+b');
+            $binario = fread($fp, filesize($file_tmp));
+            fclose($fp);
+            
             $explode_name = explode('.',$file_name);
             $ext = $explode_name[count($explode_name) - 1];
             $nombre_archivo = "ZCC$ins.$ext";
+
+            $up_archivo = array(
+                'archivo'           => $binario,
+                'nombre_archivo'    => $nombre_archivo,
+                'tipo_archivo'      => $file_type,
+                'extension_archivo' => $ext
+            );
+            
+
+            $up_ctrl = $this->Dao_control_cambios_model->update_control_cambios($up_archivo, $ins);
+
+
+
             
             if (!is_dir("uploads/$nombre_carpeta")) {
               mkdir("uploads/$nombre_carpeta");

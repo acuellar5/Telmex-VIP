@@ -127,7 +127,7 @@
                   </li>   
                 <?php endif ?>
 
-                <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_role_user == 'clarocc'): ?>
+                <?php if (Auth::user()->n_role_user == 'administrador' || Auth::user()->n_role_user == 'clarocc' || (Auth::user()->n_role_user == 'ingeniero' && Auth::user()->n_code_user == 'TIPO_A')): ?>
                   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">C.Cambios<span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="<?= URL::to('Sede') ?>">Control de Cambios</a></li>                    

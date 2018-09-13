@@ -60,5 +60,37 @@ class Dao_control_cambios_model extends CI_Model {
 		return $query->result();
 	}
 
+	// Actualiza tabla de control de cambios ref = id:control_cambios
+	public function update_control_cambios($data, $id_control){
+		$this->db->where('id_control_cambios', $id_control);
+        $this->db->update('control_cambios', $data);
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
+	}
+
+	// Obtener todos los archivos de los controlers dependiendo el id de la sede
+	public function c_getFillName($id_sede){
+		$query = $this->db->query("
+				SELECT 
+				id_control_cambios,id_ot_padre,nombre_archivo  
+				FROM control_cambios cc 
+				INNER JOIN ot_padre otp 
+				ON cc.id_ot_padre = otp.k_id_ot_padre
+				WHERE otp.id_sede = '$id_sede'
+			");
+		return $query->result();
+	}
+
+	// trae el archivo a descargar segun el control de cambios
+	public function getFileCC($id_cc){
+		$query = $this->db->query("
+			SELECT archivo, nombre_archivo, tipo_archivo, extension_archivo FROM control_cambios WHERE id_control_cambios = '$id_cc'
+			");
+		return $query->row_array();
+	}
+
 
 }
