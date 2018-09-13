@@ -464,6 +464,7 @@ class LoadInformation extends CI_Controller {
         $data['title'] = 'Creación de OTH';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
 
+        $list['inenieros'] = $this->Dao_user_model->getAllEngineers();
         $list['tipos_otp'] = $this->Dao_ot_padre_model->getListTypesOTP();
         $list['estados_otp'] = $this->Dao_ot_padre_model->getListStatusOTP();
         $list['tipos_oth'] = $this->Dao_tipo_ot_hija_model->getListTypesOTH();
@@ -506,7 +507,8 @@ class LoadInformation extends CI_Controller {
             $this->Dao_ot_padre_model->insert_data_otp($data_otp);
         }
 
-        $id_estado_oth = $this->get_estado_by_name_ot_hiha($tipo_oth, $estado_oth);
+        $id_estado_oth = $this->get_estado_by_name_ot_hiha($tipo_oth, $estado_oth)->k_id_estado_ot;
+
         $name_inge = $this->Dao_user_model->getUserById($id_user);
 
         $data_oth = array(
@@ -521,17 +523,17 @@ class LoadInformation extends CI_Controller {
             'fecha_actual'              => $fActual,
             'estado_mod'                => 0,
             'c_email'                   => 0,
-            'b_flag'                    => 1,
+            'b_flag'                    => '1',
         );
 
         //inserto la fila en la base de datos
-        $insert = $this->Dao_ot_hija_model->insert_ot_hija($data);
+        $insert = $this->Dao_ot_hija_model->insert_ot_hija($data_oth);
 
         $msj = ($insert === 1) ? 'ok' : $insert['message'];
 
         $this->session->set_flashdata('ok', $msj);
 
-        header('location: ' .URL::base()."/LoadInformation/crear_orden");
+        header('location: ' .URL::base()."/creacionoth");
 
     }
 
@@ -576,7 +578,7 @@ class LoadInformation extends CI_Controller {
             'fecha_actual'              => $fActual,
             'estado_mod'                => 0,
             'c_email'                   => 0,
-            'b_flag'                    => 1,
+            'b_flag'                    => '1',
         );
 
         //inserto la fila en la base de datos
@@ -586,7 +588,7 @@ class LoadInformation extends CI_Controller {
 
         $this->session->set_flashdata('ok', $msj);
 
-        header('location: ' .URL::base()."/LoadInformation/crear_orden");
+        header('location: ' .URL::base()."/creacionoth");
     }
 
 }

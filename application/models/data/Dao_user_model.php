@@ -27,7 +27,7 @@ class Dao_user_model extends CI_Model {
     public function getAllEngineers() {
         try {
             $db = new DB();
-            $sql = "SELECT UPPER(CONCAT(n_name_user, ' ', n_last_name_user)) ingenieros
+            $sql = "SELECT UPPER(CONCAT(n_name_user, ' ', n_last_name_user)) ingenieros, k_id_user
                 FROM user WHERE n_role_user = 'ingeniero'";
             $data = $db->select($sql)->get();
             $response = new Response(EMessages::SUCCESS);

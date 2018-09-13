@@ -28,7 +28,7 @@
 	        <!-- body inicio del modal -->
 		    <div class="modal-body ">
 		    	
-		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_type" action=""  method="post" >
+		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_oth" action="<?= URL::to("LoadInformation/create_ot") ?>"  method="post" >
 					<h4>Nueva OTP</h4>
 					<fieldset>
 						
@@ -109,9 +109,9 @@
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="ing_responsable" name="ing_responsable">
 									    <option>Seleccionar...</option>
-									    <option>2</option>
-									    <option>3</option>
-									    <option>4</option>
+									    <?php foreach ($inenieros as $ingeniero): ?>
+									    	<option value="<?= $ingeniero->k_id_user ?>"><?= $ingeniero->ingenieros ?></option>
+									    <?php endforeach ?>
 									</select>
 					            </div>
 					        </div>
@@ -132,15 +132,15 @@
 					  
 
 					    <div class="form-group">
-					        <label for="tipo_oth" class="col-md-3 control-label">Tipo:</label>
+					        <label for="tipo_oth" class="col-md-3 control-label">Tipo OTH:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="tipo_oth" name="tipo_oth">
 									    <option>Seleccionar...</option>
-									    <option>2</option>
-									    <option>3</option>
-									    <option>4</option>
+									    <?php foreach ($tipos_oth as $tipo_oth): ?>
+									    	<option value="<?= $tipo_oth->n_name_tipo ?>"><?= $tipo_oth->n_name_tipo ?></option>
+									    <?php endforeach ?>
 									</select>
 					            </div>
 					        </div>
@@ -153,9 +153,7 @@
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="estado_oth" name="estado_oth">
 									    <option>Seleccionar...</option>
-									    <option>2</option>
-									    <option>3</option>
-									    <option>4</option>
+									    
 									</select>
 					            </div>
 					        </div>
@@ -169,7 +167,7 @@
 	    <!-- footer del modal -->
 	    <div class="modal-footer cssnewtypem">
 			<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
-			<button type="submit" class="btn btn-success" id="mdl_save_new_ot" ><i class='glyphicon glyphicon-send'></i>&nbsp;Guardar</button>
+			<button type="submit" class="btn btn-success" id="mdl_save_new_ot" form="mdl_form_new_oth"><i class='glyphicon glyphicon-send'></i>&nbsp;Guardar</button>
 		</div>
 	</div>
 </div>

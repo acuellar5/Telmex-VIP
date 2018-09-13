@@ -22,7 +22,18 @@ $(function(){
                 tipo_sel: tipo_sel
               },
               function(data) {
+                var status = JSON.parse(data);
 
+                $('#estado_oth').html("");
+                $('#estado_oth').append(`
+                    <option value="">Seleccione...</option>
+                  `);
+
+                $.each(status, function(i,estado) {
+                  $('#estado_oth').append(`
+                    <option value="${estado.n_name_estado_ot}">${estado.n_name_estado_ot}</option>
+                  `);
+                });
             });
         },
 
