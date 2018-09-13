@@ -5,7 +5,7 @@ class Upload extends CI_Controller {
 
   function __construct() {
     parent::__construct();
-    //->load->model('data/configdb_model');
+    $this->load->model('data/Dao_control_cambios_model');
   }
   public function insertFiles(){
     $nombre_archivo = $this->input->post('nombre_archivo');
@@ -26,26 +26,28 @@ class Upload extends CI_Controller {
 
   // retorna los nombres de los archivos de la carpeta dada
   public function c_getFillName(){
-    $files = [];
-    $carpeta = $this->input->post('carpeta');
+    $id_sede = $this->input->post('id_sede');
+    $files = $this->Dao_control_cambios_model->c_getFillName($id_sede);
 
-    if (is_dir("uploads/$carpeta")) {
-      $directorio = opendir("uploads/$carpeta"); //ruta actual
-      while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-      {
-          if ($archivo != '.' && $archivo != '..')//verificamos si es o no un directorio
-          {
-             //enviar el nombre del archivo a nuestro arreglo files
-            array_push($files, $archivo);
-          }
-          
-      }
-    }
 
     echo json_encode($files);
 
+  }
 
+  // descargar el archivo seleccionado 
+  public function download_file($id_cc){
+    $file = $this->Dao_control_cambios_model->getFileCC($id_cc);
 
+    $archivo   = $file['archivo'];
+    $nombre    = $file['nombre_archivo'];
+    $tipo      = $file['tipo_archivo'];
+    $extension = $file['extension_archivo'];
+
+    header("Content-type: $tipo");
+    header('Content-disposition: attachment; filename="'.$nombre.'.docx"');
+    header("Content-disposition: attachment; filename='$nombre.$extension'");
+    // header("Content-Disposition: inline; filename=$nombre.pdf");
+    print_r($archivo);
   }
 
 

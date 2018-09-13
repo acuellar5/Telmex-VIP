@@ -9,6 +9,7 @@ class User extends CI_Controller {
         $this->load->model('data/Dao_user_model');
         $this->load->model('data/Dao_ot_hija_model');
         $this->load->model('data/Dao_estado_ot_model');
+        $this->load->model('data/Dao_control_cambios_model');
     }
 
     private function validUser($request) {
@@ -31,12 +32,6 @@ class User extends CI_Controller {
         if ($res) {
             $this->load->model('data/Dao_cierre_ots_model');
 
-            $data['title'] = '¿Cómo vamos OTP?';
-            $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
-            $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
-            $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
-            $data['title']      = 'OTP';// cargar el  titulo en la pestaña de la pagina para otp
-
             if ($this->session->has_userdata('date_min_fact')) {
               $this->session->unset_userdata('date_min_fact');
             }
@@ -47,9 +42,8 @@ class User extends CI_Controller {
             );           
             $this->session->set_userdata($data_session);
 
-            $this->load->view('parts/headerF', $data);
-            $this->load->view('moduleOtp');
-            $this->load->view('parts/footerF');
+            $this->load_principal(Auth::user()->n_role_user, Auth::user()->n_project ); // roll y proyecto
+
         } else {
             $answer['error'] = "error";
             $this->load->view('login', $answer);
@@ -62,6 +56,34 @@ class User extends CI_Controller {
         }
         $answer['user'] = Auth::user();
         $this->load->view('principal', $answer);
+    }
+
+
+    //
+    private function load_principal($roll, $proyecto = 'Gestion'){
+      $data['title'] = 'Principal';
+      $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
+      $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
+      $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
+      $data['title']      = 'OTP';// cargar el  titulo en la pestaña de la pagina para otp
+      $this->load->view('parts/headerF', $data);
+        if ($proyecto === 'Gestion' ) {
+          if ($roll == 'clarocc') {
+
+            $this->load->view('vista_x');
+
+          } else {
+            $data['title'] = '¿Cómo vamos OTP?';
+
+            $this->load->view('moduleOtp');
+          }
+        } else {
+          $this->load->view('principal');
+        }
+        // $this->load->view('moduleOtp');
+
+      $this->load->view('parts/footerF');
+          
     }
 
     public function logout() {

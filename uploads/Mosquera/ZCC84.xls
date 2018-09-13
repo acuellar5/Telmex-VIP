@@ -1,0 +1,37 @@
+
+<table>
+	<tr>
+		<td>
+			<table width="100%" border="1">
+				<h3 align="center" style="color: #084c6f;">Tabla de Detalles OTP</h3>
+					<tr bgcolor="#084c6f" style="color: white;" align="center" >
+						<td>OTP</td>
+						<td>Nombre cliente</td>
+						<td>Tipo OTP</td>
+						<td>Servicio</td>
+						<td>Estado OTP</td>
+						<td>Programado</td>
+						<td>Compromiso</td>
+						<td>Creacion</td>
+						<td>Ciudad</td>
+						<td>Recurrente</td>
+						<td>Lista observaciones</td>
+						<td>Observacion</td>
+					</tr>
+				<tr><td>11028275</td><td>bbva colombia</td><td>$instalacion pymes</td><td>paquete hosting</td><td>1- generada</td><td>1900-01-02 00:00:00</td><td>2018-08-08 00:00:00</td><td>2018-07-19 00:00:00</td><td>bogota, d.c.                  </td><td>$ 137,675.00</td><td></td><td></td></tr><tr><td>11028277</td><td>bbva colombia</td><td>$instalacion pymes</td><td>paquete hosting</td><td>1- generada</td><td>1900-01-02 00:00:00</td><td>2018-08-08 00:00:00</td><td>2018-07-19 00:00:00</td><td>bogota, d.c.                  </td><td>$ 137,675.00</td><td></td><td></td></tr><tr><td>11028413</td><td>bbva colombia</td><td>$instalacion pymes</td><td>paquete hosting</td><td>1- generada</td><td>1900-01-02 00:00:00</td><td>2018-08-08 00:00:00</td><td>2018-07-19 00:00:00</td><td>bogota, d.c.                  </td><td>$ 137,675.00</td><td></td><td></td></tr><tr><td>11028454</td><td>bbva colombia</td><td>$instalacion pymes</td><td>paquete hosting</td><td>1- generada</td><td>2018-12-01 00:00:00</td><td>2018-12-01 00:00:00</td><td>2018-07-19 00:00:00</td><td>bogota, d.c.                  </td><td>$ 0.00</td><td></td><td></td></tr><tr><td>11028880</td><td>bbva colombia</td><td>$instalacion pymes</td><td>paquete hosting</td><td>1- generada</td><td>1900-01-02 00:00:00</td><td>2018-08-08 00:00:00</td><td>2018-07-19 00:00:00</td><td>bogota, d.c.                  </td><td>$ 137,675.00</td><td></td><td></td></tr><tr><td>11029203</td><td>bbva colombia</td><td>$instalacion pymes</td><td>paquete hosting</td><td>1- generada</td><td>2018-12-01 00:00:00</td><td>2018-12-01 00:00:00</td><td>2018-07-19 00:00:00</td><td>bogota, d.c.                  </td><td>$ 0.00</td><td></td><td></td></tr>			</table>
+		</td>
+		<td>   </td>
+		<td>
+			<table width="100%" border="1">
+				<h3 align="center" style="color: #084c6f;">Tabla de Detalles OTH</h3>
+				<tr bgcolor="#084c6f" style="color: white;" align="center" >
+					<td>OTH</td>
+					<td>Tipo OTH</td>
+					<td>Estado OTH</td>
+					<td>Creacion OTH</td>
+					<td>Ingeniero</td>
+				</tr>
+			<tr><td>11127675</td><td>verificacion cliente pymes</td><td>1- generada</td><td>2018-08-08 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11104223</td><td>verificacion cliente pymes</td><td>1- generada</td><td>2018-08-02 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11127715</td><td>verificacion cliente pymes</td><td>1- generada</td><td>2018-08-08 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11127742</td><td>verificacion cliente pymes</td><td>1- generada</td><td>2018-08-08 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11128515</td><td>verificacion cliente pymes</td><td>1- generada</td><td>2018-08-08 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11162092</td><td>diseno pymes</td><td>cancelada</td><td>2018-08-13 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11128432</td><td>verificacion cliente pymes</td><td>cerrada</td><td>2018-08-08 00:00:00</td><td>ingeniero ingeniero</td></tr><tr><td>11162093</td><td>visita obra civil pymes</td><td>cancelada</td><td>2018-08-13 00:00:00</td><td>ingeniero ingeniero</td></tr>		</table>
+		</td>
+	</tr>
+</table>

@@ -344,9 +344,11 @@
                                 </div>
                               </div>
                             </fieldset>
+                            <?php if (Auth::user()->n_role_user != 'clarocc'): ?>
                             <center >
-                                <input type="submit" name="" value="guardar" class="btn-cami_cool m-t-20">
+                               <input type="submit" name="" value="guardar" class="btn-cami_cool m-t-20">
                             </center>
+                            <?php endif ?>
                           </form>
 
                     </div>
