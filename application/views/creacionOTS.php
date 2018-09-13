@@ -29,10 +29,8 @@
 		    <div class="modal-body ">
 		    	
 		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_type" action=""  method="post" >
-					<tr>
-						<td colspan="2" align="center" id="" class="csstypesubtitle"><b>Nueva OTP</b></td>
-					</tr>
-					<fieldset >
+					<h4>Nueva OTP</h4>
+					<fieldset>
 						
 						<div class="form-group">
 					        <label for="id_otp" class="col-md-3 control-label">OTP:</label>
@@ -55,15 +53,15 @@
 					    </div>
 
 					    <div class="form-group">
-					        <label for="tipo_otp" class="col-md-3 control-label">Tipo:</label>
+					        <label for="tipo_otp" class="col-md-3 control-label">Tipo OTP:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="tipo_otp" name="tipo_otp">
 									    <option>Seleccionar...</option>
-									    <option>2</option>
-									    <option>3</option>
-									    <option>4</option>
+										<?php foreach ($tipos_otp as $tipo_otp): ?>
+											<option value="<?= $tipo_otp->orden_trabajo ?>"><?= $tipo_otp->orden_trabajo ?></option>	
+										<?php endforeach ?>
 									</select>
 					            </div>
 					        </div>
@@ -76,9 +74,9 @@
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="estado_otp" name="estado_otp">
 									    <option>Seleccionar...</option>
-									    <option>2</option>
-									    <option>3</option>
-									    <option>4</option>
+									    <?php foreach ($estados_otp as $estado_otp): ?>
+									    	<option value="<?= $estado_otp->estado_orden_trabajo ?>"><?= $estado_otp->estado_orden_trabajo ?></option>
+									    <?php endforeach ?>
 									</select>
 					            </div>
 					        </div>
@@ -120,15 +118,8 @@
 					    </div>
 
 					</fieldset>						
-				</form>
-		    </div>  
-		    <!-- Modulo para crear oth -->
-		    <div class="modal-body ">					
-		        <form class="well form-horizontal" id="mdl_form_new_type" action=""  method="post" >					
+					<!-- SECCION PARA OTH -->
 					<fieldset >
-						<tr>
-							<td colspan="2" align="center" id="" class="csstypesubtitle"><b>Nueva OTH</b></td>
-						</tr>
 						<div class="form-group">
 					        <label for="id_oth" class="col-md-3 control-label">OTH:</label>
 					        <div class="col-md-8 selectContainer">
@@ -172,6 +163,7 @@
 
 				    </fieldset>
 				</form>
+			</div>
 		    <!-- body fin del modal -->
 	    </div>
 	    <!-- footer del modal -->

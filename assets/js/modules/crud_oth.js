@@ -1,5 +1,4 @@
 // *******************************************TABLAS QUE MUESTRA LA CREACION DE OTH***************************
-
 $(function(){
         creation_oth = {
         init: function () {
@@ -16,14 +15,14 @@ $(function(){
         },
 
         // llenar el select de estados oth dependiendo la seleccion de tipo
-        getTypesOption: function(e){
+        getStatusOption: function(e){
             const tipo_sel = $('#tipo_oth').val();
-            $.post(baseurl + 'Status/js_ListStatusByType', 
+            $.post(baseurl + '/Status/js_ListStatusByType', 
               {
                 tipo_sel: tipo_sel
               },
               function(data) {
-                
+
             });
         },
 
