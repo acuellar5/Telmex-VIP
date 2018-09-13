@@ -317,6 +317,7 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->row();
     }
 
+    //inserta y/o actualiza los hitos de una OTP
     public function saveHitosOtp($idOtp, $formulario) {
 //        print_r($formulario);
         $respuesta = array();
@@ -326,45 +327,75 @@ class Dao_ot_padre_model extends CI_Model {
             SELECT id_hitos FROM hitos WHERE id_ot_padre = $idOtp
         ");
         
-        if ($exist->row() > 0) {
-            $query = "INSERT INTO hitos (id_hitos,id_ot_padre,f_compromiso_ko,estado_ko,observaciones_ko,f_compromiso_voc,estado_voc,observaciones_voc,f_compromiso_voct,estado_voct,observaciones_voct,f_compromiso_ec,estado_ec,observaciones_ec,f_compromiso_ac,estado_ac,observaciones_ac,f_compromiso_sit,estado_sit,observaciones_sit,f_compromiso_veoc,estado_veoc,observaciones_veoc,f_compromiso_veoct,estado_veoct,observaciones_veoct,f_compromiso_crc,estado_crc,observaciones_crc,f_compromiso_veut,estado_veut,observaciones_veut,actividad_actual)
+        if ($exist->num_rows() <= 0) {
+            $query = "INSERT INTO hitos (id_ot_padre,
+                            f_compromiso_ko,
+                            estado_ko,
+                            observaciones_ko,
+                            f_compromiso_voc,
+                            estado_voc,
+                            observaciones_voc,
+                            f_compromiso_voct,
+                            estado_voct,
+                            observaciones_voct,
+                            f_compromiso_ec,
+                            estado_ec,
+                            observaciones_ec,
+                            f_compromiso_ac,
+                            estado_ac,
+                            observaciones_ac,
+                            f_compromiso_sit,
+                            estado_sit,
+                            observaciones_sit,
+                            f_compromiso_veoc,
+                            estado_veoc,
+                            observaciones_veoc,
+                            f_compromiso_veoct,
+                            estado_veoct,
+                            observaciones_veoct,
+                            f_compromiso_crc,
+                            estado_crc,
+                            observaciones_crc,
+                            f_compromiso_veut,
+                            estado_veut,
+                            observaciones_veut,
+                            actividad_actual)
                         VALUES
-(id_hitos:,
-id_ot_padre:,
-f_compromiso_ko:,
-estado_ko:,
-observaciones_ko:,
-f_compromiso_voc:,
-estado_voc:,
-observaciones_voc:,
-f_compromiso_voct:,
-estado_voct:,
-observaciones_voct:,
-f_compromiso_ec:,
-estado_ec:,
-observaciones_ec:,
-f_compromiso_ac:,
-estado_ac:,
-observaciones_ac:,
-f_compromiso_sit:,
-estado_sit:,
-observaciones_sit:,
-f_compromiso_veoc:,
-estado_veoc:,
-observaciones_veoc:,
-f_compromiso_veoct:,
-estado_veoct:,
-observaciones_veoct:,
-f_compromiso_crc:,
-estado_crc:,
-observaciones_crc:,
-f_compromiso_veut:,
-estado_veut:,
-observaciones_veut:,
-actividad_actual:)";
+                            ($idOtp,
+                            '" . $formulario[1]['value'] . "',
+                            '" . $formulario[2]['value'] . "',
+                            '" . $formulario[3]['value'] . "',
+                            '" . $formulario[4]['value'] . "',
+                            '" . $formulario[5]['value'] . "',
+                            '" . $formulario[6]['value'] . "',
+                            '" . $formulario[7]['value'] . "',
+                            '" . $formulario[8]['value'] . "',
+                            '" . $formulario[9]['value'] . "',
+                            '" . $formulario[10]['value'] . "',
+                            '" . $formulario[11]['value'] . "',
+                            '" . $formulario[12]['value'] . "',
+                            '" . $formulario[13]['value'] . "',
+                            '" . $formulario[14]['value'] . "',
+                            '" . $formulario[15]['value'] . "',
+                            '" . $formulario[16]['value'] . "',
+                            '" . $formulario[17]['value'] . "',
+                            '" . $formulario[18]['value'] . "',
+                            '" . $formulario[19]['value'] . "',
+                            '" . $formulario[20]['value'] . "',
+                            '" . $formulario[21]['value'] . "',
+                            '" . $formulario[22]['value'] . "',
+                            '" . $formulario[23]['value'] . "',
+                            '" . $formulario[24]['value'] . "',
+                            '" . $formulario[25]['value'] . "',
+                            '" . $formulario[26]['value'] . "',
+                            '" . $formulario[27]['value'] . "',
+                            '" . $formulario[28]['value'] . "',
+                            '" . $formulario[29]['value'] . "',
+                            '" . $formulario[30]['value'] . "',
+                            '" . $formulario[0]['value'] . "')";
         } else {
             $query = "
-                UPDATE ot_padre SET
+                UPDATE hitos SET
                 f_compromiso_ko = '" . $formulario[1]['value'] . "',
                 estado_ko = '" . $formulario[2]['value'] . "',
                 observaciones_ko = '" . $formulario[3]['value'] . "',
@@ -396,7 +427,7 @@ actividad_actual:)";
                 estado_veut = '" . $formulario[29]['value'] . "',
                 observaciones_veut = '" . $formulario[30]['value'] . "',
                 actividad_actual = '" . $formulario[0]['value'] . "'
-                WHERE k_id_ot_padre = $idOtp";
+                WHERE id_ot_padre = $idOtp";
         }
 
         if ($this->db->query($query)) {
@@ -406,7 +437,7 @@ actividad_actual:)";
             $respuesta['response'] = 'error';
             $respuesta['msg'] = 'No se a podido actualizar correctamente loa informacion';
         }
-        
+//        print_r($this->db->last_query());
         return $respuesta;
     }
 
