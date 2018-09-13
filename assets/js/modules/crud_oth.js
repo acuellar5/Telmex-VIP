@@ -10,7 +10,21 @@ $(function(){
           //Eventos de la ventana.
         events: function () {
             // al darle clic al boton crear ot
-            $('#btn_new_ot').on('click', creation_oth.showModalNewOtp); 
+            $('#btn_new_ot').on('click', creation_oth.showModalNewOtp);
+            // calcular estados de oth dependiendo el tipo
+            $('#tipo_oth').on('change', creation_oth.getStatusOption);
+        },
+
+        // llenar el select de estados oth dependiendo la seleccion de tipo
+        getTypesOption: function(e){
+            const tipo_sel = $('#tipo_oth').val();
+            $.post(baseurl + 'Status/js_ListStatusByType', 
+              {
+                tipo_sel: tipo_sel
+              },
+              function(data) {
+                
+            });
         },
 
         showModalNewOtp:function(){

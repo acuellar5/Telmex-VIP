@@ -450,7 +450,7 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     // retorna listadode estados de otp
-    public function getListStatus(){
+    public function getListStatusOTP(){
         $query = $this->db->query("
             SELECT estado_orden_trabajo FROM ot_padre GROUP BY estado_orden_trabajo
         ");
