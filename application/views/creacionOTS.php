@@ -21,80 +21,164 @@
 	    <div class="modal-content">
 	    	<!-- header del modal -->
 	        <div class="modal-header cssnewtypem">
-	            <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
-	            <h3 class="modal-title" id="myModalLabel"></h3>
+	            <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('/assets/images/cerrar (7).png') ?>"></img></button>
+				<h3 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo OT</h3>
 	        </div>
 	        <!-- fin header del modal -->
 	        <!-- body inicio del modal -->
 		    <div class="modal-body ">
-		    	<tr>
-					<td colspan="2" align="center" id="" class="csstypesubtitle"><b>Nueva OTP</b></td>
-				</tr>
-		        <form class="well form-horizontal" id="mdl_form_new_type" action=""  method="post" >
-					
-						<fieldset >
+		    	
+		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_type" action=""  method="post" >
+					<tr>
+						<td colspan="2" align="center" id="" class="csstypesubtitle"><b>Nueva OTP</b></td>
+					</tr>
+					<fieldset >
 						
-							<div class="form-group">
-						        <label for="id_otp" class="col-md-3 control-label">OTP:</label>
-						        <div class="col-md-8 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="fa fa-braille" ></i></span>
-						                <input name="id_otp" id="id_otp" class="form-control" type="number" >
-						            </div>
-						        </div>
-						    </div>
+						<div class="form-group">
+					        <label for="id_otp" class="col-md-3 control-label">OTP:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="fa fa-braille" ></i></span>
+					                <input name="id_otp" id="id_otp" class="form-control" type="number" >
+					            </div>
+					        </div>
+					    </div>
 
-						    <div class="form-group">
-						        <label for="nombre_cliente" class="col-md-3 control-label">Nombre Cliente:</label>
-						        <div class="col-md-8 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-						                <input name="nombre_cliente" id="nombre_cliente" class="form-control" type="text" >
-						            </div>
-						        </div>
-						    </div>
+					    <div class="form-group">
+					        <label for="nombre_cliente" class="col-md-3 control-label">Nombre Cliente:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+					                <input name="nombre_cliente" id="nombre_cliente" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
 
-						    <div class="form-group">
-						        <label for="tipo_otp" class="col-md-3 control-label">Tipo:</label>
-						        <div class="col-md-8 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-						                <select class="form-control" id="tipo_otp" name="tipo_otp">
-										    <option>Seleccionar...</option>
-										    <option>2</option>
-										    <option>3</option>
-										    <option>4</option>
-										</select>
-						            </div>
-						        </div>
-						    </div>
+					    <div class="form-group">
+					        <label for="tipo_otp" class="col-md-3 control-label">Tipo:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+					                <select class="form-control" id="tipo_otp" name="tipo_otp">
+									    <option>Seleccionar...</option>
+									    <option>2</option>
+									    <option>3</option>
+									    <option>4</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
 
-						    <div class="form-group">
-						        <label for="estado_otp" class="col-md-3 control-label">Estado OTP:</label>
-						        <div class="col-md-8 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-						                <select class="form-control" id="estado_otp" name="estado_otp">
-										    <option>Seleccionar...</option>
-										    <option>2</option>
-										    <option>3</option>
-										    <option>4</option>
-										</select>
-						            </div>
-						        </div>
-						    </div>
+					    <div class="form-group">
+					        <label for="estado_otp" class="col-md-3 control-label">Estado OTP:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+					                <select class="form-control" id="estado_otp" name="estado_otp">
+									    <option>Seleccionar...</option>
+									    <option>2</option>
+									    <option>3</option>
+									    <option>4</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
 
-					    </fieldset>
-					
+					    <div class="form-group">
+			                <label for="fecha_programacion" class="col-md-3 control-label">Fecha Programación:</label>
+			                <div class="col-md-8 selectContainer">
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+			                        <input name="fecha_programacion" id="fecha_programacion" class="form-control" type="date" required>
+			                    </div>
+			                </div>
+			            </div>
+
+			            <div class="form-group">
+			                <label for="fecha_compromiso" class="col-md-3 control-label">Fecha Compromiso:</label>
+			                <div class="col-md-8 selectContainer">
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
+			                        <input name="fecha_compromiso" id="fecha_compromiso" class="form-control" type="date" required>
+			                    </div>
+			                </div>
+			            </div>
+
+			            <div class="form-group">
+					        <label for="ing_responsable" class="col-md-3 control-label">Ing. Responsable:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+					                <select class="form-control" id="ing_responsable" name="ing_responsable">
+									    <option>Seleccionar...</option>
+									    <option>2</option>
+									    <option>3</option>
+									    <option>4</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
+
+					</fieldset>						
 				</form>
 		    </div>  
+		    <!-- Modulo para crear oth -->
+		    <div class="modal-body ">					
+		        <form class="well form-horizontal" id="mdl_form_new_type" action=""  method="post" >					
+					<fieldset >
+						<tr>
+							<td colspan="2" align="center" id="" class="csstypesubtitle"><b>Nueva OTH</b></td>
+						</tr>
+						<div class="form-group">
+					        <label for="id_oth" class="col-md-3 control-label">OTH:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="fa fa-braille" ></i></span>
+					                <input name="id_oth" id="id_oth" class="form-control" type="number" >
+					            </div>
+					        </div>
+					    </div>
+					  
+
+					    <div class="form-group">
+					        <label for="tipo_oth" class="col-md-3 control-label">Tipo:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+					                <select class="form-control" id="tipo_oth" name="tipo_oth">
+									    <option>Seleccionar...</option>
+									    <option>2</option>
+									    <option>3</option>
+									    <option>4</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
+
+					    <div class="form-group">
+					        <label for="estado_oth" class="col-md-3 control-label">Estado OTP:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+					                <select class="form-control" id="estado_oth" name="estado_oth">
+									    <option>Seleccionar...</option>
+									    <option>2</option>
+									    <option>3</option>
+									    <option>4</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>				    
+
+				    </fieldset>
+				</form>
 		    <!-- body fin del modal -->
 	    </div>
 	    <!-- footer del modal -->
 	    <div class="modal-footer cssnewtypem">
-	        <button type="button" class="btn btn-primary">Guardar</button>
-	        <button type="button" class="btn btn-primary">Cancelar</button>
-	    </div>
+			<button type="button" class="btn btn-default" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
+			<button type="submit" class="btn btn-success" id="mdl_save_new_ot" ><i class='glyphicon glyphicon-send'></i>&nbsp;Guardar</button>
+		</div>
 	</div>
 </div>
 
