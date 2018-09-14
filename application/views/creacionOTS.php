@@ -4,7 +4,7 @@
 <a href="#" id="btn_new_ot" class="btn btn-success btn-sm btn_crear_oth"><span class="glyphicon glyphicon-plus"></span> Crear OT</a>
 <!-- ************************************ tabla para crear oth ************************************************************** -->
 <table id="oth_new_List" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
-   
+   	<thead>
         <tr>
             <th></th>
             <th></th>
@@ -18,7 +18,7 @@
             <th></th>
             <th></th>
         </tr>
-
+    </thead>   
 </table>
 
 <!-- ******************************** Inicio del modal para crear oth ******************************************************* -->
