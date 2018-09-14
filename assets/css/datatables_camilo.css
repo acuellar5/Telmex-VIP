@@ -526,3 +526,9 @@ table.dataTable_camilo .btn_datatable_cami:hover{
     margin-bottom: 3%;
     margin-top: 3%;
 }
+
+.btn-rpt_act {
+    font-size: 11px;
+    padding: 10px 19px 8px;
+    letter-spacing: 0;
+}
