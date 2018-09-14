@@ -1,10 +1,10 @@
 <!--*********************  MODULO PESTAÑAS  *********************-->
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#total">Total</a></li>
-    <li class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>
-    <li class=""><a data-toggle="tab" href="#vencidas">Vencida</a></li>
-    <li class=""><a data-toggle="tab" href="#por_lista">Por Lista</a></li>
-    <li class=""><a data-toggle="tab" href="#lista_email">Cant emails</a></li>
+<ul class="nav nav-tabs" id="pestania">
+    <li tabla="table_otPadreList" class="active"><a data-toggle="tab" href="#total">Total</a></li>
+    <li tabla="table_otPadreListHoy" class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>
+    <li tabla="table_otPadreListVencidas" class=""><a data-toggle="tab" href="#vencidas">Vencida</a></li>
+    <li tabla="table_list_opc" class=""><a data-toggle="tab" href="#por_lista">Por Lista</a></li>
+    <li tabla="table_otPadreListEmails" class=""><a data-toggle="tab" href="#lista_email">Cant emails</a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
