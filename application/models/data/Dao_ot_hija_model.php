@@ -1404,9 +1404,17 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function c_get_List_OTNew_bd() {
         $query = $this->db->query("
-                SELECT id_orden_trabajo_hija, nro_ot_onyx, estado_orden_trabajo_hija
-                FROM telmex_vip.ot_hija
+                SELECT oth.nro_ot_onyx, otp.orden_trabajo, otp.estado_orden_trabajo,
+                oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija,
+                otp.n_nombre_cliente, otp.fecha_programacion, otp.fecha_compromiso, 
+                CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS ingeniero
+                FROM ot_hija oth
+                INNER JOIN ot_padre otp
+                ON oth.nro_ot_onyx= otp.k_id_ot_padre
+                INNER JOIN user u
+                ON otp.k_id_user = u.k_id_user
                 WHERE b_flag = '1';
+                ;
         ");
         return $query->result();
     }
