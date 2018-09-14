@@ -13,6 +13,34 @@ $(function(){
             $('#btn_new_ot').on('click', creation_oth.showModalNewOtp);
             // calcular estados de oth dependiendo el tipo
             $('#tipo_oth').on('change', creation_oth.getStatusOption);
+            // al darle click a editar ot
+            $('#oth_new_List').on('click', 'a.edit_ot', creation_oth.showModalEditOT);
+        },
+
+
+        // llena el modal y lo muestra para editar una ot
+        showModalEditOT: function(e){
+            $('#mdl_form_new_oth').attr('action', baseurl + '/LoadInformation/edit_ot');
+            const record = creation_oth.oth_new_List.row($(this).parents('tr')).data();
+            $('#tipo_oth').val(record.ot_hija);
+            // lenar el select segun ñla opcion
+            creation_oth.getStatusOption();
+            $('#id_otp').val(record.nro_ot_onyx);
+            $('#nombre_cliente').val(record.n_nombre_cliente);
+            $('#tipo_otp').val(record.orden_trabajo);
+            $('#estado_otp').val(record.estado_orden_trabajo);
+            $('#fecha_programacion').val(record.fecha_programacion);
+            $('#fecha_compromiso').val(record.fecha_compromiso);
+            $('#ing_responsable').val(record.k_id_user);
+            $('#id_oth').val(record.id_orden_trabajo_hija);
+
+            setTimeout(function(){
+                $('#estado_oth').val(record.estado_orden_trabajo_hija);
+            },100);
+
+            $('#modal_new_ot').modal('show');
+
+
         },
 
         // llenar el select de estados oth dependiendo la seleccion de tipo
@@ -39,6 +67,9 @@ $(function(){
         },
 
         showModalNewOtp:function(){
+            // limpiar form
+            $("#mdl_form_new_oth")[0].reset();
+            $('#mdl_form_new_oth').attr('action', baseurl + '/LoadInformation/create_ot');
             // Mostrar el modal para ingresar una nueva ot
             $('#modal_new_ot').modal('show');
 
@@ -113,7 +144,7 @@ $(function(){
             // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
             var button = '<div class="btn-group" style="display: inline-flex;">';
             // Boton para editar las ots
-            button ='<a href="" target="_blank" class="btn btn-default btn-xs btn_datatable_cami" title="Editar OT"><span class="glyphicon glyphicon-edit"></span></a>';
+            button ='<a class="btn btn-default btn-xs edit_ot btn_datatable_cami" title="Editar OT"><span class="glyphicon glyphicon-edit"></span></a>';
             
 
             return button;

@@ -261,7 +261,8 @@ class Dao_ot_hija_model extends CI_Model {
             ot.fec_actualizacion_onyx_hija,
             ot.tipo_trascurrido,             
             ot.ot_hija, 
-            e.i_orden
+            e.i_orden, 
+            ot.b_flag
             FROM 
             ot_hija ot
             LEFT JOIN estado_ot e
@@ -1406,8 +1407,8 @@ class Dao_ot_hija_model extends CI_Model {
         $query = $this->db->query("
                 SELECT oth.nro_ot_onyx, otp.orden_trabajo, otp.estado_orden_trabajo,
                 oth.id_orden_trabajo_hija, oth.ot_hija, oth.estado_orden_trabajo_hija,
-                otp.n_nombre_cliente, otp.fecha_programacion, otp.fecha_compromiso, 
-                CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS ingeniero
+                otp.n_nombre_cliente, DATE_FORMAT(otp.fecha_programacion, '%Y-%m-%d') AS fecha_programacion, DATE_FORMAT(otp.fecha_compromiso, '%Y-%m-%d') AS fecha_compromiso, 
+                CONCAT(u.n_name_user,' ' , u.n_last_name_user) AS ingeniero, u.k_id_user
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp
                 ON oth.nro_ot_onyx= otp.k_id_ot_padre
@@ -1417,6 +1418,17 @@ class Dao_ot_hija_model extends CI_Model {
                 ;
         ");
         return $query->result();
+    }
+
+    // funcion para eliminar una o varias oth de la tabla ot_hija
+    public function delete_oth($oth){
+        $this->db->where_in('id_orden_trabajo_hija', $oth);
+        $this->db->delete('ot_hija');
+        if ($this->db->affected_rows() > 0) {
+            return $this->db->affected_rows();
+        } else {
+            return 0;
+        }
     }
 
     /*     * *********************************************************************************************************** */

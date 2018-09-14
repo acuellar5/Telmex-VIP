@@ -194,7 +194,7 @@ if ($msj) {
 
 else {  ?>
         <script>
-            swal('Error',`Se generó un error en el proceso`, 'error');
+            swal('Error',`Se generó un error en el proceso<br><?= $msj ?>`, 'error');
         </script>
 <?php } 
 }
