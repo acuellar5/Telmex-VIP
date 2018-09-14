@@ -4,6 +4,7 @@ $(function(){
         init: function () {
             creation_oth.events();
             creation_oth.getListNewOt();
+            // creation_oth.showHideTable();
          
         },
           //Eventos de la ventana.
@@ -62,9 +63,16 @@ $(function(){
             // nombramos la variable para la tabla y llamamos la configuiracion
             creation_oth.oth_new_List = $('#oth_new_List').DataTable(creation_oth.configTable(data, [
 
-                    {title: "ID OT", data: "id_orden_trabajo_hija"},
                     {title: "ID OTP", data: "nro_ot_onyx"},
-                    {title: "Estado", data: "estado_orden_trabajo_hija"},
+                    {title: "Tipo OTP", data: "orden_trabajo"},
+                    {title: "Estado OTP", data: "estado_orden_trabajo"},
+                    {title: "ID OTH", data: "id_orden_trabajo_hija"},
+                    {title: "Tipo OTH", data: "ot_hija"},
+                    {title: "Estado OTH", data: "estado_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "n_nombre_cliente"},            
+                    {title: "Fecha programacion", data: "fecha_programacion"},
+                    {title: "Fecha compromiso", data: "fecha_compromiso"},
+                    {title: "Ing.Responsable", data: "ingeniero"},
                     {title: "Opc", data: creation_oth.getButtonsNewOTH},
                    
                 ]));
@@ -88,6 +96,19 @@ $(function(){
             }
         },
 
+        // showHideTable: function (obj) {
+        //  $('a.toggle-vis').on( 'click', function (e) {
+        //           e.preventDefault();
+           
+        //           // Get the column API object
+        //           var column = oth_new_List.column( $(this).attr('data-column') );
+           
+        //           // Toggle the visibility
+        //           column.visible( ! column.visible() );
+        //       } );        
+           
+        // },
+
         getButtonsNewOTH: function (obj) {
             // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
             var button = '<div class="btn-group" style="display: inline-flex;">';
@@ -101,4 +122,3 @@ $(function(){
     };
     creation_oth.init();
 });
-
