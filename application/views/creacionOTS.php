@@ -65,7 +65,7 @@
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="tipo_otp" name="tipo_otp">
-									    <option>Seleccionar...</option>
+									    <option value="">Seleccionar...</option>
 										<?php foreach ($tipos_otp as $tipo_otp): ?>
 											<option value="<?= $tipo_otp->orden_trabajo ?>"><?= $tipo_otp->orden_trabajo ?></option>	
 										<?php endforeach ?>
@@ -80,7 +80,7 @@
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="estado_otp" name="estado_otp">
-									    <option>Seleccionar...</option>
+									    <option value="">Seleccionar...</option>
 									    <?php foreach ($estados_otp as $estado_otp): ?>
 									    	<option value="<?= $estado_otp->estado_orden_trabajo ?>"><?= $estado_otp->estado_orden_trabajo ?></option>
 									    <?php endforeach ?>
