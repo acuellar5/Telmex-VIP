@@ -441,4 +441,20 @@ class Dao_ot_padre_model extends CI_Model {
         return $respuesta;
     }
 
+    // obtener listas de tipos de otp
+    public function getListTypesOTP(){
+        $query = $this->db->query("
+            SELECT orden_trabajo FROM ot_padre GROUP BY orden_trabajo
+        ");
+        return $query->result();
+    }
+
+    // retorna listadode estados de otp
+    public function getListStatusOTP(){
+        $query = $this->db->query("
+            SELECT estado_orden_trabajo FROM ot_padre GROUP BY estado_orden_trabajo
+        ");
+        return $query->result();
+    }
+
 }

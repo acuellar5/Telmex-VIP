@@ -76,4 +76,14 @@ class Status extends CI_Controller {
         echo json_encode($estados);
     }
 
+    // obtener lista de estados por nombre de típo
+    public function js_ListStatusByType(){
+        $name_type = $this->input->post('tipo_sel');
+        $status = $this->Dao_ot_hija_model->geStatusByType($name_type);
+
+        echo json_encode($status);
+
+
+    }
+
 }

@@ -1,3 +1,4 @@
+<img src="<?= URL::to('assets/img/claro.png') ?>" class="img_claro_sticky">
 <?php if (isset($otp[0]->nombre_sede)): ?>
 	<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 	<h4 align="center">Cantidad de <b> control de cambios</b> de esta sede: <b><?= count($log) ?></b></h4>
@@ -404,9 +405,17 @@
 <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 <?php 
     $correcto = $this->session->flashdata('ok');
-    if ($correcto) {  ?>
+    $id_cc = $this->session->flashdata('id');
+    if ($correcto == 'ok') {  ?>
         <script>
-            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $correcto ?></b>`, 'success');
+            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $id_cc ?></b>`, 'success');
+
+        </script>
+<?php } 
+
+if ($correcto == 'error') {  ?>
+        <script>
+            swal('Error',`Se generó un error al insertar el registro`, 'error');
 
         </script>
 <?php } ?>

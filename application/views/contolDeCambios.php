@@ -1,4 +1,4 @@
-
+<img src="<?= URL::to('assets/img/claro.png') ?>" class="img_claro_sticky">
 <!--*********************  Modulo de pestañas para control de cambios  *********************-->
 <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#track_changes_office">Sedes</a></li>
@@ -371,9 +371,17 @@
 <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
 <?php 
     $correcto = $this->session->flashdata('ok');
-    if ($correcto) {  ?>
+    $id_cc = $this->session->flashdata('id');
+    if ($correcto == 'ok') {  ?>
         <script>
-            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $correcto ?></b>`, 'success');
+            swal('Correcto',`Se creó el control de cambios<br><b>ZCC<?= $id_cc ?></b>`, 'success');
+
+        </script>
+<?php } 
+
+if ($correcto == 'error') {  ?>
+        <script>
+            swal('Error',`Se generó un error al insertar el registro`, 'error');
 
         </script>
 <?php } ?>

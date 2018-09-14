@@ -429,7 +429,7 @@ class LoadInformation extends CI_Controller {
         }
     }
 
-    //
+    // retorna el id del estado segun el nombre del tipo y estado
     private function get_estado_by_name_ot_hiha($name_type, $status) {
 
         $id_tipo = $this->Dao_tipo_ot_hija_model->get_tipo_ot_hija_by_name($name_type);
@@ -455,4 +455,141 @@ class LoadInformation extends CI_Controller {
 
     }
 
+    /******************CREAR OT MANUALMENTE******************/
+    // Cargar vistas manualmente
+    public function crear_orden(){
+        if (!Auth::check()) {
+            Redirect::to(URL::base());
+        }
+        $data['title'] = 'Creación de OTH';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+
+        $list['inenieros'] = $this->Dao_user_model->getAllEngineers();
+        $list['tipos_otp'] = $this->Dao_ot_padre_model->getListTypesOTP();
+        $list['estados_otp'] = $this->Dao_ot_padre_model->getListStatusOTP();
+        $list['tipos_oth'] = $this->Dao_tipo_ot_hija_model->getListTypesOTH();
+
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('creacionOTS', $list);
+        $this->load->view('parts/footerF');
+    }
+
+    // crear ots manualmente
+    public function create_ot(){
+        $fActual = date('Y-m-d H:i:s');
+
+        $id_otp     = $this->input->post('id_otp');
+        $tipo_otp   = $this->input->post('tipo_otp');
+        $estado_otp = $this->input->post('estado_otp');
+        $id_user    = $this->input->post('ing_responsable');
+
+        $tipo_oth   = $this->input->post('tipo_oth');
+        $estado_oth = $this->input->post('estado_oth');
+        
+        //validar si ya existe la otp
+        $existe_otp = $this->Dao_ot_padre_model->exist_otp_by_id($id_otp);
+
+        if (!$existe_otp) {
+            // Se debe insertar en tabla ot_padre
+            $data_otp = array(
+                'k_id_ot_padre'        => $id_otp,
+                'k_id_user'            => $id_user,
+                'n_nombre_cliente'     => $this->input->post('nombre_cliente'),
+                'orden_trabajo'        => $tipo_otp,
+                'servicio'             => 'servicio',
+                'estado_orden_trabajo' => $estado_otp,
+                'fecha_creacion'       => $fActual,
+                'fecha_compromiso'     => $this->input->post('fecha_compromiso'),
+                'fecha_programacion'   => $this->input->post('fecha_programacion')
+            );
+            // funcion para insertar datos otp
+            $this->Dao_ot_padre_model->insert_data_otp($data_otp);
+        }
+
+        $id_estado_oth = $this->get_estado_by_name_ot_hiha($tipo_oth, $estado_oth)->k_id_estado_ot;
+
+        $name_inge = $this->Dao_user_model->getUserById($id_user);
+
+        $data_oth = array(
+            'id_orden_trabajo_hija'     => $this->input->post('id_oth'),
+            'k_id_estado_ot'            => $id_estado_oth,
+            'nro_ot_onyx'               => $id_otp,
+            'usuario_asignado'          => $name_inge->n_name_user . " " . $name_inge->n_last_name_user,
+            'fecha_creacion_ot_hija'    => $fActual,
+            'ot_hija'                   => $tipo_oth,
+            'estado_orden_trabajo_hija' => $estado_oth,
+            'fecha_insercion_zolid'     => $fActual,
+            'fecha_actual'              => $fActual,
+            'estado_mod'                => 0,
+            'c_email'                   => 0,
+            'b_flag'                    => '1',
+        );
+
+        //inserto la fila en la base de datos
+        $insert = $this->Dao_ot_hija_model->insert_ot_hija($data_oth);
+
+        $msj = ($insert === 1) ? 'ok' : $insert['message'];
+
+        $this->session->set_flashdata('msj', $msj);
+
+        header('location: ' .URL::base()."/creacionoth");
+
+    }
+
+    // editar ots
+    public function edit_ot(){
+        $fActual = date('Y-m-d H:i:s');
+
+        $id_otp     = $this->input->post('id_otp');
+        $tipo_otp   = $this->input->post('tipo_otp');
+        $estado_otp = $this->input->post('estado_otp');
+        $id_user    = $this->input->post('ing_responsable');
+
+        $tipo_oth   = $this->input->post('tipo_oth');
+        $estado_oth = $this->input->post('estado_oth');
+        
+
+        // Se debe insertar en tabla ot_padre
+        $data_otp = array(
+            'k_id_user'            => $id_user,
+            'n_nombre_cliente'     => $this->input->post('nombre_cliente'),
+            'orden_trabajo'        => $tipo_otp,
+            'servicio'             => 'servicio',
+            'estado_orden_trabajo' => $estado_otp,
+            'fecha_creacion'       => $fActual,
+            'fecha_compromiso'     => $this->input->post('fecha_compromiso'),
+            'fecha_programacion'   => $this->input->post('fecha_programacion')
+        );
+        // funcion para insertar datos otp
+        $update = $this->Dao_ot_padre_model->update_ot_padre($data_otp, $id_otp);
+
+        $id_estado_oth = $this->get_estado_by_name_ot_hiha($tipo_oth, $estado_oth);
+        $name_inge = $this->Dao_user_model->getUserById($id_user);
+
+        $data_oth = array(
+            'id_orden_trabajo_hija'     => $this->input->post('id_oth'),
+            'k_id_estado_ot'            => $id_estado_oth,
+            'usuario_asignado'          => $name_inge->n_name_user . " " . $name_inge->n_last_name_user,
+            'fecha_creacion_ot_hija'    => $fActual,
+            'ot_hija'                   => $tipo_oth,
+            'estado_orden_trabajo_hija' => $estado_oth,
+            'fecha_insercion_zolid'     => $fActual,
+            'fecha_actual'              => $fActual,
+            'estado_mod'                => 0,
+            'c_email'                   => 0,
+            'b_flag'                    => '1',
+        );
+
+        //inserto la fila en la base de datos
+        $update_otp = $this->Dao_ot_hija_model->update_ot_hija_mod($data);
+
+        $msj = ($update_otp === 1) ? 'ok' : $update_otp['message'];
+
+        $this->session->set_flashdata('ok', $msj);
+
+        header('location: ' .URL::base()."/creacionoth");
+    }
+
 }
+
