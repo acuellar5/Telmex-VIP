@@ -140,6 +140,17 @@ class LoadInformation extends CI_Controller {
                     //valido si el id del excel existe en la base de datos
                     $exist = $this->Dao_ot_hija_model->getExistIdOtHija($this->getValueCell($sheet, 'AW' . $row));
 
+                    /******************validacion para remplazar una oth creada manualmente******************/
+                    if ($exist) {
+                        if ($exist['b_flag'] == 1) {
+                            $this->actualizar_ot_padre($sheet, $row, $list_inges);
+                            $this->eliminar_oth_excel($exist['id_orden_trabajo_hija']);
+                            $exist = false;
+                        }
+                    }
+                    /****************************fin validacion****************************/
+
+
                     // si existe...
                     if ($exist) {
                         $cambioStatusMod = [];
@@ -455,6 +466,30 @@ class LoadInformation extends CI_Controller {
 
     }
 
+    // funcion para actualizar una ot padre desde el excel 
+    private function actualizar_ot_padre($sheet, $row, $list_inges){
+        // Se debe insertar en tabla ot_padre
+        $dataotp = array(
+            'k_id_user'             => $this->cedula_del_inegeniero(str_replace(array("ñ", "Ñ"), 'N', $this->getValueCell($sheet, 'AB' . $row)), $list_inges),
+            'id_cliente_onyx'       => $this->getValueCell($sheet, 'A' . $row),
+            'n_nombre_cliente'      => $this->getValueCell($sheet, 'B' . $row),
+            'orden_trabajo'         => $this->getValueCell($sheet, 'P' . $row),
+            'servicio'              => $this->getValueCell($sheet, 'R' . $row),
+            'estado_orden_trabajo'  => $this->getValueCell($sheet, 'W' . $row),
+            'fecha_creacion'        => $this->getDatePHPExcel($sheet, 'U' . $row),
+            'fecha_compromiso'      => $this->getDatePHPExcel($sheet, 'AO' . $row),
+            'fecha_programacion'    => $this->getDatePHPExcel($sheet, 'AP' . $row)
+        );
+        // funcion para actualizar datos otp
+        $this->Dao_ot_padre_model->update_ot_padre($dataotp, $this->getValueCell($sheet, 'Q' . $row));
+    }
+
+    // funcion para eliminar oth
+    private function eliminar_oth_excel($id_oth){
+        $delete = $this->Dao_ot_hija_model->delete_oth($id_oth);
+
+    }
+
     /******************CREAR OT MANUALMENTE******************/
     // Cargar vistas manualmente
     public function crear_orden(){
@@ -564,7 +599,7 @@ class LoadInformation extends CI_Controller {
         // funcion para insertar datos otp
         $update = $this->Dao_ot_padre_model->update_ot_padre($data_otp, $id_otp);
 
-        $id_estado_oth = $this->get_estado_by_name_ot_hiha($tipo_oth, $estado_oth);
+        $id_estado_oth = $this->get_estado_by_name_ot_hiha($tipo_oth, $estado_oth)->k_id_estado_ot;
         $name_inge = $this->Dao_user_model->getUserById($id_user);
 
         $data_oth = array(
@@ -581,12 +616,12 @@ class LoadInformation extends CI_Controller {
             'b_flag'                    => '1',
         );
 
-        //inserto la fila en la base de datos
-        $update_otp = $this->Dao_ot_hija_model->update_ot_hija_mod($data);
+        //actualizo la fila en la base de datos
+        $update_otp = $this->Dao_ot_hija_model->update_ot_hija_mod($data_oth);
 
         $msj = ($update_otp === 1) ? 'ok' : $update_otp['message'];
 
-        $this->session->set_flashdata('ok', $msj);
+        $this->session->set_flashdata('msj', $msj);
 
         header('location: ' .URL::base()."/creacionoth");
     }
