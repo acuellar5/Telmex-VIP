@@ -62,9 +62,16 @@ $(function(){
             // nombramos la variable para la tabla y llamamos la configuiracion
             creation_oth.oth_new_List = $('#oth_new_List').DataTable(creation_oth.configTable(data, [
 
-                    {title: "ID OT", data: "id_orden_trabajo_hija"},
                     {title: "ID OTP", data: "nro_ot_onyx"},
-                    {title: "Estado", data: "estado_orden_trabajo_hija"},
+                    {title: "Tipo OTP", data: "orden_trabajo"},
+                    {title: "Estado OTP", data: "estado_orden_trabajo"},
+                    {title: "ID OTH", data: "id_orden_trabajo_hija"},
+                    {title: "Tipo OTH", data: "ot_hija"},
+                    {title: "Estado OTH", data: "estado_orden_trabajo_hija"},
+                    {title: "Nombre Cliente", data: "n_nombre_cliente"},            
+                    {title: "Fecha programacion", data: "fecha_programacion"},
+                    {title: "Fecha compromiso", data: "fecha_compromiso"},
+                    {title: "Ing.Responsable", data: "ingeniero"},
                     {title: "Opc", data: creation_oth.getButtonsNewOTH},
                    
                 ]));
