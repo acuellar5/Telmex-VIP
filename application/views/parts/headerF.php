@@ -60,7 +60,7 @@
         <!--==============================================================================================-->
 
   <?php endif ?>
-    <?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija' || $this->uri->segment(1) == 'Sede') { ?>
+    <?php if ($this->uri->segment(1) == 'managementOtp' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija' || $this->uri->segment(1) == 'Sede') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . validarEnProduccion()) ?>" />
         <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
@@ -98,9 +98,9 @@
 
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Management<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?= URL::to('managementOtp') ?>">Work Management OTP</a></li>
-                    <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
-                    <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización <span class="badge"><?php echo $cantidad['afeterEigtDays'][0]->cant ?></span></a></li>
+                    <li><a href="<?= URL::to('managementOtp') ?>">Work Management</a></li>
+<!--                    <li><a href="<?= URL::to('editarOts') ?>">Work Management OTH</a></li>
+                    <li><a href="<?= URL::to('ReporteActualizacion') ?>">Reporte de Actualización <span class="badge"><?php echo $cantidad['afeterEigtDays'][0]->cant ?></span></a></li>-->
 
                     <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
