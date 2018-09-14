@@ -109,7 +109,7 @@ var vista = {
                         swal("Importado", "Se ha importado toda la información del archivo correctamente.", "success")
                                 .then(function () {
                                     // location.reload();
-                                    window.location.href = vista.urlbase + "/editarOts";
+                                    window.location.href = vista.urlbase + "/managementOtp";
                                 });
                         return;
                     }

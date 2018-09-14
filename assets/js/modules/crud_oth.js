@@ -4,6 +4,7 @@ $(function(){
         init: function () {
             creation_oth.events();
             creation_oth.getListNewOt();
+            // creation_oth.showHideTable();
          
         },
           //Eventos de la ventana.
@@ -126,6 +127,19 @@ $(function(){
             }
         },
 
+        // showHideTable: function (obj) {
+        //  $('a.toggle-vis').on( 'click', function (e) {
+        //           e.preventDefault();
+           
+        //           // Get the column API object
+        //           var column = oth_new_List.column( $(this).attr('data-column') );
+           
+        //           // Toggle the visibility
+        //           column.visible( ! column.visible() );
+        //       } );        
+           
+        // },
+
         getButtonsNewOTH: function (obj) {
             // return "<a class='ver-mail btn_datatable_cami'><span class='glyphicon glyphicon-print'></span></a>";
             var button = '<div class="btn-group" style="display: inline-flex;">';
@@ -139,4 +153,3 @@ $(function(){
     };
     creation_oth.init();
 });
-

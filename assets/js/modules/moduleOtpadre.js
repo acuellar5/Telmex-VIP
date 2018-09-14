@@ -90,6 +90,11 @@ $(function () {
                         className: 'btn-cami_cool',
                         extend: 'print',
                         title: 'Reporte Zolid',
+                    },
+                    {
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
+                        className: 'btn-cami_warning',
+                        action: eventos.otp_seleccionadas,
                     }
                 ],
                 select: true,
@@ -195,7 +200,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes_dejadas", data: "observacion"},
+                {title: "Observaciónes dejadas", data: "observacion"},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -246,6 +251,11 @@ $(function () {
                         className: 'btn-cami_cool',
                         extend: 'print',
                         title: 'Reporte Zolid',
+                    },
+                    {
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
+                        className: 'btn-cami_warning',
+                        action: eventos.otp_seleccionadas,
                     }
                 ],
                 select: true,
@@ -305,7 +315,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes_dejadas", data: "observacion"},
+                {title: "Observaciónes dejadas", data: "observacion"},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -356,6 +366,11 @@ $(function () {
                         className: 'btn-cami_cool',
                         extend: 'print',
                         title: 'Reporte Zolid',
+                    },
+                    {
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
+                        className: 'btn-cami_warning',
+                        action: eventos.otp_seleccionadas,
                     }
                 ],
                 select: true,
@@ -426,7 +441,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes_dejadas", data: "observacion"},
+                {title: "Observaciónes dejadas", data: "observacion"},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -477,6 +492,11 @@ $(function () {
                         className: 'btn-cami_cool',
                         extend: 'print',
                         title: 'Reporte Zolid',
+                    },
+                    {
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
+                        className: 'btn-cami_warning',
+                        action: eventos.otp_seleccionadas,
                     }
                 ],
                 select: true,
@@ -513,15 +533,16 @@ $(function () {
             $('#contenido_tablas').on('click', 'a.close-otp', eventos.onClickBtnCloseOtp);
             $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
             $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
-
             $('#ModalHistorialLog').on('click', 'button.ver-mail', eventos.onClickVerLogMailOTP);// ver detalles de correo btn impresora
-
             $('#table_oths_otp').on('click', 'a.ver-det', eventos.onClickShowModalEdit);
             // correccion scroll modal sobre modal
             $('#Modal_detalle').on("hidden.bs.modal", eventos.modal_sobre_modal);
             $('#ModalHistorialLog').on("hidden.bs.modal", eventos.modal_sobre_modal);
             $('#contenido_tablas').on('click', 'a.hitos-otp', eventos.onClickBtnCloseOtp);
             $('#btnGuardarModalHitos').on('click', eventos.onClickSaveHitosOtp);// ver detalles de correo btn impresora
+            $('#table_selected').on('click', 'img.quitar_fila', eventos.quitarFila);
+            
+            
         },
 
         // funcion para correcion modal sobre modal
@@ -1136,33 +1157,6 @@ $(function () {
                         $('#modalEditTicket').modal('show');
                     });
         },
-        // updateStatusOt: function(){
-
-
-        //     var id_orden_trabajo_hija = $('#id_orden_trabajo_hija').val();
-        //     var k_id_estado_ot = $('#k_id_estado_ot').val();
-        //     var estado_orden_trabajo_hija = $('#estado_orden_trabajo_hija').val();
-        //     var fecha_actual = $('#fecha_actual').val();
-        //     var estado_mod = $('#estado_mod').val();
-
-        //     $.post( baseurl +"OtHija/c_updateStatusOt",
-        //     {
-        //         k_id_estado_ot: k_id_estado_ot,
-        //         estado_orden_trabajo_hija: estado_orden_trabajo_hija,
-        //         fecha_actual: fecha_actual,
-        //         estado_mod: estado_mod,
-        //     },
-        //     function(data){
-        //          var res = JSON.parse(data);
-        //          if (res == 1) {
-        //              swal("Se actualizo correctamente!", "", "success");
-        //              setTimeout('document.location.reload()',1500);
-        //          }else {
-        //            swal("No actualizo correctamente!", "", "error");
-        //          }
-
-        //     });
-        // },
         //limpia el modal cada vez que se cierra
         clearModal: function () {
             $('#formModal')[0].reset();
@@ -1172,24 +1166,7 @@ $(function () {
         selectFormulary: function (nombre_cliente, direccion_destino) {
             $('#general').html("");
 
-            // var nombre_cliente = $('#nombre_cliente').val();
             var servicio_val = $("#ins_servicio option:selected").html();
-            // var direccion_destino = $('#direccion_destino').val();
-
-            // // a continuacion creamos la fecha en la variable date
-            // var date = new Date()
-            // // Luego le sacamos los datos año, dia, mes 
-            // // y numero de dia de la variable date
-            // var año = date.getYear()
-            // var mes = date.getMonth()
-            // var ndia = date.getDate()
-            // //Damos a los meses el valor en número
-            // mes+=1;
-            // if(mes<10) mes="0"+mes;
-            // //juntamos todos los datos en una variable
-            // var fecha_actual = ndia + "/" + mes + "/" + año
-
-
             var toog = true;
             var jmm = $('#general').html("");
             var valServicio = 0;
@@ -1973,9 +1950,6 @@ $(function () {
 
                 default:
             }
-
-
-
             if (toog) {
 
 
@@ -2184,26 +2158,127 @@ $(function () {
                 return false;
             }
         },
-         //llena el select de ingeniero
-            get_eingenieer: function(){
-                $.post( baseurl + '/User/c_get_eingenieer',{
+        //llena el select de ingeniero
+        get_eingenieer: function () {
+            $.post(baseurl + '/User/c_get_eingenieer', {
 
-                },
-                function(data){
-                    var ingeniero = JSON.parse(data);
-                     $.each(ingeniero,function(i,item){
-                  $('.class_fill_eingenieer').append('<option data-tel="'+item.telefono+'" data-email="'+item.mail+'" value="'+item.nombre+'" >'+item.nombre+'</option>');
-                    });
-
+            }, function (data) {
+                var ingeniero = JSON.parse(data);
+                $.each(ingeniero, function (i, item) {
+                    $('.class_fill_eingenieer').append('<option data-tel="' + item.telefono + '" data-email="' + item.mail + '" value="' + item.nombre + '" >' + item.nombre + '</option>');
                 });
 
-            },
-            fill_information: function(event){
-                 var ing = event.target.id;
-                 $('#'+ing+'_tel').val($(this).find(':selected').data('tel'));
-                 $('#'+ing+'_email').val($(this).find(':selected').data('email'));
-            },
-            //************ fin formulario de edicion oth ***************//
+            });
+
+        },
+        fill_information: function (event) {
+            var ing = event.target.id;
+            $('#' + ing + '_tel').val($(this).find(':selected').data('tel'));
+            $('#' + ing + '_email').val($(this).find(':selected').data('email'));
+        },
+        //************ fin formulario de edicion oth ***************//
+        
+        // muestra las otp seleccionadas dependiendo la tabla
+        otp_seleccionadas: function () {
+            var aLinkLog = $(this);
+            var trParent = aLinkLog.parents('tr');
+            var tabla = aLinkLog.parents('table').attr('id');
+            var record;
+            switch (tabla) {
+                case 'table_otPadreList':
+                    record = vista.table_otPadreList;
+                    break;
+                case 'table_otPadreListHoy':
+                    record = hoy.table_otPadreListHoy;
+                    break;
+                case 'table_otPadreListVencidas':
+                    record = vencidas.table_otPadreListVencidas;
+                    break;
+                case 'table_list_opc':
+                    record = lista.tableOpcList;
+                    break;
+                case 'table_otPadreListEmails':
+                    record = emails.table_otPadreListEmails;
+                    break;
+            }
+            console.log('record: ' + record);
+            console.log('tabla: ' + vista.table_otPadreList);
+            let hay_sel = record.rows({selected: true}).any();// booleanos q indica si hay algo seleccionado
+            var seleccionadas = record.rows({selected: true}).data();// los datos de los elem seleccionados
+            if (hay_sel) {
+                eventos.modalSeleccionadas(seleccionadas);
+
+                var cuantas = record.rows({selected: true}).count();
+                $('#mdl-title-cierre').html(`<b>${cuantas}</b> ORDENES SELECCIONADAS`);
+
+                $('#mdl_cierre').modal('show');
+
+            } else {
+                const toast = swal.mixin({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+                toast({
+                    type: 'error',
+                    title: 'No seleccionaste ninguna fila!'
+                });
+            }
+
+        },
+        modalSeleccionadas: function (data) {
+            if (eventos.table_selected) {
+                var tabla = eventos.table_selected;
+                tabla.clear().draw();
+                tabla.rows.add(data);
+                tabla.columns.adjust().draw();
+                return;
+            }
+
+            eventos.table_selected = $('#table_selected').DataTable(eventos.configTableSelect(data, [
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "OTP", data: "k_id_ot_padre"},
+                {title: "Cliente", data: "n_nombre_cliente"},
+                {title: "Tipo", data: "orden_trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Estado OTP", data: "estado_orden_trabajo"},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observación", data: "observacion"},
+                {title: "Quitar", data: eventos.getButtonQuitar},
+            ]));
+
+        },
+
+        configTableSelect: function (data, columns, onDraw) {
+            return {
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                },
+                columnDefs: [{
+                        defaultContent: "",
+                        targets: -1,
+                        orderable: false,
+                    }],
+                order: [[3, 'asc']],
+                drawCallback: onDraw
+            }
+        },
+        // retorna el boton para quitar registro
+        getButtonQuitar: function (obj) {
+            const button = `<img src="${baseurl}/assets/images/minus.png" alt="quitar" class="quitar_fila"/>`;
+            return button;
+        },
+        // elimina la fila 
+        quitarFila: function (e) {
+            eventos.table_selected.row($(this).parents('tr')).remove().draw();// remover de la tabla modal
+            var cuantas = eventos.table_selected.rows().count();
+            $('#mdl-title-cierre').html(`<b>${cuantas}</b> ORDENES SELECCIONADAS`);
+
+        },
+
     };
     eventos.init();
 
@@ -2369,7 +2444,7 @@ $(function () {
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes_dejadas", data: "observacion"},
+                {title: "Observaciónes dejadas", data: "observacion"},
                 {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },
@@ -2420,6 +2495,11 @@ $(function () {
                         className: 'btn-cami_cool',
                         extend: 'print',
                         title: 'Reporte Zolid',
+                    },
+                    {
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
+                        className: 'btn-cami_warning',
+                        action: eventos.otp_seleccionadas,
                     }
                 ],
                 select: true,

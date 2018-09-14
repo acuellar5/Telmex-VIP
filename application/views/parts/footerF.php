@@ -96,10 +96,13 @@
 
 <?php if ($this->uri->segment(1) == 'creacionoth'): ?>
 <!-- **********************************************VISTA FACTURACION OTS *********************************************-->
+    
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
     <script src="<?= URL::to("assets/js/modules/crud_oth.js?v=" . time()) ?>"></script>
-   
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+
 <?php endif ?>
 
 <?php if ($this->uri->segment(2) == 'otps_sede'): ?>
