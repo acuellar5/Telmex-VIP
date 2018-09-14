@@ -34,7 +34,7 @@
 
     <div id="hoy" class="tab-pane fade">
         <h3>hoy</h3>
-        <table id="table_otPadreListHoy" class="table table-hover table-bordered table-striped dataTable_camilo">
+        <table id="table_otPadreListHoy" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
                     <th></th>
@@ -56,7 +56,7 @@
 
     <div id="vencidas" class="tab-pane fade">
         <h3>Vencidas</h3>
-        <table id="table_otPadreListVencidas" class="table table-hover table-bordered table-striped dataTable_camilo">
+        <table id="table_otPadreListVencidas" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
                     <th></th>
@@ -151,7 +151,7 @@
                 <option value='TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA'>TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA</option>
             </select>
         </div>
-        <table id="table_list_opc" class="table table-hover table-bordered table-striped dataTable_camilo">
+        <table id="table_list_opc" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
                     <th></th>
@@ -173,7 +173,7 @@
 
     <div id="lista_email" class="tab-pane fade">
         <h3>Por cantidad de emails enviados</h3>
-        <table id="table_otPadreListEmails" class="table table-hover table-bordered table-striped dataTable_camilo">
+        <table id="table_otPadreListEmails" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
                     <th></th>
@@ -1938,7 +1938,32 @@
         </div>
     </div>
 </div>
+<!------------------------------------------ Fin Modal editar OTs -------------------------------------->
 
+<!------------------------------------------ modal ordenes seleccionadas ------------------------------->
+<div id="mdl_cierre" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="mdl-title-cierre"></h3>
+            </div>
+            <div class="modal-body">
+                <table id="table_selected" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+                <button type="button" class="btn btn-success" id="mdl-cierre-facturacion"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;Enviar correo</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?> "></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>-->
+<?php if (isset($_GET['msj'])): ?>
+    <script>
+        var urlbase = "<?php echo URL::base(); ?>";
+        swal('OK', 'se actualizó correctamente', 'success');
+    </script>
+<?php endif ?>

@@ -221,7 +221,7 @@ class Templates extends CI_Controller {
         $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
 
-        header('Location: ' . URL::base() . '/editarOts?msj=ok');
+        header('Location: ' . URL::base() . '/managementOtp?msj=ok');
     }
 
     // Arma el pdf para mostrar el correo enviado
