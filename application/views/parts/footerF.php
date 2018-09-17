@@ -73,6 +73,7 @@
 <!-- **********************************************VISTA OTPADRE *********************************************-->
     <script src="<?= URL::to('assets/plugins/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') ?>"></script>
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.bootstrap.js?v=1.0') ?>"></script>
+    <script src="<?= URL::to("assets/js/modules/setForms.js?v=" . validarEnProduccion()) ?>"></script>    
     <script src="<?= URL::to("assets/js/modules/formulario.js?v=" . validarEnProduccion()) ?>"></script>    
     <script src="<?= URL::to("assets/js/modules/moduleOtpadre.js?v=" . validarEnProduccion()) ?>"></script>    
     

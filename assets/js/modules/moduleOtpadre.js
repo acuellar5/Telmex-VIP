@@ -534,7 +534,7 @@ $(function () {
             $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
             $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
             $('#ModalHistorialLog').on('click', 'button.ver-mail', eventos.onClickVerLogMailOTP);// ver detalles de correo btn impresora
-            $('#table_oths_otp').on('click', 'a.ver-det', formulario.onClickShowModalEdit);
+            // $('#table_oths_otp').on('click', 'a.ver-det', formulario.onClickShowModalEdit);
             // correccion scroll modal sobre modal
             $('#Modal_detalle').on("hidden.bs.modal", eventos.modal_sobre_modal);
             $('#ModalHistorialLog').on("hidden.bs.modal", eventos.modal_sobre_modal);
