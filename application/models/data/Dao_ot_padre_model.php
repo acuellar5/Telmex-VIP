@@ -88,7 +88,7 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-				SELECT 
+                SELECT 
                 otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
