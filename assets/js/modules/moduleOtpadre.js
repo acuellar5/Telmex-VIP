@@ -92,8 +92,8 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
-                        className: 'btn-cami_warning',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
                 ],
@@ -253,8 +253,8 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
-                        className: 'btn-cami_warning',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
                 ],
@@ -368,8 +368,8 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
-                        className: 'btn-cami_warning',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
                 ],
@@ -494,8 +494,8 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
-                        className: 'btn-cami_warning',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
                 ],
@@ -541,8 +541,8 @@ $(function () {
             $('#contenido_tablas').on('click', 'a.hitos-otp', eventos.onClickBtnCloseOtp);
             $('#btnGuardarModalHitos').on('click', eventos.onClickSaveHitosOtp);// ver detalles de correo btn impresora
             $('#table_selected').on('click', 'img.quitar_fila', eventos.quitarFila);
-            
-            
+
+
         },
 
         // funcion para correcion modal sobre modal
@@ -1020,7 +1020,8 @@ $(function () {
         },
         // muestra las otp seleccionadas dependiendo la tabla
         otp_seleccionadas: function () {
-            var tabla = $('ul#pestania').find('li.active').attr('tabla');;
+            var tabla = $('ul#pestania').find('li.active').attr('tabla');
+            ;
             var record;
             switch (tabla) {
                 case 'table_otPadreList':
@@ -1039,7 +1040,7 @@ $(function () {
                     record = emails.table_otPadreListEmails;
                     break;
             }
-            
+
             let hay_sel = record.rows({selected: true}).any();// booleanos q indica si hay algo seleccionado
             var seleccionadas = record.rows({selected: true}).data();// los datos de los elem seleccionados
             if (hay_sel) {
@@ -1100,7 +1101,12 @@ $(function () {
                         orderable: false,
                     }],
                 order: [[3, 'asc']],
-                drawCallback: onDraw
+                drawCallback: onDraw,
+                "createdRow": function (row, data, dataIndex) {
+                    if (data["id_hitos"] == null) {
+                        $(row).css("background-color", "#ff000087");
+                    }
+                },
             }
         },
         // retorna el boton para quitar registro
@@ -1334,8 +1340,8 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte <br>Actualización',
-                        className: 'btn-cami_warning',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
                 ],
