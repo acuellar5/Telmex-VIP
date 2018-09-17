@@ -93,10 +93,11 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
+                LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre 
                 WHERE otp.fecha_compromiso = CURDATE()
                 $condicion
                 GROUP BY nro_ot_onyx
@@ -112,15 +113,16 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-				SELECT 
+                SELECT 
                 otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
                 WHERE otp.fecha_compromiso < CURDATE()
                 $condicion
                 GROUP BY nro_ot_onyx
@@ -163,10 +165,11 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
                 WHERE lista_observaciones = '$opcion' 
                 $condicion 
                 GROUP BY oth.nro_ot_onyx
@@ -253,10 +256,11 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
                 $condicion
                 GROUP BY nro_ot_onyx
                 HAVING cant_mails > 0
