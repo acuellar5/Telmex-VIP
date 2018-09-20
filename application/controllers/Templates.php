@@ -62,6 +62,9 @@ class Templates extends CI_Controller {
     public function c_updateStatusOt($servicio = null) {
       // header('Content-Type: text/plain');
       // print_r($this->input->post());
+      $servicio = (isset($_POST['num_servicio'])) ? $_POST['num_servicio'] : false ;
+
+
       if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
         $data_template = $this->fill_formulary($servicio, $_POST);
         switch ($servicio) {

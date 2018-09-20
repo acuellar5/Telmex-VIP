@@ -14,6 +14,17 @@ $(function () {
             $('#table_oths_otp').on('click', 'a.ver-det', formulario.onClickShowModalEditOTH);
             // funcion para formulario tabs vertical
             $("div.bhoechie-tab-menu>div.list-group>a").on('click', formulario.onClickTab); 
+
+            // funcion para multiselect
+            $('.multiselect_forms').multiselect();
+
+            // funcion para duplicar la seccion al darle click al add del form
+            $('#formModal').on('click', 'span#añadir_seccion', e => {
+                helper.duplicar_seccion($('#seccion_duplidar'), $('#append_aca'));
+            });
+
+            // funcion para remover seccion del form con el boton menos
+            $('#formModal').on('click', 'span.remover_seccion', helper.remover_seccion);
         },
 
         // formulario tabs vertical
@@ -128,6 +139,7 @@ $(function () {
                 // al seleccionar uno de los servicios
                 $('#ins_servicio').on('change', function(){
                     formulario.cambiarOpcionesForm(nombre_cliente, direccion_destino);
+                    $('.multiselect_forms').multiselect();
                 });
 
             } 
@@ -145,9 +157,6 @@ $(function () {
         // al elegir el servicio se llena el formulario correspondiente
         cambiarOpcionesForm: function(nombre_cliente, direccion_destino){
             formulario.get_eingenieer();
-
-            
-
             var servicio_seleccionado = $('#ins_servicio').val();
             $('#num_servicio').val(servicio_seleccionado);
             $('#btnUpdOt').attr('disabled', false);
@@ -160,14 +169,20 @@ $(function () {
                 $('#general_servicio').html("");
                 var servicio_nombre = $("#ins_servicio option:selected").html();
                 var form_servicio = setForm.returnFormularyService(nombre_cliente, direccion_destino, servicio_seleccionado, servicio_nombre);
-
+                var form_producto = setForm.returnFormularyProduct(servicio_seleccionado);
+                console.log("form_producto", form_producto);
                 // pinto el formulario de servicio
                 $('#general_servicio').html(form_servicio);
+                $('#general_producto').html(form_producto);
+
                 formulario.get_eingenieer();
+
                 // para llenar inputs de ingeniero 1 en el modal
                 $('#ingeniero1').on('change', formulario.fill_information);
                 $('#ingeniero2').on('change', formulario.fill_information);
                 $('#ingeniero3').on('change', formulario.fill_information);
+
+                
             }
 
 

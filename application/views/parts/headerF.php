@@ -43,7 +43,11 @@
     <?php if ($this->uri->segment(1) == 'managementOtp'): ?>
 <!-- ************************************** timeLine CSS ********************************************* -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/timeLine.css?v=" . validarEnProduccion()) ?>">
+    <!-- css para el formulario con tabs seccionado -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/vertical_tabs.css?v=" . validarEnProduccion()) ?>">
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-multiselect.css?v=" . validarEnProduccion()) ?>">
+    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/prettify.min.css?v=" . validarEnProduccion()) ?>">
+
 
 <?php endif ?>
             
