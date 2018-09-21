@@ -5007,123 +5007,147 @@ ELIMINAR MODAL ES DE PRUEBA
 
 
 
-<!-- PRIVATE LINE PUNTO DE ORIGEN -->
+<!-- TRASLADO INTERNO -->
 		   
-		   <!-- DATOS BÁSICOS DE INSTALACION   ORIGEN -->
+		   <!-- DATOS BÁSICOS -->
 
 					<fieldset class="fielset_new_ot_mdl">
-						<H3>PUNTO DATACENTER</H3>
-						<h4>DATOS BÁSICOS DE INSTALACION DESTINO</h4>
+						<H3>Datos básicos </H3>
 						<!-- CIUDAD -->
 						<div class="form-group">
-					        <label for="ciudad_pd" class="col-md-3 control-label">Ciudad:</label>
+					        <label for="pr_ciudad" class="col-md-3 control-label">Ciudad:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="ciudad_pd" id="ciudad_pd" class="form-control" type="text" >
+					                <input name="pr_ciudad" id="pr_ciudad" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 
-					    <!-- DIRECCIÓN:-->
+					    <!-- DIRECCIÓN UBICACIÓN ACTUAL DEL SERVICIO :-->
 					    <div class="form-group">
-					        <label for="direccion_pd" class="col-md-3 control-label">Dirección:</label>
+					        <label for="pr_direccion" class="col-md-3 control-label">Dirección ubicación actual del servicio :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="direccion_pd" id="direccion_pd" class="form-control" type="text" >
+					                <input name="pr_direccion" id="pr_direccion" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 
-					    <!-- TIPO PREDIO: -->
+					    <!-- ALIAS DEL LUGAR : -->
 					     <div class="form-group">
-					        <label for="tipo_predio_pd" class="col-md-3 control-label">Tipo predio:</label>
+					        <label for="pr_alias" class="col-md-3 control-label">Alias del lugar :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
-					                <select class="form-control" id="tipo_predio_pd" name="tipo_predio_pd">
+					                <input type="text" name="pr_alias" id="pr_alias" class="form-control">
+					            </div>
+					        </div>
+					    </div>	
+
+					    <!-- MOVIMIENTO INTERNO REQUERIDO : -->
+					    <div class="form-group">
+					        <label for="pr_movimiento_it" class="col-md-3 control-label">Movimiento interno requerido :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="fa fa-sort-numeric-desc" ></i></span>
+									<select name="pr_movimiento_it" id="pr_movimiento_it" class="form-control">
+										<option value="">Movimiento Equipos - Caja OB - Fibra  > 3 Mt</option>
+										<option value="">Movimiento Equipos - Caja OB - Fibra  < 3 Mt</option>
+										<option value="">Movimiento solo de Equipos</option>
+										<option value="">Movimiento solo de Caja OB - Fibra</option>
+										<option value="">Movimiento Rack</option>
+										<option value="">Movimiento ODF</option>
+										<option value="">Determinación en Visita de Obra Civil</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
+
+
+					    <!-- OTP ASOCIADAS :  -->
+					    <div class="form-group">
+					        <label for="pr_otp_as" class="col-md-3 control-label">Otp asociadas :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_otp_as" id="pr_otp_as" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+
+					    <!-- CANTIDAD DE SERVICIOS A TRASLADAR : -->
+						<div class="form-group">
+					        <label for="pr_cantidad_st" class="col-md-3 control-label">Cantidad de servicios a trasladar :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_cantidad_st" id="pr_cantidad_st" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+
+					     <!-- CODIGOS DE SERVICIO  A TRASLADAR : -->
+						<div class="form-group">
+					        <label for="pr_codigo_st" class="col-md-3 control-label">Codigos de servicio  a trasladar :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_codigo_st" id="pr_codigo_st" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+
+
+					    <!-- TIPO DE TRASLADO INTERNO : -->
+					     <div class="form-group">
+					        <label for="pr_tipo_ti" class="col-md-3 control-label">Tipo de traslado interno :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <select class="form-control" id="pr_tipo_ti" name="pr_tipo_ti">
 									    <option>Seleccionar...</option>
-									    <option>Edificio</option>
-      									<option>Casa</option>									    
+									    <option>Estándar - El movimiento se realiza durante la EOC y OB</option>
+      									<option>Paralelo - Se habilitan Nuevos Recursos de UM, Equipos, Config</option>
 									</select>
 					            </div>
 					        </div>
 					    </div>	
 
-					    <!-- NIT del cliente: -->
-					    <div class="form-group">
-					        <label for="nit_cliente_pd" class="col-md-3 control-label">NIT del cliente:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="fa fa-sort-numeric-desc" ></i></span>
-					                <input name="nit_cliente_pd" id="nit_cliente_pd" class="form-control" type="number" >
-					            </div>
-					        </div>
-					    </div>
 
-
-					    <!-- ALIAS DEL LUGAR  -->
-					    <div class="form-group">
-					        <label for="alias_lugar_pd" class="col-md-3 control-label">Alias del lugar:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="alias_lugar_pd" id="alias_lugar_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- OTP -->
-						<div class="form-group">
-					        <label for="otp_pd" class="col-md-3 control-label">OTP:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="otp_pd" id="otp_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					     <!-- otp_asociadas -->
-						<div class="form-group">
-					        <label for="otp_asociadas_pd" class="col-md-3 control-label">OTP asociadas:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="otp_asociadas_pd" id="otp_asociadas_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-
-					    <!-- TIPO PRIVATE LINE: -->
+					    <!-- TIPO SERVICIO: -->
 					     <div class="form-group">
-					        <label for="tipo_pd" class="col-md-3 control-label">Tipo servicio:</label>
+					        <label for="pr_tipo_s" class="col-md-3 control-label">Tipo servicio:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select class="form-control" id="tipo_pd" name="tipo_pd">
+					                <select class="form-control" id="pr_tipo_s" name="pr_tipo_s">
 									    <option>Seleccionar...</option>
-									    <option>MPLS Avanzado Intranet con Punta en Rack de Appliance (Componente Datacenter)</option>
-      									<option>MPLS Avanzado Extranet con Punta en Rack de Appliance (Componente Datacenter)</option>
-      									<option>MPLS Transaccional con Punta en Rack de Appliance</option>
-      									<option>PL Ethernet Local - P2P con Punta en Rack de Appliance</option>
-      									<option>PL Ethernet Local - P2MP con Punta en Rack de Appliance</option> 
-      									<option>PL Ethernet Nacional - P2P con Punta en Rack de Appliance</option>						
-      									<option>PL Ethernet Nacional - P2MP con Punta en Rack de Appliance</option>						
-      									<option>PL Ethernet - VPRN con Punta en Rack de Appliance</option>						
-      									<option>Telefonia Pública - Líneas Análogas con Punta en Rack de Appliance</option>						
-      									<option>Telefonia Pública - Líneas E1 - R2 con Punta en Rack de Appliance</option>						
-      									<option>Telefonia Pública - Líneas E1 - PRI con Punta en Rack de Appliance</option>						
-      									<option>Telefonia Pública - Línea SIP (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance</option>						
-      									<option>PBX Distribuida - Línea SIP  (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance</option>						
-      									<option>PBX Distribuida - Línea SIP  (Centralizado) con Punta en Rack de Appliance</option>						
-      									<option>PBX Distribuida  Linea E1 -R2 con Punta en Rack de Appliance</option>						
-      									<option>PBX Distribuida  Linea E1 -PRI con Punta en Rack de Appliance</option>						
-      									<option>Telefonia Corporativa con Punta en Rack de Appliance</option>						
-      									<option>Migración Topologia Backend a Rack de Appliance</option>						
-      									<option>Migración Claro Connect a Rack de Appliance</option>						
+									    <option>Internet Dedicado con diferenciación de tráfico (Internet / NAP)</option>
+      									<option>Internet Dedicado + Monitoreo CPE (Gestion Proactiva)</option>
+      									<option>Internet Dedicado Administrado + Monitoreo CPE (Gestion Proactiva)</option>
+      									<option>Internet Dedicado Empresarial</option>
+      									<option>Internet  Banda ancha FO</option>
+      									<option>MPLS Avanzado Intranet  + Monitoreo CPE (Gestión Proactiva)</option>
+      									<option>MPLS Avanzado Extranet  + Monitoreo CPE (Gestión Proactiva)</option>
+      									<option>MPLS Avanzado con Punta Backend</option>
+      									<option>MPLS Avanzado con Punta en Rack de Appliance (Componente Datacenter)</option>
+      									<option>MPLS Avanzado con Punta Claro Connect</option>
+      									<option>MPLS Transaccional</option>
+      									<option>Telefonia Pública - Líneas Análogas</option>
+      									<option>Telefonia Pública - Líneas E1 - R2</option>
+      									<option>Telefonia Pública - Líneas E1 - PRI</option>
+      									<option>Telefonia Pública - Línea SIP (Troncal IP Ethernet con Audiocodec o GW Cisco)</option>
+      									<option>Telefonia Pública - Línea SIP (Centralizado)</option>
+      									<option>PBX Distribuida  Linea E1 -R2</option>
+      									<option>PBX Distribuida  Linea E1 -PRI</option>
+      									<option>Telefonia Corporativa</option>
+      									<option>Local - P2P</option>
+      									<option>Local - P2MP</option>
+      									<option>Nacional - P2P</option>
+      									<option>Nacional - P2MP</option>
+      									<option>VPRN</option>
 									</select>
 					            </div>
 					        </div>
@@ -5131,189 +5155,58 @@ ELIMINAR MODAL ES DE PRUEBA
 
 					    <!-- ancho_banda -->
 						<div class="form-group">
-					        <label for="ancho_banda_pl_po" class="col-md-3 control-label">Ancho de banda:</label>
+					        <label for="pr_ancho_banda" class="col-md-3 control-label">Ancho de banda:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="ancho_banda_pl_po" id="ancho_banda_pl_po" class="form-control" type="text" >
+					                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>		
 
-					    <!-- TIPO INSTALACION: -->
+					    <!-- TIPO DE ACTIVIDAD : -->
 					     <div class="form-group">
-					        <label for="tipo_instalacion_pd" class="col-md-3 control-label">Tipo instalación:</label>
+					        <label for="tipo_acti_ti" class="col-md-3 control-label">Tipo de actividad :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select class="form-control" id="tipo_instalacion_pd" name="tipo_instalacion_pd">
+					                <select class="form-control" id="tipo_acti_ti" name="tipo_acti_ti">
 									    <option>Seleccionar...</option>
-									    <option>Instalar UM en Datacenter Claro- Cableado</option>
-									    <option>Instalar UM en Datacenter Claro- Implementación</option>
-      									<option>UM existente. Requiere Cambio de equipo</option>
-      									<option>UM existente. Requiere Adición de equipo</option>					    
-      									<option>UM existente. Solo configuración</option>					    
+									    <option>Traslado Interno - Ejecutar de acuerdo a Visita de Cotización</option>
+									    <option>OTP Legalización - Traslado Punto Central u Origen</option>
+      									<option>Traslado Interno - En Datacenter Claro</option>
+      									<option>Traslado Interno - En Datacenter Tercero</option>					    
 									</select>
 					            </div>
 					        </div>
 					    </div>
 
-					    <!-- ID SERVICIO ACTUAL -->
+					    <!-- ID SERVICIO ACTUAL (Aplica para UM Existente) : -->
 						<div class="form-group">
-					        <label for="id_servicio_pd" class="col-md-3 control-label">ID SERVICIO ACTUAL (Aplica para UM Existente):</label>
+					        <label for="pr_id_servicio" class="col-md-3 control-label">Id servicio actual (Aplica para UM Existente) :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="id_servicio_pd" id="id_servicio_pd" class="form-control" type="text" >
+					                <input name="pr_id_servicio" id="pr_id_servicio" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 
 					    
-			<!-- SESION NUMERO 2: DATOS DEL CONTACTO PARA COMUNICACIÓN  -->
-						<h4>Dato cliente: Tecnico</h4>
+			<!-- SESION NUMERO 2:  INFORMACIÓN  ULTIMA MILLA  -->
 
-						<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
-					     <div class="form-group">
-					        <label for="nombre_pd" class="col-md-3 control-label">Nombre</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<input type="text" name="nombre_pd" id="nombre_pd">
-					            </div>
-					        </div>
-					    </div>
-
-					     <div class="form-group">
-					        <label for="telefono_pd" class="col-md-3 control-label">Telefono:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<input type="text" name="telefono_pd" id="telefono_pd">
-					            </div>
-					        </div>
-					    </div>
-
-					     <div class="form-group">
-					        <label for="celular_pd" class="col-md-3 control-label">Celular:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<input type="number" name="celular_pd" id="celular_pd">
-					            </div>
-					        </div>
-					    </div>
-
-					     <div class="form-group">
-					        <label for="correp_pd" class="col-md-3 control-label">correo:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<input type="email" name="correp_pd" id="correp_pd">
-					            </div>
-					        </div>
-					    </div>
-
-					    <h4>REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</h4>
-
-					     <div class="form-group">
-					        <label for="requiere_pd" class="col-md-3 control-label">Requiere:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<input type="text" name="requiere_pd" id="requiere_pd">
-					            </div>
-					        </div>
-					    </div>
-
-					    <H4>Equipos</H4>
-
-						<!-- Conversor Medio: -->
-			            <div class="form-group">
-					        <label for="conversor_medio_pd" class="">Conversor Medio:</label>
-					        <div class="">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="conversor_medio_pd" id="conversor_medio_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- Referencia Router: -->
-			            <div class="form-group">
-					        <label for="referencia_router_pd" class="">Referencia Router:</label>
-					        <div class="">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="referencia_router_pd" id="referencia_router_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- Modulos o Tarjetas: -->
-			            <div class="form-group">
-					        <label for="modulo_o_tarjeta_pd" class="">Modulos o Tarjetas:</label>
-					        <div class="">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="modulo_o_tarjeta_pd" id="modulo_o_tarjeta_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					   	<!-- Licencias --> 
-					    <div class="form-group">
-					        <label for="licencias_pd" class="">Licencias:</label>
-					        <div class="">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="licencias_pd" id="licencias_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- Equipos Adicionale--> 
-					    <div class="form-group">
-					        <label for="equipos_adicionales_pd" class="">Equipos adicionale:</label>
-					        <div class="">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="equipos_adicionales_pd" id="equipos_adicionales_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- Consumibles--> 
-					    <div class="form-group">
-					        <label for="consumibles_pd" class="">Consumibles:</label>
-					        <div class="">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<select name="consumibles_pd" id="consumibles_pd">
-										<option value="">Seleccionar...</option>
-										<option value="">Bandeja</option>
-										<option value="">Cables de Poder</option>
-										<option value="">Clavijas de Conexión</option>
-										<option value="">Accesorios para rackear (Orejas)</option>
-										<option value="">No Aplica</option>
-									</select>
-					            </div>
-					        </div>
-					    </div>
-
-					    <h4>INFORMACIÓN  ULTIMA MILLA </h4>
+						<h4>INFORMACIÓN  ULTIMA MILLA </h4>
 
 					    <!-- ¿esta ot requiere instalacion de  um?--> 
 					    <div class="form-group">
-					        <label for="eoriu_pd" class="">¿esta ot requiere instalacion de  um?</label>
+					        <label for="pr_requiere_um" class="">¿Esta ot requiere instalacion de  um? :</label>
 					        <div class="">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<select name="eoriu_pd" id="eoriu_pd">
+									<select name="pr_requiere_um" id="pr_requiere_um" class="form-control">
 										<option value="">Seleccionar...</option>
 										<option value="">SI</option>
 										<option value="">NO</option>
-										<option value="">Existente</option>
 									</select>
 					            </div>
 					        </div>
@@ -5321,14 +5214,14 @@ ELIMINAR MODAL ES DE PRUEBA
 
 					    <!-- Proveedor --> 
 					    <div class="form-group">
-					        <label for="proveedor_pd" class="">Proveedor</label>
+					        <label for="pr_proveedor" class="">Proveedor:</label>
 					        <div class="">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<select name="proveedor_pd" id="proveedor_pd">
+									<select name="pr_proveedor" id="pr_proveedor" class="form-control">
 										<option value="">Seleccionar...</option>
 										<option value="">No aplica</option>
-										<option value="">Existente</option>
+										<option value="">Claro</option>
 										<option value="">Axesat</option>
 										<option value="">Comcel</option>
 										<option value="">Tigo</option>
@@ -5360,14 +5253,13 @@ ELIMINAR MODAL ES DE PRUEBA
 
 					    <!-- MEDIO -->
 					    <div class="form-group">
-					        <label for="medio_pl_pD" class="col-md-3 control-label">Medio:</label>
+					        <label for="pr_medio" class="col-md-3 control-label">Medio:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select class="form-control" id="medio_pl_pD" name="medio_pl_pD">
+					                <select class="form-control" id="pr_medio" name="pr_medio">
 									    <option>Seleccionar...</option>
 									    <option>No Aplica</option> 	   
-									    <option>Existente</option>
 									    <option>FIBRA</option>
 									    <option>COBRE</option> 
 									    <option>SATELITAL</option>
@@ -5382,62 +5274,46 @@ ELIMINAR MODAL ES DE PRUEBA
 					    
 			            <!-- RESPUESTA FACTIBILIDAD BW > 100 MEGAS : -->
 			            <div class="form-group">
-					        <label for="respuesta_factibilidad_pl_pd" class="col-md-3 control-label">Respuesta factibilidad BW > 100 Megas :</label>
+					        <label for="pr_respuesta" class="col-md-3 control-label">Respuesta factibilidad BW > 100 Megas :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="respuesta_factibilidad_pl_pd" id="respuesta_factibilidad_pl_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-			            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
-					    <div class="form-group">
-					        <label for="tipo_conector_pl_pd" class="col-md-3 control-label">TIPO DE CONECTOR *** (Aplica para FO Claro):</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select class="form-control" id="tipo_conector_pl_pd" name="tipo_conector_pl_pd">
-									    <option>Seleccionar...</option>
-									    <option>LC</option>  									   									
-									    <option>SC</option> 	   
-									    <option>ST</option>
-									    <option>FC</option>
-									</select>
+					                <input name="pr_respuesta" id="pr_respuesta" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 
 					    <!-- ACCESO (Solo Aplica para Canales > 100 MEGAS -->
 					    <h5>ACCESO (Solo Aplica para Canales > 100 MEGAS</h5>
+
 			            <div class="form-group">
-					        <label for="sds_destino_pl_pd" class="col-md-3 control-label">SDS DESTINO (Unifilar):</label>
+					        <label for="pr_sds_destino" class="col-md-3 control-label">SDS DESTINO (Unifilar):</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="sds_destino_pl_pd" id="sds_destino_pl_pd" class="form-control" type="text" >
+					                <input name="pr_sds_destino" id="pr_sds_destino" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 
 					    <!-- OLT (GPON) : -->
 			            <div class="form-group">
-					        <label for="olt_pd" class="col-md-3 control-label">OLT (GPON) :</label>
+					        <label for="pr_olt" class="col-md-3 control-label">OLT (GPON) :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="olt_pd" id="olt_pd" class="form-control" type="text" >
+					                <input name="pr_olt" id="pr_olt" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 					    
 					    <!-- INTERFACE DE ENTREGA AL CLIENTE: -->
 					    <div class="form-group">
-					        <label for="interface_entrega_cliente_pl_po" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+					        <label for="pr_interface" class="col-md-3 control-label">Interface de entrega al cliente:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select class="form-control" id="interface_entrega_cliente_pl_po" name="interface_entrega_cliente_pl_po">
+					                <select class="form-control" id="pr_interface" name="pr_interface">
 									    <option>Seleccionar...</option>
 									    <option>No aplica</option> 									   									
 									    <option>Ethernet</option> 	   
@@ -5452,268 +5328,244 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- OBSERVACIONES -->
+					    <!-- REQUIERE VOC: -->
 					    <div class="form-group">
-					        <label for="observa_pd" class="col-md-3 control-label">Observaciones</label>
+					        <label for="pr_requiere" class="col-md-3 control-label">REQUIERE VOC:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-									<input type="text" name="observa_pd" id="observa_pd">
+									<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<option>Seleccionar...</option>
+										<option>Si</option>
+										<option>No</option>
+									</select>
 					            </div>
 					        </div>
 					    </div>
 
+					    <!-- PROGRAMACIÓN DE VOC: -->
+					    <div class="form-group">
+					        <label for="pr_requiere" class="col-md-3 control-label">PROGRAMACIÓN DE VOC:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+									<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<option>Seleccionar...</option>
+										<option>Programada</option>
+										<option>No requiere programación</option>
+										<option>No programada. Otra ciudad</option>
+										<option>No programada. Otra ciudad</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
 
 		<!-- SESION NUMERO 3: REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  DESTINO -->
-						<h4>INFORMACIÓN DE CONEXIÓN  EN DATACENTER IMPLEMENTACIÓN</h4>
-						<h5>PUNTO A - Equipo de acceso: Alcatel Triara</h5>
+						<h4>REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</h4>
 
-						<!-- equipo acceso : -->
+
+
+					    <!-- REQUIERE VENTANA DE MTTO : -->
+					    <div class="form-group">
+					        <label for="pr_requiere" class="col-md-3 control-label">REQUIERE VENTANA DE MTTO :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+									<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<option>Seleccionar...</option>
+										<option>si</option>
+										<option>No</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
+
+					    <!-- REQUIERE RFC : -->
+					    <div class="form-group">
+					        <label for="pr_requiere" class="col-md-3 control-label">REQUIERE RFC :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+									<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<option>Seleccionar...</option>
+										<option>SI => Cliente Critico Punto Central</option>
+										<option>SI => Servicio Critico (Listado)</option>
+										<option>SI => Cliente Critico</option>
+										<option>SI => RFC Estándar Saturación</option>
+										<option>SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+										<option>NO</option>
+									</select>
+					            </div>
+					        </div>
+					    </div>
+
+						<h4>Equipos</h4>
+
+						<!-- Conversor Medio :-->
 					     <div class="form-group">
-					        <label for="equipo_a_pdo" class="col-md-3 control-label">Equipo de Acceso:</label>
+					        <label for="pr_conversor_m" class="col-md-3 control-label">Conversor Medio :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input type="text" name="equipo_a_pdo" id="equipo_a_pdo">
+					                <input type="text" name="pr_conversor_m" id="pr_conversor_m">
 					            </div>
 					        </div>
 					    </div>
 
-						<!-- Puerto Equipo de Acceso: -->
+						<!-- Referencia Router : -->
 					     <div class="form-group">
-					        <label for="p_e_acceso_pd" class="col-md-3 control-label">Puerto Equipo de Acceso:</label>
+					        <label for="pr_referencia_r" class="col-md-3 control-label">Referencia Router :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input type="text" name="p_e_acceso_pd" id="p_e_acceso_pd">
+					                <input type="text" name="pr_referencia_r" id="pr_referencia_r">
 					            </div>
 					        </div>
 					    </div>
 
-						<!-- Tipo de Interface : -->
+						<!-- Modulos o Tarjetas : -->
 					     <div class="form-group">
-					        <label for="t_interfaz_pd" class="col-md-3 control-label">Tipo de Interface :</label>
+					        <label for="pr_modululos_t" class="col-md-3 control-label">Modulos o Tarjetas :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input type="text" name="t_interfaz_pd" id="t_interfaz_pd">
+					                <input type="text" name="pr_modululos_t" id="pr_modululos_t">
 					            </div>
 					        </div>
 					    </div>
 
-				<!-- PUNTO B Equipo Claro - Rack: Appliance -->
-						
-						<h5>PUNTO B Equipo Claro - Rack: Appliance</h5>
-						<!-- Equipo Claro: -->
-			            <div class="form-group">
-					        <label for="e_claro_pd" class="col-md-3 control-label">Equipo Claro:</label>
+						<!-- Equipos Adicionales: -->
+					     <div class="form-group">
+					        <label for="pr_equipos_a" class="col-md-3 control-label">Equipos Adicionales:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="e_claro_pd" id="e_claro_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-						<!-- Conector WAN: -->
-			            <div class="form-group">
-					        <label for="conect_wna_pd" class="col-md-3 control-label">Conector WAN:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="conect_wna_pd" id="conect_wna_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- Puerto LAN:  -->
-			            <div class="form-group">
-					        <label for="p_lan_pd" class="col-md-3 control-label">Puerto LAN: </label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="p_lan_pd" id="p_lan_pd" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- Conector LAN:  -->
-			            <div class="form-group">
-					        <label for="c_lan_pd" class="col-md-3 control-label">Conector LAN:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="c_lan_pd" id="c_lan_pd" class="form-control" type="text" >
+					                <input type="text" name="pr_equipos_a" id="pr_equipos_a">
 					            </div>
 					        </div>
 					    </div>
 
 					    <!-- TOMAS REGULADAS REQUERIDAS  -->
 			            <div class="form-group">
-					        <label for="tomas_r_pd" class="col-md-3 control-label">TOMAS REGULADAS REQUERIDAS</label>
+					        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select name="tomas_r_pd" id="tomas_r_pd" class="form-control">
-					                	<option value=""></option>
-					                	<option value=""></option>
-					                	<option value=""></option>
-					                	<option value=""></option>
-					                	
+					                <select name="pr_consumibles" id="pr_consumibles" class="form-control">
+					                	<option value="">Bandeja</option>
+					                	<option value="">Cables de Poder </option>
+					                	<option value="">Clavijas de Conexión</option>
+					                	<option value="">Accesorios para rackear (Orejas)</option>
+					                	<option value="">No Aplica</option>
 					                </select>
 					            </div>
 					        </div>
 					    </div>
 
-						<h5>PUNTO C Equipo Cliente - Rack y Unidad de conexión:</h5>
-					    <!-- Equipos de conexion--> 
-					    <div class="form-group">
-					        <label for="equipos_conex_pd" class="col-md-3 control-label">Equipo de conexión:</label>
+					    <!-- TOMAS REGULADAS REQUERIDAS  -->
+			            <div class="form-group">
+					        <label for="pr_registro_ic" class="col-md-3 control-label">REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="equipos_conex_pd" id="equipos_conex_pd" class="form-control" type="text" >
+					                <select name="pr_registro_ic" id="pr_registro_ic" class="form-control">
+					                	<option value="">SI</option>
+					                	<option value="">NO</option>
+					                </select>
 					            </div>
 					        </div>
 					    </div>
 
-					    <!-- Puerto Cliente--> 
+						<h4>Aprueba costos de oc y cierre de orden de trabajo</h4>
+					    <!-- nombre--> 
 					    <div class="form-group">
-					        <label for="puerto_cliente_pd" class="col-md-3 control-label">Puerto Cliente</label>
+					        <label for="pr_nombre1" class="col-md-3 control-label">NOMBRE :</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="puerto_cliente_pd" id="puerto_cliente_pd" class="form-control" type="text" >
+					                <input name="pr_nombre1" id="pr_nombre1" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 
-						<!-- Tipo de Interface  --> 
+					    <!-- TELEFONO:--> 
 					    <div class="form-group">
-					        <label for="tipo_inter_pd" class="col-md-3 control-label">Tipo de Interface :</label>
+					        <label for="pr_telefono1" class="col-md-3 control-label">TELEFONO:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="tipo_inter_pd" id="tipo_inter_pd" class="form-control" type="text" >
+					                <input name="pr_telefono1" id="pr_telefono1" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+
+						<!-- CELULAR :  --> 
+					    <div class="form-group">
+					        <label for="pr_celular1" class="col-md-3 control-label">CELULAR :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_celular1" id="pr_celular1" class="form-control" type="text" >
 					            </div>
 					        </div>
 					    </div>
 						
-						<!-- TOMAS REGULADAS REQUERIDAS  -->
+						<!-- CORREO ELECTRONICO:  -->
 			            <div class="form-group">
-					        <label for="tomas_r_pd" class="col-md-3 control-label">TOMAS REGULADAS REQUERIDAS</label>
+					        <label for="pr_correo1" class="col-md-3 control-label">CORREO ELECTRONICO:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select name="tomas_r_pd" id="tomas_r_pd" class="form-control">
-					                	<option value=""></option>}
-					                	<option value=""></option>}
-					                	<option value=""></option>}
-					                	<option value=""></option>}
-					                	
-					                </select>
+					                <input type="text" name="pr_correo1" id="pr_correo1" class="form-control">
 					            </div>
 					        </div>
 					    </div>
 						
-						<!-- TOTAL UNIDADES DE RACK  -->
+						<h4>DATOS CLIENTE: TÉCNICO</h4>
+						
+					    <!-- nombre--> 
+					    <div class="form-group">
+					        <label for="pr_nombre1" class="col-md-3 control-label">NOMBRE :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_nombre2" id="pr_nombre2" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+
+					    <!-- TELEFONO:--> 
+					    <div class="form-group">
+					        <label for="pr_telefono2" class="col-md-3 control-label">TELEFONO:</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_telefono2" id="pr_telefono2" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+
+						<!-- CELULAR :  --> 
+					    <div class="form-group">
+					        <label for="pr_celular2" class="col-md-3 control-label">CELULAR :</label>
+					        <div class="col-md-8 selectContainer">
+					            <div class="input-group">
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+					                <input name="pr_celular2" id="pr_celular2" class="form-control" type="text" >
+					            </div>
+					        </div>
+					    </div>
+						
+						<!-- CORREO ELECTRONICO:  -->
 			            <div class="form-group">
-					        <label for="total_r_pd" class="col-md-3 control-label">TOTAL UNIDADES DE RACK</label>
+					        <label for="pr_correo2" class="col-md-3 control-label">CORREO ELECTRONICO:</label>
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <select name="total_r_pd" id="total_r_pd" class="form-control">
-					                	<option value=""></option>}
-					                	<option value=""></option>}
-					                	<option value=""></option>}
-					                	<option value=""></option>}
-					                	
-					                </select>
+					                <input type="text" name="pr_correo2" id="pr_correo2" class="form-control">
 					            </div>
 					        </div>
 					    </div>
-
-					    <!-- CELULAR --> 
-					    <div class="form-group">
-					        <label for="celular_cot_pl_po" class="col-md-3 control-label">Celular:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="celular_cot_pl_po" id="celular_cot_pl_po" class="form-control" type="number" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- EMAIL --> 
-					    <div class="form-group">
-					        <label for="email_cot_pl_po" class="col-md-3 control-label">Email:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="email_cot_pl_po" id="email_cot_pl_po" class="form-control" type="email" >
-					            </div>
-					        </div>
-					    </div>
-
-					 
-					   	<h5>DATOS CLIENTE: TÉCNICO</h5>
-
-					   	<!-- NOMBRE --> 
-					    <div class="form-group">
-					        <label for="nombre_dct_pl_po" class="col-md-3 control-label">Nombre:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="nombre_dct_pl_po" id="nombre_dct_pl_po" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- TELEFONO --> 
-					    <div class="form-group">
-					        <label for="telefono_dct_pl_po" class="col-md-3 control-label">Telefono:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="telefono_dct_pl_po" id="telefono_dct_pl_po" class="form-control" type="number" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- CELULAR --> 
-					    <div class="form-group">
-					        <label for="celular_dct_pl_po" class="col-md-3 control-label">Celular:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="celular_dct_pl_po" id="celular_dct_pl_po" class="form-control" type="number" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- EMAIL --> 
-					    <div class="form-group">
-					        <label for="email_dct_pl_po" class="col-md-3 control-label">Correo electronico:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="email_dct_pl_po" id="email_dct_pl_po" class="form-control" type="email" >
-					            </div>
-					        </div>
-					    </div>
-
-					    <!-- OBSERVACIONES: --> 
-					    <div class="form-group">
-					        <label for="observaciones_pl_po" class="col-md-3 control-label">Observaciones:</label>
-					        <div class="col-md-8 selectContainer">
-					            <div class="input-group">
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-					                <input name="observaciones_pl_po" id="observaciones_pl_po" class="form-control" type="text" >
-					            </div>
-					        </div>
-					    </div>
-					    
-
 				    </fieldset>
 				</form>
 			</div>
