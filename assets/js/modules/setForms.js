@@ -11332,7 +11332,7 @@ $(function () {
 						        <label for="pr_ciudad" class="col-md-3 control-label">Ciudad:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
 						                <input name="pr_ciudad" id="pr_ciudad" class="form-control" type="text" >
 						            </div>
 						        </div>
@@ -11343,7 +11343,7 @@ $(function () {
 						        <label for="pr_direccion" class="col-md-3 control-label">Dirección:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker	" ></i></span>
 						                <input name="pr_direccion" id="pr_direccion" class="form-control" type="text" >
 						            </div>
 						        </div>
@@ -11357,12 +11357,11 @@ $(function () {
 						        <label for="pr_tipo_predio" class="col-md-3 control-label">Tipo predio:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
-										    <option>Seleccionar...</option>
-										    <option>Edificio</option>
-	      									<option>Casa</option>
-										    
+										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="Edificio">Edificio</option>
+	      									<option value="Casa">Casa</option>										    
 										</select>
 						            </div>
 						        </div>
@@ -11389,7 +11388,7 @@ $(function () {
 						        <label for="pr_alias_lugar" class="col-md-3 control-label">Alias del lugar:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
 						                <input name="pr_alias_lugar" id="pr_alias_lugar" class="form-control" type="text" >
 						            </div>
 						        </div>
@@ -11425,7 +11424,7 @@ $(function () {
 						        <label for="pr_tipo_telefoniaf" class="col-md-3 control-label">Tipo telefonia fija:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_telefoniaf" name="pr_tipo_telefoniaf">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Telefonia Pública - Líneas Análogas">Telefonia Pública - Líneas Análogas</option>
@@ -11453,7 +11452,7 @@ $(function () {
 						        <label for="pr_ancho_banda" class="col-md-3 control-label">Ancho de banda:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
 						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
 						            </div>
 						        </div>
@@ -11464,7 +11463,7 @@ $(function () {
 						        <label for="pr_tipo_instalacion" class="col-md-3 control-label">Tipo instalación:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_instalacion" name="pr_tipo_instalacion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Instalar UM con PE">Instalar UM con PE</option>
@@ -11488,7 +11487,7 @@ $(function () {
 						        <label for="pr_idservicio_actual" class="col-md-3 control-label">ID servicio Actual(Aplica para UM Existente):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
 						                <input name="pr_idservicio_actual" id="pr_idservicio_actual" class="form-control" type="text" >
 						            </div>
 						        </div>
@@ -11560,6 +11559,22 @@ $(function () {
 
 						<fieldset class="col-md-6">
 
+							<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
+						    <div class="form-group">
+						        <label for="pr_tipo_conector" class="col-md-3 control-label">Tipo conector(Aplica FO Claro):</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_tipo_conector" name="pr_tipo_conector">
+										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="LC">LC</option>  									   									
+										    <option value="SC">SC</option> 	   
+										    <option value="ST">ST</option>
+										    <option value="FC">FC</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
 							<!-- MEDIO -->
 						    <div class="form-group">
 						        <label for="pr_medio_um" class="col-md-3 control-label">Medio:</label>
@@ -11581,22 +11596,7 @@ $(function () {
 						        </div>
 						    </div>
 
-						    <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
-						    <div class="form-group">
-						        <label for="pr_tipo_conector" class="col-md-3 control-label">Tipo conector (Aplica para FO Claro):</label>
-						        <div class="col-md-9 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_tipo_conector" name="pr_tipo_conector">
-										    <option value="Seleccionar...">Seleccionar...</option>
-										    <option value="LC">LC</option>  									   									
-										    <option value="SC">SC</option> 	   
-										    <option value="ST">ST</option>
-										    <option value="FC">FC</option>
-										</select>
-						            </div>
-						        </div>
-						    </div>
+						    
 						</fieldset>
 					</div>
 
@@ -11633,8 +11633,7 @@ $(function () {
 						                <select class="form-control" id="pr_requiere_voc" name="pr_requiere_voc">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>  									   									
-										    <option value="No">No</option> 	   
-										    
+										    <option value="No">No</option> 	  										    
 										</select>
 						            </div>
 						        </div>
@@ -11674,7 +11673,7 @@ $(function () {
 						        <label for="pr_requiere_rfc" class="col-md-3 control-label">Requiere RFC:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_rfc" name="pr_requiere_rfc">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
@@ -11691,7 +11690,7 @@ $(function () {
 						    <!-- Conversor Medio: -->
 				            <div class="form-group">
 						        <label for="pr_conversor_medio" class="col-md-3 control-label">Conversor Medio:</label>
-						        <div class="ol-md-9 selectContainer">
+						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 						                <input name="pr_conversor_medio" id="pr_conversor_medio" class="form-control" type="text" >
@@ -11759,7 +11758,7 @@ $(function () {
 						        <label for="pr_Consumibles" class="col-md-3 control-label">Consumibles:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_Consumibles" name="pr_Consumibles">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Bandeja">Bandeja</option>
@@ -11778,7 +11777,7 @@ $(function () {
 						        <label for="pr_registro_importacion" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_registro_importacion" name="pr_registro_importacion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
@@ -11812,7 +11811,7 @@ $(function () {
 						        <label for="pr_telefono_1" class="col-md-3 control-label">Telefono:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-altt" ></i></span>
+						                <span class="input-group-addon"><i class="fijo glyphicon glyphicon-phone-alt" ></i></span>
 						                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
 						            </div>
 						        </div>
@@ -11901,19 +11900,19 @@ $(function () {
 					</div>
 
 					<div class="d-inline-b">
-						<fieldset class="col-md-6">
+						
 
 							<!-- OBSERVACIONES:  --> 
 						    <div class="form-group">
-						        <label for="pr_observaciones" class="col-md-3 control-label">Observaciones:</label>
-						        <div class="col-md-9 selectContainer">
+						        <label for="pr_observaciones" class="col-md-2 control-label">Observaciones:</label>
+						        <div class="col-md-10 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 						                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
-						</fieldset>
+				
 					</div>
 
 					<!-- Sexta sesion: KIKOFF TECNICO  -->
@@ -11924,10 +11923,10 @@ $(function () {
 
 							<!-- Activación de PLAN LD CON COSTO (0 $): -->
 						    <div class="form-group">
-						        <label for="pr_activacion_plan" class="col-md-3 control-label">Activación de PLAN LD CON COSTO (0 $):</label>
+						        <label for="pr_activacion_plan" class="col-md-3 control-label">Activación plan LD con costo(0 $):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_activacion_plan" name="pr_activacion_plan">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
@@ -11939,10 +11938,10 @@ $(function () {
 
 							<!-- Equipo Cliente: -->
 						     <div class="form-group">
-						        <label for="pr_equipo_cliente" class="col-md-3 control-label">Equipo Cliente ::</label>
+						        <label for="pr_equipo_cliente" class="col-md-3 control-label">Equipo Cliente:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_equipo_cliente" name="pr_equipo_cliente">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Teléfonos analogos">Teléfonos analogos</option>
@@ -11958,10 +11957,10 @@ $(function () {
 
 							<!-- Interfaz Equipos Cliente: -->
 						    <div class="form-group">
-						        <label for="pr_interfaz_equipoc" class="col-md-3 control-label">Interfaz Equipos Cliente:</label>
+						        <label for="pr_interfaz_equipoc" class="col-md-3 control-label">Interfaz equipos cliente:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_interfaz_equipoc" name="pr_interfaz_equipoc">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="FXS">FXS</option>
@@ -11974,16 +11973,17 @@ $(function () {
 						        </div>
 						    </div>
 
-						    <!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
+						    <!-- Cantidad Canales: -->
 						    <div class="form-group">
-						        <label for="pr_cantidad_lineas" class="col-md-3 control-label">Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):</label>
+						        <label for="pr_cantidad_canales" class="col-md-3 control-label">Cantidad Canales:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_lineas" id="pr_cantidad_lineas" class="form-control" type="text" >
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+						                <input name="pr_cantidad_canales" id="pr_cantidad_canales" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
+
 						</fieldset>
 					</div>
 
@@ -11992,7 +11992,7 @@ $(function () {
 
 							<!-- Conformación PBX (Solo Telefonia Pública Líneas Análogas)  --> 
 						    <div class="form-group">
-						        <label for="pr_conformacion_pbx" class="col-md-3 control-label">Conformación PBX (Solo Telefonia Pública Líneas Análogas):</label>
+						        <label for="pr_conformacion_pbx" class="col-md-3 control-label">Confirmación PBX(Telef. Pública Líneas Análogas):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -12004,7 +12004,7 @@ $(function () {
 
 						    <!-- Cantidad de DID Solicitados  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_did" class="col-md-3 control-label">Cantidad de DID Solicitados:</label>
+						        <label for="pr_cantidad_did" class="col-md-3 control-label">Cantidad DID Solicitados:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -12016,23 +12016,24 @@ $(function () {
 
 						<fieldset class="col-md-6">
 
-							<!-- Cantidad Canales: -->
+							<!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_canales" class="col-md-3 control-label">Cantidad Canales:</label>
+						        <label for="pr_cantidad_lineas" class="col-md-3 control-label">Cantidad Lineas Básicas(Telef. Pública Líneas Análogas):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_canales" id="pr_cantidad_canales" class="form-control" type="text" >
+						                <input name="pr_cantidad_lineas" id="pr_cantidad_lineas" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
 
+							
 						    <!-- Numero Cabecera PBX: -->
 						    <div class="form-group">
-						        <label for="pr_numero_cabecera" class="col-md-3 control-label">Numero Cabecera PBX:</label>
+						        <label for="pr_numero_cabecera" class="col-md-3 control-label">Número Cabecera PBX:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_numero_cabecera" name="pr_numero_cabecera">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
@@ -12064,10 +12065,10 @@ $(function () {
 
 						    <!-- TELEFONO VIRTUAL: -->
 						    <div class="form-group">
-						        <label for="pr_telefono_virtual" class="col-md-3 control-label">Telefono virtual:</label>
+						        <label for="pr_telefono_virtual" class="col-md-3 control-label">Teléfono virtual:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 						                <select class="form-control" id="pr_telefono_virtual" name="pr_telefono_virtual">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="SI (SOLICITAR LICENCIA A LIDER TECNICO GRUPO ASE)">SI (SOLICITAR LICENCIA A LIDER TECNICO GRUPO ASE)</option>
@@ -12082,7 +12083,7 @@ $(function () {
 
 							<!-- Requiere Permisos para Larga Distancia Nacional:: -->
 						    <div class="form-group">
-						        <label for="pr_permisos_largad" class="col-md-3 control-label">Requiere Permisos para Larga Distancia Nacional:</label>
+						        <label for="pr_permisos_largad" class="col-md-3 control-label">Requiere Permisos Larga Distancia Nacional:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -12098,10 +12099,10 @@ $(function () {
 
 						    <!-- Requiero Larga  Para Distancia  Internacional: -->
 						    <div class="form-group">
-						        <label for="pr_larga_distanciai" class="col-md-3 control-label">Requiero Larga  Para Distancia  Internacional:</label>
+						        <label for="pr_larga_distanciai" class="col-md-3 control-label">Requiero Larga para Distancia Internacional:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_larga_distanciai" name="pr_larga_distanciai">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
@@ -12153,6 +12154,1392 @@ $(function () {
 						</fieldset>
 					</div>
 
+					<!-- Septima sesion: NUMERACIÓN SOLO DILIGENCIAR PARA LA OPCIÓN  PBX DISTRIBUIDO  -->
+					<legend class="f-s-15">NUMERACIÓN SOLO DILIGENCIAR PARA LA OPCIÓN  PBX DISTRIBUIDO </legend>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25  d-inline-b cliente">
+								<legend class="f-s-15">Bogotá</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_1" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_1" name="pr_requiere_1">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_1" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_1" name="pr_numeracion_1">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_1" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_1" id="pr_cant_canales_1" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Tunja</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_2" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_2" name="pr_requiere_2">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_2" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_2" name="pr_numeracion_2">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_2" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_2" id="pr_cant_canales_2" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Villavicencio</legend>
+								<div class="form-group">
+							        <label for="pr_requiere_3" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_3" name="pr_requiere_3">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_3" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_3" name="pr_numeracion_3">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_3" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_3" id="pr_cant_canales_3" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Facatativa</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_4" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_4" name="pr_requiere_4">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_4" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_4" name="pr_numeracion_4">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_4" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_4" id="pr_cant_canales_4" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Girardot</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_5" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_5" name="pr_requiere_5">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_5" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_5" name="pr_numeracion_5">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_5" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_5" id="pr_cant_canales_5" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Yopal</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_6" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_6" name="pr_requiere_6">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_6" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_6" name="pr_numeracion_6">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_6" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_6" id="pr_cant_canales_6" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">cali</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_7" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_7" name="pr_requiere_7">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_7" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_7" name="pr_numeracion_7">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_7" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_7" id="pr_cant_canales_7" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Buenaventura</legend>
+								 <div class="form-group">
+						        <label for="pr_requiere_8" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_8" name="pr_requiere_8">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_8" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_8" name="pr_numeracion_8">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_8" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_8" id="pr_cant_canales_8" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Pasto</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_9" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_9" name="pr_requiere_9">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_9" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_9" name="pr_numeracion_9">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_9" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_9" id="pr_cant_canales_9" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Popayán</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_10" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_10" name="pr_requiere_10">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_10" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_10" name="pr_numeracion_10">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_10" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_10" id="pr_cant_canales_10" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Neiva</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_11" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_11" name="pr_requiere_11">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_11" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_11" name="pr_numeracion_11">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_11" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_11" id="pr_cant_canales_11" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Medellín</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_12" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_12" name="pr_requiere_12">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_12" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_12" name="pr_numeracion_12">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_12" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_12" id="pr_cant_canales_12" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+					</div>
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Barranquilla</legend>
+								 <div class="form-group">
+						        <label for="pr_requiere_13" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_13" name="pr_requiere_13">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_13" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_13" name="pr_numeracion_13">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_13" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_13" id="pr_cant_canales_13" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+							</div>
+						</fieldset>
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+								<legend class="f-s-15">Cartagena</legend>
+								<div class="form-group">
+						        <label for="pr_requiere_14" class="col-md-3 control-label">Requiere:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_requiere_14" name="pr_requiere_14">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+						    <div class="form-group">
+						        <label for="pr_numeracion_14" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_numeracion_14" name="pr_numeracion_14">
+										    <option value="Seleccionar...">Seleccionar...</option>
+	      									<option value="SI">SI</option>
+										    <option value="No">No</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
+						    <!-- Cantidad DID -->
+						    <div class="form-group">
+						        <label for="pr_cant_canales_14" class="col-md-3 control-label">Cantidad DID:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cant_canales_14" id="pr_cant_canales_14" class="form-control" type="text" >
+						            </div>
+						        </div>
+						    </div>
+
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Santa Marta: -->
+							    <legend class="f-s-15"> Santa Marta </legend>
+							    <div class="form-group">
+							        <label for="pr_requiere_15" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_15" name="pr_requiere_15">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_15" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_15" name="pr_numeracion_15">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_15" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_15" id="pr_cant_canales_15" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Monteria: -->
+							    <legend class="f-s-15"> Monteria </legend>
+							    <div class="form-group">
+							        <label for="pr_requiere_16" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_16" name="pr_requiere_16">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_16" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_16" name="pr_numeracion_16">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_16" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_16" id="pr_cant_canales_16" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Valledupar: -->
+							    <legend class="f-s-15"> Valledupar </legend>
+							    <div class="form-group">
+							        <label for="pr_requiere_17" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_17" name="pr_requiere_17">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_17" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_17" name="pr_numeracion_17">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_17" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_17" id="pr_cant_canales_17" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Sincelejo: -->
+							    <legend class="f-s-15"> Sincelejo </legend>
+							    <div class="form-group">
+							        <label for="pr_requiere_18" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_18" name="pr_requiere_18">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_18" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_18" name="pr_numeracion_18">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_18" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_18" id="pr_cant_canales_18" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Pereira: -->
+							    <legend class="f-s-15"> Pereira </legend>
+							    <div class="form-group">
+							        <label for="pr_requiere_19" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_19" name="pr_requiere_19">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_19" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_19" name="pr_numeracion_19">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_19" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_19" id="pr_cant_canales_19" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Armenia: -->
+							    <legend class="f-s-15"> Armenia </legend>
+							    <div class="form-group">
+							        <label for="pr_requiere_20" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_20" name="pr_requiere_20">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_20" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_20" name="pr_numeracion_20">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_20" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_20" id="pr_cant_canales_20" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Manizalez: -->
+							    <legend class="f-s-15"> Manizalez: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_21" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_21" name="pr_requiere_21">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_21" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_21" name="pr_numeracion_21">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_21" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_21" id="pr_cant_canales_21" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Ibaué: -->
+							    <legend class="f-s-15"> Ibaué: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_22" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_22" name="pr_requiere_22">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_22" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_22" name="pr_numeracion_22">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_22" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_22" id="pr_cant_canales_22" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Cucutá: -->
+							    <legend class="f-s-15"> Cucutá: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_23" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_23" name="pr_requiere_23">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_23" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_23" name="pr_numeracion_23">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_23" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_23" id="pr_cant_canales_23" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Bucaramanga: -->
+							    <legend class="f-s-15"> Bucaramanga: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_24" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_24" name="pr_requiere_24">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_24" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_24" name="pr_numeracion_24">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_24" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_24" id="pr_cant_canales_24" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Duitama : -->
+							    <legend class="f-s-15"> Duitama : </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_25" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_25" name="pr_requiere_25">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_25" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_25" name="pr_numeracion_25">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_25" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_25" id="pr_cant_canales_25" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Sogamoso: -->
+							    <legend class="f-s-15"> Sogamoso: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_26" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_26" name="pr_requiere_26">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_26" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_26" name="pr_numeracion_26">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_26" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_26" id="pr_cant_canales_26" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Flandes: -->
+							    <legend class="f-s-15"> Flandes: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_27" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_27" name="pr_requiere_27">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_27" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_27" name="pr_numeracion_27">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_27" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_27" id="pr_cant_canales_27" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Rivera: -->
+							    <legend class="f-s-15"> Rivera: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_28" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_28" name="pr_requiere_28">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_28" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_28" name="pr_numeracion_28">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_28" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_28" id="pr_cant_canales_28" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Aipe -->
+							    <legend class="f-s-15"> Aipe </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_29" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_29" name="pr_requiere_29">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_29" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_29" name="pr_numeracion_29">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_29" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_29" id="pr_cant_canales_29" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					
+						<fieldset class="col-md-6">
+							<div class="widget bg_white m-t-25 d-inline-b cliente">
+							    <!-- Lebrija: -->
+							    <legend class="f-s-15"> Lebrija: </legend>
+							    <div class:="form-group">
+							        <label for="pr_requiere_30" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_requiere_30" name="pr_requiere_30">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
+							    <div class="form-group">
+							        <label for="pr_numeracion_30" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_numeracion_30" name="pr_numeracion_30">
+											    <option value="Seleccionar...">Seleccionar...</option>
+		      									<option value="SI">SI</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
+							    </div>
+
+							    <!-- Cantidad DID -->
+							    <div class="form-group">
+							        <label for="pr_cant_canales_30" class="col-md-3 control-label">Cantidad DID:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+							                <input name="pr_cant_canales_30" id="pr_cant_canales_30" class="form-control" type="text" >
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</fieldset>
+					</div>
 				</div>
         	`;
         }
