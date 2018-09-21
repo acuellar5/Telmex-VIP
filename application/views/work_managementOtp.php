@@ -900,7 +900,7 @@
                 <form class="well form-horizontal" id="formModalHitosOTP" method="post" novalidate="novalidate">
                     <div class="form-group col-md-6">
                         <label for="email">Actividad Actual:</label>
-                        <select name="actividad_actual" id="actividad_actual" class="form-control">
+                        <select name="actividad_actual" id="actividad_actual" class="form-control" required>
                             <option value="">SELECCIONE...</option>
                             <option value="KICK OFF">KICK OFF</option>
                             <option value="VISITA OBRA CIVIL">VISITA OBRA CIVIL</option>
