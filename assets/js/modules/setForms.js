@@ -4963,7 +4963,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_OTP" id="OTP" value="${otp}" class="form-control" type="text" disabled>
+						                <input name="pr_OTP" id="OTP" value="${otp}" class="form-control" type="text" readonly>
 						            </div>
 						        </div>
 						    </div>
@@ -5696,6 +5696,15 @@ $(function () {
         /*MPLS*/
         formProduct_mpls: function(otp){
             return `
+            	<legend class="f-s-15"><strong>¿Es un cliente nuevo?</strong>
+            		<div class="btn-cami_cool max-w_border-n">
+            		 	<span>NO</span><label class="switch">
+						  <input id="che" type="checkbox" >
+						  <div class="slider round"></div>
+						</label>
+						<span>SI</span>
+					</div>
+            	</legend>
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>MPLS</small></h2>
 				<!--*********************  MODULO PESTAÑAS  *********************-->
 				<ul class="nav nav-tabs">
@@ -5783,7 +5792,7 @@ $(function () {
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="otp_mpls" id="otp_mpls" value="${otp}" class="form-control" type="text" disabled>
+								                <input name="otp_mpls" id="otp_mpls" value="${otp}" class="form-control" type="text" readonly>
 
 								            </div>
 								        </div>
@@ -6013,16 +6022,19 @@ $(function () {
 
 						            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 								    <div class="form-group">
-								        <label for="pr_tipo_conector" class="col-md-3 control-label">Tipo conector:</label>
+								        <label for="pr_interfaz_entrega_cliente_des" class="col-md-3 control-label">INTERFACE DE ENTREGA AL CLIENTE:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_tipo_conector" name="pr_tipo_conector">
-												    <option value="Seleccionar...">Seleccionar...</option>
-												    <option value="LC">LC</option>  									   									
-												    <option value="SC">SC</option> 	   
-												    <option value="ST">ST</option>
-												    <option value="FC">FC</option>
+								                <select class="form-control" id="pr_interfaz_entrega_cliente_des" name="pr_interfaz_entrega_cliente_des">
+												    <option value="">Seleccionar...</option>
+												    <option value="No aplica">No aplica</option>  									   									
+												    <option value="Ethernet ">Ethernet </option> 	   
+												    <option value="Serial V.35">Serial V.35</option>
+												    <option value="Giga ethernet (electronico)">Giga ethernet (electronico)</option>
+												    <option value="STM-1">STM-1</option>
+												    <option value="RJ45-120 OHM">RJ45-120 OHM</option>
+												    <option value="G703 BNC">G703 BNC</option>
 												</select>
 								            </div>
 								        </div>
@@ -6412,7 +6424,7 @@ $(function () {
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="otp_mpls_pd" id="otp_mpls_pd" class="form-control" type="text" value="${otp}" disabled>
+								                <input name="otp_mpls_pd" id="otp_mpls_pd" class="form-control" type="text" value="${otp}" readonly>
 
 								            </div>
 								        </div>
@@ -7615,11 +7627,11 @@ $(function () {
 						<fieldset class="col-md-12">
 							<!-- OBSERVACIONES: --> 
 						    <div class="form-group">
-						        <label for="observaciones_pl_te" class="col-md-3 control-label">Observaciones:</label>
+						        <label for="pr_observaciones_pl_te" class="col-md-3 control-label">Observaciones:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="observaciones_pl_te" id="observaciones_pl_te" class="form-control" type="text" >
+						                <input name="pr_observaciones_pl_te" id="pr_observaciones_pl_te" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -9288,7 +9300,7 @@ $(function () {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" value="${otp}" disabled>
+						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" value="${otp}" readonly>
 						            </div>
 						        </div>
 						    </div>
@@ -9914,11 +9926,11 @@ $(function () {
 						<fieldset class="col-md-12">
 							<!-- OBSERVACIONES: --> 
 						    <div class="form-group">
-						        <label for="observaciones_pl_te" class="col-md-3 control-label">Observaciones:</label>
+						        <label for="pr_observaciones_pl_te" class="col-md-3 control-label">Observaciones:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="observaciones_pl_te" id="observaciones_pl_te" class="form-control" type="text" >
+						                <input name="pr_observaciones_pl_te" id="pr_observaciones_pl_te" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -10107,11 +10119,11 @@ $(function () {
 						<fieldset class="col-md-6">
 							<!-- TIPO DE ACTIVIDAD : -->
 						    <div class="form-group">
-						        <label for="tipo_acti_ti" class="col-md-3 control-label">Tipo de actividad :</label>
+						        <label for="pr_tipo_acti_ti" class="col-md-3 control-label">Tipo de actividad :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="tipo_acti_ti" name="tipo_acti_ti">
+						                <select class="form-control" id="pr_tipo_acti_ti" name="pr_tipo_acti_ti">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Traslado Interno - Ejecutar de acuerdo a Visita de Cotización">Traslado Interno - Ejecutar de acuerdo a Visita de Cotización</option>
 										    <option value="OTP Legalización - Traslado Punto Central u Origen">OTP Legalización - Traslado Punto Central u Origen</option>
@@ -10304,11 +10316,11 @@ $(function () {
 						<fieldset class="col-md-6">
 							<!-- PROGRAMACIÓN DE VOC: -->
 						    <div class="form-group">
-						        <label for="pr_requiere" class="col-md-3 control-label">Programación VOC:</label>
+						        <label for="pr_programacion_voc" class="col-md-3 control-label">Programación VOC:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-altt" ></i></span>
-										<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<select type="text" name="pr_programacion_voc" id="pr_programacion_voc" class="form-control">
 											<option value="Seleccionar...">Seleccionar...</option>
 											<option value="Programada">Programada</option>
 											<option value="No requiere programación">No requiere programación</option>
@@ -10329,11 +10341,11 @@ $(function () {
 
 							<!-- REQUIERE VENTANA DE MTTO : -->
 						    <div class="form-group">
-						        <label for="pr_requiere" class="col-md-3 control-label">Requiere ventana MTTO:</label>
+						        <label for="pr_requiere_ventana_mtto" class="col-md-3 control-label">Requiere ventana MTTO:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-										<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<select type="text" name="pr_requiere_ventana_mtto" id="pr_requiere_ventana_mtto" class="form-control">
 											<option value="Seleccionar...">Seleccionar...</option>
 											<option value="si">si</option>
 											<option value="No">No</option>
@@ -10344,11 +10356,11 @@ $(function () {
 
 						    <!-- REQUIERE RFC : -->
 						    <div class="form-group">
-						        <label for="pr_requiere" class="col-md-3 control-label">Requiere RFC:</label>
+						        <label for="pr_requiere_rfc" class="col-md-3 control-label">Requiere RFC:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-										<select type="text" name="pr_requiere" id="pr_requiere" class="form-control">
+										<select type="text" name="pr_requiere_rfc" id="pr_requiere_rfc" class="form-control">
 											<option value="Seleccionar...">Seleccionar...</option>
 											<option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 											<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
@@ -10394,11 +10406,11 @@ $(function () {
 
 							<!-- MODULOS O TARJETAS  -->
 				            <div class="form-group">
-						        <label for="pr_modululos_t" class="col-md-3 control-label">Modulos o Tarjetas:</label>
+						        <label for="pr_modulos_t" class="col-md-3 control-label">Modulos o Tarjetas:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_modululos_t" id="pr_modululos_t" class="form-control" type="text" >
+						                <input name="pr_modulos_t" id="pr_modulos_t" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -10659,7 +10671,7 @@ $(function () {
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" value="${otp}" disabled>
+						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" value="${otp}" readonly>
 						            </div>
 						        </div>
 						    </div>
