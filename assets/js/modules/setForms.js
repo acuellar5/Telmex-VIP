@@ -4833,13 +4833,13 @@ $(function () {
         /*****************************************INICIO FORMULARIOS DE PRODUCTO*****************************************/
 
         // Retorna el formulario de producto segun el servicio seleccionado
-        returnFormularyProduct: function(num_servicio){
+        returnFormularyProduct: function(num_servicio, arg){
             let form = "";
             switch(num_servicio){
             	/*formulario Internet*/
             	case '1': // internet dedicado empresarial
             	case '2': // internet dedicado 
-            		form += setForm.formProduct_internet();
+            		form += setForm.formProduct_internet(arg.otp);
             		break;
             	/*formulario MPLS*/
             	case '3': // mpls_avanzado_intranet
@@ -4850,7 +4850,7 @@ $(function () {
             	case '8': // Backend MPLS 
             	case '9': // MPLS Avanzado con Componente Datacenter Claro
             	case '10': // MPLS Transaccional 3G
-            		form += setForm.formProduct_mpls();
+            		form += setForm.formProduct_mpls(arg.otp);
             		break;
             	/*FORMULARIO NOVEDADES*/
             	case '12': // Cambio de Equipos Servicio
@@ -4862,7 +4862,7 @@ $(function () {
             		break;
             	/*TRASLADO_EXTERNO*/
             	case '15': // Traslado Externo Servicio
-            		form += setForm.formProduct_traslado_externo();
+            		form += setForm.formProduct_traslado_externo(arg.otp);
             		break;
             	/*TRASLADO_INTERNO*/
             	case '16': // Traslado Interno Servicio
@@ -4870,14 +4870,14 @@ $(function () {
             		break;
             	/*PVX_ADMINISTRADA*/
             	case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
-            		form += setForm.formProduct_pvx_administrada();
+            		form += setForm.formProduct_pvx_administrada(arg.otp);
             		break;
             	/*TELEFONIA FIJA*/
             	case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
             	case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
             	case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
             	case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
-            		form += setForm.formProduct_telefonia_fija();
+            		form += setForm.formProduct_telefonia_fija(arg.otp);
             		break;
 
             	/*NN HERFANITO*/
@@ -4889,7 +4889,7 @@ $(function () {
         },
 
         /*INTERNET*/
-        formProduct_internet: function(){
+        formProduct_internet: function(otp){
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO DE INTERNET</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -4902,7 +4902,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="ciudad" id="ciudad" class="form-control" type="text" >
+						                <input name="pr_ciudad" id="ciudad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -4912,7 +4912,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="direccion" id="direccion" class="form-control" type="text" >
+						                <input name="pr_direccion" id="direccion" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>						
@@ -4924,7 +4924,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
-						                <select class="form-control" id="tipo_predio" name="tipo_predio">
+						                <select class="form-control" id="tipo_predio" name="pr_tipo_predio">
 										    <option>Seleccionar...</option>
 										    <option>Edificio</option>
 												<option>Casa</option>
@@ -4939,7 +4939,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="fa fa-sort-numeric-desc" ></i></span>
-						                <input name="nit_cliente" id="nit_cliente" class="form-control" type="number" >
+						                <input name="pr_nit_cliente" id="nit_cliente" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -4953,7 +4953,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="alias_lugar" id="alias_lugar" class="form-control" type="text" >
+						                <input name="pr_alias_lugar" id="alias_lugar" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -4963,7 +4963,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="OTP" id="OTP" class="form-control" type="text" >
+						                <input name="pr_OTP" id="OTP" value="${otp}" class="form-control" type="text" disabled>
 						            </div>
 						        </div>
 						    </div>
@@ -4976,7 +4976,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="otp_asociadas" id="otp_asociadas" class="form-control" type="text" >
+						                <input name="pr_otp_asociadas" id="otp_asociadas" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -4986,7 +4986,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="tipo_internet" name="tipo_internet">
+						                <select class="form-control" id="tipo_internet" name="pr_tipo_internet">
 										    <option>Seleccionar...</option>
 										    <option>INTERNET DEDICADO (Solución Diferenciación de tráfico (Internet / NAP))</option>
 												<option>INTERNET DEDICADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>
@@ -5009,7 +5009,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" >
+						                <input name="pr_ancho_banda" id="ancho_banda" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>		
@@ -5020,7 +5020,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="tipo_instalacion" name="tipo_instalacion">
+						                <select class="form-control" id="tipo_instalacion" name="pr_tipo_instalacion">
 										    <option>Seleccionar...</option>
 										    <option>Instalar UM con PE</option>
 												<option>Instalar UM con PE sobre OTP de Pymes</option>
@@ -5042,7 +5042,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="id_servicio_actual" id="id_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_id_servicio_actual" id="id_servicio_actual" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5059,7 +5059,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="requiere_instalacion_um" name="requiere_instalacion_um">
+						                <select class="form-control" id="requiere_instalacion_um" name="pr_requiere_instalacion_um">
 										    <option>Seleccionar...</option>
 										    <option>Si</option>
 												<option>No</option>   												
@@ -5075,7 +5075,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="proveedor_milla" name="proveedor_milla">
+						                <select class="form-control" id="proveedor_milla" name="pr_proveedor_milla">
 										    <option>Seleccionar...</option>
 										    <option>No aplica</option>
 												<option>Existente</option>
@@ -5115,7 +5115,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="medio_um" name="medio_um">
+						                <select class="form-control" id="medio_um" name="pr_medio_um">
 										    <option>Seleccionar...</option>
 										    <option>No Aplica</option>  									   									
 										    <option>Existente</option> 	   
@@ -5137,7 +5137,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="respuesta_factibilidad" id="respuesta_factibilidad" class="form-control" type="text" >
+						                <input name="pr_respuesta_factibilidad" id="respuesta_factibilidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5153,7 +5153,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="tipo_conector" name="tipo_conector">
+						                <select class="form-control" id="tipo_conector" name="pr_tipo_conector">
 										    <option>Seleccionar...</option>
 										    <option>LC</option>  									   									
 										    <option>SC</option> 	   
@@ -5171,7 +5171,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="sds_destino" id="sds_destino" class="form-control" type="text" >
+						                <input name="pr_sds_destino" id="sds_destino" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5184,27 +5184,11 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="olt_gpon" id="olt_gpon" class="form-control" type="text" >
+						                <input name="pr_olt_gpon" id="olt_gpon" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
 				            
-				            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
-				            <div class="form-group">
-				                <label for="tipo_conector" class="col-md-3 control-label">Tipo conector (FO):</label>
-				                <div class="col-md-8 selectContainer">
-				                    <div class="input-group">
-				                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="tipo_conector" name="tipo_conector">
-										    <option>Seleccionar...</option>
-										    <option>LC</option>  									   									
-										    <option>SC</option> 	   
-										    <option>ST</option>
-										    <option>FC</option>
-										</select>
-				                    </div>
-				                </div>
-				            </div>
 							
 						</fieldset>
 					</div>
@@ -5218,7 +5202,7 @@ $(function () {
 				                <div class="col-md-8 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="interface_entrega_cliente" name="interface_entrega_cliente">
+						                <select class="form-control" id="interface_entrega_cliente" name="pr_interface_entrega_cliente">
 										    <option>Seleccionar...</option>
 										    <option>No aplica</option>  									   									
 										    <option>Ethernet</option> 	   
@@ -5239,7 +5223,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="requiere_voc" name="requiere_voc">
+						                <select class="form-control" id="requiere_voc" name="pr_requiere_voc">
 										    <option>Seleccionar...</option>
 										    <option>Si</option>
 												<option>No</option>   												
@@ -5257,7 +5241,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="programacion_voc" name="programacion_voc">
+						                <select class="form-control" id="programacion_voc" name="pr_programacion_voc">
 										    <option>Seleccionar...</option>
 										    <option>Programada</option>
 												<option>No requiere programación</option>   												
@@ -5280,7 +5264,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="requiere_rfc" name="requiere_rfc">
+						                <select class="form-control" id="requiere_rfc" name="pr_requiere_rfc">
 										    <option>Seleccionar...</option>
 										    <option>SI => Cliente Critico Punto Central</option>
 												<option>SI => Servicio Critico (Listado)</option>   												
@@ -5300,7 +5284,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="conversor_medio" id="conversor_medio" class="form-control" type="text" >
+						                <input name="pr_conversor_medio" id="conversor_medio" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5313,7 +5297,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="referencia_router" id="referencia_router" class="form-control" type="text" >
+						                <input name="pr_referencia_router" id="referencia_router" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5324,7 +5308,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="modulo_o_tarjeta" id="modulo_o_tarjeta" class="form-control" type="text" >
+						                <input name="pr_modulo_o_tarjeta" id="modulo_o_tarjeta" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5340,7 +5324,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="licencias" id="licencias" class="form-control" type="text" >
+						                <input name="pr_licencias" id="licencias" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5351,7 +5335,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="equipos_adicionales" id="equipos_adicionales" class="form-control" type="text" >
+						                <input name="pr_equipos_adicionales" id="equipos_adicionales" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5364,7 +5348,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="consumibles" id="consumibles" class="form-control" type="text" >
+						                <input name="pr_consumibles" id="consumibles" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5375,7 +5359,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="registro_importacion_carta" name="registro_importacion_carta">
+						                <select class="form-control" id="registro_importacion_carta" name="pr_registro_importacion_carta">
 										    <option>Seleccionar...</option>
 										    <option>Si</option>
 												<option>No</option>
@@ -5397,7 +5381,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="nombre_dcc" id="nombre_dcc" class="form-control" type="text" >
+						                <input name="pr_nombre_dcc" id="nombre_dcc" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5408,7 +5392,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="telefono_dcc" id="telefono_dcc" class="form-control" type="number" >
+						                <input name="pr_telefono_dcc" id="telefono_dcc" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5421,7 +5405,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="celular_dcc" id="celular_dcc" class="form-control" type="number" >
+						                <input name="pr_celular_dcc" id="celular_dcc" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5432,7 +5416,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="email_dcc" id="email_dcc" class="form-control" type="email" >
+						                <input name="pr_email_dcc" id="email_dcc" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -5449,7 +5433,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="nombre_dct" id="nombre_dct" class="form-control" type="text" >
+						                <input name="pr_nombre_dct" id="nombre_dct" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5460,7 +5444,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="telefono_dct" id="telefono_dct" class="form-control" type="number" >
+						                <input name="pr_telefono_dct" id="telefono_dct" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5473,7 +5457,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="celular_dct" id="celular_dct" class="form-control" type="number" >
+						                <input name="pr_celular_dct" id="celular_dct" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5484,7 +5468,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="email_dct" id="email_dct" class="form-control" type="email" >
+						                <input name="pr_email_dct" id="email_dct" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -5500,7 +5484,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="observaciones_dct" id="observaciones_dct" class="form-control" type="text" >
+						                <input name="pr_observaciones_dct" id="observaciones_dct" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5517,7 +5501,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="ancho_banda_nap" id="ancho_banda_nap" class="form-control" type="number" >
+						                <input name="pr_ancho_banda_nap" id="ancho_banda_nap" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5528,7 +5512,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="ancho_banda_internet" id="ancho_banda_internet" class="form-control" type="number" >
+						                <input name="pr_ancho_banda_internet" id="ancho_banda_internet" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5541,7 +5525,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="direccion_ip" name="direccion_ip">
+						                <select class="form-control" id="direccion_ip" name="pr_direccion_ip">
 										    <option>Seleccionar...</option>
 										    <option>Cantidad IPs: 2 - Mascara: /30</option>
 												<option>Cantidad IPs 6 - Mascara: /29</option>
@@ -5558,7 +5542,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="activacion_correo" name="activacion_correo">
+						                <select class="form-control" id="activacion_correo" name="pr_activacion_correo">
 										    <option>Seleccionar...</option>
 										    <option>Si</option>
 												<option>No</option>
@@ -5578,7 +5562,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="activacion_hosting" name="activacion_hosting">
+						                <select class="form-control" id="activacion_hosting" name="pr_activacion_hosting">
 										    <option>Seleccionar...</option>
 										    <option>Si</option>
 												<option>No</option>
@@ -5593,7 +5577,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="Dominio_existente" name="Dominio_existente">
+						                <select class="form-control" id="Dominio_existente" name="pr_Dominio_existente">
 										    <option>Seleccionar...</option>
 										    <option>Si</option>
 												<option>No</option>
@@ -5610,7 +5594,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="dominio_a_comprar" id="dominio_a_comprar" class="form-control" type="number" >
+						                <input name="pr_dominio_a_comprar" id="dominio_a_comprar" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5621,7 +5605,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="cantidad_cuentas_correo" name="cantidad_cuentas_correo">
+						                <select class="form-control" id="cantidad_cuentas_correo" name="pr_cantidad_cuentas_correo">
 										    <option>Seleccionar...</option>
 										    <option>20</option>
 												<option>40</option>
@@ -5639,7 +5623,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="espacio_correo_gb" name="espacio_correo_gb">
+						                <select class="form-control" id="espacio_correo_gb" name="pr_espacio_correo_gb">
 										    <option>Seleccionar...</option>
 										    <option>2</option>
 												<option>4</option>
@@ -5662,7 +5646,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="pataforma_web_hosting" name="pataforma_web_hosting">
+						                <select class="form-control" id="pataforma_web_hosting" name="pr_pataforma_web_hosting">
 										    <option>Seleccionar...</option>
 										    <option>Windows</option>
 												<option>Solaris</option>
@@ -5678,7 +5662,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="web_hosting_mb" name="web_hosting_mb">
+						                <select class="form-control" id="web_hosting_mb" name="pr_web_hosting_mb">
 										    <option>Seleccionar...</option>
 										    <option>20</option>
 												<option>40</option>
@@ -5698,7 +5682,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="promocion_vigente_nom" id="promocion_vigente_nom" class="form-control" type="number" >
+						                <input name="pr_promocion_vigente_nom" id="promocion_vigente_nom" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5710,7 +5694,7 @@ $(function () {
         },
 
         /*MPLS*/
-        formProduct_mpls: function(){
+        formProduct_mpls: function(otp){
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>MPLS</small></h2>
 				<!--*********************  MODULO PESTAÑAS  *********************-->
@@ -5799,7 +5783,8 @@ $(function () {
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
+								                <input name="otp_mpls" id="otp_mpls" value="${otp}" class="form-control" type="text" disabled>
+
 								            </div>
 								        </div>
 								    </div>
@@ -6427,7 +6412,8 @@ $(function () {
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_otp_2" id="pr_otp_2" class="form-control" type="text" >
+								                <input name="otp_mpls_pd" id="otp_mpls_pd" class="form-control" type="text" value="${otp}" disabled>
+
 								            </div>
 								        </div>
 								    </div>
@@ -9221,7 +9207,7 @@ $(function () {
         },
 
         /*TRASLADO EXTERNO*/
-        formProduct_traslado_externo: function(){
+        formProduct_traslado_externo: function(otp){
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>TRASLADO EXTERNO</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -9318,7 +9304,7 @@ $(function () {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
+						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" value="${otp}" disabled>
 						            </div>
 						        </div>
 						    </div>
@@ -10605,7 +10591,7 @@ $(function () {
         },
 
         /*PBX ADMINISTRADA*/
-        formProduct_pvx_administrada: function(){
+        formProduct_pvx_administrada: function(otp){
         	return `
         		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO PBX ADMINISTRADA</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -10689,7 +10675,7 @@ $(function () {
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
+						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" value="${otp}" disabled>
 						            </div>
 						        </div>
 						    </div>
@@ -11334,7 +11320,7 @@ $(function () {
         },
 
         // TELEFONIA FIJA
-        formProduct_telefonia_fija: function(){
+        formProduct_telefonia_fija: function(otp){
         	return `
         		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO TELEFONIA FIJA</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -11418,7 +11404,7 @@ $(function () {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
+						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" disables value="${otp}">
 						            </div>
 						        </div>
 						    </div>

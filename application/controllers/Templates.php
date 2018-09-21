@@ -10,6 +10,7 @@ class Templates extends CI_Controller {
         $this->load->model('data/Dao_estado_ot_model');
         $this->load->model('data/Dao_log_correo_model');
         $this->load->model('data/Dao_hito_model');
+        $this->load->model('data/Dao_producto_model');
     }
 
 //
@@ -81,7 +82,7 @@ class Templates extends CI_Controller {
       if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
         // 1. formulario linea base guardar en bd tabla linea_base (otp)
         $this->guardar_linea_base($this->input->post());
-        $this->guardar_producto($this->input->post()):
+        $this->guardar_producto($this->input->post());
 
 
 
@@ -136,7 +137,189 @@ class Templates extends CI_Controller {
 
     // guardar formulario de producto dependiendo el numero del producto
     private function guardar_producto($pt){
-          
+          switch($pt['num_servicio']){
+              /*formulario Internet*/
+              case '1': // internet dedicado empresarial
+              case '2': // internet dedicado
+                $data_pr = array(
+                  'id_ot_padre'              => $pt['pr_OTP'],
+                  'ciudad'                   => $pt['pr_ciudad'],
+                  'direccion'                => $pt['pr_direccion'],
+                  'tipo_predio'              => $pt['pr_tipo_predio'],
+                  'nit_cliente'              => $pt['pr_nit_cliente'],
+                  'alias_lugar'              => $pt['pr_alias_lugar'],
+                  'otp_asociada'             => $pt['pr_otp_asociadas'],
+                  'tipo_internet'            => $pt['pr_tipo_internet'],
+                  'ancho_banda'              => $pt['pr_ancho_banda'],
+                  'tipo_instalacion'         => $pt['pr_tipo_instalacion'],
+                  'servicio_actual'          => $pt['pr_id_servicio_actual'],
+                  'requiere_um'              => $pt['pr_requiere_instalacion_um'],
+                  'proveedor'                => $pt['pr_proveedor_milla'],
+                  'medio'                    => $pt['pr_medio_um'],
+                  'factibilidad_bw'          => $pt['pr_respuesta_factibilidad'],
+                  'tipo_conector'            => $pt['pr_tipo_conector'],
+                  'sds_destino'              => $pt['pr_sds_destino'],
+                  'olt'                      => $pt['pr_olt_gpon'],
+                  'interfaz_entrega_cliente' => $pt['pr_interface_entrega_cliente'],
+                  'requiere_voc'             => $pt['pr_requiere_voc'],
+                  'programacion_voc'         => $pt['pr_programacion_voc'],
+                  'requiere_rfc'             => $pt['pr_requiere_rfc'],
+                  'conversor_medio'          => $pt['pr_conversor_medio'],
+                  'referencia_router'        => $pt['pr_referencia_router'],
+                  'modulos_tarjetas'         => $pt['pr_modulo_o_tarjeta'],
+                  'licencias'                => $pt['pr_licencias'],
+                  'equipos_adicionales'      => $pt['pr_equipos_adicionales'],
+                  'consumibles'              => $pt['pr_consumibles'],
+                  'carta_valorizada'         => $pt['pr_registro_importacion_carta'],
+                  'nombre_1'                 => $pt['pr_nombre_dcc'],
+                  'telefono_1'               => $pt['pr_telefono_dcc'],
+                  'celular_1'                => $pt['pr_celular_dcc'],
+                  'correo_1'                 => $pt['pr_email_dcc'],
+                  'nombre_2'                 => $pt['pr_nombre_dct'],
+                  'telefono_2'               => $pt['pr_telefono_dct'],
+                  'celular_2'                => $pt['pr_celular_dct'],
+                  'correo_2'                 => $pt['pr_email_dct'],
+                  'observaciones'            => $pt['pr_observaciones_dct'],
+                  'ancho_banda_nap'          => $pt['pr_ancho_banda_nap'],
+                  'ancho_banda_internet'     => $pt['pr_ancho_banda_internet'],
+                  'direcciones_ip'           => $pt['pr_direccion_ip'],
+                  'activacion_correo'        => $pt['pr_activacion_correo'],
+                  'activacion_web_hosting'   => $pt['pr_activacion_hosting'],
+                  'dominio_existente'        => $pt['pr_Dominio_existente'],
+                  'dominio_comprar'          => $pt['pr_dominio_a_comprar'],
+                  'cant_correos'             => $pt['pr_cantidad_cuentas_correo'],
+                  'espacio_correo'           => $pt['pr_espacio_correo_gb'],
+                  'plataforma_web'           => $pt['pr_pataforma_web_hosting'],
+                  'web_hosting'              => $pt['pr_web_hosting_mb'],
+                  'promocion'                => $pt['pr_promocion_vigente_nom']
+                );
+                $this->Dao_producto_model->insert_pr_internet($data_pr);
+                break;
+              /*formulario MPLS*/
+              case '3': // mpls_avanzado_intranet
+              case '4': // mpls_avanzado_intranet_varios_puntos
+              case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
+              case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
+              case '7': // MPLS Avanzado Extranet
+              case '8': // Backend MPLS 
+              case '9': // MPLS Avanzado con Componente Datacenter Claro
+              case '10': // MPLS Transaccional 3G
+                $data_pr = array(
+                  'id_ot_padre_ori'              => $pt[''],
+                  'ciudad_ori'                   => $pt[''],
+                  'direccion_ori'                => $pt[''],
+                  'tipo_predio_ori'              => $pt[''],
+                  'nit_cliente_ori'              => $pt[''],
+                  'alias_lugar_ori'              => $pt[''],
+                  'otp_asociada_ori'             => $pt[''],
+                  'tipo_mpls_ori'                => $pt[''],
+                  'ancho_banda_ori'              => $pt[''],
+                  'tipo_instalacion_ori'         => $pt[''],
+                  'servicio_actual_ori'          => $pt[''],
+                  'servicio_principal_ori'       => $pt[''],
+                  'requiere_um_ori'              => $pt[''],
+                  'um_backup_ori'                => $pt[''],
+                  'proveedor_ori'                => $pt[''],
+                  'medio_ori'                    => $pt[''],
+                  'factibilidad_bw_ori'          => $pt[''],
+                  'tipo_conector_ori'            => $pt[''],
+                  'sds_destino_ori'              => $pt[''],
+                  'interfaz_entrega_cliente_ori' => $pt[''],
+                  'requiere_voc_ori'             => $pt[''],
+                  'programacion_voc_ori'         => $pt[''],
+                  'requiere_rfc_ori'             => $pt[''],
+                  'conversor_medio_ori'          => $pt[''],
+                  'referencia_router_ori'        => $pt[''],
+                  'modulos_tarjetas_ori'         => $pt[''],
+                  'licencias_ori'                => $pt[''],
+                  'equipos_adicionales_ori'      => $pt[''],
+                  'consumibles_ori'              => $pt[''],
+                  'carta_valorizada_ori'         => $pt[''],
+                  'nombre_1_ori'                 => $pt[''],
+                  'telefono_1_ori'               => $pt[''],
+                  'celular_1_ori'                => $pt[''],
+                  'correo_1_ori'                 => $pt[''],
+                  'observaciones_1_ori'          => $pt[''],
+                  'telefono_2_ori'               => $pt[''],
+                  'celular_2_ori'                => $pt[''],
+                  'correo_2_ori'                 => $pt[''],
+                  'observaciones_2_ori'          => $pt[''],
+                  'id_ot_padre_des'              => $pt[''],
+                  'ciudad_des'                   => $pt[''],
+                  'direccion_des'                => $pt[''],
+                  'tipo_predio_des'              => $pt[''],
+                  'nit_cliente_des'              => $pt[''],
+                  'alias_lugar_des'              => $pt[''],
+                  'otp_asociada_des'             => $pt[''],
+                  'tipo_mpls_des'                => $pt[''],
+                  'ancho_banda_des'              => $pt[''],
+                  'tipo_instalacion_des'         => $pt[''],
+                  'servicio_actual_des'          => $pt[''],
+                  'servicio_principal_des'       => $pt[''],
+                  'requiere_um_des'              => $pt[''],
+                  'um_backup_des'                => $pt[''],
+                  'proveedor_des'                => $pt[''],
+                  'medio_des'                    => $pt[''],
+                  'factibilidad_bw_des'          => $pt[''],
+                  'tipo_conector_des'            => $pt[''],
+                  'sds_destino_des'              => $pt[''],
+                  'interfaz_entrega_cliente_des' => $pt[''],
+                  'requiere_voc_des'             => $pt[''],
+                  'programacion_voc_des'         => $pt[''],
+                  'requiere_rfc_des'             => $pt[''],
+                  'conversor_medio_des'          => $pt[''],
+                  'referencia_router_des'        => $pt[''],
+                  'modulos_tarjetas_des'         => $pt[''],
+                  'licencias_des'                => $pt[''],
+                  'equipos_adicionales_des'      => $pt[''],
+                  'consumibles_des'              => $pt[''],
+                  'carta_valorizada_des'         => $pt[''],
+                  'nombre_1_des'                 => $pt[''],
+                  'telefono_1_des'               => $pt[''],
+                  'celular_1_des'                => $pt[''],
+                  'correo_1_des'                 => $pt[''],
+                  'observaciones_1_des'          => $pt[''],
+                  'telefono_2_des'               => $pt[''],
+                  'celular_2_des'                => $pt[''],
+                  'correo_2_des'                 => $pt[''],
+                  'observaciones_2_des'          => $pt['']
+                );
+                
+
+                break;
+              /*FORMULARIO NOVEDADES*/
+              case '12': // Cambio de Equipos Servicio
+              case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+              case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+              case '22': // Cambio de Última Milla
+              case '23': // Cambio de Equipo
+
+                break;
+              /*TRASLADO_EXTERNO*/
+              case '15': // Traslado Externo Servicio
+
+                break;
+              /*TRASLADO_INTERNO*/
+              case '16': // Traslado Interno Servicio
+
+                break;
+              /*PVX_ADMINISTRADA*/
+              case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+
+                break;
+              /*TELEFONIA FIJA*/
+              case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
+              case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
+              case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
+              case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
+
+                break;
+
+              /*NN HERFANITO*/
+              case '11': // Adición Marquillas Aeropuerto el Dorado Opain
+
+                break;
+            }
     }
 
     // guardar linea base en base de datos
@@ -5016,6 +5199,7 @@ class Templates extends CI_Controller {
 
 //
     public function mpls_transaccional_3g($argumentos) {
+
         return '
 
           <div dir="ltr"><div class="adM">
@@ -5475,6 +5659,7 @@ class Templates extends CI_Controller {
           <br></div></div>
 
           ';
+      }
     }
 
     /*--**************************************************************PLANTILLA CORREO KICKOFF 15 DIAS***********************************************************************--*/
