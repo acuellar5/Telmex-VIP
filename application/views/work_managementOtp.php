@@ -618,7 +618,7 @@
                 <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?= URL::to('assets/images/plus.png'); ?>" data-simbol="plus" class="rigth"></span></button>
 
                 <div>
-                    <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post">
+                    <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
                         <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
@@ -1354,12 +1354,12 @@
                                             </div>
                                             <div class="col-xs-10 bhoechie-tab" >
 
-                                                <!-- tab1  -->
+                                                <!-- tab1  LINEA BASE-->
                                                 <div class="bhoechie-tab-content active" id="contentTab1">
                                                     <h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Linea Base</h2>
                                                     <!-- formulario de linea base -->
                                                     <div id="general_linea_base">
-                                                        <div id="general_linea_base">
+                                                        <div>
                                                             <div class="widget bg_white m-t-25 d-inline-b cliente">
                                                                 <div class="d-inline-b">
                                                                     <fieldset class="col-md-6">
@@ -1369,7 +1369,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_compromiso" id="lb_fecha_compromiso" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_compromiso" id="lb_fecha_compromiso" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1379,7 +1379,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_programacion" id="lb_fecha_programacion" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_programacion" id="lb_fecha_programacion" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1392,7 +1392,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_voc" id="lb_fecha_voc" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_voc" id="lb_fecha_voc" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1402,7 +1402,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_aprobacion_coc" id="lb_fecha_aprobacion_coc" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_aprobacion_coc" id="lb_fecha_aprobacion_coc" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1418,7 +1418,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_ingenieria_detalle" id="lb_fecha_ingenieria_detalle" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_ingenieria_detalle" id="lb_fecha_ingenieria_detalle" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1428,7 +1428,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_configuracion" id="lb_fecha_configuracion" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_configuracion" id="lb_fecha_configuracion" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1441,7 +1441,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_ejecucion_obra_civil" id="lb_fecha_ejecucion_obra_civil" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_ejecucion_obra_civil" id="lb_fecha_ejecucion_obra_civil" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1451,7 +1451,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_equipos" id="lb_fecha_equipos" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_equipos" id="lb_fecha_equipos" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1467,7 +1467,17 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_empalmes" id="lb_fecha_empalmes" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_empalmes" id="lb_fecha_empalmes" class="form-control validar_required">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--*********************  INPUT DATE  *********************-->
+                                                                        <div class="form-group">
+                                                                            <label for="lb_fecha_dcoc" class="col-md-3 control-label">Fecha documentación cotización obra civil :</label>
+                                                                            <div class="col-md-9 selectContainer">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                                                    <input type="date" name="lb_fecha_dcoc" id="lb_fecha_dcoc" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1479,7 +1489,7 @@
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_entrega_servicio" id="lb_fecha_entrega_servicio" required class="form-control">
+                                                                                    <input type="date" name="lb_fecha_entrega_servicio" id="lb_fecha_entrega_servicio" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1535,7 +1545,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
                 <?php if (Auth::user()->n_role_user != 'claro'): ?>
-                    <button type="submit" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
+                    <button type="button" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
                 <?php endif ?>
             </div>
         </div>

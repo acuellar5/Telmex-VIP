@@ -25,7 +25,6 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
 <?php endif ?>
 
-  <script src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js') ?> "></script>
   <script src="<?= URL::to("assets/plugins/jquery/jquery.min.js") ?>"></script>
   <script src="<?= URL::to("assets/plugins/bootstrap/js/bootstrap.min.js") ?>"></script>
 

@@ -114,7 +114,7 @@ $(function () {
 					            <div class="col-md-8 selectContainer div_Form_Modals">
 					                <div class="input-group">
 					                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					                    <input name="mail_envio" id="mail_envio" class="form-control" type="text" required>
+					                    <input name="mail_envio" id="mail_envio" class="form-control validar_required" type="text">
 					                </div>
 					            </div>
 					            <span class="btn btn-cami_cool" id="añadir_correo"> Add  <span class="fa fa-plus"></span></span>
@@ -128,7 +128,7 @@ $(function () {
 					            <div class="col-md-8 selectContainer">
 					                <div class="input-group">
 					                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					                    <input name="nombre" id="nombre" class="form-control" type="text" required>
+					                    <input name="nombre" id="nombre" class="form-control validar_required" type="text">
 					                </div>
 					            </div>
 					        </div>
@@ -179,7 +179,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}" >
 					        </div>
 					      </div>
 					    </div>
@@ -188,7 +188,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -201,7 +201,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -210,7 +210,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -227,7 +227,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}" >
 					        </div>
 					      </div>
 					    </div>
@@ -236,7 +236,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -248,7 +248,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -257,7 +257,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -283,7 +283,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}" >
 					        </div>
 					      </div>
 					    </div>
@@ -292,7 +292,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required validar_required" type="text" >
 					        </div>
 					      </div>
 					    </div>
@@ -312,7 +312,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number" >
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -322,7 +322,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date" >
 					        </div>
 					      </div>
 					    </div>
@@ -339,7 +339,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion_des1" id="direccion_instalacion_des1" class="form-control" type="text" required >
+					          <input name="direccion_instalacion_des1" id="direccion_instalacion_des1" class="form-control validar_required" type="text" >
 					        </div>
 					      </div>
 					    </div>
@@ -381,7 +381,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="equipos_intalar_camp1" id="equipos_intalar_camp1" class="form-control" type="text" required>
+					          <input name="equipos_intalar_camp1" id="equipos_intalar_camp1" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -410,7 +410,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -443,7 +443,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -453,7 +453,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -479,7 +479,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}" >
 					        </div>
 					      </div>
 					    </div>
@@ -488,7 +488,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -508,7 +508,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -518,7 +518,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -544,7 +544,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}" >
 					        </div>
 					      </div>
 					    </div>
@@ -553,7 +553,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -573,7 +573,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -583,7 +583,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -609,7 +609,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}">
 					        </div>
 					      </div>
 					    </div>
@@ -618,7 +618,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -638,7 +638,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -648,7 +648,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -674,7 +674,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}">
 					        </div>
 					      </div>
 					    </div>
@@ -683,7 +683,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -703,7 +703,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -713,7 +713,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -739,7 +739,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}" >
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}" >
 					        </div>
 					      </div>
 					    </div>
@@ -748,7 +748,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required>
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -768,7 +768,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -778,7 +778,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -804,7 +804,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group direccion">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control" type="text" value="${direccion_destino}">
+					          <input name="direccion_instalacion" id="direccion_instalacion" class="form-control validar_required" type="text" value="${direccion_destino}">
 					        </div>
 					      </div>
 					    </div>
@@ -813,7 +813,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control" type="text" required >
+					          <input name="interfaz_entrega" id="interfaz_entrega" class="form-control validar_required" type="text">
 					        </div>
 					      </div>
 					    </div>
@@ -833,7 +833,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					          <input name="ancho_banda" id="ancho_banda" class="form-control" type="number" required>
+					          <input name="ancho_banda" id="ancho_banda" class="form-control validar_required" type="number">
 					          <span class="input-group-addon">MHz</span>
 					        </div>
 					      </div>
@@ -843,7 +843,7 @@ $(function () {
 					      <div class="col-md-8 selectContainer">
 					        <div class="input-group">
 					          <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-					          <input name="fecha_servicio" id="fecha_servicio" class="form-control" type="date" required>
+					          <input name="fecha_servicio" id="fecha_servicio" class="form-control validar_required" type="date">
 					        </div>
 					      </div>
 					    </div>
@@ -860,7 +860,7 @@ $(function () {
 					            <div class="col-md-9 selectContainer">
 					                <div class="input-group">
 					                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					                    <select name="ingeniero1" id="ingeniero1" class="form-control class_fill_eingenieer" type="text" required >
+					                    <select name="ingeniero1" id="ingeniero1" class="form-control class_fill_eingenieer validar_required" type="text">
 					                        <option value="">Seleccionar</option>
 					                    </select>
 					                </div>
@@ -871,7 +871,7 @@ $(function () {
 					            <div class="col-md-9 selectContainer">
 					                <div class="input-group">
 					                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					                    <input name="ingeniero1_tel" id="ingeniero1_tel" class="form-control class_fill_eingenieer" type="number" required>
+					                    <input name="ingeniero1_tel" id="ingeniero1_tel" class="form-control class_fill_eingenieer validar_required" type="number">
 					                </div>
 					            </div>
 					        </div>
@@ -880,7 +880,7 @@ $(function () {
 					            <div class="col-md-9 selectContainer">
 					                <div class="input-group">
 					                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					                    <input name="ingeniero1_email" id="ingeniero1_email" class="form-control class_fill_eingenieer" type="email"required>
+					                    <input name="ingeniero1_email" id="ingeniero1_email" class="form-control class_fill_eingenieer validar_required" type="email">
 					                </div>
 					            </div>
 					        </div>
@@ -7186,11 +7186,11 @@ $(function () {
 						<fieldset class="col-md-6">
 							 <!-- REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA SEDE ANTIGUA(PROVEEDOR TERCERO) -->
 						    <div class="form-group">
-						        <label for="liberacion_umst_te" class="col-md-3 control-label">Requiere liberación de recursos ultima milla sede antigua(proveedor tercero):</label>
+						        <label for="pr_liberacion_umst_te" class="col-md-3 control-label">Requiere liberación de recursos ultima milla sede antigua(proveedor tercero):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="liberacion_umst_te" name="liberacion_umst_te">
+						                <select class="form-control" id="pr_liberacion_umst_te" name="pr_liberacion_umst_te">
 										    <option>Seleccionar...</option>
 										    <option>SI - Generar Tarea de Desconexión Tercero al finalizar el Cambio Tipo de Acceso</option>
 	      									<option>NO - Recursos de UM Propia en Sede Antigua</option> 
@@ -7590,11 +7590,11 @@ $(function () {
 
 						    <!-- TELEFONO --> 
 						    <div class="form-group">
-						        <label for="´pr_telefono2" class="col-md-3 control-label">Telefono:</label>
+						        <label for="pr_telefono2" class="col-md-3 control-label">Telefono:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-						                <input name="´pr_telefono2" id="´pr_telefono2" class="form-control" type="number" >
+						                <input name="pr_telefono2" id="pr_telefono2" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>

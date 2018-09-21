@@ -25,6 +25,9 @@ $(function () {
 
             // funcion para remover seccion del form con el boton menos
             $('#formModal').on('click', 'span.remover_seccion', helper.remover_seccion);
+
+            //validacion al darle click al boton actualizar del formulario 
+            $('#btnUpdOt').on('click', formulario.validarFormulario);
         },
 
         // formulario tabs vertical
@@ -99,6 +102,8 @@ $(function () {
                 $('#general_servicio').html("");
                 $('#k_id_estado_ot').html("");
                 $('#num_servicio').val("");
+                // formulario.cambiar_required_linea_base(false)// quitar requerido a form linea base
+
                 $.each(registro, function (i, item) {
                     $('#' + i).val(item);
                 });
@@ -151,37 +156,39 @@ $(function () {
                 $('#tabs_form').hide();
                 $('#general_servicio').html('');
                 $('#ins_servicio').val('');
+                // formulario.cambiar_required_linea_base(false); // quitar requerido a linea base
+
             }
         },
 
         // al elegir el servicio se llena el formulario correspondiente
         cambiarOpcionesForm: function(nombre_cliente, direccion_destino){
             formulario.get_eingenieer();
-            var servicio_seleccionado = $('#ins_servicio').val();
+            const servicio_seleccionado = $('#ins_servicio').val();
             $('#num_servicio').val(servicio_seleccionado);
-            $('#btnUpdOt').attr('disabled', false);
 
             if (servicio_seleccionado == '') {
                 $('#tabs_form').hide();
                 $('#general_servicio').html('');
+                $('#btnUpdOt').attr('disabled', true); // Se desactiva el boton de actualizar
+
             } else {
+                $('#btnUpdOt').attr('disabled', false); // se activa el boton de actualizar
                 $('#tabs_form').show();
-                $('#general_servicio').html("");
-                var servicio_nombre = $("#ins_servicio option:selected").html();
-                var form_servicio = setForm.returnFormularyService(nombre_cliente, direccion_destino, servicio_seleccionado, servicio_nombre);
-                var form_producto = setForm.returnFormularyProduct(servicio_seleccionado);
-                console.log("form_producto", form_producto);
+
+                const servicio_nombre = $("#ins_servicio option:selected").html();
+                const form_servicio = setForm.returnFormularyService(nombre_cliente, direccion_destino, servicio_seleccionado, servicio_nombre);
+                const form_producto = setForm.returnFormularyProduct(servicio_seleccionado);
                 // pinto el formulario de servicio
                 $('#general_servicio').html(form_servicio);
                 $('#general_producto').html(form_producto);
 
-                formulario.get_eingenieer();
+                // dejar requeridos los campos de linea base
+                // formulario.cambiar_required_linea_base(true);
 
-                // para llenar inputs de ingeniero 1 en el modal
-                $('#ingeniero1').on('change', formulario.fill_information);
-                $('#ingeniero2').on('change', formulario.fill_information);
-                $('#ingeniero3').on('change', formulario.fill_information);
-
+                formulario.get_eingenieer(); // lenar los selects con los ingenieros actuales
+                formulario.llenarInfoIngeniero(); // llena la informacion en los input de los inge seleccionados
+                
                 
             }
 
@@ -274,81 +281,68 @@ $(function () {
                     });
 
         },
-        clicOnButton: function () {
+
+
+        // lllenar la informacion del ingeniero seleccionado
+        llenarInfoIngeniero: function(){
+            $('#ingeniero1').on('change', formulario.fill_information);
+            $('#ingeniero2').on('change', formulario.fill_information);
+            $('#ingeniero3').on('change', formulario.fill_information);
+        },
+
+        // Metodo para validar formularios al darle click en actualizar
+        validarFormulario: function () {
             if ($("#k_id_estado_ot").val() == 3) {
-                var msj = false;
-                var response = true;
-                var mail = $('#ingeniero1_email').val();
-                var mail1 = $('#mail_envio').val();
-                var expresiones = /\w+@\w+\.+[a-z]/;
-                var inputs = [$('#nombre'),
-                    $('#nombre_cliente_val'),
-                    $('#servicio_val'),
-                    $('#fecha'),
-                    $('#direccion_instalacion'),
-                    $('#direccion_instalacion_des1'),
-                    $('#ancho_banda'),
-                    $('#interfaz_entrega'),
-                    $('#equipos_intalar_camp1'),
-                    $('#fecha_servicio'),
-                    $('#ingeniero1'),
-                    $('#ingeniero1_tel'),
-                    $('#ingeniero1_email'),
-                    $('#mail_envio')
-                ];
-                inputs.forEach(function (input) {
-                    if (input.val() == '') {
+                let msj = false;
+                // const mail = $('#ingeniero1_email').val();
+                // const mail1 = $('#mail_envio').val();
+                // const expresiones = /\w+@\w+\.+[a-z]/;
+
+                const inputs =  $('.validar_required');
+
+                $.each(inputs, function(i, input) {
+                    if (input.value == '') {
                         msj = true;
-                        input.css("box-shadow", "0 0 5px rgba(253, 1, 1)");
-                        return false;
+                        input.style.boxShadow = "0 0 5px rgba(253, 1, 1)";
                     } else {
-                        input.css("box-shadow", "none");
+                        input.style.boxShadow = "none";
                     }
                 });
+
                 if (msj) {
-                    swal('Error', 'Complete correctamente los campos', 'error');
-                    response = false;
+                    helper.miniAlert('!Estos campos son requeridos¡');
                     return false;
                 }
 
-                if (!expresiones.test(mail) || !expresiones.test(mail1)) {
-                    swal('Error', 'El formato del correo está mal', 'error');
-                    return false;
-                }
+                /*validar el formato del correo*/
+                // if (!expresiones.test(mail) || !expresiones.test(mail1)) {
+                //     swal('Error', 'El formato del correo está mal', 'error');
+                //     return false;
+                // }
 
-                if (response) {
+                const email_user = helper.inSession('n_mail_user');
 
-                    swal({
-                        title: "Advertencia",
-                        text: '¿El correo  ' + mail1 + '  es el correcto?',
-                        icon: "warning",
-                        buttons: true,
+                swal({
+                    title: "Desea Guardar?",
+                    html: `La información se enviará al correo <br> <b>${email_user}</b>`,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, Continuar!',
+                    cancelButtonText: 'Cancelar!',
 
-                        dangerMode: true,
-                        buttons: {
-                            cancel: "Cancelar!",
-                            continuar: {
-                                text: "Continuar!",
-                                value: "continuar",
-                                className: "btn_continuar",
-                            },
-                        },
-                    })
-                            .then((continuar) => {
-                                if (continuar) {
-                                    $('#formModal').submit();
-                                    response = true;
-                                } else {
-                                    swal("¡Cancelaste la operación!", {
-                                        icon: "error",
-                                        dangerMode: true,
-                                    });
-                                    response = false;
-                                    return false;
-                                }
-                            });
-                }
-                return false;
+                }).then((continuar) => {
+                    if (continuar.value) {
+                        $('#formModal').submit();
+                    } else {
+                        helper.miniAlert();
+                       return false;
+                    }
+                });
+            
+            } else {
+                $('#formModal').submit();
             }
         },
         //llena el select de ingeniero
@@ -369,6 +363,23 @@ $(function () {
             $('#' + ing + '_tel').val($(this).find(':selected').data('tel'));
             $('#' + ing + '_email').val($(this).find(':selected').data('email'));
         },
+
+        // cambia el required del formulario de linea base segun lo que le pasemos de argumento
+        cambiar_required_linea_base: function(bool){
+            const inputs = $('#general_linea_base input');
+            $.each(inputs, function(i, input) {
+                if (bool) {
+                    input.setAttribute('required', true);
+                } else {
+                    input.removeAttribute('required');
+                }
+            });
+        },
+
+
+
+
+
         //************ fin formulario de edicion oth ***************//
 
 
