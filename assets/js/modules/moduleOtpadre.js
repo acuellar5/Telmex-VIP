@@ -368,7 +368,7 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> modalHitosOtp',
                         className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
@@ -932,8 +932,8 @@ $(function () {
                     function (data) {
                         var obj = JSON.parse(data);
 
+                        $(".timeline-badge").css("background-color", "#7c7c7c");
                         if (obj !== null) {
-                            $(".timeline-badge").css("background-color", "#7c7c7c");
 
                             switch (obj.actividad_actual) {
                                 case "KICK OFF":

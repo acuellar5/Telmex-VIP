@@ -1,4 +1,4 @@
-/* Formateamos el label que servirá de contenedor */
+/* Formateamos el label que servirÃ¡ de contenedor */
 .switch {
   position: relative;
   display: inline-block;
@@ -11,7 +11,7 @@
   display:none;
 }
  
-/* Formateamos la caja del interruptor sobre la cual se deslizará la perilla de control o slider */
+/* Formateamos la caja del interruptor sobre la cual se deslizarÃ¡ la perilla de control o slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -22,6 +22,7 @@
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  border: 1px solid #225173;
 }
  
 /* Pintamos la perilla de control o slider usando el selector before */
@@ -32,14 +33,15 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #fff;
   -webkit-transition: .4s;
   transition: .4s;
+  border: 1px solid #225173;
 }
  
 /* Cambiamos el color de fondo cuando el checkbox esta activado */
 .switch input:checked + .slider {
-  background-color: #a3ff4f;
+  background-color: #0f8eea;
 }
  
 /* Deslizamos el slider a la derecha cuando el checkbox esta activado */ 
@@ -51,6 +53,7 @@
  
 /* Aplicamos efecto de bordes redondeados en slider y en el fondo del slider */
 .slider.round {
+
   border-radius: 34px;
 }
  
