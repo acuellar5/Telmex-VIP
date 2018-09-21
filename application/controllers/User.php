@@ -493,6 +493,19 @@ class User extends CI_Controller {
     echo json_encode($data);
   }
 
-}
 
-?>
+  // retorna para js las variables del usuario en session
+  public function getSessionValues(){
+    $clave = $this->input->post('clave');
+
+    if ($clave) {
+      echo json_encode(Auth::user()->$clave);
+    } else {
+      echo json_encode(Auth::user());
+    }
+  }
+
+
+
+
+}

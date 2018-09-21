@@ -15,6 +15,17 @@ $(function(){
             $('#tipo_oth').on('change', creation_oth.getStatusOption);
             // al darle click a editar ot
             $('#oth_new_List').on('click', 'a.edit_ot', creation_oth.showModalEditOT);
+
+
+            // ELIMINAR SIGUIENTE EVENTO, ES DE PRUEBAAA
+            $('#boton_eliminar').on('click', creation_oth.showModalEliminar);
+        },
+
+
+
+        showModalEliminar: function(){
+            $('#modal_eliminar').modal('show');
+
         },
 
 
