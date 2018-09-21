@@ -121,9 +121,12 @@ $(function () {
 
                 // si el tipo de la ot es KO validamos el select por si es cerrado
                 if (registro.k_id_tipo == 1) {
+                    console.log("registro", registro);
 
                     $('#k_id_estado_ot').on('change', function () {
-                        formulario.cierreKickOf(registro.n_nombre_cliente, registro.direccion_destino);
+                        //argumentos para pasar a los templates 
+                        const arg = {otp:registro.k_id_ot_padre};
+                        formulario.cierreKickOf(registro.n_nombre_cliente, registro.direccion_destino, arg);
                     });
 
                 }
@@ -133,7 +136,7 @@ $(function () {
         },
 
         // mostrar select de servicios
-        cierreKickOf: function(nombre_cliente, direccion_destino){
+        cierreKickOf: function(nombre_cliente, direccion_destino, arg){
             $('#general_servicio').html("");
             // si se lecciona la opcion cerrada 
             if ($('#k_id_estado_ot').val() == 3)
@@ -143,7 +146,7 @@ $(function () {
                 $('.ins_servicio').show();
                 // al seleccionar uno de los servicios
                 $('#ins_servicio').on('change', function(){
-                    formulario.cambiarOpcionesForm(nombre_cliente, direccion_destino);
+                    formulario.cambiarOpcionesForm(nombre_cliente, direccion_destino, arg);
                     $('.multiselect_forms').multiselect();
                 });
 
@@ -162,7 +165,7 @@ $(function () {
         },
 
         // al elegir el servicio se llena el formulario correspondiente
-        cambiarOpcionesForm: function(nombre_cliente, direccion_destino){
+        cambiarOpcionesForm: function(nombre_cliente, direccion_destino, arg){
             formulario.get_eingenieer();
             const servicio_seleccionado = $('#ins_servicio').val();
             $('#num_servicio').val(servicio_seleccionado);
@@ -178,7 +181,7 @@ $(function () {
 
                 const servicio_nombre = $("#ins_servicio option:selected").html();
                 const form_servicio = setForm.returnFormularyService(nombre_cliente, direccion_destino, servicio_seleccionado, servicio_nombre);
-                const form_producto = setForm.returnFormularyProduct(servicio_seleccionado);
+                const form_producto = setForm.returnFormularyProduct(servicio_seleccionado, arg);
                 // pinto el formulario de servicio
                 $('#general_servicio').html(form_servicio);
                 $('#general_producto').html(form_producto);
