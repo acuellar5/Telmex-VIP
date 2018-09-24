@@ -1000,6 +1000,7 @@ if ($msj) {
 					            </div>
 					        </div>
 					    </div>
+
 				    </fieldset>
 				</form>
 			</div>
