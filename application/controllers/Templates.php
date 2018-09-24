@@ -65,12 +65,11 @@ class Templates extends CI_Controller {
         4.1 se deben actualizar ots hijas con respecto a linea base
          */
 
-        $servicio = $this->input->post('num_servicio');
+        $pt       = $this->input->post();
+        $servicio = $pt['num_servicio'];
 
         header('Content-Type: text/plain');
         print_r($this->input->post());
-
-        $pt = $this->input->post();
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
@@ -796,6 +795,7 @@ class Templates extends CI_Controller {
                 $dataLogMail[$key] = $pt[$key];
             }
         }
+
         // datos llenos manualmente
         $dataLogMail['k_id_ot_padre']  = $pt['nro_ot_onyx'];
         $dataLogMail['clase']          = 'cierre_ko';
@@ -1057,6 +1057,112 @@ class Templates extends CI_Controller {
 
             );
             break;
+        case ($s == 11): //Adición Marquillas Aeropuerto el Dorado Opain
+            $argumentos = array(
+                'campo1'  => $p['campo1'], // nombre
+                'campo2'  => $p['campo2'], // nombre cliente
+                'campo3'  => $p['campo3'], // servicio
+                'campo4'  => $p['campo4'], // marquillas
+                'campo5'  => $p['campo5'], // local
+                'campo6'  => $p['campo6'], // internet
+                'campo9'  => $p['campo9'], // lineas
+                'campo10' => $p['ampo10'], // telefonos
+                'campo11' => $p['ampo11'], // mpls
+                'campo12' => $p['ampo12'], // bw2
+                'campo13' => $p['ampo13'], //  Adición de 6 marquillas:
+                'campo14' => $p['ampo14'], //  inicio al Proceso de instalación
+                'campo15' => $p['ampo15'], //   INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ampo16'], //  TELEFONOS DE CONTACTO
+                'campo17' => $p['ampo17'], // EMAIL
+                'campo18' => $p['ampo18'], //  OTP
+            );
+            break;
+        case ($s == 12): // Cambio de Equipos Servicio
+            $argumentos = array(
+                'campo1'  => $p['campo1'], // nombre
+                'campo2'  => $p['campo2'], // nombre cliente
+                'campo3'  => $p['campo3'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Sede
+                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
+                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
+                'campo6'  => $p['campo6'], // cantidad
+                'campo7'  => $p['campo7'], // otp
+                'campo8'  => $p['campo8'], // Códigos de Servicio en el CPE a Cambiar
+                'campo9'  => $p['campo9'], // Requiere que el Cambio de Equipos para su Servicio se ejecute en horario No Hábil o Fin de Semana (no)
+                'campo10' => $p['campo10'], // Fecha de Entrega del Cambio de Equipos  de su Servicio
+                'campo11' => $p['campo11'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['campo12'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['campo13'], // MAIL
+            );
+            break;
+
+        case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+                'campo1'  => $p['campo1']// nombre
+                'campo2'  => $p['campo2']// nombre cliente
+                'campo3'  => $p['campo3']// servicio
+                'campo4'  => $p['campo4']// Dirección Destino
+                'campo5'  => $p['campo5']// Cantidad de Líneas Telefónicas Básicas
+                'campo6'  => $p['campo6']// Ciudad //marcar (x)
+                'campo7'  => $p['campo7']// Cantidad DID
+                'campo8'  => $p['campo8']// inicio al Proceso de Cambio  de Servicio
+                'campo9'  => $p['campo9']// Fecha de Entrega de su servicio
+                'campo10' => $p['campo10']// INGENIERO IMPLEMENTACIÓN
+                'campo11' => $p['campo11']// TELEFONOS DE CONTACTO
+                'campo12' => $p['campo12'], // EMAIL
+            );
+            break;
+        case ($s == 14): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 15): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 16): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 17): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 18): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 19): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 20): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 21): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 22): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 23): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+
         }
 
         return $argumentos;
