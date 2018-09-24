@@ -58,19 +58,18 @@ class Templates extends CI_Controller {
         2. formulario producto guardar en bd dependiendo el producto => tabla (producto)
         3. formulario servicio enviar correo plantilla correspondiente, al correo de la persona logueada // faber
         3.1 si se envió se guarda tabla log correo
-        3.1.1 si se envia correo actualizar la vista
+
         3.1.2 si nó ... mensaje no se envio (pasos de como poder enviarlo manualmente)
         3.2 sinó guardo en log_correo no envia nada msj error volver a intentar
         4. Actualizar ot_hija en tabla ot_hija
         4.1 se deben actualizar ots hijas con respecto a linea base
          */
 
-        $servicio = $this->input->post('num_servicio');
+        $pt       = $this->input->post();
+        $servicio = $pt['num_servicio'];
 
         header('Content-Type: text/plain');
         print_r($this->input->post());
-
-        $pt = $this->input->post();
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
@@ -83,7 +82,7 @@ class Templates extends CI_Controller {
             if ($res_envio) {
                 $this->guardar_servicio($pt);
                 // 4. Actualizar ot_hija en tabla ot_hija
-                $this->actualizar_oth($pt);
+                $this->actualizar_oth($pt, true);
             }
             // si no se envia no se guarda el formulario
             else {
@@ -131,7 +130,7 @@ class Templates extends CI_Controller {
 
         } else {
             // actualizar el estado
-            $this->update_status($_POST);
+            $this->actualizar_oth($pt);
         }
 
     }
@@ -786,10 +785,7 @@ class Templates extends CI_Controller {
     // guardar el servicio en tabla log_correo
     private function guardar_servicio($pt) {
         ate_default_timezone_set("America/Bogota");
-        $fActual = date('Y-m-d');
-        // le aumento 1 a la cantidad de correos enviados de esa ot hija
-        $cant_mails = $pt['c_email'] + 1;
-
+        $fActual       = date('Y-m-d');
         $destinatarios = Auth::user()->n_mail_user;
         // seteo el arreglo de campos vacio
         $dataLogMail = $this->dataLogMail();
@@ -799,6 +795,7 @@ class Templates extends CI_Controller {
                 $dataLogMail[$key] = $pt[$key];
             }
         }
+
         // datos llenos manualmente
         $dataLogMail['k_id_ot_padre']  = $pt['nro_ot_onyx'];
         $dataLogMail['clase']          = 'cierre_ko';
@@ -807,6 +804,42 @@ class Templates extends CI_Controller {
         $dataLogMail['fecha']          = $fActual;
 
         $this->Dao_log_correo_model->insert_data($dataLogMail);
+    }
+
+    // Actualizar la oth del formulario servicio el segundo parametro es por si viene de enviar correo
+    private function actualizar_oth($pt, $is_ko_3 = false) {
+        date_default_timezone_set("America/Bogota");
+        $fActual  = date('Y-m-d H:i:s');
+        $fActual2 = date('Y-m-d');
+
+        // si es ko y es parea cambiar a estado cerrada  le aumento 1 a la cantidad de correos enviados de esa ot hija
+        $cant_mails  = ($is_ko_3) ? $pt['c_email'] + 1 : $pt['c_email'];
+        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($pt['k_id_estado_ot']);
+
+        $data = array(
+            'id_orden_trabajo_hija'     => $pt['id_orden_trabajo_hija'],
+            'k_id_estado_ot'            => $pt['k_id_estado_ot'],
+            'estado_orden_trabajo_hija' => $text_estado,
+            'fecha_mod'                 => $fActual,
+            'estado_mod'                => 1,
+            'n_observacion_cierre'      => $pt['n_observacion_cierre'],
+            'c_email'                   => $cant_mails,
+            'last_send'                 => $fActual2,
+        );
+
+        $dataLog = array(
+            'id_ot_hija' => $pt['id_orden_trabajo_hija'],
+            'antes'      => $pt['estado_orden_trabajo_hija'],
+            'ahora'      => $text_estado,
+            'columna'    => 'estado_orden_trabajo_hija',
+            'fecha_mod'  => $fActual,
+        );
+
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+
+        $msj = 'ok';
+        $this->session->set_flashdata('msj', $msj);
+        header('Location: ' . URL::base() . '/managementOtp');
     }
 
     //Actualiza el estato (hay que enviarle el post)
@@ -1024,6 +1057,112 @@ class Templates extends CI_Controller {
 
             );
             break;
+        case ($s == 11): //Adición Marquillas Aeropuerto el Dorado Opain
+            $argumentos = array(
+                'campo1'  => $p['campo1'], // nombre
+                'campo2'  => $p['campo2'], // nombre cliente
+                'campo3'  => $p['campo3'], // servicio
+                'campo4'  => $p['campo4'], // marquillas
+                'campo5'  => $p['campo5'], // local
+                'campo6'  => $p['campo6'], // internet
+                'campo9'  => $p['campo9'], // lineas
+                'campo10' => $p['ampo10'], // telefonos
+                'campo11' => $p['ampo11'], // mpls
+                'campo12' => $p['ampo12'], // bw2
+                'campo13' => $p['ampo13'], //  Adición de 6 marquillas:
+                'campo14' => $p['ampo14'], //  inicio al Proceso de instalación
+                'campo15' => $p['ampo15'], //   INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ampo16'], //  TELEFONOS DE CONTACTO
+                'campo17' => $p['ampo17'], // EMAIL
+                'campo18' => $p['ampo18'], //  OTP
+            );
+            break;
+        case ($s == 12): // Cambio de Equipos Servicio
+            $argumentos = array(
+                'campo1'  => $p['campo1'], // nombre
+                'campo2'  => $p['campo2'], // nombre cliente
+                'campo3'  => $p['campo3'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Sede
+                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
+                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
+                'campo6'  => $p['campo6'], // cantidad
+                'campo7'  => $p['campo7'], // otp
+                'campo8'  => $p['campo8'], // Códigos de Servicio en el CPE a Cambiar
+                'campo9'  => $p['campo9'], // Requiere que el Cambio de Equipos para su Servicio se ejecute en horario No Hábil o Fin de Semana (no)
+                'campo10' => $p['campo10'], // Fecha de Entrega del Cambio de Equipos  de su Servicio
+                'campo11' => $p['campo11'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['campo12'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['campo13'], // MAIL
+            );
+            break;
+
+        case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+                'campo1'  => $p['campo1']// nombre
+                'campo2'  => $p['campo2']// nombre cliente
+                'campo3'  => $p['campo3']// servicio
+                'campo4'  => $p['campo4']// Dirección Destino
+                'campo5'  => $p['campo5']// Cantidad de Líneas Telefónicas Básicas
+                'campo6'  => $p['campo6']// Ciudad //marcar (x)
+                'campo7'  => $p['campo7']// Cantidad DID
+                'campo8'  => $p['campo8']// inicio al Proceso de Cambio  de Servicio
+                'campo9'  => $p['campo9']// Fecha de Entrega de su servicio
+                'campo10' => $p['campo10']// INGENIERO IMPLEMENTACIÓN
+                'campo11' => $p['campo11']// TELEFONOS DE CONTACTO
+                'campo12' => $p['campo12'], // EMAIL
+            );
+            break;
+        case ($s == 14): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 15): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 16): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 17): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 18): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 19): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 20): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 21): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 22): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+        case ($s == 23): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+            );
+            break;
+
         }
 
         return $argumentos;
