@@ -75,7 +75,7 @@ class Templates extends CI_Controller {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            $this->guardar_producto($this->input->post());
+            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
             $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
@@ -136,7 +136,7 @@ class Templates extends CI_Controller {
     }
 
     // guardar formulario de producto dependiendo el numero del producto
-    private function guardar_producto($pt) {
+    private function guardar_producto_more_txt($pt) {
         switch ($pt['num_servicio']) {
         /*formulario Internet*/
         case '1': // internet dedicado empresarial
@@ -194,6 +194,7 @@ class Templates extends CI_Controller {
                 'promocion'                => $pt['pr_promocion_vigente_nom'],
             );
             $this->Dao_producto_model->insert_pr_internet($data_pr);
+            $txt = $this->plantilla_txt_pr_internet($data_pr);
             break;
         /*formulario MPLS*/
         case '3': // mpls_avanzado_intranet
@@ -1289,6 +1290,11 @@ class Templates extends CI_Controller {
 
             echo ":( Hubo un error en el envio del correo";
         }
+    }
+
+    // retorna plantilla tyexto producto internet
+    private function plantilla_txt_pr_internet($data) {
+
     }
 
     public function internet_dedicado_empresarial($argumentos) {
