@@ -493,3 +493,507 @@ margin-left: -53%;
     border-radius: 15px;
     background-color: #fff;
 }
+
+
+
+
+.telmexVIP_header .menu_nav_header{
+    background: #084c6f;
+    font-size: 110%;
+    font-family:sans-serif;
+    
+}
+.telmexVIP_header .home{
+    background: #1e6990 !important;
+
+}
+.telmexVIP_header .logo_header{
+    margin-top: -6px;
+    position: relative;
+}
+.telmexVIP_header .dropdown-toggle{
+    background-color: #084c6f !important;
+}
+
+.telmexVIP_header .navbar-inverse .navbar-nav>li>a {
+    color: #d2c9c9;
+    border-radius: 5px;
+    font-size: 100%;
+    font-family:sans-serif;
+}
+
+.telmexVIP_header .dropdown-menu>li>a {
+    display: block;
+    padding: 11px 28px;
+    clear: both;
+    font-weight: 500;
+    line-height: 1.42857143;
+    color: #084c6f;
+    white-space: nowrap;
+    border: 1px solid #084c6f30;
+}
+
+.telmexVIP_header .dropdown-menu>li>a:hover {
+    
+    color: #fff;
+    background-color: #084c6f;
+   
+}
+/*css del boton para ots de mas de 15 dias*/
+.botnOtsfiteenDays{
+    text-align: center;
+}
+/*CSS del modal*/
+.cssetion {
+    background-color: #fff;
+    border: 1px solid #b9b3b3;
+    border-radius: 15px;
+    margin: 18px 0px;   
+    padding: 25px;
+ }
+/* css head */
+.telmexVIP_header .tamaniomin>li>a {
+    min-width: 222px;
+}
+/*Imagen responsive para el fondo de implementacion de servicios*/
+
+.css_imagen{
+    width: 100%; 
+    height: 91%; 
+    padding: 0 !important; 
+    margin: 0; top: 53px; 
+    left: 0; 
+    right: 0; 
+    position: absolute;
+}
+/*Clase para quitar un padding inferior que genera la barra de navegacion*/
+
+.imagenfond{
+    width: 100%; 
+    height: 100%;
+}
+
+.selectValidacionIP{
+    font-size: 19px;
+    width: 19%;
+    border-radius: 10%;
+    font-family: sans-serif;
+}
+
+.sessionmodal{
+
+    background-color: #fff;
+    border: 1px solid #b9b3b3;
+    border-radius: 15px;
+    margin:  0px;
+    padding: 25px;
+}
+/*Estilo al modal de detalles en Gestion*/
+.ubicacionLetra{
+    text-align: left !important;
+    font-size: 12px !important;
+    height: 29px !important;
+}
+
+#formModal_detalle .input-group{
+    width: 100% !important;
+    font-size: 12px;
+}
+.csstextarea{
+    resize: vertical ;
+}
+.tamanioletra{
+    text-align: left !important;
+    font-size: 12px !important;
+}
+.sessionmodal .form-group{
+    margin:0;
+}
+.circulo {
+     width: 20px;
+     height: 20px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     border: 1px solid #000;
+}
+.telmexVIP_header .badge {
+    background-color: #1f4c6f;
+    border: 1px solid #ece6e5;
+    color: #eee8e8;
+}
+/*ESTILOS DEL MENU STICKY*/
+
+ .contenedor {
+    z-index: 1;
+    background-color: #fff;
+    width: 150px;
+    height: 142px;
+    border-style: solid;
+    border-color: #084c6f;
+    position: fixed;
+    top: 20%;
+    right: 0;
+    border-radius: 10px;
+    box-shadow: -2px 2px 5px #0c3565;
+
+    transition: all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    -webkit-transition: all 0.5s Out ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Back;
+    -moz-transition: all 0.5s Out ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Back;
+    -ms-transition: all 0.5s Out ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Back;
+    
+}
+.boton {
+    display: block;
+    width: 100%;
+    margin: 1px;
+    background-color:#08364e;
+    border-radius: 5%;
+    color: #fff;
+    text-decoration: none !important;
+    font-size: 11px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.menu-fixed li{
+    display: block;
+    position: relative;
+    background-color: white;
+    padding-top: 10px;
+
+}
+
+.menu-fixed ul{
+    padding-left: 20px;
+}
+
+
+.rotate-90{
+    
+/* Safari */
+-webkit-transform: rotate(-90deg);
+
+/* Firefox */
+-moz-transform: rotate(-90deg);
+
+/* IE */
+-ms-transform: rotate(-90deg);
+
+/* Opera */
+-o-transform: rotate(-90deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.contenedor.closed{
+    background-color: #084c6f;
+    border-color: transparent;  
+    width: 30px;
+    height: 180px;
+    box-shadow: -1px 2px 8px #333;
+    border-radius: 15px 0px 0px 15px;
+
+    transition: all .5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;   
+}
+.contenedor.closed:hover {
+    background-color:#084c6fd4;
+
+}
+
+#btn_fixed .text{
+    margin-top: 40px;
+    display: block;     
+}
+#btn_fixed{
+    width: 150px;   
+    margin-left: -60px; 
+    color: #FFF;
+    text-shadow: 0px 1px 1px #0c3565;
+    cursor: pointer;
+}
+#btn_close_fixed{
+
+    display: block;
+    font-size: 11px;
+    padding-top: 8px;
+    padding-left: 9px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #299bd6;
+    width: 100%;
+    cursor: pointer;
+    background-color: #084c6f;
+    color: #d2c9c9;
+    font-size: 11px;
+}
+#btn_close_fixed:hover{
+    text-decoration: none;
+    background-color: #fff;
+    color: #084c6f;
+    border-bottom: 1px solid #084c6f;
+    border-radius: 15px 15px 0px 0px;
+    display: block;
+
+}
+.espaciomenu{
+    margin-left: 10px;
+}
+/*Estilo para la vista de Type restore*/
+.cssparaeldiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.csstable{
+    width: 67% !important;
+}
+.csscolumna{
+    width: 50%;
+    text-align: center;
+}
+.cssformtext{
+    text-align: center;
+}
+.cssnewtypem{
+    background: #084c6f;
+    color: #fff;
+}
+.csstypesubtitle{
+    background: #084c6f;
+    color: #fff;
+    font-family: inherit;
+}
+.anchotable{
+    width: 75%;
+}
+
+.cssmodificacionin{
+    width: 67% !important;
+    border-radius: 11% !important;
+    margin-right: 3% !important;
+}
+.ubicacionboton{
+    float: right;
+   /* margin-top: 4px !important;*/
+   margin-bottom: -9% !important;
+
+}
+.btn_red{
+    width: 30%;
+   
+}
+.div_Form_Modals {
+margin-left: -53%;
+}
+.div_Text_Form_modal{
+    margin-right: 30%;
+ }
+ /**************************************************************************/
+ /* The container */
+.S_check {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.S_check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.S_check:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.S_check input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.S_check input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.S_check .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.color_fondo_modal{
+    background: #8080800f;
+    height: 160px !important;
+}
+.color_letra{
+    color: #fff;
+}
+
+.wdth_225p {
+    width: 300px !important;
+    font-size: 12px !important;
+}
+.max_width_select{
+    width: 250px !important;
+    font-size: 12px !important;
+    padding: 0px !important;
+}
+.button_observacion{
+    margin-top: 28%;
+    display: block !important;
+    margin-left: 19px;
+}
+.algo {
+    font-size: 13.5px !important ;
+}
+
+.tamanoColumOpc{
+
+    width: 29px;
+}
+
+
+/* ESTILOS FABER PARA FORMULARIO DE MODAL*/
+.input_mdl_form_control{
+    border-radius: 7px !important;
+}
+.select_observaciones{
+
+    width: 350px;
+}
+.text_aling{
+    text-align: left !important;
+}
+.select_fech_progr{
+    width: 150px;
+    text-align: left !important;
+}
+.select_cc_tiempos{
+    margin-top: 25px;
+}
+
+/*CSS PARA LOS FFOS BOTONES QUE SE ENCUENTRAN EN EL MODAL DE HISTORIAL DEL MODULO DE CONTROL DE CAMBIO */
+
+.buttonModal {
+    border-radius: 5%;  
+    position: relative;
+    background-color: #084c6f;
+    border: none;
+    border-bottom: 2px solid #001f3f;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 5px;
+    width: 10%;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    margin:10px;
+}
+.buttonModal:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+.buttonModal:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+.buttonModal span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.buttonModal span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.buttonModal:hover span {
+  padding-right: 25px;
+}
+.buttonModal:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.btn_crear_oth{
+   margin-bottom: 2% !important;
+   margin-top: 2% !important;
+   font-size: 14px !important;
+}
+
+/*Quitar margin en el formulario para crear ot manualmente*/
+.spc_modal_new_ot{
+    margin-bottom: 0px !important;
+}
+/* para imagen flotante de claro bajo el header */
+.img_claro_sticky {
+    position: fixed;
+    height: 72px;
+    z-index: 1;
+    left: 11px;
+}
+/*Dar css dentro del fielset*/
+.fielset_new_ot_mdl{
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 24px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.max-w_border-n {
+    max-width: 23%;
+    border: none !important;
+}

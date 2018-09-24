@@ -205,87 +205,88 @@ class Templates extends CI_Controller {
               case '9': // MPLS Avanzado con Componente Datacenter Claro
               case '10': // MPLS Transaccional 3G
                 $data_pr = array(
-                  'id_ot_padre_ori'              => $pt[''],
-                  'ciudad_ori'                   => $pt[''],
-                  'direccion_ori'                => $pt[''],
-                  'tipo_predio_ori'              => $pt[''],
-                  'nit_cliente_ori'              => $pt[''],
-                  'alias_lugar_ori'              => $pt[''],
-                  'otp_asociada_ori'             => $pt[''],
-                  'tipo_mpls_ori'                => $pt[''],
-                  'ancho_banda_ori'              => $pt[''],
-                  'tipo_instalacion_ori'         => $pt[''],
-                  'servicio_actual_ori'          => $pt[''],
-                  'servicio_principal_ori'       => $pt[''],
-                  'requiere_um_ori'              => $pt[''],
-                  'um_backup_ori'                => $pt[''],
-                  'proveedor_ori'                => $pt[''],
-                  'medio_ori'                    => $pt[''],
-                  'factibilidad_bw_ori'          => $pt[''],
-                  'tipo_conector_ori'            => $pt[''],
-                  'sds_destino_ori'              => $pt[''],
-                  'interfaz_entrega_cliente_ori' => $pt[''],
-                  'requiere_voc_ori'             => $pt[''],
-                  'programacion_voc_ori'         => $pt[''],
-                  'requiere_rfc_ori'             => $pt[''],
-                  'conversor_medio_ori'          => $pt[''],
-                  'referencia_router_ori'        => $pt[''],
-                  'modulos_tarjetas_ori'         => $pt[''],
-                  'licencias_ori'                => $pt[''],
-                  'equipos_adicionales_ori'      => $pt[''],
-                  'consumibles_ori'              => $pt[''],
-                  'carta_valorizada_ori'         => $pt[''],
-                  'nombre_1_ori'                 => $pt[''],
-                  'telefono_1_ori'               => $pt[''],
-                  'celular_1_ori'                => $pt[''],
-                  'correo_1_ori'                 => $pt[''],
-                  'observaciones_1_ori'          => $pt[''],
-                  'telefono_2_ori'               => $pt[''],
-                  'celular_2_ori'                => $pt[''],
-                  'correo_2_ori'                 => $pt[''],
-                  'observaciones_2_ori'          => $pt[''],
-                  'id_ot_padre_des'              => $pt[''],
-                  'ciudad_des'                   => $pt[''],
-                  'direccion_des'                => $pt[''],
-                  'tipo_predio_des'              => $pt[''],
-                  'nit_cliente_des'              => $pt[''],
-                  'alias_lugar_des'              => $pt[''],
-                  'otp_asociada_des'             => $pt[''],
-                  'tipo_mpls_des'                => $pt[''],
-                  'ancho_banda_des'              => $pt[''],
-                  'tipo_instalacion_des'         => $pt[''],
-                  'servicio_actual_des'          => $pt[''],
-                  'servicio_principal_des'       => $pt[''],
-                  'requiere_um_des'              => $pt[''],
-                  'um_backup_des'                => $pt[''],
-                  'proveedor_des'                => $pt[''],
-                  'medio_des'                    => $pt[''],
-                  'factibilidad_bw_des'          => $pt[''],
-                  'tipo_conector_des'            => $pt[''],
-                  'sds_destino_des'              => $pt[''],
-                  'interfaz_entrega_cliente_des' => $pt[''],
-                  'requiere_voc_des'             => $pt[''],
-                  'programacion_voc_des'         => $pt[''],
-                  'requiere_rfc_des'             => $pt[''],
-                  'conversor_medio_des'          => $pt[''],
-                  'referencia_router_des'        => $pt[''],
-                  'modulos_tarjetas_des'         => $pt[''],
-                  'licencias_des'                => $pt[''],
-                  'equipos_adicionales_des'      => $pt[''],
-                  'consumibles_des'              => $pt[''],
-                  'carta_valorizada_des'         => $pt[''],
-                  'nombre_1_des'                 => $pt[''],
-                  'telefono_1_des'               => $pt[''],
-                  'celular_1_des'                => $pt[''],
-                  'correo_1_des'                 => $pt[''],
-                  'observaciones_1_des'          => $pt[''],
-                  'telefono_2_des'               => $pt[''],
-                  'celular_2_des'                => $pt[''],
-                  'correo_2_des'                 => $pt[''],
-                  'observaciones_2_des'          => $pt['']
+                  'id_ot_padre_ori'              => $pt['otp_mpls'],
+                  'ciudad_ori'                   => $pt['pr_ciudad'],
+                  'direccion_ori'                => $pt['pr_direccion'],
+                  'tipo_predio_ori'              => $pt['pr_tipo_predio'],
+                  'nit_cliente_ori'              => $pt['pr_nit_cliente'],
+                  'alias_lugar_ori'              => $pt['pr_alias_lugar'],
+                  'otp_asociada_ori'             => $pt['pr_otp_asociadas'],
+                  'tipo_mpls_ori'                => $pt['pr_tipo_mpls'],
+                  'ancho_banda_ori'              => $pt['pr_ancho_banda'],
+                  'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion'],
+                  'servicio_actual_ori'          => $pt['pr_id_servicio'],
+                  'servicio_principal_ori'       => $pt['pr_idservicio_prin'],
+                  'requiere_um_ori'              => $pt['pr_instalacion_um'],
+                  'um_backup_ori'                => $pt['pr_ultimam_backup'],
+                  'proveedor_ori'                => $pt['pr_proveedor'],
+                  'medio_ori'                    => $pt['pr_medio'],
+                  'factibilidad_bw_ori'          => $pt['pr_resp_factibilidad'],
+                  'tipo_conector_ori'            => $pt['pr_tipo_conector'],
+                  'sds_destino_ori'              => $pt['pr_sds_destino'],
+                  'interfaz_entrega_cliente_ori' => $pt['pr_tipo_conector'],
+                  'requiere_voc_ori'             => $pt['pr_requiere_voc'],
+                  'programacion_voc_ori'         => $pt['pr_programacion_voc'],
+                  'requiere_rfc_ori'             => $pt['pr_requiere_rfc'],
+                  'conversor_medio_ori'          => $pt['pr_conversor_medio'],
+                  'referencia_router_ori'        => $pt['pr_referencia_router'],
+                  'modulos_tarjetas_ori'         => $pt['pr_modulo_tarjeta'],
+                  'licencias_ori'                => $pt['pr_licencias'],
+                  'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales'],
+                  'consumibles_ori'              => $pt['pr_consumibles'],
+                  'carta_valorizada_ori'         => $pt['pr_importacion_carta'],
+                  'nombre_1_ori'                 => $pt['pr_nombre_1'],
+                  'telefono_1_ori'               => $pt['pr_telefono_1'],
+                  'celular_1_ori'                => $pt['pr_celular_1'],
+                  'correo_1_ori'                 => $pt['pr_email_1'],
+                  'observaciones_1_ori'          => $pt['pr_observaciones'],
+                  'nombre_2_ori'                 => $pt['pr_nombre_2'],
+                  'telefono_2_ori'               => $pt['pr_telefono_2'],
+                  'celular_2_ori'                => $pt['celular_dct_mpls'],
+                  'correo_2_ori'                 => $pt['pr_email_2'],
+                  'id_ot_padre_des'              => $pt['otp_mpls_pd'],
+                  
+                  'ciudad_des'                   => $pt['pr_ciudad_2'],
+                  'id_ot_padre_des'              => $pt['otp_mpls_pd'],
+                  'direccion_des'                => $pt['pr_direccion_2'],
+                  'tipo_predio_des'              => $pt['pr_tipo_predio_2'],
+                  'nit_cliente_des'              => $pt['pr_nit_cliente_2'],
+                  'alias_lugar_des'              => $pt['pr_alias_lugar_2'],
+                  'otp_asociada_des'             => $pt['pr_otp_asociadas_2'],
+                  'tipo_mpls_des'                => $pt['pr_tipo_mpls_2'],
+                  'ancho_banda_des'              => $pt['pr_ancho_banda_2'],
+                  'tipo_instalacion_des'         => $pt['pr_tipo_instalacion_2'],
+                  'servicio_actual_des'          => $pt['pr_id_servicio_2'],
+                  'servicio_principal_des'       => $pt['pr_idservicio_prin_2'],
+                  'requiere_um_des'              => $pt['pr_instalacion_um_2'],
+                  'um_backup_des'                => $pt['pr_umilla_backup_2'],
+                  'proveedor_des'                => $pt['pr_proveedor_2'],
+                  'medio_des'                    => $pt['pr_medio_2'],
+                  'factibilidad_bw_des'          => $pt['pr_res_factibilidad_2'],
+                  'tipo_conector_des'            => $pt['pr_tipo_conector_2'],
+                  'sds_destino_des'              => $pt['pr_sds_destino_2'],
+                  'requiere_voc_des'             => $pt['pr_requiere_voc_2'],
+                  'programacion_voc_des'         => $pt['pr_programacion_voc_2'],
+                  'requiere_rfc_des'             => $pt['pr_requiere_rfc_2'],
+                  'conversor_medio_des'          => $pt['pr_conversor_medio_2'],
+                  'referencia_router_des'        => $pt['pr_referencia_router_2'],
+                  'modulos_tarjetas_des'         => $pt['pr_modulo_tarjeta_2'],
+                  'licencias_des'                => $pt['pr_licencias_2'],
+                  'equipos_adicionales_des'      => $pt['pr_equipos_adicionales_2'],
+                  'consumibles_des'              => $pt['pr_consumibles_2'],
+                  'carta_valorizada_des'         => $pt['pr_importacion_carta_2'],
+                  'nombre_1_des'                 => $pt['pr_nombre_3'],
+                  'telefono_1_des'               => $pt['pr_telefono_3'],
+                  'celular_1_des'                => $pt['pr_celular_3'],
+                  'correo_1_des'                 => $pt['pr_email_3'],
+                  'nombre_2_des'                 => $pt['pr_nombre_4'],
+                  'telefono_2_des'               => $pt['pr_telefono_4'],
+                  'celular_2_des'                => $pt['pr_celular_4'],
+                  'correo_2_des'                 => $pt['pr_email_4'],
+                  'observaciones_1_des'          => $pt['pr_observaciones_2'],
+                  'interfaz_entrega_cliente_des' => $pt['pr_interfaz_entrega_cliente_des'],
                 );
-                
-
+                $this->Dao_producto_model->insert_pr_mpls($data_pr);
                 break;
               /*FORMULARIO NOVEDADES*/
               case '12': // Cambio de Equipos Servicio
@@ -293,18 +294,369 @@ class Templates extends CI_Controller {
               case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
               case '22': // Cambio de Última Milla
               case '23': // Cambio de Equipo
-
+                $data_pr = array(
+                  'id_ot_padre'                   => $pt['nro_ot_onyx'],
+                  'ciudad'                        => $pt['pr_ciudad'],
+                  'ubicacion_actual'              => $pt['pr_direccion_actual'],
+                  'alias_lugar'                   => $pt['pr_alias_lugar'],
+                  'otp_asociada'                  => $pt['pr_otp_asociadas'],
+                  'tipo_novedad'                  => $pt['pr_tipo_novedad'],
+                  'servicio_modificar'            => $pt['pr_serv_modificar'],
+                  'ancho_banda'                   => $pt['pr_ancho_banda'],
+                  'tipo_actividad'                => $pt['pr_tipo_actividad'],
+                  'servicio_actual'               => $pt['pr_servicio_actual'],
+                  'liberacion_um'                 => $pt['pr_liberacion_umst_te'],
+                  'requiere_um'                   => $pt['pr_requiere_instalacion'],
+                  'proveedor'                     => $pt['pr_proveedor_milla'],
+                  'medio'                         => $pt['pr_medio_um'],
+                  'factibilidad_bw'               => $pt['pr_resp_factibilidad'],
+                  'sds_destino'                   => $pt['pr_sds_destino'],
+                  'olt'                           => $pt['pr_olt_gpon'],
+                  'interfaz_entrega_cliente'      => $pt['pr_interface_cliente'],
+                  'requiere_voc'                  => $pt['pr_requiere_voc'],
+                  'programacion_voc'              => $pt['pr_programacion_voc'],
+                  'liberacion_um_fo'              => $pt['pr_liberacion_rumfo'],
+                  'requiere_ventana_mtto'         => $pt['pr_ventana_mtto'],
+                  'requiere_rfc'                  => $pt['pr_requiere_rfc'],
+                  'conversor_medio'               => $pt['pr_conversor_medio'],
+                  'referencia_router'             => $pt['pr_referencia_router'],
+                  'modulos_tarjetas'              => $pt['pr_modulo_tarjeta'],
+                  'licencias'                     => $pt['pr_licencias'],
+                  'equipos_adicionales'           => $pt['pr_equipos_adicionales'],
+                  'consumibles'                   => $pt['pr_consumibles'],
+                  'carta_valorizada'              => $pt['pr_registro_importacion'],
+                  'nombre_1'                      => $pt['pr_nombre1'],
+                  'telefono_1'                    => $pt['pr_telefono1'],
+                  'celular_1'                     => $pt['pr_celular1'],
+                  'correo_1'                      => $pt['pr_email1'],
+                  'nombre_2'                      => $pt['pr_nombre2'],
+                  'telefono_2'                    => $pt['pr_telefono2'],
+                  'celular_2'                     => $pt['pr_celular2'],
+                  'correo_2'                      => $pt['pr_email2'],
+                  'observaciones'                 => $pt['pr_observaciones_pl_te'],
+                  'equipo_cliente'                => $pt['pr_equipo_cliente'],
+                  'interfaz_cliente'              => $pt['pr_interfaz_ec'],
+                  'cant_lineas_basicas'           => $pt['pr_cant_lba'],
+                  'conformacion_pbx'              => $pt['pr_conformacion_pbx'],
+                  'cant_did'                      => $pt['pr_cant_did'],
+                  'cant_canales'                  => $pt['pr_cant_canales'],
+                  'adicion_lineas_fax'            => $pt['pr_adicion_fax'],
+                  'adicion_lineas_virtual'        => $pt['pr_adicion_tele'],
+                  'larga_distancia_nacional'      => $pt['pr_rldnacional'],
+                  'larga_distancia_internacional' => $pt['pr_rldinternacional'],
+                  'permisos_moviles'              => $pt['//pr_permisos_moviles'],
+                  'permisos_local_extendida'      => $pt['pr_rplextendida'],
+                  'bog_requiere'                  => $pt['pr_requiere_1'],
+                  'bog_numeracion'                => $pt['pr_numeracion_1'],
+                  'bog_cantidad'                  => $pt['pr_cant_canales_1'],
+                  'tun_requiere'                  => $pt['pr_requiere_2'],
+                  'tun_numeracion'                => $pt['pr_numeracion_2'],
+                  'tun_cantidad'                  => $pt['pr_cant_canales_2'],
+                  'vill_requiere'                 => $pt['pr_requiere_3'],
+                  'vill_numeracion'               => $pt['pr_numeracion_3'],
+                  'vill_cantidad'                 => $pt['pr_cant_canales_3'],
+                  'fac_requiere'                  => $pt['pr_requiere_4'],
+                  'fac_numeracion'                => $pt['pr_numeracion_4'],
+                  'fac_cantidad'                  => $pt['pr_cant_canales_4'],
+                  'gir_requiere'                  => $pt['pr_requiere_5'],
+                  'gir_numeracion'                => $pt['pr_numeracion_5'],
+                  'gir_cantidad'                  => $pt['pr_cant_canales_5'],
+                  'yop_requiere'                  => $pt['pr_requiere_6'],
+                  'yop_numeracion'                => $pt['pr_numeracion_6'],
+                  'yop_cantidad'                  => $pt['pr_cant_canales_6'],
+                  'cali_requiere'                 => $pt['pr_requiere_7'],
+                  'cali_numeracion'               => $pt['pr_numeracion_7'],
+                  'cali_cantidad'                 => $pt['pr_cant_canales_7'],
+                  'bave_requiere'                 => $pt['pr_requiere_8'],
+                  'bave_numeracion'               => $pt['pr_numeracion_8'],
+                  'bave_cantidad'                 => $pt['pr_cant_canales_8'],
+                  'pas_requiere'                  => $pt['pr_requiere_9'],
+                  'pas_numeracion'                => $pt['pr_numeracion_9'],
+                  'pas_cantidad'                  => $pt['pr_cant_canales_9'],
+                  'pop_requiere'                  => $pt['pr_requiere_10'],
+                  'pop_numeracion'                => $pt['pr_numeracion_10'],
+                  'pop_cantidad'                  => $pt['pr_cant_canales_10'],
+                  'nei_requiere'                  => $pt['pr_requiere_11'],
+                  'nei_numeracion'                => $pt['pr_numeracion_11'],
+                  'nei_cantidad'                  => $pt['pr_cant_canales_11'],
+                  'med_requiere'                  => $pt['pr_requiere_12'],
+                  'med_numeracion'                => $pt['pr_numeracion_12'],
+                  'med_cantidad'                  => $pt['pr_cant_canales_12'],
+                  'bar_requiere'                  => $pt['pr_requiere_13'],
+                  'bar_numeracion'                => $pt['pr_numeracion_13'],
+                  'bar_cantidad'                  => $pt['pr_cant_canales_13'],
+                  'cart_requiere'                 => $pt['pr_requiere_14'],
+                  'cart_numeracion'               => $pt['pr_numeracion_14'],
+                  'cart_cantidad'                 => $pt['pr_cant_canales_14'],
+                  'stm_requiere'                  => $pt['pr_requiere_15'],
+                  'stm_numeracion'                => $pt['pr_numeracion_15'],
+                  'stm_cantidad'                  => $pt['pr_cant_canales_15'],
+                  'mon_requiere'                  => $pt['pr_requiere_16'],
+                  'mon_numeracion'                => $pt['pr_numeracion_16'],
+                  'mon_cantidad'                  => $pt['pr_cant_canales_16'],
+                  'vall_requiere'                 => $pt['pr_requiere_17'],
+                  'vall_numeracion'               => $pt['pr_numeracion_17'],
+                  'vall_cantidad'                 => $pt['pr_cant_canales_17'],
+                  'sinc_requiere'                 => $pt['pr_requiere_18'],
+                  'sinc_numeracion'               => $pt['pr_numeracion_18'],
+                  'sinc_cantidad'                 => $pt['pr_cant_canales_18'],
+                  'per_requiere'                  => $pt['pr_requiere_19'],
+                  'per_numeracion'                => $pt['pr_numeracion_19'],
+                  'per_cantidad'                  => $pt['pr_cant_canales_19'],
+                  'arme_requiere'                 => $pt['pr_requiere_20'],
+                  'arme_numeracion'               => $pt['pr_numeracion_20'],
+                  'arme_cantidad'                 => $pt['pr_cant_canales_20'],
+                  'man_requiere'                  => $pt['pr_requiere_21'],
+                  'man_numeracion'                => $pt['pr_numeracion_21'],
+                  'man_cantidad'                  => $pt['pr_cant_canales_21'],
+                  'iba_requiere'                  => $pt['pr_requiere_22'],
+                  'iba_numeracion'                => $pt['pr_numeracion_22'],
+                  'iba_cantidad'                  => $pt['pr_cant_canales_22'],
+                  'cuc_requiere'                  => $pt['pr_requiere_23'],
+                  'cuc_numeracion'                => $pt['pr_numeracion_23'],
+                  'cuc_cantidad'                  => $pt['pr_cant_canales_23'],
+                  'buc_requiere'                  => $pt['pr_requiere_24'],
+                  'buc_numeracion'                => $pt['pr_numeracion_24'],
+                  'buc_cantidad'                  => $pt['pr_cant_canales_24'],
+                  'dui_requiere'                  => $pt['pr_requiere_25'],
+                  'dui_numeracion'                => $pt['pr_numeracion_25'],
+                  'dui_cantidad'                  => $pt['pr_cant_canales_25'],
+                  'sog_requiere'                  => $pt['pr_requiere_26'],
+                  'sog_numeracion'                => $pt['pr_numeracion_26'],
+                  'sog_cantidad'                  => $pt['pr_cant_canales_26'],
+                  'flan_requiere'                 => $pt['pr_requiere_27'],
+                  'flan_numeracion'               => $pt['pr_numeracion_27'],
+                  'flan_cantidad'                 => $pt['pr_cant_canales_27'],
+                  'riv_requiere'                  => $pt['pr_requiere_28'],
+                  'riv_numeracion'                => $pt['pr_numeracion_28'],
+                  'riv_cantidad'                  => $pt['pr_cant_canales_28'],
+                  'aipe_requiere'                 => $pt['pr_requiere_29'],
+                  'aipe_numeracion'               => $pt['pr_numeracion_29'],
+                  'aipe_cantidad'                 => $pt['pr_cant_canales_29'],
+                  'leb_requiere'                  => $pt['pr_requiere_30'],
+                  'leb_numeracion'                => $pt['pr_numeracion_30'],
+                  'leb_cantidad'                  => $pt['pr_cant_canales_30']
+                );
+                $this->Dao_producto_model->insert_pr_novedades($data_pr);
                 break;
               /*TRASLADO_EXTERNO*/
               case '15': // Traslado Externo Servicio
-
+                $data_pr = array(
+                  'id_ot_padre'               =>$pt['nro_ot_onyx'],
+                  'ciudad'                    => $pt['pr_ciudad'], 
+                  'ubicacion_actual'          => $pt['pr_direccion_actual'], 
+                  'ubicacion_traslado'        => $pt['pr_direccion_traslado'], 
+                  'tipo_predio'               => $pt['pr_tipo_predio'], 
+                  'nit_cliente'               => $pt['pr_nit_cliente'], 
+                  'alias_lugar'               => $pt['pr_alias_lugar'], 
+                  'otp_asociada'              => $pt['pr_otp_asociadas'], 
+                  'cant_servicios_trasladar'  => $pt['pr_cntd_servicios'], 
+                  'cod_servicio_trasladar'    => $pt['pr_idservicio_trasladar'], 
+                  'tipo_traslado'             => $pt['pr_tipo_traslado'], 
+                  'tipo_servicio'             => $pt['pr_tipo_servicio'], 
+                  'ancho_banda'               => $pt['pr_ancho_banda'], 
+                  'tipo_actividad'            => $pt['pr_tipo_actividad'], 
+                  'servicio_actual'           => $pt['pr_id_servicio_actual'], 
+                  'requiere_liberacion_um'    => $pt['pr_liberacion_uml'], 
+                  'requiere_um'               => $pt['pr_requiere_instalacion'], 
+                  'proveedor'                 => $pt['pr_proveedor_milla'], 
+                  'medio'                     => $pt['pr_medio'],
+                  'factibilidad_bw'           => $pt['pr_resp_factibilidad'],
+                  'sds_destino'               => $pt['pr_sds_destino'], 
+                  'olt'                       => $pt['pr_olt_gpon'], 
+                  'interfaz_entrega_cliente'  => $pt['pr_interface_ecliente'], 
+                  'requiere_voc'              => $pt['pr_requiere_voc'], 
+                  'programacion_voc'          => $pt['pr_programacion_voc'], 
+                  'requiere_liberacion_um_fo' => $pt['pr_liberacion_recursos'], 
+                  'requiere_ventana_mtto'     => $pt['pr_ventana_mtto'], 
+                  'requiere_rfc'              => $pt['pr_requiere_rfc'], 
+                  'conversor_medio'           => $pt['pr_conversor_medio'], 
+                  'referencia_router'         => $pt['pr_referencia_router'], 
+                  'modulos_tarjetas'          => $pt['pr_modulo_o_tarjeta'], 
+                  'licencias'                 => $pt['pr_licencias'], 
+                  'equipos_adicionales'       => $pt['pr_equipos_adicionales'], 
+                  'consumibles'               => $pt['pr_consumibles'], 
+                  'carta_valorizada'          => $pt['pr_registro_importacion'], 
+                  'nombre_1'                  => $pt['pr_nombre_1'], 
+                  'telefono_1'                => $pt['pr_telefono_1'], 
+                  'celular_1'                 => $pt['pr_celular_1'], 
+                  'correo_1'                  => $pt['pr_email_1'], 
+                  'nombre_2'                  => $pt['pr_nombre_2'], 
+                  'telefono_2'                => $pt['pr_telefono_2'], 
+                  'celular_2'                 => $pt['pr_celular_2'], 
+                  'correo_2'                  => $pt['pr_email_2'], 
+                  'observaciones'             => $pt['pr_observaciones_pl_te']
+                );
+                $this->Dao_producto_model->insert_pr_traslado_externo($data_pr);
                 break;
               /*TRASLADO_INTERNO*/
               case '16': // Traslado Interno Servicio
-
+                $data_pr = array(
+                    'id_ot_padre'              => $pt['nro_ot_onyx'],
+                    'ciudad'                   => $pt['pr_ciudad'],
+                    'ubicacion_actual'         => $pt['pr_direccion'],
+                    'alias_lugar'              => $pt['pr_alias'],
+                    'movimiento_interno'       => $pt['pr_movimiento_it'],
+                    'otp_asociada'             => $pt['pr_otp_as'],
+                    'cant_servicios_trasladar' => $pt['pr_cantidad_st'],
+                    'cod_servicios_trasladar'  => $pt['pr_codigo_st'],
+                    'tipo_traslado'            => $pt['pr_tipo_ti'],
+                    'tipo_servicio'            => $pt['pr_tipo_s'],
+                    'ancho_banda'              => $pt['pr_ancho_banda'],
+                    'tipo_actividad'           => $pt['pr_tipo_acti_ti'],
+                    'servicio_actual'          => $pt['pr_id_servicio'],
+                    'requiere_um'              => $pt['pr_requiere_um'],
+                    'proveedor'                => $pt['pr_proveedor'],
+                    'medio'                    => $pt['pr_medio'],
+                    'factibilidad_bw'          => $pt['pr_respuesta'], 
+                    'sds_destino'              => $pt['pr_sds_destino'],
+                    'olt'                      => $pt['pr_olt'],
+                    'interfaz_entrega_cliente' => $pt['pr_interface'],
+                    'requiere_voc'             => $pt['pr_requiere'],
+                    'programacion_voc'         => $pt['pr_programacion_voc'],
+                    'requiere_ventana_mtto'    => $pt['pr_requiere_ventana_mtto'],
+                    'requiere_rfc'             => $pt['pr_requiere_rfc'],
+                    'conversor_medio'          => $pt['pr_convesor_m'],
+                    'referencia_router'        => $pt['pr_referencia_r'],
+                    'modulos_tarjetas'         => $pt['pr_modulos_t'],
+                    'licencias'                => $pt['pr_licencias'],
+                    'equipos_adicionales'      => $pt['pr_equipos_a'],
+                    'consumibles'              => $pt['pr_consumibles'],
+                    'carta_valorizada'         => $pt['pr_registro_ic'],
+                    'nombre_1'                 => $pt['pr_nombre1'],
+                    'telefono_1'               => $pt['pr_telefono1'],
+                    'celular_1'                => $pt['pr_celular1'],
+                    'correo_1'                 => $pt['pr_correo1'],
+                    'nombre_2'                 => $pt['pr_nombre2'],
+                    'telefono_2'               => $pt['pr_telefono2'],
+                    'celular_2'                => $pt['pr_celular2'],
+                    'correo_2'                 => $pt['pr_correo2'],
+                    'observaciones'            => $pt['pr_observaciones']
+                );
+                $this->Dao_producto_model->insert_pr_traslado_interno($data_pr);
                 break;
               /*PVX_ADMINISTRADA*/
               case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+                $data_pr = array(
+                    'id_ot_padre'              => $pt['pr_otp'],
+
+
+
+                );
+
+
+/*ciudad               => pr_ciudad
+direccion            => pr_direccion
+tipo_predio          => pr_tipo_predio
+nit_cliente          => pr_nit_cliente
+alias_lugar          => pr_alias_lugar
+otp_asociada         => pr_otp_asociadas
+tipo_pbx             => pr_tipo_pbx
+tipo_instalacion     => pr_tipo_instalacion
+servicio_actual      => pr_id_servicio
+requiere_um          => pr_requiere_instalacion
+proveedor            => pr_proveedor
+medio                => pr_medio_spa
+requiere_voc         => pr_requiere_voc
+programacion_voc     => pr_programacion_voc
+requiere_rfc         => pr_requiere_rfc
+conversor_medio      => pr_conversor_medio
+referencia_router    => pr_referencia_router
+modulos_tarjetas     => pr_modulo_tarjeta
+licencias            => pr_licencias
+equipos_adicionales  => pr_equipos_adicionales
+
+
+fuentes_telefonos    => pr_cantidad
+diademas             => pr_fuente_telefono
+araña_conferencia    => pr_diademas
+botoneras            => pr_aranas_conferencias
+modulo_botonera      => pr_botoneras
+fuente_botonera      => pr_expansion_botonera
+consumibles          => pr_fuente_botonera
+carta_valorizada     => pr_consumibles
+nombre_1             => pr_registro_importacion
+telefono_1           => pr_nombre_1
+celular_1            => pr_telefono_1
+correo_1             => pr_celular_1
+nombre_2             => pr_email_1
+telefono_2           => pr_nombre_2
+celular_2            => pr_telefono_2
+correo_2             => pr_celular_2
+observaciones        => pr_email_2
+tel_fija_claro       => pr_observaciones_1
+cantidad_extenciones => pr_telefonia_fija
+cantidad_buzones_voz => pr_cant_extension
+grabacion_voz        => pr_cant_buzonv
+lan_administrada     => pr_incluye_gravacion
+                        pr_lan_admon
+                        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 break;
               /*TELEFONIA FIJA*/
@@ -5659,116 +6011,116 @@ class Templates extends CI_Controller {
           <br></div></div>
 
           ';
-      }
+      
     }
 
     /*--**************************************************************PLANTILLA CORREO KICKOFF 15 DIAS***********************************************************************--*/
 
 
-//correo para kick of 15 dias
-public function correo_ko_15_dias($argumentos){
-    return
-          '<div class=""><div class="aHl"></div><div id=":m2" tabindex="-1"></div><div id=":md" class="ii gt"><div id=":me" class="a3s aXjCH m164fc5b537463e95"><div dir="ltr"><div class="adM">
-          </div><p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Cordial Saludo Señores,<span></span></span></p>
+    //correo para kick of 15 dias
+    public function correo_ko_15_dias($argumentos){
+        return
+              '<div class=""><div class="aHl"></div><div id=":m2" tabindex="-1"></div><div id=":md" class="ii gt"><div id=":me" class="a3s aXjCH m164fc5b537463e95"><div dir="ltr"><div class="adM">
+              </div><p class="MsoNormal" style="text-align:justify;margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Cordial Saludo Señores,<span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">'. $argumentos['nombre'] .'<span></span></span></b></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">'. $argumentos['nombre'] .'<span></span></span></b></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Comprometidos
-          con el servicio y el cumplimiento de sus solicitudes me permito notificar los
-          avances de los asuntos en curso.</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Comprometidos
+              con el servicio y el cumplimiento de sus solicitudes me permito notificar los
+              avances de los asuntos en curso.</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Es de suma
-          importancia que sea revisado y nos retroalimente con sus comentarios, ya que al
-          término de 2 días hábiles este reporte se dará por aceptado.</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Es de suma
+              importancia que sea revisado y nos retroalimente con sus comentarios, ya que al
+              término de 2 días hábiles este reporte se dará por aceptado.</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">&nbsp;</span><b><u><span lang="ES-CO" style="font-family:Garamond,serif">OTS
-          '. $argumentos['ots_nombre'] .' – AMPLIACIÓN ENLACES '. $argumentos['ampliacion_enlaces'] .' A 200M</span></u></b><span lang="ES-CO" style="font-size:11pt;color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">&nbsp;</span><b><u><span lang="ES-CO" style="font-family:Garamond,serif">OTS
+              '. $argumentos['ots_nombre'] .' – AMPLIACIÓN ENLACES '. $argumentos['ampliacion_enlaces'] .' A 200M</span></u></b><span lang="ES-CO" style="font-size:11pt;color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Garamond,serif">Dirección de servicio: '. $argumentos['direccion_servicio'] .'</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Garamond,serif">Dirección de servicio: '. $argumentos['direccion_servicio'] .'</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-size:8pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-size:8pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">SERVICIO
-          '. $argumentos['servicio'] .'</span></b><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">SERVICIO
+              '. $argumentos['servicio'] .'</span></b><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Visita Obra Civil: '.$argumentos['vista_obra_civil'].' </span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Visita Obra Civil: '.$argumentos['vista_obra_civil'].' </span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Envió Cotización Obra Civil: '. $argumentos['envio_cotizacion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Envió Cotización Obra Civil: '. $argumentos['envio_cotizacion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Aprobación Cotización Obra Civil: '. $argumentos['aprobacion_cotizacion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Aprobación Cotización Obra Civil: '. $argumentos['aprobacion_cotizacion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Ejecución de Obra Civil: '. $argumentos['ejecucion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Ejecución de Obra Civil: '. $argumentos['ejecucion_obra_civil'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Empalmes: '. $argumentos['empalmes'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Empalmes: '. $argumentos['empalmes'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Configuración: '. $argumentos['configuracion'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Configuración: '. $argumentos['configuracion'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Equipos: '. $argumentos['equipos_intalar_camp1'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Equipos: '. $argumentos['equipos_intalar_camp1'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Entrega del servicio: '. $argumentos['entrega_servicio'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif;color:windowtext">Entrega del servicio: '. $argumentos['entrega_servicio'] .'</span><span lang="ES-CO" style="color:windowtext"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO">&nbsp;<span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO">&nbsp;<span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span>&nbsp;</span><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Nivel de Contacto 1:</span></b><span lang="ES-CO" style="font-family:Arial,sans-serif"> Para cualquier duda o
-          inquietud sobre el proceso de instalación en Curso.</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span>&nbsp;</span><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Nivel de Contacto 1:</span></b><span lang="ES-CO" style="font-family:Arial,sans-serif"> Para cualquier duda o
+              inquietud sobre el proceso de instalación en Curso.</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
-          Implementación Responsable Cuenta:</span></b><span lang="ES-CO" style="font-family:Arial,sans-serif"> </span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+              Implementación Responsable Cuenta:</span></b><span lang="ES-CO" style="font-family:Arial,sans-serif"> </span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">'. $argumentos['ingeniero1'] .'</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">'. $argumentos['ingeniero1'] .'</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
-          Aprovisionamiento Estándar</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+              Aprovisionamiento Estándar</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Celular: '. $argumentos['ingeniero1_tel'] .'</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Celular: '. $argumentos['ingeniero1_tel'] .'</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
-          electrónico:</span></b><span lang="ES-CO"> </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="'. $argumentos['ingeniero1_email'] .'" style="color:blue;text-decoration:underline" target="_blank">'. $argumentos['ingeniero1_email'] .'</a></span></b></span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
+              electrónico:</span></b><span lang="ES-CO"> </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="'. $argumentos['ingeniero1_email'] .'" style="color:blue;text-decoration:underline" target="_blank">'. $argumentos['ingeniero1_email'] .'</a></span></b></span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Calibri,sans-serif">&nbsp;</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Calibri,sans-serif">&nbsp;</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">&nbsp;Nivel
-          de Contacto 2: En caso de que no se obtenga respuesta por parte del Nivel de
-          Contacto 1.</span></b><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">&nbsp;Nivel
+              de Contacto 2: En caso de que no se obtenga respuesta por parte del Nivel de
+              Contacto 1.</span></b><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Coordinador
-          Estándar: </span></b><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Coordinador
+              Estándar: </span></b><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Alejandra
-          Rendon Calderon &nbsp;</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Alejandra
+              Rendon Calderon &nbsp;</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Teléfono.
-          7569858 Ext &nbsp;2008</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Teléfono.
+              7569858 Ext &nbsp;2008</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
-          electrónico</span><span lang="ES-CO">: </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="mailto:alejandra.rendon.ext@claro.com.co" style="color:blue;text-decoration:underline" target="_blank">alejandra.rendon.ext@claro.<wbr>com.co</a></span></b></span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
+              electrónico</span><span lang="ES-CO">: </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="mailto:alejandra.rendon.ext@claro.com.co" style="color:blue;text-decoration:underline" target="_blank">alejandra.rendon.ext@claro.<wbr>com.co</a></span></b></span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO">&nbsp;<span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO">&nbsp;<span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Nivel
-          de Contacto 3: En caso de que no se obtenga respuesta por parte del Nivel de
-          Contacto 2.</span></b><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Nivel
+              de Contacto 3: En caso de que no se obtenga respuesta por parte del Nivel de
+              Contacto 2.</span></b><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
-          Implementación Claro: </span></b><span lang="ES-CO" style="font-family:Arial,sans-serif">Vivian
-          Rodriguez</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+              Implementación Claro: </span></b><span lang="ES-CO" style="font-family:Arial,sans-serif">Vivian
+              Rodriguez</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
-          Aprovisionamiento Estándar</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Ingeniero
+              Aprovisionamiento Estándar</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Celular:
-          3138892717</span><span lang="ES-CO"><span></span></span></p>
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Celular:
+              3138892717</span><span lang="ES-CO"><span></span></span></p>
 
-          <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
-          electrónico:</span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="mailto:vivian.rodriguez@claro.com.co" style="color:blue;text-decoration:underline" target="_blank">vivian.rodriguez@claro.com.co</a></span></b></span><span lang="ES-CO"><span></span></span></p><div class="yj6qo"></div><div class="adL">
+              <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;color:black"><span lang="ES-CO" style="font-family:Arial,sans-serif">Correo
+              electrónico:</span><span lang="ES-CO" style="color:rgb(31,73,125)"> </span><span class="m_4874063169434878239gmail-MsoHyperlink" style="color:blue;text-decoration:underline"><b><span lang="ES-CO" style="font-family:Arial,sans-serif"><a href="mailto:vivian.rodriguez@claro.com.co" style="color:blue;text-decoration:underline" target="_blank">vivian.rodriguez@claro.com.co</a></span></b></span><span lang="ES-CO"><span></span></span></p><div class="yj6qo"></div><div class="adL">
 
-          <br></div></div><div class="adL">
-          </div></div></div><div id=":ly" class="ii gt" style="display:none"><div id=":lx" class="a3s aXjCH undefined"></div></div><div class="hi"></div></div>';
+              <br></div></div><div class="adL">
+              </div></div></div><div id=":ly" class="ii gt" style="display:none"><div id=":lx" class="a3s aXjCH undefined"></div></div><div class="hi"></div></div>';
 
-}
+    }
 
-/************************************************************************ FIN PLANTILLA ******************************************************************************************/
-//cuerpo del correo del modal hitos
+    /************************************************************************ FIN PLANTILLA ******************************************************************************************/
+    //cuerpo del correo del modal hitos
 
-}
+    }
 

@@ -16,4 +16,40 @@ class Dao_producto_model extends CI_Model {
 		}
 	}
 
+	// insertar en pabla pr_mpls
+	public function insert_pr_mpls($data){
+		if ($this->db->insert('pr_mpls', $data)) {
+			return $this->db->insert_id();
+		} else {
+			return false;
+		}
+	}
+
+	// insertar en pabla pr_novedades
+	public function insert_pr_novedades($data){
+		if ($this->db->insert('pr_novedades', $data)) {
+			return $this->db->insert_id();
+		} else {
+			return false;
+		}
+	}
+
+	// insertar en pabla pr_traslado_externo
+	public function insert_pr_traslado_externo($data){
+		if ($this->db->insert('pr_traslado_externo', $data)) {
+			return $this->db->insert_id();
+		} else {
+			return false;
+		}
+	}
+
+	// insertar en pabla pr_traslado_interno
+	public function insert_pr_traslado_interno($data){
+		if ($this->db->insert('pr_traslado_interno', $data)) {
+			return $this->db->insert_id();
+		} else {
+			return false;
+		}
+	}
+
 }
