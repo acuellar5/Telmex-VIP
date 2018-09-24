@@ -1110,54 +1110,112 @@ class Templates extends CI_Controller {
                 'campo10' => $p['campo10']// INGENIERO IMPLEMENTACIÓN
                 'campo11' => $p['campo11']// TELEFONOS DE CONTACTO
                 'campo12' => $p['campo12'], // EMAIL
+
+                /*======================================================
+            PREGUNTAR LA FILA DE CIUDAD PUEDE SER MAS
+            ======================================================*/
             );
             break;
-        case ($s == 14): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 14): // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+            $argumentos = array(
+                'campo1'  => $['campo1'], // nombre
+                'campo2'  => $['campo2'], // nombre cliente
+                'campo3'  => $['campo3'], // servicio
+                'campo4'  => $['campo4'], // Dirección Destino
+                'campo5'  => $['campo5'], // Cantidad de DID
+                'campo6'  => $['campo6'], // Bogota
+                'campo6'  => $['campo6'], // Tunja
+                'campo6'  => $['campo6'], // Villavicencio
+                'campo6'  => $['campo6'], // Facatativá
+                'campo6'  => $['campo6'], // Girardot
+                'campo6'  => $['campo6'], // Yopal
+                'campo6'  => $['campo6'], // Cali
+                'campo6'  => $['campo6'], // Buenaventura
+                'campo6'  => $['campo6'], // Pasto
+                'campo6'  => $['campo6'], // Popayán
+                'campo6'  => $['campo6'], // Neiva
+                'campo6'  => $['campo6'], // Medellín
+                'campo6'  => $['campo6'], // Barranquilla
+                'campo6'  => $['campo6'], // Cartagena
+                'campo6'  => $['campo6'], // Santa Marta
+                'campo6'  => $['campo6'], // Montería
+                'campo6'  => $['campo6'], // Valledupar
+                'campo6'  => $['campo6'], // Sincelejo
+                'campo6'  => $['campo6'], // Pereira
+                'campo6'  => $['campo6'], // Armenia
+                'campo6'  => $['campo6'], // Manizales
+                'campo6'  => $['campo6'], // Ibagué
+                'campo6'  => $['campo6'], // Cúcuta
+                'campo6'  => $['campo6'], // Bucaramanga
+                'campo6'  => $['campo6'], // Duitama
+                'campo6'  => $['campo6'], // Sogamoso
+                'campo6'  => $['campo6'], // Flandes
+                'campo6'  => $['campo6'], // Rivera
+                'campo6'  => $['campo6'], // Aipe
+                'campo6'  => $['campo6'], // Lebrija
+                'campo7'  => $['campo7'], // inicio al Proceso de Cambio  de Servicio
+                'campo8'  => $['campo8'], // INGENIERO IMPLEMENTACIÓN
+                'campo9'  => $['campo9'], // TELEFONOS DE CONTACTO
+                'campo10' => $['campo10'], // EMAIL
+                'campo11' => $['campo11'], // Fecha de Entrega de su servicio
+            );
+            break;
+        case ($s == 15): // Traslado Externo Servicio
+            $argumentos = array(
+                'campo1'  => $p['campo1']// nombre
+                'campo2'  => $p['campo2']// nombre cliente
+                'campo3'  => $p['campo3']// servicio
+                'campo4'  => $p['campo4']// TRASLADO DE SERVICIO
+                'campo5'  => $p['campo5']// Dirección Sede Antigua
+                'campo6'  => $p['campo6']// Dirección Sede Nueva
+                'campo7'  => $p['campo7']// Existen otros Servicios a Trasladar (si)
+                'campo7'  => $p['campo7']// Existen otros Servicios a Trasladar (no)
+                'campo8'  => $p['campo8']// Cantidad
+                'campo9'  => $p['campo9']// Códigos de Servicio a Trasladar
+                'campo10' => $p['campo10']// inicio al Proceso de Traslado Externo del Servicio
+                'campo11' => $p['campo11']// INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['campo12']// TELEFONOS DE CONTACTO
+                'campo13' => $p['campo13']// EMAIL
+                'campo14' => $p['campo14'], // Fecha de Entrega del Traslado de su Servicio
+
+            );
+            break;
+        case ($s == 16): // Traslado Interno Servicio
             $argumentos = array(
 
             );
             break;
-        case ($s == 15): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $argumentos = array(
 
             );
             break;
-        case ($s == 16): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 18): // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
             $argumentos = array(
 
             );
             break;
-        case ($s == 17): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 19): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
             $argumentos = array(
 
             );
             break;
-        case ($s == 18): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 20): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
             $argumentos = array(
 
             );
             break;
-        case ($s == 19): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 21): // Instalación Telefonía Publica Básica - Internet Dedicado
             $argumentos = array(
 
             );
             break;
-        case ($s == 20): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 22): //Cambio de Última Milla
             $argumentos = array(
 
             );
             break;
-        case ($s == 21): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
-            $argumentos = array(
-
-            );
-            break;
-        case ($s == 22): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
-            $argumentos = array(
-
-            );
-            break;
-        case ($s == 23): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+        case ($s == 23): // Cambio de Equipo
             $argumentos = array(
 
             );
