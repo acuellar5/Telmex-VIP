@@ -992,31 +992,49 @@ $(function () {
         },
         // Muestra los hitos de la ot padre seleccionada
         onClickSaveHitosOtp: function () {
-            $.post(baseurl + '/OtPadre/c_saveHitosOtp',
-                    {
-                        idOtp: $('#otpHIto').html(),
-                        formulario: $("#formModalHitosOTP").serializeArray()
-                    },
-                    function (data) {
-                        var obj = JSON.parse(data);
-                        if (obj.response == 'success') {
-                            swal({
-                                position: 'top-end',
-                                type: 'success',
-                                title: obj.msg,
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            $('#modalHitosOtp').modal('toggle');
-                        } else {
-                            swal(
-                                    'Error',
-                                    obj.msg,
-                                    'error'
-                                    )
-                        }
+            var vacios = 0;
+            $('.fechas_hitos').each(function () {
+                if ($(this).val() == '') {
+                    vacios++;
+                }
+            });
 
-                    });
+            if (vacios == 0) {
+                $.post(baseurl + '/OtPadre/c_saveHitosOtp',
+                        {
+                            idOtp: $('#otpHIto').html(),
+                            formulario: $("#formModalHitosOTP").serializeArray()
+                        },
+                        function (data) {
+                            var obj = JSON.parse(data);
+                            if (obj.response == 'success') {
+                                swal({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: obj.msg,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                $('#modalHitosOtp').modal('toggle');
+                                location.reload();
+                            } else {
+                                swal(
+                                        'Error',
+                                        obj.msg,
+                                        'error'
+                                        )
+                            }
+
+                        });
+            } else {
+                swal(
+                    'Recuerde!',
+                    'Para poder Guardar la información debe diligenciar todas las fechas de compromiso',
+                    'warning'
+                );
+            }
+
+
         },
         // muestra las otp seleccionadas dependiendo la tabla
         otp_seleccionadas: function () {
@@ -1124,19 +1142,39 @@ $(function () {
         //Envia el reporte de actualizacion dependiendo de las OTP seleccionadas
         onClickSendReportUpdate: function () {
             var tableSelected = eventos.table_selected.rows().data();
-            var id_otp = [];
+            var ids_otp = [];
+            var flag = true;
             tableSelected.each(function (otp) {
-                id_otp.push(otp.k_id_ot_padre);
+                ids_otp.push(otp.k_id_ot_padre);
+//                console.log(otp.id_hitos);
+                if (otp.id_hitos === null) {
+                    flag = false;
+                }
             });
-            $.post(baseurl + '/OtHija/c_fillmodalsCierre',
-                    {
-                        id_otp: id_otp
-                    },
-                    function (data) {
-                        
-                    });
 
-            console.log(id_otp);
+            if (flag) {
+                $.post(baseurl + '/OtPadre/c_sendReportUpdate',
+                        {
+                            ids_otp: ids_otp
+                        },
+                        function (data) {
+                            var obj = JSON.parse(data);
+                            swal(
+                                (obj.success) ? 'Correo enviado' : 'Error',
+                                obj.msg,
+                                (obj.success) ? 'success' : 'error'
+                            );
+                        });
+            } else {
+                swal(
+                    'Recuerde!',
+                    'No se puede enviar el email sin haber diligenciado los hitos de los registros marcados en rojo',
+                    'warning'
+                );
+            }
+
+
+//            console.log(ids_otp);
         }
 
     };
