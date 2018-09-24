@@ -97,7 +97,7 @@
                 <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC</option>
                 <option value='CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO'>CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO</option>
                 <option value='CLIENTE - PROGRAMADA_POSTERIOR '>CLIENTE - PROGRAMADA_POSTERIOR </option>
-                <option value='CLIENTE - SIN CONTRATO FIRMADO'>CLIENTE - SIN CONTRATO FIRMADO</option> 
+                <option value='CLIENTE - SIN CONTRATO FIRMADO'>CLIENTE - SIN CONTRATO FIRMADO</option>
                 <option value='CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )'>CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )</option>
                 <option value='CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)'>CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)</option>
                 <option value='CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO'>CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO</option>
@@ -144,7 +144,7 @@
                 <option value='PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS'>PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS</option>
                 <option value='PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR'>PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR</option>
                 <option value='PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS'>PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS</option>
-                <option value='PROYECTO ÉXITO ANTIGUO'>PROYECTO ÉXITO ANTIGUO</option> 
+                <option value='PROYECTO ÉXITO ANTIGUO'>PROYECTO ÉXITO ANTIGUO</option>
                 <option value='TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO'>TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO</option>
                 <option value='TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>
                 <option value='TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN'>TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN</option>
@@ -202,11 +202,11 @@
                 <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
                 <h3 class="modal-title" id="myModalLabel"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
             </div>
-            <div class="modal-body">                
+            <div class="modal-body">
                 <form class="well form-horizontal" id="formModalOTHS" method="post" novalidate="novalidate">
 
                     <table class="table table-hover table-bordered  dataTable_camilo table-striped  " id="table_oths_otp"  cellspacing="2"></table>
-                </form>                
+                </form>
             </div>
 
 
@@ -284,7 +284,7 @@
                 <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
                 <h3 class="modal-title" id="myModalLabelHitos"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
             </div>
-            <div class="modal-body">                
+            <div class="modal-body">
                 <form class="well form-horizontal" id="formModalHitosOTP" method="post" novalidate="novalidate">
                     <div class="form-group col-md-6">
                         <label for="email">Actividad Actual:</label>
@@ -615,7 +615,7 @@
                 <h3 class="modal-title" id="myModalLabelEditOth">    Orden Ot Hija N <label id="id_ot_modal_edit_oth"></label></h3>
             </div>
             <div class="modal-body">
-                <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?= URL::to('assets/images/plus.png'); ?>" data-simbol="plus" class="rigth"></span></button>
+                <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?=URL::to('assets/images/plus.png');?>" data-simbol="plus" class="rigth"></span></button>
 
                 <div>
                     <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
@@ -691,7 +691,7 @@
                                                     <input name="ciudad" id="ciudad" class="form-control" type="text" disabled="true">
                                                 </div>
                                             </div>
-                                        </div>                 
+                                        </div>
                                     </fieldset>
                                 </div>
                                 <!--  fin seccion derecha form---->
@@ -1283,7 +1283,7 @@
                                                 <div class="col-md-8 selectContainer">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                        <select name="k_id_estado_ot" id="k_id_estado_ot" class="form-control llenarEstadosJS">           
+                                                        <select name="k_id_estado_ot" id="k_id_estado_ot" class="form-control llenarEstadosJS">
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1319,7 +1319,7 @@
                                                             <option value="21">Instalación Telefonía Publica Básica - Internet Dedicado</option>
                                                             <option value="22">Cambio de Última Milla</option>
                                                             <option value="23">Cambio de Equipo</option>
-                                                        </select> 
+                                                        </select>
 
                                                     </div>
                                                 </div>
@@ -1383,7 +1383,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </fieldset>
                                                                     <fieldset class="col-md-6">
                                                                         <!--*********************  INPUT DATE  *********************-->
@@ -1406,7 +1406,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </fieldset>
                                                                 </div>
 
@@ -1432,7 +1432,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </fieldset>
                                                                     <fieldset class="col-md-6">
                                                                         <!--*********************  INPUT DATE  *********************-->
@@ -1455,7 +1455,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </fieldset>
                                                                 </div>
 
@@ -1499,10 +1499,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
 
-                                                
+
                                                 <!--tab 2 -->
                                                 <div class="bhoechie-tab-content" id="contentTab2">
                                                     <div id="general_producto">
@@ -1520,7 +1520,7 @@
                                                     <h2 class="h4"><i class="fa fa-dot-circle-o"></i> Formulario de servicio</h2>
                                                     <!-- llenar esta seccion con el form de servicio -->
                                                     <div id="general_servicio"></div>
-                                                    
+
 
 
 
@@ -1529,7 +1529,7 @@
 
                                                 </div>
 
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -1546,7 +1546,7 @@
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
                 <?php if (Auth::user()->n_role_user != 'claro'): ?>
                     <button type="button" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
-                <?php endif ?>
+                <?php endif;?>
             </div>
         </div>
     </div>
@@ -1576,17 +1576,24 @@
 
 
 
-                    
 
 
-<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?> "></script>
+
+<script src="<?=URL::to("assets/plugins/sweetalert2/sweetalert2.all.js");?> "></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>-->
 <?php if (isset($_GET['msj'])): ?>
     <script>
         var urlbase = "<?php echo URL::base(); ?>";
         swal('OK', 'se actualizó correctamente', 'success');
     </script>
-<?php endif ?>
+<?php endif;?>
 
+<?php
 
+$msj = $this->session->flashdata('msj');
+if ($msj == 'error') {?>
+        <script>
+            swal('Intenta de nuevo',`error al actualizar los datos`, 'error');
 
+        </script>
+<?php }
