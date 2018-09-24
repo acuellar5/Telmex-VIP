@@ -1099,17 +1099,17 @@ class Templates extends CI_Controller {
 
         case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
             $argumentos = array(
-                'campo1'  => $p['campo1']// nombre
-                'campo2'  => $p['campo2']// nombre cliente
-                'campo3'  => $p['campo3']// servicio
-                'campo4'  => $p['campo4']// Dirección Destino
-                'campo5'  => $p['campo5']// Cantidad de Líneas Telefónicas Básicas
-                'campo6'  => $p['campo6']// Ciudad //marcar (x)
-                'campo7'  => $p['campo7']// Cantidad DID
-                'campo8'  => $p['campo8']// inicio al Proceso de Cambio  de Servicio
-                'campo9'  => $p['campo9']// Fecha de Entrega de su servicio
-                'campo10' => $p['campo10']// INGENIERO IMPLEMENTACIÓN
-                'campo11' => $p['campo11']// TELEFONOS DE CONTACTO
+                'campo1'  => $p['campo1'],// nombre
+                'campo2'  => $p['campo2'],// nombre cliente
+                'campo3'  => $p['campo3'],// servicio
+                'campo4'  => $p['campo4'],// Dirección Destino
+                'campo5'  => $p['campo5'],// Cantidad de Líneas Telefónicas Básicas
+                'campo6'  => $p['campo6'],// Ciudad //marcar (x)
+                'campo7'  => $p['campo7'],// Cantidad DID
+                'campo8'  => $p['campo8'],// inicio al Proceso de Cambio  de Servicio
+                'campo9'  => $p['campo9'],// Fecha de Entrega de su servicio
+                'campo10' => $p['campo10'],// INGENIERO IMPLEMENTACIÓN
+                'campo11' => $p['campo11'],// TELEFONOS DE CONTACTO
                 'campo12' => $p['campo12'], // EMAIL
 
                 /*======================================================
