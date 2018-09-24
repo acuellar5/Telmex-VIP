@@ -58,7 +58,7 @@ class Templates extends CI_Controller {
         2. formulario producto guardar en bd dependiendo el producto => tabla (producto)
         3. formulario servicio enviar correo plantilla correspondiente, al correo de la persona logueada // faber
         3.1 si se envió se guarda tabla log correo
-        3.1.1 si se envia correo actualizar la vista
+
         3.1.2 si nó ... mensaje no se envio (pasos de como poder enviarlo manualmente)
         3.2 sinó guardo en log_correo no envia nada msj error volver a intentar
         4. Actualizar ot_hija en tabla ot_hija
@@ -83,7 +83,7 @@ class Templates extends CI_Controller {
             if ($res_envio) {
                 $this->guardar_servicio($pt);
                 // 4. Actualizar ot_hija en tabla ot_hija
-                $this->actualizar_oth($pt);
+                $this->actualizar_oth($pt, true);
             }
             // si no se envia no se guarda el formulario
             else {
@@ -131,7 +131,7 @@ class Templates extends CI_Controller {
 
         } else {
             // actualizar el estado
-            $this->update_status($_POST);
+            $this->actualizar_oth($pt);
         }
 
     }
@@ -786,10 +786,7 @@ class Templates extends CI_Controller {
     // guardar el servicio en tabla log_correo
     private function guardar_servicio($pt) {
         ate_default_timezone_set("America/Bogota");
-        $fActual = date('Y-m-d');
-        // le aumento 1 a la cantidad de correos enviados de esa ot hija
-        $cant_mails = $pt['c_email'] + 1;
-
+        $fActual       = date('Y-m-d');
         $destinatarios = Auth::user()->n_mail_user;
         // seteo el arreglo de campos vacio
         $dataLogMail = $this->dataLogMail();
@@ -807,6 +804,42 @@ class Templates extends CI_Controller {
         $dataLogMail['fecha']          = $fActual;
 
         $this->Dao_log_correo_model->insert_data($dataLogMail);
+    }
+
+    // Actualizar la oth del formulario servicio el segundo parametro es por si viene de enviar correo
+    private function actualizar_oth($pt, $is_ko_3 = false) {
+        date_default_timezone_set("America/Bogota");
+        $fActual  = date('Y-m-d H:i:s');
+        $fActual2 = date('Y-m-d');
+
+        // si es ko y es parea cambiar a estado cerrada  le aumento 1 a la cantidad de correos enviados de esa ot hija
+        $cant_mails  = ($is_ko_3) ? $pt['c_email'] + 1 : $pt['c_email'];
+        $text_estado = $this->Dao_estado_ot_model->getNameStatusById($pt['k_id_estado_ot']);
+
+        $data = array(
+            'id_orden_trabajo_hija'     => $pt['id_orden_trabajo_hija'],
+            'k_id_estado_ot'            => $pt['k_id_estado_ot'],
+            'estado_orden_trabajo_hija' => $text_estado,
+            'fecha_mod'                 => $fActual,
+            'estado_mod'                => 1,
+            'n_observacion_cierre'      => $pt['n_observacion_cierre'],
+            'c_email'                   => $cant_mails,
+            'last_send'                 => $fActual2,
+        );
+
+        $dataLog = array(
+            'id_ot_hija' => $pt['id_orden_trabajo_hija'],
+            'antes'      => $pt['estado_orden_trabajo_hija'],
+            'ahora'      => $text_estado,
+            'columna'    => 'estado_orden_trabajo_hija',
+            'fecha_mod'  => $fActual,
+        );
+
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+
+        $msj = 'ok';
+        $this->session->set_flashdata('msj', $msj);
+        header('Location: ' . URL::base() . '/managementOtp');
     }
 
     //Actualiza el estato (hay que enviarle el post)

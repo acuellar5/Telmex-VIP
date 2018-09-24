@@ -1569,14 +1569,8 @@
                 <button type="button" class="btn btn-success" id="mdl-enviar-reporte" style="width: 13%;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;Enviar correo&nbsp;&nbsp;</button>
             </div>
         </div>
-    </div>
 </div>
-
-
-
-
-
-
+</div>
 
 
 <script src="<?=URL::to("assets/plugins/sweetalert2/sweetalert2.all.js");?> "></script>
@@ -1596,4 +1590,6 @@ if ($msj == 'error') {?>
             swal('Intenta de nuevo',`error al actualizar los datos`, 'error');
 
         </script>
+<?php } else if ($msj == 'ok') {?>
+    <script> swal('OK', 'se actualizó correctamente', 'success'); </script>
 <?php }

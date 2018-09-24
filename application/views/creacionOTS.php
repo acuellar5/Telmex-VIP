@@ -1,4 +1,4 @@
-<!-- ************************************MODULO PARA CREAR LAS OTHS ************************************************************** --> 
+<!-- ************************************MODULO PARA CREAR LAS OTHS ************************************************************** -->
 <h2>Creación de OT</h2>
 <!-- ************************************ Boton para crear oth ************************************************************** -->
 <a href="#" id="btn_new_ot" class="btn btn-success btn-sm btn_crear_oth"><span class="glyphicon glyphicon-plus"></span> Crear OT</a>
@@ -18,7 +18,7 @@
             <th></th>
             <th></th>
         </tr>
-    </thead>   
+    </thead>
 </table>
 
 <!-- ******************************** Inicio del modal para crear oth ******************************************************* -->
@@ -28,17 +28,17 @@
 	    <div class="modal-content">
 	    	<!-- header del modal -->
 	        <div class="modal-header cssnewtypem">
-	            <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('/assets/images/cerrar (7).png') ?>"></img></button>
+	            <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?=URL::to('/assets/images/cerrar (7).png');?>"></img></button>
 				<h4 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo OT</h4>
 	        </div>
 	        <!-- fin header del modal -->
 	        <!-- body inicio del modal -->
 		    <div class="modal-body ">
-		    	
-		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_oth" action="<?= URL::to("LoadInformation/create_ot") ?>"  method="post" >
+
+		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_oth" action="<?=URL::to("LoadInformation/create_ot");?>"  method="post" >
 					<h4>Nueva OTP</h4>
 					<fieldset class="fielset_new_ot_mdl">
-						
+
 						<div class="form-group">
 					        <label for="id_otp" class="col-md-3 control-label">OTP:</label>
 					        <div class="col-md-8 selectContainer">
@@ -67,8 +67,8 @@
 					                <select class="form-control" id="tipo_otp" name="tipo_otp">
 									    <option value="">Seleccionar...</option>
 										<?php foreach ($tipos_otp as $tipo_otp): ?>
-											<option value="<?= $tipo_otp->orden_trabajo ?>"><?= $tipo_otp->orden_trabajo ?></option>	
-										<?php endforeach ?>
+											<option value="<?=$tipo_otp->orden_trabajo;?>"><?=$tipo_otp->orden_trabajo;?></option>
+										<?php endforeach;?>
 									</select>
 					            </div>
 					        </div>
@@ -82,8 +82,8 @@
 					                <select class="form-control" id="estado_otp" name="estado_otp">
 									    <option value="">Seleccionar...</option>
 									    <?php foreach ($estados_otp as $estado_otp): ?>
-									    	<option value="<?= $estado_otp->estado_orden_trabajo ?>"><?= $estado_otp->estado_orden_trabajo ?></option>
-									    <?php endforeach ?>
+									    	<option value="<?=$estado_otp->estado_orden_trabajo;?>"><?=$estado_otp->estado_orden_trabajo;?></option>
+									    <?php endforeach;?>
 									</select>
 					            </div>
 					        </div>
@@ -117,14 +117,14 @@
 					                <select class="form-control" id="ing_responsable" name="ing_responsable">
 									    <option>Seleccionar...</option>
 									    <?php foreach ($inenieros as $ingeniero): ?>
-									    	<option value="<?= $ingeniero->k_id_user ?>"><?= $ingeniero->ingenieros ?></option>
-									    <?php endforeach ?>
+									    	<option value="<?=$ingeniero->k_id_user;?>"><?=$ingeniero->ingenieros;?></option>
+									    <?php endforeach;?>
 									</select>
 					            </div>
 					        </div>
 					    </div>
 
-					</fieldset>						
+					</fieldset>
 					<!-- SECCION PARA OTH -->
 					<fieldset class="fielset_new_ot_mdl">
 						<div class="form-group">
@@ -136,7 +136,7 @@
 					            </div>
 					        </div>
 					    </div>
-					  
+
 
 					    <div class="form-group">
 					        <label for="tipo_oth" class="col-md-3 control-label">Tipo OTH:</label>
@@ -146,8 +146,8 @@
 					                <select class="form-control" id="tipo_oth" name="tipo_oth">
 									    <option>Seleccionar...</option>
 									    <?php foreach ($tipos_oth as $tipo_oth): ?>
-									    	<option value="<?= $tipo_oth->n_name_tipo ?>"><?= $tipo_oth->n_name_tipo ?></option>
-									    <?php endforeach ?>
+									    	<option value="<?=$tipo_oth->n_name_tipo;?>"><?=$tipo_oth->n_name_tipo;?></option>
+									    <?php endforeach;?>
 									</select>
 					            </div>
 					        </div>
@@ -160,11 +160,11 @@
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="estado_oth" name="estado_oth">
 									    <option>Seleccionar...</option>
-									    
+
 									</select>
 					            </div>
 					        </div>
-					    </div>				    
+					    </div>
 
 				    </fieldset>
 				</form>
@@ -181,39 +181,25 @@
 
 <!-- ******************************** Fin del modal para crear oth *******************************************************-->
 
-<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
-<?php 
-    $msj = $this->session->flashdata('msj');
-    // $id_cc = $this->session->flashdata('id');
+<script src="<?=URL::to("assets/plugins/sweetalert2/sweetalert2.all.js");?>"></script>
+<?php
+
+$msj = $this->session->flashdata('msj');
+// $id_cc = $this->session->flashdata('id');
 if ($msj) {
-    if ($msj == 'ok') {  ?>
+    if ($msj == 'ok') {?>
         <script>
             swal('Correcto',`realizado exitosamente`, 'success');
         </script>
-<?php } 
-
-else {  ?>
+<?php } else {?>
         <script>
-            swal('Error',`Se generó un error en el proceso<br><?= $msj ?>`, 'error');
+            swal('Error',`Se generó un error en el proceso<br><?=$msj;?>`, 'error');
         </script>
-<?php } 
+<?php }
 }
 ?>
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- 
-ELIMINAR MODAL ES DE PRUEBA
- -->
 
 
 
@@ -222,25 +208,25 @@ ELIMINAR MODAL ES DE PRUEBA
 	    <div class="modal-content">
 	    	<!-- header del modal -->
 	        <div class="modal-header cssnewtypem">
-	            <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('/assets/images/cerrar (7).png') ?>"></img></button>
+	            <button type="button" class="close cssicerrar" data-dismiss="modal" aria-label="Close"><img src="<?=URL::to('/assets/images/cerrar (7).png');?>"></img></button>
 				<h4 class="modal-title" id="mdl_title_new_type" align="center">Añadir Nuevo OT</h4>
 	        </div>
 	        <!-- fin header del modal -->
 	        <!-- body inicio del modal -->
 		    <div class="modal-body ">
-		    	
-		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_oth" action="<?= URL::to("LoadInformation/create_ot") ?>"  method="post" >
+
+		        <form class="well form-horizontal spc_modal_new_ot" id="mdl_form_new_oth" action="<?=URL::to("LoadInformation/create_ot");?>"  method="post" >
 
 
 
 
 
 <!-- SERVICIO DE INTERNET -->
-		   
+
 		   <!-- Datos basicos de instalacion -->
 
 					<fieldset class="fielset_new_ot_mdl">
-						
+
 						<!-- CIUDAD -->
 						<div class="form-group">
 					        <label for="ciudad" class="col-md-3 control-label">Ciudad:</label>
@@ -273,11 +259,11 @@ ELIMINAR MODAL ES DE PRUEBA
 									    <option>Seleccionar...</option>
 									    <option>Edificio</option>
       									<option>Casa</option>
-									    
+
 									</select>
 					            </div>
 					        </div>
-					    </div>	
+					    </div>
 
 					    <!-- NIT del cliente: -->
 					    <div class="form-group">
@@ -336,11 +322,11 @@ ELIMINAR MODAL ES DE PRUEBA
       									<option>INTERNET DEDICADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>
       									<option>INTERNET DEDICADO ADMINISTRADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>
       									<option>INTERNET EMPRESARIAL</option>
-      									<option>INTERNET BANDA ANCHA (Solución FO)</option> 									    
+      									<option>INTERNET BANDA ANCHA (Solución FO)</option>
 									</select>
 					            </div>
 					        </div>
-					    </div>	
+					    </div>
 
 					    <!-- ancho_banda -->
 						<div class="form-group">
@@ -351,7 +337,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <input name="ancho_banda" id="ancho_banda" class="form-control" type="text" >
 					            </div>
 					        </div>
-					    </div>		
+					    </div>
 
 					    <!-- TIPO INSTALACION: -->
 					     <div class="form-group">
@@ -365,9 +351,9 @@ ELIMINAR MODAL ES DE PRUEBA
       									<option>Instalar UM con PE sobre OTP de Pymes</option>
       									<option>Instalar UM con CT (No aplica para Internet Dedicado Empresarial)</option>
       									<option>Instalar UM en Datacenter Claro- Implementación</option>
-      									<option>UM existente. Requiere Cambio de equipo</option> 	
-      									<option>UM existente. Requiere Adición de equipo</option> 		
-      									<option>UM existente. Solo configuración</option> 									    
+      									<option>UM existente. Requiere Cambio de equipo</option>
+      									<option>UM existente. Requiere Adición de equipo</option>
+      									<option>UM existente. Solo configuración</option>
 									</select>
 					            </div>
 					        </div>
@@ -385,7 +371,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					    </div>
 
 			<!-- SESION NUMERO 2: INFORMACIÓN  ULTIMA MILLA -->
-						
+
 						<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
 					     <div class="form-group">
 					        <label for="requiere_instalacion_um" class="col-md-3 control-label">Requiere instalación UM:</label>
@@ -395,8 +381,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <select class="form-control" id="requiere_instalacion_um" name="requiere_instalacion_um">
 									    <option>Seleccionar...</option>
 									    <option>Si</option>
-      									<option>No</option>   												
-      									<option>Existente</option> 	    
+      									<option>No</option>
+      									<option>Existente</option>
 									</select>
 					            </div>
 					        </div>
@@ -414,28 +400,28 @@ ELIMINAR MODAL ES DE PRUEBA
       									<option>Existente</option>
       									<option>Claro</option>
       									<option>Axesat</option>
-      									<option>Comcel</option> 	
-      									<option>Tigo</option> 		
-      									<option>Media Commerce</option> 		
+      									<option>Comcel</option>
+      									<option>Tigo</option>
+      									<option>Media Commerce</option>
       									<option>Diveo</option>
-      									<option>Edatel</option> 	
-      									<option>UNE</option> 		
-      									<option>ETB</option> 	
-      									<option>IBM</option> 		
-      									<option>IFX</option> 		
+      									<option>Edatel</option>
+      									<option>UNE</option>
+      									<option>ETB</option>
+      									<option>IBM</option>
+      									<option>IFX</option>
       									<option>Level 3 Colombia</option>
-      									<option>Mercanet</option> 	
-      									<option>Metrotel</option> 		
-      									<option>Promitel</option> 		
-      									<option>Skynet</option> 		
+      									<option>Mercanet</option>
+      									<option>Metrotel</option>
+      									<option>Promitel</option>
+      									<option>Skynet</option>
       									<option>Telebucaramanga</option>
-      									<option>Telecom</option> 	
-      									<option>Terremark</option> 		
-      									<option>Sol Cable Vision</option> 		
+      									<option>Telecom</option>
+      									<option>Terremark</option>
+      									<option>Sol Cable Vision</option>
       									<option>Sistelec</option>
-      									<option>Opain</option> 	
-      									<option>Airplan - (Información y Tecnologia)</option> 		
-      									<option>TV Azteca</option> 						    
+      									<option>Opain</option>
+      									<option>Airplan - (Información y Tecnologia)</option>
+      									<option>TV Azteca</option>
 									</select>
 					            </div>
 					        </div>
@@ -449,11 +435,11 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 					                <select class="form-control" id="medio_um" name="medio_um">
 									    <option>Seleccionar...</option>
-									    <option>No Aplica</option>  									   									
-									    <option>Existente</option> 	   
+									    <option>No Aplica</option>
+									    <option>Existente</option>
 									    <option>Fibra</option>
 									    <option>Cobre</option>
-									    <option>Satelital</option> 
+									    <option>Satelital</option>
 									    <option>Radio enlace</option>
 									    <option>3G</option>
 									    <option>UTP</option>
@@ -462,7 +448,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    
+
 			            <!-- RESPUESTA FACTIBILIDAD BW > =100 MEGAS : -->
 			            <div class="form-group">
 					        <label for="respuesta_factibilidad" class="col-md-3 control-label">Respuesta factibilidad BW >= 100 MEGAS:</label>
@@ -482,8 +468,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 					                <select class="form-control" id="tipo_conector" name="tipo_conector">
 									    <option>Seleccionar...</option>
-									    <option>LC</option>  									   									
-									    <option>SC</option> 	   
+									    <option>LC</option>
+									    <option>SC</option>
 									    <option>ST</option>
 									    <option>FC</option>
 									</select>
@@ -492,7 +478,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					    </div>
 
 				<!-- 2.ACCESO (Solo Aplica para Canales > = 100 MEGAS   ======= -->
-			            
+
 			            <!-- SDS DESTINO (Unifilar): -->
 			            <div class="form-group">
 					        <label for="sds_destino" class="col-md-3 control-label">SDS destino(unifiliar):</label>
@@ -515,7 +501,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					            </div>
 					        </div>
 					    </div>
-			            
+
 			            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 			            <div class="form-group">
 			                <label for="tipo_conector" class="col-md-3 control-label">Tipo conector (FO):</label>
@@ -524,8 +510,8 @@ ELIMINAR MODAL ES DE PRUEBA
 			                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 					                <select class="form-control" id="tipo_conector" name="tipo_conector">
 									    <option>Seleccionar...</option>
-									    <option>LC</option>  									   									
-									    <option>SC</option> 	   
+									    <option>LC</option>
+									    <option>SC</option>
 									    <option>ST</option>
 									    <option>FC</option>
 									</select>
@@ -541,12 +527,12 @@ ELIMINAR MODAL ES DE PRUEBA
 			                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 					                <select class="form-control" id="interface_entrega_cliente" name="interface_entrega_cliente">
 									    <option>Seleccionar...</option>
-									    <option>No aplica</option>  									   									
-									    <option>Ethernet</option> 	   
+									    <option>No aplica</option>
+									    <option>Ethernet</option>
 									    <option>Serial V.35</option>
 									    <option>Giga (óptico)</option>
-									    <option>Giga Ethernet (Electrico)</option>  						   									
-									    <option>STM-1</option> 	   
+									    <option>Giga Ethernet (Electrico)</option>
+									    <option>STM-1</option>
 									    <option>RJ45 - 120 OHM</option>
 									    <option>G703 BNC</option>
 									</select>
@@ -563,8 +549,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <select class="form-control" id="requiere_voc" name="requiere_voc">
 									    <option>Seleccionar...</option>
 									    <option>Si</option>
-      									<option>No</option>   												
-      									<option>No aplica</option> 	    
+      									<option>No</option>
+      									<option>No aplica</option>
 									</select>
 					            </div>
 					        </div>
@@ -579,8 +565,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <select class="form-control" id="programacion_voc" name="programacion_voc">
 									    <option>Seleccionar...</option>
 									    <option>Programada</option>
-      									<option>No requiere programación</option>   												
-      									<option>No programada. Otra ciudad</option> 	    
+      									<option>No requiere programación</option>
+      									<option>No programada. Otra ciudad</option>
       									<option>No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
 									</select>
 					            </div>
@@ -598,8 +584,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <select class="form-control" id="requiere_rfc" name="requiere_rfc">
 									    <option>Seleccionar...</option>
 									    <option>SI => Cliente Critico Punto Central</option>
-      									<option>SI => Servicio Critico (Listado)</option>   												
-      									<option>SI => Cliente Critico</option> 	    
+      									<option>SI => Servicio Critico (Listado)</option>
+      									<option>SI => Cliente Critico</option>
       									<option>SI => RFC Estándar Saturación</option>
       									<option>SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
       									<option>No</option>
@@ -609,7 +595,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					    </div>
 
 				<!-- EQUIPOS   (VER LISTA COMPLETA): -->
-				
+
 						<!-- Conversor Medio: -->
 			            <div class="form-group">
 					        <label for="conversor_medio" class="col-md-3 control-label">Conversor Medio:</label>
@@ -643,7 +629,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					   	<!-- Licencias --> 
+					   	<!-- Licencias -->
 					    <div class="form-group">
 					        <label for="licencias" class="col-md-3 control-label">Licencias:</label>
 					        <div class="col-md-8 selectContainer">
@@ -654,7 +640,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- Equipos Adicionale--> 
+					    <!-- Equipos Adicionale-->
 					    <div class="form-group">
 					        <label for="equipos_adicionales" class="col-md-3 control-label">Equipos adicionale:</label>
 					        <div class="col-md-8 selectContainer">
@@ -665,7 +651,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- Consumibles--> 
+					    <!-- Consumibles-->
 					    <div class="form-group">
 					        <label for="consumibles" class="col-md-3 control-label">Consumibles:</label>
 					        <div class="col-md-8 selectContainer">
@@ -693,8 +679,8 @@ ELIMINAR MODAL ES DE PRUEBA
 		<!-- sesion 3:   DATOS DEL CONTACTO PARA COMUNICACIÓN  -->
 
 						<h5>APRUEBA COSTOS DE OC E INICIO DE FACTURACIÓN DE ORDEN DE TRABAJO</h5>
-						
-						<!-- NOMBRE --> 
+
+						<!-- NOMBRE -->
 					    <div class="form-group">
 					        <label for="nombre_dcc" class="col-md-3 control-label">Nombre:</label>
 					        <div class="col-md-8 selectContainer">
@@ -705,7 +691,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- TELEFONO --> 
+					    <!-- TELEFONO -->
 					    <div class="form-group">
 					        <label for="telefono_dcc" class="col-md-3 control-label">Telefono:</label>
 					        <div class="col-md-8 selectContainer">
@@ -716,7 +702,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- CELULAR --> 
+					    <!-- CELULAR -->
 					    <div class="form-group">
 					        <label for="celular_dcc" class="col-md-3 control-label">Celular:</label>
 					        <div class="col-md-8 selectContainer">
@@ -727,7 +713,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- EMAIL --> 
+					    <!-- EMAIL -->
 					    <div class="form-group">
 					        <label for="email_dcc" class="col-md-3 control-label">Email:</label>
 					        <div class="col-md-8 selectContainer">
@@ -738,10 +724,10 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					 
+
 					   	<h5>DATOS CONTACTO TÉCNICO</h5>
 
-					   	<!-- NOMBRE --> 
+					   	<!-- NOMBRE -->
 					    <div class="form-group">
 					        <label for="nombre_dct" class="col-md-3 control-label">Nombre:</label>
 					        <div class="col-md-8 selectContainer">
@@ -752,7 +738,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- TELEFONO --> 
+					    <!-- TELEFONO -->
 					    <div class="form-group">
 					        <label for="telefono_dct" class="col-md-3 control-label">Telefono:</label>
 					        <div class="col-md-8 selectContainer">
@@ -763,7 +749,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- CELULAR --> 
+					    <!-- CELULAR -->
 					    <div class="form-group">
 					        <label for="celular_dct" class="col-md-3 control-label">Celular:</label>
 					        <div class="col-md-8 selectContainer">
@@ -774,7 +760,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- EMAIL --> 
+					    <!-- EMAIL -->
 					    <div class="form-group">
 					        <label for="email_dct" class="col-md-3 control-label">Email:</label>
 					        <div class="col-md-8 selectContainer">
@@ -785,7 +771,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- OBSERVACIONES: LA UM SE ESTA ENTREGANDO SOBRE OT DE TELEFONIA 9722208 --> 
+					    <!-- OBSERVACIONES: LA UM SE ESTA ENTREGANDO SOBRE OT DE TELEFONIA 9722208 -->
 					    <div class="form-group">
 					        <label for="observaciones_dct" class="col-md-3 control-label">Observaciones:</label>
 					        <div class="col-md-8 selectContainer">
@@ -796,8 +782,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 		<!-- sesion 4:   KIKOFF TECNICO  -->
-						
-						<!-- Ancho de banda Exclusivo NAP  --> 
+
+						<!-- Ancho de banda Exclusivo NAP  -->
 					    <div class="form-group">
 					        <label for="ancho_banda_nap" class="col-md-3 control-label">Ancho de banda Exclusivo NAP :</label>
 					        <div class="col-md-8 selectContainer">
@@ -808,7 +794,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					    <!-- Ancho de banda de Internet  --> 
+					    <!-- Ancho de banda de Internet  -->
 					    <div class="form-group">
 					        <label for="ancho_banda_internet" class="col-md-3 control-label">Ancho de banda de Internet:</label>
 					        <div class="col-md-8 selectContainer">
@@ -818,7 +804,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					            </div>
 					        </div>
 					    </div>
-					    
+
 					    <!-- Direcciones IP : -->
 					     <div class="form-group">
 					        <label for="direccion_ip" class="col-md-3 control-label">Direcciones IP:</label>
@@ -973,7 +959,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					        </div>
 					    </div>
 
-					</fieldset>						
+					</fieldset>
 					<!-- SECCION PARA OTH -->
 					<fieldset class="fielset_new_ot_mdl">
 						<div class="form-group">
@@ -985,7 +971,7 @@ ELIMINAR MODAL ES DE PRUEBA
 					            </div>
 					        </div>
 					    </div>
-					  
+
 
 					    <div class="form-group">
 					        <label for="tipo_oth" class="col-md-3 control-label">Tipo OTH:</label>
@@ -995,8 +981,8 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <select class="form-control" id="tipo_oth" name="tipo_oth">
 									    <option>Seleccionar...</option>
 									    <?php foreach ($tipos_oth as $tipo_oth): ?>
-									    	<option value="<?= $tipo_oth->n_name_tipo ?>"><?= $tipo_oth->n_name_tipo ?></option>
-									    <?php endforeach ?>
+									    	<option value="<?=$tipo_oth->n_name_tipo;?>"><?=$tipo_oth->n_name_tipo;?></option>
+									    <?php endforeach;?>
 									</select>
 					            </div>
 					        </div>
@@ -1009,12 +995,11 @@ ELIMINAR MODAL ES DE PRUEBA
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
 					                <select class="form-control" id="estado_oth" name="estado_oth">
 									    <option>Seleccionar...</option>
-									    
+
 									</select>
 					            </div>
 					        </div>
-					    </div>				    
-
+					    </div>
 				    </fieldset>
 				</form>
 			</div>

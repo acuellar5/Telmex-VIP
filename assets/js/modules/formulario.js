@@ -24,6 +24,7 @@ $(function() {
             // evento del check para mpls fomr origen form destino
             $('#formModal').on('change', 'input#checking', formulario.toggle_origen_destino);
         },
+
         // formulario tabs vertical
         onClickTab: function(e) {
             e.preventDefault();
@@ -51,6 +52,7 @@ $(function() {
                 }
             });
         },
+
         //******************* formulario de edicion oth ***************************************//
         onClickShowModalEditOTH: function() {
             var aLinkLog = $(this);
@@ -80,6 +82,7 @@ $(function() {
             // mostrar modal y llenar el formulario de info
             formulario.fillFormModalForm(record);
         },
+
         //llenamos los input del modal con la informacion a la q le dio click
         fillFormModalForm: function(data) {
             $.post(baseurl + '/OtHija/c_fillmodals', {
@@ -114,6 +117,7 @@ $(function() {
                 }
             });
         },
+
         // mostrar select de servicios
         cierreKickOf: function(nombre_cliente, direccion_destino, arg) {
             $('#general_servicio').html("");
