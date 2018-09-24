@@ -4,18 +4,18 @@
         <meta charset="UTF-8">
         <title>ZOLID TELMEX VIP LOGIN</title>
         <!--   ICONO PAGINA    -->
-        <link rel="icon" href="<?= URL::to('assets/images/title_icon.png'); ?>" />
+        <link rel="icon" href="<?=URL::to('assets/images/title_icon.png');?>" />
         <!--   SWEET ALERT    -->
-        <link rel="stylesheet" href="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css'); ?>" />
-        <script type="text/javascript" src="<?= URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js'); ?>"></script>
+        <link rel="stylesheet" href="<?=URL::to('assets/plugins/sweetalert-master/dist/sweetalert.css');?>" />
+        <script type="text/javascript" src="<?=URL::to('assets/plugins/sweetalert-master/dist/sweetalert.min.js');?>"></script>
         <!--   ANIMACION LOGIN    -->
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
-        <link rel="stylesheet" href="<?= URL::to('assets/css/reset.min.css'); ?>" />
+        <link rel="stylesheet" href="<?=URL::to('assets/css/reset.min.css');?>" />
         <!--   CSS ESTILOS LOGIN    -->
-        <link rel="stylesheet" href="<?= URL::to('assets/css/stylelogin.css'); ?>">
+        <link rel="stylesheet" href="<?=URL::to('assets/css/stylelogin.css');?>">
         <!--   JQUERY   -->
         <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
-        <script src="<?= URL::to('assets/js/jquery.min.js') ?>"></script>
+        <script src="<?=URL::to('assets/js/jquery.min.js');?>"></script>
         <!--   SCRIPT PROPIOS   -->
         <script type="text/javascript" charset="utf-8" async defer>
             //Funcion para mostrar mensaje de error de validacion de datos
@@ -50,11 +50,11 @@
                 <div class="cms">
                     <div class="roti">
                         <h1>ZTE</h1>
-                        <button type="submit" class="button" id="valid" name="valid" onclick = "this.form.action = '<?= URL::to('User/loginUser'); ?>'">Login</button><br />
+                        <button type="submit" class="button" id="valid" name="valid" onclick = "this.form.action = '<?=URL::to('User/loginUser');?>'">Login</button><br />
 
-<!--                         <p><a href="#">ZTE</a> <a>And</a> <a href="<?php echo URL::base()?>/Templates/enviar_email">ZTE Colombia</a></p>
- -->            
-             <p><a href="#">ZTE</a> <a>And</a> <a href="'<?= URL::to('User/prueba'); ?>">ZTE Colombia</a></p>
+<!--                         <p><a href="#">ZTE</a> <a>And</a> <a href="<?php echo URL::base(); ?>/Templates/enviar_email">ZTE Colombia</a></p>
+ -->
+             <p><a href="#">ZTE</a> <a>And</a> <a href="'<?=URL::to('User/prueba');?>">ZTE Colombia</a></p>
 
                     </div>
                 </div>
@@ -62,11 +62,11 @@
         </div>
 
         <?php
-        if (isset($error)) {
-            echo '<script type="text/javascript">showMessage();</script>';
-        }
-        ?>
+if (isset($error)) {
+    echo '<script type="text/javascript">showMessage();</script>';
+}
+?>
         <!--   ANIMACION DE LOGIN   -->
-        <script src="<?= URL::to('assets/js/index.js?v=1.2'); ?>"></script>
+        <script src="<?=URL::to('assets/js/index.js?v=1.2');?>"></script>
     </body>
 </html>

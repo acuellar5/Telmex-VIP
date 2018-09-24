@@ -368,7 +368,7 @@ $(function () {
                         title: 'Reporte Zolid',
                     },
                     {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> modalHitosOtp',
                         className: 'btn-cami_cool btn-rpt_act',
                         action: eventos.otp_seleccionadas,
                     }
@@ -541,7 +541,7 @@ $(function () {
             $('#contenido_tablas').on('click', 'a.hitos-otp', eventos.onClickBtnCloseOtp);
             $('#btnGuardarModalHitos').on('click', eventos.onClickSaveHitosOtp);// ver detalles de correo btn impresora
             $('#table_selected').on('click', 'img.quitar_fila', eventos.quitarFila);
-
+            $('#mdl-enviar-reporte').on('click', eventos.onClickSendReportUpdate);
 
         },
 
@@ -932,8 +932,8 @@ $(function () {
                     function (data) {
                         var obj = JSON.parse(data);
 
+                        $(".timeline-badge").css("background-color", "#7c7c7c");
                         if (obj !== null) {
-                            $(".timeline-badge").css("background-color", "#7c7c7c");
 
                             switch (obj.actividad_actual) {
                                 case "KICK OFF":
@@ -1121,6 +1121,23 @@ $(function () {
             $('#mdl-title-cierre').html(`<b>${cuantas}</b> ORDENES SELECCIONADAS`);
 
         },
+        //Envia el reporte de actualizacion dependiendo de las OTP seleccionadas
+        onClickSendReportUpdate: function () {
+            var tableSelected = eventos.table_selected.rows().data();
+            var id_otp = [];
+            tableSelected.each(function (otp) {
+                id_otp.push(otp.k_id_ot_padre);
+            });
+            $.post(baseurl + '/OtHija/c_fillmodalsCierre',
+                    {
+                        id_otp: id_otp
+                    },
+                    function (data) {
+                        
+                    });
+
+            console.log(id_otp);
+        }
 
     };
     eventos.init();
