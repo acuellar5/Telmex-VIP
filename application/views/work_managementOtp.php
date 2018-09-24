@@ -1566,7 +1566,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
-                <button type="button" class="btn btn-success" id="mdl-cierre-facturacion"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;Enviar correo</button>
+                <button type="button" class="btn btn-success" id="mdl-enviar-reporte" style="width: 13%;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;Enviar correo&nbsp;&nbsp;</button>
             </div>
         </div>
     </div>
