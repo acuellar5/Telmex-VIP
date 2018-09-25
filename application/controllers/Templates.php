@@ -1960,8 +1960,76 @@ class Templates extends CI_Controller {
     }
 
     // retorna plantilla tyexto producto internet
-    private function plantilla_txt_pr_internet($data) {
+    private function plantilla_txt_pr_internet($data_pr) {
+        return 'SERVICIO INTERNET
 
+        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD:                     ' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN:                  ' . $data_pr['pr_direccion'] . '
+        TIPO PREDIO:                ' . $data_pr['pr_tipo_predio'] . '
+        NIT del cliente:            ' . $data_pr['pr_nit_cliente'] . '
+        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):     ' . $data_pr['pr_alias_lugar'] . '
+        OTP:                        ' . $data_pr['pr_id_ot_padre'] . '
+        OTP ASOCIADAS:              ' . $data_pr['pr_otp_asociada'] . '
+        TIPO DE INTERNET:           ' . $data_pr['pr_tipo_internet'] . '
+        ANCHO DE BANDA :            ' . $data_pr['pr_ancho_banda'] . '
+        TIPO DE INSTALACIÓN:        ' . $data_pr['pr_tipo_instalacion'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):       ' . $data_pr['pr_servicio_actual'] . '
+
+        *******************************************   INFORMACIÓN  ULTIMA MILLA    *********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM? :       ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR :       ' . $data_pr['pr_proveedor'] . '
+        MEDIO :       ' . $data_pr['pr_medio'] . '
+        RESPUESTA FACTIBILIDAD BW > =100 MEGAS :       ' . $data_pr['pr_factibilidad_bw'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):       ' . $data_pr['pr_tipo_conector'] . '
+        ACCESO (Solo Aplica para Canales > = 100 MEGAS   =======    SDS DESTINO (Unifilar):       ' . $data_pr['pr_sds_destino'] . '
+            OLT (GPON):       ' . $data_pr['pr_olt'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):       
+        INTERFACE DE ENTREGA AL CLIENTE:       ' . $data_pr['pr_interfaz_entrega_cliente'] . '
+        REQUIERE VOC :       ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :       ' . $data_pr['pr_programacion_voc'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                    ' . $data_pr['pr_requiere_rfc'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :       ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :       ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:       ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :       ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :       ' . $data_pr['pr_equipos_adicionales'] . '
+
+            Consumibles :       ' . $data_pr['pr_Consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:       ' . $data_pr['pr_carta_valorizada'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        *****************************  APRUEBA COSTOS DE OC E INICIO DE FACTURACIÓN DE ORDEN DE TRABAJO  ******************************
+        NOMBRE :      ' . $data_pr[''] . '
+        TELEFONO :      ' . $data_pr[''] . '
+        CELULAR :      ' . $data_pr[''] . '
+        CORREO ELECTRONICO :      ' . $data_pr[''] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :       ' . $data_pr[''] . '
+        TELEFONO :       ' . $data_pr[''] . '
+        CELULAR :       ' . $data_pr[''] . '
+        CORREO ELECTRONICO :       ' . $data_pr[''] . '
+        OBSERVACIONES:       ' . $data_pr[''] . '
+
+        **************************************************   KIKOFF TECNICO     **************************************************************
+        Ancho de banda Exclusivo NAP :      ' . $data_pr[''] . '
+        Ancho de banda de Internet :      ' . $data_pr[''] . '
+        Direcciones IP :      ' . $data_pr[''] . '
+        Activación correo  :      ' . $data_pr[''] . '
+        Activación WEB Hosting :      ' . $data_pr[''] . '
+        Dominio existente :      ' . $data_pr[''] . '
+        Dominio a comprar :      ' . $data_pr[''] . '
+        Cantidad cuentas de correo :      ' . $data_pr[''] . '
+        Espacio de correo (GB) :      ' . $data_pr[''] . '
+        Plataforma de WEBHosting :      ' . $data_pr[''] . '
+        WEB Hosting (MB) :      ' . $data_pr[''] . '
+        APLICA A ALGUNA PROMOCION VIGENTE (POR FAVOR DOCUMENTAR  NOMBRE DE LA PROMOCION) :      ' . $data_pr[''] . '
+
+        ';
     }
 
     public function internet_dedicado_empresarial($argumentos) {
@@ -7432,7 +7500,7 @@ class Templates extends CI_Controller {
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt">La
-        Fecha de Entrega de su servicio &nbsp;xxxxxxxx estas fechas están sujeta<span style="color:black">s</span> a cambios derivados del cumplimiento de las
+        Fecha de Entrega de su servicio &nbsp;' . $argumentos['campo19'] . ' estas fechas están sujeta<span style="color:black">s</span> a cambios derivados del cumplimiento de las
         actividades necesarias para la instalación.&nbsp; </span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
@@ -7572,7 +7640,7 @@ class Templates extends CI_Controller {
     
     public function cambio_de_equipos_servicio($argumentos) {
         return '
-          <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
+        <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -7627,7 +7695,7 @@ class Templates extends CI_Controller {
          <tr style="height:16.45pt">
           <td width="309" rowspan="5" valign="top" style="width:232.1pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:16pt;line-height:115%;color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">CAMBIO DE EQUIPOS PARA EL SERVICIO ZZZZZ</span></i><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">CAMBIO DE EQUIPOS PARA EL SERVICIO ' . $argumento['campo3'] . '</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES">OTP:' . $argumentos['campo7'] . '</span></i><span lang="ES-CO"></span></p>
           </td>
           <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
@@ -7733,7 +7801,7 @@ class Templates extends CI_Controller {
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">La <b><i>Fecha de Entrega del Cambio de Equipos<span style="color:rgb(31,73,125)"> </span>&nbsp;de su Servicio<span style="color:rgb(31,73,125)"> </span></i></b>es
-        <b><i>XX/XX/XXXX</i></b> y está sujeta a cambios derivados del cumplimiento de
+        <b><i>' . $argumentos['campo10'] . '</i></b> y está sujeta a cambios derivados del cumplimiento de
         las actividades necesarias.&nbsp; </span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
@@ -7842,7 +7910,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">INGENIERO IMPLEMENTACIÓN</span></b><span lang="ES-CO"></span></p>
           </td>
           <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.3pt">
-          <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span></b><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo11'] . '</span></b><span lang="ES-CO"></span></p>
           </td>
          </tr>
          <tr style="height:12.5pt">
@@ -7850,7 +7918,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">TELEFONOS DE CONTACTO</span></b><span lang="ES-CO"></span></p>
           </td>
           <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
-          <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span></b><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo12'] . '</span></b><span lang="ES-CO"></span></p>
           </td>
          </tr>
          <tr style="height:12.5pt">
@@ -7858,7 +7926,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">EMAIL </span></b><span lang="ES-CO"></span></p>
           </td>
           <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
-          <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span></b><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo13'] . '</span></b><span lang="ES-CO"></span></p>
           </td>
          </tr>
         </tbody></table>
@@ -9324,418 +9392,418 @@ class Templates extends CI_Controller {
     
     public function traslado_externo_servicio($argumentos) {
 
-        return ' <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
+            return ' <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">' . $argumentos['campo1'] . '</span></b><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">' . $argumentos['campo1'] . '</span></b><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif">A continuación se remite </span><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;el reporte de Inicio de Actividades para <b>(' . $argumentos['campo2'] . ')&nbsp; </b>con el cual se da inicio al proceso de Traslado del Servicio
-            &nbsp;<b><span style="color:rgb(31,73,125)">' . $argumentos['campo3'] . '</span></b></span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif">A continuación se remite </span><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;el reporte de Inicio de Actividades para <b>(' . $argumentos['campo2'] . ')&nbsp; </b>con el cual se da inicio al proceso de Traslado del Servicio
+                &nbsp;<b><span style="color:rgb(31,73,125)">' . $argumentos['campo3'] . '</span></b></span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">Este documento&nbsp; contiene las definiciones del servicio a trasladar
-            y los datos de contacto del Ingeniero encargado de la implementación de su
-            servicio. Es de suma importancia que sea revisado y nos retroalimente la
-            información que le solicitamos en el mismo. Si tiene alguna duda o inquietud no
-            dude en contactarnos.&nbsp; Si no está de acuerdo con alguna información
-            contenida en este documento es importante que nos haga llegar sus inquietudes
-            ya que el servicio contratado será entregado de acuerdo a la información que
-            describimos a continuación. </span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">Este documento&nbsp; contiene las definiciones del servicio a trasladar
+                y los datos de contacto del Ingeniero encargado de la implementación de su
+                servicio. Es de suma importancia que sea revisado y nos retroalimente la
+                información que le solicitamos en el mismo. Si tiene alguna duda o inquietud no
+                dude en contactarnos.&nbsp; Si no está de acuerdo con alguna información
+                contenida en este documento es importante que nos haga llegar sus inquietudes
+                ya que el servicio contratado será entregado de acuerdo a la información que
+                describimos a continuación. </span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">SERVICIO A TRASLADAR</span></b><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">SERVICIO A TRASLADAR</span></b><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/servicio.png" width="946" height="745"><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/servicio.png" width="946" height="745"><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">CARACTERISTICAS DEL SERVICIO A TRASLADAR</span></b><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">CARACTERISTICAS DEL SERVICIO A TRASLADAR</span></b><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span></b><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span></b><span lang="ES-CO"></span></p>
 
-            <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="762" style="width:571.65pt;border-collapse:collapse">
-             <tbody><tr style="height:29.05pt">
-              <td width="309" valign="top" style="width:232.1pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">ENTREGABLE</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-              <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">DISEÑO ORIGINAL</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-             </tr>
-             <tr style="height:16.45pt">
-              <td width="309" rowspan="6" valign="top" style="width:232.1pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
-              <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:16pt;line-height:115%;color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">TRASLADO DE SERVICIO</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">' . $argumentos['campo4'] . '</span></i><span lang="ES-CO"></span></p>
-              </td>
-              <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
-              <p class="MsoNormal" style="text-align:justify;line-height:120%;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black">Personal de </span><b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:rgb(192,0,0)">Claro </span></b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black">se desplaza a la Sede Antigua y
-              realiza el retiro de los equipos de </span><b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:rgb(192,0,0)">Claro</span></b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black"> para trasladarlos a la <b>Nueva Sede</b>.
-              Es importante tener en cuenta que el <b>Servicio</b> se activa con las mismas
-              características con las que se encontraba en la sede antigua.</span><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:8.05pt">
-              <td width="172" valign="top" style="width:129pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:8.05pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Dirección Sede Antigua</span></i></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="281" colspan="2" valign="top" style="width:210.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8.05pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">' . $argumentos['campo5'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:8pt">
-              <td width="172" valign="top" style="width:129pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:8pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Dirección Sede Nueva</span></i></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="281" colspan="2" valign="top" style="width:210.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">' . $argumentos['campo6'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:13.5pt">
-              <td width="172" rowspan="2" valign="top" style="width:129pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:13.5pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Existen otros Servicios a
-              Trasladar</span></i></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="140" valign="top" style="width:105.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:13.5pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">SI: ' . $argumentos['campo7'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="140" rowspan="2" valign="top" style="width:105.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.5pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">Cantidad: ' . $argumentos['campo8'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:13.5pt">
-              <td width="140" valign="top" style="width:105.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:13.5pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">No: ' . $argumentos['campo7'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:24.75pt">
-              <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:24.75pt">
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Códigos de Servicio a
-              Trasladar:</span></i></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">' . $argumentos['campo9'] . '</span></i></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-            </tbody></table>
+                <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="762" style="width:571.65pt;border-collapse:collapse">
+                 <tbody><tr style="height:29.05pt">
+                  <td width="309" valign="top" style="width:232.1pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">ENTREGABLE</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                  <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">DISEÑO ORIGINAL</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                 </tr>
+                 <tr style="height:16.45pt">
+                  <td width="309" rowspan="6" valign="top" style="width:232.1pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
+                  <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:16pt;line-height:115%;color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">TRASLADO DE SERVICIO</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">' . $argumentos['campo3'] . '</span></i><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
+                  <p class="MsoNormal" style="text-align:justify;line-height:120%;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black">Personal de </span><b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:rgb(192,0,0)">Claro </span></b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black">se desplaza a la Sede Antigua y
+                  realiza el retiro de los equipos de </span><b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:rgb(192,0,0)">Claro</span></b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black"> para trasladarlos a la <b>Nueva Sede</b>.
+                  Es importante tener en cuenta que el <b>Servicio</b> se activa con las mismas
+                  características con las que se encontraba en la sede antigua.</span><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:8.05pt">
+                  <td width="172" valign="top" style="width:129pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:8.05pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Dirección Sede Antigua</span></i></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="281" colspan="2" valign="top" style="width:210.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8.05pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">' . $argumentos['campo4'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:8pt">
+                  <td width="172" valign="top" style="width:129pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:8pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Dirección Sede Nueva</span></i></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="281" colspan="2" valign="top" style="width:210.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">' . $argumentos['campo5'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:13.5pt">
+                  <td width="172" rowspan="2" valign="top" style="width:129pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:13.5pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Existen otros Servicios a
+                  Trasladar</span></i></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="140" valign="top" style="width:105.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:13.5pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">SI: ' . $argumentos['campo6']['si'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="140" rowspan="2" valign="top" style="width:105.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.5pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">Cantidad: ' . $argumentos['campo7'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:13.5pt">
+                  <td width="140" valign="top" style="width:105.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:13.5pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="color:black">No: ' . $argumentos['campo6']['no'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:24.75pt">
+                  <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:24.75pt">
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Códigos de Servicio a
+                  Trasladar:</span></i></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">' . $argumentos['campo9'] . '</span></i></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                </tbody></table>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span></b><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span></b><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">A partir de hoy (<b>' . $argumentos['campo10'] . '</b>) &nbsp;se da inicio al Proceso de
-            Traslado Externo del Servicio<span style="color:rgb(31,73,125)">. </span>A
-            continuación se detalla la secuencia de actividades para llevar a cabo el
-            traslado del servicio.</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">A partir de hoy (<b>' . $argumentos['campo8'] . '</b>) &nbsp;se da inicio al Proceso de
+                Traslado Externo del Servicio<span style="color:rgb(31,73,125)">. </span>A
+                continuación se detalla la secuencia de actividades para llevar a cabo el
+                traslado del servicio.</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/estructura.png" width="714" height="451"><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/estructura.png" width="714" height="451"><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">De acuerdo a lo anterior le agradecemos nos confirme la siguiente
-            información:</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">De acuerdo a lo anterior le agradecemos nos confirme la siguiente
+                información:</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="687" style="width:515.55pt;border-collapse:collapse">
-             <tbody><tr style="height:30.5pt">
-              <td width="262" valign="top" style="width:196.3pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:30.5pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">INFORMACIÓN A CONFIRMAR</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-              <td width="426" colspan="4" valign="top" style="width:319.25pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:30.5pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">DATOS</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-             </tr>
-             <tr style="height:6.75pt">
-              <td width="262" rowspan="4" valign="top" style="width:196.3pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:6.75pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Documentación Necesaria para la realización de
-              las visitas en su sede.</span></i><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.75pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Parafiscales</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.75pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:6.65pt">
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.65pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Certificación Alturas</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.65pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:6.65pt">
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.65pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Cursos Especiales</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.65pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:6.65pt">
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.65pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">EPP</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.65pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:13.4pt">
-              <td width="262" rowspan="2" valign="top" style="width:196.3pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:13.4pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Para la Visita &nbsp;1 y 2 Cotización de obra
-              civil y Ejecución de Obra Civil requiere:</span></i><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:13.4pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Acompañamiento de Personal de
-              Mantenimiento de su sede</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.4pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:13.4pt">
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:13.4pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Horario Especial</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.4pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:8.9pt">
-              <td width="262" rowspan="2" valign="top" style="width:196.3pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8.9pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Confirme la existencia de las siguientes
-              condiciones: </span></i><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:8.9pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Rack</span></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:8pt;font-family:Arial,sans-serif">(Requiere Bandeja para la
-              instalación de los equipos)</span></i></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:8.9pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:8.9pt">
-              <td width="213" colspan="2" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:8.9pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Tomas reguladas </span></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">(V n-t &lt; 1 V)</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:8.9pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:6.1pt">
-              <td width="687" colspan="5" valign="top" style="width:515.55pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background:rgb(191,191,191);padding:0in 5.4pt;height:6.1pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Requiere que el Traslado de su Servicio se
-              ejecute en horario No Hábil o Fin de Semana &nbsp;?</span></i></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">SI: &nbsp;&nbsp;</span></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">NO: </span></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">&nbsp;</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr>
-              <td width="262" style="width:196.3pt;padding:0in"></td>
-              <td width="127" style="width:95.3pt;padding:0in"></td>
-              <td width="86" style="width:64.45pt;padding:0in"></td>
-              <td width="77" style="width:57.7pt;padding:0in"></td>
-              <td width="136" style="width:101.8pt;padding:0in"></td>
-             </tr>
-             <tr>
-              <td width="262" style="width:196.5pt;padding:0in"></td>
-              <td width="127" style="width:95.25pt;padding:0in"></td>
-              <td width="86" style="width:64.5pt;padding:0in"></td>
-              <td width="77" style="width:57.75pt;padding:0in"></td>
-              <td width="136" style="width:102pt;padding:0in"></td>
-             </tr>
-            </tbody></table>
+                <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="687" style="width:515.55pt;border-collapse:collapse">
+                 <tbody><tr style="height:30.5pt">
+                  <td width="262" valign="top" style="width:196.3pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:30.5pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">INFORMACIÓN A CONFIRMAR</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                  <td width="426" colspan="4" valign="top" style="width:319.25pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:30.5pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">DATOS</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                 </tr>
+                 <tr style="height:6.75pt">
+                  <td width="262" rowspan="4" valign="top" style="width:196.3pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:6.75pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Documentación Necesaria para la realización de
+                  las visitas en su sede.</span></i><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.75pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Parafiscales</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.75pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:6.65pt">
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.65pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Certificación Alturas</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.65pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:6.65pt">
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.65pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Cursos Especiales</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.65pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:6.65pt">
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:6.65pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">EPP</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:6.65pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:13.4pt">
+                  <td width="262" rowspan="2" valign="top" style="width:196.3pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:13.4pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Para la Visita &nbsp;1 y 2 Cotización de obra
+                  civil y Ejecución de Obra Civil requiere:</span></i><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:13.4pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Acompañamiento de Personal de
+                  Mantenimiento de su sede</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.4pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:13.4pt">
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:13.4pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Horario Especial</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.4pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:8.9pt">
+                  <td width="262" rowspan="2" valign="top" style="width:196.3pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8.9pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Confirme la existencia de las siguientes
+                  condiciones: </span></i><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:8.9pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Rack</span></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:8pt;font-family:Arial,sans-serif">(Requiere Bandeja para la
+                  instalación de los equipos)</span></i></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:8.9pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:8.9pt">
+                  <td width="213" colspan="2" style="width:159.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(242,242,242);padding:0in 5.4pt;height:8.9pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Tomas reguladas </span></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">(V n-t &lt; 1 V)</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="213" colspan="2" valign="top" style="width:159.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:8.9pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif"></span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:6.1pt">
+                  <td width="687" colspan="5" valign="top" style="width:515.55pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background:rgb(191,191,191);padding:0in 5.4pt;height:6.1pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-family:Arial,sans-serif">Requiere que el Traslado de su Servicio se
+                  ejecute en horario No Hábil o Fin de Semana &nbsp;?</span></i></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">SI: &nbsp;&nbsp;</span></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">NO: </span></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-family:Arial,sans-serif">&nbsp;</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr>
+                  <td width="262" style="width:196.3pt;padding:0in"></td>
+                  <td width="127" style="width:95.3pt;padding:0in"></td>
+                  <td width="86" style="width:64.45pt;padding:0in"></td>
+                  <td width="77" style="width:57.7pt;padding:0in"></td>
+                  <td width="136" style="width:101.8pt;padding:0in"></td>
+                 </tr>
+                 <tr>
+                  <td width="262" style="width:196.5pt;padding:0in"></td>
+                  <td width="127" style="width:95.25pt;padding:0in"></td>
+                  <td width="86" style="width:64.5pt;padding:0in"></td>
+                  <td width="77" style="width:57.75pt;padding:0in"></td>
+                  <td width="136" style="width:102pt;padding:0in"></td>
+                 </tr>
+                </tbody></table>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">La <b><i>Fecha de Entrega del Traslado de su
-            Servicio<span style="color:rgb(31,73,125)"> </span></i></b>es <b><i>' . $argumentos['campo14'] . '</i></b>
-            y está sujeta a cambios derivados del cumplimiento de las actividades
-            necesarias.&nbsp; </span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">La <b><i>Fecha de Entrega del Traslado de su
+                Servicio<span style="color:rgb(31,73,125)"> </span></i></b>es <b><i>' . $argumentos['campo10'] . '</i></b>
+                y está sujeta a cambios derivados del cumplimiento de las actividades
+                necesarias.&nbsp; </span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">La <b><i>Fecha de Aceptación o Cierre </i></b>corresponde a la fecha en
-            que Claro entrega el Servicio y es aceptado a satisfacción.</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">La <b><i>Fecha de Aceptación o Cierre </i></b>corresponde a la fecha en
+                que Claro entrega el Servicio y es aceptado a satisfacción.</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span></i><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">Por favor tenga en cuenta las siguientes recomendaciones:</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">Por favor tenga en cuenta las siguientes recomendaciones:</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/actividades.png" width="956" height="664"><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/actividades.png" width="956" height="664"><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">Nuestro objetivo es
-            hacer el traslado del Servicio contratado a satisfacción de sus necesidades,
-            por eso es fundamental que usted conozca las etapas básicas<span style="color:rgb(31,73,125)">,</span> el impacto y Plan de Mitigación definido para
-            cada una.</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif">Nuestro objetivo es
+                hacer el traslado del Servicio contratado a satisfacción de sus necesidades,
+                por eso es fundamental que usted conozca las etapas básicas<span style="color:rgb(31,73,125)">,</span> el impacto y Plan de Mitigación definido para
+                cada una.</span><span lang="ES-CO"></span></p>
 
-            <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="718" style="width:538.25pt;border-collapse:collapse">
-             <tbody><tr style="height:29.05pt">
-              <td width="444" valign="top" style="width:332.75pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">RIESGOS</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-              <td width="274" valign="top" style="width:205.5pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">PLAN DE MITIGACIÓN</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-             </tr>
-             <tr style="height:29.05pt">
-              <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:rgb(31,73,125)">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en el Traslado por
-              Inconvenientes de &nbsp;Acceso al Predio en las Visitas Programadas</span></i></b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">.</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:10pt"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenA.png" width="420" height="110"></span><span lang="ES-CO"></span></p>
-              </td>
-              <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Gestión temprana de los permisos de acceso a Zonas Comunes en la sede
-              donde se va a realizar la Instalación.</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">2.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Confirmación de la documentación que debe portar el personal de Claro
-              para efectuar las actividades.</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">3.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Confirmación de horario de trabajos permitidos para Zonas Comunes.</span></i><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:29.05pt">
-              <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:rgb(31,73,125)">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en el Traslado por
-              falta de Aprobación de los Costos de la Cotización de Obra Civil.</span></i></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:rgb(31,73,125)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;</span></i><span style="font-size:10pt"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenB.png" width="251" height="118"></span><span lang="ES-CO"></span></p>
-              </td>
-              <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
-              <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Pre aprobación de <b>Cotización de Obra Civil</b> desde la venta o
-              Kickoff.</span></i><span lang="ES-CO"></span></p>
-              <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">2.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Aprobación de los Costos y el Plano enviado máximo 3 días Calendario
-              después de recibida la cotización de Obra Civil</span></i><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:29.05pt">
-              <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en el Traslado por
-              falta de &nbsp;confirmación de la información solicitada</span></i></b><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenC.png" width="187" height="117"></span><span lang="ES-CO"></span></p>
-              </td>
-              <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
-              <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Respuesta a la información solicitada en este correo máximo 8 días
-              después de la fecha reportada como inicio de actividades.</span></i><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:29.05pt">
-              <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en la adecuación de la
-              sede con los requisitos mínimos de condiciones eléctricas y ambientales para
-              instalar los equipos.</span></i><span lang="ES-CO"></span></p>
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenD.png" width="369" height="126"><span lang="ES-CO"></span></p>
-              </td>
-              <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
-              <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 17.4pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
-              <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 17.4pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Las condiciones de instalación deben estar listas a más tardar el día
-              de la <b>Visita de habilitación de Medio.</b></span></i><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-            </tbody></table>
+                <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="718" style="width:538.25pt;border-collapse:collapse">
+                 <tbody><tr style="height:29.05pt">
+                  <td width="444" valign="top" style="width:332.75pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">RIESGOS</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                  <td width="274" valign="top" style="width:205.5pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">PLAN DE MITIGACIÓN</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                 </tr>
+                 <tr style="height:29.05pt">
+                  <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:rgb(31,73,125)">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en el Traslado por
+                  Inconvenientes de &nbsp;Acceso al Predio en las Visitas Programadas</span></i></b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">.</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:10pt"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenA.png" width="420" height="110"></span><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Gestión temprana de los permisos de acceso a Zonas Comunes en la sede
+                  donde se va a realizar la Instalación.</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">2.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Confirmación de la documentación que debe portar el personal de Claro
+                  para efectuar las actividades.</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">3.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Confirmación de horario de trabajos permitidos para Zonas Comunes.</span></i><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:29.05pt">
+                  <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:rgb(31,73,125)">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en el Traslado por
+                  falta de Aprobación de los Costos de la Cotización de Obra Civil.</span></i></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:rgb(31,73,125)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;</span></i><span style="font-size:10pt"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenB.png" width="251" height="118"></span><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                  <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Pre aprobación de <b>Cotización de Obra Civil</b> desde la venta o
+                  Kickoff.</span></i><span lang="ES-CO"></span></p>
+                  <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">2.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Aprobación de los Costos y el Plano enviado máximo 3 días Calendario
+                  después de recibida la cotización de Obra Civil</span></i><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:29.05pt">
+                  <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en el Traslado por
+                  falta de &nbsp;confirmación de la información solicitada</span></i></b><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenC.png" width="187" height="117"></span><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                  <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Respuesta a la información solicitada en este correo máximo 8 días
+                  después de la fecha reportada como inicio de actividades.</span></i><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:29.05pt">
+                  <td width="444" valign="top" style="width:332.75pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en la adecuación de la
+                  sede con los requisitos mínimos de condiciones eléctricas y ambientales para
+                  instalar los equipos.</span></i><span lang="ES-CO"></span></p>
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src="' . URL::base() . '/assets/img/proceso_traslado_externo/imagenD.png" width="369" height="126"><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
+                  <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 17.4pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                  <p class="m_-2942958292281350867gmail-MsoListParagraph" style="margin:0in 0in 6pt 17.4pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">1.<span style="font-variant-numeric:normal;font-variant-east-asian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family:&quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span></span><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">Las condiciones de instalación deben estar listas a más tardar el día
+                  de la <b>Visita de habilitación de Medio.</b></span></i><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                </tbody></table>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif">Durante todo el Proceso puede contactar a:</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif">Durante todo el Proceso puede contactar a:</span><span lang="ES-CO"></span></p>
 
-            <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
+                <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-            <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style="width:446.15pt;border-collapse:collapse">
-             <tbody><tr style="height:29.05pt">
-              <td width="330" valign="top" style="width:247.7pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">INFORMACIÓN CONTACTO</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              </td>
-              <td width="265" valign="top" style="width:198.45pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></b><span lang="ES-CO"></span></p>
-              <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
-              <hr size="2" width="100%" align="center">
-              </span></b></div>
-              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:14.3pt">
-              <td width="330" valign="top" style="width:247.7pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.3pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO">INGENIERO
-              IMPLEMENTACIÓN</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.3pt">
-              <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo11'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:12.5pt">
-              <td width="330" valign="top" style="width:247.7pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO">TELEFONOS
-              DE CONTACTO</span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
-              <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo12'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-             <tr style="height:12.5pt">
-              <td width="330" valign="top" style="width:247.7pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
-              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO">EMAIL
-              </span></b><span lang="ES-CO"></span></p>
-              </td>
-              <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
-              <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo13'] . '</span></b><span lang="ES-CO"></span></p>
-              </td>
-             </tr>
-            </tbody></table>
+                <table class="m_-2942958292281350867gmail-MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="595" style="width:446.15pt;border-collapse:collapse">
+                 <tbody><tr style="height:29.05pt">
+                  <td width="330" valign="top" style="width:247.7pt;border:1pt solid rgb(192,0,0);background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">INFORMACIÓN CONTACTO</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  </td>
+                  <td width="265" valign="top" style="width:198.45pt;border-top:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:none;background:rgb(192,0,0);padding:0in 5.4pt;height:29.05pt">
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></b><span lang="ES-CO"></span></p>
+                  <div class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">
+                  <hr size="2" width="100%" align="center">
+                  </span></b></div>
+                  <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO" style="font-size:12pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:14.3pt">
+                  <td width="330" valign="top" style="width:247.7pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.3pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO">INGENIERO
+                  IMPLEMENTACIÓN</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.3pt">
+                  <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo11'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:12.5pt">
+                  <td width="330" valign="top" style="width:247.7pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO">TELEFONOS
+                  DE CONTACTO</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
+                  <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo12'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                 <tr style="height:12.5pt">
+                  <td width="330" valign="top" style="width:247.7pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
+                  <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-CO">EMAIL
+                  </span></b><span lang="ES-CO"></span></p>
+                  </td>
+                  <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">
+                  <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">' . $argumentos['campo13'] . '</span></b><span lang="ES-CO"></span></p>
+                  </td>
+                 </tr>
+                </tbody></table>
 
-            <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p>
+                <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p>
 
-            <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p></div>';
+                <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p></div>';
 
     }
     
@@ -9797,7 +9865,7 @@ class Templates extends CI_Controller {
         <td width="309" rowspan="12" valign="top" style="width:231.95pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
         <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="font-size:16pt;line-height:115%;color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
         <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">TRASLADO DE SERVICIO</span></i><span lang="ES-CO"></span></p>
-        <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">' . $argumentos['campo7'] . '</span></i><span lang="ES-CO"></span></p>
+        <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif;color:black">' . $argumentos['campo3'] . '</span></i><span lang="ES-CO"></span></p>
         </td>
         <td width="453" colspan="4" valign="top" style="width:339.7pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
         <p class="MsoNormal" style="text-align:justify;line-height:120%;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black">Personal de </span><b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:rgb(192,0,0)">Claro </span></b><span lang="ES-CO" style="font-size:10pt;line-height:120%;font-family:Arial,sans-serif;color:black">se desplaza a la Sede Antigua y
@@ -9835,7 +9903,7 @@ class Templates extends CI_Controller {
         <td width="453" colspan="4" valign="top" style="width:339.7pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:24.75pt">
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">Códigos de Servicio a
         Trasladar:</span></i></b><span lang="ES-CO"></span></p>
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">' . $argumentos['campo8'] . '</span></i></b><span lang="ES-CO"></span></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">' . $argumentos['campo7'] . '</span></i></b><span lang="ES-CO"></span></p>
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES-CO" style="color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
         </td>
         </tr>
@@ -10429,7 +10497,7 @@ class Templates extends CI_Controller {
         ' . $argumentos['campo22']['si'] . '</span></b></p>
         </td>
         <td width="158" colspan="4" rowspan="2" valign="top" style="width:118.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:13.5pt">
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="color:black">Cantidad: ' . $argumentos['campo42'] . '</span></b><b><span lang="ES"></span></b></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES" style="color:black">Cantidad: ' . $argumentos['campo36'] . '</span></b><b><span lang="ES"></span></b></p>
         </td>
         </tr>
         <tr style="height:13.5pt">
@@ -10554,8 +10622,8 @@ class Templates extends CI_Controller {
         <tr style="height:8.25pt">
         <td width="198" colspan="3" rowspan="2" valign="top" style="width:148.85pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:8.25pt">
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">Tipo de Conectividad</span></i></b></p>
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">MPLS: ' . $argumentos['campo35'] . '&nbsp;
-        Internet:' . $argumentos['campo36'] . '</span></i></b></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">MPLS: ' . $argumentos['campo35']['mpls'] . '&nbsp;
+        Internet:' . $argumentos['campo35']['internet'] . '</span></i></b></p>
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">OTP: ' . $argumentos['campo0'] . '</span></i></b></p>
         </td>
         <td width="123" colspan="2" valign="top" style="width:92.25pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:8.25pt">
