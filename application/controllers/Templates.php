@@ -79,17 +79,17 @@ class Templates extends CI_Controller {
             // 3. enviar correo
             $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
-            // if ($res_envio) {
-            //     $this->guardar_servicio($pt);
-            //     // 4. Actualizar ot_hija en tabla ot_hija
-            //     $this->actualizar_oth($pt, true);
-            // }
-            // // si no se envia no se guarda el formulario
-            // else {
-            //     $msj = 'error';
-            //     $this->session->set_flashdata('msj', $msj);
-            //     header('Location: ' . URL::base() . '/managementOtp');
-            // }
+            if ($res_envio) {
+                $this->guardar_servicio($pt);
+                // 4. Actualizar ot_hija en tabla ot_hija
+                $this->actualizar_oth($pt, true);
+            }
+            // si no se envia no se guarda el formulario
+            else {
+                $msj = 'error';
+                $this->session->set_flashdata('msj', $msj);
+                header('Location: ' . URL::base() . '/managementOtp');
+            }
 
             // $data_template = $this->fill_formulary($servicio, $_POST);
             // switch ($servicio) {
@@ -982,6 +982,7 @@ class Templates extends CI_Controller {
 
     // se llenan los argumentos dependiendo el servicio
     public function fill_formulary($s, $p) {
+        $fActual = date('Y-m-d');
 
         switch (true) {
         case ($s == 1 || $s == 2):
@@ -1061,61 +1062,63 @@ class Templates extends CI_Controller {
         /********************NUEVAS PLANTILLAS********************/
         case ($s == 11): //Adición Marquillas Aeropuerto el Dorado Opain
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // marquillas
                 'campo5'  => $p['campo5'], // local
                 'campo6'  => $p['campo6'], // internet
                 'campo7'  => $p['campo7'], // BW
                 'campo8'  => $p['campo8'], // Telefonia
                 'campo9'  => $p['campo9'], // lineas
-                'campo10' => $p['ampo10'], // telefonos
-                'campo11' => $p['ampo11'], // mpls
-                'campo12' => $p['ampo12'], // bw2
-                'campo13' => $p['ampo13'], // Adición de 6 marquillas:
-                'campo14' => $p['ampo14'], // inicio al Proceso de instalación
-                'campo15' => $p['ampo15'], // INGENIERO IMPLEMENTACIÓN
-                'campo16' => $p['ampo16'], // TELEFONOS DE CONTACTO
-                'campo17' => $p['ampo17'], // EMAIL
-                'campo18' => $p['ampo18'], //  OTP
+                'campo10' => $p['campo10'], // telefonos
+                'campo11' => $p['campo11'], // mpls
+                'campo12' => $p['campo12'], // bw2
+                'campo13' => $p['campo13'], // Adición de 6 marquillas:
+                'campo14' => $fActual, // inicio al Proceso de instalación
+                'campo15' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo17' => $p['ingeniero1_email'], // EMAIL
+                'campo18' => $p['campo18'], //  OTP
+                'campo19' => $p['campo19'], //  fecha entrega
             );
             break;
         case ($s == 12): // Cambio de Equipos Servicio
 
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // Dirección Sede
                 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
                 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
                 'campo6'  => $p['campo6'], // cantidad
                 'campo7'  => $p['campo7'], // otp
                 'campo8'  => $p['campo8'], // Códigos de Servicio en el CPE a Cambiar
-                'campo9'  => $p['campo9'], // Requiere que el Cambio de Equipos para su Servicio se ejecute en horario No Hábil o Fin de Semana (no)
+                'campo9'  => $fActual, // inicio fecha
                 'campo10' => $p['campo10'], // Fecha de Entrega del Cambio de Equipos  de su Servicio
-                'campo11' => $p['campo11'], // INGENIERO IMPLEMENTACIÓN
-                'campo12' => $p['campo12'], // TELEFONOS DE CONTACTO
-                'campo13' => $p['campo13'], // MAIL
+                'campo11' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // MAIL
             );
             break;
 
         case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
             $argumentos = array(
 
-                'campo1'  => $p['campo1'],// nombre
-                'campo2'  => $p['campo2'],// nombre cliente
-                'campo3'  => $p['campo3'],// servicio
+                'campo1'  => $p['nombre'],// nombre
+                'campo2'  => $p['nombre_cliente'],// nombre cliente
+                'campo3'  => $p['servicio'],// servicio
                 'campo4'  => $p['campo4'],// Dirección Destino
                 'campo5'  => $p['campo5'],// Cantidad de Líneas Telefónicas Básicas
-                'campo6'  => $p['campo6'],// Ciudad //marcar (x)
-                'campo7'  => $p['campo7'],// Cantidad DID
-                'campo8'  => $p['campo8'],// inicio al Proceso de Cambio  de Servicio
-                'campo9'  => $p['campo9'],// Fecha de Entrega de su servicio
-                'campo10' => $p['campo10'],// INGENIERO IMPLEMENTACIÓN
-                'campo11' => $p['campo11'],// TELEFONOS DE CONTACTO
-                'campo12' => $p['campo12'], // EMAIL
+                'campo6'  => $p['campo6'],// cantidadCiudad 
+                'campo7'  => $p['campo7'],// NOmbre ciudades
+                'campo8'  => $p['campo8'],// Cantidad DID
+                'campo9'  => $fActual,// inicio al Proceso de Cambio  de Servicio   
+                'campo10' => $p['campo10'],// Fecha de Entrega de su servicio
+                'campo11' => $p['ingeniero1'],// INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'],// TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // EMAIL
 
                 /*======================================================
             PREGUNTAR LA FILA DE CIUDAD PUEDE SER MAS
@@ -1123,107 +1126,102 @@ class Templates extends CI_Controller {
             );
             break;
         case ($s == 14): // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // Dirección Destino
                 'campo5'  => $p['campo5'], // Cantidad de DID
-                'campo6'  => $p['campo6'], // Bogota
-                'campo6'  => $p['campo6'], // Tunja
-                'campo6'  => $p['campo6'], // Villavicencio
-                'campo6'  => $p['campo6'], // Facatativá
-                'campo6'  => $p['campo6'], // Girardot
-                'campo6'  => $p['campo6'], // Yopal
-                'campo6'  => $p['campo6'], // Cali
-                'campo6'  => $p['campo6'], // Buenaventura
-                'campo6'  => $p['campo6'], // Pasto
-                'campo6'  => $p['campo6'], // Popayán
-                'campo6'  => $p['campo6'], // Neiva
-                'campo6'  => $p['campo6'], // Medellín
-                'campo6'  => $p['campo6'], // Barranquilla
-                'campo6'  => $p['campo6'], // Cartagena
-                'campo6'  => $p['campo6'], // Santa Marta
-                'campo6'  => $p['campo6'], // Montería
-                'campo6'  => $p['campo6'], // Valledupar
-                'campo6'  => $p['campo6'], // Sincelejo
-                'campo6'  => $p['campo6'], // Pereira
-                'campo6'  => $p['campo6'], // Armenia
-                'campo6'  => $p['campo6'], // Manizales
-                'campo6'  => $p['campo6'], // Ibagué
-                'campo6'  => $p['campo6'], // Cúcuta
-                'campo6'  => $p['campo6'], // Bucaramanga
-                'campo6'  => $p['campo6'], // Duitama
-                'campo6'  => $p['campo6'], // Sogamoso
-                'campo6'  => $p['campo6'], // Flandes
-                'campo6'  => $p['campo6'], // Rivera
-                'campo6'  => $p['campo6'], // Aipe
-                'campo6'  => $p['campo6'], // Lebrija
-                'campo7'  => $p['campo7'], // inicio al Proceso de Cambio  de Servicio
-                'campo8'  => $p['campo8'], // INGENIERO IMPLEMENTACIÓN
-                'campo9'  => $p['campo9'], // TELEFONOS DE CONTACTO
-                'campo10' => $p['campo10'], // EMAIL
+                // 'campo6'  => $p['campo6'], // ciudades (x)
+                'campo7'  => $fActual, // inicio al Proceso de Cambio  de Servicio
+                'campo8'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo9'  => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo10' => $p['ingeniero1_email'], // EMAIL
                 'campo11' => $p['campo11'], // Fecha de Entrega de su servicio
             );
+
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
+   
             break;
         case ($s == 15): // Traslado Externo Servicio
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
-                'campo4'  => $p['campo4'], // TRASLADO DE SERVICIO
-                'campo5'  => $p['campo5'], // Dirección Sede Antigua
-                'campo6'  => $p['campo6'], // Dirección Sede Nueva
-                'campo7'  => $p['campo7'], // Existen otros Servicios a Trasladar (si)
-                'campo7'  => $p['campo7'], // Existen otros Servicios a Trasladar (no)
-                'campo8'  => $p['campo8'], // Cantidad
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Sede Antigua
+                'campo5'  => $p['campo5'], // Dirección Sede Nueva
+                // 'campo6'  => $p['campo6'], // Existen otros Servicios a Trasladar (si)
+                // 'campo6'  => $p['campo6'], // Existen otros Servicios a Trasladar (no)
+                'campo7'  => $p['campo7'], // Cantidad
+                'campo8'  => $fActual, // inicio al Proceso de Traslado Externo del Servicio
                 'campo9'  => $p['campo9'], // Códigos de Servicio a Trasladar
-                'campo10' => $p['campo10'], // inicio al Proceso de Traslado Externo del Servicio
-                'campo11' => $p['campo11'], // INGENIERO IMPLEMENTACIÓN
-                'campo12' => $p['campo12'], // TELEFONOS DE CONTACTO
-                'campo13' => $p['campo13'], // EMAIL
-                'campo14' => $p['campo14'], // Fecha de Entrega del Traslado de su Servicio
-
+                'campo10' => $p['campo10'], // Fecha de Entrega del Traslado de su Servicio
+                'campo11' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // EMAIL
             );
+
+            $argumentos['campo6']['si'] = $this->si($p['campo6']);
+            $argumentos['campo6']['no'] = $this->no($p['campo6']);
             break;
+
         case ($s == 16): // Traslado Interno Servicio
             $argumentos = array(
-                'campo1'  => $p['campo1'], // NOMBRE
-                'campo2'  => $p['campo2'], // NOMBRE CLIENTE
-                'campo3'  => $p['campo3'], // SERVICIO
+                'campo1'  => $p['nombre'], // NOMBRE
+                'campo2'  => $p['nombre_cliente'], // NOMBRE CLIENTE
+                'campo3'  => $p['servicio'], // SERVICIO
                 'campo4'  => $p['campo4'], // Dirección Sede
-                'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (SI)
-                'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (NO)
+                // 'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (SI)
+                // 'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (NO)
                 'campo6'  => $p['campo6'], // cantidad
-                'campo7'  => $p['campo7'], // TRASLADO DE SERVICIO
-                'campo8'  => $p['campo8'], // Códigos de Servicio a Trasladar
-                'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (SI)
-                'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (NO)
-                'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (SI)
-                'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (NO)
-                'campo11' => $p['campo11'], // Movimiento solo de Equipos(SI)
-                'campo11' => $p['campo11'], // Movimiento solo de Equipos(no)
-                'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(si)
-                'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(no)
-                'campo13' => $p['campo13'], // Movimiento Rack (si)
-                'campo13' => $p['campo13'], // Movimiento Rack (no)
-                'campo14' => $p['campo14'], // Movimiento ODF (si)
-                'campo14' => $p['campo14'], // Movimiento ODF (no)
-                'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (si)
-                'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (no)
-                'campo16' => $p['campo16'], // inicio al Proceso de Traslado Externo del Servicio
+                'campo7'  => $p['campo7'], // Códigos de Servicio a Trasladar
+                // 'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (SI)
+                // 'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (NO)
+                // 'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (SI)
+                // 'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (NO)
+                // 'campo11' => $p['campo11'], // Movimiento solo de Equipos(SI)
+                // 'campo11' => $p['campo11'], // Movimiento solo de Equipos(no)
+                // 'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(si)
+                // 'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(no)
+                // 'campo13' => $p['campo13'], // Movimiento Rack (si)
+                // 'campo13' => $p['campo13'], // Movimiento Rack (no)
+                // 'campo14' => $p['campo14'], // Movimiento ODF (si)
+                // 'campo14' => $p['campo14'], // Movimiento ODF (no)
+                // 'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (si)
+                // 'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (no)
+                'campo16' => $fActual, // inicio al Proceso de Traslado Externo del Servicio
                 'campo17' => $p['campo17'], // Fecha de Entrega del Traslado de su Servicio
-                'campo18' => $p['campo18'], // INGENIERO IMPLEMENTACIÓN
-                'campo19' => $p['campo19'], // TELEFONOS DE CONTACTO
-                'campo20' => $p['campo20'], // EMAIL
-
+                'campo18' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo19' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo20' => $p['ingeniero1_email'], // EMAIL
             );
+            $argumentos['campo5']['si'] = $this->si($p['campo5']);
+            $argumentos['campo5']['no'] = $this->no($p['campo5']);
+            $argumentos['campo9']['si'] = $this->si($p['campo9']);
+            $argumentos['campo9']['no'] = $this->no($p['campo9']);
+            $argumentos['campo10']['si'] = $this->si($p['campo10']);
+            $argumentos['campo10']['no'] = $this->no($p['campo10']);
+            $argumentos['campo11']['si'] = $this->si($p['campo11']);
+            $argumentos['campo11']['no'] = $this->no($p['campo11']);
+            $argumentos['camp12']['si'] = $this->si($p['camp12']);
+            $argumentos['camp12']['no'] = $this->no($p['camp12']);
+            $argumentos['campo13']['si'] = $this->si($p['campo13']);
+            $argumentos['campo13']['no'] = $this->no($p['campo13']);
+            $argumentos['campo14']['si'] = $this->si($p['campo14']);
+            $argumentos['campo14']['no'] = $this->no($p['campo14']);
+            $argumentos['campo15']['si'] = $this->si($p['campo15']);
+            $argumentos['campo15']['no'] = $this->no($p['campo15']);
             break;
+
         case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $argumentos = array(
-                'campo1'  => $p['campo1'], //  nombre
-                'campo2'  => $p['campo2'], //  nombre cliente
-                'campo3'  => $p['campo3'], //  servicio
+                'campo1'  => $p['nombre'], //  nombre
+                'campo2'  => $p['nombre_cliente'], //  nombre cliente
+                'campo3'  => $p['servicio'], //  servicio
                 'campo4'  => $p['campo4'], //  Dirección Destino
                 'campo5'  => $p['campo5'], //  Existente
                 'campo6'  => $p['campo6'], //  A Implementar
@@ -1231,161 +1229,148 @@ class Templates extends CI_Controller {
                 'campo8'  => $p['campo8'], //  canales
                 'campo9'  => $p['campo9'], //  E1(DID)
                 'campo10' => $p['campo10'], //  E1(E1)
-                'campo11' => $p['campo11'], //  Buzones de Voz(si)
-                'campo11' => $p['campo11'], //  Buzones de Voz(no)
+                // 'campo11' => $p['campo11'], //  Buzones de Voz(si)
+                // 'campo11' => $p['campo11'], //  Buzones de Voz(no)
                 'campo12' => $p['campo12'], //  cantidad
-                'campo13' => $p['campo13'], //  hardphones (si)
-                'campo13' => $p['campo13'], //  hardphones (no)
+                // 'campo13' => $p['campo13'], //  hardphones (si)
+                // 'campo13' => $p['campo13'], //  hardphones (no)
                 'campo14' => $p['campo14'], //  cantidad
                 'campo15' => $p['campo15'], //  tipo
-                'campo16' => $p['campo16'], //  Softphones(si)
-                'campo16' => $p['campo16'], //  Softphones(no)
+                // 'campo16' => $p['campo16'], //  Softphones(si)
+                // 'campo16' => $p['campo16'], //  Softphones(no)
                 'campo17' => $p['campo17'], //  cantidad
                 'campo18' => $p['campo18'], //  pc
                 'campo19' => $p['campo19'], //  celular
-                'campo20' => $p['campo20'], //  Diademas(si)
-                'campo20' => $p['campo20'], //  Diademas(no)
+                // 'campo20' => $p['campo20'], //  Diademas(si)
+                // 'campo20' => $p['campo20'], //  Diademas(no)
                 'campo21' => $p['campo21'], //  cantidad
-                'campo22' => $p['campo22'], //  Arañas de Conferencia(si)
-                'campo22' => $p['campo22'], //  Arañas de Conferencia(no)
-                'campo42' => $p['campo42'], //  cantidad
-                'campo23' => $p['campo23'], //  Botoneras(si)
-                'campo23' => $p['campo23'], //  Botoneras(no)
+                // 'campo22' => $p['campo22'], //  Arañas de Conferencia(si)
+                // 'campo22' => $p['campo22'], //  Arañas de Conferencia(no)
+                'campo36' => $p['campo36'], //  cantidad
+                // 'campo23' => $p['campo23'], //  Botoneras(si)
+                // 'campo23' => $p['campo23'], //  Botoneras(no)
                 'campo24' => $p['campo24'], //  cantidad
-                'campo25' => $p['campo25'], //  Incluye Grabación de Voz(si)
-                'campo25' => $p['campo25'], //  Incluye Grabación de Voz(no)
-                'campo26' => $p['campo26'], //  Incluye LAN Administrada(si)
-                'campo26' => $p['campo26'], //  Incluye LAN Administrada(no)
-                'campo27' => $p['campo27'], //  cantidad
+                // 'campo25' => $p['campo25'], //  Incluye Grabación de Voz(si)
+                // 'campo25' => $p['campo25'], //  Incluye Grabación de Voz(no)
+                // 'campo26' => $p['campo26'], //  Incluye LAN Administrada(si)
+                // 'campo26' => $p['campo26'], //  Incluye LAN Administrada(no)
+                'campo27' => $p['campo27'], //  cantidad SW
                 'campo28' => $p['campo28'], //  puertos por sw
-                'campo29' => $p['campo29'], //  PoE (si)
-                'campo29' => $p['campo29'], //  PoE (no)
-                'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (si)
-                'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (no)
+                // 'campo29' => $p['campo29'], //  PoE (si)
+                // 'campo29' => $p['campo29'], //  PoE (no)
+                // 'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (si)
+                // 'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (no)
                 'campo31' => $p['campo31'], //  cantidad
-                'campo32' => $p['campo32'], //  AP Claro(si)
-                'campo32' => $p['campo32'], //  AP Claro(no)
+                // 'campo32' => $p['campo32'], //  AP Claro(si)
+                // 'campo32' => $p['campo32'], //  AP Claro(no)
                 'campo33' => $p['campo33'], //  existente
                 'campo34' => $p['campo34'], //  a implementar
-                'campo35' => $p['campo35'], //  Tipo de Conectividad MPLS:
-                'campo36' => $p['campo36'], //  Internet
-                'campo37' => $p['campo37'], //  inicio al Proceso de instalación del Servicio
-                'campo38' => $p['campo38'], //  INGENIERO IMPLEMENTACIÓN
-                'campo39' => $p['campo39'], //  TELEFONOS DE CONTACTO
-                'campo40' => $p['campo40'], //  EMAIL
+                // 'campo35' => $p['campo35'], //  Tipo de Conectividad MPLS:
+                // 'campo35' => $p['campo35'], //  Internet
+                'campo37' => $fActual, //  inicio al Proceso de instalación del Servicio
+                'campo38' => $p['ingeniero1'], //  INGENIERO IMPLEMENTACIÓN
+                'campo39' => $p['ingeniero1_tel'], //  TELEFONOS DE CONTACTO
+                'campo40' => $p['ingeniero1_email'], //  EMAIL
                 'campo41' => $p['campo41'], //  Fecha de Entrega de su servicio
-
             );
+
+                $argumentos['campO11']['si'] = $this->si($p['campO11']);
+                $argumentos['campO11']['no'] = $this->no($p['campO11']);
+                $argumentos['campo13']['si'] = $this->si($p['campo13']);
+                $argumentos['campo13']['no'] = $this->no($p['campo13']);
+                $argumentos['campo16']['si'] = $this->si($p['campo16']);
+                $argumentos['campo16']['no'] = $this->no($p['campo16']);
+                $argumentos['campo20']['si'] = $this->si($p['campo20']);
+                $argumentos['campo20']['no'] = $this->no($p['campo20']);
+                $argumentos['campo22']['si'] = $this->si($p['campo22']);
+                $argumentos['campo22']['no'] = $this->no($p['campo22']);
+                $argumentos['campo23']['si'] = $this->si($p['campo23']);
+                $argumentos['campo23']['no'] = $this->no($p['campo23']);
+                $argumentos['campo25']['si'] = $this->si($p['campo25']);
+                $argumentos['campo25']['no'] = $this->no($p['campo25']);
+                $argumentos['campo26']['si'] = $this->si($p['campo26']);
+                $argumentos['campo26']['no'] = $this->no($p['campo26']);
+                $argumentos['campo29']['si'] = $this->si($p['campo29']);
+                $argumentos['campo29']['no'] = $this->no($p['campo29']);
+                $argumentos['campo30']['si'] = $this->si($p['campo30']);
+                $argumentos['campo30']['no'] = $this->no($p['campo30']);
+                $argumentos['campo32']['si'] = $this->si($p['campo32']);
+                $argumentos['campo32']['no'] = $this->no($p['campo32']);
+
+                if ($p['campo35'] == 'MPLS') {
+                    $argumentos['campo35']['mpls'] = 'X';
+                    $argumentos['campo35']['internet'] = '';
+                } else {
+                    $argumentos['campo35']['mpls'] = '';
+                    $argumentos['campo35']['internet'] = 'X';
+                }
+
             break;
+
         case ($s == 18): // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // Dirección Destino
                 'campo5'  => $p['campo5'], // Cantidad de DID por Ciudad
-                'campo6'  => $p['campo6'], // Bogota
-                'campo6'  => $p['campo6'], // Yopal
-                'campo6'  => $p['campo6'], // Neiva
-                'campo6'  => $p['campo6'], // Montería
-                'campo6'  => $p['campo6'], // Manizales
-                'campo6'  => $p['campo6'], // Sogamoso
-                'campo6'  => $p['campo6'], // Tunja
-                'campo6'  => $p['campo6'], // Cali
-                'campo6'  => $p['campo6'], // Medellín
-                'campo6'  => $p['campo6'], // Valledupar
-                'campo6'  => $p['campo6'], // Ibagué
-                'campo6'  => $p['campo6'], // Flandes
-                'campo6'  => $p['campo6'], // Villavicencio
-                'campo6'  => $p['campo6'], // Buenaventura
-                'campo6'  => $p['campo6'], // Barranquilla
-                'campo6'  => $p['campo6'], // Sincelejo
-                'campo6'  => $p['campo6'], // Cúcuta
-                'campo6'  => $p['campo6'], // Rivera
-                'campo6'  => $p['campo6'], // Facatativá
-                'campo6'  => $p['campo6'], // Pasto
-                'campo6'  => $p['campo6'], // Cartagena
-                'campo6'  => $p['campo6'], // Pereira
-                'campo6'  => $p['campo6'], // Bucaramanga
-                'campo6'  => $p['campo6'], // Aipe
-                'campo6'  => $p['campo6'], // Girardot
-                'campo6'  => $p['campo6'], // Popayán
-                'campo6'  => $p['campo6'], // Santa Marta
-                'campo6'  => $p['campo6'], // Armenia
-                'campo6'  => $p['campo6'], // Duitama
-                'campo6'  => $p['campo6'], // Lebrija
-                'campo7'  => $p['campo7'], // inicio al Proceso de instalación del Servicio
+                // 'campo6'  => $p['campo6'], // ciudades
+                'campo7'  => $fActual, // inicio al Proceso de instalación del Servicio
                 'campo8'  => $p['campo8'], // Fecha de Entrega de su servicio
-                'campo9'  => $p['campo9'], // INGENIERO IMPLEMENTACIÓN
-                'campo10' => $p['campo10'], // TELEFONOS DE CONTACTO
-                'campo11' => $p['campo11'], //EMAIL
-
+                'campo9'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo11' => $p['ingeniero1_email'], //EMAIL
             );
+
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
             break;
         case ($s == 19): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // Dirección Destino
                 'campo5'  => $p['campo5'], // Cantidad de DID
                 'campo6'  => $p['campo6'], // ciudades
-                'campo7'  => $p['campo7'], // inicio al Proceso de instalación del Servicio
+                'campo7'  => $fActual, // inicio al Proceso de instalación del Servicio
                 'campo8'  => $p['campo8'], // Fecha de Entrega de su servicio
-                'campo9'  => $p['campo9'], // INGENIERO IMPLEMENTACIÓN
-                'campo10' => $p['campo10'], // TELEFONOS DE CONTACTO
-                'campo11' => $p['campo11'], // EMAIL
-
+                'campo9'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo11' => $p['ingeniero1_email'], // EMAIL
             );
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
+
             break;
         case ($s == 20): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
             $argumentos = array(
-                'campo1' => $p['campo1'], // nombre
-                'campo2' => $p['campo2'], // nombre cliente
-                'campo3' => $p['campo3'], // servicio
+                'campo1' => $p['nombre'], // nombre
+                'campo2' => $p['nombre_cliente'], // nombre cliente
+                'campo3' => $p['servicio'], // servicio
                 'campo4' => $p['campo4'], // Dirección Destino
                 'campo5' => $p['campo5'], // Cantidad de DID
-                'campo6' => $p['campo6'], // Bogota
-                'campo6' => $p['campo6'], // Yopal
-                'campo6' => $p['campo6'], // Neiva
-                'campo6' => $p['campo6'], // Montería
-                'campo6' => $p['campo6'], // Manizales
-                'campo6' => $p['campo6'], // Sogamoso
-                'campo6' => $p['campo6'], // Tunja
-                'campo6' => $p['campo6'], // Cali
-                'campo6' => $p['campo6'], // Medellín
-                'campo6' => $p['campo6'], // Valledupar
-                'campo6' => $p['campo6'], // Ibagué
-                'campo6' => $p['campo6'], // Flandes
-                'campo6' => $p['campo6'], // Villavicencio
-                'campo6' => $p['campo6'], // Buenaventura
-                'campo6' => $p['campo6'], // Barranquilla
-                'campo6' => $p['campo6'], // Sincelejo
-                'campo6' => $p['campo6'], // Cúcuta
-                'campo6' => $p['campo6'], // Rivera
-                'campo6' => $p['campo6'], // Facatativá
-                'campo6' => $p['campo6'], // Pasto
-                'campo6' => $p['campo6'], // Cartagena
-                'campo6' => $p['campo6'], // Pereira
-                'campo6' => $p['campo6'], // Bucaramanga
-                'campo6' => $p['campo6'], // Aipe
-                'campo6' => $p['campo6'], // Girardot
-                'campo6' => $p['campo6'], // Popayán
-                'campo6' => $p['campo6'], // Santa Marta
-                'campo6' => $p['campo6'], // Armenia
-                'campo6' => $p['campo6'], // Duitama
-                'campo6' => $p['campo6'], // Lebrija
-                'campo7' => $p['campo7'], // inicio al Proceso de instalación del Servicio
+                'campo6' => $p['campo6'], // ciudades
+                'campo7' => $fActual, // inicio al Proceso de instalación del Servicio
                 'campo8' => $p['campo8'], // Fecha de Entrega de su servicio 
-                'campo9' => $p['campo9'], // INGENIERO IMPLEMENTACIÓN
-                'campo10' => $p['campo10'], // TELEFONOS DE CONTACTO 
-                'campo11' => $p['campo11'] // EMAIL
+                'campo9' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO 
+                'campo11' => $p['ingeniero1_email'] // EMAIL
             );
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
             break;
+
         case ($s == 21): // Instalación Telefonía Publica Básica - Internet Dedicado
             $argumentos = array(
-                'campo1' => $p['campo1'], //nombre
-                'campo2' => $p['campo2'], //nombre cliente
+                'campo1' => $p['nombre'], //nombre
+                'campo2' => $p['nombre_cliente'], //nombre cliente
                 'campo3' => $p['campo3'], //Dirección Destino
                 'campo4' => $p['campo4'], //Cantidad de Líneas Telefónicas Básicas
                 'campo5' => $p['campo5'], //OTP Internet Dedicado
@@ -1393,50 +1378,70 @@ class Templates extends CI_Controller {
                 'campo7' => $p['campo7'], //Ancho de Banda Internet
                 'campo8' => $p['campo8'], //Interfaz de Entrega
                 'campo9' => $p['campo9'], //Interfaz de Entrega
-                'campo10' => $p['campo10'], //inicio al Proceso de instalación de los Servicios 
+                'campo10' => $fActual, //inicio al Proceso de instalación de los Servicios 
                 'campo11' => $p['campo11'], //Fecha de Entrega de los servicio
-                'campo12' => $p['campo12'], //INGENIERO IMPLEMENTACIÓN
-                'campo13' => $p['campo13'], //TELEFONOS DE CONTACTO
-                'campo14' => $p['campo14'] //EMAIL
+                'campo12' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
+                'campo13' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
+                'campo14' => $p['ingeniero1_email'] //EMAIL
 
             );
             break;
         case ($s == 22): //Cambio de Última Milla
             $argumentos = array(
-                'campo0' => $p['campo0'] , //otp
-                'campo1' => $p['campo1'] , //nombre
-                'campo2' => $p['campo2'] , //nombre cliente
-                'campo3' => $p['campo3'] , //servicio
+                'campo0' => $p['nro_ot_onyx'] , //otp
+                'campo1' => $p['nombre'] , //nombre
+                'campo2' => $p['nombre_cliente'] , //nombre cliente
+                'campo3' => $p['servicio'] , //servicio
                 'campo4' => $p['campo4'] , //Dirección Sede
                 'campo5' => $p['campo5'] , //BW Actual
                 'campo6' => $p['campo6'] , //BW Nuevo
-                'campo7' => $p['campo7'] , //Requiere Cambio de equipo (si)
-                'campo7' => $p['campo7'] , //Requiere Cambio de equipo (no)
-                'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (si)
-                'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (no)
-                'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (si)
-                'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (no)
+                // 'campo7' => $p['campo7'] , //Requiere Cambio de equipo (si)
+                // 'campo7' => $p['campo7'] , //Requiere Cambio de equipo (no)
+                // 'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (si)
+                // 'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (no)
+                // 'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (si)
+                // 'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (no)
+
+
                 'campo10' => $p['campo10'] , //OTP
                 'campo11' => $p['campo11'] , //ID Servicio
                 'campo12' => $p['campo12'] , //Dirección Sede
+
+
                 'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (si)
                 'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (no)
                 'campo14' => $p['campo14'] , //Requiere Cambio de UM (si) 
                 'campo14' => $p['campo14'] , //Requiere Cambio de UM (no)
-                'campo15' => $p['campo15'] , //inicio al Proceso de Ampliación del  Servicio
-                'campo16' => $p['campo16'] , //Fecha de Entrega de la Ampliación de su Servicio
-                'campo17' => $p['campo17'] , //INGENIERO IMPLEMENTACIÓN
-                'campo18' => $p['campo18'] , //TELEFONOS DE CONTACTO
-                'campo19' => $p['campo19'] , //EMAIL
 
+
+                'campo15' => $fActual , //inicio al Proceso de Ampliación del  Servicio
+                'campo16' => $p['campo16'] , //Fecha de Entrega de la Ampliación de su Servicio
+                'campo17' => $p['ingeniero1'] , //INGENIERO IMPLEMENTACIÓN
+                'campo18' => $p['ingeniero1_tel'] , //TELEFONOS DE CONTACTO
+                'campo19' => $p['ingeniero1_email'] , //EMAIL
             );
+
+            $argumentos['campo7']['si'] = $this->si($p['campo7']);
+            $argumentos['campo7']['no'] = $this->no($p['campo7']);
+            $argumentos['campo8']['si'] = $this->si($p['campo8']);
+            $argumentos['campo8']['no'] = $this->no($p['campo8']);
+            $argumentos['campo9']['si'] = $this->si($p['campo9']);
+            $argumentos['campo9']['no'] = $this->no($p['campo9']);
+
+            // $length = count($p['campo10']);
+            // for ($i=0; $i < $length; $i++) { 
+                
+            // }
+
+
+
             break;
         case ($s == 23): // Cambio de Equipo
             $argumentos = array(
                 'campo0' => $p['campo0'], //otp
-                'campo1' => $p['campo1'], //nombre
-                'campo2' => $p['campo2'], //nombre cliente
-                'campo3' => $p['campo3'], //servicio
+                'campo1' => $p['nombre'], //nombre
+                'campo2' => $p['nombre_cliente'], //nombre cliente
+                'campo3' => $p['servicio'], //servicio
                 'campo4' => $p['campo4'], //Dirección Sede
                 'campo5' => $p['campo5'], //BW Actual
                 'campo6' => $p['campo6'], //BW Nuevo
@@ -1449,11 +1454,11 @@ class Templates extends CI_Controller {
                 'campo11' => $p['campo11'], //Dirección Sede
                 'campo12' => $p['campo12'], //Requiere Cambio de Equipos (si)
                 'campo12' => $p['campo12'], //Requiere Cambio de Equipos (no)
-                'campo13' => $p['campo13'], //inicio al Proceso de Ampliación del  Servicio
+                'campo13' => $fActual, //inicio al Proceso de Ampliación del  Servicio
                 'campo14' => $p['campo14'], //Fecha de Entrega de la Ampliación de su Servicio
-                'campo15' => $p['campo15'], //INGENIERO IMPLEMENTACIÓN
-                'campo16' => $p['campo16'], //TELEFONOS DE CONTACTO
-                'campo17' => $p['campo17'] //EMAIL
+                'campo15' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
+                'campo17' => $p['ingeniero1_email'] //EMAIL
             );
             break;
 
@@ -1471,6 +1476,22 @@ class Templates extends CI_Controller {
 
         return $data;
 
+    }
+
+    private function si($valor){
+        if ($valor == 'SI') {
+            return 'X';
+        } else {
+            return '';
+        }
+    }
+
+    private function no($valor){
+        if ($valor == 'NO') {
+            return 'X';
+        } else {
+            return '';
+        }
     }
 
     public function enviar_email($cuerpo, $pt, $flag = true) {
@@ -13736,8 +13757,8 @@ class Templates extends CI_Controller {
     }
     //
     public function cambio_de_ultima_milla($argumentos) {
-
-        return '   <div dir="ltr"><p class="MsoNormal" style="margin: 0in 0in 10pt; text-align: justify; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES" style="font-size: 12pt; line-height: 115%; font-family: Arial, sans-serif;">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
+        $cadena = '';
+        $cadena .= '   <div dir="ltr"><p class="MsoNormal" style="margin: 0in 0in 10pt; text-align: justify; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES" style="font-size: 12pt; line-height: 115%; font-family: Arial, sans-serif;">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES-MX" style="font-size: 12pt; font-family: Arial, sans-serif; color: rgb(31, 73, 125);">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -13795,7 +13816,7 @@ class Templates extends CI_Controller {
           </td>
          </tr>
          <tr style="height: 14.55pt;">
-          <td width="298" rowspan="8" valign="top" style="width: 223.35pt; border-right: 1pt solid rgb(192, 0, 0); border-bottom: 1pt solid rgb(192, 0, 0); border-left: 1pt solid rgb(192, 0, 0); border-image: initial; border-top: none; padding: 0in 5.4pt; height: 14.55pt;">
+          <td width="298" rowspan="'. (count($argumentos['campo10']) * 2) + 6 .'" valign="top" style="width: 223.35pt; border-right: 1pt solid rgb(192, 0, 0); border-bottom: 1pt solid rgb(192, 0, 0); border-left: 1pt solid rgb(192, 0, 0); border-image: initial; border-top: none; padding: 0in 5.4pt; height: 14.55pt;">
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 16pt; color: black;">&nbsp;</span></i></b><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">&nbsp;</span></i><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" style="margin: 0in 0in 10pt; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">AMPLIACIÓN&nbsp;DE
@@ -13867,20 +13888,25 @@ class Templates extends CI_Controller {
           <td width="675" colspan="16" valign="top" style="width: 506.3pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in 5.4pt; height: 20.15pt;">
           <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-family: Arial, sans-serif; color: black;">SERVICIOS A MODIFICAR</span></i></b><b><i><span lang="ES" style="font-family: Arial, sans-serif; color: rgb(31, 73, 125);">:</span></i></b><span style="color: black;"></span></p>
           </td>
-         </tr>
-         <tr style="height: 17.75pt;">
+         </tr>';
+
+    for ($i=0; $i < count($argumentos['campo10']); $i++) { 
+  
+        $cadena .= '<tr style="height: 17.75pt;">
+
           <td width="47" rowspan="2" valign="top" style="width: 35.5pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in 5.4pt; height: 17.75pt;">
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">OTP</span></i></b><span style="color: black;"></span></p>
+
           </td>
           <td width="61" colspan="2" rowspan="2" valign="top" style="width: 45.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo10'] . '</span></i></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo10'][$i] . '</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="69" colspan="2" rowspan="2" valign="top" style="width: 52pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">ID Servicio</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="60" colspan="2" rowspan="2" valign="top" style="width: 44.95pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo11'] . '</span></i></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo11'][$i] . '</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="75" rowspan="2" valign="top" style="width: 56.15pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
@@ -13888,31 +13914,33 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">Sede</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="87" rowspan="2" valign="top" style="width: 65pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo12'] . '</span></i></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo12'][$i] . '</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="77" colspan="3" rowspan="2" valign="top" style="width: 57.85pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de Equipos</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $argumentos['campo13']['si'] . '</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
           </td>
           <td width="76" rowspan="2" valign="top" style="width: 56.9pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de UM</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $argumentos['campo14']['si'] . '</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo14'][$i]) . '</span></b><span style="color: black;"></span></p>
           </td>
          </tr>
          <tr style="height: 17.75pt;">
           <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $argumentos['campo13']['no'] . '</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
           </td>
           <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $argumentos['campo14']['no'] . '</span></b><b><span lang="ES" style="color: rgb(31, 73, 125);">_</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo14'][$i]) . '</span></b><b><span lang="ES" style="color: rgb(31, 73, 125);">_</span></b><span style="color: black;"></span></p>
           </td>
-         </tr>
+         </tr>';
 
-         <tr height="0">
+    }   
+
+         $cadena .= '<tr height="0">
           <td width="298" style="border: none;"></td>
           <td width="47" style="border: none;"></td>
           <td width="56" style="border: none;"></td>
@@ -14226,6 +14254,8 @@ class Templates extends CI_Controller {
           </td>
          </tr>
         </tbody></table></div> ';
+
+        return $cadena;
 
     }
     //
