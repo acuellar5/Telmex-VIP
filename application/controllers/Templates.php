@@ -142,56 +142,56 @@ class Templates extends CI_Controller {
         case '1': // internet dedicado empresarial
         case '2': // internet dedicado
             $data_pr = array(
-                'id_ot_padre'              => $pt['pr_OTP'],
+                'id_ot_padre'              => $pt['pr_id_ot_padre'],
                 'ciudad'                   => $pt['pr_ciudad'],
                 'direccion'                => $pt['pr_direccion'],
                 'tipo_predio'              => $pt['pr_tipo_predio'],
                 'nit_cliente'              => $pt['pr_nit_cliente'],
                 'alias_lugar'              => $pt['pr_alias_lugar'],
-                'otp_asociada'             => $pt['pr_otp_asociadas'],
+                'otp_asociada'             => $pt['pr_otp_asociada'],
                 'tipo_internet'            => $pt['pr_tipo_internet'],
                 'ancho_banda'              => $pt['pr_ancho_banda'],
                 'tipo_instalacion'         => $pt['pr_tipo_instalacion'],
-                'servicio_actual'          => $pt['pr_id_servicio_actual'],
-                'requiere_um'              => $pt['pr_requiere_instalacion_um'],
-                'proveedor'                => $pt['pr_proveedor_milla'],
-                'medio'                    => $pt['pr_medio_um'],
-                'factibilidad_bw'          => $pt['pr_respuesta_factibilidad'],
+                'servicio_actual'          => $pt['pr_servicio_actual'],
+                'requiere_um'              => $pt['pr_requiere_um'],
+                'proveedor'                => $pt['pr_proveedor'],
+                'medio'                    => $pt['pr_medio'],
+                'factibilidad_bw'          => $pt['pr_factibilidad_bw'],
                 'tipo_conector'            => $pt['pr_tipo_conector'],
                 'sds_destino'              => $pt['pr_sds_destino'],
-                'olt'                      => $pt['pr_olt_gpon'],
-                'interfaz_entrega_cliente' => $pt['pr_interface_entrega_cliente'],
+                'olt'                      => $pt['pr_olt'],
+                'interfaz_entrega_cliente' => $pt['pr_interfaz_entrega_cliente'],
                 'requiere_voc'             => $pt['pr_requiere_voc'],
                 'programacion_voc'         => $pt['pr_programacion_voc'],
                 'requiere_rfc'             => $pt['pr_requiere_rfc'],
                 'conversor_medio'          => $pt['pr_conversor_medio'],
                 'referencia_router'        => $pt['pr_referencia_router'],
-                'modulos_tarjetas'         => $pt['pr_modulo_o_tarjeta'],
+                'modulos_tarjetas'         => $pt['pr_modulos_tarjetas'],
                 'licencias'                => $pt['pr_licencias'],
                 'equipos_adicionales'      => $pt['pr_equipos_adicionales'],
                 'consumibles'              => $pt['pr_consumibles'],
-                'carta_valorizada'         => $pt['pr_registro_importacion_carta'],
-                'nombre_1'                 => $pt['pr_nombre_dcc'],
-                'telefono_1'               => $pt['pr_telefono_dcc'],
-                'celular_1'                => $pt['pr_celular_dcc'],
-                'correo_1'                 => $pt['pr_email_dcc'],
-                'nombre_2'                 => $pt['pr_nombre_dct'],
-                'telefono_2'               => $pt['pr_telefono_dct'],
-                'celular_2'                => $pt['pr_celular_dct'],
-                'correo_2'                 => $pt['pr_email_dct'],
-                'observaciones'            => $pt['pr_observaciones_dct'],
+                'carta_valorizada'         => $pt['pr_carta_valorizada'],
+                'nombre_1'                 => $pt['pr_nombre_1'],
+                'telefono_1'               => $pt['pr_telefono_1'],
+                'celular_1'                => $pt['pr_celular_1'],
+                'correo_1'                 => $pt['pr_correo_1'],
+                'nombre_2'                 => $pt['pr_nombre_2'],
+                'telefono_2'               => $pt['pr_telefono_2'],
+                'celular_2'                => $pt['pr_celular_2'],
+                'correo_2'                 => $pt['pr_correo_2'],
+                'observaciones'            => $pt['pr_observaciones'],
                 'ancho_banda_nap'          => $pt['pr_ancho_banda_nap'],
                 'ancho_banda_internet'     => $pt['pr_ancho_banda_internet'],
-                'direcciones_ip'           => $pt['pr_direccion_ip'],
+                'direcciones_ip'           => $pt['pr_direcciones_ip'],
                 'activacion_correo'        => $pt['pr_activacion_correo'],
-                'activacion_web_hosting'   => $pt['pr_activacion_hosting'],
-                'dominio_existente'        => $pt['pr_Dominio_existente'],
-                'dominio_comprar'          => $pt['pr_dominio_a_comprar'],
-                'cant_correos'             => $pt['pr_cantidad_cuentas_correo'],
-                'espacio_correo'           => $pt['pr_espacio_correo_gb'],
-                'plataforma_web'           => $pt['pr_pataforma_web_hosting'],
-                'web_hosting'              => $pt['pr_web_hosting_mb'],
-                'promocion'                => $pt['pr_promocion_vigente_nom'],
+                'activacion_web_hosting'   => $pt['pr_activacion_web_hosting'],
+                'dominio_existente'        => $pt['pr_dominio_existente'],
+                'dominio_comprar'          => $pt['pr_dominio_comprar'],
+                'cant_correos'             => $pt['pr_cant_correos'],
+                'espacio_correo'           => $pt['pr_espacio_correo'],
+                'plataforma_web'           => $pt['pr_plataforma_web'],
+                'web_hosting'              => $pt['pr_web_hosting'],
+                'promocion'                => $pt['pr_promocion'],
             );
             $this->Dao_producto_model->insert_pr_internet($data_pr);
             $txt = $this->plantilla_txt_pr_internet($data_pr);
@@ -206,86 +206,87 @@ class Templates extends CI_Controller {
         case '9': // MPLS Avanzado con Componente Datacenter Claro
         case '10': // MPLS Transaccional 3G
             $data_pr = array(
-                'id_ot_padre_ori'              => $pt['otp_mpls'],
-                'ciudad_ori'                   => $pt['pr_ciudad'],
-                'direccion_ori'                => $pt['pr_direccion'],
-                'tipo_predio_ori'              => $pt['pr_tipo_predio'],
-                'nit_cliente_ori'              => $pt['pr_nit_cliente'],
-                'alias_lugar_ori'              => $pt['pr_alias_lugar'],
-                'otp_asociada_ori'             => $pt['pr_otp_asociadas'],
-                'tipo_mpls_ori'                => $pt['pr_tipo_mpls'],
-                'ancho_banda_ori'              => $pt['pr_ancho_banda'],
-                'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion'],
-                'servicio_actual_ori'          => $pt['pr_id_servicio'],
-                'servicio_principal_ori'       => $pt['pr_idservicio_prin'],
-                'requiere_um_ori'              => $pt['pr_instalacion_um'],
-                'um_backup_ori'                => $pt['pr_ultimam_backup'],
-                'proveedor_ori'                => $pt['pr_proveedor'],
-                'medio_ori'                    => $pt['pr_medio'],
-                'factibilidad_bw_ori'          => $pt['pr_resp_factibilidad'],
-                'tipo_conector_ori'            => $pt['pr_tipo_conector'],
-                'sds_destino_ori'              => $pt['pr_sds_destino'],
-                'interfaz_entrega_cliente_ori' => $pt['pr_tipo_conector'],
-                'requiere_voc_ori'             => $pt['pr_requiere_voc'],
-                'programacion_voc_ori'         => $pt['pr_programacion_voc'],
-                'requiere_rfc_ori'             => $pt['pr_requiere_rfc'],
-                'conversor_medio_ori'          => $pt['pr_conversor_medio'],
-                'referencia_router_ori'        => $pt['pr_referencia_router'],
-                'modulos_tarjetas_ori'         => $pt['pr_modulo_tarjeta'],
-                'licencias_ori'                => $pt['pr_licencias'],
-                'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales'],
-                'consumibles_ori'              => $pt['pr_consumibles'],
-                'carta_valorizada_ori'         => $pt['pr_importacion_carta'],
-                'nombre_1_ori'                 => $pt['pr_nombre_1'],
-                'telefono_1_ori'               => $pt['pr_telefono_1'],
-                'celular_1_ori'                => $pt['pr_celular_1'],
-                'correo_1_ori'                 => $pt['pr_email_1'],
-                'observaciones_1_ori'          => $pt['pr_observaciones'],
-                'nombre_2_ori'                 => $pt['pr_nombre_2'],
-                'telefono_2_ori'               => $pt['pr_telefono_2'],
-                'celular_2_ori'                => $pt['celular_dct_mpls'],
-                'correo_2_ori'                 => $pt['pr_email_2'],
-                'id_ot_padre_des'              => $pt['otp_mpls_pd'],
+                'id_ot_padre_ori'              => $pt['nro_ot_onyx'],
+                'ciudad_ori'                   => $pt['pr_ciudad_ori'],
+                'direccion_ori'                => $pt['pr_direccion_ori'],
+                'tipo_predio_ori'              => $pt['pr_tipo_predio_ori'],
+                'nit_cliente_ori'              => $pt['pr_nit_cliente_ori'],
+                'alias_lugar_ori'              => $pt['pr_alias_lugar_ori'],
+                'otp_asociada_ori'             => $pt['pr_otp_asociada_ori'],
+                'tipo_mpls_ori'                => $pt['pr_tipo_mpls_ori'],
+                'ancho_banda_ori'              => $pt['pr_ancho_banda_ori'],
+                'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion_ori'],
+                'servicio_actual_ori'          => $pt['pr_servicio_actual_ori'],
+                'servicio_principal_ori'       => $pt['pr_servicio_principal_ori'],
+                'requiere_um_ori'              => $pt['pr_requiere_um_ori'],
+                'um_backup_ori'                => $pt['pr_um_backup_ori'],
+                'proveedor_ori'                => $pt['pr_proveedor_ori'],
+                'medio_ori'                    => $pt['pr_medio_ori'],
+                'factibilidad_bw_ori'          => $pt['pr_factibilidad_bw_ori'],
+                'tipo_conector_ori'            => $pt['pr_tipo_conector_ori'],
+                'sds_destino_ori'              => $pt['pr_sds_destino_ori'],
+                'interfaz_entrega_cliente_ori' => $pt['pr_interfaz_entrega_cliente_ori'],
+                'requiere_voc_ori'             => $pt['pr_requiere_voc_ori'],
+                'programacion_voc_ori'         => $pt['pr_programacion_voc_ori'],
+                'requiere_rfc_ori'             => $pt['pr_requiere_rfc_ori'],
+                'conversor_medio_ori'          => $pt['pr_conversor_medio_ori'],
+                'referencia_router_ori'        => $pt['pr_referencia_router_ori'],
+                'modulos_tarjetas_ori'         => $pt['pr_modulos_tarjetas_ori'],
+                'licencias_ori'                => $pt['pr_licencias_ori'],
+                'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales_ori'],
+                'consumibles_ori'              => $pt['pr_consumibles_ori'],
+                'carta_valorizada_ori'         => $pt['pr_carta_valorizada_ori'],
+                'nombre_1_ori'                 => $pt['pr_nombre_1_ori'],
+                'telefono_1_ori'               => $pt['pr_telefono_1_ori'],
+                'celular_1_ori'                => $pt['pr_celular_1_ori'],
+                'correo_1_ori'                 => $pt['pr_correo_1_ori'],                
+                'nombre_2_ori'                 => $pt['pr_nombre_2_ori'],
+                'telefono_2_ori'               => $pt['pr_telefono_2_ori'],
+                'celular_2_ori'                => $pt['pr_celular_2_ori'],
+                'correo_2_ori'                 => $pt['pr_correo_2_ori'],
+                'observaciones_1_ori'          => $pt['pr_observaciones_1_ori'],
+                'id_ot_padre_des'              => $pt['pr_id_ot_padre_des'],
 
-                'ciudad_des'                   => $pt['pr_ciudad_2'],
-                'id_ot_padre_des'              => $pt['otp_mpls_pd'],
-                'direccion_des'                => $pt['pr_direccion_2'],
-                'tipo_predio_des'              => $pt['pr_tipo_predio_2'],
-                'nit_cliente_des'              => $pt['pr_nit_cliente_2'],
-                'alias_lugar_des'              => $pt['pr_alias_lugar_2'],
-                'otp_asociada_des'             => $pt['pr_otp_asociadas_2'],
-                'tipo_mpls_des'                => $pt['pr_tipo_mpls_2'],
-                'ancho_banda_des'              => $pt['pr_ancho_banda_2'],
-                'tipo_instalacion_des'         => $pt['pr_tipo_instalacion_2'],
-                'servicio_actual_des'          => $pt['pr_id_servicio_2'],
-                'servicio_principal_des'       => $pt['pr_idservicio_prin_2'],
-                'requiere_um_des'              => $pt['pr_instalacion_um_2'],
-                'um_backup_des'                => $pt['pr_umilla_backup_2'],
-                'proveedor_des'                => $pt['pr_proveedor_2'],
-                'medio_des'                    => $pt['pr_medio_2'],
-                'factibilidad_bw_des'          => $pt['pr_res_factibilidad_2'],
-                'tipo_conector_des'            => $pt['pr_tipo_conector_2'],
-                'sds_destino_des'              => $pt['pr_sds_destino_2'],
-                'requiere_voc_des'             => $pt['pr_requiere_voc_2'],
-                'programacion_voc_des'         => $pt['pr_programacion_voc_2'],
-                'requiere_rfc_des'             => $pt['pr_requiere_rfc_2'],
-                'conversor_medio_des'          => $pt['pr_conversor_medio_2'],
-                'referencia_router_des'        => $pt['pr_referencia_router_2'],
-                'modulos_tarjetas_des'         => $pt['pr_modulo_tarjeta_2'],
-                'licencias_des'                => $pt['pr_licencias_2'],
-                'equipos_adicionales_des'      => $pt['pr_equipos_adicionales_2'],
-                'consumibles_des'              => $pt['pr_consumibles_2'],
-                'carta_valorizada_des'         => $pt['pr_importacion_carta_2'],
-                'nombre_1_des'                 => $pt['pr_nombre_3'],
-                'telefono_1_des'               => $pt['pr_telefono_3'],
-                'celular_1_des'                => $pt['pr_celular_3'],
-                'correo_1_des'                 => $pt['pr_email_3'],
-                'nombre_2_des'                 => $pt['pr_nombre_4'],
-                'telefono_2_des'               => $pt['pr_telefono_4'],
-                'celular_2_des'                => $pt['pr_celular_4'],
-                'correo_2_des'                 => $pt['pr_email_4'],
-                'observaciones_1_des'          => $pt['pr_observaciones_2'],
+                'ciudad_des'                   => $pt['pr_ciudad_des'],
+                'id_ot_padre_des'              => $pt['pr_id_ot_padre_des'],
+                'direccion_des'                => $pt['pr_direccion_des'],
+                'tipo_predio_des'              => $pt['pr_tipo_predio_des'],
+                'nit_cliente_des'              => $pt['pr_nit_cliente_des'],
+                'alias_lugar_des'              => $pt['pr_alias_lugar_des'],
+                'otp_asociada_des'             => $pt['pr_otp_asociada_des'],
+                'tipo_mpls_des'                => $pt['pr_tipo_mpls_des'],
+                'ancho_banda_des'              => $pt['pr_ancho_banda_des'],
+                'tipo_instalacion_des'         => $pt['pr_tipo_instalacion_des'],
+                'servicio_actual_des'          => $pt['pr_servicio_actual_des'],
+                'servicio_principal_des'       => $pt['pr_servicio_principal_des'],
+                'requiere_um_des'              => $pt['pr_requiere_um_des'],
+                'um_backup_des'                => $pt['pr_um_backup_des'],
+                'proveedor_des'                => $pt['pr_proveedor_des'],
+                'medio_des'                    => $pt['pr_medio_des'],
+                'factibilidad_bw_des'          => $pt['pr_factibilidad_bw_des'],
+                'tipo_conector_des'            => $pt['pr_tipo_conector_des'],
+                'sds_destino_des'              => $pt['pr_sds_destino_des'],
                 'interfaz_entrega_cliente_des' => $pt['pr_interfaz_entrega_cliente_des'],
+                'requiere_voc_des'             => $pt['pr_requiere_voc_des'],
+                'programacion_voc_des'         => $pt['pr_programacion_voc_des'],
+                'requiere_rfc_des'             => $pt['pr_requiere_rfc_des'],
+                'conversor_medio_des'          => $pt['pr_conversor_medio_des'],
+                'referencia_router_des'        => $pt['pr_referencia_router_des'],
+                'modulos_tarjetas_des'         => $pt['pr_modulos_tarjetas_des'],
+                'licencias_des'                => $pt['pr_licencias_des'],
+                'equipos_adicionales_des'      => $pt['pr_equipos_adicionales_des'],
+                'consumibles_des'              => $pt['pr_consumibles_des'],
+                'carta_valorizada_des'         => $pt['pr_carta_valorizada_des'],
+                'nombre_1_des'                 => $pt['pr_nombre_1_des'],
+                'telefono_1_des'               => $pt['pr_telefono_1_des'],
+                'celular_1_des'                => $pt['pr_celular_1_des'],
+                'correo_1_des'                 => $pt['pr_correo_1_des'],
+                'nombre_2_des'                 => $pt['pr_nombre_2_des'],
+                'telefono_2_des'               => $pt['pr_telefono_2_des'],
+                'celular_2_des'                => $pt['pr_celular_2_des'],
+                'correo_2_des'                 => $pt['pr_correo_2_des'],
+                'observaciones_1_des'          => $pt['pr_observaciones_1_des'],
+                
             );
             $this->Dao_producto_model->insert_pr_mpls($data_pr);
             break;
@@ -298,240 +299,240 @@ class Templates extends CI_Controller {
             $data_pr = array(
                 'id_ot_padre'                   => $pt['nro_ot_onyx'],
                 'ciudad'                        => $pt['pr_ciudad'],
-                'ubicacion_actual'              => $pt['pr_direccion_actual'],
+                'ubicacion_actual'              => $pt['pr_ubicacion_actual'],
                 'alias_lugar'                   => $pt['pr_alias_lugar'],
-                'otp_asociada'                  => $pt['pr_otp_asociadas'],
+                'otp_asociada'                  => $pt['pr_otp_asociada'],
                 'tipo_novedad'                  => $pt['pr_tipo_novedad'],
-                'servicio_modificar'            => $pt['pr_serv_modificar'],
+                'servicio_modificar'            => $pt['pr_servicio_modificar'],
                 'ancho_banda'                   => $pt['pr_ancho_banda'],
                 'tipo_actividad'                => $pt['pr_tipo_actividad'],
                 'servicio_actual'               => $pt['pr_servicio_actual'],
-                'liberacion_um'                 => $pt['pr_liberacion_umst_te'],
-                'requiere_um'                   => $pt['pr_requiere_instalacion'],
-                'proveedor'                     => $pt['pr_proveedor_milla'],
-                'medio'                         => $pt['pr_medio_um'],
-                'factibilidad_bw'               => $pt['pr_resp_factibilidad'],
+                'liberacion_um'                 => $pt['pr_liberacion_um'],
+                'requiere_um'                   => $pt['pr_requiere_um'],
+                'proveedor'                     => $pt['pr_proveedor'],
+                'medio'                         => $pt['pr_medio'],
+                'factibilidad_bw'               => $pt['pr_factibilidad_bw'],
                 'sds_destino'                   => $pt['pr_sds_destino'],
-                'olt'                           => $pt['pr_olt_gpon'],
-                'interfaz_entrega_cliente'      => $pt['pr_interface_cliente'],
+                'olt'                           => $pt['pr_olt'],
+                'interfaz_entrega_cliente'      => $pt['pr_interfaz_entrega_cliente'],
                 'requiere_voc'                  => $pt['pr_requiere_voc'],
                 'programacion_voc'              => $pt['pr_programacion_voc'],
-                'liberacion_um_fo'              => $pt['pr_liberacion_rumfo'],
-                'requiere_ventana_mtto'         => $pt['pr_ventana_mtto'],
+                'liberacion_um_fo'              => $pt['pr_liberacion_um_fo'],
+                'requiere_ventana_mtto'         => $pt['pr_requiere_ventana_mtto'],
                 'requiere_rfc'                  => $pt['pr_requiere_rfc'],
                 'conversor_medio'               => $pt['pr_conversor_medio'],
                 'referencia_router'             => $pt['pr_referencia_router'],
-                'modulos_tarjetas'              => $pt['pr_modulo_tarjeta'],
+                'modulos_tarjetas'              => $pt['pr_modulos_tarjetas'],
                 'licencias'                     => $pt['pr_licencias'],
                 'equipos_adicionales'           => $pt['pr_equipos_adicionales'],
                 'consumibles'                   => $pt['pr_consumibles'],
-                'carta_valorizada'              => $pt['pr_registro_importacion'],
-                'nombre_1'                      => $pt['pr_nombre1'],
-                'telefono_1'                    => $pt['pr_telefono1'],
-                'celular_1'                     => $pt['pr_celular1'],
-                'correo_1'                      => $pt['pr_email1'],
-                'nombre_2'                      => $pt['pr_nombre2'],
-                'telefono_2'                    => $pt['pr_telefono2'],
-                'celular_2'                     => $pt['pr_celular2'],
-                'correo_2'                      => $pt['pr_email2'],
-                'observaciones'                 => $pt['pr_observaciones_pl_te'],
+                'carta_valorizada'              => $pt['pr_carta_valorizada'],
+                'nombre_1'                      => $pt['pr_nombre_1'],
+                'telefono_1'                    => $pt['pr_telefono_1'],
+                'celular_1'                     => $pt['pr_celular_1'],
+                'correo_1'                      => $pt['pr_correo_1'],
+                'nombre_2'                      => $pt['pr_nombre_2'],
+                'telefono_2'                    => $pt['pr_telefono_2'],
+                'celular_2'                     => $pt['pr_celular_2'],
+                'correo_2'                      => $pt['pr_correo_2'],
+                'observaciones'                 => $pt['pr_observaciones'],
                 'equipo_cliente'                => $pt['pr_equipo_cliente'],
-                'interfaz_cliente'              => $pt['pr_interfaz_ec'],
-                'cant_lineas_basicas'           => $pt['pr_cant_lba'],
+                'interfaz_cliente'              => $pt['pr_interfaz_cliente'],
+                'cant_lineas_basicas'           => $pt['pr_cant_lineas_basicas'],
                 'conformacion_pbx'              => $pt['pr_conformacion_pbx'],
                 'cant_did'                      => $pt['pr_cant_did'],
                 'cant_canales'                  => $pt['pr_cant_canales'],
-                'adicion_lineas_fax'            => $pt['pr_adicion_fax'],
-                'adicion_lineas_virtual'        => $pt['pr_adicion_tele'],
-                'larga_distancia_nacional'      => $pt['pr_rldnacional'],
-                'larga_distancia_internacional' => $pt['pr_rldinternacional'],
-                'permisos_moviles'              => $pt['//pr_permisos_moviles'],
-                'permisos_local_extendida'      => $pt['pr_rplextendida'],
-                'bog_requiere'                  => $pt['pr_requiere_1'],
-                'bog_numeracion'                => $pt['pr_numeracion_1'],
-                'bog_cantidad'                  => $pt['pr_cant_canales_1'],
-                'tun_requiere'                  => $pt['pr_requiere_2'],
-                'tun_numeracion'                => $pt['pr_numeracion_2'],
-                'tun_cantidad'                  => $pt['pr_cant_canales_2'],
-                'vill_requiere'                 => $pt['pr_requiere_3'],
-                'vill_numeracion'               => $pt['pr_numeracion_3'],
-                'vill_cantidad'                 => $pt['pr_cant_canales_3'],
-                'fac_requiere'                  => $pt['pr_requiere_4'],
-                'fac_numeracion'                => $pt['pr_numeracion_4'],
-                'fac_cantidad'                  => $pt['pr_cant_canales_4'],
-                'gir_requiere'                  => $pt['pr_requiere_5'],
-                'gir_numeracion'                => $pt['pr_numeracion_5'],
-                'gir_cantidad'                  => $pt['pr_cant_canales_5'],
-                'yop_requiere'                  => $pt['pr_requiere_6'],
-                'yop_numeracion'                => $pt['pr_numeracion_6'],
-                'yop_cantidad'                  => $pt['pr_cant_canales_6'],
-                'cali_requiere'                 => $pt['pr_requiere_7'],
-                'cali_numeracion'               => $pt['pr_numeracion_7'],
-                'cali_cantidad'                 => $pt['pr_cant_canales_7'],
-                'bave_requiere'                 => $pt['pr_requiere_8'],
-                'bave_numeracion'               => $pt['pr_numeracion_8'],
-                'bave_cantidad'                 => $pt['pr_cant_canales_8'],
-                'pas_requiere'                  => $pt['pr_requiere_9'],
-                'pas_numeracion'                => $pt['pr_numeracion_9'],
-                'pas_cantidad'                  => $pt['pr_cant_canales_9'],
-                'pop_requiere'                  => $pt['pr_requiere_10'],
-                'pop_numeracion'                => $pt['pr_numeracion_10'],
-                'pop_cantidad'                  => $pt['pr_cant_canales_10'],
-                'nei_requiere'                  => $pt['pr_requiere_11'],
-                'nei_numeracion'                => $pt['pr_numeracion_11'],
-                'nei_cantidad'                  => $pt['pr_cant_canales_11'],
-                'med_requiere'                  => $pt['pr_requiere_12'],
-                'med_numeracion'                => $pt['pr_numeracion_12'],
-                'med_cantidad'                  => $pt['pr_cant_canales_12'],
-                'bar_requiere'                  => $pt['pr_requiere_13'],
-                'bar_numeracion'                => $pt['pr_numeracion_13'],
-                'bar_cantidad'                  => $pt['pr_cant_canales_13'],
-                'cart_requiere'                 => $pt['pr_requiere_14'],
-                'cart_numeracion'               => $pt['pr_numeracion_14'],
-                'cart_cantidad'                 => $pt['pr_cant_canales_14'],
-                'stm_requiere'                  => $pt['pr_requiere_15'],
-                'stm_numeracion'                => $pt['pr_numeracion_15'],
-                'stm_cantidad'                  => $pt['pr_cant_canales_15'],
-                'mon_requiere'                  => $pt['pr_requiere_16'],
-                'mon_numeracion'                => $pt['pr_numeracion_16'],
-                'mon_cantidad'                  => $pt['pr_cant_canales_16'],
-                'vall_requiere'                 => $pt['pr_requiere_17'],
-                'vall_numeracion'               => $pt['pr_numeracion_17'],
-                'vall_cantidad'                 => $pt['pr_cant_canales_17'],
-                'sinc_requiere'                 => $pt['pr_requiere_18'],
-                'sinc_numeracion'               => $pt['pr_numeracion_18'],
-                'sinc_cantidad'                 => $pt['pr_cant_canales_18'],
-                'per_requiere'                  => $pt['pr_requiere_19'],
-                'per_numeracion'                => $pt['pr_numeracion_19'],
-                'per_cantidad'                  => $pt['pr_cant_canales_19'],
-                'arme_requiere'                 => $pt['pr_requiere_20'],
-                'arme_numeracion'               => $pt['pr_numeracion_20'],
-                'arme_cantidad'                 => $pt['pr_cant_canales_20'],
-                'man_requiere'                  => $pt['pr_requiere_21'],
-                'man_numeracion'                => $pt['pr_numeracion_21'],
-                'man_cantidad'                  => $pt['pr_cant_canales_21'],
-                'iba_requiere'                  => $pt['pr_requiere_22'],
-                'iba_numeracion'                => $pt['pr_numeracion_22'],
-                'iba_cantidad'                  => $pt['pr_cant_canales_22'],
-                'cuc_requiere'                  => $pt['pr_requiere_23'],
-                'cuc_numeracion'                => $pt['pr_numeracion_23'],
-                'cuc_cantidad'                  => $pt['pr_cant_canales_23'],
-                'buc_requiere'                  => $pt['pr_requiere_24'],
-                'buc_numeracion'                => $pt['pr_numeracion_24'],
-                'buc_cantidad'                  => $pt['pr_cant_canales_24'],
-                'dui_requiere'                  => $pt['pr_requiere_25'],
-                'dui_numeracion'                => $pt['pr_numeracion_25'],
-                'dui_cantidad'                  => $pt['pr_cant_canales_25'],
-                'sog_requiere'                  => $pt['pr_requiere_26'],
-                'sog_numeracion'                => $pt['pr_numeracion_26'],
-                'sog_cantidad'                  => $pt['pr_cant_canales_26'],
-                'flan_requiere'                 => $pt['pr_requiere_27'],
-                'flan_numeracion'               => $pt['pr_numeracion_27'],
-                'flan_cantidad'                 => $pt['pr_cant_canales_27'],
-                'riv_requiere'                  => $pt['pr_requiere_28'],
-                'riv_numeracion'                => $pt['pr_numeracion_28'],
-                'riv_cantidad'                  => $pt['pr_cant_canales_28'],
-                'aipe_requiere'                 => $pt['pr_requiere_29'],
-                'aipe_numeracion'               => $pt['pr_numeracion_29'],
-                'aipe_cantidad'                 => $pt['pr_cant_canales_29'],
-                'leb_requiere'                  => $pt['pr_requiere_30'],
-                'leb_numeracion'                => $pt['pr_numeracion_30'],
-                'leb_cantidad'                  => $pt['pr_cant_canales_30'],
+                'adicion_lineas_fax'            => $pt['pr_adicion_lineas_fax'],
+                'adicion_lineas_virtual'        => $pt['pr_adicion_lineas_virtual'],
+                'larga_distancia_nacional'      => $pt['pr_larga_distancia_nacional'],
+                'larga_distancia_internacional' => $pt['pr_larga_distancia_internacional'],
+                'permisos_moviles'              => $pt['pr_permisos_moviles'],
+                'permisos_local_extendida'      => $pt['pr_permisos_local_extendida'],
+                'bog_requiere'                  => $pt['pr_bog_requiere'],
+                'bog_numeracion'                => $pt['pr_bog_numeracion'],
+                'bog_cantidad'                  => $pt['pr_bog_cantidad'],
+                'tun_requiere'                  => $pt['pr_tun_requiere'],
+                'tun_numeracion'                => $pt['pr_tun_numeracion'],
+                'tun_cantidad'                  => $pt['pr_tun_cantidad'],
+                'vill_requiere'                 => $pt['pr_vill_requiere'],
+                'vill_numeracion'               => $pt['pr_vill_numeracion'],
+                'vill_cantidad'                 => $pt['pr_vill_cantidad'],
+                'fac_requiere'                  => $pt['pr_fac_requiere'],
+                'fac_numeracion'                => $pt['pr_fac_numeracion'],
+                'fac_cantidad'                  => $pt['pr_fac_cantidad'],
+                'gir_requiere'                  => $pt['pr_gir_requiere'],
+                'gir_numeracion'                => $pt['pr_gir_numeracion'],
+                'gir_cantidad'                  => $pt['pr_gir_cantidad'],
+                'yop_requiere'                  => $pt['pr_yop_requiere'],
+                'yop_numeracion'                => $pt['pr_yop_numeracion'],
+                'yop_cantidad'                  => $pt['pr_yop_cantidad'],
+                'cali_requiere'                 => $pt['pr_cali_requiere'],
+                'cali_numeracion'               => $pt['pr_cali_numeracion'],
+                'cali_cantidad'                 => $pt['pr_cali_cantidad'],
+                'bave_requiere'                 => $pt['pr_bave_requiere'],
+                'bave_numeracion'               => $pt['pr_bave_numeracion'],
+                'bave_cantidad'                 => $pt['pr_bave_cantidad'],
+                'pas_requiere'                  => $pt['pr_pas_requiere'],
+                'pas_numeracion'                => $pt['pr_pas_numeracion'],
+                'pas_cantidad'                  => $pt['pr_pas_cantidad'],
+                'pop_requiere'                  => $pt['pr_pop_requiere'],
+                'pop_numeracion'                => $pt['pr_pop_numeracion'],
+                'pop_cantidad'                  => $pt['pr_pop_cantidad'],
+                'nei_requiere'                  => $pt['pr_nei_requiere'],
+                'nei_numeracion'                => $pt['pr_nei_numeracion'],
+                'nei_cantidad'                  => $pt['pr_nei_cantidad'],
+                'med_requiere'                  => $pt['pr_med_requiere'],
+                'med_numeracion'                => $pt['pr_med_numeracion'],
+                'med_cantidad'                  => $pt['pr_med_cantidad'],
+                'bar_requiere'                  => $pt['pr_bar_requiere'],
+                'bar_numeracion'                => $pt['pr_bar_numeracion'],
+                'bar_cantidad'                  => $pt['pr_bar_cantidad'],
+                'cart_requiere'                 => $pt['pr_cart_requiere'],
+                'cart_numeracion'               => $pt['pr_cart_numeracion'],
+                'cart_cantidad'                 => $pt['pr_cart_cantidad'],
+                'stm_requiere'                  => $pt['pr_stm_requiere'],
+                'stm_numeracion'                => $pt['pr_stm_numeracion'],
+                'stm_cantidad'                  => $pt['pr_stm_cantidad'],
+                'mon_requiere'                  => $pt['pr_mon_requiere'],
+                'mon_numeracion'                => $pt['pr_mon_numeracion'],
+                'mon_cantidad'                  => $pt['pr_mon_cantidad'],
+                'vall_requiere'                 => $pt['pr_vall_requiere'],
+                'vall_numeracion'               => $pt['pr_vall_numeracion'],
+                'vall_cantidad'                 => $pt['pr_vall_cantidad'],
+                'sinc_requiere'                 => $pt['pr_sinc_requiere'],
+                'sinc_numeracion'               => $pt['pr_sinc_numeracion'],
+                'sinc_cantidad'                 => $pt['pr_sinc_cantidad'],
+                'per_requiere'                  => $pt['pr_per_requiere'],
+                'per_numeracion'                => $pt['pr_per_numeracion'],
+                'per_cantidad'                  => $pt['pr_per_cantidad'],
+                'arme_requiere'                 => $pt['pr_arme_requiere'],
+                'arme_numeracion'               => $pt['pr_arme_numeracion'],
+                'arme_cantidad'                 => $pt['pr_arme_cantidad'],
+                'man_requiere'                  => $pt['pr_man_requiere'],
+                'man_numeracion'                => $pt['pr_man_numeracion'],
+                'man_cantidad'                  => $pt['pr_man_cantidad'],
+                'iba_requiere'                  => $pt['pr_iba_requiere'],
+                'iba_numeracion'                => $pt['pr_iba_numeracion'],
+                'iba_cantidad'                  => $pt['pr_iba_cantidad'],
+                'cuc_requiere'                  => $pt['pr_cuc_requiere'],
+                'cuc_numeracion'                => $pt['pr_cuc_numeracion'],
+                'cuc_cantidad'                  => $pt['pr_cuc_cantidad'],
+                'buc_requiere'                  => $pt['pr_buc_requiere'],
+                'buc_numeracion'                => $pt['pr_buc_numeracion'],
+                'buc_cantidad'                  => $pt['pr_buc_cantidad'],
+                'dui_requiere'                  => $pt['pr_dui_requiere'],
+                'dui_numeracion'                => $pt['pr_dui_numeracion'],
+                'dui_cantidad'                  => $pt['pr_dui_cantidad'],
+                'sog_requiere'                  => $pt['pr_sog_requiere'],
+                'sog_numeracion'                => $pt['pr_sog_numeracion'],
+                'sog_cantidad'                  => $pt['pr_sog_cantidad'],
+                'flan_requiere'                 => $pt['pr_flan_requiere'],
+                'flan_numeracion'               => $pt['pr_flan_numeracion'],
+                'flan_cantidad'                 => $pt['pr_flan_cantidad'],
+                'riv_requiere'                  => $pt['pr_riv_requiere'],
+                'riv_numeracion'                => $pt['pr_riv_numeracion'],
+                'riv_cantidad'                  => $pt['pr_riv_cantidad'],
+                'aipe_requiere'                 => $pt['pr_aipe_requiere'],
+                'aipe_numeracion'               => $pt['pr_aipe_numeracion'],
+                'aipe_cantidad'                 => $pt['pr_aipe_cantidad'],
+                'leb_requiere'                  => $pt['pr_leb_requiere'],
+                'leb_numeracion'                => $pt['pr_leb_numeracion'],
+                'leb_cantidad'                  => $pt['pr_leb_cantidad'],
             );
             $this->Dao_producto_model->insert_pr_novedades($data_pr);
             break;
         /*TRASLADO_EXTERNO*/
         case '15': // Traslado Externo Servicio
             $data_pr = array(
-                'id_ot_padre'               => $pt['nro_ot_onyx'],
+                'id_ot_padre'               => $pt['pr_id_ot_padre'],
                 'ciudad'                    => $pt['pr_ciudad'],
-                'ubicacion_actual'          => $pt['pr_direccion_actual'],
-                'ubicacion_traslado'        => $pt['pr_direccion_traslado'],
+                'ubicacion_actual'          => $pt['pr_ubicacion_actual'],
+                'ubicacion_traslado'        => $pt['pr_ubicacion_traslado'],
                 'tipo_predio'               => $pt['pr_tipo_predio'],
                 'nit_cliente'               => $pt['pr_nit_cliente'],
                 'alias_lugar'               => $pt['pr_alias_lugar'],
-                'otp_asociada'              => $pt['pr_otp_asociadas'],
-                'cant_servicios_trasladar'  => $pt['pr_cntd_servicios'],
-                'cod_servicio_trasladar'    => $pt['pr_idservicio_trasladar'],
+                'otp_asociada'              => $pt['pr_otp_asociada'],
+                'cant_servicios_trasladar'  => $pt['pr_cant_servicios_trasladar'],
+                'cod_servicio_trasladar'    => $pt['pr_cod_servicio_trasladar'],
                 'tipo_traslado'             => $pt['pr_tipo_traslado'],
                 'tipo_servicio'             => $pt['pr_tipo_servicio'],
                 'ancho_banda'               => $pt['pr_ancho_banda'],
                 'tipo_actividad'            => $pt['pr_tipo_actividad'],
-                'servicio_actual'           => $pt['pr_id_servicio_actual'],
-                'requiere_liberacion_um'    => $pt['pr_liberacion_uml'],
-                'requiere_um'               => $pt['pr_requiere_instalacion'],
-                'proveedor'                 => $pt['pr_proveedor_milla'],
+                'servicio_actual'           => $pt['pr_servicio_actual'],
+                'requiere_liberacion_um'    => $pt['pr_requiere_liberacion_um'],
+                'requiere_um'               => $pt['pr_requiere_um'],
+                'proveedor'                 => $pt['pr_proveedor'],
                 'medio'                     => $pt['pr_medio'],
-                'factibilidad_bw'           => $pt['pr_resp_factibilidad'],
+                'factibilidad_bw'           => $pt['pr_factibilidad_bw'],
                 'sds_destino'               => $pt['pr_sds_destino'],
-                'olt'                       => $pt['pr_olt_gpon'],
-                'interfaz_entrega_cliente'  => $pt['pr_interface_ecliente'],
+                'olt'                       => $pt['pr_olt'],
+                'interfaz_entrega_cliente'  => $pt['pr_interfaz_entrega_cliente'],
                 'requiere_voc'              => $pt['pr_requiere_voc'],
                 'programacion_voc'          => $pt['pr_programacion_voc'],
-                'requiere_liberacion_um_fo' => $pt['pr_liberacion_recursos'],
-                'requiere_ventana_mtto'     => $pt['pr_ventana_mtto'],
+                'requiere_liberacion_um_fo' => $pt['pr_requiere_liberacion_um_fo'],
+                'requiere_ventana_mtto'     => $pt['pr_requiere_ventana_mtto'],
                 'requiere_rfc'              => $pt['pr_requiere_rfc'],
                 'conversor_medio'           => $pt['pr_conversor_medio'],
                 'referencia_router'         => $pt['pr_referencia_router'],
-                'modulos_tarjetas'          => $pt['pr_modulo_o_tarjeta'],
+                'modulos_tarjetas'          => $pt['pr_modulos_tarjetas'],
                 'licencias'                 => $pt['pr_licencias'],
                 'equipos_adicionales'       => $pt['pr_equipos_adicionales'],
                 'consumibles'               => $pt['pr_consumibles'],
-                'carta_valorizada'          => $pt['pr_registro_importacion'],
+                'carta_valorizada'          => $pt['pr_carta_valorizada'],
                 'nombre_1'                  => $pt['pr_nombre_1'],
                 'telefono_1'                => $pt['pr_telefono_1'],
                 'celular_1'                 => $pt['pr_celular_1'],
-                'correo_1'                  => $pt['pr_email_1'],
+                'correo_1'                  => $pt['pr_correo_1'],
                 'nombre_2'                  => $pt['pr_nombre_2'],
                 'telefono_2'                => $pt['pr_telefono_2'],
                 'celular_2'                 => $pt['pr_celular_2'],
-                'correo_2'                  => $pt['pr_email_2'],
-                'observaciones'             => $pt['pr_observaciones_pl_te'],
+                'correo_2'                  => $pt['pr_correo_2'],
+                'observaciones'             => $pt['pr_observaciones'],
             );
             $this->Dao_producto_model->insert_pr_traslado_externo($data_pr);
             break;
         /*TRASLADO_INTERNO*/
         case '16': // Traslado Interno Servicio
             $data_pr = array(
-                'id_ot_padre'              => $pt['nro_ot_onyx'],
+                'id_ot_padre'              => $pt['pr_id_ot_padre'],
                 'ciudad'                   => $pt['pr_ciudad'],
-                'ubicacion_actual'         => $pt['pr_direccion'],
-                'alias_lugar'              => $pt['pr_alias'],
-                'movimiento_interno'       => $pt['pr_movimiento_it'],
-                'otp_asociada'             => $pt['pr_otp_as'],
-                'cant_servicios_trasladar' => $pt['pr_cantidad_st'],
-                'cod_servicios_trasladar'  => $pt['pr_codigo_st'],
-                'tipo_traslado'            => $pt['pr_tipo_ti'],
-                'tipo_servicio'            => $pt['pr_tipo_s'],
+                'ubicacion_actual'         => $pt['pr_ubicacion_actual'],
+                'alias_lugar'              => $pt['pr_alias_lugar'],
+                'movimiento_interno'       => $pt['pr_movimiento_interno'],
+                'otp_asociada'             => $pt['pr_otp_asociada'],
+                'cant_servicios_trasladar' => $pt['pr_cant_servicios_trasladar'],
+                'cod_servicios_trasladar'  => $pt['pr_cod_servicios_trasladar'],
+                'tipo_traslado'            => $pt['pr_tipo_traslado'],
+                'tipo_servicio'            => $pt['pr_tipo_servicio'],
                 'ancho_banda'              => $pt['pr_ancho_banda'],
-                'tipo_actividad'           => $pt['pr_tipo_acti_ti'],
-                'servicio_actual'          => $pt['pr_id_servicio'],
+                'tipo_actividad'           => $pt['pr_tipo_actividad'],
+                'servicio_actual'          => $pt['pr_servicio_actual'],
                 'requiere_um'              => $pt['pr_requiere_um'],
                 'proveedor'                => $pt['pr_proveedor'],
                 'medio'                    => $pt['pr_medio'],
-                'factibilidad_bw'          => $pt['pr_respuesta'],
+                'factibilidad_bw'          => $pt['pr_factibilidad_bw'],
                 'sds_destino'              => $pt['pr_sds_destino'],
                 'olt'                      => $pt['pr_olt'],
-                'interfaz_entrega_cliente' => $pt['pr_interface'],
-                'requiere_voc'             => $pt['pr_requiere'],
+                'interfaz_entrega_cliente' => $pt['pr_interfaz_entrega_cliente'],
+                'requiere_voc'             => $pt['pr_requiere_voc'],
                 'programacion_voc'         => $pt['pr_programacion_voc'],
                 'requiere_ventana_mtto'    => $pt['pr_requiere_ventana_mtto'],
                 'requiere_rfc'             => $pt['pr_requiere_rfc'],
-                'conversor_medio'          => $pt['pr_convesor_m'],
-                'referencia_router'        => $pt['pr_referencia_r'],
-                'modulos_tarjetas'         => $pt['pr_modulos_t'],
+                'conversor_medio'          => $pt['pr_conversor_medio'],
+                'referencia_router'        => $pt['pr_referencia_router'],
+                'modulos_tarjetas'         => $pt['pr_modulos_tarjetas'],
                 'licencias'                => $pt['pr_licencias'],
-                'equipos_adicionales'      => $pt['pr_equipos_a'],
+                'equipos_adicionales'      => $pt['pr_equipos_adicionales'],
                 'consumibles'              => $pt['pr_consumibles'],
-                'carta_valorizada'         => $pt['pr_registro_ic'],
-                'nombre_1'                 => $pt['pr_nombre1'],
-                'telefono_1'               => $pt['pr_telefono1'],
-                'celular_1'                => $pt['pr_celular1'],
-                'correo_1'                 => $pt['pr_correo1'],
-                'nombre_2'                 => $pt['pr_nombre2'],
-                'telefono_2'               => $pt['pr_telefono2'],
-                'celular_2'                => $pt['pr_celular2'],
-                'correo_2'                 => $pt['pr_correo2'],
+                'carta_valorizada'         => $pt['pr_carta_valorizada'],
+                'nombre_1'                 => $pt['pr_nombre_1'],
+                'telefono_1'               => $pt['pr_telefono_1'],
+                'celular_1'                => $pt['pr_celular_1'],
+                'correo_1'                 => $pt['pr_correo_1'],
+                'nombre_2'                 => $pt['pr_nombre_2'],
+                'telefono_2'               => $pt['pr_telefono_2'],
+                'celular_2'                => $pt['pr_celular_2'],
+                'correo_2'                 => $pt['pr_correo_2'],
                 'observaciones'            => $pt['pr_observaciones'],
             );
             $this->Dao_producto_model->insert_pr_traslado_interno($data_pr);
@@ -539,54 +540,55 @@ class Templates extends CI_Controller {
         /*PVX_ADMINISTRADA*/
         case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $data_pr = array(
-                'id_ot_padre' => $pt['pr_otp'],
+                'id_ot_padre' => $pt['id_ot_padre'],
 
             );
 
-            /*ciudad               => pr_ciudad
+            /*ciudad             => pr_ciudad
             direccion            => pr_direccion
             tipo_predio          => pr_tipo_predio
             nit_cliente          => pr_nit_cliente
             alias_lugar          => pr_alias_lugar
-            otp_asociada         => pr_otp_asociadas
+            otp_asociada         => pr_otp_asociada
             tipo_pbx             => pr_tipo_pbx
             tipo_instalacion     => pr_tipo_instalacion
-            servicio_actual      => pr_id_servicio
-            requiere_um          => pr_requiere_instalacion
+            servicio_actual      => pr_servicio_actual
+            requiere_um          => pr_requiere_um
             proveedor            => pr_proveedor
-            medio                => pr_medio_spa
+            medio                => pr_medio
             requiere_voc         => pr_requiere_voc
             programacion_voc     => pr_programacion_voc
             requiere_rfc         => pr_requiere_rfc
             conversor_medio      => pr_conversor_medio
             referencia_router    => pr_referencia_router
-            modulos_tarjetas     => pr_modulo_tarjeta
+            modulos_tarjetas     => pr_modulos_tarjetas
             licencias            => pr_licencias
             equipos_adicionales  => pr_equipos_adicionales
 
             fuentes_telefonos    => pr_cantidad
-            diademas             => pr_fuente_telefono
-            araña_conferencia    => pr_diademas
-            botoneras            => pr_aranas_conferencias
-            modulo_botonera      => pr_botoneras
-            fuente_botonera      => pr_expansion_botonera
-            consumibles          => pr_fuente_botonera
-            carta_valorizada     => pr_consumibles
-            nombre_1             => pr_registro_importacion
-            telefono_1           => pr_nombre_1
-            celular_1            => pr_telefono_1
-            correo_1             => pr_celular_1
-            nombre_2             => pr_email_1
-            telefono_2           => pr_nombre_2
-            celular_2            => pr_telefono_2
-            correo_2             => pr_celular_2
-            observaciones        => pr_email_2
-            tel_fija_claro       => pr_observaciones_1
-            cantidad_extenciones => pr_telefonia_fija
-            cantidad_buzones_voz => pr_cant_extension
-            grabacion_voz        => pr_cant_buzonv
-            lan_administrada     => pr_incluye_gravacion
-            pr_lan_admon
+
+            fuentes_telefonos    => pr_fuentes_telefonos
+            diademas             => pr_diademas
+            araña_conferencia    => pr_araña_conferencia
+            botoneras            => pr_botoneras
+            modulo_botonera      => pr_modulo_botonera
+            fuente_botonera      => pr_fuente_botonera
+            consumibles          => pr_consumibles
+            carta_valorizada     => pr_carta_valorizada
+            nombre_1             => pr_nombre_1
+            telefono_1           => pr_telefono_1
+            celular_1            => pr_celular_1
+            correo_1             => pr_correo_1
+            nombre_2             => pr_nombre_2
+            telefono_2           => pr_telefono_2
+            celular_2            => pr_celular_2
+            correo_2             => pr_correo_2
+            observaciones        => pr_observaciones
+            tel_fija_claro       => pr_tel_fija_claro
+            cantidad_extenciones => pr_cantidad_extenciones
+            cantidad_buzones_voz => pr_cantidad_buzones_voz
+            grabacion_voz        => pr_grabacion_voz
+            lan_administrada     => pr_lan_administrada
              */
 
             break;
@@ -596,145 +598,145 @@ class Templates extends CI_Controller {
         case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
         case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
             $data_pr = array(
-                'id_ot_padre'                   => $pt['pr_otp'],
+                'id_ot_padre'                   => $pt['pr_id_ot_padre'],
                 'ciudad'                        => $pt['pr_ciudad'],
                 'direccion'                     => $pt['pr_direccion'],
                 'tipo_predio'                   => $pt['pr_tipo_predio'],
                 'nit_cliente'                   => $pt['pr_nit_cliente'],
                 'alias_lugar'                   => $pt['pr_alias_lugar'],
-                'otp_asociada'                  => $pt['pr_otp_asociadas'],
-                'tipo_telefonia'                => $pt['pr_tipo_telefoniaf'],
+                'otp_asociada'                  => $pt['pr_otp_asociada'],
+                'tipo_telefonia'                => $pt['pr_tipo_telefonia'],
                 'ancho_banda'                   => $pt['pr_ancho_banda'],
                 'tipo_instalacion'              => $pt['pr_tipo_instalacion'],
-                'servicio_actual'               => $pt['pr_idservicio_actual'],
-                'requiere_um'                   => $pt['pr_requiere_instalacion'],
-                'proveedor'                     => $pt['pr_proveedor_milla'],
-                'medio'                         => $pt['pr_medio_um'],
+                'servicio_actual'               => $pt['pr_servicio_actual'],
+                'requiere_um'                   => $pt['pr_requiere_um'],
+                'proveedor'                     => $pt['pr_proveedor'],
+                'medio'                         => $pt['pr_medio'],
                 'tipo_conector'                 => $pt['pr_tipo_conector'],
-                'interfaz_entrega_cliente'      => $pt['pr_interface_entregac'],
+                'interfaz_entrega_cliente'      => $pt['pr_interfaz_entrega_cliente'],
                 'requiere_voc'                  => $pt['pr_requiere_voc'],
                 'programacion_voc'              => $pt['pr_programacion_voc'],
                 'requiere_rfc'                  => $pt['pr_requiere_rfc'],
                 'conversor_medio'               => $pt['pr_conversor_medio'],
                 'referencia_router'             => $pt['pr_referencia_router'],
-                'modulos_tarjetas'              => $pt['pr_modulo_tarjeta'],
+                'modulos_tarjetas'              => $pt['pr_modulos_tarjetas'],
                 'licencias'                     => $pt['pr_licencias'],
                 'equipos_adicionales'           => $pt['pr_equipos_adicionales'],
-                'consumibles'                   => $pt['pr_Consumibles'],
-                'carta_valorizada'              => $pt['pr_registro_importacion'],
+                'consumibles'                   => $pt['pr_consumibles'],
+                'carta_valorizada'              => $pt['pr_carta_valorizada'],
                 'nombre_1'                      => $pt['pr_nombre_1'],
                 'telefono_1'                    => $pt['pr_telefono_1'],
                 'celular_1'                     => $pt['pr_celular_1'],
-                'correo_1'                      => $pt['pr_email_1'],
+                'correo_1'                      => $pt['pr_correo_1'],
                 'nombre_2'                      => $pt['pr_nombre_2'],
                 'telefono_2'                    => $pt['pr_telefono_2'],
                 'celular_2'                     => $pt['pr_celular_2'],
-                'correo_2'                      => $pt['pr_email_2'],
+                'correo_2'                      => $pt['pr_correo_2'],
                 'observaciones'                 => $pt['pr_observaciones'],
                 'activacion_plan'               => $pt['pr_activacion_plan'],
                 'equipo_cliente'                => $pt['pr_equipo_cliente'],
-                'interfaz_equipo_cliente'       => $pt['pr_interfaz_equipoc'],
-                'cantidad_lineas_basicas'       => $pt['pr_cantidad_canales'],
+                'interfaz_equipo_cliente'       => $pt['pr_interfaz_equipo_cliente'],
+                'cantidad_lineas_basicas'       => $pt['pr_cantidad_lineas_basicas'],
                 'conformacion_pbx'              => $pt['pr_conformacion_pbx'],
-                'cant_did_solicitados'          => $pt['pr_cantidad_did'],
-                'cant_canales'                  => $pt['pr_cantidad_lineas'],
-                'num_cabezera_pbx'              => $pt['pr_numero_cabecera'],
-                'fax_email'                     => $pt['pr_fax_mail'],
+                'cant_did_solicitados'          => $pt['pr_cant_did_solicitados'],
+                'cant_canales'                  => $pt['pr_cant_canales'],
+                'num_cabezera_pbx'              => $pt['pr_num_cabezera_pbx'],
+                'fax_email'                     => $pt['pr_fax_email'],
                 'telefono_virtual'              => $pt['pr_telefono_virtual'],
-                'permisos_larga_distancia'      => $pt['pr_permisos_largad'],
-                'larga_distancia_internacional' => $pt['pr_larga_distanciai'],
+                'permisos_larga_distancia'      => $pt['pr_permisos_larga_distancia'],
+                'larga_distancia_internacional' => $pt['pr_larga_distancia_internacional'],
                 'permisos_moviles'              => $pt['pr_permisos_moviles'],
-                'permiso_local_extendida'       => $pt['pr_requiere_permisoe'],
-                'bog_requiere'                  => $pt['pr_requiere_1'],
-                'bog_numeracion'                => $pt['pr_numeracion_1'],
-                'bog_cantidad'                  => $pt['pr_cant_canales_1'],
-                'tun_requiere'                  => $pt['pr_requiere_2'],
-                'tun_numeracion'                => $pt['pr_numeracion_2'],
-                'tun_cantidad'                  => $pt['pr_cant_canales_2'],
-                'vill_requiere'                 => $pt['pr_requiere_3'],
-                'vill_numeracion'               => $pt['pr_numeracion_3'],
-                'vill_cantidad'                 => $pt['pr_cant_canales_3'],
-                'fac_requiere'                  => $pt['pr_requiere_4'],
-                'fac_numeracion'                => $pt['pr_numeracion_4'],
-                'fac_cantidad'                  => $pt['pr_cant_canales_4'],
-                'gir_requiere'                  => $pt['pr_requiere_5'],
-                'gir_numeracion'                => $pt['pr_numeracion_5'],
-                'gir_cantidad'                  => $pt['pr_cant_canales_5'],
-                'yop_requiere'                  => $pt['pr_requiere_6'],
-                'yop_numeracion'                => $pt['pr_numeracion_6'],
-                'yop_cantidad'                  => $pt['pr_cant_canales_6'],
-                'cali_requiere'                 => $pt['pr_requiere_7'],
-                'cali_numeracion'               => $pt['pr_numeracion_7'],
-                'cali_cantidad'                 => $pt['pr_cant_canales_7'],
-                'bave_requiere'                 => $pt['pr_requiere_8'],
-                'bave_numeracion'               => $pt['pr_numeracion_8'],
-                'bave_cantidad'                 => $pt['pr_cant_canales_8'],
-                'pas_requiere'                  => $pt['pr_requiere_9'],
-                'pas_numeracion'                => $pt['pr_numeracion_9'],
-                'pas_cantidad'                  => $pt['pr_cant_canales_9'],
-                'pop_requiere'                  => $pt['pr_requiere_10'],
-                'pop_numeracion'                => $pt['pr_numeracion_10'],
-                'pop_cantidad'                  => $pt['pr_cant_canales_10'],
-                'nei_requiere'                  => $pt['pr_requiere_11'],
-                'nei_numeracion'                => $pt['pr_numeracion_11'],
-                'nei_cantidad'                  => $pt['pr_cant_canales_11'],
-                'med_requiere'                  => $pt['pr_requiere_12'],
-                'med_numeracion'                => $pt['pr_numeracion_12'],
-                'med_cantidad'                  => $pt['pr_cant_canales_12'],
-                'bar_requiere'                  => $pt['pr_requiere_13'],
-                'bar_numeracion'                => $pt['pr_numeracion_13'],
-                'bar_cantidad'                  => $pt['pr_cant_canales_13'],
-                'cart_requiere'                 => $pt['pr_requiere_14'],
-                'cart_numeracion'               => $pt['pr_numeracion_14'],
-                'cart_cantidad'                 => $pt['pr_cant_canales_14'],
-                'stm_requiere'                  => $pt['pr_requiere_15'],
-                'stm_numeracion'                => $pt['pr_numeracion_15'],
-                'stm_cantidad'                  => $pt['pr_cant_canales_15'],
-                'mon_requiere'                  => $pt['pr_requiere_16'],
-                'mon_numeracion'                => $pt['pr_numeracion_16'],
-                'mon_cantidad'                  => $pt['pr_cant_canales_16'],
-                'vall_requiere'                 => $pt['pr_requiere_17'],
-                'vall_numeracion'               => $pt['pr_numeracion_17'],
-                'vall_cantidad'                 => $pt['pr_cant_canales_17'],
-                'sinc_requiere'                 => $pt['pr_requiere_18'],
-                'sinc_numeracion'               => $pt['pr_numeracion_18'],
-                'sinc_cantidad'                 => $pt['pr_cant_canales_18'],
-                'per_requiere'                  => $pt['pr_requiere_19'],
-                'per_numeracion'                => $pt['pr_numeracion_19'],
-                'per_cantidad'                  => $pt['pr_cant_canales_19'],
-                'arme_requiere'                 => $pt['pr_requiere_20'],
-                'arme_numeracion'               => $pt['pr_numeracion_20'],
-                'arme_cantidad'                 => $pt['pr_cant_canales_20'],
-                'man_requiere'                  => $pt['pr_requiere_21'],
-                'man_numeracion'                => $pt['pr_numeracion_21'],
-                'man_cantidad'                  => $pt['pr_cant_canales_21'],
-                'iba_requiere'                  => $pt['pr_requiere_22'],
-                'iba_numeracion'                => $pt['pr_numeracion_22'],
-                'iba_cantidad'                  => $pt['pr_cant_canales_22'],
-                'cuc_requiere'                  => $pt['pr_requiere_23'],
-                'cuc_numeracion'                => $pt['pr_numeracion_23'],
-                'cuc_cantidad'                  => $pt['pr_cant_canales_23'],
-                'buc_requiere'                  => $pt['pr_requiere_24'],
-                'buc_numeracion'                => $pt['pr_numeracion_24'],
-                'buc_cantidad'                  => $pt['pr_cant_canales_24'],
-                'dui_requiere'                  => $pt['pr_requiere_25'],
-                'dui_numeracion'                => $pt['pr_numeracion_25'],
-                'dui_cantidad'                  => $pt['pr_cant_canales_25'],
-                'sog_requiere'                  => $pt['pr_requiere_26'],
-                'sog_numeracion'                => $pt['pr_numeracion_26'],
-                'sog_cantidad'                  => $pt['pr_cant_canales_26'],
-                'flan_requiere'                 => $pt['pr_requiere_27'],
-                'flan_numeracion'               => $pt['pr_numeracion_27'],
-                'flan_cantidad'                 => $pt['pr_cant_canales_27'],
-                'riv_requiere'                  => $pt['pr_requiere_28'],
-                'riv_numeracion'                => $pt['pr_numeracion_28'],
-                'riv_cantidad'                  => $pt['pr_cant_canales_28'],
-                'aipe_requiere'                 => $pt['pr_requiere_29'],
-                'aipe_numeracion'               => $pt['pr_numeracion_29'],
-                'aipe_cantidad'                 => $pt['pr_cant_canales_29'],
-                'leb_requiere'                  => $pt['pr_requiere_30'],
-                'leb_numeracion'                => $pt['pr_numeracion_30'],
-                'leb_cantidad'                  => $pt['pr_cant_canales_30'],
+                'permiso_local_extendida'       => $pt['pr_permiso_local_extendida'],
+                'bog_requiere'                  => $pt['pr_bog_requiere'],
+                'bog_numeracion'                => $pt['pr_bog_numeracion'],
+                'bog_cantidad'                  => $pt['pr_bog_cantidad'],
+                'tun_requiere'                  => $pt['pr_tun_requiere'],
+                'tun_numeracion'                => $pt['pr_tun_numeracion'],
+                'tun_cantidad'                  => $pt['pr_tun_cantidad'],
+                'vill_requiere'                 => $pt['pr_vill_requiere'],
+                'vill_numeracion'               => $pt['pr_vill_numeracion'],
+                'vill_cantidad'                 => $pt['pr_vill_cantidad'],
+                'fac_requiere'                  => $pt['pr_fac_requiere'],
+                'fac_numeracion'                => $pt['pr_fac_numeracion'],
+                'fac_cantidad'                  => $pt['pr_fac_cantidad'],
+                'gir_requiere'                  => $pt['pr_gir_requiere'],
+                'gir_numeracion'                => $pt['pr_gir_numeracion'],
+                'gir_cantidad'                  => $pt['pr_gir_cantidad'],
+                'yop_requiere'                  => $pt['pr_yop_requiere'],
+                'yop_numeracion'                => $pt['pr_yop_numeracion'],
+                'yop_cantidad'                  => $pt['pr_yop_cantidad'],
+                'cali_requiere'                 => $pt['pr_cali_requiere'],
+                'cali_numeracion'               => $pt['pr_cali_numeracion'],
+                'cali_cantidad'                 => $pt['pr_cali_cantidad'],
+                'bave_requiere'                 => $pt['pr_bave_requiere'],
+                'bave_numeracion'               => $pt['pr_bave_numeracion'],
+                'bave_cantidad'                 => $pt['pr_bave_cantidad'],
+                'pas_requiere'                  => $pt['pr_pas_requiere'],
+                'pas_numeracion'                => $pt['pr_pas_numeracion'],
+                'pas_cantidad'                  => $pt['pr_pas_cantidad'],
+                'pop_requiere'                  => $pt['pr_pop_requiere'],
+                'pop_numeracion'                => $pt['pr_pop_numeracion'],
+                'pop_cantidad'                  => $pt['pr_pop_cantidad'],
+                'nei_requiere'                  => $pt['pr_nei_requiere'],
+                'nei_numeracion'                => $pt['pr_nei_numeracion'],
+                'nei_cantidad'                  => $pt['pr_nei_cantidad'],
+                'med_requiere'                  => $pt['pr_med_requiere'],
+                'med_numeracion'                => $pt['pr_med_numeracion'],
+                'med_cantidad'                  => $pt['pr_med_cantidad'],
+                'bar_requiere'                  => $pt['pr_bar_requiere'],
+                'bar_numeracion'                => $pt['pr_bar_numeracion'],
+                'bar_cantidad'                  => $pt['pr_bar_cantidad'],
+                'cart_requiere'                 => $pt['pr_cart_requiere'],
+                'cart_numeracion'               => $pt['pr_cart_numeracion'],
+                'cart_cantidad'                 => $pt['pr_cart_cantidad'],
+                'stm_requiere'                  => $pt['pr_stm_requiere'],
+                'stm_numeracion'                => $pt['pr_stm_numeracion'],
+                'stm_cantidad'                  => $pt['pr_stm_cantidad'],
+                'mon_requiere'                  => $pt['pr_mon_requiere'],
+                'mon_numeracion'                => $pt['pr_mon_numeracion'],
+                'mon_cantidad'                  => $pt['pr_mon_cantidad'],
+                'vall_requiere'                 => $pt['pr_vall_requiere'],
+                'vall_numeracion'               => $pt['pr_vall_numeracion'],
+                'vall_cantidad'                 => $pt['pr_vall_cantidad'],
+                'sinc_requiere'                 => $pt['pr_sinc_requiere'],
+                'sinc_numeracion'               => $pt['pr_sinc_numeracion'],
+                'sinc_cantidad'                 => $pt['pr_sinc_cantidad'],
+                'per_requiere'                  => $pt['pr_per_requiere'],
+                'per_numeracion'                => $pt['pr_per_numeracion'],
+                'per_cantidad'                  => $pt['pr_per_cantidad'],
+                'arme_requiere'                 => $pt['pr_arme_requiere'],
+                'arme_numeracion'               => $pt['pr_arme_numeracion'],
+                'arme_cantidad'                 => $pt['pr_arme_cantidad'],
+                'man_requiere'                  => $pt['pr_man_requiere'],
+                'man_numeracion'                => $pt['pr_man_numeracion'],
+                'man_cantidad'                  => $pt['pr_man_cantidad'],
+                'iba_requiere'                  => $pt['pr_iba_requiere'],
+                'iba_numeracion'                => $pt['pr_iba_numeracion'],
+                'iba_cantidad'                  => $pt['pr_iba_cantidad'],
+                'cuc_requiere'                  => $pt['pr_cuc_requiere'],
+                'cuc_numeracion'                => $pt['pr_cuc_numeracion'],
+                'cuc_cantidad'                  => $pt['pr_cuc_cantidad'],
+                'buc_requiere'                  => $pt['pr_buc_requiere'],
+                'buc_numeracion'                => $pt['pr_buc_numeracion'],
+                'buc_cantidad'                  => $pt['pr_buc_cantidad'],
+                'dui_requiere'                  => $pt['pr_dui_requiere'],
+                'dui_numeracion'                => $pt['pr_dui_numeracion'],
+                'dui_cantidad'                  => $pt['pr_dui_cantidad'],
+                'sog_requiere'                  => $pt['pr_sog_requiere'],
+                'sog_numeracion'                => $pt['pr_sog_numeracion'],
+                'sog_cantidad'                  => $pt['pr_sog_cantidad'],
+                'flan_requiere'                 => $pt['pr_flan_requiere'],
+                'flan_numeracion'               => $pt['pr_flan_numeracion'],
+                'flan_cantidad'                 => $pt['pr_flan_cantidad'],
+                'riv_requiere'                  => $pt['pr_riv_requiere'],
+                'riv_numeracion'                => $pt['pr_riv_numeracion'],
+                'riv_cantidad'                  => $pt['pr_riv_cantidad'],
+                'aipe_requiere'                 => $pt['pr_aipe_requiere'],
+                'aipe_numeracion'               => $pt['pr_aipe_numeracion'],
+                'aipe_cantidad'                 => $pt['pr_aipe_cantidad'],
+                'leb_requiere'                  => $pt['pr_leb_requiere'],
+                'leb_numeracion'                => $pt['pr_leb_numeracion'],
+                'leb_cantidad'                  => $pt['pr_leb_cantidad'],
             );
 
             $this->Dao_producto_model->insert_pr_telefonia_fija($data_pr);
@@ -982,6 +984,7 @@ class Templates extends CI_Controller {
 
     // se llenan los argumentos dependiendo el servicio
     public function fill_formulary($s, $p) {
+        $fActual = date('Y-m-d');
 
         switch (true) {
         case ($s == 1 || $s == 2):
@@ -1058,59 +1061,66 @@ class Templates extends CI_Controller {
 
             );
             break;
+        /********************NUEVAS PLANTILLAS********************/
         case ($s == 11): //Adición Marquillas Aeropuerto el Dorado Opain
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // marquillas
                 'campo5'  => $p['campo5'], // local
                 'campo6'  => $p['campo6'], // internet
+                'campo7'  => $p['campo7'], // BW
+                'campo8'  => $p['campo8'], // Telefonia
                 'campo9'  => $p['campo9'], // lineas
-                'campo10' => $p['ampo10'], // telefonos
-                'campo11' => $p['ampo11'], // mpls
-                'campo12' => $p['ampo12'], // bw2
-                'campo13' => $p['ampo13'], //  Adición de 6 marquillas:
-                'campo14' => $p['ampo14'], //  inicio al Proceso de instalación
-                'campo15' => $p['ampo15'], //   INGENIERO IMPLEMENTACIÓN
-                'campo16' => $p['ampo16'], //  TELEFONOS DE CONTACTO
-                'campo17' => $p['ampo17'], // EMAIL
-                'campo18' => $p['ampo18'], //  OTP
+                'campo10' => $p['campo10'], // telefonos
+                'campo11' => $p['campo11'], // mpls
+                'campo12' => $p['campo12'], // bw2
+                'campo13' => $p['campo13'], // Adición de 6 marquillas:
+                'campo14' => $fActual, // inicio al Proceso de instalación
+                'campo15' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo17' => $p['ingeniero1_email'], // EMAIL
+                'campo18' => $p['campo18'], //  OTP
+                'campo19' => $p['campo19'], //  fecha entrega
             );
             break;
         case ($s == 12): // Cambio de Equipos Servicio
+
             $argumentos = array(
-                'campo1'  => $p['campo1'], // nombre
-                'campo2'  => $p['campo2'], // nombre cliente
-                'campo3'  => $p['campo3'], // servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // Dirección Sede
                 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
                 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
                 'campo6'  => $p['campo6'], // cantidad
                 'campo7'  => $p['campo7'], // otp
                 'campo8'  => $p['campo8'], // Códigos de Servicio en el CPE a Cambiar
-                'campo9'  => $p['campo9'], // Requiere que el Cambio de Equipos para su Servicio se ejecute en horario No Hábil o Fin de Semana (no)
+                'campo9'  => $fActual, // inicio fecha
                 'campo10' => $p['campo10'], // Fecha de Entrega del Cambio de Equipos  de su Servicio
-                'campo11' => $p['campo11'], // INGENIERO IMPLEMENTACIÓN
-                'campo12' => $p['campo12'], // TELEFONOS DE CONTACTO
-                'campo13' => $p['campo13'], // MAIL
+                'campo11' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // MAIL
             );
             break;
 
         case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
             $argumentos = array(
-                'campo1'  => $p['campo1']// nombre
-                'campo2'  => $p['campo2']// nombre cliente
-                'campo3'  => $p['campo3']// servicio
-                'campo4'  => $p['campo4']// Dirección Destino
-                'campo5'  => $p['campo5']// Cantidad de Líneas Telefónicas Básicas
-                'campo6'  => $p['campo6']// Ciudad //marcar (x)
-                'campo7'  => $p['campo7']// Cantidad DID
-                'campo8'  => $p['campo8']// inicio al Proceso de Cambio  de Servicio
-                'campo9'  => $p['campo9']// Fecha de Entrega de su servicio
-                'campo10' => $p['campo10']// INGENIERO IMPLEMENTACIÓN
-                'campo11' => $p['campo11']// TELEFONOS DE CONTACTO
-                'campo12' => $p['campo12'], // EMAIL
+
+                'campo1'  => $p['nombre'],// nombre
+                'campo2'  => $p['nombre_cliente'],// nombre cliente
+                'campo3'  => $p['servicio'],// servicio
+                'campo4'  => $p['campo4'],// Dirección Destino
+                'campo5'  => $p['campo5'],// Cantidad de Líneas Telefónicas Básicas
+                'campo6'  => $p['campo6'],// cantidadCiudad 
+                'campo7'  => $p['campo7'],// NOmbre ciudades
+                'campo8'  => $p['campo8'],// Cantidad DID
+                'campo9'  => $fActual,// inicio al Proceso de Cambio  de Servicio   
+                'campo10' => $p['campo10'],// Fecha de Entrega de su servicio
+                'campo11' => $p['ingeniero1'],// INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'],// TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // EMAIL
 
                 /*======================================================
             PREGUNTAR LA FILA DE CIUDAD PUEDE SER MAS
@@ -1118,107 +1128,338 @@ class Templates extends CI_Controller {
             );
             break;
         case ($s == 14): // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+
             $argumentos = array(
-                'campo1'  => $['campo1'], // nombre
-                'campo2'  => $['campo2'], // nombre cliente
-                'campo3'  => $['campo3'], // servicio
-                'campo4'  => $['campo4'], // Dirección Destino
-                'campo5'  => $['campo5'], // Cantidad de DID
-                'campo6'  => $['campo6'], // Bogota
-                'campo6'  => $['campo6'], // Tunja
-                'campo6'  => $['campo6'], // Villavicencio
-                'campo6'  => $['campo6'], // Facatativá
-                'campo6'  => $['campo6'], // Girardot
-                'campo6'  => $['campo6'], // Yopal
-                'campo6'  => $['campo6'], // Cali
-                'campo6'  => $['campo6'], // Buenaventura
-                'campo6'  => $['campo6'], // Pasto
-                'campo6'  => $['campo6'], // Popayán
-                'campo6'  => $['campo6'], // Neiva
-                'campo6'  => $['campo6'], // Medellín
-                'campo6'  => $['campo6'], // Barranquilla
-                'campo6'  => $['campo6'], // Cartagena
-                'campo6'  => $['campo6'], // Santa Marta
-                'campo6'  => $['campo6'], // Montería
-                'campo6'  => $['campo6'], // Valledupar
-                'campo6'  => $['campo6'], // Sincelejo
-                'campo6'  => $['campo6'], // Pereira
-                'campo6'  => $['campo6'], // Armenia
-                'campo6'  => $['campo6'], // Manizales
-                'campo6'  => $['campo6'], // Ibagué
-                'campo6'  => $['campo6'], // Cúcuta
-                'campo6'  => $['campo6'], // Bucaramanga
-                'campo6'  => $['campo6'], // Duitama
-                'campo6'  => $['campo6'], // Sogamoso
-                'campo6'  => $['campo6'], // Flandes
-                'campo6'  => $['campo6'], // Rivera
-                'campo6'  => $['campo6'], // Aipe
-                'campo6'  => $['campo6'], // Lebrija
-                'campo7'  => $['campo7'], // inicio al Proceso de Cambio  de Servicio
-                'campo8'  => $['campo8'], // INGENIERO IMPLEMENTACIÓN
-                'campo9'  => $['campo9'], // TELEFONOS DE CONTACTO
-                'campo10' => $['campo10'], // EMAIL
-                'campo11' => $['campo11'], // Fecha de Entrega de su servicio
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Destino
+                'campo5'  => $p['campo5'], // Cantidad de DID
+                // 'campo6'  => $p['campo6'], // ciudades (x)
+                'campo7'  => $fActual, // inicio al Proceso de Cambio  de Servicio
+                'campo8'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo9'  => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo10' => $p['ingeniero1_email'], // EMAIL
+                'campo11' => $p['campo11'], // Fecha de Entrega de su servicio
             );
+
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
+   
             break;
         case ($s == 15): // Traslado Externo Servicio
             $argumentos = array(
-                'campo1'  => $p['campo1']// nombre
-                'campo2'  => $p['campo2']// nombre cliente
-                'campo3'  => $p['campo3']// servicio
-                'campo4'  => $p['campo4']// TRASLADO DE SERVICIO
-                'campo5'  => $p['campo5']// Dirección Sede Antigua
-                'campo6'  => $p['campo6']// Dirección Sede Nueva
-                'campo7'  => $p['campo7']// Existen otros Servicios a Trasladar (si)
-                'campo7'  => $p['campo7']// Existen otros Servicios a Trasladar (no)
-                'campo8'  => $p['campo8']// Cantidad
-                'campo9'  => $p['campo9']// Códigos de Servicio a Trasladar
-                'campo10' => $p['campo10']// inicio al Proceso de Traslado Externo del Servicio
-                'campo11' => $p['campo11']// INGENIERO IMPLEMENTACIÓN
-                'campo12' => $p['campo12']// TELEFONOS DE CONTACTO
-                'campo13' => $p['campo13']// EMAIL
-                'campo14' => $p['campo14'], // Fecha de Entrega del Traslado de su Servicio
-
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Sede Antigua
+                'campo5'  => $p['campo5'], // Dirección Sede Nueva
+                // 'campo6'  => $p['campo6'], // Existen otros Servicios a Trasladar (si)
+                // 'campo6'  => $p['campo6'], // Existen otros Servicios a Trasladar (no)
+                'campo7'  => $p['campo7'], // Cantidad
+                'campo8'  => $fActual, // inicio al Proceso de Traslado Externo del Servicio
+                'campo9'  => $p['campo9'], // Códigos de Servicio a Trasladar
+                'campo10' => $p['campo10'], // Fecha de Entrega del Traslado de su Servicio
+                'campo11' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // EMAIL
             );
+
+            $argumentos['campo6']['si'] = $this->si($p['campo6']);
+            $argumentos['campo6']['no'] = $this->no($p['campo6']);
             break;
+
         case ($s == 16): // Traslado Interno Servicio
             $argumentos = array(
-
+                'campo1'  => $p['nombre'], // NOMBRE
+                'campo2'  => $p['nombre_cliente'], // NOMBRE CLIENTE
+                'campo3'  => $p['servicio'], // SERVICIO
+                'campo4'  => $p['campo4'], // Dirección Sede
+                // 'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (SI)
+                // 'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (NO)
+                'campo6'  => $p['campo6'], // cantidad
+                'campo7'  => $p['campo7'], // Códigos de Servicio a Trasladar
+                // 'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (SI)
+                // 'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (NO)
+                // 'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (SI)
+                // 'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (NO)
+                // 'campo11' => $p['campo11'], // Movimiento solo de Equipos(SI)
+                // 'campo11' => $p['campo11'], // Movimiento solo de Equipos(no)
+                // 'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(si)
+                // 'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(no)
+                // 'campo13' => $p['campo13'], // Movimiento Rack (si)
+                // 'campo13' => $p['campo13'], // Movimiento Rack (no)
+                // 'campo14' => $p['campo14'], // Movimiento ODF (si)
+                // 'campo14' => $p['campo14'], // Movimiento ODF (no)
+                // 'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (si)
+                // 'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (no)
+                'campo16' => $fActual, // inicio al Proceso de Traslado Externo del Servicio
+                'campo17' => $p['campo17'], // Fecha de Entrega del Traslado de su Servicio
+                'campo18' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo19' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo20' => $p['ingeniero1_email'], // EMAIL
             );
+            $argumentos['campo5']['si'] = $this->si($p['campo5']);
+            $argumentos['campo5']['no'] = $this->no($p['campo5']);
+            $argumentos['campo9']['si'] = $this->si($p['campo9']);
+            $argumentos['campo9']['no'] = $this->no($p['campo9']);
+            $argumentos['campo10']['si'] = $this->si($p['campo10']);
+            $argumentos['campo10']['no'] = $this->no($p['campo10']);
+            $argumentos['campo11']['si'] = $this->si($p['campo11']);
+            $argumentos['campo11']['no'] = $this->no($p['campo11']);
+            $argumentos['camp12']['si'] = $this->si($p['camp12']);
+            $argumentos['camp12']['no'] = $this->no($p['camp12']);
+            $argumentos['campo13']['si'] = $this->si($p['campo13']);
+            $argumentos['campo13']['no'] = $this->no($p['campo13']);
+            $argumentos['campo14']['si'] = $this->si($p['campo14']);
+            $argumentos['campo14']['no'] = $this->no($p['campo14']);
+            $argumentos['campo15']['si'] = $this->si($p['campo15']);
+            $argumentos['campo15']['no'] = $this->no($p['campo15']);
             break;
+
         case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $argumentos = array(
-
+                'campo1'  => $p['nombre'], //  nombre
+                'campo2'  => $p['nombre_cliente'], //  nombre cliente
+                'campo3'  => $p['servicio'], //  servicio
+                'campo4'  => $p['campo4'], //  Dirección Destino
+                'campo5'  => $p['campo5'], //  Existente
+                'campo6'  => $p['campo6'], //  A Implementar
+                'campo7'  => $p['campo7'], //  DID
+                'campo8'  => $p['campo8'], //  canales
+                'campo9'  => $p['campo9'], //  E1(DID)
+                'campo10' => $p['campo10'], //  E1(E1)
+                // 'campo11' => $p['campo11'], //  Buzones de Voz(si)
+                // 'campo11' => $p['campo11'], //  Buzones de Voz(no)
+                'campo12' => $p['campo12'], //  cantidad
+                // 'campo13' => $p['campo13'], //  hardphones (si)
+                // 'campo13' => $p['campo13'], //  hardphones (no)
+                'campo14' => $p['campo14'], //  cantidad
+                'campo15' => $p['campo15'], //  tipo
+                // 'campo16' => $p['campo16'], //  Softphones(si)
+                // 'campo16' => $p['campo16'], //  Softphones(no)
+                'campo17' => $p['campo17'], //  cantidad
+                'campo18' => $p['campo18'], //  pc
+                'campo19' => $p['campo19'], //  celular
+                // 'campo20' => $p['campo20'], //  Diademas(si)
+                // 'campo20' => $p['campo20'], //  Diademas(no)
+                'campo21' => $p['campo21'], //  cantidad
+                // 'campo22' => $p['campo22'], //  Arañas de Conferencia(si)
+                // 'campo22' => $p['campo22'], //  Arañas de Conferencia(no)
+                'campo36' => $p['campo36'], //  cantidad
+                // 'campo23' => $p['campo23'], //  Botoneras(si)
+                // 'campo23' => $p['campo23'], //  Botoneras(no)
+                'campo24' => $p['campo24'], //  cantidad
+                // 'campo25' => $p['campo25'], //  Incluye Grabación de Voz(si)
+                // 'campo25' => $p['campo25'], //  Incluye Grabación de Voz(no)
+                // 'campo26' => $p['campo26'], //  Incluye LAN Administrada(si)
+                // 'campo26' => $p['campo26'], //  Incluye LAN Administrada(no)
+                'campo27' => $p['campo27'], //  cantidad SW
+                'campo28' => $p['campo28'], //  puertos por sw
+                // 'campo29' => $p['campo29'], //  PoE (si)
+                // 'campo29' => $p['campo29'], //  PoE (no)
+                // 'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (si)
+                // 'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (no)
+                'campo31' => $p['campo31'], //  cantidad
+                // 'campo32' => $p['campo32'], //  AP Claro(si)
+                // 'campo32' => $p['campo32'], //  AP Claro(no)
+                'campo33' => $p['campo33'], //  existente
+                'campo34' => $p['campo34'], //  a implementar
+                // 'campo35' => $p['campo35'], //  Tipo de Conectividad MPLS:
+                // 'campo35' => $p['campo35'], //  Internet
+                'campo37' => $fActual, //  inicio al Proceso de instalación del Servicio
+                'campo38' => $p['ingeniero1'], //  INGENIERO IMPLEMENTACIÓN
+                'campo39' => $p['ingeniero1_tel'], //  TELEFONOS DE CONTACTO
+                'campo40' => $p['ingeniero1_email'], //  EMAIL
+                'campo41' => $p['campo41'], //  Fecha de Entrega de su servicio
             );
+
+                $argumentos['campO11']['si'] = $this->si($p['campO11']);
+                $argumentos['campO11']['no'] = $this->no($p['campO11']);
+                $argumentos['campo13']['si'] = $this->si($p['campo13']);
+                $argumentos['campo13']['no'] = $this->no($p['campo13']);
+                $argumentos['campo16']['si'] = $this->si($p['campo16']);
+                $argumentos['campo16']['no'] = $this->no($p['campo16']);
+                $argumentos['campo20']['si'] = $this->si($p['campo20']);
+                $argumentos['campo20']['no'] = $this->no($p['campo20']);
+                $argumentos['campo22']['si'] = $this->si($p['campo22']);
+                $argumentos['campo22']['no'] = $this->no($p['campo22']);
+                $argumentos['campo23']['si'] = $this->si($p['campo23']);
+                $argumentos['campo23']['no'] = $this->no($p['campo23']);
+                $argumentos['campo25']['si'] = $this->si($p['campo25']);
+                $argumentos['campo25']['no'] = $this->no($p['campo25']);
+                $argumentos['campo26']['si'] = $this->si($p['campo26']);
+                $argumentos['campo26']['no'] = $this->no($p['campo26']);
+                $argumentos['campo29']['si'] = $this->si($p['campo29']);
+                $argumentos['campo29']['no'] = $this->no($p['campo29']);
+                $argumentos['campo30']['si'] = $this->si($p['campo30']);
+                $argumentos['campo30']['no'] = $this->no($p['campo30']);
+                $argumentos['campo32']['si'] = $this->si($p['campo32']);
+                $argumentos['campo32']['no'] = $this->no($p['campo32']);
+
+                if ($p['campo35'] == 'MPLS') {
+                    $argumentos['campo35']['mpls'] = 'X';
+                    $argumentos['campo35']['internet'] = '';
+                } else {
+                    $argumentos['campo35']['mpls'] = '';
+                    $argumentos['campo35']['internet'] = 'X';
+                }
+
             break;
+
         case ($s == 18): // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
             $argumentos = array(
-
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Destino
+                'campo5'  => $p['campo5'], // Cantidad de DID por Ciudad
+                // 'campo6'  => $p['campo6'], // ciudades
+                'campo7'  => $fActual, // inicio al Proceso de instalación del Servicio
+                'campo8'  => $p['campo8'], // Fecha de Entrega de su servicio
+                'campo9'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo11' => $p['ingeniero1_email'], //EMAIL
             );
+
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
             break;
         case ($s == 19): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
             $argumentos = array(
-
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Destino
+                'campo5'  => $p['campo5'], // Cantidad de DID
+                'campo6'  => $p['campo6'], // ciudades
+                'campo7'  => $fActual, // inicio al Proceso de instalación del Servicio
+                'campo8'  => $p['campo8'], // Fecha de Entrega de su servicio
+                'campo9'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo11' => $p['ingeniero1_email'], // EMAIL
             );
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
+
             break;
         case ($s == 20): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
             $argumentos = array(
-
+                'campo1' => $p['nombre'], // nombre
+                'campo2' => $p['nombre_cliente'], // nombre cliente
+                'campo3' => $p['servicio'], // servicio
+                'campo4' => $p['campo4'], // Dirección Destino
+                'campo5' => $p['campo5'], // Cantidad de DID
+                'campo6' => $p['campo6'], // ciudades
+                'campo7' => $fActual, // inicio al Proceso de instalación del Servicio
+                'campo8' => $p['campo8'], // Fecha de Entrega de su servicio 
+                'campo9' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO 
+                'campo11' => $p['ingeniero1_email'] // EMAIL
             );
+            $ciudades = $p['campo6'];
+            foreach ($ciudades as $key => $value) {
+                $argumentos['campo6'][$value] = 'X';
+            }
             break;
+
         case ($s == 21): // Instalación Telefonía Publica Básica - Internet Dedicado
             $argumentos = array(
+                'campo1' => $p['nombre'], //nombre
+                'campo2' => $p['nombre_cliente'], //nombre cliente
+                'campo3' => $p['campo3'], //Dirección Destino
+                'campo4' => $p['campo4'], //Cantidad de Líneas Telefónicas Básicas
+                'campo5' => $p['campo5'], //OTP Internet Dedicado
+                'campo6' => $p['campo6'], //OTP Telefonia
+                'campo7' => $p['campo7'], //Ancho de Banda Internet
+                'campo8' => $p['campo8'], //Interfaz de Entrega
+                'campo9' => $p['campo9'], //Interfaz de Entrega
+                'campo10' => $fActual, //inicio al Proceso de instalación de los Servicios 
+                'campo11' => $p['campo11'], //Fecha de Entrega de los servicio
+                'campo12' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
+                'campo13' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
+                'campo14' => $p['ingeniero1_email'] //EMAIL
 
             );
             break;
         case ($s == 22): //Cambio de Última Milla
             $argumentos = array(
+                'campo0' => $p['nro_ot_onyx'] , //otp
+                'campo1' => $p['nombre'] , //nombre
+                'campo2' => $p['nombre_cliente'] , //nombre cliente
+                'campo3' => $p['servicio'] , //servicio
+                'campo4' => $p['campo4'] , //Dirección Sede
+                'campo5' => $p['campo5'] , //BW Actual
+                'campo6' => $p['campo6'] , //BW Nuevo
+                // 'campo7' => $p['campo7'] , //Requiere Cambio de equipo (si)
+                // 'campo7' => $p['campo7'] , //Requiere Cambio de equipo (no)
+                // 'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (si)
+                // 'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (no)
+                // 'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (si)
+                // 'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (no)
 
+
+                'campo10' => $p['campo10'] , //OTP
+                'campo11' => $p['campo11'] , //ID Servicio
+                'campo12' => $p['campo12'] , //Dirección Sede
+
+
+                'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (si)
+                'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (no)
+                'campo14' => $p['campo14'] , //Requiere Cambio de UM (si) 
+                'campo14' => $p['campo14'] , //Requiere Cambio de UM (no)
+
+
+                'campo15' => $fActual , //inicio al Proceso de Ampliación del  Servicio
+                'campo16' => $p['campo16'] , //Fecha de Entrega de la Ampliación de su Servicio
+                'campo17' => $p['ingeniero1'] , //INGENIERO IMPLEMENTACIÓN
+                'campo18' => $p['ingeniero1_tel'] , //TELEFONOS DE CONTACTO
+                'campo19' => $p['ingeniero1_email'] , //EMAIL
             );
+
+            $argumentos['campo7']['si'] = $this->si($p['campo7']);
+            $argumentos['campo7']['no'] = $this->no($p['campo7']);
+            $argumentos['campo8']['si'] = $this->si($p['campo8']);
+            $argumentos['campo8']['no'] = $this->no($p['campo8']);
+            $argumentos['campo9']['si'] = $this->si($p['campo9']);
+            $argumentos['campo9']['no'] = $this->no($p['campo9']);
+
             break;
+            
         case ($s == 23): // Cambio de Equipo
             $argumentos = array(
+                'campo0' => $p['campo0'], //otp
+                'campo1' => $p['nombre'], //nombre
+                'campo2' => $p['nombre_cliente'], //nombre cliente
+                'campo3' => $p['servicio'], //servicio
+                'campo4' => $p['campo4'], //Dirección Sede
+                'campo5' => $p['campo5'], //BW Actual
+                'campo6' => $p['campo6'], //BW Nuevo
+                'campo7' => $p['campo7'], //Requiere Cambio de equipo (si)
+                'campo7' => $p['campo7'], //Requiere Cambio de equipo (no)
+                'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(si)
+                'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(no) 
 
+
+
+                'campo9' => $p['campo9'], //otp
+                'campo10' => $p['campo10'], //ID Servicio 
+                'campo11' => $p['campo11'], //Dirección Sede
+                'campo12' => $p['campo12'], //Requiere Cambio de Equipos (si)
+                'campo12' => $p['campo12'], //Requiere Cambio de Equipos (no)
+
+
+                'campo13' => $fActual, //inicio al Proceso de Ampliación del  Servicio
+                'campo14' => $p['campo14'], //Fecha de Entrega de la Ampliación de su Servicio
+                'campo15' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
+                'campo17' => $p['ingeniero1_email'] //EMAIL
             );
             break;
 
@@ -1231,11 +1472,27 @@ class Templates extends CI_Controller {
     private function dataLogMail() {
 
         $data = array(
-            'k_id_log_correo' => null, 'k_id_ot_padre' => null, 'id_orden_trabajo_hija' => null, 'clase' => null, 'destinatarios' => null, 'usuario_sesion' => null, 'nombre' => null, 'nombre_cliente' => null, 'servicio' => null, 'fecha' => null, 'direccion_instalacion' => null, 'direccion_instalacion_des1' => null, 'direccion_instalacion_des2' => null, 'direccion_instalacion_des3' => null, 'direccion_instalacion_des4' => null, 'existente' => null, 'nuevo' => null, 'ancho_banda' => null, 'interfaz_entrega' => null, 'equipos_intalar_camp1' => null, 'equipos_intalar_camp2' => null, 'equipos_intalar_camp3' => null, 'fecha_servicio' => null, 'ingeniero1' => null, 'ingeniero1_tel' => null, 'ingeniero1_email' => null, 'ingeniero2' => null, 'ingeniero2_tel' => null, 'ingeniero2_email' => null, 'ingeniero3' => null, 'ingeniero3_tel' => null, 'ingeniero3_email' => null, 'ots_nombre' => null, 'ampliacion_enlaces' => null, 'vista_obra_civil' => null, 'envio_cotizacion_obra_civil' => null, 'aprobacion_cotizacion_obra_civil' => null, 'ejecucion_obra_civil' => null, 'empalmes' => null, 'configuracion' => null, 'entrega_servicio' => null, 'direccion_servicio' => null, 'campo1' => null, 'campo2' => null, 'campo3' => null, 'campo4' => null, 'campo5' => null, 'campo6' => null, 'campo7' => null, 'campo8' => null, 'campo9' => null, 'campo10' => null, 'campo11' => null, 'campo12' => null, 'campo13' => null, 'campo14' => null, 'campo15' => null, 'campo16' => null, 'campo17' => null, 'campo18' => null, 'campo19' => null, 'campo20' => null, 'campo21' => null, 'campo22' => null, 'campo23' => null, 'campo24' => null, 'campo25' => null, 'campo26' => null, 'campo27' => null, 'campo28' => null, 'campo29' => null, 'campo30' => null, 'campo31' => null, 'campo32' => null, 'campo33' => null, 'campo34' => null, 'campo35' => null, 'campo36' => null, 'campo37' => null, 'campo38' => null, 'campo39' => null, 'campo40' => null, 'campo41' => null, 'campo42' => null, 'campo43' => null, 'campo44' => null, 'campo45' => null, 'campo46' => null, 'campo47' => null, 'campo48' => null, 'campo49' => null, 'campo50' => null, 'campo51' => null, 'campo52' => null, 'campo53' => null, 'campo54' => null, 'campo55' => null, 'campo56' => null, 'campo57' => null, 'campo58' => null,
+            'k_id_log_correo' => null, 'k_id_ot_padre' => null, 'id_orden_trabajo_hija' => null, 'clase' => null, 'destinatarios' => null, 'usuario_sesion' => null, 'nombre' => null, 'nombre_cliente' => null, 'servicio' => null, 'fecha' => null, 'direccion_instalacion' => null, 'direccion_instalacion_des1' => null, 'direccion_instalacion_des2' => null, 'direccion_instalacion_des3' => null, 'direccion_instalacion_des4' => null, 'existente' => null, 'nuevo' => null, 'ancho_banda' => null, 'interfaz_entrega' => null, 'equipos_intalar_camp1' => null, 'equipos_intalar_camp2' => null, 'equipos_intalar_camp3' => null, 'fecha_servicio' => null, 'ingeniero1' => null, 'ingeniero1_tel' => null, 'ingeniero1_email' => null, 'ingeniero2' => null, 'ingeniero2_tel' => null, 'ingeniero2_email' => null, 'ingeniero3' => null, 'ingeniero3_tel' => null, 'ingeniero3_email' => null, 'ots_nombre' => null, 'ampliacion_enlaces' => null, 'vista_obra_civil' => null, 'envio_cotizacion_obra_civil' => null, 'aprobacion_cotizacion_obra_civil' => null, 'ejecucion_obra_civil' => null, 'empalmes' => null, 'configuracion' => null, 'entrega_servicio' => null, 'direccion_servicio' => null, 'campo1' => null, 'campo2' => null, 'campo3' => null, 'campo4' => null, 'campo5' => null, 'campo6' => null, 'campo7' => null, 'campo8' => null, 'campo9' => null, 'campo10' => null, 'campo11' => null, 'campo12' => null, 'campo13' => null, 'campo14' => null, 'campo15' => null, 'campo16' => null, 'campo17' => null, 'campo18' => null, 'campo19' => null, 'campo20' => null, 'campo21' => null, 'campo22' => null, 'campo23' => null, 'campo24' => null, 'campo25' => null, 'campo26' => null, 'campo27' => null, 'campo28' => null, 'campo29' => null, 'campo30' => null, 'campo31' => null, 'campo32' => null, 'campo33' => null, 'campo34' => null, 'campo35' => null, 'campo36' => null, 'campo37' => null, 'campo38' => null, 'campo39' => null, 'campo40' => null, 'campo41' => null, 'campo42' => null, 'campo43' => null, 'campo44' => null, 'campo45' => null, 'campo46' => null, 'campo47' => null, 'campo48' => null, 'campo49' => null, 'campo50' => null, 'campo51' => null, 'campo51' => null, 'campo53' => null, 'campo54' => null, 'campo55' => null, 'campo56' => null, 'campo57' => null, 'campo58' => null,
         );
 
         return $data;
 
+    }
+
+    private function si($valor){
+        if ($valor == 'SI') {
+            return 'X';
+        } else {
+            return '';
+        }
+    }
+
+    private function no($valor){
+        if ($valor == 'NO') {
+            return 'X';
+        } else {
+            return '';
+        }
     }
 
     public function enviar_email($cuerpo, $pt, $flag = true) {
@@ -2178,7 +2435,6 @@ class Templates extends CI_Controller {
           ';
     }
 
-//
     public function mpls_avanzado_intranet($argumentos) {
         return '
           <div dir="ltr"><div class="adM">
@@ -2683,7 +2939,6 @@ class Templates extends CI_Controller {
           ';
     }
 
-//
     public function mpls_avanzado_intranet_varios_puntos($argumentos) {
         return '
         <div dir="ltr"><div class="adM">
@@ -13571,8 +13826,8 @@ class Templates extends CI_Controller {
     }
     //
     public function cambio_de_ultima_milla($argumentos) {
-
-        return '   <div dir="ltr"><p class="MsoNormal" style="margin: 0in 0in 10pt; text-align: justify; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES" style="font-size: 12pt; line-height: 115%; font-family: Arial, sans-serif;">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
+        $cadena = '';
+        $cadena .= '   <div dir="ltr"><p class="MsoNormal" style="margin: 0in 0in 10pt; text-align: justify; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES" style="font-size: 12pt; line-height: 115%; font-family: Arial, sans-serif;">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES-MX" style="font-size: 12pt; font-family: Arial, sans-serif; color: rgb(31, 73, 125);">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -13630,7 +13885,7 @@ class Templates extends CI_Controller {
           </td>
          </tr>
          <tr style="height: 14.55pt;">
-          <td width="298" rowspan="8" valign="top" style="width: 223.35pt; border-right: 1pt solid rgb(192, 0, 0); border-bottom: 1pt solid rgb(192, 0, 0); border-left: 1pt solid rgb(192, 0, 0); border-image: initial; border-top: none; padding: 0in 5.4pt; height: 14.55pt;">
+          <td width="298" rowspan="'. (count($argumentos['campo10']) * 2) + 6 .'" valign="top" style="width: 223.35pt; border-right: 1pt solid rgb(192, 0, 0); border-bottom: 1pt solid rgb(192, 0, 0); border-left: 1pt solid rgb(192, 0, 0); border-image: initial; border-top: none; padding: 0in 5.4pt; height: 14.55pt;">
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 16pt; color: black;">&nbsp;</span></i></b><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">&nbsp;</span></i><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" style="margin: 0in 0in 10pt; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">AMPLIACIÓN&nbsp;DE
@@ -13702,20 +13957,25 @@ class Templates extends CI_Controller {
           <td width="675" colspan="16" valign="top" style="width: 506.3pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in 5.4pt; height: 20.15pt;">
           <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-family: Arial, sans-serif; color: black;">SERVICIOS A MODIFICAR</span></i></b><b><i><span lang="ES" style="font-family: Arial, sans-serif; color: rgb(31, 73, 125);">:</span></i></b><span style="color: black;"></span></p>
           </td>
-         </tr>
-         <tr style="height: 17.75pt;">
+         </tr>';
+
+    for ($i=0; $i < count($argumentos['campo10']); $i++) { 
+  
+        $cadena .= '<tr style="height: 17.75pt;">
+
           <td width="47" rowspan="2" valign="top" style="width: 35.5pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in 5.4pt; height: 17.75pt;">
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">OTP</span></i></b><span style="color: black;"></span></p>
+
           </td>
           <td width="61" colspan="2" rowspan="2" valign="top" style="width: 45.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo10'] . '</span></i></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo10'][$i] . '</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="69" colspan="2" rowspan="2" valign="top" style="width: 52pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">ID Servicio</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="60" colspan="2" rowspan="2" valign="top" style="width: 44.95pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo11'] . '</span></i></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo11'][$i] . '</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="75" rowspan="2" valign="top" style="width: 56.15pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
@@ -13723,31 +13983,33 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">Sede</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="87" rowspan="2" valign="top" style="width: 65pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo12'] . '</span></i></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo12'][$i] . '</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="77" colspan="3" rowspan="2" valign="top" style="width: 57.85pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de Equipos</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $argumentos['campo13']['si'] . '</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
           </td>
           <td width="76" rowspan="2" valign="top" style="width: 56.9pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
           <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de UM</span></i></b><span style="color: black;"></span></p>
           </td>
           <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $argumentos['campo14']['si'] . '</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo14'][$i]) . '</span></b><span style="color: black;"></span></p>
           </td>
          </tr>
          <tr style="height: 17.75pt;">
           <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $argumentos['campo13']['no'] . '</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
           </td>
           <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $argumentos['campo14']['no'] . '</span></b><b><span lang="ES" style="color: rgb(31, 73, 125);">_</span></b><span style="color: black;"></span></p>
+          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo14'][$i]) . '</span></b><b><span lang="ES" style="color: rgb(31, 73, 125);">_</span></b><span style="color: black;"></span></p>
           </td>
-         </tr>
+         </tr>';
 
-         <tr height="0">
+    }   
+
+         $cadena .= '<tr height="0">
           <td width="298" style="border: none;"></td>
           <td width="47" style="border: none;"></td>
           <td width="56" style="border: none;"></td>
@@ -14061,6 +14323,8 @@ class Templates extends CI_Controller {
           </td>
          </tr>
         </tbody></table></div> ';
+
+        return $cadena;
 
     }
     //

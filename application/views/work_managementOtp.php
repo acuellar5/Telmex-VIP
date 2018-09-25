@@ -332,7 +332,7 @@
                                 </td>
                                 <td>KICK OFF</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_ko" class="form-control">
@@ -361,7 +361,7 @@
                                 </td>
                                 <td>VISITA OBRA CIVIL</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_voc" class="form-control">
@@ -381,7 +381,7 @@
                             <tr>
                                 <td>VISITA OBRA CIVIL TERCEROS</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_voct" class="form-control">
@@ -410,7 +410,7 @@
                                 </td>
                                 <td>ENVIO COTIZACION</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_ec" class="form-control">
@@ -439,7 +439,7 @@
                                 </td>
                                 <td>APROBACION COTIZACION</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_ac" class="form-control">
@@ -468,7 +468,7 @@
                                 </td>
                                 <td>SOLICITUD INFORMACIÓN TECNICA</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_sit" class="form-control">
@@ -497,7 +497,7 @@
                                 </td>
                                 <td>VISITA EJECUCION OBRA CIVIL</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_veoc" class="form-control">
@@ -517,7 +517,7 @@
                             <tr>
                                 <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_veoct" class="form-control">
@@ -546,7 +546,7 @@
                                 </td>
                                 <td>CONFIGURACION RED CLARO</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_crc" class="form-control">
@@ -575,7 +575,7 @@
                                 </td>
                                 <td>VISITA ENTREGA UM TERCEROS</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_veut" class="form-control">
@@ -615,7 +615,7 @@
                 <h3 class="modal-title" id="myModalLabelEditOth">    Orden Ot Hija N <label id="id_ot_modal_edit_oth"></label></h3>
             </div>
             <div class="modal-body">
-                <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?=URL::to('assets/images/plus.png');?>" data-simbol="plus" class="rigth"></span></button>
+                <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?= URL::to('assets/images/plus.png'); ?>" data-simbol="plus" class="rigth"></span></button>
 
                 <div>
                     <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
@@ -1507,29 +1507,15 @@
                                                 <div class="bhoechie-tab-content" id="contentTab2">
                                                     <div id="general_producto">
                                                     <!-- <h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto</h2> -->
-                                                    <!-- llenar con formulario de producto -->
-
-
+                                                        <!-- llenar con formulario de producto -->
                                                     </div>
                                                 </div>
-
-
-
                                                 <!--tab 3 -->
                                                 <div class="bhoechie-tab-content" id="contentTab3">
                                                     <h2 class="h4"><i class="fa fa-dot-circle-o"></i> Formulario de servicio</h2>
                                                     <!-- llenar esta seccion con el form de servicio -->
                                                     <div id="general_servicio"></div>
-
-
-
-
-
-
-
                                                 </div>
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -1546,7 +1532,7 @@
                 <button type="button" class="btn btn-default cerrar" id="mbtnCerrarModal" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cancelar</button>
                 <?php if (Auth::user()->n_role_user != 'claro'): ?>
                     <button type="button" form="formModal" class="btn btn-info" id="btnUpdOt"><i class='glyphicon glyphicon-save'></i>&nbsp;Actualizar</button>
-                <?php endif;?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -1569,27 +1555,48 @@
                 <button type="button" class="btn btn-success" id="mdl-enviar-reporte" style="width: 13%;"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>&nbsp;Enviar correo&nbsp;&nbsp;</button>
             </div>
         </div>
+    </div>
 </div>
+
+<!------------------------------------------ modal detalle cierre de KO ------------------------------->
+<div id="mdl_cierreKo" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="mdl-title-cierre"></h3>
+            </div>
+            <div class="modal-body">
+                <div id="form_cierreKo">
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<script src="<?=URL::to("assets/plugins/sweetalert2/sweetalert2.all.js");?> "></script>
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js"); ?> "></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>-->
 <?php if (isset($_GET['msj'])): ?>
     <script>
         var urlbase = "<?php echo URL::base(); ?>";
         swal('OK', 'se actualizó correctamente', 'success');
     </script>
-<?php endif;?>
+<?php endif; ?>
 
 <?php
-
 $msj = $this->session->flashdata('msj');
-if ($msj == 'error') {?>
-        <script>
-            swal('Intenta de nuevo',`error al actualizar los datos`, 'error');
+if ($msj == 'error') {
+    ?>
+    <script>
+        swal('Intenta de nuevo', `error al actualizar los datos`, 'error');
 
-        </script>
-<?php } else if ($msj == 'ok') {?>
-    <script> swal('OK', 'se actualizó correctamente', 'success'); </script>
-<?php }
+    </script>
+<?php } else if ($msj == 'ok') { ?>
+    <script> swal('OK', 'se actualizó correctamente', 'success');</script>
+<?php
+}

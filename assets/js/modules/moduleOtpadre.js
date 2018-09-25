@@ -140,6 +140,7 @@ $(function () {
         getButtonsOTP: function (obj) {
             var span = '';
             var title = '';
+            var cierreKo = '';
             if (obj.cant_mails != 0) {
                 span = "<span class='fa fa-fw '>" + obj.cant_mails + "</span>";
                 title = (obj.cant_mails == 1) ? obj.cant_mails + " correo enviado" : obj.cant_mails + " correos enviados";
@@ -147,13 +148,15 @@ $(function () {
                 span = "<span class='fa fa-fw fa-eye'></span>";
                 title = "ver OT Hijas";
             }
+            if (obj.finalizo != null) {
+                cierreKo = "<a class='btn btn-default btn-xs product-otp btn_datatable_cami' data-btn='cierreKo' title='Ver Detalle Cierre KO'><span class='fa fa-fw fa-info-circle'></span></a>";
+            }
 
             var botones = "<div class='btn-group-vertical'>"
-                    ///////////////////////////////////////////////////////////se cambio la linea del boton
                     + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='" + title + "'>" + span + "</a>"
                     + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
                     + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-header'></span></a>"
-//                    + "<a class='btn btn-default btn-xs close-otp btn_datatable_cami' data-btn='close' title='Cerrar Otp'><span class='fa fa-fw fa-power-off'></span></a>"
+                    + cierreKo
                     + "</div>";
             return botones;
         }
@@ -530,7 +533,7 @@ $(function () {
 
         //Eventos de la ventana.
         events: function () {
-            $('#contenido_tablas').on('click', 'a.close-otp', eventos.onClickBtnCloseOtp);
+            $('#contenido_tablas').on('click', 'a.product-otp', eventos.onClickBtnCloseOtp);
             $('#contenido_tablas').on('click', 'a.edit-otp', eventos.onClickBtnEditOtp);
             $('#table_oths_otp').on('click', 'a.ver-log', eventos.onClickShowEmailOth);
             $('#ModalHistorialLog').on('click', 'button.ver-mail', eventos.onClickVerLogMailOTP);// ver detalles de correo btn impresora
@@ -579,8 +582,8 @@ $(function () {
 
 
             switch (btn_clas.dataset.btn) {
-                case 'close':
-                    eventos.closeOtp(record);
+                case 'cierreKo':
+                    eventos.showDetailsCierreKo(record);
                     break;
 
                 case 'hito':
@@ -591,60 +594,32 @@ $(function () {
 //            eventos.closeOtp(record);
         },
 
-        closeOtp: function (data) {
-            const swalWithBootstrapButtons = swal.mixin({
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false,
-            })
+        showDetailsCierreKo: function (data) {
+            var form = setForm.returnFormularyProduct(data.finalizo);
+            $("#form_cierreKo").html(form);
 
-            swalWithBootstrapButtons({
-                title: 'Advertencia',
-                text: 'Esta seguro que desea cerrar la OT Padre ' + data.k_id_ot_padre,
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Continuar!',
-                cancelButtonText: 'Cancelar!',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.value) {
-                    $.post(baseurl + '/OtPadre/c_closeOtp',
-                            {
-                                idOtp: data.k_id_ot_padre// parametros que se envian
-                            },
-                            function (data) {
-                                var registro = JSON.parse(data);
-                                if (registro.response == 'success') {
-                                    swalWithBootstrapButtons(
-                                            'OT padre Cerrada!',
-                                            '',
-                                            'success'
-                                            )
-                                } else {
-                                    var oth = "";
-                                    $.each(registro.oth_abiertas, function (i, item) {
-                                        oth += item.id_orden_trabajo_hija + "<br>";
-                                    });
-                                    swalWithBootstrapButtons(
-                                            "No es posible cerrar la OT padre",
-                                            "La OT padre tiene " + registro.cant_oth_abiertas + " OT hijas abiertas, por favor cierre las siguientes OT hijas para poder cerrar la OT padre: \n" + oth,
-                                            "error"
-                                            );
-                                    response = false;
-                                    return false;
-                                }
-                            });
-                } else if (
-                        // Read more about handling dismissals
-                        result.dismiss === swal.DismissReason.cancel
-                        ) {
-                    swalWithBootstrapButtons(
-                            '¡Cancelaste la operación!',
-                            '',
-                            'error'
-                            )
-                }
-            });
+            $.post(baseurl + '/OtPadre/c_getProductByOtp',
+                    {
+                        id_otp: data.k_id_ot_padre,
+                        num_servicio: data.finalizo
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        console.log(obj);
+                    });
+
+//            
+//            
+//            var $el = $('#tipo_predio');
+//    $el.replaceWith($('<input />').attr({ 
+//        type: 'text',
+//        id: $el.attr('id'),
+//        name: $el.attr('name'),
+//        class: $el.attr('class'),
+//        value: $el.val(),
+//        readonly: true
+//        }));
+            $('#mdl_cierreKo').modal('show');
         },
         onClickBtnEditOtp: function () {
             var btn_obs = $(this);
@@ -992,31 +967,49 @@ $(function () {
         },
         // Muestra los hitos de la ot padre seleccionada
         onClickSaveHitosOtp: function () {
-            $.post(baseurl + '/OtPadre/c_saveHitosOtp',
-                    {
-                        idOtp: $('#otpHIto').html(),
-                        formulario: $("#formModalHitosOTP").serializeArray()
-                    },
-                    function (data) {
-                        var obj = JSON.parse(data);
-                        if (obj.response == 'success') {
-                            swal({
-                                position: 'top-end',
-                                type: 'success',
-                                title: obj.msg,
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            $('#modalHitosOtp').modal('toggle');
-                        } else {
-                            swal(
-                                    'Error',
-                                    obj.msg,
-                                    'error'
-                                    )
-                        }
+            var vacios = 0;
+            $('.fechas_hitos').each(function () {
+                if ($(this).val() == '') {
+                    vacios++;
+                }
+            });
 
-                    });
+            if (vacios == 0) {
+                $.post(baseurl + '/OtPadre/c_saveHitosOtp',
+                        {
+                            idOtp: $('#otpHIto').html(),
+                            formulario: $("#formModalHitosOTP").serializeArray()
+                        },
+                        function (data) {
+                            var obj = JSON.parse(data);
+                            if (obj.response == 'success') {
+                                swal({
+                                    position: 'top-end',
+                                    type: 'success',
+                                    title: obj.msg,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                $('#modalHitosOtp').modal('toggle');
+                                location.reload();
+                            } else {
+                                swal(
+                                        'Error',
+                                        obj.msg,
+                                        'error'
+                                        )
+                            }
+
+                        });
+            } else {
+                swal(
+                        'Recuerde!',
+                        'Para poder Guardar la información debe diligenciar todas las fechas de compromiso',
+                        'warning'
+                        );
+            }
+
+
         },
         // muestra las otp seleccionadas dependiendo la tabla
         otp_seleccionadas: function () {
@@ -1124,19 +1117,40 @@ $(function () {
         //Envia el reporte de actualizacion dependiendo de las OTP seleccionadas
         onClickSendReportUpdate: function () {
             var tableSelected = eventos.table_selected.rows().data();
-            var id_otp = [];
+            var ids_otp = [];
+            var flag = true;
             tableSelected.each(function (otp) {
-                id_otp.push(otp.k_id_ot_padre);
+                ids_otp.push(otp.k_id_ot_padre);
+//                console.log(otp.id_hitos);
+                if (otp.id_hitos === null) {
+                    flag = false;
+                }
             });
-            $.post(baseurl + '/OtHija/c_fillmodalsCierre',
-                    {
-                        id_otp: id_otp
-                    },
-                    function (data) {
-                        
-                    });
 
-            console.log(id_otp);
+            if (flag) {
+                $.post(baseurl + '/OtPadre/c_sendReportUpdate',
+                        {
+                            ids_otp: ids_otp
+                        },
+                        function (data) {
+                            var obj = JSON.parse(data);
+                            swal(
+                                    (obj.success) ? 'Correo enviado' : 'Error',
+                                    obj.msg,
+                                    (obj.success) ? 'success' : 'error'
+                                    );
+                            $('#mdl_cierre').modal('toggle');
+                        });
+            } else {
+                swal(
+                        'Recuerde!',
+                        'No se puede enviar el email sin haber diligenciado los hitos de los registros marcados en rojo',
+                        'warning'
+                        );
+            }
+
+
+//            console.log(ids_otp);
         }
 
     };
