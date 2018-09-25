@@ -11425,11 +11425,11 @@ $(function () {
 
 						    <!-- OTP -->
 							<div class="form-group">
-						        <label for="pr_otp" class="col-md-3 control-label">OTP:</label>
+						        <label for="pr_id_ot_padre" class="col-md-3 control-label">OTP:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" disables value="${otp}">
+						                <input name="pr_id_ot_padre" id="pr_id_ot_padre" class="form-control" type="text" disables value="${otp}">
 						            </div>
 						        </div>
 						    </div>
@@ -11439,22 +11439,22 @@ $(function () {
 
 							<!-- otp_asociadas -->
 							<div class="form-group">
-						        <label for="pr_otp_asociadas" class="col-md-3 control-label">OTP asociadas:</label>
+						        <label for="pr_otp_asociada" class="col-md-3 control-label">OTP asociadas:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociadas" id="pr_otp_asociadas" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
 
 						    <!-- TIPO DE TELEFONIA FIJA: -->
 						    <div class="form-group">
-						        <label for="pr_tipo_telefoniaf" class="col-md-3 control-label">Tipo telefonia fija:</label>
+						        <label for="pr_tipo_telefonia" class="col-md-3 control-label">Tipo telefonia fija:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_tipo_telefoniaf" name="pr_tipo_telefoniaf">
+						                <select class="form-control" id="pr_tipo_telefonia" name="pr_tipo_telefonia">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Telefonia Pública - Líneas Análogas">Telefonia Pública - Líneas Análogas</option>
 	      									<option value="Telefonia Pública - Líneas E1 - R2">Telefonia Pública - Líneas E1 - R2</option>
@@ -11513,11 +11513,11 @@ $(function () {
 
 							<!-- ID SERVICIO ACTUAL (Aplica para UM Existente) -->
 							<div class="form-group">
-						        <label for="pr_idservicio_actual" class="col-md-3 control-label">ID servicio Actual(Aplica para UM Existente):</label>
+						        <label for="pr_servicio_actual" class="col-md-3 control-label">ID servicio Actual(Aplica para UM Existente):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_idservicio_actual" id="pr_idservicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -11532,11 +11532,11 @@ $(function () {
 
 							<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
 						    <div class="form-group">
-						        <label for="pr_requiere_instalacion" class="col-md-3 control-label">¿Requiere instalación UM?</label>
+						        <label for="pr_requiere_um" class="col-md-3 control-label">¿Requiere instalación UM?</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_instalacion" name="pr_requiere_instalacion">
+						                <select class="form-control" id="pr_requiere_um" name="pr_requiere_um">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>   												
@@ -11548,11 +11548,11 @@ $(function () {
 
 						    <!-- PROVEEDOR: -->
 						    <div class="form-group">
-						        <label for="pr_proveedor_milla" class="col-md-3 control-label">Proveedor:</label>
+						        <label for="pr_proveedor" class="col-md-3 control-label">Proveedor:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_proveedor_milla" name="pr_proveedor_milla">
+						                <select class="form-control" id="pr_proveedor" name="pr_proveedor">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>
 	      									<option value="Existente">Existente</option>
@@ -11588,6 +11588,27 @@ $(function () {
 
 						<fieldset class="col-md-6">
 
+							<!-- MEDIO -->
+						    <div class="form-group">
+						        <label for="pr_medio" class="col-md-3 control-label">Medio:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_medio" name="pr_medio">
+										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="No Aplica">No Aplica</option>  									   									
+										    <option value="Existente">Existente</option> 	   
+										    <option value="Fibra">Fibra</option>
+										    <option value="Cobre">Cobre</option>
+										    <option value="Satelital">Satelital</option> 
+										    <option value="Radio enlace">Radio enlace</option>
+										    <option value="3G">3G</option>
+										    <option value="UTP">UTP</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
 							<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 						    <div class="form-group">
 						        <label for="pr_tipo_conector" class="col-md-3 control-label">Tipo conector(Aplica FO Claro):</label>
@@ -11604,28 +11625,7 @@ $(function () {
 						            </div>
 						        </div>
 						    </div>
-							<!-- MEDIO -->
-						    <div class="form-group">
-						        <label for="pr_medio_um" class="col-md-3 control-label">Medio:</label>
-						        <div class="col-md-9 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_medio_um" name="pr_medio_um">
-										    <option value="Seleccionar...">Seleccionar...</option>
-										    <option value="No Aplica">No Aplica</option>  									   									
-										    <option value="Existente">Existente</option> 	   
-										    <option value="Fibra">Fibra</option>
-										    <option value="Cobre">Cobre</option>
-										    <option value="Satelital">Satelital</option> 
-										    <option value="Radio enlace">Radio enlace</option>
-										    <option value="3G">3G</option>
-										    <option value="UTP">UTP</option>
-										</select>
-						            </div>
-						        </div>
-						    </div>
-
-						    
+											    
 						</fieldset>
 					</div>
 
@@ -11634,11 +11634,11 @@ $(function () {
 
 							<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
 						    <div class="form-group">
-						        <label for="pr_interface_entregac" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+						        <label for="pr_interfaz_entrega_cliente" class="col-md-3 control-label">Interface de entrega al cliente:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_interface_entregac" name="pr_interface_entregac">
+						                <select class="form-control" id="pr_interfaz_entrega_cliente" name="pr_interfaz_entrega_cliente">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>  									   									
 										    <option value="Ethernet">Ethernet</option> 	   
@@ -11743,11 +11743,11 @@ $(function () {
 
 						    <!-- Modulos o Tarjetas: -->
 				            <div class="form-group">
-						        <label for="pr_modulo_tarjeta" class="col-md-3 control-label">Modulos o Tarjetas:</label>
+						        <label for="pr_modulos_tarjetas" class="col-md-3 control-label">Modulos o Tarjetas:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_modulo_tarjeta" id="pr_modulo_tarjeta" class="form-control" type="text" >
+						                <input name="pr_modulos_tarjetas" id="pr_modulos_tarjetas" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -11784,11 +11784,11 @@ $(function () {
 
 							<!-- Consumibles--> 
 						    <div class="form-group">
-						        <label for="pr_Consumibles" class="col-md-3 control-label">Consumibles:</label>
+						        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_Consumibles" name="pr_Consumibles">
+						                <select class="form-control" id="pr_consumibles" name="pr_consumibles">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Bandeja">Bandeja</option>
 	      									<option value="Cables de poder">Cables de poder</option>
@@ -11803,11 +11803,11 @@ $(function () {
 
 						    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA -->
 						    <div class="form-group">
-						        <label for="pr_registro_importacion" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+						        <label for="pr_carta_valorizada" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_registro_importacion" name="pr_registro_importacion">
+						                <select class="form-control" id="pr_carta_valorizada" name="pr_carta_valorizada">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -11862,11 +11862,11 @@ $(function () {
 
 						    <!-- EMAIL --> 
 						    <div class="form-group">
-						        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
+						        <label for="pr_correo_1" class="col-md-3 control-label">Email:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-						                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
+						                <input name="pr_correo_1" id="pr_correo_1" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -11917,11 +11917,11 @@ $(function () {
 
 						    <!-- EMAIL --> 
 						    <div class="form-group">
-						        <label for="pr_email_2" class="col-md-3 control-label">Email:</label>
+						        <label for="pr_correo_2" class="col-md-3 control-label">Email:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-						                <input name="pr_email_2" id="pr_email_2" class="form-control" type="email" >
+						                <input name="pr_correo_2" id="pr_correo_2" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -11986,11 +11986,11 @@ $(function () {
 
 							<!-- Interfaz Equipos Cliente: -->
 						    <div class="form-group">
-						        <label for="pr_interfaz_equipoc" class="col-md-3 control-label">Interfaz equipos cliente:</label>
+						        <label for="pr_interfaz_equipo_cliente" class="col-md-3 control-label">Interfaz equipos cliente:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_interfaz_equipoc" name="pr_interfaz_equipoc">
+						                <select class="form-control" id="pr_interfaz_equipo_cliente" name="pr_interfaz_equipo_cliente">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="FXS">FXS</option>
 	      									<option value="RJ11">RJ11</option>
@@ -12002,16 +12002,16 @@ $(function () {
 						        </div>
 						    </div>
 
-						    <!-- Cantidad Canales: -->
+						    <!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_canales" class="col-md-3 control-label">Cantidad Canales:</label>
+						        <label for="pr_cantidad_lineas_basicas" class="col-md-3 control-label">Cantidad Lineas Básicas(Telef. Pública Líneas Análogas):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_cantidad_canales" id="pr_cantidad_canales" class="form-control" type="text" >
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cantidad_lineas_basicas" id="pr_cantidad_lineas_basicas" class="form-control" type="text" >
 						            </div>
 						        </div>
-						    </div>
+						    </div>						    
 
 						</fieldset>
 					</div>
@@ -12033,11 +12033,11 @@ $(function () {
 
 						    <!-- Cantidad de DID Solicitados  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_did" class="col-md-3 control-label">Cantidad DID Solicitados:</label>
+						        <label for="pr_cant_did_solicitados" class="col-md-3 control-label">Cantidad DID Solicitados:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_did" id="pr_cantidad_did" class="form-control" type="text" >
+						                <input name="pr_cant_did_solicitados" id="pr_cant_did_solicitados" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12045,25 +12045,25 @@ $(function () {
 
 						<fieldset class="col-md-6">
 
-							<!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
+							
+							<!-- Cantidad Canales: -->
 						    <div class="form-group">
-						        <label for="pr_cantidad_lineas" class="col-md-3 control-label">Cantidad Lineas Básicas(Telef. Pública Líneas Análogas):</label>
+						        <label for="pr_cant_canales" class="col-md-3 control-label">Cantidad Canales:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_lineas" id="pr_cantidad_lineas" class="form-control" type="text" >
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+						                <input name="pr_cant_canales" id="pr_cant_canales" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
-
 							
 						    <!-- Numero Cabecera PBX: -->
 						    <div class="form-group">
-						        <label for="pr_numero_cabecera" class="col-md-3 control-label">Número Cabecera PBX:</label>
+						        <label for="pr_num_cabezera_pbx" class="col-md-3 control-label">Número Cabecera PBX:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numero_cabecera" name="pr_numero_cabecera">
+						                <select class="form-control" id="pr_num_cabezera_pbx" name="pr_num_cabezera_pbx">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12079,11 +12079,11 @@ $(function () {
 
 							<!-- FAX TO MAIL: -->
 						    <div class="form-group">
-						        <label for="pr_fax_mail" class="col-md-3 control-label">Fax to mail:</label>
+						        <label for="pr_fax_email" class="col-md-3 control-label">Fax to mail:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-print" ></i></span>
-						                <select class="form-control" id="pr_fax_mail" name="pr_fax_mail">
+						                <select class="form-control" id="pr_fax_email" name="pr_fax_email">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12112,11 +12112,11 @@ $(function () {
 
 							<!-- Requiere Permisos para Larga Distancia Nacional:: -->
 						    <div class="form-group">
-						        <label for="pr_permisos_largad" class="col-md-3 control-label">Requiere Permisos Larga Distancia Nacional:</label>
+						        <label for="pr_permisos_larga_distancia" class="col-md-3 control-label">Requiere Permisos Larga Distancia Nacional:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="pr_permisos_largad" name="pr_permisos_largad">
+						                <select class="form-control" id="pr_permisos_larga_distancia" name="pr_permisos_larga_distancia">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12128,11 +12128,11 @@ $(function () {
 
 						    <!-- Requiero Larga  Para Distancia  Internacional: -->
 						    <div class="form-group">
-						        <label for="pr_larga_distanciai" class="col-md-3 control-label">Requiero Larga para Distancia Internacional:</label>
+						        <label for="pr_larga_distancia_internacional" class="col-md-3 control-label">Requiero Larga para Distancia Internacional:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_larga_distanciai" name="pr_larga_distanciai">
+						                <select class="form-control" id="pr_larga_distancia_internacional" name="pr_larga_distancia_internacional">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12164,11 +12164,11 @@ $(function () {
 
 						    <!-- Requiere Permisos para Local Extendida: -->
 						    <div class="form-group">
-						        <label for="pr_requiere_permisoe" class="col-md-3 control-label">Requiere Permisos para Local Extendida:</label>
+						        <label for="pr_permiso_local_extendida" class="col-md-3 control-label">Requiere Permisos para Local Extendida:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <select class="form-control" id="pr_requiere_permisoe" name="pr_requiere_permisoe">
+						                <select class="form-control" id="pr_permiso_local_extendida" name="pr_permiso_local_extendida">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12191,11 +12191,11 @@ $(function () {
 							<div class="widget bg_white m-t-25  d-inline-b cliente">
 								<legend class="f-s-15">Bogotá</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_1" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_bog_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_1" name="pr_requiere_1">
+						                <select class="form-control" id="pr_bog_requiere" name="pr_bog_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12206,11 +12206,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_1" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_bog_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_1" name="pr_numeracion_1">
+						                <select class="form-control" id="pr_bog_numeracion" name="pr_bog_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12221,11 +12221,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_1" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_bog_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_1" id="pr_cant_canales_1" class="form-control" type="text" >
+						                <input name="pr_bog_cantidad" id="pr_bog_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12235,11 +12235,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Tunja</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_2" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_tun_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_2" name="pr_requiere_2">
+						                <select class="form-control" id="pr_tun_requiere" name="pr_tun_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12250,11 +12250,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_2" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_tun_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_2" name="pr_numeracion_2">
+						                <select class="form-control" id="pr_tun_numeracion" name="pr_tun_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12265,11 +12265,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_2" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_tun_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_2" id="pr_cant_canales_2" class="form-control" type="text" >
+						                <input name="pr_tun_cantidad" id="pr_tun_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12281,11 +12281,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Villavicencio</legend>
 								<div class="form-group">
-							        <label for="pr_requiere_3" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_vill_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_3" name="pr_requiere_3">
+							                <select class="form-control" id="pr_vill_requiere" name="pr_vill_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12296,11 +12296,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_3" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_vill_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_3" name="pr_numeracion_3">
+							                <select class="form-control" id="pr_vill_numeracion" name="pr_vill_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12311,11 +12311,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_3" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_vill_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_3" id="pr_cant_canales_3" class="form-control" type="text" >
+							                <input name="pr_vill_cantidad" id="pr_vill_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12325,11 +12325,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Facatativa</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_4" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_fac_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_4" name="pr_requiere_4">
+							                <select class="form-control" id="pr_fac_requiere" name="pr_fac_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12340,11 +12340,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_4" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_fac_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_4" name="pr_numeracion_4">
+							                <select class="form-control" id="pr_fac_numeracion" name="pr_fac_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12355,11 +12355,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_4" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_fac_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_4" id="pr_cant_canales_4" class="form-control" type="text" >
+							                <input name="pr_fac_cantidad" id="pr_fac_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12371,11 +12371,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Girardot</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_5" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_gir_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_5" name="pr_requiere_5">
+						                <select class="form-control" id="pr_gir_requiere" name="pr_gir_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12386,11 +12386,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_5" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_gir_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_5" name="pr_numeracion_5">
+						                <select class="form-control" id="pr_gir_numeracion" name="pr_gir_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12401,11 +12401,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_5" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_gir_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_5" id="pr_cant_canales_5" class="form-control" type="text" >
+						                <input name="pr_gir_cantidad" id="pr_gir_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12415,11 +12415,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Yopal</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_6" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_yop_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_6" name="pr_requiere_6">
+						                <select class="form-control" id="pr_yop_requiere" name="pr_yop_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12430,11 +12430,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_6" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_yop_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_6" name="pr_numeracion_6">
+						                <select class="form-control" id="pr_yop_numeracion" name="pr_yop_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12445,11 +12445,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_6" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_yop_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_6" id="pr_cant_canales_6" class="form-control" type="text" >
+						                <input name="pr_yop_cantidad" id="pr_yop_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12461,11 +12461,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">cali</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_7" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_cali_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_7" name="pr_requiere_7">
+						                <select class="form-control" id="pr_cali_requiere" name="pr_cali_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12476,11 +12476,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_7" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_cali_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_7" name="pr_numeracion_7">
+						                <select class="form-control" id="pr_cali_numeracion" name="pr_cali_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12491,11 +12491,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_7" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_cali_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_7" id="pr_cant_canales_7" class="form-control" type="text" >
+						                <input name="pr_cali_cantidad" id="pr_cali_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12505,11 +12505,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Buenaventura</legend>
 								 <div class="form-group">
-						        <label for="pr_requiere_8" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_bave_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_8" name="pr_requiere_8">
+						                <select class="form-control" id="pr_bave_requiere" name="pr_bave_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12520,11 +12520,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_8" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_bave_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_8" name="pr_numeracion_8">
+						                <select class="form-control" id="pr_bave_numeracion" name="pr_bave_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12535,11 +12535,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_8" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_bave_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_8" id="pr_cant_canales_8" class="form-control" type="text" >
+						                <input name="pr_bave_cantidad" id="pr_bave_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12551,11 +12551,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Pasto</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_9" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_pas_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_9" name="pr_requiere_9">
+						                <select class="form-control" id="pr_pas_requiere" name="pr_pas_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12566,11 +12566,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_9" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_pas_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_9" name="pr_numeracion_9">
+						                <select class="form-control" id="pr_pas_numeracion" name="pr_pas_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12581,11 +12581,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_9" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_pas_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_9" id="pr_cant_canales_9" class="form-control" type="text" >
+						                <input name="pr_pas_cantidad" id="pr_pas_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12595,11 +12595,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Popayán</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_10" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_pop_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_10" name="pr_requiere_10">
+						                <select class="form-control" id="pr_pop_requiere" name="pr_pop_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12610,11 +12610,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_10" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_pop_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_10" name="pr_numeracion_10">
+						                <select class="form-control" id="pr_pop_numeracion" name="pr_pop_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12625,11 +12625,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_10" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_pop_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_10" id="pr_cant_canales_10" class="form-control" type="text" >
+						                <input name="pr_pop_cantidad" id="pr_pop_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12641,11 +12641,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Neiva</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_11" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_nei_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_11" name="pr_requiere_11">
+						                <select class="form-control" id="pr_nei_requiere" name="pr_nei_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12656,11 +12656,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_11" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_nei_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_11" name="pr_numeracion_11">
+						                <select class="form-control" id="pr_nei_numeracion" name="pr_nei_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12671,11 +12671,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_11" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_nei_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_11" id="pr_cant_canales_11" class="form-control" type="text" >
+						                <input name="pr_nei_cantidad" id="pr_nei_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12685,11 +12685,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Medellín</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_12" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_med_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_12" name="pr_requiere_12">
+						                <select class="form-control" id="pr_med_requiere" name="pr_med_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12700,11 +12700,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_12" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_med_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_12" name="pr_numeracion_12">
+						                <select class="form-control" id="pr_med_numeracion" name="pr_med_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12715,11 +12715,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_12" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_med_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_12" id="pr_cant_canales_12" class="form-control" type="text" >
+						                <input name="pr_med_cantidad" id="pr_med_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12731,11 +12731,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Barranquilla</legend>
 								 <div class="form-group">
-						        <label for="pr_requiere_13" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_bar_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_13" name="pr_requiere_13">
+						                <select class="form-control" id="pr_bar_requiere" name="pr_bar_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12746,11 +12746,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_13" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_bar_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_13" name="pr_numeracion_13">
+						                <select class="form-control" id="pr_bar_numeracion" name="pr_bar_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12761,11 +12761,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_13" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_bar_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_13" id="pr_cant_canales_13" class="form-control" type="text" >
+						                <input name="pr_bar_cantidad" id="pr_bar_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12775,11 +12775,11 @@ $(function () {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Cartagena</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_14" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_cart_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_14" name="pr_requiere_14">
+						                <select class="form-control" id="pr_cart_requiere" name="pr_cart_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12790,11 +12790,11 @@ $(function () {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_14" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_cart_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_14" name="pr_numeracion_14">
+						                <select class="form-control" id="pr_cart_numeracion" name="pr_cart_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12805,11 +12805,11 @@ $(function () {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_14" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_cart_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_14" id="pr_cant_canales_14" class="form-control" type="text" >
+						                <input name="pr_cart_cantidad" id="pr_cart_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12824,11 +12824,11 @@ $(function () {
 							    <!-- Santa Marta: -->
 							    <legend class="f-s-15"> Santa Marta </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_15" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_stm_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_15" name="pr_requiere_15">
+							                <select class="form-control" id="pr_stm_requiere" name="pr_stm_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12839,11 +12839,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_15" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_stm_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_15" name="pr_numeracion_15">
+							                <select class="form-control" id="pr_stm_numeracion" name="pr_stm_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12854,11 +12854,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_15" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_stm_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_15" id="pr_cant_canales_15" class="form-control" type="text" >
+							                <input name="pr_stm_cantidad" id="pr_stm_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12870,11 +12870,11 @@ $(function () {
 							    <!-- Monteria: -->
 							    <legend class="f-s-15"> Monteria </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_16" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_mon_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_16" name="pr_requiere_16">
+							                <select class="form-control" id="pr_mon_requiere" name="pr_mon_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12885,11 +12885,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_16" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_mon_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_16" name="pr_numeracion_16">
+							                <select class="form-control" id="pr_mon_numeracion" name="pr_mon_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12900,11 +12900,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_16" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_mon_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_16" id="pr_cant_canales_16" class="form-control" type="text" >
+							                <input name="pr_mon_cantidad" id="pr_mon_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12918,11 +12918,11 @@ $(function () {
 							    <!-- Valledupar: -->
 							    <legend class="f-s-15"> Valledupar </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_17" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_vall_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_17" name="pr_requiere_17">
+							                <select class="form-control" id="pr_vall_requiere" name="pr_vall_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12933,11 +12933,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_17" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_vall_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_17" name="pr_numeracion_17">
+							                <select class="form-control" id="pr_vall_numeracion" name="pr_vall_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12948,11 +12948,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_17" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_vall_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_17" id="pr_cant_canales_17" class="form-control" type="text" >
+							                <input name="pr_vall_cantidad" id="pr_vall_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12964,11 +12964,11 @@ $(function () {
 							    <!-- Sincelejo: -->
 							    <legend class="f-s-15"> Sincelejo </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_18" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_sinc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_18" name="pr_requiere_18">
+							                <select class="form-control" id="pr_sinc_requiere" name="pr_sinc_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12979,11 +12979,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_18" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_sinc_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_18" name="pr_numeracion_18">
+							                <select class="form-control" id="pr_sinc_numeracion" name="pr_sinc_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12994,11 +12994,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_18" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_sinc_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_18" id="pr_cant_canales_18" class="form-control" type="text" >
+							                <input name="pr_sinc_cantidad" id="pr_sinc_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13012,11 +13012,11 @@ $(function () {
 							    <!-- Pereira: -->
 							    <legend class="f-s-15"> Pereira </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_19" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_per_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_19" name="pr_requiere_19">
+							                <select class="form-control" id="pr_per_requiere" name="pr_per_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13027,11 +13027,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_19" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_per_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_19" name="pr_numeracion_19">
+							                <select class="form-control" id="pr_per_numeracion" name="pr_per_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13042,11 +13042,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_19" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_per_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_19" id="pr_cant_canales_19" class="form-control" type="text" >
+							                <input name="pr_per_cantidad" id="pr_per_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13058,11 +13058,11 @@ $(function () {
 							    <!-- Armenia: -->
 							    <legend class="f-s-15"> Armenia </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_20" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_arme_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_20" name="pr_requiere_20">
+							                <select class="form-control" id="pr_arme_requiere" name="pr_arme_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13073,11 +13073,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_20" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_arme_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_20" name="pr_numeracion_20">
+							                <select class="form-control" id="pr_arme_numeracion" name="pr_arme_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13088,11 +13088,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_20" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_arme_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_20" id="pr_cant_canales_20" class="form-control" type="text" >
+							                <input name="pr_arme_cantidad" id="pr_arme_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13106,11 +13106,11 @@ $(function () {
 							    <!-- Manizalez: -->
 							    <legend class="f-s-15"> Manizalez: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_21" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_man_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_21" name="pr_requiere_21">
+							                <select class="form-control" id="pr_man_requiere" name="pr_man_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13121,11 +13121,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_21" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_man_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_21" name="pr_numeracion_21">
+							                <select class="form-control" id="pr_man_numeracion" name="pr_man_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13136,11 +13136,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_21" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_man_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_21" id="pr_cant_canales_21" class="form-control" type="text" >
+							                <input name="pr_man_cantidad" id="pr_man_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13152,11 +13152,11 @@ $(function () {
 							    <!-- Ibaué: -->
 							    <legend class="f-s-15"> Ibaué: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_22" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_iba_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_22" name="pr_requiere_22">
+							                <select class="form-control" id="pr_iba_requiere" name="pr_iba_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13167,11 +13167,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_22" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_iba_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_22" name="pr_numeracion_22">
+							                <select class="form-control" id="pr_iba_numeracion" name="pr_iba_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13182,11 +13182,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_22" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_iba_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_22" id="pr_cant_canales_22" class="form-control" type="text" >
+							                <input name="pr_iba_cantidad" id="pr_iba_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13200,11 +13200,11 @@ $(function () {
 							    <!-- Cucutá: -->
 							    <legend class="f-s-15"> Cucutá: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_23" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_cuc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_23" name="pr_requiere_23">
+							                <select class="form-control" id="pr_cuc_requiere" name="pr_cuc_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13215,11 +13215,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_23" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_cuc_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_23" name="pr_numeracion_23">
+							                <select class="form-control" id="pr_cuc_numeracion" name="pr_cuc_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13230,11 +13230,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_23" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_cuc_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_23" id="pr_cant_canales_23" class="form-control" type="text" >
+							                <input name="pr_cuc_cantidad" id="pr_cuc_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13246,11 +13246,11 @@ $(function () {
 							    <!-- Bucaramanga: -->
 							    <legend class="f-s-15"> Bucaramanga: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_24" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_buc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_24" name="pr_requiere_24">
+							                <select class="form-control" id="pr_buc_requiere" name="pr_buc_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13261,11 +13261,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_24" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_buc_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_24" name="pr_numeracion_24">
+							                <select class="form-control" id="pr_buc_numeracion" name="pr_buc_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13276,11 +13276,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_24" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_buc_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_24" id="pr_cant_canales_24" class="form-control" type="text" >
+							                <input name="pr_buc_cantidad" id="pr_buc_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13294,11 +13294,11 @@ $(function () {
 							    <!-- Duitama : -->
 							    <legend class="f-s-15"> Duitama : </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_25" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_dui_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_25" name="pr_requiere_25">
+							                <select class="form-control" id="pr_dui_requiere" name="pr_dui_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13309,11 +13309,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_25" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_dui_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_25" name="pr_numeracion_25">
+							                <select class="form-control" id="pr_dui_numeracion" name="pr_dui_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13324,11 +13324,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_25" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_dui_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_25" id="pr_cant_canales_25" class="form-control" type="text" >
+							                <input name="pr_dui_cantidad" id="pr_dui_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13340,11 +13340,11 @@ $(function () {
 							    <!-- Sogamoso: -->
 							    <legend class="f-s-15"> Sogamoso: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_26" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_sog_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_26" name="pr_requiere_26">
+							                <select class="form-control" id="pr_sog_requiere" name="pr_sog_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13355,11 +13355,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_26" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_sog_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_26" name="pr_numeracion_26">
+							                <select class="form-control" id="pr_sog_numeracion" name="pr_sog_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13370,11 +13370,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_26" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_sog_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_26" id="pr_cant_canales_26" class="form-control" type="text" >
+							                <input name="pr_sog_cantidad" id="pr_sog_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13388,11 +13388,11 @@ $(function () {
 							    <!-- Flandes: -->
 							    <legend class="f-s-15"> Flandes: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_27" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_flan_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_27" name="pr_requiere_27">
+							                <select class="form-control" id="pr_flan_requiere" name="pr_flan_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13403,11 +13403,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_27" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_flan_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_27" name="pr_numeracion_27">
+							                <select class="form-control" id="pr_flan_numeracion" name="pr_flan_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13418,11 +13418,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_27" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_flan_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_27" id="pr_cant_canales_27" class="form-control" type="text" >
+							                <input name="pr_flan_cantidad" id="pr_flan_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13434,11 +13434,11 @@ $(function () {
 							    <!-- Rivera: -->
 							    <legend class="f-s-15"> Rivera: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_28" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_riv_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_28" name="pr_requiere_28">
+							                <select class="form-control" id="pr_riv_requiere" name="pr_riv_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13449,11 +13449,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_28" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_riv_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_28" name="pr_numeracion_28">
+							                <select class="form-control" id="pr_riv_numeracion" name="pr_riv_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13464,11 +13464,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_28" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_riv_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_28" id="pr_cant_canales_28" class="form-control" type="text" >
+							                <input name="pr_riv_cantidad" id="pr_riv_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13482,11 +13482,11 @@ $(function () {
 							    <!-- Aipe -->
 							    <legend class="f-s-15"> Aipe </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_29" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_aipe_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_29" name="pr_requiere_29">
+							                <select class="form-control" id="pr_aipe_requiere" name="pr_aipe_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13497,11 +13497,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_29" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_aipe_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_29" name="pr_numeracion_29">
+							                <select class="form-control" id="pr_aipe_numeracion" name="pr_aipe_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13512,11 +13512,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_29" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_aipe_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_29" id="pr_cant_canales_29" class="form-control" type="text" >
+							                <input name="pr_aipe_cantidad" id="pr_aipe_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13528,11 +13528,11 @@ $(function () {
 							    <!-- Lebrija: -->
 							    <legend class="f-s-15"> Lebrija: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_30" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_leb_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_30" name="pr_requiere_30">
+							                <select class="form-control" id="pr_leb_requiere" name="pr_leb_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13543,11 +13543,11 @@ $(function () {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_30" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_leb_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_30" name="pr_numeracion_30">
+							                <select class="form-control" id="pr_leb_numeracion" name="pr_leb_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13558,11 +13558,11 @@ $(function () {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_30" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_leb_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_30" id="pr_cant_canales_30" class="form-control" type="text" >
+							                <input name="pr_leb_cantidad" id="pr_leb_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
