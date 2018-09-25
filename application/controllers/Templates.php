@@ -52,82 +52,31 @@ class Templates extends CI_Controller {
     }
 
     public function c_updateStatusOt($servicio = null) {
-
-        /*
-        1. formulario linea base guardar en bd tabla linea_base (otp)
-        2. formulario producto guardar en bd dependiendo el producto => tabla (producto)
-        3. formulario servicio enviar correo plantilla correspondiente, al correo de la persona logueada // faber
-        3.1 si se envió se guarda tabla log correo
-
-        3.1.2 si nó ... mensaje no se envio (pasos de como poder enviarlo manualmente)
-        3.2 sinó guardo en log_correo no envia nada msj error volver a intentar
-        4. Actualizar ot_hija en tabla ot_hija
-        4.1 se deben actualizar ots hijas con respecto a linea base
-         */
-
         $pt       = $this->input->post();
         $servicio = $pt['num_servicio'];
 
-        header('Content-Type: text/plain');
-        print_r($this->input->post());
+        // header('Content-Type: text/plain');
+        // print_r($this->input->post());
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            // $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
             $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
             if ($res_envio) {
-                $this->guardar_servicio($pt);
+                $this->guardar_servicio($pt, $servicio);
                 // 4. Actualizar ot_hija en tabla ot_hija
                 $this->actualizar_oth($pt, true);
             }
-            // si no se envia no se guarda el formulario
+            // si no se envia no se envia el correo
             else {
                 $msj = 'error';
                 $this->session->set_flashdata('msj', $msj);
                 header('Location: ' . URL::base() . '/managementOtp');
             }
-
-            // $data_template = $this->fill_formulary($servicio, $_POST);
-            // switch ($servicio) {
-            //        case '1':
-            //          $template = $this->internet_dedicado_empresarial($data_template);
-            //          break;
-            //        case '2':
-            //          $template = $this->internet_dedicado($data_template);
-            //          break;
-            //        case '3':
-            //          $template = $this->mpls_avanzado_intranet($data_template);
-            //          break;
-            //        case '4':
-            //          $template = $this->mpls_avanzado_intranet_varios_puntos($data_template);
-            //          break;
-            //        case '5':
-            //          $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($data_template);
-            //          break;
-            //        case '6':
-            //          $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($data_template);
-            //          break;
-            //        case '7':
-            //          $template = $this->avanzado_extranet($data_template);
-            //          break;
-            //        case '8':
-            //          $template = $this->backend_mpls($data_template);
-            //          break;
-            //        case '9':
-            //          $template = $this->mpls_avanzado_componente_datacenter_claro($data_template);
-            //          break;
-            //        case '10':
-            //          $template = $this->mpls_transaccional_3g($data_template);
-            //          break;
-
-            // }
-            //      // print_r($template);
-            //      $this->enviar_email($template, $_POST);
-
         } else {
             // actualizar el estado
             $this->actualizar_oth($pt);
@@ -775,34 +724,99 @@ class Templates extends CI_Controller {
     private function enviar_correo_servicio($pt, $servicio) {
         // cargar arreglos de la plantilla
         $array_template = $this->fill_formulary($servicio, $pt);
-
         // crear el template
-        /*$template con el switch*/
+        switch ($servicio) {
+           case '1':
+             $template = $this->internet_dedicado_empresarial($array_template);
+             break;
+           case '2':
+             $template = $this->internet_dedicado($array_template);
+             break;
+           case '3':
+             $template = $this->mpls_avanzado_intranet($array_template);
+             break;
+           case '4':
+             $template = $this->mpls_avanzado_intranet_varios_puntos($array_template);
+             break;
+           case '5':
+             $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($array_template);
+             break;
+           case '6':
+             $template = $this->mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($array_template);
+             break;
+           case '7':
+             $template = $this->avanzado_extranet($array_template);
+             break;
+           case '8':
+             $template = $this->backend_mpls($array_template);
+             break;
+           case '9':
+             $template = $this->mpls_avanzado_componente_datacenter_claro($array_template);
+             break;
+           case '10':
+             $template = $this->mpls_transaccional_3g($array_template);
+             break;
+             /*FORMATOS NUEVOS*/
 
-        // $se_envio = enviar correo
+           case '11':
+             $template = $this->adicion_marquillas_aeropuerto_el_dorado_opain($array_template);
+             break;
+           case '12':
+             $template = $this->cambio_de_equipos_servicio($array_template);
+             break;
+           case '13':
+             $template = $this->cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1($array_template);
+             break;
+           case '14':
+             $template = $this->cambio_de_servicio_telefonia_fija_pública_linea_sip_a_pbx_distribuida_linea_sip($array_template);
+             break;
+           case '15':
+             $template = $this->traslado_externo_servicio($array_template);
+             break;
+           case '16':
+             $template = $this->traslado_interno_servicio($array_template);
+             break;
+           case '17':
+             $template = $this->soluciones_administrativas_comunicaciones_unificadas_pbx_administrada($array_template);
+             break;
+           case '18':
+             $template = $this->instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1($array_template);
+             break;
+           case '19':
+             $template = $this->instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip($array_template);
+             break;
+           case '20':
+             $template = $this->instalación_servicio_telefonia_fija_pbx_distribuida_linea_sip_con_gateway_de_voz($array_template);
+             break;
+           case '21':
+             $template = $this->instalación_telefonia_publica_basica_internet_dedicado($array_template);
+             break;
+           case '22':
+             $template = $this->cambio_de_ultima_milla($array_template);
+             break;
+           case '23':
+             $template = $this->cambio_de_equipo($array_template);
+             break;
+        }
+        $this->load->helper('camilo');
 
-        // retornar
+        $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
+        $se_envio = h_enviarCorreo($template, 'bredybuitrago@gmail.com' , $asunto);
+
+        return $se_envio['success'];
 
     }
 
     // guardar el servicio en tabla log_correo
-    private function guardar_servicio($pt) {
-        ate_default_timezone_set("America/Bogota");
+    private function guardar_servicio($pt , $servicio) {
+        date_default_timezone_set("America/Bogota");
         $fActual       = date('Y-m-d');
-        $destinatarios = Auth::user()->n_mail_user;
-        // seteo el arreglo de campos vacio
-        $dataLogMail = $this->dataLogMail();
-        // lleno mi arreglos como corresponda
-        foreach ($dataLogMail as $key => $value) {
-            if (isset($pt[$key])) {
-                $dataLogMail[$key] = $pt[$key];
-            }
-        }
-
+        $dataLogMail = $this->fill_data_service($pt , $servicio);
         // datos llenos manualmente
         $dataLogMail['k_id_ot_padre']  = $pt['nro_ot_onyx'];
+        $dataLogMail['id_orden_trabajo_hija']  = $pt['id_orden_trabajo_hija'];
         $dataLogMail['clase']          = 'cierre_ko';
-        $dataLogMail['destinatarios']  = $destinatarios;
+        $dataLogMail['destinatarios']  = Auth::user()->k_id_user;
         $dataLogMail['usuario_sesion'] = Auth::user()->k_id_user;
         $dataLogMail['fecha']          = $fActual;
 
@@ -1410,9 +1424,9 @@ class Templates extends CI_Controller {
                 'campo12' => $p['campo12'] , //Dirección Sede
 
 
-                'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (si)
+                // 'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (si)
                 'campo13' => $p['campo13'] , //Requiere Cambio de Equipos (no)
-                'campo14' => $p['campo14'] , //Requiere Cambio de UM (si) 
+                // 'campo14' => $p['campo14'] , //Requiere Cambio de UM (si) 
                 'campo14' => $p['campo14'] , //Requiere Cambio de UM (no)
 
 
@@ -1431,29 +1445,26 @@ class Templates extends CI_Controller {
             $argumentos['campo9']['no'] = $this->no($p['campo9']);
 
             break;
-            
+
         case ($s == 23): // Cambio de Equipo
             $argumentos = array(
-                'campo0' => $p['campo0'], //otp
+                'campo0' => $p['nro_ot_onyx'], //otp
                 'campo1' => $p['nombre'], //nombre
                 'campo2' => $p['nombre_cliente'], //nombre cliente
                 'campo3' => $p['servicio'], //servicio
                 'campo4' => $p['campo4'], //Dirección Sede
                 'campo5' => $p['campo5'], //BW Actual
                 'campo6' => $p['campo6'], //BW Nuevo
-                'campo7' => $p['campo7'], //Requiere Cambio de equipo (si)
-                'campo7' => $p['campo7'], //Requiere Cambio de equipo (no)
-                'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(si)
-                'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(no) 
-
-
+                // 'campo7' => $p['campo7'], //Requiere Cambio de equipo (si)
+                // 'campo7' => $p['campo7'], //Requiere Cambio de equipo (no)
+                // 'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(si)
+                // 'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(no) 
 
                 'campo9' => $p['campo9'], //otp
                 'campo10' => $p['campo10'], //ID Servicio 
                 'campo11' => $p['campo11'], //Dirección Sede
                 'campo12' => $p['campo12'], //Requiere Cambio de Equipos (si)
-                'campo12' => $p['campo12'], //Requiere Cambio de Equipos (no)
-
+                // 'campo12' => $p['campo12'], //Requiere Cambio de Equipos (no)
 
                 'campo13' => $fActual, //inicio al Proceso de Ampliación del  Servicio
                 'campo14' => $p['campo14'], //Fecha de Entrega de la Ampliación de su Servicio
@@ -1461,6 +1472,405 @@ class Templates extends CI_Controller {
                 'campo16' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
                 'campo17' => $p['ingeniero1_email'] //EMAIL
             );
+
+            $argumentos['campo7']['si'] = $this->si($p['campo7']);
+            $argumentos['campo7']['no'] = $this->no($p['campo7']);
+            $argumentos['campo8']['si'] = $this->si($p['campo8']);
+            $argumentos['campo8']['no'] = $this->no($p['campo8']);
+
+            break;
+
+        }
+
+        return $argumentos;
+    }
+
+
+    // se arma el arreglo para guardar en base de datos el formulario de servicio
+    private function fill_data_service($p, $s){
+          $fActual = date('Y-m-d');
+
+        switch (true) {
+        case ($s == 1 || $s == 2):
+            $argumentos = array(
+                'nombre'                => $p['nombre'],
+                'nombre_cliente'        => $p['nombre_cliente'],
+                'servicio'              => $p['servicio'],
+                'fecha'                 => $p['fecha'],
+                'direccion_instalacion' => $p['direccion_instalacion'],
+                'ancho_banda'           => $p['ancho_banda'] . " MHz",
+                'interfaz_entrega'      => $p['interfaz_entrega'],
+                'fecha_servicio'        => $p['fecha_servicio'],
+                'ingeniero1'            => $p['ingeniero1'],
+                'ingeniero1_tel'        => $p['ingeniero1_tel'],
+                'ingeniero1_email'      => $p['ingeniero1_email'],
+                'ingeniero2'            => $p['ingeniero2'],
+                'ingeniero2_tel'        => $p['ingeniero2_tel'],
+                'ingeniero2_email'      => $p['ingeniero2_email'],
+                'ingeniero3'            => $p['ingeniero3'],
+                'ingeniero3_tel'        => $p['ingeniero3_tel'],
+                'ingeniero3_email'      => $p['ingeniero3_email'],
+            );
+            break;
+        case ($s == 4):
+            $argumentos = array(
+                'nombre'                     => $p['nombre'],
+                'nombre_cliente'             => $p['nombre_cliente'],
+                'servicio'                   => $p['servicio'],
+                'fecha'                      => $p['fecha'],
+                'direccion_instalacion_des1' => $p['direccion_instalacion_des1'],
+                'direccion_instalacion_des2' => $p['direccion_instalacion_des2'],
+                'direccion_instalacion_des3' => $p['direccion_instalacion_des3'],
+                'direccion_instalacion_des4' => $p['direccion_instalacion_des4'],
+                'existente'                  => $p['existente'],
+                'nuevo'                      => $p['nuevo'],
+                'ancho_banda'                => $p['ancho_banda'] . " MHz",
+                'interfaz_entrega'           => $p['interfaz_entrega'],
+                'equipos_intalar_camp1'      => $p['equipos_intalar_camp1'],
+                'equipos_intalar_camp2'      => $p['equipos_intalar_camp2'],
+                'equipos_intalar_camp3'      => $p['equipos_intalar_camp3'],
+                'fecha_servicio'             => $p['fecha_servicio'],
+                'ingeniero1'                 => $p['ingeniero1'],
+                'ingeniero1_tel'             => $p['ingeniero1_tel'],
+                'ingeniero1_email'           => $p['ingeniero1_email'],
+                'ingeniero2'                 => $p['ingeniero2'],
+                'ingeniero2_tel'             => $p['ingeniero2_tel'],
+                'ingeniero2_email'           => $p['ingeniero2_email'],
+                'ingeniero3'                 => $p['ingeniero3'],
+                'ingeniero3_tel'             => $p['ingeniero3_tel'],
+                'ingeniero3_email'           => $p['ingeniero3_email'],
+            );
+            break;
+        case ($s == 3 || $s == 5 || $s == 6 || $s == 7 || $s == 8 || $s == 9 || $s == 10):
+            $argumentos = array(
+                'nombre'                => $p['nombre'],
+                'nombre_cliente'        => $p['nombre_cliente'],
+                'servicio'              => $p['servicio'],
+                'fecha'                 => $p['fecha'],
+                'direccion_instalacion' => $p['direccion_instalacion'],
+                'existente'             => $p['existente'],
+                'nuevo'                 => $p['nuevo'],
+                'ancho_banda'           => $p['ancho_banda'] . " MHz",
+                'interfaz_entrega'      => $p['interfaz_entrega'],
+                'fecha_servicio'        => $p['fecha_servicio'],
+                'ingeniero1'            => $p['ingeniero1'],
+                'ingeniero1_tel'        => $p['ingeniero1_tel'],
+                'ingeniero1_email'      => $p['ingeniero1_email'],
+                'ingeniero2'            => $p['ingeniero2'],
+                'ingeniero2_tel'        => $p['ingeniero2_tel'],
+                'ingeniero2_email'      => $p['ingeniero2_email'],
+                'ingeniero3'            => $p['ingeniero3'],
+                'ingeniero3_tel'        => $p['ingeniero3_tel'],
+                'ingeniero3_email'      => $p['ingeniero3_email'],
+
+            );
+            break;
+        /********************NUEVAS PLANTILLAS********************/
+        case ($s == 11): //Adición Marquillas Aeropuerto el Dorado Opain
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // marquillas
+                'campo5'  => $p['campo5'], // local
+                'campo6'  => $p['campo6'], // internet
+                'campo7'  => $p['campo7'], // BW
+                'campo8'  => $p['campo8'], // Telefonia
+                'campo9'  => $p['campo9'], // lineas
+                'campo10' => $p['campo10'], // telefonos
+                'campo11' => $p['campo11'], // mpls
+                'campo12' => $p['campo12'], // bw2
+                'campo13' => $p['campo13'], // Adición de 6 marquillas:
+                'campo14' => $fActual, // inicio al Proceso de instalación
+                'campo15' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo17' => $p['ingeniero1_email'], // EMAIL
+                'campo18' => $p['campo18'], //  OTP
+                'campo19' => $p['campo19'], //  fecha entrega
+            );
+            break;
+        case ($s == 12): // Cambio de Equipos Servicio
+
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Sede
+                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
+                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
+                'campo6'  => $p['campo6'], // cantidad
+                'campo7'  => $p['campo7'], // otp
+                'campo8'  => $p['campo8'], // Códigos de Servicio en el CPE a Cambiar
+                'campo9'  => $fActual, // inicio fecha
+                'campo10' => $p['campo10'], // Fecha de Entrega del Cambio de Equipos  de su Servicio
+                'campo11' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // MAIL
+            );
+            break;
+
+        case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            $argumentos = array(
+
+                'campo1'  => $p['nombre'],// nombre
+                'campo2'  => $p['nombre_cliente'],// nombre cliente
+                'campo3'  => $p['servicio'],// servicio
+                'campo4'  => $p['campo4'],// Dirección Destino
+                'campo5'  => $p['campo5'],// Cantidad de Líneas Telefónicas Básicas
+                'campo6'  => $p['campo6'],// cantidadCiudad 
+                'campo7'  => $p['campo7'],// NOmbre ciudades
+                'campo8'  => $p['campo8'],// Cantidad DID
+                'campo9'  => $fActual,// inicio al Proceso de Cambio  de Servicio   
+                'campo10' => $p['campo10'],// Fecha de Entrega de su servicio
+                'campo11' => $p['ingeniero1'],// INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'],// TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // EMAIL
+
+                /*======================================================
+            PREGUNTAR LA FILA DE CIUDAD PUEDE SER MAS
+            ======================================================*/
+            );
+            break;
+        case ($s == 14): // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+
+            $ciudades = implode(", ", $p['campo6']);
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Destino
+                'campo5'  => $p['campo5'], // Cantidad de DID
+                'campo6'  => $ciudades, // ciudades (x)
+                'campo7'  => $fActual, // inicio al Proceso de Cambio  de Servicio
+                'campo8'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo9'  => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo10' => $p['ingeniero1_email'], // EMAIL
+                'campo11' => $p['campo11'], // Fecha de Entrega de su servicio
+            );
+
+            break;
+        case ($s == 15): // Traslado Externo Servicio
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Sede Antigua
+                'campo5'  => $p['campo5'], // Dirección Sede Nueva
+                'campo6'  => $p['campo6'], // Existen otros Servicios a Trasladar (si, no)
+                'campo7'  => $p['campo7'], // Cantidad
+                'campo8'  => $fActual, // inicio al Proceso de Traslado Externo del Servicio
+                'campo9'  => $p['campo9'], // Códigos de Servicio a Trasladar
+                'campo10' => $p['campo10'], // Fecha de Entrega del Traslado de su Servicio
+                'campo11' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo13' => $p['ingeniero1_email'], // EMAIL
+            );
+
+            break;
+
+        case ($s == 16): // Traslado Interno Servicio
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // NOMBRE
+                'campo2'  => $p['nombre_cliente'], // NOMBRE CLIENTE
+                'campo3'  => $p['servicio'], // SERVICIO
+                'campo4'  => $p['campo4'], // Dirección Sede
+                'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (SI, NO)
+                'campo6'  => $p['campo6'], // cantidad
+                'campo7'  => $p['campo7'], // Códigos de Servicio a Trasladar
+                'campo9'  => $p['campo9'], // Movimiento Equipos - Caja OB - Fibra  > 3 Mt (SI, NO)
+                'campo10' => $p['campo10'], // Movimiento Equipos - Caja OB - Fibra  < 3 Mt (SI, NO)
+                'campo11' => $p['campo11'], // Movimiento solo de Equipos(SI, NO)
+                'campo12' => $p['campo12'], // Movimiento solo de Caja OB – Fibra(si, NO)
+                'campo13' => $p['campo13'], // Movimiento Rack (si, NO)
+                'campo14' => $p['campo14'], // Movimiento ODF (si, NO)
+                'campo15' => $p['campo15'], // Determinación en Visita de Obra Civil (si, NO)
+                'campo16' => $fActual, // inicio al Proceso de Traslado Externo del Servicio
+                'campo17' => $p['campo17'], // Fecha de Entrega del Traslado de su Servicio
+                'campo18' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo19' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo20' => $p['ingeniero1_email'], // EMAIL
+            );
+            break;
+
+        case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+            $argumentos = array(
+                'campo1'  => $p['nombre'], //  nombre
+                'campo2'  => $p['nombre_cliente'], //  nombre cliente
+                'campo3'  => $p['servicio'], //  servicio
+                'campo4'  => $p['campo4'], //  Dirección Destino
+                'campo5'  => $p['campo5'], //  Existente
+                'campo6'  => $p['campo6'], //  A Implementar
+                'campo7'  => $p['campo7'], //  DID
+                'campo8'  => $p['campo8'], //  canales
+                'campo9'  => $p['campo9'], //  E1(DID)
+                'campo10' => $p['campo10'], //  E1(E1)
+                'campo11' => $p['campo11'], //  Buzones de Voz(si, NO)
+                'campo12' => $p['campo12'], //  cantidad
+                'campo13' => $p['campo13'], //  hardphones (si, NO)
+                'campo14' => $p['campo14'], //  cantidad
+                'campo15' => $p['campo15'], //  tipo
+                'campo16' => $p['campo16'], //  Softphones(si, NO)
+                'campo17' => $p['campo17'], //  cantidad
+                'campo18' => $p['campo18'], //  pc
+                'campo19' => $p['campo19'], //  celular
+                'campo20' => $p['campo20'], //  Diademas(si, NO)
+                'campo21' => $p['campo21'], //  cantidad
+                'campo22' => $p['campo22'], //  Arañas de Conferencia(si, NO)
+                'campo36' => $p['campo36'], //  cantidad
+                'campo23' => $p['campo23'], //  Botoneras(si, NO)
+                'campo24' => $p['campo24'], //  cantidad
+                'campo25' => $p['campo25'], //  Incluye Grabación de Voz(si, NO)
+                'campo26' => $p['campo26'], //  Incluye LAN Administrada(si, NO)
+                'campo27' => $p['campo27'], //  cantidad SW
+                'campo28' => $p['campo28'], //  puertos por sw
+                'campo29' => $p['campo29'], //  PoE (si, NO)
+                'campo30' => $p['campo30'], //  Teléfonos Inalámbricos (si, NO)
+                'campo31' => $p['campo31'], //  cantidad
+                'campo32' => $p['campo32'], //  AP Claro(si, NO)
+                'campo33' => $p['campo33'], //  existente
+                'campo34' => $p['campo34'], //  a implementar
+                'campo35' => $p['campo35'], //  Tipo de Conectividad MPLS, INTERNET:
+                'campo37' => $fActual, //  inicio al Proceso de instalación del Servicio
+                'campo38' => $p['ingeniero1'], //  INGENIERO IMPLEMENTACIÓN
+                'campo39' => $p['ingeniero1_tel'], //  TELEFONOS DE CONTACTO
+                'campo40' => $p['ingeniero1_email'], //  EMAIL
+                'campo41' => $p['campo41'], //  Fecha de Entrega de su servicio
+            );
+
+            break;
+
+        case ($s == 18): // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
+            $ciudades = implode(', ' , $p['campo6']);
+
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Destino
+                'campo5'  => $p['campo5'], // Cantidad de DID por Ciudad
+                'campo6'  => $ciudades, // ciudades
+                'campo7'  => $fActual, // inicio al Proceso de instalación del Servicio
+                'campo8'  => $p['campo8'], // Fecha de Entrega de su servicio
+                'campo9'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo11' => $p['ingeniero1_email'], //EMAIL
+            );
+            break;
+
+        case ($s == 19): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
+            $ciudades = implode(', ' , $p['campo6']);
+            $argumentos = array(
+                'campo1'  => $p['nombre'], // nombre
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // servicio
+                'campo4'  => $p['campo4'], // Dirección Destino
+                'campo5'  => $p['campo5'], // Cantidad de DID
+                'campo6'  => $ciudades, // ciudades
+                'campo7'  => $fActual, // inicio al Proceso de instalación del Servicio
+                'campo8'  => $p['campo8'], // Fecha de Entrega de su servicio
+                'campo9'  => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
+                'campo11' => $p['ingeniero1_email'], // EMAIL
+            );
+            break;
+
+        case ($s == 20): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
+            $ciudades = implode(', ' , $p['campo6']);
+            $argumentos = array(
+                'campo1' => $p['nombre'], // nombre
+                'campo2' => $p['nombre_cliente'], // nombre cliente
+                'campo3' => $p['servicio'], // servicio
+                'campo4' => $p['campo4'], // Dirección Destino
+                'campo5' => $p['campo5'], // Cantidad de DID
+                'campo6' => $ciudades, // ciudades
+                'campo7' => $fActual, // inicio al Proceso de instalación del Servicio
+                'campo8' => $p['campo8'], // Fecha de Entrega de su servicio 
+                'campo9' => $p['ingeniero1'], // INGENIERO IMPLEMENTACIÓN
+                'campo10' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO 
+                'campo11' => $p['ingeniero1_email'] // EMAIL
+            );
+            break;
+
+        case ($s == 21): // Instalación Telefonía Publica Básica - Internet Dedicado
+            $argumentos = array(
+                'campo1' => $p['nombre'], //nombre
+                'campo2' => $p['nombre_cliente'], //nombre cliente
+                'campo3' => $p['campo3'], //Dirección Destino
+                'campo4' => $p['campo4'], //Cantidad de Líneas Telefónicas Básicas
+                'campo5' => $p['campo5'], //OTP Internet Dedicado
+                'campo6' => $p['campo6'], //OTP Telefonia
+                'campo7' => $p['campo7'], //Ancho de Banda Internet
+                'campo8' => $p['campo8'], //Interfaz de Entrega
+                'campo9' => $p['campo9'], //Interfaz de Entrega
+                'campo10' => $fActual, //inicio al Proceso de instalación de los Servicios 
+                'campo11' => $p['campo11'], //Fecha de Entrega de los servicio
+                'campo12' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
+                'campo13' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
+                'campo14' => $p['ingeniero1_email'] //EMAIL
+
+            );
+            break;
+        case ($s == 22): //Cambio de Última Milla
+            $otps = implode(', ', $p['campo10']);
+            $ids_serv = implode(', ', $p['campo11']);
+            $dirs = implode(', ', $p['campo12']);
+            $r_equipos = implode(', ', $p['campo13']);
+            $r_um = implode(', ', $p['campo14']);
+
+
+            $argumentos = array(
+                'campo1' => $p['nombre'] , //nombre
+                'campo2' => $p['nombre_cliente'] , //nombre cliente
+                'campo3' => $p['servicio'] , //servicio
+                'campo4' => $p['campo4'] , //Dirección Sede
+                'campo5' => $p['campo5'] , //BW Actual
+                'campo6' => $p['campo6'] , //BW Nuevo
+                'campo7' => $p['campo7'] , //Requiere Cambio de equipo (si, no)
+                'campo8' => $p['campo8'] , //Requiere Cambio de Última Milla (si, no)
+                'campo9' => $p['campo9'] , //Existen otros Servicios a Modificar (si, no)
+                'campo10' => $otps, //OTP
+                'campo11' => $ids_serv, //ID Servicio
+                'campo12' => $dirs, //Dirección Sede
+                'campo13' => $r_equipos, //Requiere Cambio de Equipos (no)
+                'campo14' => $r_um , //Requiere Cambio de UM (no)
+                'campo15' => $fActual , //inicio al Proceso de Ampliación del  Servicio
+                'campo16' => $p['campo16'] , //Fecha de Entrega de la Ampliación de su Servicio
+                'campo17' => $p['ingeniero1'] , //INGENIERO IMPLEMENTACIÓN
+                'campo18' => $p['ingeniero1_tel'] , //TELEFONOS DE CONTACTO
+                'campo19' => $p['ingeniero1_email'] , //EMAIL
+            );
+
+            break;
+
+        case ($s == 23): // Cambio de Equipo
+            $otps = implode(', ', $p['campo9']);
+            $ids_serv = implode(', ', $p['campo10']);
+            $dirs = implode(', ', $p['campo11']);
+            $r_equipos = implode(', ', $p['campo12']);
+
+
+            $argumentos = array(
+                'campo1' => $p['nombre'], //nombre
+                'campo2' => $p['nombre_cliente'], //nombre cliente
+                'campo3' => $p['servicio'], //servicio
+                'campo4' => $p['campo4'], //Dirección Sede
+                'campo5' => $p['campo5'], //BW Actual
+                'campo6' => $p['campo6'], //BW Nuevo
+                'campo7' => $p['campo7'], //Requiere Cambio de equipo (si, no)
+                'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(si, no)
+
+                'campo9' => $otps, //otp
+                'campo10' => $ids_serv, //ID Servicio 
+                'campo11' => $dirs, //Dirección Sede
+                'campo12' => $r_equipos, //Requiere Cambio de Equipos (si)
+
+                'campo13' => $fActual, //inicio al Proceso de Ampliación del  Servicio
+                'campo14' => $p['campo14'], //Fecha de Entrega de la Ampliación de su Servicio
+                'campo15' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
+                'campo16' => $p['ingeniero1_tel'], //TELEFONOS DE CONTACTO
+                'campo17' => $p['ingeniero1_email'] //EMAIL
+            );
+
             break;
 
         }
@@ -1959,7 +2369,6 @@ class Templates extends CI_Controller {
         ';
     }
 
-//
     public function internet_dedicado($argumentos) {
         return '
 
@@ -3417,7 +3826,6 @@ class Templates extends CI_Controller {
           ';
     }
 
-//
     public function mpls_avanzado_intranet_con_backup_de_ultima_milla_nds2($argumentos) {
         return '
         <div dir="ltr"><div class="adM">
@@ -3907,7 +4315,6 @@ class Templates extends CI_Controller {
           ';
     }
 
-//
     public function mpls_avanzado_intranet_con_backup_de_ultima_milla_y_router_nds1($argumentos) {
         return ' <div dir="ltr"><div class="adM">
 
@@ -4469,7 +4876,6 @@ class Templates extends CI_Controller {
               ';
     }
 
-//
     public function avanzado_extranet($argumentos) {
         return '
 
@@ -4970,7 +5376,6 @@ class Templates extends CI_Controller {
         ';
     }
 
-//
     public function backend_mpls($argumentos) {
         return '
           <div dir="ltr"><div class="adM">
@@ -5508,7 +5913,6 @@ class Templates extends CI_Controller {
             ';
     }
 
-//
     public function mpls_avanzado_componente_datacenter_claro($argumentos) {
         return '
 
@@ -6069,7 +6473,6 @@ class Templates extends CI_Controller {
           ';
     }
 
-//
     public function mpls_transaccional_3g($argumentos) {
 
         return '
@@ -6645,7 +7048,7 @@ class Templates extends CI_Controller {
     PLANTILLAS DE CORREOS (NUEVAS)
     ========================================================================================================================================*/
 
-    //plantilla aeropuerto
+    //plantilla aeropuerto  11
     public function adicion_marquillas_aeropuerto_el_dorado_opain($argumentos) {
         return '
         <div dir="ltr"><p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt">Cordial Saludo Señor,</span></p>
@@ -7166,7 +7569,7 @@ class Templates extends CI_Controller {
 
     }
 
-    //
+    
     public function cambio_de_equipos_servicio($argumentos) {
         return '
           <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
@@ -7467,7 +7870,7 @@ class Templates extends CI_Controller {
 
     }
 
-    //
+    
     public function cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1($argumentos) {
         return '
         <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
@@ -8176,7 +8579,7 @@ class Templates extends CI_Controller {
         ';
 
     }
-    //
+    
     public function cambio_de_servicio_telefonia_fija_pública_linea_sip_a_pbx_distribuida_linea_sip($argumentos) {
 
         return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
@@ -8918,7 +9321,7 @@ class Templates extends CI_Controller {
 
     }
 
-    //
+    
     public function traslado_externo_servicio($argumentos) {
 
         return ' <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
@@ -9335,7 +9738,7 @@ class Templates extends CI_Controller {
             <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p></div>';
 
     }
-    //
+    
     public function traslado_interno_servicio($argumentos) {
 
         return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
@@ -9789,7 +10192,7 @@ class Templates extends CI_Controller {
         <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p></div>';
 
     }
-    //
+    
     public function soluciones_administrativas_comunicaciones_unificadas_pbx_administrada($argumentos) {
 
         return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p>
@@ -13758,6 +14161,7 @@ class Templates extends CI_Controller {
     }
     //
     public function cambio_de_ultima_milla($argumentos) {
+        $col_span =  count($argumentos['campo10']) * 2 + 6;
         $cadena = '';
         $cadena .= '   <div dir="ltr"><p class="MsoNormal" style="margin: 0in 0in 10pt; text-align: justify; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;"><span lang="ES" style="font-size: 12pt; line-height: 115%; font-family: Arial, sans-serif;">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
@@ -13817,7 +14221,7 @@ class Templates extends CI_Controller {
           </td>
          </tr>
          <tr style="height: 14.55pt;">
-          <td width="298" rowspan="'. (count($argumentos['campo10']) * 2) + 6 .'" valign="top" style="width: 223.35pt; border-right: 1pt solid rgb(192, 0, 0); border-bottom: 1pt solid rgb(192, 0, 0); border-left: 1pt solid rgb(192, 0, 0); border-image: initial; border-top: none; padding: 0in 5.4pt; height: 14.55pt;">
+          <td width="298" rowspan="'. $col_span .'" valign="top" style="width: 223.35pt; border-right: 1pt solid rgb(192, 0, 0); border-bottom: 1pt solid rgb(192, 0, 0); border-left: 1pt solid rgb(192, 0, 0); border-image: initial; border-top: none; padding: 0in 5.4pt; height: 14.55pt;">
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 16pt; color: black;">&nbsp;</span></i></b><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">&nbsp;</span></i><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" style="margin: 0in 0in 10pt; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">AMPLIACIÓN&nbsp;DE
@@ -13891,55 +14295,55 @@ class Templates extends CI_Controller {
           </td>
          </tr>';
 
-    for ($i=0; $i < count($argumentos['campo10']); $i++) { 
-  
-        $cadena .= '<tr style="height: 17.75pt;">
+        for ($i=0; $i < count($argumentos['campo10']); $i++) { 
+      
+            $cadena .= '<tr style="height: 17.75pt;">
 
-          <td width="47" rowspan="2" valign="top" style="width: 35.5pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in 5.4pt; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">OTP</span></i></b><span style="color: black;"></span></p>
+              <td width="47" rowspan="2" valign="top" style="width: 35.5pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in 5.4pt; height: 17.75pt;">
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">OTP</span></i></b><span style="color: black;"></span></p>
 
-          </td>
-          <td width="61" colspan="2" rowspan="2" valign="top" style="width: 45.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo10'][$i] . '</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="69" colspan="2" rowspan="2" valign="top" style="width: 52pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">ID Servicio</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="60" colspan="2" rowspan="2" valign="top" style="width: 44.95pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo11'][$i] . '</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="75" rowspan="2" valign="top" style="width: 56.15pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Dirección</span></i></b><span style="color: black;"></span></p>
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">Sede</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="87" rowspan="2" valign="top" style="width: 65pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo12'][$i] . '</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="77" colspan="3" rowspan="2" valign="top" style="width: 57.85pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de Equipos</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
-          </td>
-          <td width="76" rowspan="2" valign="top" style="width: 56.9pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de UM</span></i></b><span style="color: black;"></span></p>
-          </td>
-          <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo14'][$i]) . '</span></b><span style="color: black;"></span></p>
-          </td>
-         </tr>
-         <tr style="height: 17.75pt;">
-          <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
-          </td>
-          <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
-          <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo14'][$i]) . '</span></b><b><span lang="ES" style="color: rgb(31, 73, 125);">_</span></b><span style="color: black;"></span></p>
-          </td>
-         </tr>';
+              </td>
+              <td width="61" colspan="2" rowspan="2" valign="top" style="width: 45.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo10'][$i] . '</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="69" colspan="2" rowspan="2" valign="top" style="width: 52pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">ID Servicio</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="60" colspan="2" rowspan="2" valign="top" style="width: 44.95pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo11'][$i] . '</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="75" rowspan="2" valign="top" style="width: 56.15pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">&nbsp;</span></i></b><span style="color: black;"></span></p>
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Dirección</span></i></b><span style="color: black;"></span></p>
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="color: black;">Sede</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="87" rowspan="2" valign="top" style="width: 65pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" align="center" style="text-align: center; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo12'][$i] . '</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="77" colspan="3" rowspan="2" valign="top" style="width: 57.85pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de Equipos</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
+              </td>
+              <td width="76" rowspan="2" valign="top" style="width: 56.9pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); background: rgb(217, 217, 217); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 10pt; font-family: Arial, sans-serif; color: black;">Requiere Cambio de UM</span></i></b><span style="color: black;"></span></p>
+              </td>
+              <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">SI: ' . $this->si($argumentos['campo14'][$i]) . '</span></b><span style="color: black;"></span></p>
+              </td>
+             </tr>
+             <tr style="height: 17.75pt;">
+              <td width="66" colspan="2" valign="top" style="width: 49.75pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo13'][$i]) . '</span></b><span style="color: black;"></span></p>
+              </td>
+              <td width="57" valign="top" style="width: 42.6pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in; height: 17.75pt;">
+              <p class="MsoNormal" style="text-align: justify; margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><b><span lang="ES" style="color: black;">No: ' . $this->no($argumentos['campo14'][$i]) . '</span></b><b><span lang="ES" style="color: rgb(31, 73, 125);">_</span></b><span style="color: black;"></span></p>
+              </td>
+             </tr>';
 
-    }   
+        }   
 
          $cadena .= '<tr height="0">
           <td width="298" style="border: none;"></td>
@@ -14261,8 +14665,10 @@ class Templates extends CI_Controller {
     }
     //
     public function cambio_de_equipo($argumentos) {
+        $col_span = count($argumentos['campo10']) * 2 + 6;
 
-        return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
+        $cadena = '';
+        $cadena .= '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -14320,8 +14726,12 @@ class Templates extends CI_Controller {
           </span></b></div>
           </td>
          </tr>
+
+
+
          <tr style="height:14.75pt">
-          <td width="277" rowspan="12" valign="top" style="width:208pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.75pt">
+
+          <td width="277" rowspan="'. $col_span .'" valign="top" style="width:208pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.75pt">
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:16pt;line-height:115%;color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" style="margin:0in 0in 10pt;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">AMPLIACIÓN
@@ -14386,47 +14796,49 @@ class Templates extends CI_Controller {
           <td width="575" colspan="10" valign="top" style="width:431.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(191,191,191);padding:0in 5.4pt;height:20.4pt">
           <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-family:Arial,sans-serif">SERVICIOS A MODIFICAR</span></i></b><span lang="ES-CO"></span></p>
           </td>
-         </tr>
-         <tr style="height:0.25in">
-          <td width="43" rowspan="2" valign="top" style="width:32.6pt;border-top:none;border-bottom: 1pt solid rgb(192,0,0);border-left:none;border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:0.25in;">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">OTP</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="57" rowspan="2" valign="top" style="width:42.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">' . $argumentos['campo9'] . '</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="57" colspan="2" rowspan="2" valign="top" style="width:42.55pt;border-top:none;border-bottom: 1pt solid rgb(192,0,0);border-left:none;border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in;height:0.25in;">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">ID Servicio</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="57" rowspan="2" valign="top" style="width:42.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">' . $argumentos['campo10'] . '</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="69" rowspan="2" valign="top" style="width:51.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in;height:0.25in">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Dirección</span></i></b><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">Sede</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="111" rowspan="2" valign="top" style="width:82.95pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">' . $argumentos['campo11'] . '</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="94" colspan="2" rowspan="2" valign="top" style="width:70.85pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in;height:0.25in">
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Requiere
-          Cambio de Equipos</span></i></b><span lang="ES-CO"></span></p>
-          </td>
-          <td width="87" valign="top" style="width:65.6pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">SI: ' . $argumentos['campo12']['si'] . '</span></b><span lang="ES-CO"></span></p>
-          </td>
-         </tr>
-         <tr style="height:0.25in">
-          <td width="87" valign="top" style="width:65.6pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
-          <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">No: ' . $argumentos['campo12']['no'] . '</span></b><span lang="ES-CO"></span></p>
-          </td>
-         </tr>
+         </tr>';
 
 
+        for ($i=0; $i < count($argumentos['campo9']); $i++) { 
 
+            $cadena .= '<tr style="height:0.25in">
+              <td width="43" rowspan="2" valign="top" style="width:32.6pt;border-top:none;border-bottom: 1pt solid rgb(192,0,0);border-left:none;border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in 5.4pt;height:0.25in;">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">OTP</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="57" rowspan="2" valign="top" style="width:42.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">' . $argumentos['campo9'][$i] . '</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="57" colspan="2" rowspan="2" valign="top" style="width:42.55pt;border-top:none;border-bottom: 1pt solid rgb(192,0,0);border-left:none;border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in;height:0.25in;">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">ID Servicio</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="57" rowspan="2" valign="top" style="width:42.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">' . $argumentos['campo10'][$i] . '</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="69" rowspan="2" valign="top" style="width:51.75pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in;height:0.25in">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Dirección</span></i></b><span lang="ES-CO"></span></p>
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES">Sede</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="111" rowspan="2" valign="top" style="width:82.95pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">' . $argumentos['campo11'][$i] . '</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="94" colspan="2" rowspan="2" valign="top" style="width:70.85pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background:rgb(217,217,217);padding:0in;height:0.25in">
+              <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Requiere
+              Cambio de Equipos</span></i></b><span lang="ES-CO"></span></p>
+              </td>
+              <td width="87" valign="top" style="width:65.6pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">SI: ' . $this->si($argumentos['campo12'][$i]) . '</span></b><span lang="ES-CO"></span></p>
+              </td>
+             </tr>
+             <tr style="height:0.25in">
+              <td width="87" valign="top" style="width:65.6pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in;height:0.25in">
+              <p class="MsoNormal" align="center" style="text-align:center;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><span lang="ES">No: ' . $this->no($argumentos['campo12'][$i]) . '</span></b><span lang="ES-CO"></span></p>
+              </td>
+             </tr>';
+        }
 
-         <tr>
+         $cadena .= '<tr>
           <td width="277" style="width:207.75pt;padding:0in"></td>
           <td width="43" style="width:32.25pt;padding:0in"></td>
           <td width="57" style="width:42.75pt;padding:0in"></td>

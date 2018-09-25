@@ -2424,10 +2424,10 @@ $(function() {
 
 							<label for="campo7" class="col-md-6 control-label">Requiere Cambio de equipo:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo7" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo7">NO</label>
+				              <label><input type="radio" value="NO" name="campo7">NO</label>
 				            </div>							
 						</fieldset>
 					</div>
@@ -2436,10 +2436,10 @@ $(function() {
 						<fieldset class="col-md-6">
 							<label for="campo8" class="col-md-6 control-label">Requiere Cambio de Última Milla:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo8" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo8" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo8">NO</label>
+				              <label><input type="radio" value="NO" name="campo8">NO</label>
 				            </div>
 						</fieldset>
 
@@ -2447,10 +2447,10 @@ $(function() {
 							<!-- radio button -->
 							<label for="campo9" class="col-md-6 control-label">Existen otros Servicios a Modificar:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo9" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo9" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo9">NO</label>
+				              <label><input type="radio" value="NO" name="campo9">NO</label>
 				            </div>
 						</fieldset>
 					</div>
