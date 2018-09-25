@@ -539,7 +539,7 @@ class Templates extends CI_Controller {
         /*PVX_ADMINISTRADA*/
         case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $data_pr = array(
-                'id_ot_padre' => $pt['pr_otp'],
+                'id_ot_padre' => $pt['id_ot_padre'],
 
             );
 
@@ -548,45 +548,46 @@ class Templates extends CI_Controller {
             tipo_predio          => pr_tipo_predio
             nit_cliente          => pr_nit_cliente
             alias_lugar          => pr_alias_lugar
-            otp_asociada         => pr_otp_asociadas
+            otp_asociada         => pr_otp_asociada
             tipo_pbx             => pr_tipo_pbx
             tipo_instalacion     => pr_tipo_instalacion
-            servicio_actual      => pr_id_servicio
-            requiere_um          => pr_requiere_instalacion
+            servicio_actual      => pr_servicio_actual
+            requiere_um          => pr_requiere_um
             proveedor            => pr_proveedor
-            medio                => pr_medio_spa
+            medio                => pr_medio
             requiere_voc         => pr_requiere_voc
             programacion_voc     => pr_programacion_voc
             requiere_rfc         => pr_requiere_rfc
             conversor_medio      => pr_conversor_medio
             referencia_router    => pr_referencia_router
-            modulos_tarjetas     => pr_modulo_tarjeta
+            modulos_tarjetas     => pr_modulos_tarjetas
             licencias            => pr_licencias
             equipos_adicionales  => pr_equipos_adicionales
 
             fuentes_telefonos    => pr_cantidad
-            diademas             => pr_fuente_telefono
-            araña_conferencia    => pr_diademas
-            botoneras            => pr_aranas_conferencias
-            modulo_botonera      => pr_botoneras
-            fuente_botonera      => pr_expansion_botonera
-            consumibles          => pr_fuente_botonera
-            carta_valorizada     => pr_consumibles
-            nombre_1             => pr_registro_importacion
-            telefono_1           => pr_nombre_1
-            celular_1            => pr_telefono_1
-            correo_1             => pr_celular_1
-            nombre_2             => pr_email_1
-            telefono_2           => pr_nombre_2
-            celular_2            => pr_telefono_2
-            correo_2             => pr_celular_2
-            observaciones        => pr_email_2
-            tel_fija_claro       => pr_observaciones_1
-            cantidad_extenciones => pr_telefonia_fija
-            cantidad_buzones_voz => pr_cant_extension
-            grabacion_voz        => pr_cant_buzonv
-            lan_administrada     => pr_incluye_gravacion
-            pr_lan_admon
+
+            fuentes_telefonos    => pr_fuentes_telefonos
+            diademas             => pr_diademas
+            araña_conferencia    => pr_araña_conferencia
+            botoneras            => pr_botoneras
+            modulo_botonera      => pr_modulo_botonera
+            fuente_botonera      => pr_fuente_botonera
+            consumibles          => pr_consumibles
+            carta_valorizada     => pr_carta_valorizada
+            nombre_1             => pr_nombre_1
+            telefono_1           => pr_telefono_1
+            celular_1            => pr_celular_1
+            correo_1             => pr_correo_1
+            nombre_2             => pr_nombre_2
+            telefono_2           => pr_telefono_2
+            celular_2            => pr_celular_2
+            correo_2             => pr_correo_2
+            observaciones        => pr_observaciones
+            tel_fija_claro       => pr_tel_fija_claro
+            cantidad_extenciones => pr_cantidad_extenciones
+            cantidad_buzones_voz => pr_cantidad_buzones_voz
+            grabacion_voz        => pr_grabacion_voz
+            lan_administrada     => pr_lan_administrada
              */
 
             break;
