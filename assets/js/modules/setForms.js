@@ -5720,22 +5720,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- CIUDAD -->
 									<div class="form-group">
-								        <label for="pr_ciudad_2" class="col-md-3 control-label">Ciudad:</label>
+								        <label for="pr_ciudad_des" class="col-md-3 control-label">Ciudad:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
-								                <input name="pr_ciudad_2" id="pr_ciudad_2" class="form-control" type="text" >
+								                <input name="pr_ciudad_des" id="pr_ciudad_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- DIRECCIÓN:-->
 								    <div class="form-group">
-								        <label for="pr_direccion_2" class="col-md-3 control-label">Dirección:</label>
+								        <label for="pr_direccion_des" class="col-md-3 control-label">Dirección:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-								                <input name="pr_direccion_2" id="pr_direccion_2" class="form-control" type="text" >
+								                <input name="pr_direccion_des" id="pr_direccion_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
@@ -5744,11 +5744,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- TIPO PREDIO: -->
 								     <div class="form-group">
-								        <label for="pr_tipo_predio_2" class="col-md-3 control-label">Tipo predio:</label>
+								        <label for="pr_tipo_predio_des" class="col-md-3 control-label">Tipo predio:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
-								                <select class="form-control" id="pr_tipo_predio_2" name="pr_tipo_predio_2">
+								                <select class="form-control" id="pr_tipo_predio_des" name="pr_tipo_predio_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Edificio">Edificio</option>
 				  									<option value="Casa">Casa</option>
@@ -5760,11 +5760,11 @@ $(function() {
 
 								    <!-- NIT del cliente: -->
 								    <div class="form-group">
-								        <label for="pr_nit_cliente_2" class="col-md-3 control-label">NIT del cliente:</label>
+								        <label for="pr_nit_cliente_des" class="col-md-3 control-label">NIT del cliente:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="fa fa-sort-numeric-desc" ></i></span>
-								                <input name="pr_nit_cliente_2" id="pr_nit_cliente_2" class="form-control" type="number" >
+								                <input name="pr_nit_cliente_des" id="pr_nit_cliente_des" class="form-control" type="number" >
 								            </div>
 								        </div>
 								    </div>
@@ -5774,22 +5774,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- ALIAS DEL LUGAR  -->
 								    <div class="form-group">
-								        <label for="pr_alias_lugar_2" class="col-md-3 control-label">Alias del lugar:</label>
+								        <label for="pr_alias_lugar_des" class="col-md-3 control-label">Alias del lugar:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
-								                <input name="pr_alias_lugar_2" id="pr_alias_lugar_2" class="form-control" type="text" >
+								                <input name="pr_alias_lugar_des" id="pr_alias_lugar_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- OTP -->
 									<div class="form-group">
-								        <label for="pr_otp_2" class="col-md-3 control-label">OTP:</label>
+								        <label for="pr_id_ot_padre_des" class="col-md-3 control-label">OTP:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="otp_mpls_pd" id="otp_mpls_pd" class="form-control" type="text" value="${otp}" readonly>
+								                <input name="pr_id_ot_padre_des" id="pr_id_ot_padre_des" class="form-control" type="text" value="${otp}" readonly>
 
 								            </div>
 								        </div>
@@ -5799,11 +5799,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									 <!-- otp_asociadas -->
 									<div class="form-group">
-								        <label for="pr_otp_asociadas_2" class="col-md-3 control-label">OTP asociadas:</label>
+								        <label for="pr_otp_asociada_des" class="col-md-3 control-label">OTP asociadas:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_otp_asociadas_2" id="pr_otp_asociadas_2" class="form-control" type="text" >
+								                <input name="pr_otp_asociada_des" id="pr_otp_asociada_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
@@ -5811,11 +5811,11 @@ $(function() {
 
 								    <!-- TIPO MPLS: -->
 								     <div class="form-group">
-								        <label for="pr_tipo_mpls_2" class="col-md-3 control-label">Tipo MPLS:</label>
+								        <label for="pr_tipo_mpls_des" class="col-md-3 control-label">Tipo MPLS:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_tipo_mpls_2" name="pr_tipo_mpls_2">
+								                <select class="form-control" id="pr_tipo_mpls_des" name="pr_tipo_mpls_des">
 												    <option value="">Seleccionar...</option>
 												    <option value="MPLS Avanzado INTRANET NDS5 +  Monitoreo CPE (Gestión Proactiva)">MPLS Avanzado INTRANET NDS5 +  Monitoreo CPE (Gestión Proactiva)</option>
 				  									<option value="MPLS Avanzado INTRANET NDS4 +  Monitoreo CPE (Gestión Proactiva)">MPLS Avanzado INTRANET NDS4 +  Monitoreo CPE (Gestión Proactiva)</option>
@@ -5851,22 +5851,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- ancho_banda -->
 									<div class="form-group">
-								        <label for="pr_ancho_banda_2" class="col-md-3 control-label">Ancho de banda:</label>
+								        <label for="pr_ancho_banda_des" class="col-md-3 control-label">Ancho de banda:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-								                <input name="pr_ancho_banda_2" id="pr_ancho_banda_2" class="form-control" type="text" >
+								                <input name="pr_ancho_banda_des" id="pr_ancho_banda_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>		
 
 								    <!-- TIPO INSTALACION: -->
 								     <div class="form-group">
-								        <label for="pr_tipo_instalacion_2" class="col-md-3 control-label">Tipo instalación:</label>
+								        <label for="pr_tipo_instalacion_des" class="col-md-3 control-label">Tipo instalación:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_tipo_instalacion_2" name="pr_tipo_instalacion_2">
+								                <select class="form-control" id="pr_tipo_instalacion_des" name="pr_tipo_instalacion_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Instalar UM con PE">Instalar UM con PE</option>
 												    <option value="Instalar UM con PE sobre OTP de Pymes">Instalar UM con PE sobre OTP de Pymes</option>
@@ -5886,22 +5886,22 @@ $(function() {
 									
 								    <!-- ID SERVICIO ACTUAL -->
 									<div class="form-group">
-								        <label for="pr_id_servicio_2" class="col-md-3 control-label"><a title="Aplica para UM Existente">ID SERVICIO ACTUAL:</a></label>
+								        <label for="pr_servicio_actual_des" class="col-md-3 control-label"><a title="Aplica para UM Existente">ID SERVICIO ACTUAL:</a></label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-								                <input name="pr_id_servicio_2" id="pr_id_servicio_2" class="form-control" type="text" >
+								                <input name="pr_servicio_actual_des" id="pr_servicio_actual_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- ID SERVICIO PRINCIPAL (Aplica solo para enlaces Backup):-->
 									<div class="form-group">
-								        <label for="pr_idservicio_prin_2" class="col-md-3 control-label"><a title="Aplica solo para enlaces Backup">ID SERVICIO PRINCIPAL:</a></label>
+								        <label for="pr_servicio_principal_des" class="col-md-3 control-label"><a title="Aplica solo para enlaces Backup">ID SERVICIO PRINCIPAL:</a></label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-								                <input name="pr_idservicio_prin_2" id="pr_idservicio_prin_2" class="form-control" type="text" >
+								                <input name="pr_servicio_principal_des" id="pr_servicio_principal_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
@@ -5912,11 +5912,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
 								     <div class="form-group">
-								        <label for="pr_instalacion_um_2" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
+								        <label for="pr_requiere_um_des" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_instalacion_um_2" name="pr_instalacion_um_2">
+								                <select class="form-control" id="pr_requiere_um_des" name="pr_requiere_um_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>   												    
@@ -5927,11 +5927,11 @@ $(function() {
 
 								    <!-- ESTA ULTIMA MILLA ES UN BACKUP?: -->
 								    <div class="form-group">
-								        <label for="pr_umilla_backup_2" class="col-md-3 control-label">Esta ultima milla es backup:</label>
+								        <label for="pr_um_backup_des" class="col-md-3 control-label">Esta ultima milla es backup:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_umilla_backup_2" name="pr_umilla_backup_2">
+								                <select class="form-control" id="pr_um_backup_des" name="pr_um_backup_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>   					    
@@ -5943,11 +5943,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- PROVEEDOR: -->
 								    <div class="form-group">
-								        <label for="pr_proveedor_2" class="col-md-3 control-label">Proveedor:</label>
+								        <label for="pr_proveedor_des" class="col-md-3 control-label">Proveedor:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_proveedor_2" name="pr_proveedor_2">
+								                <select class="form-control" id="pr_proveedor_des" name="pr_proveedor_des">
 												    <option value="Seleccionar...</option>">Seleccionar...</option>
 												    <option value="No aplica">No aplica</option>
 				  									<option value="Existente">Existente</option>
@@ -5982,11 +5982,11 @@ $(function() {
 
 								    <!-- MEDIO -->
 								    <div class="form-group">
-								        <label for="pr_medio_2" class="col-md-3 control-label">Medio:</label>
+								        <label for="pr_medio_des" class="col-md-3 control-label">Medio:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_medio_2" name="pr_medio_2">
+								                <select class="form-control" id="pr_medio_des" name="pr_medio_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="No Aplica">No Aplica</option> 	   
 												    <option value="Fibra">Fibra</option>
@@ -6006,22 +6006,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- RESPUESTA FACTIBILIDAD BW > =100 MEGAS : -->
 						            <div class="form-group">
-								        <label for="pr_res_factibilidad_2" class="col-md-3 control-label">Respuesta factibilidad BW > 100 MEGAS:</label>
+								        <label for="pr_factibilidad_bw_des" class="col-md-3 control-label">Respuesta factibilidad BW > 100 MEGAS:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_res_factibilidad_2" id="pr_res_factibilidad_2" class="form-control" type="text" >
+								                <input name="pr_factibilidad_bw_des" id="pr_factibilidad_bw_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 						            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 								    <div class="form-group">
-								        <label for="pr_tipo_conector_2" class="col-md-3 control-label">Tipo conector:</label>
+								        <label for="pr_tipo_conector_des" class="col-md-3 control-label">Tipo conector:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_tipo_conector_2" name="pr_tipo_conector_2">
+								                <select class="form-control" id="pr_tipo_conector_des" name="pr_tipo_conector_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="LC">LC</option>  									   									
 												    <option value="SC">SC</option> 	   
@@ -6035,22 +6035,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- ACCESO (Solo Aplica para Canales SDH) : -->
 						            <div class="form-group">
-								        <label for="pr_sds_destino_2" class="col-md-3 control-label">SDS destino (Unifilar):</label>
+								        <label for="pr_sds_destino_des" class="col-md-3 control-label">SDS destino (Unifilar):</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-								                <input name="pr_sds_destino_2" id="pr_sds_destino_2" class="form-control" type="text" >
+								                <input name="pr_sds_destino_des" id="pr_sds_destino_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 								    
 								    <!-- INTERFACE DE ENTREGA AL CLIENTE: -->
 								    <div class="form-group">
-								        <label for="pr_tipo_conector_2" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+								        <label for="pr_interfaz_entrega_cliente_des" class="col-md-3 control-label">Interface de entrega al cliente:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_tipo_conector_2" name="pr_tipo_conector_2">
+								                <select class="form-control" id="pr_interfaz_entrega_cliente_des" name="pr_interfaz_entrega_cliente_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="No aplica">No aplica</option> 									   									
 												    <option value="Ethernet">Ethernet</option> 	   
@@ -6064,17 +6064,19 @@ $(function() {
 								            </div>
 								        </div>
 								    </div>
+								    
 								</fieldset>
 							</div>
 							<div class="d-inline-b">
 								<fieldset class="col-md-6">
+									
 									<!-- REQUIERE VOC : -->
 								     <div class="form-group">
-								        <label for="pr_requiere_voc_2" class="col-md-3 control-label">Requiere VOC:</label>
+								        <label for="pr_requiere_voc_des" class="col-md-3 control-label">Requiere VOC:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_requiere_voc_2" name="pr_requiere_voc_2">
+								                <select class="form-control" id="pr_requiere_voc_des" name="pr_requiere_voc_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>    
@@ -6087,11 +6089,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- PROGRAMACIÓN DE VOC : -->
 								     <div class="form-group">
-								        <label for="pr_programacion_voc_2" class="col-md-3 control-label">Programación de VOC:</label>
+								        <label for="pr_programacion_voc_des" class="col-md-3 control-label">Programación de VOC:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_programacion_voc_2" name="pr_programacion_voc_2">
+								                <select class="form-control" id="pr_programacion_voc_des" name="pr_programacion_voc_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Programada">Programada</option>
 				  									<option value="No requiere programación">No requiere programación</option>   												
@@ -6109,11 +6111,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- REQUIERE RFC : -->
 								     <div class="form-group">
-								        <label for="pr_requiere_rfc_2" class="col-md-3 control-label">Requiere RFC:</label>
+								        <label for="pr_requiere_rfc_des" class="col-md-3 control-label">Requiere RFC:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_requiere_rfc_2" name="pr_requiere_rfc_2">
+								                <select class="form-control" id="pr_requiere_rfc_des" name="pr_requiere_rfc_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 				  									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  												
@@ -6130,11 +6132,11 @@ $(function() {
 									
 									<!-- Conversor Medio: -->
 						            <div class="form-group">
-								        <label for="pr_conversor_medio_2" class="col-md-3 control-label">Conversor Medio:</label>
+								        <label for="pr_conversor_medio_des" class="col-md-3 control-label">Conversor Medio:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_conversor_medio_2" id="pr_conversor_medio_2" class="form-control" type="text" >
+								                <input name="pr_conversor_medio_des" id="pr_conversor_medio_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
@@ -6142,22 +6144,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- Referencia Router: -->
 						            <div class="form-group">
-								        <label for="pr_referencia_router_2" class="col-md-3 control-label">Referencia Router:</label>
+								        <label for="pr_referencia_router_des" class="col-md-3 control-label">Referencia Router:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_referencia_router_2" id="pr_referencia_router_2" class="form-control" type="text" >
+								                <input name="pr_referencia_router_des" id="pr_referencia_router_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- Modulos o Tarjetas: -->
 						            <div class="form-group">
-								        <label for="pr_modulo_tarjeta_2" class="col-md-3 control-label">Modulos o Tarjetas:</label>
+								        <label for="pr_modulos_tarjetas_des" class="col-md-3 control-label">Modulos o Tarjetas:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_modulo_tarjeta_2" id="pr_modulo_tarjeta_2" class="form-control" type="text" >
+								                <input name="pr_modulos_tarjetas_des" id="pr_modulos_tarjetas_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
@@ -6167,22 +6169,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- Licencias --> 
 								    <div class="form-group">
-								        <label for="pr_licencias_2" class="col-md-3 control-label">Licencias:</label>
+								        <label for="pr_licencias_des" class="col-md-3 control-label">Licencias:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_licencias_2" id="pr_licencias_2" class="form-control" type="text" >
+								                <input name="pr_licencias_des" id="pr_licencias_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- Equipos Adicionale--> 
 								    <div class="form-group">
-								        <label for="pr_equipos_adicionales_2" class="col-md-3 control-label">Equipos adicionale:</label>
+								        <label for="pr_equipos_adicionales_des" class="col-md-3 control-label">Equipos adicionale:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_equipos_adicionales_2" id="pr_equipos_adicionales_2" class="form-control" type="text" >
+								                <input name="pr_equipos_adicionales_des" id="pr_equipos_adicionales_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
@@ -6190,11 +6192,11 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- Consumibles:--> 
 								    <div class="form-group">
-								        <label for="pr_consumibles_2" class="col-md-3 control-label">Consumibles:</label>
+								        <label for="pr_consumibles_des" class="col-md-3 control-label">Consumibles:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_consumibles_2" name="pr_consumibles_2">
+								                <select class="form-control" id="pr_consumibles_des" name="pr_consumibles_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Bandeja">Bandeja</option>
 				  									<option value="Cables de Poder ">Cables de Poder </option>
@@ -6208,11 +6210,11 @@ $(function() {
 
 								    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
 								     <div class="form-group">
-								        <label for="pr_importacion_carta_2" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+								        <label for="pr_carta_valorizada_des" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								                <select class="form-control" id="pr_importacion_carta_2" name="pr_importacion_carta_2">
+								                <select class="form-control" id="pr_carta_valorizada_des" name="pr_carta_valorizada_des">
 												    <option value="Seleccionar...">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>
@@ -6228,22 +6230,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- NOMBRE --> 
 								    <div class="form-group">
-								        <label for="pr_nombre_3" class="col-md-3 control-label">Nombre:</label>
+								        <label for="pr_nombre_1_des" class="col-md-3 control-label">Nombre:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-								                <input name="pr_nombre_3" id="pr_nombre_3" class="form-control" type="text" >
+								                <input name="pr_nombre_1_des" id="pr_nombre_1_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- TELEFONO --> 
 								    <div class="form-group">
-								        <label for="pr_telefono_3" class="col-md-3 control-label">Telefono:</label>
+								        <label for="pr_telefono_1_des" class="col-md-3 control-label">Telefono:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-								                <input name="pr_telefono_3" id="pr_telefono_3" class="form-control" type="number" >
+								                <input name="pr_telefono_1_des" id="pr_telefono_1_des" class="form-control" type="number" >
 								            </div>
 								        </div>
 								    </div>
@@ -6251,22 +6253,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- CELULAR --> 
 								    <div class="form-group">
-								        <label for="pr_celular_3" class="col-md-3 control-label">Celular:</label>
+								        <label for="pr_celular_1_des" class="col-md-3 control-label">Celular:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-								                <input name="pr_celular_3" id="pr_celular_3" class="form-control" type="number" >
+								                <input name="pr_celular_1_des" id="pr_celular_1_des" class="form-control" type="number" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- EMAIL --> 
 								    <div class="form-group">
-								        <label for="pr_email_3" class="col-md-3 control-label">Email:</label>
+								        <label for="pr_correo_1_des" class="col-md-3 control-label">Email:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-								                <input name="pr_email_3" id="pr_email_3" class="form-control" type="email" >
+								                <input name="pr_correo_1_des" id="pr_correo_1_des" class="form-control" type="email" >
 								            </div>
 								        </div>
 								    </div>
@@ -6278,22 +6280,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- NOMBRE --> 
 								    <div class="form-group">
-								        <label for="pr_nombre_4" class="col-md-3 control-label">Nombre:</label>
+								        <label for="pr_nombre_2_des" class="col-md-3 control-label">Nombre:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-								                <input name="pr_nombre_4" id="pr_nombre_4" class="form-control" type="text" >
+								                <input name="pr_nombre_2_des" id="pr_nombre_2_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- TELEFONO --> 
 								    <div class="form-group">
-								        <label for="pr_telefono_4" class="col-md-3 control-label">Telefono:</label>
+								        <label for="pr_telefono_2_des" class="col-md-3 control-label">Telefono:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-								                <input name="pr_telefono_4" id="pr_telefono_4" class="form-control" type="number" >
+								                <input name="pr_telefono_2_des" id="pr_telefono_2_des" class="form-control" type="number" >
 								            </div>
 								        </div>
 								    </div>
@@ -6301,22 +6303,22 @@ $(function() {
 								<fieldset class="col-md-6">
 									<!-- CELULAR --> 
 								    <div class="form-group">
-								        <label for="pr_celular_4" class="col-md-3 control-label">Celular:</label>
+								        <label for="pr_celular_2_des" class="col-md-3 control-label">Celular:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-								                <input name="pr_celular_4" id="pr_celular_4" class="form-control" type="number" >
+								                <input name="pr_celular_2_des" id="pr_celular_2_des" class="form-control" type="number" >
 								            </div>
 								        </div>
 								    </div>
 
 								    <!-- EMAIL --> 
 								    <div class="form-group">
-								        <label for="pr_email_4" class="col-md-3 control-label">Correo electronico:</label>
+								        <label for="pr_correo_2_des" class="col-md-3 control-label">Correo electronico:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-								                <input name="pr_email_4" id="pr_email_4" class="form-control" type="email" >
+								                <input name="pr_correo_2_des" id="pr_correo_2_des" class="form-control" type="email" >
 								            </div>
 								        </div>
 								    </div>
@@ -6326,11 +6328,11 @@ $(function() {
 								<fieldset class="col-md-12">
 									<!-- OBSERVACIONES: --> 
 								    <div class="form-group">
-								        <label for="pr_observaciones_2" class="col-md-3 control-label">Observaciones:</label>
+								        <label for="pr_observaciones_1_des" class="col-md-3 control-label">Observaciones:</label>
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_observaciones_2" id="pr_observaciones_2" class="form-control" type="text" >
+								                <input name="pr_observaciones_1_des" id="pr_observaciones_1_des" class="form-control" type="text" >
 								            </div>
 								        </div>
 								    </div>
