@@ -156,7 +156,7 @@ $(function() {
                 $('#btnUpdOt').attr('disabled', false); // se activa el boton de actualizar
                 $('#tabs_form').show();
                 const servicio_nombre = $("#ins_servicio option:selected").html();
-                const form_servicio = setForm.returnFormularyService(nombre_cliente, direccion_destino, servicio_seleccionado, servicio_nombre);
+                const form_servicio = setForm.returnFormularyService(nombre_cliente, direccion_destino, servicio_seleccionado, servicio_nombre, arg);
                 const form_producto = setForm.returnFormularyProduct(servicio_seleccionado, arg);
                 // pinto el formulario de servicio
                 $('#general_servicio').html(form_servicio);
