@@ -2643,123 +2643,33 @@ $(function() {
 									</div>
 								</div>
 							</div>
-							<label for="campo12" class="col-md-6 control-label">Requiere Cambio de equipos:</label>
-				            <div class="radio">
-				              <label><input type="radio" value="SI" name="campo12" checked>SI</label>
-				            </div>
-				            <div class="radio">
-				              <label><input type="radio" value="NO" name="campo12">NO</label>
-				            </div>	
+							<!--*********************  SELECT  *********************-->
+							<div class="form-group">
+								<label for="campo12[]" class="col-md-3 control-label">Requiere Cambio de equipos:</label>
+								<div class="col-md-8 selectContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
+										<select name="campo12[]" class="form-control" required>
+											<option value="SI">SI</option>
+											<option value="NO">NO</option>
+										</select>
+									</div>
+								</div>
+							</div>
 
 						</fieldset>
-					</div>
-				</div>
 				
-				<div class="widget bg_white m-t-25 d-inline-b cliente">
-					<div class="d-inline-b">
 						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo13" class="col-md-3 control-label">inicio al Proceso:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="date" name="campo13" id="campo13" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo14" class="col-md-3 control-label">Parafiscales:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo14" id="campo14" class="form-control">
-									</div>
-								</div>
-							</div>
-						</fieldset>
-						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo15" class="col-md-3 control-label">Certificación Alturas:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="text" name="campo15" id="campo15" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo16" class="col-md-3 control-label">Cursos Especiales:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo16" id="campo16" class="form-control">
-									</div>
-								</div>
-							</div>
-						</fieldset>
-					</div>
-					<div class="d-inline-b">
-						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo17" class="col-md-3 control-label">EPP:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-record"></i></span>
-										<input type="date" name="campo17" id="campo17" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo18" class="col-md-3 control-label">Rack:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo18" id="campo18" class="form-control">
-									</div>
-								</div>
-							</div>
-
 							<!--*********************  INPUT DATE  *********************-->
 							<div class="form-group">
-								<label for="campo21" class="col-md-3 control-label">Fecha Entrega Ampliación: &nbsp;</label>
+								<label for="campo14" class="col-md-3 control-label">Fecha Entrega Ampliación: &nbsp;</label>
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="date" name="campo21" id="campo21" required class="form-control">
+										<input type="date" name="campo14" id="campo14" required class="form-control">
 									</div>
 								</div>
 							</div>
-							
-							
-						</fieldset>
-						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo19" class="col-md-3 control-label">Tomas reguladas:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="text" name="campo19" id="campo19" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<label for="campo20" class="col-md-6 control-label">Requiere que el Cambio de Ultima Milla necesario para soportar la ampliación del Servicio, se ejecute en horario No Hábil o Fin de Semana:</label>
-				            <div class="radio">
-				              <label><input type="radio" value="SI" name="campo20" checked>SI</label>
-				            </div>
-				            <div class="radio">
-				              <label><input type="radio" value="NO" name="campo20">NO</label>
-				            </div>	
 						</fieldset>
 					</div>
 				</div>

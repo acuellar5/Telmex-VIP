@@ -206,7 +206,7 @@ class Templates extends CI_Controller {
         case '9': // MPLS Avanzado con Componente Datacenter Claro
         case '10': // MPLS Transaccional 3G
             $data_pr = array(
-                'id_ot_padre_ori'              => $pt['pr_id_ot_padre_ori'],
+                'id_ot_padre_ori'              => $pt['nro_ot_onyx'],
                 'ciudad_ori'                   => $pt['pr_ciudad_ori'],
                 'direccion_ori'                => $pt['pr_direccion_ori'],
                 'tipo_predio_ori'              => $pt['pr_tipo_predio_ori'],
@@ -1430,14 +1430,8 @@ class Templates extends CI_Controller {
             $argumentos['campo9']['si'] = $this->si($p['campo9']);
             $argumentos['campo9']['no'] = $this->no($p['campo9']);
 
-            // $length = count($p['campo10']);
-            // for ($i=0; $i < $length; $i++) { 
-                
-            // }
-
-
-
             break;
+            
         case ($s == 23): // Cambio de Equipo
             $argumentos = array(
                 'campo0' => $p['campo0'], //otp
@@ -1451,11 +1445,16 @@ class Templates extends CI_Controller {
                 'campo7' => $p['campo7'], //Requiere Cambio de equipo (no)
                 'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(si)
                 'campo8' => $p['campo8'], //Existen otros Servicios a Modificar(no) 
+
+
+
                 'campo9' => $p['campo9'], //otp
                 'campo10' => $p['campo10'], //ID Servicio 
                 'campo11' => $p['campo11'], //Dirección Sede
                 'campo12' => $p['campo12'], //Requiere Cambio de Equipos (si)
                 'campo12' => $p['campo12'], //Requiere Cambio de Equipos (no)
+
+
                 'campo13' => $fActual, //inicio al Proceso de Ampliación del  Servicio
                 'campo14' => $p['campo14'], //Fecha de Entrega de la Ampliación de su Servicio
                 'campo15' => $p['ingeniero1'], //INGENIERO IMPLEMENTACIÓN
