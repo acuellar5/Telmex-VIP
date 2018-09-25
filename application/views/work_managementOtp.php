@@ -332,7 +332,7 @@
                                 </td>
                                 <td>KICK OFF</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ko" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_ko" class="form-control">
@@ -361,7 +361,7 @@
                                 </td>
                                 <td>VISITA OBRA CIVIL</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_voc" class="form-control">
@@ -381,7 +381,7 @@
                             <tr>
                                 <td>VISITA OBRA CIVIL TERCEROS</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_voct" class="form-control">
@@ -410,7 +410,7 @@
                                 </td>
                                 <td>ENVIO COTIZACION</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ec" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_ec" class="form-control">
@@ -439,7 +439,7 @@
                                 </td>
                                 <td>APROBACION COTIZACION</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_ac" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_ac" class="form-control">
@@ -468,7 +468,7 @@
                                 </td>
                                 <td>SOLICITUD INFORMACIÓN TECNICA</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_sit" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_sit" class="form-control">
@@ -497,7 +497,7 @@
                                 </td>
                                 <td>VISITA EJECUCION OBRA CIVIL</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_veoc" class="form-control">
@@ -517,7 +517,7 @@
                             <tr>
                                 <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_veoct" class="form-control">
@@ -546,7 +546,7 @@
                                 </td>
                                 <td>CONFIGURACION RED CLARO</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_crc" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_crc" class="form-control">
@@ -575,7 +575,7 @@
                                 </td>
                                 <td>VISITA ENTREGA UM TERCEROS</td>
                                 <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_veut" class="form-control fechas_hitos">
                                 </td>
                                 <td>
                                     <select name="estado" id="estado_veut" class="form-control">

@@ -11423,11 +11423,11 @@ $(function() {
 
 						    <!-- OTP -->
 							<div class="form-group">
-						        <label for="pr_otp" class="col-md-3 control-label">OTP:</label>
+						        <label for="pr_id_ot_padre" class="col-md-3 control-label">OTP:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-						                <input name="pr_otp" id="pr_otp" class="form-control" type="text" disables value="${otp}">
+						                <input name="pr_id_ot_padre" id="pr_id_ot_padre" class="form-control" type="text" disables value="${otp}">
 						            </div>
 						        </div>
 						    </div>
@@ -11437,22 +11437,22 @@ $(function() {
 
 							<!-- otp_asociadas -->
 							<div class="form-group">
-						        <label for="pr_otp_asociadas" class="col-md-3 control-label">OTP asociadas:</label>
+						        <label for="pr_otp_asociada" class="col-md-3 control-label">OTP asociadas:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociadas" id="pr_otp_asociadas" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
 
 						    <!-- TIPO DE TELEFONIA FIJA: -->
 						    <div class="form-group">
-						        <label for="pr_tipo_telefoniaf" class="col-md-3 control-label">Tipo telefonia fija:</label>
+						        <label for="pr_tipo_telefonia" class="col-md-3 control-label">Tipo telefonia fija:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_tipo_telefoniaf" name="pr_tipo_telefoniaf">
+						                <select class="form-control" id="pr_tipo_telefonia" name="pr_tipo_telefonia">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Telefonia Pública - Líneas Análogas">Telefonia Pública - Líneas Análogas</option>
 	      									<option value="Telefonia Pública - Líneas E1 - R2">Telefonia Pública - Líneas E1 - R2</option>
@@ -11511,11 +11511,11 @@ $(function() {
 
 							<!-- ID SERVICIO ACTUAL (Aplica para UM Existente) -->
 							<div class="form-group">
-						        <label for="pr_idservicio_actual" class="col-md-3 control-label">ID servicio Actual(Aplica para UM Existente):</label>
+						        <label for="pr_servicio_actual" class="col-md-3 control-label">ID servicio Actual(Aplica para UM Existente):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_idservicio_actual" id="pr_idservicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -11530,11 +11530,11 @@ $(function() {
 
 							<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
 						    <div class="form-group">
-						        <label for="pr_requiere_instalacion" class="col-md-3 control-label">¿Requiere instalación UM?</label>
+						        <label for="pr_requiere_um" class="col-md-3 control-label">¿Requiere instalación UM?</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_instalacion" name="pr_requiere_instalacion">
+						                <select class="form-control" id="pr_requiere_um" name="pr_requiere_um">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>   												
@@ -11546,11 +11546,11 @@ $(function() {
 
 						    <!-- PROVEEDOR: -->
 						    <div class="form-group">
-						        <label for="pr_proveedor_milla" class="col-md-3 control-label">Proveedor:</label>
+						        <label for="pr_proveedor" class="col-md-3 control-label">Proveedor:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_proveedor_milla" name="pr_proveedor_milla">
+						                <select class="form-control" id="pr_proveedor" name="pr_proveedor">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>
 	      									<option value="Existente">Existente</option>
@@ -11586,6 +11586,27 @@ $(function() {
 
 						<fieldset class="col-md-6">
 
+							<!-- MEDIO -->
+						    <div class="form-group">
+						        <label for="pr_medio" class="col-md-3 control-label">Medio:</label>
+						        <div class="col-md-9 selectContainer">
+						            <div class="input-group">
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+						                <select class="form-control" id="pr_medio" name="pr_medio">
+										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="No Aplica">No Aplica</option>  									   									
+										    <option value="Existente">Existente</option> 	   
+										    <option value="Fibra">Fibra</option>
+										    <option value="Cobre">Cobre</option>
+										    <option value="Satelital">Satelital</option> 
+										    <option value="Radio enlace">Radio enlace</option>
+										    <option value="3G">3G</option>
+										    <option value="UTP">UTP</option>
+										</select>
+						            </div>
+						        </div>
+						    </div>
+
 							<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 						    <div class="form-group">
 						        <label for="pr_tipo_conector" class="col-md-3 control-label">Tipo conector(Aplica FO Claro):</label>
@@ -11602,28 +11623,7 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
-							<!-- MEDIO -->
-						    <div class="form-group">
-						        <label for="pr_medio_um" class="col-md-3 control-label">Medio:</label>
-						        <div class="col-md-9 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_medio_um" name="pr_medio_um">
-										    <option value="Seleccionar...">Seleccionar...</option>
-										    <option value="No Aplica">No Aplica</option>  									   									
-										    <option value="Existente">Existente</option> 	   
-										    <option value="Fibra">Fibra</option>
-										    <option value="Cobre">Cobre</option>
-										    <option value="Satelital">Satelital</option> 
-										    <option value="Radio enlace">Radio enlace</option>
-										    <option value="3G">3G</option>
-										    <option value="UTP">UTP</option>
-										</select>
-						            </div>
-						        </div>
-						    </div>
-
-						    
+											    
 						</fieldset>
 					</div>
 
@@ -11632,11 +11632,11 @@ $(function() {
 
 							<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
 						    <div class="form-group">
-						        <label for="pr_interface_entregac" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+						        <label for="pr_interfaz_entrega_cliente" class="col-md-3 control-label">Interface de entrega al cliente:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_interface_entregac" name="pr_interface_entregac">
+						                <select class="form-control" id="pr_interfaz_entrega_cliente" name="pr_interfaz_entrega_cliente">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>  									   									
 										    <option value="Ethernet">Ethernet</option> 	   
@@ -11741,11 +11741,11 @@ $(function() {
 
 						    <!-- Modulos o Tarjetas: -->
 				            <div class="form-group">
-						        <label for="pr_modulo_tarjeta" class="col-md-3 control-label">Modulos o Tarjetas:</label>
+						        <label for="pr_modulos_tarjetas" class="col-md-3 control-label">Modulos o Tarjetas:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_modulo_tarjeta" id="pr_modulo_tarjeta" class="form-control" type="text" >
+						                <input name="pr_modulos_tarjetas" id="pr_modulos_tarjetas" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -11782,11 +11782,11 @@ $(function() {
 
 							<!-- Consumibles--> 
 						    <div class="form-group">
-						        <label for="pr_Consumibles" class="col-md-3 control-label">Consumibles:</label>
+						        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_Consumibles" name="pr_Consumibles">
+						                <select class="form-control" id="pr_consumibles" name="pr_consumibles">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Bandeja">Bandeja</option>
 	      									<option value="Cables de poder">Cables de poder</option>
@@ -11801,11 +11801,11 @@ $(function() {
 
 						    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA -->
 						    <div class="form-group">
-						        <label for="pr_registro_importacion" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+						        <label for="pr_carta_valorizada" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_registro_importacion" name="pr_registro_importacion">
+						                <select class="form-control" id="pr_carta_valorizada" name="pr_carta_valorizada">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -11860,11 +11860,11 @@ $(function() {
 
 						    <!-- EMAIL --> 
 						    <div class="form-group">
-						        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
+						        <label for="pr_correo_1" class="col-md-3 control-label">Email:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-						                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
+						                <input name="pr_correo_1" id="pr_correo_1" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -11915,11 +11915,11 @@ $(function() {
 
 						    <!-- EMAIL --> 
 						    <div class="form-group">
-						        <label for="pr_email_2" class="col-md-3 control-label">Email:</label>
+						        <label for="pr_correo_2" class="col-md-3 control-label">Email:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-						                <input name="pr_email_2" id="pr_email_2" class="form-control" type="email" >
+						                <input name="pr_correo_2" id="pr_correo_2" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -11984,11 +11984,11 @@ $(function() {
 
 							<!-- Interfaz Equipos Cliente: -->
 						    <div class="form-group">
-						        <label for="pr_interfaz_equipoc" class="col-md-3 control-label">Interfaz equipos cliente:</label>
+						        <label for="pr_interfaz_equipo_cliente" class="col-md-3 control-label">Interfaz equipos cliente:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_interfaz_equipoc" name="pr_interfaz_equipoc">
+						                <select class="form-control" id="pr_interfaz_equipo_cliente" name="pr_interfaz_equipo_cliente">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="FXS">FXS</option>
 	      									<option value="RJ11">RJ11</option>
@@ -12000,16 +12000,16 @@ $(function() {
 						        </div>
 						    </div>
 
-						    <!-- Cantidad Canales: -->
+						    <!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_canales" class="col-md-3 control-label">Cantidad Canales:</label>
+						        <label for="pr_cantidad_lineas_basicas" class="col-md-3 control-label">Cantidad Lineas Básicas(Telef. Pública Líneas Análogas):</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_cantidad_canales" id="pr_cantidad_canales" class="form-control" type="text" >
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+						                <input name="pr_cantidad_lineas_basicas" id="pr_cantidad_lineas_basicas" class="form-control" type="text" >
 						            </div>
 						        </div>
-						    </div>
+						    </div>						    
 
 						</fieldset>
 					</div>
@@ -12031,11 +12031,11 @@ $(function() {
 
 						    <!-- Cantidad de DID Solicitados  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_did" class="col-md-3 control-label">Cantidad DID Solicitados:</label>
+						        <label for="pr_cant_did_solicitados" class="col-md-3 control-label">Cantidad DID Solicitados:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_did" id="pr_cantidad_did" class="form-control" type="text" >
+						                <input name="pr_cant_did_solicitados" id="pr_cant_did_solicitados" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12043,25 +12043,25 @@ $(function() {
 
 						<fieldset class="col-md-6">
 
-							<!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
+							
+							<!-- Cantidad Canales: -->
 						    <div class="form-group">
-						        <label for="pr_cantidad_lineas" class="col-md-3 control-label">Cantidad Lineas Básicas(Telef. Pública Líneas Análogas):</label>
+						        <label for="pr_cant_canales" class="col-md-3 control-label">Cantidad Canales:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_lineas" id="pr_cantidad_lineas" class="form-control" type="text" >
+						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+						                <input name="pr_cant_canales" id="pr_cant_canales" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
-
 							
 						    <!-- Numero Cabecera PBX: -->
 						    <div class="form-group">
-						        <label for="pr_numero_cabecera" class="col-md-3 control-label">Número Cabecera PBX:</label>
+						        <label for="pr_num_cabezera_pbx" class="col-md-3 control-label">Número Cabecera PBX:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numero_cabecera" name="pr_numero_cabecera">
+						                <select class="form-control" id="pr_num_cabezera_pbx" name="pr_num_cabezera_pbx">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12077,11 +12077,11 @@ $(function() {
 
 							<!-- FAX TO MAIL: -->
 						    <div class="form-group">
-						        <label for="pr_fax_mail" class="col-md-3 control-label">Fax to mail:</label>
+						        <label for="pr_fax_email" class="col-md-3 control-label">Fax to mail:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-print" ></i></span>
-						                <select class="form-control" id="pr_fax_mail" name="pr_fax_mail">
+						                <select class="form-control" id="pr_fax_email" name="pr_fax_email">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12110,11 +12110,11 @@ $(function() {
 
 							<!-- Requiere Permisos para Larga Distancia Nacional:: -->
 						    <div class="form-group">
-						        <label for="pr_permisos_largad" class="col-md-3 control-label">Requiere Permisos Larga Distancia Nacional:</label>
+						        <label for="pr_permisos_larga_distancia" class="col-md-3 control-label">Requiere Permisos Larga Distancia Nacional:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="pr_permisos_largad" name="pr_permisos_largad">
+						                <select class="form-control" id="pr_permisos_larga_distancia" name="pr_permisos_larga_distancia">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12126,11 +12126,11 @@ $(function() {
 
 						    <!-- Requiero Larga  Para Distancia  Internacional: -->
 						    <div class="form-group">
-						        <label for="pr_larga_distanciai" class="col-md-3 control-label">Requiero Larga para Distancia Internacional:</label>
+						        <label for="pr_larga_distancia_internacional" class="col-md-3 control-label">Requiero Larga para Distancia Internacional:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_larga_distanciai" name="pr_larga_distanciai">
+						                <select class="form-control" id="pr_larga_distancia_internacional" name="pr_larga_distancia_internacional">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12162,11 +12162,11 @@ $(function() {
 
 						    <!-- Requiere Permisos para Local Extendida: -->
 						    <div class="form-group">
-						        <label for="pr_requiere_permisoe" class="col-md-3 control-label">Requiere Permisos para Local Extendida:</label>
+						        <label for="pr_permiso_local_extendida" class="col-md-3 control-label">Requiere Permisos para Local Extendida:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <select class="form-control" id="pr_requiere_permisoe" name="pr_requiere_permisoe">
+						                <select class="form-control" id="pr_permiso_local_extendida" name="pr_permiso_local_extendida">
 										    <option value="Seleccionar...">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
@@ -12189,11 +12189,11 @@ $(function() {
 							<div class="widget bg_white m-t-25  d-inline-b cliente">
 								<legend class="f-s-15">Bogotá</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_1" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_bog_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_1" name="pr_requiere_1">
+						                <select class="form-control" id="pr_bog_requiere" name="pr_bog_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12204,11 +12204,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_1" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_bog_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_1" name="pr_numeracion_1">
+						                <select class="form-control" id="pr_bog_numeracion" name="pr_bog_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12219,11 +12219,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_1" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_bog_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_1" id="pr_cant_canales_1" class="form-control" type="text" >
+						                <input name="pr_bog_cantidad" id="pr_bog_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12233,11 +12233,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Tunja</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_2" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_tun_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_2" name="pr_requiere_2">
+						                <select class="form-control" id="pr_tun_requiere" name="pr_tun_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12248,11 +12248,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_2" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_tun_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_2" name="pr_numeracion_2">
+						                <select class="form-control" id="pr_tun_numeracion" name="pr_tun_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12263,11 +12263,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_2" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_tun_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_2" id="pr_cant_canales_2" class="form-control" type="text" >
+						                <input name="pr_tun_cantidad" id="pr_tun_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12279,11 +12279,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Villavicencio</legend>
 								<div class="form-group">
-							        <label for="pr_requiere_3" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_vill_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_3" name="pr_requiere_3">
+							                <select class="form-control" id="pr_vill_requiere" name="pr_vill_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12294,11 +12294,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_3" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_vill_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_3" name="pr_numeracion_3">
+							                <select class="form-control" id="pr_vill_numeracion" name="pr_vill_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12309,11 +12309,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_3" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_vill_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_3" id="pr_cant_canales_3" class="form-control" type="text" >
+							                <input name="pr_vill_cantidad" id="pr_vill_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12323,11 +12323,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Facatativa</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_4" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_fac_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_4" name="pr_requiere_4">
+							                <select class="form-control" id="pr_fac_requiere" name="pr_fac_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12338,11 +12338,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_4" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_fac_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_4" name="pr_numeracion_4">
+							                <select class="form-control" id="pr_fac_numeracion" name="pr_fac_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12353,11 +12353,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_4" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_fac_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_4" id="pr_cant_canales_4" class="form-control" type="text" >
+							                <input name="pr_fac_cantidad" id="pr_fac_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12369,11 +12369,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Girardot</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_5" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_gir_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_5" name="pr_requiere_5">
+						                <select class="form-control" id="pr_gir_requiere" name="pr_gir_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12384,11 +12384,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_5" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_gir_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_5" name="pr_numeracion_5">
+						                <select class="form-control" id="pr_gir_numeracion" name="pr_gir_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12399,11 +12399,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_5" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_gir_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_5" id="pr_cant_canales_5" class="form-control" type="text" >
+						                <input name="pr_gir_cantidad" id="pr_gir_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12413,11 +12413,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Yopal</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_6" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_yop_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_6" name="pr_requiere_6">
+						                <select class="form-control" id="pr_yop_requiere" name="pr_yop_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12428,11 +12428,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_6" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_yop_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_6" name="pr_numeracion_6">
+						                <select class="form-control" id="pr_yop_numeracion" name="pr_yop_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12443,11 +12443,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_6" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_yop_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_6" id="pr_cant_canales_6" class="form-control" type="text" >
+						                <input name="pr_yop_cantidad" id="pr_yop_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12459,11 +12459,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">cali</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_7" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_cali_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_7" name="pr_requiere_7">
+						                <select class="form-control" id="pr_cali_requiere" name="pr_cali_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12474,11 +12474,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_7" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_cali_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_7" name="pr_numeracion_7">
+						                <select class="form-control" id="pr_cali_numeracion" name="pr_cali_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12489,11 +12489,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_7" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_cali_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_7" id="pr_cant_canales_7" class="form-control" type="text" >
+						                <input name="pr_cali_cantidad" id="pr_cali_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12503,11 +12503,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Buenaventura</legend>
 								 <div class="form-group">
-						        <label for="pr_requiere_8" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_bave_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_8" name="pr_requiere_8">
+						                <select class="form-control" id="pr_bave_requiere" name="pr_bave_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12518,11 +12518,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_8" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_bave_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_8" name="pr_numeracion_8">
+						                <select class="form-control" id="pr_bave_numeracion" name="pr_bave_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12533,11 +12533,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_8" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_bave_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_8" id="pr_cant_canales_8" class="form-control" type="text" >
+						                <input name="pr_bave_cantidad" id="pr_bave_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12549,11 +12549,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Pasto</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_9" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_pas_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_9" name="pr_requiere_9">
+						                <select class="form-control" id="pr_pas_requiere" name="pr_pas_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12564,11 +12564,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_9" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_pas_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_9" name="pr_numeracion_9">
+						                <select class="form-control" id="pr_pas_numeracion" name="pr_pas_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12579,11 +12579,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_9" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_pas_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_9" id="pr_cant_canales_9" class="form-control" type="text" >
+						                <input name="pr_pas_cantidad" id="pr_pas_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12593,11 +12593,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Popayán</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_10" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_pop_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_10" name="pr_requiere_10">
+						                <select class="form-control" id="pr_pop_requiere" name="pr_pop_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12608,11 +12608,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_10" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_pop_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_10" name="pr_numeracion_10">
+						                <select class="form-control" id="pr_pop_numeracion" name="pr_pop_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12623,11 +12623,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_10" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_pop_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_10" id="pr_cant_canales_10" class="form-control" type="text" >
+						                <input name="pr_pop_cantidad" id="pr_pop_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12639,11 +12639,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Neiva</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_11" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_nei_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_11" name="pr_requiere_11">
+						                <select class="form-control" id="pr_nei_requiere" name="pr_nei_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12654,11 +12654,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_11" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_nei_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_11" name="pr_numeracion_11">
+						                <select class="form-control" id="pr_nei_numeracion" name="pr_nei_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12669,11 +12669,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_11" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_nei_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_11" id="pr_cant_canales_11" class="form-control" type="text" >
+						                <input name="pr_nei_cantidad" id="pr_nei_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12683,11 +12683,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Medellín</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_12" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_med_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_12" name="pr_requiere_12">
+						                <select class="form-control" id="pr_med_requiere" name="pr_med_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12698,11 +12698,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_12" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_med_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_12" name="pr_numeracion_12">
+						                <select class="form-control" id="pr_med_numeracion" name="pr_med_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12713,11 +12713,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_12" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_med_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_12" id="pr_cant_canales_12" class="form-control" type="text" >
+						                <input name="pr_med_cantidad" id="pr_med_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12729,11 +12729,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Barranquilla</legend>
 								 <div class="form-group">
-						        <label for="pr_requiere_13" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_bar_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_13" name="pr_requiere_13">
+						                <select class="form-control" id="pr_bar_requiere" name="pr_bar_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12744,11 +12744,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_13" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_bar_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_13" name="pr_numeracion_13">
+						                <select class="form-control" id="pr_bar_numeracion" name="pr_bar_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12759,11 +12759,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_13" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_bar_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_13" id="pr_cant_canales_13" class="form-control" type="text" >
+						                <input name="pr_bar_cantidad" id="pr_bar_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12773,11 +12773,11 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Cartagena</legend>
 								<div class="form-group">
-						        <label for="pr_requiere_14" class="col-md-3 control-label">Requiere:</label>
+						        <label for="pr_cart_requiere" class="col-md-3 control-label">Requiere:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_requiere_14" name="pr_requiere_14">
+						                <select class="form-control" id="pr_cart_requiere" name="pr_cart_requiere">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12788,11 +12788,11 @@ $(function() {
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 						    <div class="form-group">
-						        <label for="pr_numeracion_14" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+						        <label for="pr_cart_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_numeracion_14" name="pr_numeracion_14">
+						                <select class="form-control" id="pr_cart_numeracion" name="pr_cart_numeracion">
 										    <option value="Seleccionar...">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
@@ -12803,11 +12803,11 @@ $(function() {
 
 						    <!-- Cantidad DID -->
 						    <div class="form-group">
-						        <label for="pr_cant_canales_14" class="col-md-3 control-label">Cantidad DID:</label>
+						        <label for="pr_cart_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales_14" id="pr_cant_canales_14" class="form-control" type="text" >
+						                <input name="pr_cart_cantidad" id="pr_cart_cantidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -12822,11 +12822,11 @@ $(function() {
 							    <!-- Santa Marta: -->
 							    <legend class="f-s-15"> Santa Marta </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_15" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_stm_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_15" name="pr_requiere_15">
+							                <select class="form-control" id="pr_stm_requiere" name="pr_stm_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12837,11 +12837,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_15" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_stm_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_15" name="pr_numeracion_15">
+							                <select class="form-control" id="pr_stm_numeracion" name="pr_stm_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12852,11 +12852,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_15" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_stm_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_15" id="pr_cant_canales_15" class="form-control" type="text" >
+							                <input name="pr_stm_cantidad" id="pr_stm_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12868,11 +12868,11 @@ $(function() {
 							    <!-- Monteria: -->
 							    <legend class="f-s-15"> Monteria </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_16" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_mon_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_16" name="pr_requiere_16">
+							                <select class="form-control" id="pr_mon_requiere" name="pr_mon_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12883,11 +12883,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_16" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_mon_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_16" name="pr_numeracion_16">
+							                <select class="form-control" id="pr_mon_numeracion" name="pr_mon_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12898,11 +12898,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_16" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_mon_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_16" id="pr_cant_canales_16" class="form-control" type="text" >
+							                <input name="pr_mon_cantidad" id="pr_mon_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12916,11 +12916,11 @@ $(function() {
 							    <!-- Valledupar: -->
 							    <legend class="f-s-15"> Valledupar </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_17" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_vall_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_17" name="pr_requiere_17">
+							                <select class="form-control" id="pr_vall_requiere" name="pr_vall_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12931,11 +12931,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_17" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_vall_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_17" name="pr_numeracion_17">
+							                <select class="form-control" id="pr_vall_numeracion" name="pr_vall_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12946,11 +12946,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_17" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_vall_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_17" id="pr_cant_canales_17" class="form-control" type="text" >
+							                <input name="pr_vall_cantidad" id="pr_vall_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -12962,11 +12962,11 @@ $(function() {
 							    <!-- Sincelejo: -->
 							    <legend class="f-s-15"> Sincelejo </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_18" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_sinc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_18" name="pr_requiere_18">
+							                <select class="form-control" id="pr_sinc_requiere" name="pr_sinc_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12977,11 +12977,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_18" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_sinc_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_18" name="pr_numeracion_18">
+							                <select class="form-control" id="pr_sinc_numeracion" name="pr_sinc_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -12992,11 +12992,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_18" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_sinc_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_18" id="pr_cant_canales_18" class="form-control" type="text" >
+							                <input name="pr_sinc_cantidad" id="pr_sinc_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13010,11 +13010,11 @@ $(function() {
 							    <!-- Pereira: -->
 							    <legend class="f-s-15"> Pereira </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_19" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_per_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_19" name="pr_requiere_19">
+							                <select class="form-control" id="pr_per_requiere" name="pr_per_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13025,11 +13025,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_19" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_per_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_19" name="pr_numeracion_19">
+							                <select class="form-control" id="pr_per_numeracion" name="pr_per_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13040,11 +13040,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_19" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_per_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_19" id="pr_cant_canales_19" class="form-control" type="text" >
+							                <input name="pr_per_cantidad" id="pr_per_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13056,11 +13056,11 @@ $(function() {
 							    <!-- Armenia: -->
 							    <legend class="f-s-15"> Armenia </legend>
 							    <div class="form-group">
-							        <label for="pr_requiere_20" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_arme_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_20" name="pr_requiere_20">
+							                <select class="form-control" id="pr_arme_requiere" name="pr_arme_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13071,11 +13071,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_20" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_arme_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_20" name="pr_numeracion_20">
+							                <select class="form-control" id="pr_arme_numeracion" name="pr_arme_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13086,11 +13086,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_20" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_arme_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_20" id="pr_cant_canales_20" class="form-control" type="text" >
+							                <input name="pr_arme_cantidad" id="pr_arme_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13104,11 +13104,11 @@ $(function() {
 							    <!-- Manizalez: -->
 							    <legend class="f-s-15"> Manizalez: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_21" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_man_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_21" name="pr_requiere_21">
+							                <select class="form-control" id="pr_man_requiere" name="pr_man_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13119,11 +13119,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_21" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_man_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_21" name="pr_numeracion_21">
+							                <select class="form-control" id="pr_man_numeracion" name="pr_man_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13134,11 +13134,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_21" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_man_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_21" id="pr_cant_canales_21" class="form-control" type="text" >
+							                <input name="pr_man_cantidad" id="pr_man_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13150,11 +13150,11 @@ $(function() {
 							    <!-- Ibaué: -->
 							    <legend class="f-s-15"> Ibaué: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_22" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_iba_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_22" name="pr_requiere_22">
+							                <select class="form-control" id="pr_iba_requiere" name="pr_iba_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13165,11 +13165,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_22" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_iba_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_22" name="pr_numeracion_22">
+							                <select class="form-control" id="pr_iba_numeracion" name="pr_iba_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13180,11 +13180,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_22" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_iba_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_22" id="pr_cant_canales_22" class="form-control" type="text" >
+							                <input name="pr_iba_cantidad" id="pr_iba_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13198,11 +13198,11 @@ $(function() {
 							    <!-- Cucutá: -->
 							    <legend class="f-s-15"> Cucutá: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_23" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_cuc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_23" name="pr_requiere_23">
+							                <select class="form-control" id="pr_cuc_requiere" name="pr_cuc_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13213,11 +13213,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_23" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_cuc_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_23" name="pr_numeracion_23">
+							                <select class="form-control" id="pr_cuc_numeracion" name="pr_cuc_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13228,11 +13228,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_23" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_cuc_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_23" id="pr_cant_canales_23" class="form-control" type="text" >
+							                <input name="pr_cuc_cantidad" id="pr_cuc_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13244,11 +13244,11 @@ $(function() {
 							    <!-- Bucaramanga: -->
 							    <legend class="f-s-15"> Bucaramanga: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_24" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_buc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_24" name="pr_requiere_24">
+							                <select class="form-control" id="pr_buc_requiere" name="pr_buc_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13259,11 +13259,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_24" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_buc_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_24" name="pr_numeracion_24">
+							                <select class="form-control" id="pr_buc_numeracion" name="pr_buc_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13274,11 +13274,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_24" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_buc_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_24" id="pr_cant_canales_24" class="form-control" type="text" >
+							                <input name="pr_buc_cantidad" id="pr_buc_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13292,11 +13292,11 @@ $(function() {
 							    <!-- Duitama : -->
 							    <legend class="f-s-15"> Duitama : </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_25" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_dui_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_25" name="pr_requiere_25">
+							                <select class="form-control" id="pr_dui_requiere" name="pr_dui_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13307,11 +13307,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_25" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_dui_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_25" name="pr_numeracion_25">
+							                <select class="form-control" id="pr_dui_numeracion" name="pr_dui_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13322,11 +13322,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_25" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_dui_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_25" id="pr_cant_canales_25" class="form-control" type="text" >
+							                <input name="pr_dui_cantidad" id="pr_dui_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13338,11 +13338,11 @@ $(function() {
 							    <!-- Sogamoso: -->
 							    <legend class="f-s-15"> Sogamoso: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_26" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_sog_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_26" name="pr_requiere_26">
+							                <select class="form-control" id="pr_sog_requiere" name="pr_sog_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13353,11 +13353,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_26" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_sog_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_26" name="pr_numeracion_26">
+							                <select class="form-control" id="pr_sog_numeracion" name="pr_sog_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13368,11 +13368,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_26" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_sog_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_26" id="pr_cant_canales_26" class="form-control" type="text" >
+							                <input name="pr_sog_cantidad" id="pr_sog_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13386,11 +13386,11 @@ $(function() {
 							    <!-- Flandes: -->
 							    <legend class="f-s-15"> Flandes: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_27" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_flan_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_27" name="pr_requiere_27">
+							                <select class="form-control" id="pr_flan_requiere" name="pr_flan_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13401,11 +13401,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_27" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_flan_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_27" name="pr_numeracion_27">
+							                <select class="form-control" id="pr_flan_numeracion" name="pr_flan_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13416,11 +13416,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_27" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_flan_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_27" id="pr_cant_canales_27" class="form-control" type="text" >
+							                <input name="pr_flan_cantidad" id="pr_flan_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13432,11 +13432,11 @@ $(function() {
 							    <!-- Rivera: -->
 							    <legend class="f-s-15"> Rivera: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_28" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_riv_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_28" name="pr_requiere_28">
+							                <select class="form-control" id="pr_riv_requiere" name="pr_riv_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13447,11 +13447,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_28" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_riv_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_28" name="pr_numeracion_28">
+							                <select class="form-control" id="pr_riv_numeracion" name="pr_riv_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13462,11 +13462,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_28" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_riv_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_28" id="pr_cant_canales_28" class="form-control" type="text" >
+							                <input name="pr_riv_cantidad" id="pr_riv_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13480,11 +13480,11 @@ $(function() {
 							    <!-- Aipe -->
 							    <legend class="f-s-15"> Aipe </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_29" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_aipe_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_29" name="pr_requiere_29">
+							                <select class="form-control" id="pr_aipe_requiere" name="pr_aipe_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13495,11 +13495,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_29" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_aipe_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_29" name="pr_numeracion_29">
+							                <select class="form-control" id="pr_aipe_numeracion" name="pr_aipe_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13510,11 +13510,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_29" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_aipe_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_29" id="pr_cant_canales_29" class="form-control" type="text" >
+							                <input name="pr_aipe_cantidad" id="pr_aipe_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13526,11 +13526,11 @@ $(function() {
 							    <!-- Lebrija: -->
 							    <legend class="f-s-15"> Lebrija: </legend>
 							    <div class:="form-group">
-							        <label for="pr_requiere_30" class="col-md-3 control-label">Requiere:</label>
+							        <label for="pr_leb_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_requiere_30" name="pr_requiere_30">
+							                <select class="form-control" id="pr_leb_requiere" name="pr_leb_requiere">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13541,11 +13541,11 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_numeracion_30" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_leb_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_numeracion_30" name="pr_numeracion_30">
+							                <select class="form-control" id="pr_leb_numeracion" name="pr_leb_numeracion">
 											    <option value="Seleccionar...">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
@@ -13556,11 +13556,11 @@ $(function() {
 
 							    <!-- Cantidad DID -->
 							    <div class="form-group">
-							        <label for="pr_cant_canales_30" class="col-md-3 control-label">Cantidad DID:</label>
+							        <label for="pr_leb_cantidad" class="col-md-3 control-label">Cantidad DID:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cant_canales_30" id="pr_cant_canales_30" class="form-control" type="text" >
+							                <input name="pr_leb_cantidad" id="pr_leb_cantidad" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -13571,6 +13571,2356 @@ $(function() {
         	`;
         }
 
+         //PUNTA DATACENTER NO TIENE NADA QUE LO DISPARE
+    //     formProduct_punta_datacenter: function(otp){
+    //     	return `
+    //     		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>PUNTO DATACENTER</small></h2>
+				// <div class="widget bg_white m-t-25 d-inline-b cliente">
+				// 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION </legend>
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+							
+				// 			<!-- CIUDAD -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_ciudad" class="col-md-3 control-label">Ciudad:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
+				// 		                <input name="pr_ciudad" id="pr_ciudad" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- DIRECCIÓN:-->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_direccion" class="col-md-3 control-label">Dirección:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 		                <input name="pr_direccion" id="pr_direccion" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- TIPO PREDIO: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_predio" class="col-md-3 control-label">Tipo predio:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
+				// 		                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="Edificio">Edificio</option>
+	   //    									<option value="Casa">Casa</option>									    
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- NIT del cliente: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_nit_cliente" class="col-md-3 control-label">NIT del cliente:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 		                <input name="pr_nit_cliente" id="pr_nit_cliente" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>							    
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- ALIAS DEL LUGAR  -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_alias_lugar" class="col-md-3 control-label">Alias del lugar:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 		                <input name="pr_alias_lugar" id="pr_alias_lugar" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- OTP -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_otp" class="col-md-3 control-label">OTP:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 		                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+							
+				// 			<!-- otp_asociadas -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_otp_asociada" class="col-md-3 control-label">OTP asociadas:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		     <!-- TIPO DE SERIVICIO: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_servicio" class="col-md-3 control-label">Tipo de servicio:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_tipo_servicio" name="pr_tipo_servicio">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="MPLS Avanzado Intranet con Punta en Rack de Appliance (Componente Datacenter)">MPLS Avanzado Intranet con Punta en Rack de Appliance (Componente Datacenter)</option>
+	   //    									<option value="MPLS Avanzado Extranet con Punta en Rack de Appliance (Componente Datacenter)">MPLS Avanzado Extranet con Punta en Rack de Appliance (Componente Datacenter)</option>
+	   //    									<option value="MPLS Transaccional con Punta en Rack de Appliance">MPLS Transaccional con Punta en Rack de Appliance</option>
+	   //    									<option value="PL Ethernet Local - P2P con Punta en Rack de Appliance">PL Ethernet Local - P2P con Punta en Rack de Appliance</option>
+	   //    									<option value="PL Ethernet Local - P2MP con Punta en Rack de Appliance">PL Ethernet Local - P2MP con Punta en Rack de Appliance</option> 
+	   //    									<option value="PL Ethernet Nacional - P2P con Punta en Rack de Appliance">PL Ethernet Nacional - P2P con Punta en Rack de Appliance</option>						
+	   //    									<option value="PL Ethernet Nacional - P2MP con Punta en Rack de Appliance">PL Ethernet Nacional - P2MP con Punta en Rack de Appliance</option>						
+	   //    									<option value="PL Ethernet - VPRN con Punta en Rack de Appliance">PL Ethernet - VPRN con Punta en Rack de Appliance</option>	
+	   //    									<option value="Telefonia Pública - Líneas Análogas con Punta en Rack de Appliance">Telefonia Pública - Líneas Análogas con Punta en Rack de Appliance</option>						
+	   //    									<option value="Telefonia Pública - Líneas E1 - R2 con Punta en Rack de Appliance">Telefonia Pública - Líneas E1 - R2 con Punta en Rack de Appliance</option>						
+	   //    									<option value="Telefonia Pública - Líneas E1 - PRI con Punta en Rack de Appliance">Telefonia Pública - Líneas E1 - PRI con Punta en Rack de Appliance</option>						
+	   //    									<option value="Telefonia Pública - Línea SIP (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance">Telefonia Pública - Línea SIP (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance</option>		
+	   //    									<option value="PBX Distribuida - Línea SIP  (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance">PBX Distribuida - Línea SIP  (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance</option>		
+	   //    									<option value="PBX Distribuida - Línea SIP  (Centralizado) con Punta en Rack de Appliance">PBX Distribuida - Línea SIP  (Centralizado) con Punta en Rack de Appliance</option>				
+	   //    									<option value="PBX Distribuida  Linea E1 -R2 con Punta en Rack de Appliance">PBX Distribuida  Linea E1 -R2 con Punta en Rack de Appliance</option>						
+	   //    									<option value="PBX Distribuida  Linea E1 -PRI con Punta en Rack de Appliance">PBX Distribuida  Linea E1 -PRI con Punta en Rack de Appliance</option>						
+	   //    									<option value="Telefonia Corporativa con Punta en Rack de Appliance">Telefonia Corporativa con Punta en Rack de Appliance</option>	
+	   //    									<option value="Migración Topologia Backend a Rack de Appliance">Migración Topologia Backend a Rack de Appliance</option>			
+	   //    									<option value="Migración Claro Connect a Rack de Appliance">Migración Claro Connect a Rack de Appliance</option>						
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>	
+
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- ancho_banda -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_ancho_banda" class="col-md-3 control-label">Ancho de banda:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 		                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- TIPO INSTALACION: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_instalacion" class="col-md-3 control-label">Tipo instalación:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_tipo_instalacion" name="pr_tipo_instalacion">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
+				// 						    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
+	   //    									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>
+	   //    									<option value="UM existente. Requiere Adición de equipo">UM existente. Requiere Adición de equipo</option>					    
+	   //    									<option value="UM existente. Solo configuración">UM existente. Solo configuración</option>					    
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- ID SERVICIO ACTUAL -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_id_servicio_actual" class="col-md-3 control-label">ID SERVICIO ACTUAL(Aplica para UM Existente):</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 		                <input name="pr_id_servicio_actual" id="pr_id_servicio_actual" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION </legend>	
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+							
+				// 			<!-- NOMBRE --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_nombre_1" class="col-md-3 control-label">Nombre:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 		                <input name="pr_nombre_1" id="pr_nombre_1" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- TELEFONO --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_telefono_1" class="col-md-3 control-label">Telefono:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 		                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- CELULAR --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_celular_1" class="col-md-3 control-label">Celular:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 		                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- EMAIL --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 		                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>	
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- REQUIERE RFC:--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_crequiere_rfc" class="col-md-3 control-label">Requiere RFC:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 						<select name="pr_crequiere_rfc" id="pr_crequiere_rfc">
+				// 							<option value="">Seleccionar...</option>
+				// 							<option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
+				// 							<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
+				// 							<option value="SI => Cliente Critico">SI => Cliente Critico</option>
+				// 							<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
+				// 							<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+				// 							<option value="No">No</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Conversor Medio: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_conversor_medio" class="col-md-3 control-label">Conversor Medio:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_conversor_medio" id="pr_conversor_medio" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Referencia Router: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_referencia_router" class="col-md-3 control-label">Referencia Router:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 		                <input name="pr_referencia_router" id="pr_referencia_router" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Modulos o Tarjetas: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_modulo_tarjeta" class="col-md-3 control-label">Modulos o Tarjetas:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_modulo_tarjeta" id="pr_modulo_tarjeta" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>								
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Licencias --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_licencias" class="col-md-3 control-label">Licencias:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_licencias" id="pr_licencias" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Equipos Adicionale--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_equipos_adicionales" class="col-md-3 control-label">Equipos adicionale:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_equipos_adicionales" id="pr_equipos_adicionales" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Consumibles--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 						<select name="pr_consumibles" id="pr_consumibles">
+				// 							<option value="">Seleccionar...</option>
+				// 							<option value="Bandeja">Bandeja</option>
+				// 							<option value="Cables de Poder">Cables de Poder</option>
+				// 							<option value="Clavijas de Conexión">Clavijas de Conexión</option>
+				// 							<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
+				// 							<option value="No Aplica">No Aplica</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_registro_carta" class="col-md-3 control-label">Registro de importación y carta valorizada:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 						<select name="pr_registro_carta" id="pr_registro_carta">
+				// 							<option value="">Seleccionar...</option>
+				// 							<option value="SI">SI</option>
+				// 							<option value="NO">NO</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">INFORMACIÓN  ULTIMA MILLA </legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- ¿esta ot requiere instalacion de  um?--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_requiere_um" class="col-md-3 control-label">¿esta ot requiere instalacion de  um?</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 						<select name="pr_requiere_um" id="pr_requiere_um">
+				// 							<option value="">Seleccionar...</option>
+				// 							<option value="SI">SI</option>
+				// 							<option value="NO">NO</option>
+				// 							<option value="Existente">Existente</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Proveedor --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_proveedor" class="col-md-3 control-label">Proveedor</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 						<select name="pr_proveedor" id="pr_proveedor">
+				// 							<option value="">Seleccionar...</option>
+				// 							<option value="No aplica">No aplica</option>
+				// 							<option value="Existente">Existente</option>
+				// 							<option value="Axesat">Axesat</option>
+				// 							<option value="Comcel">Comcel</option>
+				// 							<option value="Tigo">Tigo</option>
+				// 							<option value="Media Commerce">Media Commerce</option>
+				// 							<option value="Diveo">Diveo</option>
+				// 							<option value="Edatel">Edatel</option>
+				// 							<option value="UNE">UNE</option>
+				// 							<option value="ETB">ETB</option>
+				// 							<option value="IBM">IBM</option>
+				// 							<option value="IFX">IFX</option>
+				// 							<option value="Level 3 Colombia">Level 3 Colombia</option>
+				// 							<option value="Mercanet">Mercanet</option>
+				// 							<option value="Metrotel">Metrotel</option>
+				// 							<option value="Promitel">Promitel</option>
+				// 							<option value="Skynet">Skynet</option>
+				// 							<option value="Telebucaramanga">Telebucaramanga</option>
+				// 							<option value="Telecom">Telecom</option>
+				// 							<option value="Terremark">Terremark</option>
+				// 							<option value="Sol Cable Vision">Sol Cable Vision</option>
+				// 							<option value="Sistelec">Sistelec</option>
+				// 							<option value="Opain">Opain</option>
+				// 							<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option>
+				// 							<option value="TV Azteca">TV Azteca</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- MEDIO -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_medio" class="col-md-3 control-label">Medio:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_medio" name="pr_medio">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="No Aplica">No Aplica</option> 	   
+				// 						    <option value="Existente">Existente</option>
+				// 						    <option value="FIBRA">FIBRA</option>
+				// 						    <option value="COBRE">COBRE</option> 
+				// 						    <option value="SATELITAL">SATELITAL</option>
+				// 						    <option value="RADIO ENLACE">RADIO ENLACE</option>
+				// 						    <option value="3G">3G</option>
+				// 						    <option value="UTP">UTP</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- RESPUESTA FACTIBILIDAD BW > 100 MEGAS : -->
+				//             <div class="form-group">
+				// 		        <label for="pr_resp_factivilidad" class="col-md-3 control-label">Respuesta factibilidad BW > 100 Megas :</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_resp_factivilidad" id="pr_resp_factivilidad" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_conector" class="col-md-3 control-label">TIPO DE CONECTOR (Aplica para FO Claro):</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_tipo_conector" name="pr_tipo_conector">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="LC">LC</option>  								   									
+				// 						    <option value="SC">SC</option> 	   
+				// 						    <option value="ST">ST</option>
+				// 						    <option value="FC">FC</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- SDS DESTINO (Unifilar) -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_sds_destino" class="col-md-3 control-label">SDS destino (Unifilar):</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_sds_destino" id="pr_sds_destino" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- OLT (GPON) : -->
+				//             <div class="form-group">
+				// 		        <label for="pr_olt" class="col-md-3 control-label">OLT (GPON) :</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_olt" id="pr_olt" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- INTERFACE DE ENTREGA AL CLIENTE: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_interface_e_cliente" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_interface_e_cliente" name="pr_interface_e_cliente">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="No aplica">No aplica</option> 		   									
+				// 						    <option value="Ethernet">Ethernet</option> 	   
+				// 						    <option value="Serial V.35">Serial V.35</option>
+				// 						    <option value="Giga (óptico)">Giga (óptico)</option>
+				// 						    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
+				// 						    <option value="STM-1">STM-1</option>
+				// 						    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
+				// 						    <option value="G703 BNC">G703 BNC</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- OBSERVACIONES -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_observacion" class="col-md-3 control-label">Observaciones</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 						<input type="text" name="pr_observacion" id="pr_observacion">
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">INFORMACIÓN DE CONEXIÓN  EN DATACENTER IMPLEMENTACIÓN </legend>
+
+				// 	<legend class="f-s-15">PUNTO A - Equipo de acceso: Alcatel Triara</legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- equipo acceso : -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_equipos_1" class="col-md-3 control-label">Equipo de Acceso:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input type="text" name="pr_equipos_1" id="pr_equipos_1">
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Puerto Equipo de Acceso: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_puerto_1" class="col-md-3 control-label">Puerto Equipo de Acceso:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input type="text" name="pr_puerto_1" id="pr_puerto_1">
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Tipo de Interface : -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_interface_1" class="col-md-3 control-label">Tipo de Interface :</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input type="text" name="pr_tipo_interface_1" id="pr_tipo_interface_1">
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">PUNTO B Equipo Claro - Rack: Appliance</legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Equipo Claro: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_equipo_c" class="col-md-3 control-label">Equipo Claro:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-wrench" ></i></span>
+				// 		                <input name="pr_equipo_c" id="pr_equipo_c" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Conector WAN: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_conector_wan" class="col-md-3 control-label">Conector WAN:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal" ></i></span>
+				// 		                <input name="pr_conector_wan" id="pr_conector_wan" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Puerto LAN:  -->
+				//             <div class="form-group">
+				// 		        <label for="pr_puerto_lan" class="col-md-3 control-label">Puerto LAN: </label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal" ></i></span>
+				// 		                <input name="pr_puerto_lan" id="pr_puerto_lan" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Conector LAN:  -->
+				//             <div class="form-group">
+				// 		        <label for="pr_conector_lan" class="col-md-3 control-label">Conector LAN:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_conector_lan" id="pr_conector_lan" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- TOMAS REGULADAS REQUERIDAS  -->
+				//             <div class="form-group">
+				// 		        <label for="pr_tomas_r" class="col-md-3 control-label">TOMAS REGULADAS REQUERIDAS</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select name="pr_tomas_r" id="pr_tomas_r" class="form-control">
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>					                	
+				// 		                </select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">PUNTO C Equipo Cliente - Rack y Unidad de conexión:</legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Equipos de conexion--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_equipos_conexion" class="col-md-3 control-label">Equipo de conexión:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-wrench" ></i></span>
+				// 		                <input name="pr_equipos_conexion" id="pr_equipos_conexion" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Puerto Cliente--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_puerto_cliente" class="col-md-3 control-label">Puerto Cliente</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_puerto_cliente" id="pr_puerto_cliente" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Tipo de Interface  --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_interface" class="col-md-3 control-label">Tipo de Interface :</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_tipo_interface" id="pr_tipo_interface" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- TOMAS REGULADAS REQUERIDAS  -->
+				//             <div class="form-group">
+				// 		        <label for="pr_tomas_reguladas_2" class="col-md-3 control-label">Tomas reguladas requeridas</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <select name="pr_tomas_reguladas_2" id="pr_tomas_reguladas_2" class="form-control">
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>					                	
+				// 		                </select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- TOTAL UNIDADES DE RACK  -->
+				//             <div class="form-group">
+				// 		        <label for="pr_total_u" class="col-md-3 control-label">TOTAL UNIDADES DE RACK</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <select name="pr_total_u" id="pr_total_u" class="form-control">
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+				// 		                	<option value=""></option>
+						                	
+				// 		                </select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>						
+				// </div>
+    //     	`;
+    //     }
+
+        //PRIVATE LINE NO TIENE NADA QUE LO DISPARE
+    //     formProduct_private_line: function(otp){
+    //     	return `
+    //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>PRIVATE LINE</small></h2>
+				// <!--*********************  MODULO PESTAÑAS  *********************-->
+				// <ul class="nav nav-tabs">
+				// 	<li class="active"><a data-toggle="tab" href="#mpls_punto_origen_pl">PUNTO DE ORIGEN</a></li>
+				// 	<li class=""><a data-toggle="tab" href="#mpls_punto_destino_pl">PUNTO DESTINO</a></li>
+				// </ul>
+
+				// <!--*********************  CONTENIDO PESTAÑAS  *********************-->
+				// <div class="tab-content">
+
+				// 	<!--*********************  PUNTO DE ORIGEN  *********************-->
+				// 	<div id="mpls_punto_origen_pl" class="tab-pane fade in active">
+				// 		<h3>PUNTO DE ORIGEN</h3>
+				// 		<div class="widget bg_white m-t-25 d-inline-b cliente">
+				// 			<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION ORIGEN </legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CIUDAD -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_ciudad_o" class="col-md-3 control-label">Ciudad:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
+				// 				                <input name="pr_ciudad_o" id="pr_ciudad_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- DIRECCIÓN:-->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_direccion_o" class="col-md-3 control-label">Dirección:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_direccion_o" id="pr_direccion_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- TIPO PREDIO: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_predio_o" class="col-md-3 control-label">Tipo predio:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_predio_o" name="pr_tipo_predio_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Edificio">Edificio</option>
+			 //      									<option value="Casa">Casa</option>									    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- NIT del cliente: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_nit_cliente_o" class="col-md-3 control-label">NIT del cliente:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_nit_cliente_o" id="pr_nit_cliente_o" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ALIAS DEL LUGAR  -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_alias_lugar_o" class="col-md-3 control-label">Alias del lugar:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_alias_lugar_o" id="pr_alias_lugar_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- OTP -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_otp_o" class="col-md-3 control-label">OTP:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_otp_o" id="pr_otp_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- otp_asociadas -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_otp_asociadas_o" class="col-md-3 control-label">OTP asociadas:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_otp_asociadas_o" id="pr_otp_asociadas_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- TIPO PRIVATE LINE: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_private_o" class="col-md-3 control-label">Tipo PRIVATE LINE:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_private_o" name="pr_tipo_private_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Local - P2P">Local - P2P</option>
+			 //      									<option value="Local - P2MP">Local - P2MP</option>
+			 //      									<option value="Nacional - P2P">Nacional - P2P</option>
+			 //      									<option value="Nacional - P2MP">Nacional - P2MP</option>
+			 //      									<option value="VPRN">VPRN</option> 
+			 //      									<option value="Private Line Service (SDH)">Private Line Service (SDH)</option>			
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ancho_banda -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_ancho_banda_o" class="col-md-3 control-label">Ancho de banda:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_ancho_banda_o" id="pr_ancho_banda_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- TIPO INSTALACION: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_instalacion_o" class="col-md-3 control-label">Tipo instalación:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_instalacion_o" name="pr_tipo_instalacion_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Instalar UM con PE">Instalar UM con PE</option>
+				// 								    <option value="Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)">Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)</option>
+				// 								    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
+				// 								    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
+			 //      									<option value="Instalar UM en Datacenter Tercero">Instalar UM en Datacenter Tercero</option>
+			 //      									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>					    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ID SERVICIO ACTUAL -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_id_servicio_actual_o" class="col-md-3 control-label">ID SERVICIO ACTUAL (Aplica para UM Existente):</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_id_servicio_actual_o" id="pr_id_servicio_actual_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">INFORMACIÓN  ULTIMA MILLA </legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_requiere_um_o" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_requiere_um_o" name="pr_requiere_um_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Si">Si</option>
+			 //      									<option value="No">No</option>   	
+			 //      									<option value="Existente">Existente</option>											    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- PROVEEDOR: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_proveedor_o" class="col-md-3 control-label">Proveedor:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_proveedor_o" name="pr_proveedor_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="No aplica">No aplica</option>
+			 //      									<option value="Existente">Existente</option>
+			 //      									<option value="Claro">Claro</option>
+			 //      									<option value="Axesat">Axesat</option>
+			 //      									<option value="Comcel">Comcel</option> 	
+			 //      									<option value="Tigo">Tigo</option> 		
+			 //      									<option value="Media Commerce">Media Commerce</option> 		
+			 //      									<option value="Diveo">Diveo</option>
+			 //      									<option value="Edatel">Edatel</option> 	
+			 //      									<option value="UNE">UNE</option> 		
+			 //      									<option value="ETB">ETB</option> 	
+			 //      									<option value="IBM">IBM</option> 		
+			 //      									<option value="IFX">IFX</option> 		
+			 //      									<option value="Level 3 Colombia">Level 3 Colombia</option>
+			 //      									<option value="Mercanet">Mercanet</option> 	
+			 //      									<option value="Metrotel">Metrotel</option> 		
+			 //      									<option value="Promitel">Promitel</option> 		
+			 //      									<option value="Skynet">Skynet</option> 		
+			 //      									<option value="Telebucaramanga">Telebucaramanga</option>
+			 //      									<option value="Telecom">Telecom</option> 	
+			 //      									<option value="Terremark">Terremark</option> 		
+			 //      									<option value="Sol Cable Vision">Sol Cable Vision</option> 		
+			 //      									<option value="Sistelec">Sistelec</option>
+			 //      									<option value="Opain">Opain</option> 	
+			 //      									<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option> 		
+			 //      									<option value="TV Azteca">TV Azteca</option> 						    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- MEDIO -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_medio_o" class="col-md-3 control-label">Medio:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_medio_o" name="pr_medio_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="No Aplica">No Aplica</option> 	   
+				// 								    <option value="Fibra">Fibra</option>
+				// 								    <option value="Cobre">Cobre</option>
+				// 								    <option value="Satelital">Satelital</option> 
+				// 								    <option value="Radio enlace">Radio enlace</option>
+				// 								    <option value="3G">3G</option>
+				// 								    <option value="UTP">UTP</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- RESPUESTA FACTIBILIDAD BW > 300 MEGAS : -->
+				// 		            <div class="form-group">
+				// 				        <label for="pr_resp_factibilidad_o" class="col-md-3 control-label">Respuesta factibilidad BW > 300 MEGAS:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_resp_factibilidad_o" id="pr_resp_factibilidad_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_conector_o" class="col-md-3 control-label">Tipo conector:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_conector_o" name="pr_tipo_conector_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="LC">LC</option>  									   									
+				// 								    <option value="SC">SC</option> 	   
+				// 								    <option value="ST">ST</option>
+				// 								    <option value="FC">FC</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- SDS destino(Unifilar) -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_sds_destino_o" class="col-md-3 control-label">SDS destino(Unifilar):</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_sds_destino_o" id="pr_sds_destino_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_interface_entrega_o" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_interface_entrega_o" name="pr_interface_entrega_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="No aplica">No aplica</option>						   									
+				// 								    <option value="Ethernet">Ethernet</option> 	   
+				// 								    <option value="Serial V.35">Serial V.35</option>
+				// 								    <option value="Giga (óptico)">Giga (óptico)</option>
+				// 								    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
+				// 								    <option value="STM-1">STM-1</option>
+				// 								    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
+				// 								    <option value="G703 BNC">G703 BNC</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- REQUIERE VOC : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_requiere_voc_o" class="col-md-3 control-label">Requiere VOC:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_requiere_voc_o" name="pr_requiere_voc_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Si">Si</option>
+			 //      									<option value="No">No</option>    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- PROGRAMACIÓN DE VOC : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_programacion_voc_o" class="col-md-3 control-label">Programación de VOC:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_programacion_voc_o" name="pr_programacion_voc_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Programada">Programada</option>
+			 //      									<option value="No requiere programación">No requiere programación</option> 									
+			 //      									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
+			 //      									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- REQUIERE RFC : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_requiere_rfc_o" class="col-md-3 control-label">Requiere RFC:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_requiere_rfc_o" name="pr_requiere_rfc_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
+			 //      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  	
+			 //      									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
+			 //      									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
+			 //      									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+			 //      									<option value="No">No</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- CONVESOR MEDIO: -->
+				// 		            <div class="form-group">
+				// 				        <label for="pr_conversor_medio_o" class="col-md-3 control-label">Conversor Medio:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_conversor_medio_o" id="pr_conversor_medio_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- Equipos Adicionale--> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_equipos_adicional_o" class="col-md-3 control-label">Equipos adicionale:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-plus" ></i></span>
+				// 				                <input name="pr_equipos_adicional_o" id="pr_equipos_adicional_o" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- Consumibles:--> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_consumibles_o" class="col-md-3 control-label">Consumibles:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_consumibles_o" name="pr_consumibles_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Bandeja">Bandeja</option>
+			 //      									<option value="Cables de Poder ">Cables de Poder </option>
+			 //      									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
+			 //      									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
+			 //      									<option value="No Aplica">No Aplica</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_reg_importacion_o" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_reg_importacion_o" name="pr_reg_importacion_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Si">Si</option>
+			 //      									<option value="No">No</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- MODO TRANSMISIÓN ENTREGA CANAL -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_modo_transmision_o" class="col-md-3 control-label">Modo transmisión entrega canal:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_modo_transmision_o" name="pr_modo_transmision_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Troncal - Especifique VLAN">Troncal - Especifique VLAN</option>
+			 //      									<option value="Acceso (Null)">Acceso (Null)</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CANTIDAD MACS : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_ctd_macs_o" class="col-md-3 control-label">Cantidad MACS:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
+				// 				                <select class="form-control" id="pr_ctd_macs_o" name="pr_ctd_macs_o">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="0 - 250 Estándar">0 - 250 Estándar</option>
+			 //      									<option value="250 en Adelante - Solicitar autorización a CORE">250 en Adelante - Solicitar autorización a CORE</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN </legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- NOMBRE --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_nombre_1" class="col-md-3 control-label">Nombre:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 				                <input name="pr_nombre_1" id="pr_nombre_1" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- TELEFONO --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_telefono_1" class="col-md-3 control-label">Telefono:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 				                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CELULAR --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_celular_1" class="col-md-3 control-label">Celular:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 				                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- EMAIL --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 				                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">DATOS CLIENTE: TÉCNICO</legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- NOMBRE --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_nombre_2" class="col-md-3 control-label">Nombre:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 				                <input name="pr_nombre_2" id="pr_nombre_2" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- TELEFONO --> 
+				// 				    <div class="form-group">
+				// 				        <label for="telefono_dct_pl_po" class="col-md-3 control-label">Telefono:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 				                <input name="telefono_dct_pl_po" id="telefono_dct_pl_po" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CELULAR --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_celular_2" class="col-md-3 control-label">Celular:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 				                <input name="pr_celular_2" id="pr_celular_2" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- EMAIL --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_email_2" class="col-md-3 control-label">Email:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 				                <input name="pr_email_2" id="pr_email_2" class="form-control" type="email" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+				// 					<!-- OBSERVACIONES: --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_observaciones_1" class="col-md-3 control-label">Observaciones:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_observaciones_1" id="pr_observaciones_1" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+				// 		</div>
+				// 	</div>
+
+				// 	<!--*********************  PUNTO DESTINO   *********************-->
+				// 	<div id="mpls_punto_destino_pl" class="tab-pane fade">
+				// 		<h3>PUNTO DESTINO</h3>
+				// 		<div class="widget bg_white m-t-25 d-inline-b cliente">
+				// 			<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION DESTINO</legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CIUDAD -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_ciudad_d" class="col-md-3 control-label">Ciudad:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
+				// 				                <input name="pr_ciudad_d" id="pr_ciudad_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- DIRECCIÓN:-->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_direccion_d" class="col-md-3 control-label">Dirección:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_direccion_d" id="pr_direccion_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- TIPO PREDIO: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_predio_d" class="col-md-3 control-label">Tipo predio:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_predio_d" name="pr_tipo_predio_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Edificio">Edificio</option>
+			 //      									<option value="Casa">Casa</option>									    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>	
+
+				// 				    <!-- NIT del cliente: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_nit_cliente_d" class="col-md-3 control-label">NIT del cliente:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_nit_cliente_d" id="pr_nit_cliente_d" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ALIAS DEL LUGAR  -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_alias_lugar_d" class="col-md-3 control-label">Alias del lugar:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_alias_lugar_d" id="pr_alias_lugar_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- OTP -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_otp_d" class="col-md-3 control-label">OTP:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_otp_d" id="pr_otp_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- otp_asociadas -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_otp_asociado_d" class="col-md-3 control-label">OTP asociadas:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_otp_asociado_d" id="pr_otp_asociado_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+
+				// 				    <!-- TIPO PRIVATE LINE: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_pl_d" class="col-md-3 control-label">Tipo PRIVATE LINE:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_pl_d" name="pr_tipo_pl_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Local - P2P">Local - P2P</option>
+			 //      									<option value="Local - P2MP">Local - P2MP</option>
+			 //      									<option value="Nacional - P2P">Nacional - P2P</option>
+			 //      									<option value="Nacional - P2MP">Nacional - P2MP</option>
+			 //      									<option value="VPRN">VPRN</option> 
+			 //      									<option value="Private Line Service (SDH)">Private Line Service (SDH)</option>						
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>	
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+				// 					<!-- ancho_banda -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_ancho_banda_d" class="col-md-3 control-label">Ancho de banda:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_ancho_banda_d" id="pr_ancho_banda_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>		
+
+				// 				    <!-- TIPO INSTALACION: -->
+				// 				     <div class="form-group">
+				// 				        <label for="pr_tipo_instalacion_d" class="col-md-3 control-label">Tipo instalación:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_instalacion_d" name="pr_tipo_instalacion_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Instalar UM con PE">Instalar UM con PE</option>
+				// 								    <option value="Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)">Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)</option>
+				// 								    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
+				// 								    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
+			 //      									<option value="Instalar UM en Datacenter Tercero">Instalar UM en Datacenter Tercero</option>
+			 //      									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>					    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ID SERVICIO ACTUAL -->
+				// 					<div class="form-group">
+				// 				        <label for="pr_idservicio_act_d" class="col-md-3 control-label">ID SERVICIO ACTUAL(Aplica para UM Existente):</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_idservicio_act_d" id="pr_idservicio_act_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">NFORMACIÓN  ULTIMA MILLA</legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_requiere_instalacion_d" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_requiere_instalacion_d" name="pr_requiere_instalacion_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Si">Si</option>
+			 //      									<option value="No">No</option>   												    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+
+				// 				    <!-- PROVEEDOR: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_proveedor_d" class="col-md-3 control-label">Proveedor:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_proveedor_d" name="pr_proveedor_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="No aplica">No aplica</option>
+			 //      									<option value="Existente">Existente</option>
+			 //      									<option value="Claro">Claro</option>
+			 //      									<option value="Axesat">Axesat</option>
+			 //      									<option value="Comcel">Comcel</option> 	
+			 //      									<option value="Tigo">Tigo</option> 		
+			 //      									<option value="Media Commerce">Media Commerce</option> 		
+			 //      									<option value="Diveo">Diveo</option>
+			 //      									<option value="Edatel">Edatel</option> 	
+			 //      									<option value="UNE">UNE</option> 		
+			 //      									<option value="ETB">ETB</option> 	
+			 //      									<option value="IBM">IBM</option> 		
+			 //      									<option value="IFX">IFX</option> 		
+			 //      									<option value="Level 3 Colombia">Level 3 Colombia</option>
+			 //      									<option value="Mercanet">Mercanet</option> 	
+			 //      									<option value="Metrotel">Metrotel</option> 		
+			 //      									<option value="Promitel">Promitel</option> 		
+			 //      									<option value="Skynet">Skynet</option> 		
+			 //      									<option value="Telebucaramanga">Telebucaramanga</option>
+			 //      									<option value="Telecom">Telecom</option> 	
+			 //      									<option value="Terremark">Terremark</option> 		
+			 //      									<option value="Sol Cable Vision">Sol Cable Vision</option> 		
+			 //      									<option value="Sistelec">Sistelec</option>
+			 //      									<option value="Opain">Opain</option> 	
+			 //      									<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option>	
+			 //      									<option value="TV Azteca">TV Azteca</option> 						    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+				// 					<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_tipo_conector_d" class="col-md-3 control-label">Tipo conector(Aplica para FO Claro):</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_tipo_conector_d" name="pr_tipo_conector_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="LC">LC</option>							   									
+				// 								    <option value="SC">SC</option> 	   
+				// 								    <option value="ST">ST</option>
+				// 								    <option value="FC">FC</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- ACCESO (Solo Aplica para Canales SDH): -->
+				// 				    SDS DESTINO
+				// 		            <div class="form-group">
+				// 				        <label for="pr_sds_destino" class="col-md-3 control-label">SDS destino (Unifilar):</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 				                <input name="pr_sds_destino" id="pr_sds_destino" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_inter_entrega_cd" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_inter_entrega_cd" name="pr_inter_entrega_cd">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="No aplica">No aplica</option>					   									
+				// 								    <option value="Ethernet">Ethernet</option> 	   
+				// 								    <option value="Serial V.35">Serial V.35</option>
+				// 								    <option value="Giga (óptico)">Giga (óptico)</option>
+				// 								    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
+				// 								    <option value="STM-1">STM-1</option>
+				// 								    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
+				// 								    <option value="G703 BNC">G703 BNC</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 			        <!-- REQUIERE VOC : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_requiere_voc_d" class="col-md-3 control-label">Requiere VOC:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_requiere_voc_d" name="pr_requiere_voc_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Si">Si</option>
+			 //      									<option value="No">No</option>    
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- PROGRAMACIÓN DE VOC : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_programacion_d" class="col-md-3 control-label">Programación de VOC:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <select class="form-control" id="pr_programacion_d" name="pr_programacion_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Programada">Programada</option>
+			 //      									<option value="No requiere programación">No requiere programación</option>							
+			 //      									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
+			 //      									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- REQUIERE RFC : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_requiere_rfc_d" class="col-md-3 control-label">Requiere RFC:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_requiere_rfc_d" name="pr_requiere_rfc_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
+			 //      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
+			 //      									<option value="SI => Cliente Critico">SI => Cliente Critico</option>
+			 //      									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
+			 //      									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+			 //      									<option value="No">No</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- Conversor Medio: -->
+				// 		            <div class="form-group">
+				// 				        <label for="pr_conversor_medio_d" class="col-md-3 control-label">Conversor Medio:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 				                <input name="pr_conversor_medio_d" id="pr_conversor_medio_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- Equipos Adicionale--> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_equipos_adicionales_d" class="col-md-3 control-label">Equipos adicionale:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_equipos_adicionales_d" id="pr_equipos_adicionales_d" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- Consumibles:--> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_consumibles_d" class="col-md-3 control-label">Consumibles:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 				                <select class="form-control" id="pr_consumibles_d" name="pr_consumibles_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="Bandeja">Bandeja</option>
+			 //      									<option value="Cables de Poder ">Cables de Poder </option>
+			 //      									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
+			 //      									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
+			 //      									<option value="No Aplica">No Aplica</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_registro_importacion_carta" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <select class="form-control" id="pr_registro_importacion_carta" name="pr_registro_importacion_carta">
+				// 								    <option>Seleccionar...</option>
+				// 								    <option>Si</option>
+			 //      									<option>No</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- MODO TRANSMISIÓN ENTREGA CANAL -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_modo_transmision" class="col-md-3 control-label">Modo transmisión entrega canal:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <select class="form-control" id="pr_modo_transmision" name="pr_modo_transmision">
+				// 								    <option>Seleccionar...</option>
+				// 								    <option>Troncal - Especifique VLAN</option>
+			 //      									<option>Acceso (Null)</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CANTIDAD MACS : -->
+				// 				    <div class="form-group">
+				// 				        <label for="pr_cantidad_macs_d" class="col-md-3 control-label">Cantidad MACS:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
+				// 				                <select class="form-control" id="pr_cantidad_macs_d" name="pr_cantidad_macs_d">
+				// 								    <option value="">Seleccionar...</option>
+				// 								    <option value="0 - 250 Estándar">0 - 250 Estándar</option>
+			 //      									<option value="250 en Adelante - Solicitar autorización a CORE">250 en Adelante - Solicitar autorización a CORE</option>
+				// 								</select>
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN</legend>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- NOMBRE --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_nombre_3" class="col-md-3 control-label">Nombre:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 				                <input name="pr_nombre_3" id="pr_nombre_3" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- TELEFONO --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_telefono_3" class="col-md-3 control-label">Telefono:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 				                <input name="pr_telefono_3" id="pr_telefono_3" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CELULAR --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_celular_3" class="col-md-3 control-label">Celular:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 				                <input name="pr_celular_3" id="pr_celular_3" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- EMAIL --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_email_3" class="col-md-3 control-label">Email:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 				                <input name="pr_email_3" id="pr_email_3" class="form-control" type="email" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<legend class="f-s-15">DATOS CLIENTE: TÉCNICO</legend>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- NOMBRE --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_nombre_4" class="col-md-3 control-label">Nombre:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 				                <input name="pr_nombre_4" id="pr_nombre_4" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- TELEFONO --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_telefono_4" class="col-md-3 control-label">Telefono:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 				                <input name="pr_telefono_4" id="pr_telefono_4" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- CELULAR --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_celular_4" class="col-md-3 control-label">Celular:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 				                <input name="pr_celular_4" id="pr_celular_4" class="form-control" type="number" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+
+				// 				    <!-- EMAIL --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_email_4" class="col-md-3 control-label">Correo electronico:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 				                <input name="pr_email_4" id="pr_email_4" class="form-control" type="email" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+
+				// 			<div class="d-inline-b">
+				// 				<fieldset class="col-md-6">
+
+				// 					<!-- OBSERVACIONES: --> 
+				// 				    <div class="form-group">
+				// 				        <label for="pr_observaciones_2" class="col-md-3 control-label">Observaciones:</label>
+				// 				        <div class="col-md-9 selectContainer">
+				// 				            <div class="input-group">
+				// 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 				                <input name="pr_observaciones_2" id="pr_observaciones_2" class="form-control" type="text" >
+				// 				            </div>
+				// 				        </div>
+				// 				    </div>
+				// 				</fieldset>
+				// 			</div>
+				// 		</div>
+				// 	</div>
+				// </div>
+    //     	`;
+    //     }
+
+        //LAN ADMINISTRADA NO TIENE NADA QUE LO DISPARE
+    //     formProduct_LAN_ADMINISTRADA: function(otp){
+    //     	return `
+    //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>LAN ADMINISTRADA</small></h2>
+				// <div class="widget bg_white m-t-25 d-inline-b cliente">
+
+				// 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION</legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- CIUDAD -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_ciudad" class="col-md-3 control-label">Ciudad:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
+				// 		                <input name="pr_ciudad" id="pr_ciudad" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- DIRECCIÓN:-->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_direccion" class="col-md-3 control-label">Dirección:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+				// 		                <input name="pr_direccion" id="pr_direccion" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- TIPO PREDIO: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_predio" class="col-md-3 control-label">Tipo predio:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 					<span class="input-group-addon"><i class="fa fa-home" ></i></span>
+				// 		                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="Edificio">Edificio</option>
+	   //    									<option value="Casa">Casa</option>									    
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>	
+
+				// 		    <!-- NIT del cliente: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_nit_cliente" class="col-md-3 control-label">NIT del cliente:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="fa fa-sort-numeric-desc" ></i></span>
+				// 		                <input name="pr_nit_cliente" id="pr_nit_cliente" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- ALIAS DEL LUGAR  -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_alias_lugar" class="col-md-3 control-label">Alias del lugar:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_alias_lugar" id="pr_alias_lugar" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- OTP -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_otp" class="col-md-3 control-label">OTP:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+				// 		                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- otp_asociadas -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_otp_asociadas" class="col-md-3 control-label">OTP asociadas:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_otp_asociadas" id="pr_otp_asociadas" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+
+				// 		    <!-- TOPOLOGIA:: -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_topologia" class="col-md-3 control-label">Topología:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_topologia" name="pr_topologia">
+				// 						    <option value="Seleccionar...">Seleccionar...</option>
+				// 						    <option value="INTERNET DEDICADO (Solución Diferenciación de tráfico (Internet / NAP))">INTERNET DEDICADO (Solución Diferenciación de tráfico (Internet / NAP))</option>
+	   //    									<option value="INTERNET DEDICADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))">INTERNET DEDICADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>	
+	   //    									<option value="INTERNET DEDICADO ADMINISTRADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))">INTERNET DEDICADO ADMINISTRADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>
+	   //    									<option value="INTERNET EMPRESARIAL">INTERNET EMPRESARIAL</option>					
+	   //    									<option value="INTERNET BANDA ANCHA (Solución FO)">INTERNET BANDA ANCHA (Solución FO)</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- ID SERVICIO ACTUAL -->
+				// 			<div class="form-group">
+				// 		        <label for="pr_id_servicio" class="col-md-3 control-label">ID SERVICIO ACTUAL(Aplica para UM Existente):</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_id_servicio" id="pr_id_servicio" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+
+				// 	<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO </legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- REQUIERE RFC : -->
+				// 		    <div class="form-group">
+				// 		        <label for="pr_requiere_res" class="col-md-3 control-label">Requiere RFC:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_requiere_res" name="pr_requiere_res">
+				// 						    <option value="Seleccionar...">Seleccionar...</option>
+				// 						    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
+	   //    									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  												
+	   //    									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
+	   //    									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
+	   //    									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+	   //    									<option value="No">No</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Conversor Medio: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_conversor_medio" class="col-md-3 control-label">Conversor Medio:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_conversor_medio" id="pr_conversor_medio" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Referencia Router: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_referencia_router" class="col-md-3 control-label">Referencia Router:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_referencia_router" id="pr_referencia_router" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+						    
+				// 		    <!-- Modulos o Tarjetas: -->
+				//             <div class="form-group">
+				// 		        <label for="pr_modulo_tarjeta" class="col-md-3 control-label">Modulos o Tarjetas:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_modulo_tarjeta" id="pr_modulo_tarjeta" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Licencias --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_licencias" class="col-md-3 control-label">Licencias:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_licencias" id="pr_licencias" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- Equipos Adicionale--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_equipos_adicionales" class="col-md-3 control-label">Equipos adicionale:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
+				// 		                <input name="pr_equipos_adicionales" id="pr_equipos_adicionales" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- Consumibles:--> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_consumibles" name="pr_consumibles">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="Bandeja">Bandeja</option>
+	   //    									<option value="Cables de Poder ">Cables de Poder </option>
+	   //    									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
+	   //    									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
+	   //    									<option value="No Aplica">No Aplica</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
+				// 		     <div class="form-group">
+				// 		        <label for="pr_registro_importacion" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+				// 		                <select class="form-control" id="pr_registro_importacion" name="pr_registro_importacion">
+				// 						    <option value="">Seleccionar...</option>
+				// 						    <option value="Si">Si</option>
+	   //    									<option value="No">No</option>
+				// 						</select>
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN </legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- NOMBRE --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_nombre1" class="col-md-3 control-label">Nombre:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 		                <input name="pr_nombre1" id="pr_nombre1" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- TELEFONO --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_telefono1" class="col-md-3 control-label">Telefono:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 		                <input name="pr_telefono1" id="pr_telefono1" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- CELULAR --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_celular1" class="col-md-3 control-label">Celular:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 		                <input name="pr_celular1" id="pr_celular1" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- EMAIL --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_email1" class="col-md-3 control-label">Email:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 		                <input name="pr_email1" id="pr_email1" class="form-control" type="email" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">DATOS CONTACTO TÉCNICO</legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- NOMBRE --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_nombre2" class="col-md-3 control-label">Nombre:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+				// 		                <input name="pr_nombre2" id="pr_nombre2" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- TELEFONO --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_telefono2" class="col-md-3 control-label">Telefono:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+				// 		                <input name="pr_telefono2" id="pr_telefono2" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- CELULAR --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_celular2" class="col-md-3 control-label">Celular:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+				// 		                <input name="pr_celular2" id="pr_celular2" class="form-control" type="number" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+
+				// 		    <!-- EMAIL --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_email2" class="col-md-3 control-label">Correo electronico:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+				// 		                <input name="pr_email2" id="pr_email2" class="form-control" type="email" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+
+				// 			<!-- OBSERVACIONES: --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_observaciones" class="col-md-3 control-label">Observaciones:</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+
+				// 	<legend class="f-s-15">KIKOFF TECNICO</legend>
+
+				// 	<div class="d-inline-b">
+				// 		<fieldset class="col-md-6">
+							
+				// 			<!-- TIPO PROTOCOLO (STP, RSTP, VTP, DTP) --> 
+				// 		    <div class="form-group">
+				// 		        <label for="pr_tipo_protocolo" class="col-md-3 control-label">Tipo protocolo(STP, RSTP, VTP, DTP):</label>
+				// 		        <div class="col-md-9 selectContainer">
+				// 		            <div class="input-group">
+				// 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+				// 		                <input name="pr_tipo_protocolo" id="pr_tipo_protocolo" class="form-control" type="text" >
+				// 		            </div>
+				// 		        </div>
+				// 		    </div>
+				// 		</fieldset>
+				// 	</div>
+				// </div>
+    //     	`;
+    //     }
     };
     setForm.init();
 });
