@@ -4833,7 +4833,7 @@ $(function () {
         /*****************************************INICIO FORMULARIOS DE PRODUCTO*****************************************/
 
         // Retorna el formulario de producto segun el servicio seleccionado
-        returnFormularyProduct: function(num_servicio, arg){
+        returnFormularyProduct: function(num_servicio, arg = []){
             let form = "";
             switch(num_servicio){
             	/*formulario Internet*/

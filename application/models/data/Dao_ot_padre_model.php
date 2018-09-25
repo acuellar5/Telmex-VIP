@@ -69,7 +69,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -93,7 +93,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo 
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -118,7 +118,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -165,7 +165,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -256,7 +256,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -480,6 +480,70 @@ class Dao_ot_padre_model extends CI_Model {
             INNER JOIN ot_hija oth ON oth.nro_ot_onyx = otp.k_id_ot_padre
             WHERE otp.k_id_ot_padre = $idOtp
             LIMIT 1
+        ");
+        return $query->row();
+    }
+    
+    /* retorna:
+     * la informacion del producto de una OTP
+    */
+    public function getProductByOtp($idOtp, $numServicio){
+        $tabla = '';
+        $columWhere = 'id_ot_padre';
+        switch ($numServicio) {
+            /*formulario Internet*/
+            	case '1': // internet dedicado empresarial
+            	case '2': // internet dedicado 
+            		$tabla = 'pr_internet';
+            		break;
+            	/*formulario MPLS*/
+            	case '3': // mpls_avanzado_intranet
+            	case '4': // mpls_avanzado_intranet_varios_puntos
+            	case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
+            	case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
+            	case '7': // MPLS Avanzado Extranet
+            	case '8': // Backend MPLS 
+            	case '9': // MPLS Avanzado con Componente Datacenter Claro
+            	case '10': // MPLS Transaccional 3G
+            		$tabla = 'pr_mpls';
+                        $columWhere = 'id_ot_padre_ori';
+            		break;
+            	/*FORMULARIO NOVEDADES*/
+            	case '12': // Cambio de Equipos Servicio
+            	case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            	case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+            	case '22': // Cambio de Última Milla
+            	case '23': // Cambio de Equipo
+            		$tabla = 'pr_novedades';
+            		break;
+            	/*TRASLADO_EXTERNO*/
+            	case '15': // Traslado Externo Servicio
+            		$tabla = 'pr_traslado_externo';
+            		break;
+            	/*TRASLADO_INTERNO*/
+            	case '16': // Traslado Interno Servicio
+            		$tabla = 'pr_traslado_interno';
+            		break;
+            	/*PVX_ADMINISTRADA*/
+            	case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+            		$tabla = 'pr_pbx_administrada';
+            		break;
+            	/*TELEFONIA FIJA*/
+            	case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
+            	case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
+            	case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
+            	case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
+            		$tabla = 'pr_telefonia_fija';
+            		break;
+
+            	/*NN HERFANITO*/
+            	case '11': // Adición Marquillas Aeropuerto el Dorado Opain
+
+            		break;
+        }
+        
+        $query = $this->db->query("
+            SELECT * FROM $tabla WHERE $columWhere = $idOtp
         ");
         return $query->row();
     }
