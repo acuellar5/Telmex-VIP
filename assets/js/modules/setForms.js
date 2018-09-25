@@ -1,99 +1,97 @@
-$(function () {
+$(function() {
     setForm = {
-        init: function () {
+        init: function() {
             setForm.events();
-            
+
         },
 
         //Eventos de la ventana.
-        events: function () {
-        },
+        events: function() {},
 
         // retorna el formulario deseado de servicio
-        returnFormularyService: function(nombre_cliente = '', direccion_destino = '', servicio_val, servicio_nombre = ''){
+        returnFormularyService: function(nombre_cliente = '', direccion_destino = '', servicio_val, servicio_nombre = '') {
             let form = "";
             // primera seccion, la dejo true porque no se si hay plantillas que no necesite la primera seccion
             if (true) {
-            	form += setForm.primeraSeccionServicio(nombre_cliente, servicio_nombre);
+                form += setForm.primeraSeccionServicio(nombre_cliente, servicio_nombre);
             }
 
-            switch(servicio_val){
-            	case '1': // internet dedicado empresarial
-            		form += setForm.internetDedicadoEmpresarial(direccion_destino);
-            		break;
-            	case '2': // internet dedicado 
-            		form += setForm.internetDedicado(direccion_destino);
-            		break;
-            	case '3': // mpls_avanzado_intranet
-            		form += setForm.mpls_avanzado_intranet(direccion_destino);
-            		break;
-            	case '4': // mpls_avanzado_intranet_varios_puntos
-            		form += setForm.mpls_avanzado_intranet_varios_puntos();
-            		break;
-            	case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
-            		form += setForm.MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_NDS_2(direccion_destino);
-            		break;
-            	case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
-            		form += setForm.MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_y_Router_NDS1(direccion_destino);
-            		break;
-            	case '7': // MPLS Avanzado Extranet
-            		form += setForm.MPLS_Avanzado_Extranet(direccion_destino);
-            		break;
-            	case '8': // Backend MPLS 
-            		form += setForm.Backend_MPLS(direccion_destino);
-            		break;
-            	case '9': // MPLS Avanzado con Componente Datacenter Claro
-            		form += setForm.MPLS_Avanzado_con_Componente_Datacenter_Claro(direccion_destino);
-            		break;
-            	case '10': // MPLS Transaccional 3G
-            		form += setForm.MPLS_Transaccional_3G(direccion_destino);
-            		break;
-            	/*plantillas nuevas*/
-            	case '11': // Adición Marquillas Aeropuerto el Dorado Opain
-            		form += setForm.adicion_marquillas_aeropuerto_el_dorado_opain(direccion_destino);
-            		break;
-            	case '12': // Cambio de Equipos Servicio
-            		form += setForm.cambio_de_equipos_servicio(direccion_destino);
-            		break;
-            	case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
-            		form += setForm.cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1(direccion_destino);
-            		break;
-            	case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
-            		form += setForm.cambio_de_servicio_telefonia_fija_publica_linea_sip_a_pbx_distribuida_linea_sip(direccion_destino);
-            		break;
-            	case '15': // Traslado Externo Servicio
-            		form += setForm.traslado_externo_servicio(direccion_destino);
-            		break;
-            	case '16': // Traslado Interno Servicio
-            		form += setForm.traslado_interno_servicio(direccion_destino);
-            		break;
-            	case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
-            		form += setForm.soluciones_administrativas_comunicaciones_unificadas_pbx_administrada(direccion_destino);
-            		break;
-            	case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
-            		form += setForm.instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1(direccion_destino);
-            		break;
-            	case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
-            		form += setForm.instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip(direccion_destino);
-            		break;
-            	case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
-            		form += setForm.instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip_con_gateway_de_voz(direccion_destino);
-            		break;
-            	case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
-            		form += setForm.instalacion_telefonia_publica_basica_internet_dedicado(direccion_destino);
-            		break;
-            	case '22': // Cambio de Última Milla
-            		form += setForm.cambio_de_ultima_milla(direccion_destino);
-            		break;
-            	case '23': // Cambio de Equipo
-            		form += setForm.cambio_de_equipo(direccion_destino);
-            		break;
+            switch (servicio_val) {
+                case '1': // internet dedicado empresarial
+                    form += setForm.internetDedicadoEmpresarial(direccion_destino);
+                    break;
+                case '2': // internet dedicado 
+                    form += setForm.internetDedicado(direccion_destino);
+                    break;
+                case '3': // mpls_avanzado_intranet
+                    form += setForm.mpls_avanzado_intranet(direccion_destino);
+                    break;
+                case '4': // mpls_avanzado_intranet_varios_puntos
+                    form += setForm.mpls_avanzado_intranet_varios_puntos();
+                    break;
+                case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
+                    form += setForm.MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_NDS_2(direccion_destino);
+                    break;
+                case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
+                    form += setForm.MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_y_Router_NDS1(direccion_destino);
+                    break;
+                case '7': // MPLS Avanzado Extranet
+                    form += setForm.MPLS_Avanzado_Extranet(direccion_destino);
+                    break;
+                case '8': // Backend MPLS 
+                    form += setForm.Backend_MPLS(direccion_destino);
+                    break;
+                case '9': // MPLS Avanzado con Componente Datacenter Claro
+                    form += setForm.MPLS_Avanzado_con_Componente_Datacenter_Claro(direccion_destino);
+                    break;
+                case '10': // MPLS Transaccional 3G
+                    form += setForm.MPLS_Transaccional_3G(direccion_destino);
+                    break;
+                    /*plantillas nuevas*/
+                case '11': // Adición Marquillas Aeropuerto el Dorado Opain
+                    form += setForm.adicion_marquillas_aeropuerto_el_dorado_opain(direccion_destino);
+                    break;
+                case '12': // Cambio de Equipos Servicio
+                    form += setForm.cambio_de_equipos_servicio(direccion_destino);
+                    break;
+                case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+                    form += setForm.cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1(direccion_destino);
+                    break;
+                case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+                    form += setForm.cambio_de_servicio_telefonia_fija_publica_linea_sip_a_pbx_distribuida_linea_sip(direccion_destino);
+                    break;
+                case '15': // Traslado Externo Servicio
+                    form += setForm.traslado_externo_servicio(direccion_destino);
+                    break;
+                case '16': // Traslado Interno Servicio
+                    form += setForm.traslado_interno_servicio(direccion_destino);
+                    break;
+                case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+                    form += setForm.soluciones_administrativas_comunicaciones_unificadas_pbx_administrada(direccion_destino);
+                    break;
+                case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
+                    form += setForm.instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1(direccion_destino);
+                    break;
+                case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
+                    form += setForm.instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip(direccion_destino);
+                    break;
+                case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
+                    form += setForm.instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip_con_gateway_de_voz(direccion_destino);
+                    break;
+                case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
+                    form += setForm.instalacion_telefonia_publica_basica_internet_dedicado(direccion_destino);
+                    break;
+                case '22': // Cambio de Última Milla
+                    form += setForm.cambio_de_ultima_milla(direccion_destino);
+                    break;
+                case '23': // Cambio de Equipo
+                    form += setForm.cambio_de_equipo(direccion_destino);
+                    break;
 
             }
-
 
             if (true) {
-            	form += setForm.ultimaSeccionServicio();
+                form += setForm.ultimaSeccionServicio();
             }
 
             return form;
@@ -101,8 +99,8 @@ $(function () {
         },
 
         // retorna la primera seccion de los formularios de servicio
-        primeraSeccionServicio: function(nombre_cliente, servicio_nombre){
-           // comentariada la seccion de elegir a quien va dirigido
+        primeraSeccionServicio: function(nombre_cliente, servicio_nombre) {
+            // comentariada la seccion de elegir a quien va dirigido
             return `
 					<!-- <div class="widget bg_white m-t-25 display-block cliente" id="seccion_correos">
 					    <fieldset class="col-md-6 control-label">
@@ -171,7 +169,7 @@ $(function () {
         },
 
         // opcion servicio 1
-        internetDedicadoEmpresarial: function(direccion_destino){
+        internetDedicadoEmpresarial: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group direccion_instalacion">
@@ -219,7 +217,7 @@ $(function () {
         },
 
         // opcion servicio 2
-        internetDedicado: function(direccion_destino){
+        internetDedicado: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group direccion_instalacion">
@@ -266,7 +264,7 @@ $(function () {
         },
 
         // opcion servicio 3
-        mpls_avanzado_intranet: function(direccion_destino){
+        mpls_avanzado_intranet: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -331,7 +329,7 @@ $(function () {
         },
 
         // opcion servicio 4
-        mpls_avanzado_intranet_varios_puntos: function(){
+        mpls_avanzado_intranet_varios_puntos: function() {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group direccion_instalacion_des">
@@ -462,7 +460,7 @@ $(function () {
         },
 
         // opcion servicio 5
-        MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_NDS_2: function(direccion_destino){
+        MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_NDS_2: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -527,7 +525,7 @@ $(function () {
         },
 
         // opcion servicio 6
-        MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_y_Router_NDS1: function(direccion_destino){
+        MPLS_Avanzado_Intranet_con_Backup_de_Ultima_Milla_y_Router_NDS1: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -592,7 +590,7 @@ $(function () {
         },
 
         // opcion servicio 7
-        MPLS_Avanzado_Extranet: function(direccion_destino){
+        MPLS_Avanzado_Extranet: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -657,7 +655,7 @@ $(function () {
         },
 
         // opcion servicio 8
-        Backend_MPLS: function(direccion_destino){
+        Backend_MPLS: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -722,7 +720,7 @@ $(function () {
         },
 
         // opcion servicio 9
-        MPLS_Avanzado_con_Componente_Datacenter_Claro: function(direccion_destino){
+        MPLS_Avanzado_con_Componente_Datacenter_Claro: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -787,7 +785,7 @@ $(function () {
         },
 
         // opcion servicio 10
-        MPLS_Transaccional_3G: function(direccion_destino){
+        MPLS_Transaccional_3G: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 display-block cliente">
 					  <fieldset class="col-md-6 control-label">
 					    <div class="form-group existente">
@@ -852,7 +850,7 @@ $(function () {
         },
 
         // ultima seccion de servicios
-        ultimaSeccionServicio: function(direccion_destino){
+        ultimaSeccionServicio: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 d-inline-b cliente">
 					    <fieldset class="col-md-6">
 					        <div class="form-group ingeniero1">
@@ -957,9 +955,9 @@ $(function () {
         },
 
         /*PLANTILLAS DE SERVICIO NUEVAS*/
-		
+
         // opcion de servicio 11
-        adicion_marquillas_aeropuerto_el_dorado_opain: function(direccion_destino){
+        adicion_marquillas_aeropuerto_el_dorado_opain: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 d-inline-b cliente">
 
 				      <fieldset class="col-md-6">
@@ -1179,10 +1177,10 @@ $(function () {
 				      <fieldset class="col-md-6">
 				            <label for="campo36" class="col-md-10 control-label">Las Marquillas a habilitar se encuentran a más de 1.5 mts de altura?:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo36" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo36" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo37">NO</label>
+				              <label><input type="radio" value="NO" name="campo37">NO</label>
 				            </div>				            
 				      </fieldset>
 				        <h4 class="m-l-10 f-l">Marquillas confirmadas por su Proveedor de Cableado</h4><hr>
@@ -1366,7 +1364,7 @@ $(function () {
 				    </div>`;
         },
         // opcion de servicio 12
-        cambio_de_equipos_servicio: function(direccion_destino){
+        cambio_de_equipos_servicio: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 
@@ -1410,10 +1408,10 @@ $(function () {
 				            <!--*********************  INPUT check  *********************-->
 				            <label for="campo7" class="col-md-12 control-label">&nbsp; existen otros servicio sobre el cpe: &nbsp;&nbsp;</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo7" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo7">NO</label>
+				              <label><input type="radio" value="NO" name="campo7">NO</label>
 				            </div>
 				            
 				      </fieldset>
@@ -1446,10 +1444,10 @@ $(function () {
 				          <!--*********************  INPUT check  *********************-->
 				            <label for="campo10" class="col-md-12 control-label">Requiere que el Cambio de Equipos para su Servicio se ejecute en horario No Hábil o Fin de Semana:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo10" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo10" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo10">NO</label>
+				              <label><input type="radio" value="NO" name="campo10">NO</label>
 				            </div>
 				          
 				          <!--*********************  INPUT TEXT  *********************-->
@@ -1469,7 +1467,7 @@ $(function () {
             `;
         },
         // opcion de servicio 13
-        cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1: function(direccion_destino){
+        cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 
@@ -1842,7 +1840,7 @@ $(function () {
             `;
         },
         // opcion de servicio 14
-        cambio_de_servicio_telefonia_fija_publica_linea_sip_a_pbx_distribuida_linea_sip: function(direccion_destino){
+        cambio_de_servicio_telefonia_fija_publica_linea_sip_a_pbx_distribuida_linea_sip: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 d-inline-b cliente">
 				      <fieldset class="col-md-6">
 				            <!--*********************  INPUT TEXT  *********************-->
@@ -1876,7 +1874,7 @@ $(function () {
 				            	<div class="col-md-9 selectContainer">
 				            		<div class="input-group">
 				            			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-				            			<select name="campo6" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
+				            			<select name="campo6[]" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
 											<option value="Bogota">Bogota</option>
 											<option value="Tunja">Tunja</option>
 											<option value="Villavicencio">Villavicencio</option>
@@ -2080,10 +2078,10 @@ $(function () {
 				          
 				           <label for="campo36" class="col-md-10 control-label">Requiere una IP Diferente a la asignada por Defecto:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo36" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo36" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo37">NO</label>
+				              <label><input type="radio" value="NO" name="campo37">NO</label>
 				            </div>	
 				          
 				      </fieldset>
@@ -2106,7 +2104,7 @@ $(function () {
 			`;
         },
         // opcion de servicio 15
-        traslado_externo_servicio: function(direccion_destino){
+        traslado_externo_servicio: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 				      <fieldset class="col-md-6">
@@ -2149,10 +2147,10 @@ $(function () {
 				                      
 				           <label for="campo7" class="col-md-8 control-label">Existen otros Servicios a Trasladar:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo7" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo7">NO</label>
+				              <label><input type="radio" value="NO" name="campo7">NO</label>
 				            </div>
 				            
 				            
@@ -2289,10 +2287,10 @@ $(function () {
 				            
 				            <label for="campo19" class="col-md-10 control-label">Requiere que el Traslado de su Servicio se ejecute en horario No Hábil o Fin de Semana:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo19" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo19" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo19">NO</label>
+				              <label><input type="radio" value="NO" name="campo19">NO</label>
 				            </div>
 				      </fieldset>
 				      <fieldset class="col-md-6">
@@ -2311,7 +2309,7 @@ $(function () {
             `;
         },
         // opcion de servicio 16
-        traslado_interno_servicio: function(direccion_destino){
+        traslado_interno_servicio: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 				      <fieldset class="col-md-6">
@@ -2328,10 +2326,10 @@ $(function () {
 				            
 				            <label for="campo5" class="col-md-12 control-label">Existen otros Servicios a Trasladar:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo5">SI</label>
+				              <label><input type="radio" value="SI" name="campo5">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo5" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo5" checked>NO</label>
 				            </div>
 				            <hr>
 				            
@@ -2375,63 +2373,63 @@ $(function () {
 				          
 				           <label for="campo9" class="col-md-12 control-label">Movimiento Equipos - Caja OB - Fibra > 3 Mts:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo9" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo9" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo9">NO</label>
+				              <label><input type="radio" value="NO" name="campo9">NO</label>
 				            </div>
 				      </fieldset><hr>
 				      <fieldset class="col-md-6">
 					        <label for="campo10" class="col-md-12 control-label">Movimiento Equipos - Caja OB - Fibra < 3 Mts:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo10" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo10" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo10">NO</label>
+				              <label><input type="radio" value="NO" name="campo10">NO</label>
 				            </div><hr>
 				          
 				          	<label for="campo11" class="col-md-12 control-label">Movimiento solo de Equipos:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo11" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo11" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo11">NO</label>
+				              <label><input type="radio" value="NO" name="campo11">NO</label>
 				            </div>
 				          <hr>
 				      </fieldset>
 				      <fieldset class="col-md-6">
 				            <label for="campo12" class="col-md-12 control-label">Movimiento solo de Caja OB – Fibra:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo12" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo12" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo12">NO</label>
+				              <label><input type="radio" value="NO" name="campo12">NO</label>
 				            </div>
 				            <hr>
 				            <label for="campo13" class="col-md-12 control-label">Movimiento Rack:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo13" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo13" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo13">NO</label>
+				              <label><input type="radio" value="NO" name="campo13">NO</label>
 				            </div>
 				            <hr>
 				      </fieldset>
 				      <fieldset class="col-md-6">
 				          	<label for="campo14" class="col-md-12 control-label">Movimiento ODF:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo14" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo14" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo14">NO</label>
+				              <label><input type="radio" value="NO" name="campo14">NO</label>
 				            </div>
 				          <hr>
 					        <label for="campo15" class="col-md-12 control-label">Determinación en Visita de Obra Civil:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo15" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo15" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo15">NO</label>
+				              <label><input type="radio" value="NO" name="campo15">NO</label>
 				            </div>
 				          <hr>
 				      </fieldset>
@@ -2530,10 +2528,10 @@ $(function () {
 				        <fieldset class="col-md-6">
 				        	<label for="campo24" class="col-md-12 control-label">Requiere que el Traslado de su Servicio se ejecute en horario No Hábil o Fin de Semana:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo24" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo24" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo24">NO</label>
+				              <label><input type="radio" value="NO" name="campo24">NO</label>
 				            </div><hr>
 
 				            <!--*********************  INPUT DATE  *********************-->
@@ -2551,7 +2549,7 @@ $(function () {
             `;
         },
         // opcion de servicio 17
-        soluciones_administrativas_comunicaciones_unificadas_pbx_administrada: function(direccion_destino){
+        soluciones_administrativas_comunicaciones_unificadas_pbx_administrada: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 				    <fieldset class="col-md-6">
@@ -2652,10 +2650,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo11" class="col-md-3 control-label">Buzones de boz:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo11">SI</label>
+				              <label><input type="radio" value="SI" name="campo11">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo11" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo11" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
@@ -2676,10 +2674,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo13" class="col-md-3 control-label">Hardphones: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo13">SI</label>
+				              <label><input type="radio" value="SI" name="campo13">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo13" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo13" checked>NO</label>
 				            </div>
 				            <hr>
 						</fieldset>
@@ -2711,10 +2709,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo16" class="col-md-3 control-label">Softphones: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo16">SI</label>
+				              <label><input type="radio" value="SI" name="campo16">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo16" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo16" checked>NO</label>
 				            </div>
 				            <!--*********************  INPUT TEXT  *********************-->
 							<div class="form-group">
@@ -2755,10 +2753,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo20" class="col-md-3 control-label">Diademas :</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20">SI</label>
+				              <label><input type="radio" value="SI" name="campo20">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo20" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
@@ -2779,10 +2777,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo22" class="col-md-3 control-label">Arañas de Conferencia:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo22">SI</label>
+				              <label><input type="radio" value="SI" name="campo22">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo22" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo22" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
@@ -2839,10 +2837,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo27" class="col-md-6 control-label">Incluye LAN Administrada: </label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo27">SI</label>
+				              <label><input type="radio" value="SI" name="campo27">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo27" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo27" checked>NO</label>
 				            </div>
 				            <!--*********************  INPUT TEXT  *********************-->
 							<div class="form-group">
@@ -2868,10 +2866,10 @@ $(function () {
 							</div>
 							<label for="campo30" class="col-md-3 control-label">PoE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo30">SI</label>
+				              <label><input type="radio" value="SI" name="campo30">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo30" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo30" checked>NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -2881,10 +2879,10 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo31" class="col-md-3 control-label">Telefonos Inalambricos:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo31">SI</label>
+				              <label><input type="radio" value="SI" name="campo31">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo31" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo31" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
@@ -2901,10 +2899,10 @@ $(function () {
 
 							<label for="campo33" class="col-md-3 control-label">AP Claro:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo33">SI</label>
+				              <label><input type="radio" value="SI" name="campo33">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo33" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo33" checked>NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -3097,28 +3095,28 @@ $(function () {
 
 							<label for="campo49" class="col-md-3 control-label">Extensión Móvil:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo49">SI</label>
+				              <label><input type="radio" value="SI" name="campo49">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo49" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo49" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
 
 							<label for="campo50" class="col-md-3 control-label">Grupo Captura:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo50">SI</label>
+				              <label><input type="radio" value="SI" name="campo50">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo50" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo50" checked>NO</label>
 				            </div>
 							<!--*********************  INPUT TEXT  *********************-->
 							<label for="campo51" class="col-md-3 control-label">Buzón de Voz:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo51">SI</label>
+				              <label><input type="radio" value="SI" name="campo51">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo51" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo51" checked>NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -3152,7 +3150,7 @@ $(function () {
             `;
         },
         // opcion de servicio 18
-        instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1: function(direccion_destino){
+        instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<div class="d-inline-b">
@@ -3185,7 +3183,7 @@ $(function () {
 				            	<div class="col-md-9 selectContainer">
 				            		<div class="input-group">
 				            			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-				            			<select name="campo6" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
+				            			<select name="campo6[]" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
 											<option value="Bogota">Bogota</option>
 											<option value="Yopal">Yopal</option>
 											<option value="Neiva">Neiva</option>
@@ -3508,7 +3506,7 @@ $(function () {
             `;
         },
         // opcion de servicio 19
-        instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip: function(direccion_destino){
+        instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<div class="d-inline-b">
@@ -3541,7 +3539,7 @@ $(function () {
 				            	<div class="col-md-9 selectContainer">
 				            		<div class="input-group">
 				            			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-				            			<select name="campo6" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
+				            			<select name="campo6[]" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
 											<option value="Bogota">Bogota</option>
 											<option value="Yopal">Yopal</option>
 											<option value="Neiva">Neiva</option>
@@ -3734,10 +3732,10 @@ $(function () {
 				    	<fieldset class="col-md-6">
 							<label for="campo20" class="col-md-12 control-label">Requiere una IP Diferente a la asignada por Defecto:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20">SI</label>
+				              <label><input type="radio" value="SI" name="campo20">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo20" checked>NO</label>
 				            </div>
 				            <!--*********************  INPUT TEXT  *********************-->
 				            <div class="form-group">
@@ -3777,7 +3775,7 @@ $(function () {
             `;
         },
         // opcion de servicio 20
-        instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip_con_gateway_de_voz: function(direccion_destino){
+        instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip_con_gateway_de_voz: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<div class="d-inline-b">
@@ -3810,7 +3808,7 @@ $(function () {
 				            	<div class="col-md-9 selectContainer">
 				            		<div class="input-group">
 				            			<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-				            			<select name="campo6" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
+				            			<select name="campo6[]" id="campo6" class="form-control multiselect_forms"  multiple="multiple">
 											<option value="Bogota">Bogota</option>
 											<option value="Yopal">Yopal</option>
 											<option value="Neiva">Neiva</option>
@@ -4003,10 +4001,10 @@ $(function () {
 				    	<fieldset class="col-md-6">
 							<label for="campo20" class="col-md-12 control-label">Requiere una IP Diferente a la asignada por Defecto:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20">SI</label>
+				              <label><input type="radio" value="SI" name="campo20">SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo20" checked>NO</label>
 				            </div>
 				            <!--*********************  INPUT TEXT  *********************-->
 				            <div class="form-group">
@@ -4046,7 +4044,7 @@ $(function () {
             `;
         },
         // opcion de servicio 21
-        instalacion_telefonia_publica_basica_internet_dedicado: function(direccion_destino){
+        instalacion_telefonia_publica_basica_internet_dedicado: function(direccion_destino) {
             return `<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<div class="d-inline-b">
 				    	<fieldset class="col-md-6">
@@ -4366,7 +4364,7 @@ $(function () {
 			`;
         },
         // opcion de servicio 22
-        cambio_de_ultima_milla: function(direccion_destino){
+        cambio_de_ultima_milla: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<div class="d-inline-b">
@@ -4478,18 +4476,18 @@ $(function () {
 						<fieldset class="col-md-6">
 							<label for="campo13" class="col-md-6 control-label">Requiere Cambio de equipos:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo13" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo13" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo13">NO</label>
+				              <label><input type="radio" value="NO" name="campo13">NO</label>
 				            </div>	
 
 				            <label for="campo14" class="col-md-6 control-label">Requiere Cambio de UM:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo14" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo14" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo14">NO</label>
+				              <label><input type="radio" value="NO" name="campo14">NO</label>
 				            </div>	
 						</fieldset>
 					</div>
@@ -4595,10 +4593,10 @@ $(function () {
 
 							<label for="campo22" class="col-md-6 control-label">Requiere que el Cambio de Ultima Milla necesario para soportar la ampliación del Servicio, se ejecute en horario No Hábil o Fin de Semana:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo22" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo22" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo22">NO</label>
+				              <label><input type="radio" value="NO" name="campo22">NO</label>
 				            </div>	
 						</fieldset>
 					</div>
@@ -4606,7 +4604,7 @@ $(function () {
             `;
         },
         // opcion de servicio 23
-        cambio_de_equipo: function(direccion_destino){
+        cambio_de_equipo: function(direccion_destino) {
             return `
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<div class="d-inline-b">
@@ -4708,10 +4706,10 @@ $(function () {
 							</div>
 							<label for="campo12" class="col-md-6 control-label">Requiere Cambio de equipos:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo12" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo12" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo12">NO</label>
+				              <label><input type="radio" value="NO" name="campo12">NO</label>
 				            </div>	
 
 						</fieldset>
@@ -4818,10 +4816,10 @@ $(function () {
 
 							<label for="campo20" class="col-md-6 control-label">Requiere que el Cambio de Ultima Milla necesario para soportar la ampliación del Servicio, se ejecute en horario No Hábil o Fin de Semana:</label>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo20" checked>SI</label>
 				            </div>
 				            <div class="radio">
-				              <label><input type="checkbox" name="campo20">NO</label>
+				              <label><input type="radio" value="NO" name="campo20">NO</label>
 				            </div>	
 						</fieldset>
 					</div>
@@ -4833,63 +4831,63 @@ $(function () {
         /*****************************************INICIO FORMULARIOS DE PRODUCTO*****************************************/
 
         // Retorna el formulario de producto segun el servicio seleccionado
-        returnFormularyProduct: function(num_servicio, arg){
+        returnFormularyProduct: function(num_servicio, arg) {
             let form = "";
-            switch(num_servicio){
-            	/*formulario Internet*/
-            	case '1': // internet dedicado empresarial
-            	case '2': // internet dedicado 
-            		form += setForm.formProduct_internet(arg.otp);
-            		break;
-            	/*formulario MPLS*/
-            	case '3': // mpls_avanzado_intranet
-            	case '4': // mpls_avanzado_intranet_varios_puntos
-            	case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
-            	case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
-            	case '7': // MPLS Avanzado Extranet
-            	case '8': // Backend MPLS 
-            	case '9': // MPLS Avanzado con Componente Datacenter Claro
-            	case '10': // MPLS Transaccional 3G
-            		form += setForm.formProduct_mpls(arg.otp);
-            		break;
-            	/*FORMULARIO NOVEDADES*/
-            	case '12': // Cambio de Equipos Servicio
-            	case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
-            	case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
-            	case '22': // Cambio de Última Milla
-            	case '23': // Cambio de Equipo
-            		form += setForm.formProduct_novedades();
-            		break;
-            	/*TRASLADO_EXTERNO*/
-            	case '15': // Traslado Externo Servicio
-            		form += setForm.formProduct_traslado_externo(arg.otp);
-            		break;
-            	/*TRASLADO_INTERNO*/
-            	case '16': // Traslado Interno Servicio
-            		form += setForm.formProduct_traslado_interno();
-            		break;
-            	/*PVX_ADMINISTRADA*/
-            	case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
-            		form += setForm.formProduct_pvx_administrada(arg.otp);
-            		break;
-            	/*TELEFONIA FIJA*/
-            	case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
-            	case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
-            	case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
-            	case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
-            		form += setForm.formProduct_telefonia_fija(arg.otp);
-            		break;
+            switch (num_servicio) {
+                /*formulario Internet*/
+                case '1': // internet dedicado empresarial
+                case '2': // internet dedicado 
+                    form += setForm.formProduct_internet(arg.otp);
+                    break;
+                    /*formulario MPLS*/
+                case '3': // mpls_avanzado_intranet
+                case '4': // mpls_avanzado_intranet_varios_puntos
+                case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
+                case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
+                case '7': // MPLS Avanzado Extranet
+                case '8': // Backend MPLS 
+                case '9': // MPLS Avanzado con Componente Datacenter Claro
+                case '10': // MPLS Transaccional 3G
+                    form += setForm.formProduct_mpls(arg.otp);
+                    break;
+                    /*FORMULARIO NOVEDADES*/
+                case '12': // Cambio de Equipos Servicio
+                case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+                case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+                case '22': // Cambio de Última Milla
+                case '23': // Cambio de Equipo
+                    form += setForm.formProduct_novedades();
+                    break;
+                    /*TRASLADO_EXTERNO*/
+                case '15': // Traslado Externo Servicio
+                    form += setForm.formProduct_traslado_externo(arg.otp);
+                    break;
+                    /*TRASLADO_INTERNO*/
+                case '16': // Traslado Interno Servicio
+                    form += setForm.formProduct_traslado_interno();
+                    break;
+                    /*PVX_ADMINISTRADA*/
+                case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+                    form += setForm.formProduct_pvx_administrada(arg.otp);
+                    break;
+                    /*TELEFONIA FIJA*/
+                case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
+                case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
+                case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
+                case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
+                    form += setForm.formProduct_telefonia_fija(arg.otp);
+                    break;
 
-            	/*NN HERFANITO*/
-            	case '11': // Adición Marquillas Aeropuerto el Dorado Opain
+                    /*NN HERFANITO*/
+                case '11': // Adición Marquillas Aeropuerto el Dorado Opain
 
-            		break;
+                    break;
             }
             return form;
         },
 
         /*INTERNET*/
-        formProduct_internet: function(otp){
+        formProduct_internet: function(otp) {
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO DE INTERNET</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -4963,7 +4961,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_OTP" id="OTP" value="${otp}" class="form-control" type="text" readonly>
+						                <input name="pr_id_ot_padre" id="OTP" value="${otp}" class="form-control" type="text" readonly>
 						            </div>
 						        </div>
 						    </div>
@@ -4976,7 +4974,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociadas" id="otp_asociadas" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="otp_asociadas" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5042,7 +5040,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_id_servicio_actual" id="id_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="id_servicio_actual" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5059,7 +5057,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="requiere_instalacion_um" name="pr_requiere_instalacion_um">
+						                <select class="form-control" id="requiere_instalacion_um" name="pr_requiere_um">
 										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 											<option value="No">No</option>   												
@@ -5075,7 +5073,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="proveedor_milla" name="pr_proveedor_milla">
+						                <select class="form-control" id="proveedor_milla" name="pr_proveedor">
 										    <option value="">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>
 											<option value="Existente">Existente</option>
@@ -5115,7 +5113,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="medio_um" name="pr_medio_um">
+						                <select class="form-control" id="medio_um" name="pr_medio">
 										    <option value="">Seleccionar...</option>
 										    <option value="No Aplica">No Aplica</option>  									   									
 										    <option value="Existente">Existente</option> 	   
@@ -5137,7 +5135,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_respuesta_factibilidad" id="respuesta_factibilidad" class="form-control" type="text" >
+						                <input name="pr_factibilidad_bw" id="respuesta_factibilidad" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5184,7 +5182,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_olt_gpon" id="olt_gpon" class="form-control" type="text" >
+						                <input name="pr_olt" id="olt_gpon" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>	            
@@ -5201,7 +5199,7 @@ $(function () {
 				                <div class="col-md-8 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="interface_entrega_cliente" name="pr_interface_entrega_cliente">
+						                <select class="form-control" id="interface_entrega_cliente" name="pr_interfaz_entrega_cliente">
 										    <option value="">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>  									   									
 										    <option value="Ethernet">Ethernet</option> 	   
@@ -5307,7 +5305,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_modulo_o_tarjeta" id="modulo_o_tarjeta" class="form-control" type="text" >
+						                <input name="pr_modulos_tarjetas" id="modulo_o_tarjeta" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5358,7 +5356,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="registro_importacion_carta" name="pr_registro_importacion_carta">
+						                <select class="form-control" id="registro_importacion_carta" name="pr_carta_valorizada">
 										  	<option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 											<option value="No">No</option>
@@ -5380,7 +5378,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-						                <input name="pr_nombre_dcc" id="nombre_dcc" class="form-control" type="text" >
+						                <input name="pr_nombre_1" id="nombre_dcc" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5391,7 +5389,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-						                <input name="pr_telefono_dcc" id="telefono_dcc" class="form-control" type="number" >
+						                <input name="pr_telefono_1" id="telefono_dcc" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5404,7 +5402,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <input name="pr_celular_dcc" id="celular_dcc" class="form-control" type="number" >
+						                <input name="pr_celular_1" id="celular_dcc" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5415,7 +5413,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-						                <input name="pr_email_dcc" id="email_dcc" class="form-control" type="email" >
+						                <input name="pr_correo_1" id="email_dcc" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -5432,7 +5430,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-						                <input name="pr_nombre_dct" id="nombre_dct" class="form-control" type="text" >
+						                <input name="pr_nombre_2" id="nombre_dct" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5443,7 +5441,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-						                <input name="pr_telefono_dct" id="telefono_dct" class="form-control" type="number" >
+						                <input name="pr_telefono_2" id="telefono_dct" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5456,7 +5454,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <input name="pr_celular_dct" id="celular_dct" class="form-control" type="number" >
+						                <input name="pr_celular_2" id="celular_dct" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5467,7 +5465,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <input name="pr_email_dct" id="email_dct" class="form-control" type="email" >
+						                <input name="pr_correo_2" id="email_dct" class="form-control" type="email" >
 						            </div>
 						        </div>
 						    </div>
@@ -5483,7 +5481,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_observaciones_dct" id="observaciones_dct" class="form-control" type="text" >
+						                <input name="pr_observaciones" id="observaciones_dct" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -5524,7 +5522,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="direccion_ip" name="pr_direccion_ip">
+						                <select class="form-control" id="direccion_ip" name="pr_direcciones_ip">
 										    <option value="">Seleccionar...</option>
 										    <option value="Cantidad IPs: 2 - Mascara: /30">Cantidad IPs: 2 - Mascara: /30</option>
 											<option value="Cantidad IPs 6 - Mascara: /29">Cantidad IPs 6 - Mascara: /29</option>
@@ -5561,7 +5559,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="activacion_hosting" name="pr_activacion_hosting">
+						                <select class="form-control" id="activacion_hosting" name="pr_activacion_web_hosting">
 										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 											<option value="No">No</option>
@@ -5576,7 +5574,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="Dominio_existente" name="pr_Dominio_existente">
+						                <select class="form-control" id="Dominio_existente" name="pr_dominio_existente">
 										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 											<option value="No">No</option>
@@ -5593,7 +5591,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_dominio_a_comprar" id="dominio_a_comprar" class="form-control" type="number" >
+						                <input name="pr_dominio_comprar" id="dominio_a_comprar" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5604,7 +5602,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="cantidad_cuentas_correo" name="pr_cantidad_cuentas_correo">
+						                <select class="form-control" id="cantidad_cuentas_correo" name="pr_cant_correos">
 										    <option value="">Seleccionar...</option>
 										    <option value="20">20</option>
 											<option value="40">40</option>
@@ -5622,7 +5620,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="espacio_correo_gb" name="pr_espacio_correo_gb">
+						                <select class="form-control" id="espacio_correo_gb" name="pr_espacio_correo">
 										    <option value="">Seleccionar...</option>
 										    <option value="2">2</option>
 											<option value="4">4</option>
@@ -5645,7 +5643,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pataforma_web_hosting" name="pr_pataforma_web_hosting">
+						                <select class="form-control" id="pataforma_web_hosting" name="pr_plataforma_web">
 										    <option value="">Seleccionar...</option>
 										   	<option value="Windows">Windows</option>
 											<option value="Solaris">Solaris</option>
@@ -5661,7 +5659,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="web_hosting_mb" name="pr_web_hosting_mb">
+						                <select class="form-control" id="web_hosting_mb" name="pr_web_hosting">
 										    <option value="">Seleccionar...</option>
 										    <option value="20">20</option>
 											<option value="40">40</option>
@@ -5681,7 +5679,7 @@ $(function () {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_promocion_vigente_nom" id="promocion_vigente_nom" class="form-control" type="number" >
+						                <input name="pr_promocion" id="promocion_vigente_nom" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5693,7 +5691,7 @@ $(function () {
         },
 
         /*MPLS*/
-        formProduct_mpls: function(otp){
+        formProduct_mpls: function(otp) {
             return `
             	<legend class="f-s-15"><strong>¿Es un cliente nuevo?</strong>
             		<div class="btn-cami_cool max-w_border-n">
@@ -6348,7 +6346,7 @@ $(function () {
         },
 
         //MPLS FORMULARIO DE ORIGEN
-        formProduct_mpls_form_origen: function(){
+        formProduct_mpls_form_origen: function() {
             return `
 				
 					<h3>PUNTO DE ORIGEN</h3>
@@ -6975,7 +6973,7 @@ $(function () {
         },
 
         /*NOVEDADES*/
-        formProduct_novedades: function(){
+        formProduct_novedades: function() {
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>NOVEDADES</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -9215,7 +9213,7 @@ $(function () {
         },
 
         /*TRASLADO EXTERNO*/
-        formProduct_traslado_externo: function(otp){
+        formProduct_traslado_externo: function(otp) {
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>TRASLADO EXTERNO</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
@@ -9953,8 +9951,8 @@ $(function () {
         },
 
         /*TRASLADO INTERNO*/
-        formProduct_traslado_interno: function(){
-        	return `
+        formProduct_traslado_interno: function() {
+            return `
         		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>TRASLADO INTERNO</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					
@@ -10616,8 +10614,8 @@ $(function () {
         },
 
         /*PBX ADMINISTRADA*/
-        formProduct_pvx_administrada: function(otp){
-        	return `
+        formProduct_pvx_administrada: function(otp) {
+            return `
         		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO PBX ADMINISTRADA</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 
@@ -11345,8 +11343,8 @@ $(function () {
         },
 
         // TELEFONIA FIJA
-        formProduct_telefonia_fija: function(otp){
-        	return `
+        formProduct_telefonia_fija: function(otp) {
+            return `
         		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO TELEFONIA FIJA</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 
