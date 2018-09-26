@@ -62,21 +62,22 @@ class Templates extends CI_Controller {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             // $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            // $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            echo '<pre>'; print_r($plantila_txt); echo '</pre>';
             // 3. enviar correo
-            $res_envio = $this->enviar_correo_servicio($pt, $servicio);
-            // 3.1 si se envio guardar formulario servicio en log correo.
-            if ($res_envio) {
-                $this->guardar_servicio($pt, $servicio);
-                // 4. Actualizar ot_hija en tabla ot_hija
-                $this->actualizar_oth($pt, true);
-            }
-            // si no se envia no se envia el correo
-            else {
-                $msj = 'error';
-                $this->session->set_flashdata('msj', $msj);
-                header('Location: ' . URL::base() . '/managementOtp');
-            }
+            // $res_envio = $this->enviar_correo_servicio($pt, $servicio);
+            // // 3.1 si se envio guardar formulario servicio en log correo.
+            // if ($res_envio) {
+            //     $this->guardar_servicio($pt, $servicio);
+            //     // 4. Actualizar ot_hija en tabla ot_hija
+            //     $this->actualizar_oth($pt, true);
+            // }
+            // // si no se envia no se envia el correo
+            // else {
+            //     $msj = 'error';
+            //     $this->session->set_flashdata('msj', $msj);
+            //     header('Location: ' . URL::base() . '/managementOtp');
+            // }
         } else {
             // actualizar el estado
             $this->actualizar_oth($pt);
@@ -238,6 +239,7 @@ class Templates extends CI_Controller {
                 
             );
             $this->Dao_producto_model->insert_pr_mpls($data_pr);
+            $txt = $this->plantilla_txt_pr_mpls($data_pr);
             break;
         /*FORMULARIO NOVEDADES*/
         case '12': // Cambio de Equipos Servicio
@@ -389,6 +391,7 @@ class Templates extends CI_Controller {
                 'leb_cantidad'                  => $pt['pr_leb_cantidad'],
             );
             $this->Dao_producto_model->insert_pr_novedades($data_pr);
+            $txt = $this->plantilla_txt_pr_novedades($data_pr);
             break;
         /*TRASLADO_EXTERNO*/
         case '15': // Traslado Externo Servicio
@@ -485,14 +488,12 @@ class Templates extends CI_Controller {
                 'observaciones'            => $pt['pr_observaciones'],
             );
             $this->Dao_producto_model->insert_pr_traslado_interno($data_pr);
+            $txt = $this->plantilla_txt_pr_traslado_interno($data_pr);
             break;
         /*PVX_ADMINISTRADA*/
         case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $cantidad = implode(', ', $p['pr_cantidad']);
             $referencia = implode(', ', $p['pr_referencia']);
-
-
-
             $data_pr = array(
                 'id_ot_padre'          => $pt['id_ot_padre'],
                 'ciudad'               => $p['pr_ciudad'],
@@ -542,6 +543,7 @@ class Templates extends CI_Controller {
             );
 
              $this->Dao_producto_model->insert_pr_pbx_administrada($data_pr);
+             $txt = $this->plantilla_txt_pr_pbx_administrada($data_pr);
             break;
         /*TELEFONIA FIJA*/
         case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
@@ -691,7 +693,7 @@ class Templates extends CI_Controller {
             );
 
             $this->Dao_producto_model->insert_pr_telefonia_fija($data_pr);
-
+            $txt = $this->plantilla_txt_pr_telefonia_fija($data_pr);
             break;
 
         /*NN HERFANITO*/
@@ -1515,7 +1517,7 @@ class Templates extends CI_Controller {
 
     // se arma el arreglo para guardar en base de datos el formulario de servicio
     private function fill_data_service($p, $s){
-          $fActual = date('Y-m-d');
+        $fActual = date('Y-m-d');
 
         switch (true) {
         case ($s == 1 || $s == 2):
@@ -2569,6 +2571,9 @@ class Templates extends CI_Controller {
 
 
         ********* Teléfonos *********
+        REFERECIAAAAAAAAAAA============================================================*************************
+        CANTIDADDDDDDDDDDDDDDDDD============================================================************************* 
+            
         Fuentes de Teléfonos:                                         ' . $data_pr['pr_fuentes_telefonos'] . '    
         Diademas:                                                     ' . $data_pr['pr_diademas'] . '
         Arañas de Conferencia:                                        ' . $data_pr['pr_araña_conferencia'] . '
@@ -8432,8 +8437,6 @@ class Templates extends CI_Controller {
 
     
     public function cambio_de_equipos_servicio($argumentos) {
-        echo '<pre>hola'; print_r($argumentos); echo '/hola</pre>';
-
         return '
         <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
