@@ -1560,20 +1560,22 @@
 
 <!------------------------------------------ modal detalle cierre de KO ------------------------------->
 <div id="mdl_cierreKo" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg2" style="width: 1200px;">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
-                <h3 class="modal-title" id="mdl-title-cierre"></h3>
-            </div>
-            <div class="modal-body">
-                <div id="form_cierreKo">
-                    
+            <!--<div class="row">-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                    <h3 class="modal-title" id="mdl-title-cierre"></h3>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
-            </div>
+                <div class="modal-body">
+                    <div id="form_cierreKo" class="container autoheight">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+                </div>
+            <!--</div>-->
         </div>
     </div>
 </div>
