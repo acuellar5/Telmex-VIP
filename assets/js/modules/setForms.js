@@ -8550,11 +8550,11 @@ $(function() {
 
 						    <!-- OTP -->
 							<div class="form-group">
-						        <label for="id_ot_padre" class="col-md-3 control-label">OTP:</label>
+						        <label for="pr_id_ot_padre" class="col-md-3 control-label">OTP:</label>
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="id_ot_padre" id="id_ot_padre" class="form-control" type="text" value="${otp}" readonly>
+						                <input name="pr_id_ot_padre" id="pr_id_ot_padre" class="form-control" type="text" value="${otp}" readonly>
 						            </div>
 						        </div>
 						    </div>
@@ -8851,19 +8851,41 @@ $(function() {
 
 					<!-- 3.1 sesion: TELEFONOS --> 
 					<legend class="f-s-15">TELEFONOS </legend>
+					<div id="aca_ref_cant" class="widget bg_white m-t-25 d-inline-b cliente m-b-20">
+						<span class="btn btn-success f-r" id="añadir_seccion_ref_cant"> Add  <i class="fa fa-plus"></i></span>
+						<div class="d-inline-b" id="duplicar_ref_cant">
+							<fieldset class="col-md-6">
+								<!--*********************  INPUT TEXT  *********************-->
+								<div class="form-group">
+									<label for="pr_referencia" class="col-md-3 control-label">Referencia: &nbsp;</label>
+									<div class="col-md-9 selectContainer">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
+											<input type="text" name="pr_referencia[]" class="form-control">
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset class="col-md-6">
+								<!-- Cantidad:--> 
+							    <div class="form-group">
+							        <label for="pr_cantidad" class="col-md-3 control-label">Cantidad:</label>
+							        <div class="ol-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order-alt" ></i></span>
+							                <input name="pr_cantidad[]" class="form-control" type="number" >
+							            </div>
+							        </div>
+							    </div>
+															
+							</fieldset>
+						</div>
+
+					</div>
 
 					<div class="d-inline-b">
+
 						<fieldset class="col-md-6">
-							<!-- Cantidad:--> 
-						    <div class="form-group">
-						        <label for="pr_cantidad" class="col-md-3 control-label">Cantidad:</label>
-						        <div class="ol-md-9 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order-alt" ></i></span>
-						                <input name="pr_cantidad" id="pr_cantidad" class="form-control" type="number" >
-						            </div>
-						        </div>
-						    </div>
 
 						    <!-- Fuentes de Teléfonos:--> 
 						    <div class="form-group">
@@ -9180,11 +9202,11 @@ $(function() {
 						<fieldset class="col-md-6">
 							<!-- INCLUYE LAN ADMINISTRADA: --> 
 						    <div class="form-group">
-						        <label for="lan_administrada" class="col-md-3 control-label">Incluye LAN administrada:</label>
+						        <label for="pr_lan_administrada" class="col-md-3 control-label">Incluye LAN administrada:</label>
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="lan_administrada" name="lan_administrada">
+						                <select class="form-control" id="pr_lan_administrada" name="pr_lan_administrada">
 						                	<option value="">Seleccionar...</option>
 										    <option>Si</option>
 	      									<option>No</option>

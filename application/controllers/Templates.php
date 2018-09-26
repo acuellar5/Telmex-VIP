@@ -488,58 +488,60 @@ class Templates extends CI_Controller {
             break;
         /*PVX_ADMINISTRADA*/
         case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
-            $data_pr = array(
-                'id_ot_padre' => $pt['id_ot_padre'],
+            $cantidad = implode(', ', $p['pr_cantidad']);
+            $referencia = implode(', ', $p['pr_referencia']);
 
+
+
+            $data_pr = array(
+                'id_ot_padre'          => $pt['id_ot_padre'],
+                'ciudad'               => $p['pr_ciudad'],
+                'direccion'            => $p['pr_direccion'],
+                'tipo_predio'          => $p['pr_tipo_predio'],
+                'nit_cliente'          => $p['pr_nit_cliente'],
+                'alias_lugar'          => $p['pr_alias_lugar'],
+                'otp_asociada'         => $p['pr_otp_asociada'],
+                'tipo_pbx'             => $p['pr_tipo_pbx'],
+                'tipo_instalacion'     => $p['pr_tipo_instalacion'],
+                'servicio_actual'      => $p['pr_servicio_actual'],
+                'requiere_um'          => $p['pr_requiere_um'],
+                'proveedor'            => $p['pr_proveedor'],
+                'medio'                => $p['pr_medio'],
+                'requiere_voc'         => $p['pr_requiere_voc'],
+                'programacion_voc'     => $p['pr_programacion_voc'],
+                'requiere_rfc'         => $p['pr_requiere_rfc'],
+                'conversor_medio'      => $p['pr_conversor_medio'],
+                'referencia_router'    => $p['pr_referencia_router'],
+                'modulos_tarjetas'     => $p['pr_modulos_tarjetas'],
+                'licencias'            => $p['pr_licencias'],
+                'equipos_adicionales'  => $p['pr_equipos_adicionales'],
+                'fuentes_telefonos'    => $p['pr_fuentes_telefonos'],
+                'diademas'             => $p['pr_diademas'],
+                'araña_conferencia'    => $p['pr_araña_conferencia'],
+                'botoneras'            => $p['pr_botoneras'],
+                'modulo_botonera'      => $p['pr_modulo_botonera'],
+                'fuente_botonera'      => $p['pr_fuente_botonera'],
+                'consumibles'          => $p['pr_consumibles'],
+                'carta_valorizada'     => $p['pr_carta_valorizada'],
+                'nombre_1'             => $p['pr_nombre_1'],
+                'telefono_1'           => $p['pr_telefono_1'],
+                'celular_1'            => $p['pr_celular_1'],
+                'correo_1'             => $p['pr_correo_1'],
+                'nombre_2'             => $p['pr_nombre_2'],
+                'telefono_2'           => $p['pr_telefono_2'],
+                'celular_2'            => $p['pr_celular_2'],
+                'correo_2'             => $p['pr_correo_2'],
+                'observaciones'        => $p['pr_observaciones'],
+                'tel_fija_claro'       => $p['pr_tel_fija_claro'],
+                'cantidad_extenciones' => $p['pr_cantidad_extenciones'],
+                'cantidad_buzones_voz' => $p['pr_cantidad_buzones_voz'],
+                'grabacion_voz'        => $p['pr_grabacion_voz'],
+                'lan_administrada'     => $p['pr_lan_administrada'],
+                'cantidad'             => $cantidad,
+                'referencia'           => $referencia
             );
 
-            /*ciudad             => pr_ciudad
-            direccion            => pr_direccion
-            tipo_predio          => pr_tipo_predio
-            nit_cliente          => pr_nit_cliente
-            alias_lugar          => pr_alias_lugar
-            otp_asociada         => pr_otp_asociada
-            tipo_pbx             => pr_tipo_pbx
-            tipo_instalacion     => pr_tipo_instalacion
-            servicio_actual      => pr_servicio_actual
-            requiere_um          => pr_requiere_um
-            proveedor            => pr_proveedor
-            medio                => pr_medio
-            requiere_voc         => pr_requiere_voc
-            programacion_voc     => pr_programacion_voc
-            requiere_rfc         => pr_requiere_rfc
-            conversor_medio      => pr_conversor_medio
-            referencia_router    => pr_referencia_router
-            modulos_tarjetas     => pr_modulos_tarjetas
-            licencias            => pr_licencias
-            equipos_adicionales  => pr_equipos_adicionales
-
-            fuentes_telefonos    => pr_cantidad
-
-            fuentes_telefonos    => pr_fuentes_telefonos
-            diademas             => pr_diademas
-            araña_conferencia    => pr_araña_conferencia
-            botoneras            => pr_botoneras
-            modulo_botonera      => pr_modulo_botonera
-            fuente_botonera      => pr_fuente_botonera
-            consumibles          => pr_consumibles
-            carta_valorizada     => pr_carta_valorizada
-            nombre_1             => pr_nombre_1
-            telefono_1           => pr_telefono_1
-            celular_1            => pr_celular_1
-            correo_1             => pr_correo_1
-            nombre_2             => pr_nombre_2
-            telefono_2           => pr_telefono_2
-            celular_2            => pr_celular_2
-            correo_2             => pr_correo_2
-            observaciones        => pr_observaciones
-            tel_fija_claro       => pr_tel_fija_claro
-            cantidad_extenciones => pr_cantidad_extenciones
-            cantidad_buzones_voz => pr_cantidad_buzones_voz
-            grabacion_voz        => pr_grabacion_voz
-            lan_administrada     => pr_lan_administrada
-             */
-
+             $this->Dao_producto_model->insert_pr_pbx_administrada($data_pr);
             break;
         /*TELEFONIA FIJA*/
         case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
@@ -1229,22 +1231,22 @@ class Templates extends CI_Controller {
                 'campo19' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
                 'campo20' => $p['ingeniero1_email'], // EMAIL
             );
-            $argumentos['campo5']['si'] = $this->si($p['campo5']);
-            $argumentos['campo5']['no'] = $this->no($p['campo5']);
-            $argumentos['campo9']['si'] = $this->si($p['campo9']);
-            $argumentos['campo9']['no'] = $this->no($p['campo9']);
-            $argumentos['campo10']['si'] = $this->si($p['campo10']);
-            $argumentos['campo10']['no'] = $this->no($p['campo10']);
-            $argumentos['campo11']['si'] = $this->si($p['campo11']);
-            $argumentos['campo11']['no'] = $this->no($p['campo11']);
-            $argumentos['camp12']['si'] = $this->si($p['camp12']);
-            $argumentos['camp12']['no'] = $this->no($p['camp12']);
-            $argumentos['campo13']['si'] = $this->si($p['campo13']);
-            $argumentos['campo13']['no'] = $this->no($p['campo13']);
-            $argumentos['campo14']['si'] = $this->si($p['campo14']);
-            $argumentos['campo14']['no'] = $this->no($p['campo14']);
-            $argumentos['campo15']['si'] = $this->si($p['campo15']);
-            $argumentos['campo15']['no'] = $this->no($p['campo15']);
+                $argumentos['campo5']['si'] = $this->si($p['campo5']);
+                $argumentos['campo5']['no'] = $this->no($p['campo5']);
+                $argumentos['campo9']['si'] = $this->si($p['campo9']);
+                $argumentos['campo9']['no'] = $this->no($p['campo9']);
+                $argumentos['campo10']['si'] = $this->si($p['campo10']);
+                $argumentos['campo10']['no'] = $this->no($p['campo10']);
+                $argumentos['campo11']['si'] = $this->si($p['campo11']);
+                $argumentos['campo11']['no'] = $this->no($p['campo11']);
+                $argumentos['camp12']['si'] = $this->si($p['camp12']);
+                $argumentos['camp12']['no'] = $this->no($p['camp12']);
+                $argumentos['campo13']['si'] = $this->si($p['campo13']);
+                $argumentos['campo13']['no'] = $this->no($p['campo13']);
+                $argumentos['campo14']['si'] = $this->si($p['campo14']);
+                $argumentos['campo14']['no'] = $this->no($p['campo14']);
+                $argumentos['campo15']['si'] = $this->si($p['campo15']);
+                $argumentos['campo15']['no'] = $this->no($p['campo15']);
             break;
 
         case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA

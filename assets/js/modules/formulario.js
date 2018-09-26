@@ -17,8 +17,15 @@ $(function() {
             $('#formModal').on('click', 'span#añadir_seccion', e => {
                 helper.duplicar_seccion($('#seccion_duplidar'), $('#append_aca'));
             });
+
+            // funcion para duplicar referencia y cantidad
+            $('#formModal').on('click', 'span#añadir_seccion_ref_cant', function(){
+                helper.duplicar_seccion($('#duplicar_ref_cant'), $('#aca_ref_cant'));
+            })
+
             // funcion para remover seccion del form con el boton menos
             $('#formModal').on('click', 'span.remover_seccion', helper.remover_seccion);
+
             //validacion al darle click al boton actualizar del formulario 
             $('#btnUpdOt').on('click', formulario.validarFormulario);
             // evento del check para mpls fomr origen form destino
