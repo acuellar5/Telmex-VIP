@@ -1332,7 +1332,7 @@ $(function() {
 											<option value="Medellín">Medellín</option>
 											<option value="Barranquilla">Barranquilla</option>
 											<option value="Cartagena">Cartagena</option>
-											<option value="Santa">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Montería">Montería</option>
 											<option value="Valledupar">Valledupar</option>
 											<option value="Sincelejo">Sincelejo</option>
@@ -2084,7 +2084,7 @@ $(function() {
 											<option value="Aipe">Aipe</option>
 											<option value="Girardot">Girardot</option>
 											<option value="Popayán">Popayán</option>
-											<option value="campo6 Marta">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Armenia">Armenia</option>
 											<option value="Duitama">Duitama</option>
 											<option value="Lebrija">Lebrija</option>
@@ -2172,7 +2172,7 @@ $(function() {
 											<option value="Aipe">Aipe</option>
 											<option value="Girardot">Girardot</option>
 											<option value="Popayán">Popayán</option>
-											<option value="campo6 Marta">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Armenia">Armenia</option>
 											<option value="Duitama">Duitama</option>
 											<option value="Lebrija">Lebrija</option>
@@ -2257,7 +2257,7 @@ $(function() {
 											<option value="Aipe">Aipe</option>
 											<option value="Girardot">Girardot</option>
 											<option value="Popayán">Popayán</option>
-											<option value="campo6 Marta">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Armenia">Armenia</option>
 											<option value="Duitama">Duitama</option>
 											<option value="Lebrija">Lebrija</option>
@@ -2584,10 +2584,10 @@ $(function() {
 
 							<label for="campo7" class="col-md-6 control-label">Requiere Cambio de equipo:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo7" checked>SI</label>
+				              <label><input type="radio" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo7">NO</label>
+				              <label><input type="radio" name="campo7">NO</label>
 				            </div>							
 						</fieldset>
 					</div>
@@ -2597,10 +2597,10 @@ $(function() {
 							<!-- radio button -->
 							<label for="campo8" class="col-md-6 control-label">Existen otros Servicios a Modificar:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo8" checked>SI</label>
+				              <label><input type="radio" name="campo8" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo8">NO</label>
+				              <label><input type="radio" name="campo8">NO</label>
 				            </div>
 						</fieldset>
 					</div>
