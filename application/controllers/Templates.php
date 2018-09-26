@@ -1964,70 +1964,831 @@ class Templates extends CI_Controller {
         return 'SERVICIO INTERNET
 
         ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
-        CIUDAD:                     ' . $data_pr['pr_ciudad'] . '
-        DIRECCIÓN:                  ' . $data_pr['pr_direccion'] . '
-        TIPO PREDIO:                ' . $data_pr['pr_tipo_predio'] . '
-        NIT del cliente:            ' . $data_pr['pr_nit_cliente'] . '
+        CIUDAD:                                             ' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN:                                          ' . $data_pr['pr_direccion'] . '
+        TIPO PREDIO:                                        ' . $data_pr['pr_tipo_predio'] . '
+        NIT del cliente:                                    ' . $data_pr['pr_nit_cliente'] . '
         ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):     ' . $data_pr['pr_alias_lugar'] . '
-        OTP:                        ' . $data_pr['pr_id_ot_padre'] . '
-        OTP ASOCIADAS:              ' . $data_pr['pr_otp_asociada'] . '
-        TIPO DE INTERNET:           ' . $data_pr['pr_tipo_internet'] . '
-        ANCHO DE BANDA :            ' . $data_pr['pr_ancho_banda'] . '
-        TIPO DE INSTALACIÓN:        ' . $data_pr['pr_tipo_instalacion'] . '
-        ID SERVICIO ACTUAL (Aplica para UM Existente):       ' . $data_pr['pr_servicio_actual'] . '
+        OTP:                                                ' . $data_pr['pr_id_ot_padre'] . '
+        OTP ASOCIADAS:                                      ' . $data_pr['pr_otp_asociada'] . '
+        TIPO DE INTERNET:                                   ' . $data_pr['pr_tipo_internet'] . '
+        ANCHO DE BANDA :                                    ' . $data_pr['pr_ancho_banda'] . '
+        TIPO DE INSTALACIÓN:                                ' . $data_pr['pr_tipo_instalacion'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):      ' . $data_pr['pr_servicio_actual'] . '
 
         *******************************************   INFORMACIÓN  ULTIMA MILLA    *********************************************
-        ¿ESTA OT REQUIERE INSTALACION DE  UM? :       ' . $data_pr['pr_requiere_um'] . '
-        PROVEEDOR :       ' . $data_pr['pr_proveedor'] . '
-        MEDIO :       ' . $data_pr['pr_medio'] . '
-        RESPUESTA FACTIBILIDAD BW > =100 MEGAS :       ' . $data_pr['pr_factibilidad_bw'] . '
-        TIPO DE CONECTOR *** (Aplica para FO Claro):       ' . $data_pr['pr_tipo_conector'] . '
+        ¿ESTA OT REQUIERE INSTALACION DE  UM? :             ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR :                                         ' . $data_pr['pr_proveedor']  . '
+        MEDIO :                                             ' . $data_pr['pr_medio'] . '
+        RESPUESTA FACTIBILIDAD BW > =100 MEGAS :            ' . $data_pr['pr_factibilidad_bw'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):        ' . $data_pr['pr_tipo_conector'] . '
         ACCESO (Solo Aplica para Canales > = 100 MEGAS   =======    SDS DESTINO (Unifilar):       ' . $data_pr['pr_sds_destino'] . '
-            OLT (GPON):       ' . $data_pr['pr_olt'] . '
-        TIPO DE CONECTOR *** (Aplica para FO Claro):       
-        INTERFACE DE ENTREGA AL CLIENTE:       ' . $data_pr['pr_interfaz_entrega_cliente'] . '
-        REQUIERE VOC :       ' . $data_pr['pr_requiere_voc'] . '
-        PROGRAMACIÓN DE VOC :       ' . $data_pr['pr_programacion_voc'] . '
+        OLT (GPON):                                         ' . $data_pr['pr_olt'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                    ' . $data_pr['pr_interfaz_entrega_cliente'] . '
+        REQUIERE VOC :                                      ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :                               ' . $data_pr['pr_programacion_voc'] . '
 
         *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
-        REQUIERE RFC                    ' . $data_pr['pr_requiere_rfc'] . '
+        REQUIERE RFC                                        ' . $data_pr['pr_requiere_rfc'] . '
         EQUIPOS   (VER LISTA COMPLETA):       
-            Conversor Medio :       ' . $data_pr['pr_conversor_medio'] . '
-            Referencia Router :       ' . $data_pr['pr_referencia_router'] . '
-            Modulos o Tarjetas:       ' . $data_pr['pr_modulos_tarjetas'] . '
-            Licencias :       ' . $data_pr['pr_licencias'] . '
-            Equipos Adicionales :       ' . $data_pr['pr_equipos_adicionales'] . '
-
-            Consumibles :       ' . $data_pr['pr_Consumibles'] . '
-        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:       ' . $data_pr['pr_carta_valorizada'] . '
+            Conversor Medio :                               ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :                             ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:                             ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :                                     ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :                           ' . $data_pr['pr_equipos_adicionales'] . '
+            Consumibles :                                   ' . $data_pr['pr_Consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:         ' . $data_pr['pr_carta_valorizada'] . '
 
         ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
-        *****************************  APRUEBA COSTOS DE OC E INICIO DE FACTURACIÓN DE ORDEN DE TRABAJO  ******************************
-        NOMBRE :      ' . $data_pr[''] . '
-        TELEFONO :      ' . $data_pr[''] . '
-        CELULAR :      ' . $data_pr[''] . '
-        CORREO ELECTRONICO :      ' . $data_pr[''] . '
+        *************************************  APRUEBA COSTOS DE OC E INICIO DE FACTURACIÓN DE ORDEN DE TRABAJO  ******************************
+        NOMBRE :                                            ' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :                                          ' . $data_pr['pr_telefono_1'] . '
+        CELULAR :                                           ' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :                                ' . $data_pr['pr_correo_1'] . '
 
         *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
-        NOMBRE :       ' . $data_pr[''] . '
-        TELEFONO :       ' . $data_pr[''] . '
-        CELULAR :       ' . $data_pr[''] . '
-        CORREO ELECTRONICO :       ' . $data_pr[''] . '
-        OBSERVACIONES:       ' . $data_pr[''] . '
+        NOMBRE :                                            ' . $data_pr['pr_nombre_2'] . '
+        TELEFONO :                                          ' . $data_pr['pr_telefono_2'] . '
+        CELULAR :                                           ' . $data_pr['pr_celular_2'] . '
+        CORREO ELECTRONICO :                                ' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES:                                      ' . $data_pr['pr_observaciones'] . '
 
         **************************************************   KIKOFF TECNICO     **************************************************************
-        Ancho de banda Exclusivo NAP :      ' . $data_pr[''] . '
-        Ancho de banda de Internet :      ' . $data_pr[''] . '
-        Direcciones IP :      ' . $data_pr[''] . '
-        Activación correo  :      ' . $data_pr[''] . '
-        Activación WEB Hosting :      ' . $data_pr[''] . '
-        Dominio existente :      ' . $data_pr[''] . '
-        Dominio a comprar :      ' . $data_pr[''] . '
-        Cantidad cuentas de correo :      ' . $data_pr[''] . '
-        Espacio de correo (GB) :      ' . $data_pr[''] . '
-        Plataforma de WEBHosting :      ' . $data_pr[''] . '
-        WEB Hosting (MB) :      ' . $data_pr[''] . '
-        APLICA A ALGUNA PROMOCION VIGENTE (POR FAVOR DOCUMENTAR  NOMBRE DE LA PROMOCION) :      ' . $data_pr[''] . '
+        Ancho de banda Exclusivo NAP :                      ' . $data_pr['pr_ancho_banda_nap'] . '
+        Ancho de banda de Internet :                        ' . $data_pr['pr_ancho_banda_internet'] . '
+        Direcciones IP :                                    ' . $data_pr['pr_direcciones_ip'] . '
+        Activación correo  :                                ' . $data_pr['pr_activacion_correo'] . '
+        Activación WEB Hosting :                            ' . $data_pr['pr_activacion_web_hosting'] . '
+        Dominio existente :                                 ' . $data_pr['pr_dominio_existente'] . '
+        Dominio a comprar :                                 ' . $data_pr['pr_dominio_comprar'] . '
+        Cantidad cuentas de correo :                        ' . $data_pr['pr_cant_correos'] . '
+        Espacio de correo (GB) :                            ' . $data_pr['pr_espacio_correo'] . '
+        Plataforma de WEBHosting :                          ' . $data_pr['pr_plataforma_web'] . '
+        WEB Hosting (MB) :                                  ' . $data_pr['pr_web_hosting'] . '
+        APLICA A ALGUNA PROMOCION VIGENTE (POR FAVOR DOCUMENTAR  NOMBRE DE LA PROMOCION) :      ' . $data_pr['pr_promocion'] . '
+
+        ';
+    }
+
+    // retorna plantilla tyexto para mpls origen
+    private function plantilla_txt_pr_mpls_origen($data_pr) {
+        return 'MPLS 
+
+        ***********************************************     PUNTO ORIGEN       ************************************************
+        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad_ori'] . '
+        DIRECCIÓN:                                                    ' . $data_pr['pr_direccion_ori'] . '
+        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio_ori'] . '
+        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente_ori'] . '
+        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):  ' . $data_pr['pr_alias_lugar_ori'] . '
+        OTP:                                                          ' . $data_pr['pr_id_ot_padre_ori'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada_ori'] . '
+        TIPO MPLS:                                                    ' . $data_pr['pr_tipo_mpls_ori'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_ori'] . '
+        TIPO DE INSTALACION :                                         ' . $data_pr['pr_tipo_instalacion_ori'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual_ori'] . '
+        ID SERVICIO PRINCIPAL (Aplica solo para enlaces Backup):      ' . $data_pr['pr_servicio_principal_ori'] . '
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA DESTINO  ********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um_ori'] . '
+        ESTA ULTIMA MILLA ES UN BACKUP?:                              ' . $data_pr['pr_um_backup_ori'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor_ori'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio_ori'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw_ori'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):                  ' . $data_pr['pr_tipo_conector_ori'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======    SDS DESTINO (Unifilar):    ' . $data_pr['pr_sds_destino_ori'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente_ori'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc_ori'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc_ori'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc_ori'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio_ori'] . '
+            Referencia Router :                                       ' . $data_pr['pr_referencia_router_ori'] . '
+            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas_ori'] . '
+            Licencias :                                               ' . $data_pr['pr_licencias_ori'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales_ori'] . '
+            Consumibles :                                             ' . $data_pr['pr_consumibles_ori'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada_ori'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1_ori'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1_ori'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1_ori'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1_ori'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2_ori'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2_ori'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2_ori'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_ori'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_1_ori'] . '
+
+        ';
+    }
+
+    // retorna plantilla tyexto para mpls de destino 
+    private function plantilla_txt_pr_mpls_destino($data_pr) {
+        return 'MPLS 
+
+        ***********************************************     PUNTO DESTINO       ************************************************
+        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad_des'] . '
+        DIRECCIÓN:                                                    ' . $data_pr['pr_direccion_des'] . '
+        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio_des'] . '
+        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente_des'] . '
+        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):  ' . $data_pr['pr_alias_lugar_des'] . '
+        OTP:                                                          ' . $data_pr[''] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada_des'] . '
+        TIPO MPLS:                                                    ' . $data_pr['pr_tipo_mpls_des'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_des'] . '
+        TIPO DE INSTALACIÓN :                                         ' . $data_pr['pr_tipo_instalacion_des'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual_des'] . '
+        ID SERVICIO PRINCIPAL (Aplica solo para enlaces Backup):      ' . $data_pr['pr_servicio_principal_des'] . '
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA DESTINO  ********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um_des'] . '
+        ESTA ULTIMA MILLA ES UN BACKUP?:                              ' . $data_pr['pr_um_backup_des'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor_des'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio_des'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw_des'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):                  ' . $data_pr['pr_tipo_conector_des'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======    SDS DESTINO (Unifilar):    ' . $data_pr['pr_sds_destino_des'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente_des'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc_des'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc_des'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc_des'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio_des'] . '
+            Referencia Router :                                       ' . $data_pr['pr_referencia_router_des'] . '
+            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas_des'] . '
+            Licencias :                                               ' . $data_pr['pr_licencias_des'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales_des'] . '
+            Consumibles :                                             ' . $data_pr['pr_consumibles_des'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada_des'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1_des'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1_des'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1_des'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1_des'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2_des'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2_des'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2_des'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_des'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_1_des'] . '
+
+        ';
+    }
+
+    // retorna plantilla tyexto formulario de novedades
+    private function plantilla_txt_pr_novedades($data_pr) {
+        return 'NOVEDADES 
+
+        ****************************************************     DATOS BÁSICOS     **********************************************
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN UBICACIÓN ACTUAL DEL SERVICIO:                      ' . $data_pr['pr_ubicacion_actual'] . '
+        ALIAS DEL LUGAR:                                              ' . $data_pr['pr_alias_lugar'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada'] . '
+        TIPO DE NOVEDAD:                                              ' . $data_pr['pr_tipo_novedad'] . '
+        TIPO DE SERVICIO A MODIFICAR:                                 ' . $data_pr['pr_servicio_modificar'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda'] . '
+        TIPO DE ACTIVIDAD :                                           ' . $data_pr['pr_tipo_actividad'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual'] . '
+        REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA SEDE ANTIGUA(PROVEEDOR TERCERO): ' . $data_pr['pr_liberacion_um'] . '
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA   ***********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======    
+            SDS DESTINO (Unifilar):                                   ' . $data_pr['pr_sds_destino'] . '
+            OLT (GPON):                                               ' . $data_pr['pr_olt'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc'] . '
+        REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA (FO) EN SEDE ANTIGUA :           ' . $data_pr['pr_liberacion_um_fo'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE VENTANA DE MTTO :                                     ' . $data_pr['pr_requiere_ventana_mtto'] . '
+        REQUIERE RFC                                                   ' . $data_pr['pr_requiere_rfc'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                          ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :                                        ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:                                        ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :                                                ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :                                      ' . $data_pr['pr_equipos_adicionales'] . '
+            Consumibles :                                              ' . $data_pr['pr_consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                    ' . $data_pr['pr_carta_valorizada'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                       ' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :                                                     ' . $data_pr['pr_telefono_1'] . '
+        CELULAR :                                                      ' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :                                           ' . $data_pr['pr_correo_1'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                       ' . $data_pr['pr_nombre_2'] . '
+        TELEFONO :                                                     ' . $data_pr['pr_telefono_2'] . '
+        CELULAR :                                                      ' . $data_pr['pr_celular_2'] . '
+        CORREO ELECTRONICO :                                           ' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES:                                                 ' . $data_pr['pr_observaciones'] . '
+
+        *********************************************   KIKOFF TECNICO  SOLO PARA CAMBIOS DE TELEFONIA  *********************************************
+        Equipo Cliente:                                                ' . $data_pr['pr_equipo_cliente'] . '
+        Interfaz Equipos Cliente:                                      ' . $data_pr['pr_interfaz_cliente'] . '
+        Cantidad Lineas Básicas a Adicionar (Solo Telefonia Pública Líneas Análogas):               ' . $data_pr['pr_cant_lineas_basicas'] . '
+        Conformación PBX (Solo Telefonia Pública Líneas Análogas):                                  ' . $data_pr['pr_conformacion_pbx'] . '
+        Cantidad de DID a Adicionar:                                   ' . $data_pr['pr_cant_did'] . '
+        Cantidad Canales a Adicionar:                                  ' . $data_pr['pr_cant_canales'] . '
+        Adición de Lineas de FAX TO MAIL:                              ' . $data_pr['pr_adicion_lineas_fax'] . '
+        Adición de Lineas TELEFONO VIRTUAL:                            ' . $data_pr['pr_adicion_lineas_virtual'] . '
+
+        *********************************************   Cambio de Telefonia Pública a PBX Distribuida  *********************************************
+        Requiere Permisos para Larga Distancia Nacional:               ' . $data_pr['pr_larga_distancia_nacional'] . '
+        Requiero Larga  Para Distancia  Internacional:                 ' . $data_pr['pr_larga_distancia_internacional'] . '
+        Requiere Permisos para Móviles:                                ' . $data_pr['pr_permisos_moviles'] . '
+        Requiere Permisos para Móviles:                                ' . $data_pr['pr_permisos_local_extendida'] . '
+
+        *********************************************   NUMERACIÓN SOLO DILIGENCIAR PARA LA OPCIÓN  PBX DISTRIBUIDO  *********************************************
+        ****  Ciudad Bogotá  ****
+        Requiere:                                                      ' . $data_pr['pr_bog_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_bog_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_bog_cantidad'] . '
+
+        ****  Ciudad Tunja  ****
+        Requiere:                                                      ' . $data_pr['pr_tun_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_tun_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_tun_cantidad'] . '
+
+        ****  Ciudad Villavicencio  ****
+        Requiere:                                                      ' . $data_pr['pr_vill_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_vill_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_vill_cantidad'] . '
+
+        ****  Ciudad Facatativá  ****
+        Requiere:                                                      ' . $data_pr['pr_fac_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_fac_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_fac_cantidad'] . '
+
+        ****  Ciudad Girardot  ****
+        Requiere:                                                      ' . $data_pr['pr_gir_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_gir_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_gir_cantidad'] . '
+
+        ****  Ciudad Yopal  ****
+        Requiere:                                                      ' . $data_pr['pr_yop_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_yop_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_yop_cantidad'] . '
+
+        ****  Ciudad Cali  ****
+        Requiere:                                                      ' . $data_pr['pr_cali_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_cali_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_cali_cantidad'] . '
+
+        ****  Ciudad Buenaventura  ****
+        Requiere:                                                      ' . $data_pr['pr_bave_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_bave_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_bave_cantidad'] . '
+
+        ****  Ciudad Pasto  ****
+        Requiere:                                                      ' . $data_pr['pr_pas_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_pas_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_pas_cantidad'] . '
+
+        ****  Ciudad Popayán  ****
+        Requiere:                                                      ' . $data_pr['pr_pop_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_pop_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_pop_cantidad'] . '
+
+        ****  Ciudad Neiva  ****
+        Requiere:                                                      ' . $data_pr['pr_nei_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_nei_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_nei_cantidad'] . '
+
+        ****  Ciudad Medellín  ****
+        Requiere:                                                      ' . $data_pr['pr_med_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_med_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_med_cantidad'] . '
+
+        ****  Ciudad Barranquilla  ****
+        Requiere:                                                      ' . $data_pr['pr_bar_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_bar_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_bar_cantidad'] . '
+
+        ****  Ciudad Cartagena  ****
+        Requiere:                                                      ' . $data_pr['pr_cart_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_cart_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_cart_cantidad'] . '
+
+        ****  Ciudad Santa Marta  ****
+        Requiere:                                                      ' . $data_pr['pr_stm_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_stm_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_stm_cantidad'] . '
+
+        ****  Ciudad Montería  ****
+        Requiere:                                                      ' . $data_pr['pr_mon_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_mon_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_mon_cantidad'] . '
+
+        ****  Ciudad Valledupar  ****
+        Requiere:                                                      ' . $data_pr['pr_vall_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_vall_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_vall_cantidad'] . '
+
+        ****  Ciudad Sincelejo  ****
+        Requiere:                                                      ' . $data_pr['pr_sinc_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_sinc_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_sinc_cantidad'] . '
+
+        ****  Ciudad Pereira  ****
+        Requiere:                                                      ' . $data_pr['pr_per_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_per_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_per_cantidad'] . '
+
+        ****  Ciudad Armenia  ****
+        Requiere:                                                      ' . $data_pr['pr_arme_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_arme_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_arme_cantidad'] . '
+
+        ****  Ciudad Manizales  ****
+        Requiere:                                                      ' . $data_pr['pr_man_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_man_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_man_cantidad'] . '
+
+        ****  Ciudad Ibagué  ****
+        Requiere:                                                      ' . $data_pr['pr_iba_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_iba_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_iba_cantidad'] . '
+
+        ****  Ciudad Cucutá  ****
+        Requiere:                                                      ' . $data_pr['pr_cuc_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_cuc_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_cuc_cantidad'] . '
+
+        ****  Ciudad Bucaramanga  ****
+        Requiere:                                                      ' . $data_pr['pr_buc_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_buc_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_buc_cantidad'] . '
+
+        ****  Ciudad Duitama  ****
+        Requiere:                                                      ' . $data_pr['pr_dui_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_dui_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_dui_cantidad'] . '
+
+        ****  Ciudad Sogamoso  ****
+        Requiere:                                                      ' . $data_pr['pr_sog_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_sog_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_sog_cantidad'] . '
+
+        ****  Ciudad Flandes  ****
+        Requiere:                                                      ' . $data_pr['pr_flan_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_flan_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_flan_cantidad'] . '
+
+        ****  Ciudad Rivera  ****
+        Requiere:                                                      ' . $data_pr['pr_riv_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_riv_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_riv_cantidad'] . '
+
+        ****  Ciudad Aipe  ****
+        Requiere:                                                      ' . $data_pr['pr_aipe_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_aipe_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_aipe_cantidad'] . '
+
+        ****  Ciudad Lebrija  ****
+        Requiere:                                                      ' . $data_pr['pr_leb_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                    ' . $data_pr['pr_leb_numeracion'] . '
+        CANTIDAD DID:                                                  ' . $data_pr['pr_leb_cantidad'] . '
+
+
+        ';
+    }
+
+    // retorna plantilla tyexto  formulario traslado externo
+    private function plantilla_txt_pr_traslado_externo($data_pr) {
+        return 'TRASLADO EXTERNO 
+
+        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN UBICACIÓN ACTUAL DEL SERVICIO:                      ' . $data_pr['pr_ubicacion_actual'] . '
+        DIRECCIÓN DONDE SE TRASLADARA EL SERVICIO:                    ' . $data_pr['pr_ubicacion_traslado'] . '
+        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio'] . '
+        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente'] . '
+        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):        ' . $data_pr['pr_alias_lugar'] . '
+        OTP:                                                          ' . $data_pr['pr_id_ot_padre'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada'] . '
+        CANTIDAD DE SERVICIOS A TRASLADAR:                            ' . $data_pr['pr_cant_servicios_trasladar'] . '
+        CODIGOS DE SERVICIO  A TRASLADAR:                             ' . $data_pr['pr_cod_servicio_trasladar'] . '
+        TIPO DE TRASLADO EXTERNO:                                     ' . $data_pr['pr_tipo_traslado'] . '
+        TIPO DE SERVICIO:                                             ' . $data_pr['pr_tipo_servicio'] . '
+        ANCHO DE BANDA:                                               ' . $data_pr['pr_ancho_banda'] . '
+        TIPO DE ACTIVIDAD:                                            ' . $data_pr['pr_tipo_actividad'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual'] . '
+        REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA SEDE ANTIGUA(PROVEEDOR TERCERO):             ' . $data_pr['pr_requiere_liberacion_um'] . '
+
+        *********************************************** INFORMACIÓN  ULTIMA MILLA   ***********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======    
+            SDS DESTINO (Unifilar):                                   ' . $data_pr['pr_sds_destino'] . '
+            OLT (GPON):                                               ' . $data_pr['pr_olt'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc'] . '
+        REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA (FO) EN SEDE ANTIGUA:                         ' . $data_pr['pr_requiere_liberacion_um_fo'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE VENTANA DE MTTO:                                      ' . $data_pr['pr_requiere_ventana_mtto'] . '
+        REQUIERE RFC                                                   ' . $data_pr['pr_requiere_rfc'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                          ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :                                        ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:                                        ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :                                                ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :                                      ' . $data_pr['pr_equipos_adicionales'] . '
+            Consumibles :                                              ' . $data_pr['pr_consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                    ' . $data_pr['pr_carta_valorizada'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                       ' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :                                                     ' . $data_pr['pr_telefono_1'] . '
+        CELULAR :                                                      ' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :                                           ' . $data_pr['pr_correo_1'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                       ' . $data_pr['pr_nombre_2'] . '
+        TELEFONO :                                                     ' . $data_pr['pr_telefono_2'] . '
+        CELULAR :                                                      ' . $data_pr['pr_celular_2'] . '
+        CORREO ELECTRONICO :                                           ' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES:                                                 ' . $data_pr['pr_observaciones'] . '
+
+
+        ';
+    }
+
+    // retorna plantilla tyexto formulario traslado interno
+    private function plantilla_txt_pr_traslado_interno($data_pr) {
+        return 'TRASLADO INTERNO 
+
+
+        *************************************************     DATOS BÁSICOS    ****************************************************
+        CIUDAD:                                                       ' . $data_pr['r_ciudad'] . '
+        DIRECCIÓN UBICACIÓN ACTUAL DEL SERVICIO:                      ' . $data_pr['pr_ubicacion_actual'] . '
+        ALIAS DEL LUGAR:                                              ' . $data_pr['pr_alias_lugar'] . '
+        MOVIMIENTO INTERNO REQUERIDO:                                 ' . $data_pr['pr_movimiento_interno'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada'] . '
+        CANTIDAD DE SERVICIOS A TRASLADAR:                            ' . $data_pr['pr_cant_servicios_trasladar'] . '
+        CODIGOS DE SERVICIO  A TRASLADAR :                            ' . $data_pr['pr_cod_servicios_trasladar'] . '
+        TIPO DE TRASLADO INTERNO:                                     ' . $data_pr['pr_tipo_traslado'] . '
+        TIPO DE SERVICIO:                                             ' . $data_pr['pr_tipo_servicio'] . '        
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda'] . '
+        TIPO DE ACTIVIDAD                                             ' . $data_pr['pr_tipo_actividad'] . '
+        ID SERVICIO PRINCIPAL (Aplica para UM Existente):             ' . $data_pr['pr_servicio_actual'] . '
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA   **************************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======   
+            SDS DESTINO (Unifilar):                                   ' . $data_pr['pr_sds_destino'] . '
+            OLT (GPON):                                               ' . $data_pr['pr_olt'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE VENTANA DE MTTO :                                    ' . $data_pr['pr_requiere_ventana_mtto'] . '
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :                                       ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :                                               ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales'] . '
+            Consumibles :                                             ' . $data_pr['pr_consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada'] . '
+
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                       ' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :                                                     ' . $data_pr['pr_telefono_1'] . '
+        CELULAR :                                                      ' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :                                           ' . $data_pr['pr_correo_1'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                       ' . $data_pr['pr_nombre_2'] . '
+        TELEFONO :                                                     ' . $data_pr['pr_telefono_2'] . '
+        CELULAR :                                                      ' . $data_pr['pr_celular_2'] . '
+        CORREO ELECTRONICO :                                           ' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES:                                                 ' . $data_pr['pr_observaciones'] . '
+
+        
+
+        ';
+    }
+
+    // retorna plantilla tyexto formulario de PBX Administrada
+    private function plantilla_txt_pr_pbx_administrada($data_pr) {
+        return 'PBX ADMINISTRADA 
+
+        ****************************************************     DATOS BÁSICOS     **********************************************
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN:                                                    ' . $data_pr['pr_direccion'] . '
+        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio'] . '
+        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente'] . '
+        ALIAS DEL LUGAR:                                              ' . $data_pr['pr_alias_lugar'] . '
+        OTP:                                                          ' . $data_pr['id_ot_padre'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada'] . '
+        TIPO DE PBX ADMINISTRADA:                                     ' . $data_pr['pr_tipo_pbx'] . '
+        TIPO DE INSTALACIÓN:                                          ' . $data_pr['pr_tipo_instalacion'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual'] . '
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA   ***********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc'] . '
+        
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :                                       ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :                                               ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales'] . '
+
+
+        ********* Teléfonos *********
+        Fuentes de Teléfonos:                                         ' . $data_pr['pr_fuentes_telefonos'] . '    
+        Diademas:                                                     ' . $data_pr['pr_diademas'] . '
+        Arañas de Conferencia:                                        ' . $data_pr['pr_araña_conferencia'] . '
+        Botoneras:                                                    ' . $data_pr['pr_botoneras'] . '
+        Modulo Expansión Botonera:                                    ' . $data_pr['pr_modulo_botonera'] . '
+        Fuente Botoneras:                                             ' . $data_pr['pr_fuente_botonera'] . '
+        Consumibles:                                                  ' . $data_pr['pr_consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones'] . '
+
+        **************************************************************   KIKOFF TECNICO    **********************************************************
+        TELEFONIA FIJA CLARO:                                         ' . $data_pr['pr_tel_fija_claro'] . '
+        CANTIDAD DE EXTENSIONES:                                      ' . $data_pr['pr_cantidad_extenciones'] . '
+        CANTIDAD DE BUZONES VOZ:                                      ' . $data_pr['pr_cantidad_buzones_voz'] . '
+        INCLUYE GRABACIÓN DE VOZ:                                     ' . $data_pr['pr_grabacion_voz'] . '
+        INCLUYE LAN ADMINISTRADA:                                     ' . $data_pr['pr_lan_administrada'] . '
+                                  
+
+        ';
+    }
+
+    // retorna plantilla tyexto formulario de telefonia fija
+    private function plantilla_txt_pr_mpls($data_pr) {
+        return 'TELEFONIA FIJA  
+
+        ****************************************************     DATOS BÁSICOS DE INSTALACION    **********************************************
+       
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN:                                                    ' . $data_pr['pr_direccion'] . '
+        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio'] . '
+        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente'] . '
+        ALIAS DEL LUGAR:                                              ' . $data_pr['pr_alias_lugar'] . '
+        OTP:                                                          ' . $data_pr['pr_id_ot_padre'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada'] . '
+        TIPO DE TELEFONIA FIJA:                                       ' . $data_pr['pr_tipo_telefonia'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda'] . '
+        TIPO DE INSTALACION:                                          ' . $data_pr['pr_tipo_instalacion'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual'] . '
+       
+        *******************************************  INFORMACIÓN  ULTIMA MILLA   ***********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):                  ' . $data_pr['pr_tipo_conector'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc'] . '
+        
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio'] . '
+            Referencia Router :                                       ' . $data_pr['pr_referencia_router'] . '
+            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas'] . '
+            Licencias :                                               ' . $data_pr['pr_licencias'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales'] . '
+            Consumibles :                                             ' . $data_pr['pr_consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones'] . '
+
+        *********************************************   KIKOFF TECNICO  SOLO PARA CAMBIOS DE TELEFONIA  *********************************************
+        Activación de PLAN LD CON COSTO (0 $):                        ' . $data_pr['pr_activacion_plan'] . '
+        Equipo Cliente:                                               ' . $data_pr['pr_equipo_cliente'] . '
+        Interfaz Equipos Cliente:                                     ' . $data_pr['pr_interfaz_equipo_cliente'] . '
+        Cantidad Lineas Básicas a Adicionar (Solo Telefonia Pública Líneas Análogas):              ' . $data_pr['pr_cantidad_lineas_basicas'] . '
+        Conformación PBX (Solo Telefonia Pública Líneas Análogas):                                 ' . $data_pr['pr_conformacion_pbx'] . '
+        Cantidad de DID a Adicionar:                                  ' . $data_pr['pr_cant_did_solicitados'] . '
+        Cantidad Canales:                                             ' . $data_pr['pr_cant_canales'] . '
+        Numero Cabecera PBX:                                          ' . $data_pr['pr_num_cabezera_pbx'] . '
+        FAX TO MAIL:                                                  ' . $data_pr['pr_fax_email'] . '
+        TELEFONO VIRTUAL:                                             ' . $data_pr['pr_telefono_virtual'] . '
+        Requiere Permisos para Larga Distancia Nacional:              ' . $data_pr['pr_permisos_larga_distancia'] . '
+        Requiero Larga  Para Distancia  Internacional:                ' . $data_pr['pr_larga_distancia_internacional'] . '
+        Requiere Permisos para Móviles:                               ' . $data_pr['pr_permisos_moviles'] . '
+        Requiere Permisos para Local Extendida:                       ' . $data_pr['pr_permiso_local_extendida'] . '
+
+        *********************************************   NUMERACIÓN SOLO DILIGENCIAR PARA LA OPCIÓN  PBX DISTRIBUIDO  *********************************************
+        ****  Ciudad Bogotá  ****
+        Requiere:                                                     ' . $data_pr['pr_bog_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_bog_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_bog_cantidad'] . '
+
+        ****  Ciudad Tunja  ****
+        Requiere:                                                     ' . $data_pr['pr_tun_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_tun_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_tun_cantidad'] . '
+
+        ****  Ciudad Villavicencio  ****
+        Requiere:                                                     ' . $data_pr['pr_vill_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_vill_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_vill_cantidad'] . '
+
+        ****  Ciudad Facatativá  ****
+        Requiere:                                                     ' . $data_pr['pr_fac_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_fac_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_fac_cantidad'] . '
+
+        ****  Ciudad Girardot  ****
+        Requiere:                                                     ' . $data_pr['pr_gir_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_gir_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_gir_cantidad'] . '
+
+        ****  Ciudad Yopal  ****
+        Requiere:                                                     ' . $data_pr['pr_yop_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_yop_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_yop_cantidad'] . '
+
+        ****  Ciudad Cali  ****
+        Requiere:                                                     ' . $data_pr['pr_cali_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_cali_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_cali_cantidad'] . '
+
+        ****  Ciudad Buenaventura  ****
+        Requiere:                                                     ' . $data_pr['pr_bave_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_bave_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_bave_cantidad'] . '
+
+        ****  Ciudad Pasto  ****
+        Requiere:                                                     ' . $data_pr['pr_pas_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_pas_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_pas_cantidad'] . '
+
+        ****  Ciudad Popayán  ****
+        Requiere:                                                     ' . $data_pr['pr_pop_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_pop_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_pop_cantidad'] . '
+
+        ****  Ciudad Neiva  ****
+        Requiere:                                                     ' . $data_pr['pr_nei_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_nei_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_nei_cantidad'] . '
+
+        ****  Ciudad Medellín  ****
+        Requiere:                                                     ' . $data_pr['pr_med_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_med_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_med_cantidad'] . '
+
+        ****  Ciudad Barranquilla  ****
+        Requiere:                                                     ' . $data_pr['pr_bar_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_bar_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_bar_cantidad'] . '
+
+        ****  Ciudad Cartagena  ****
+        Requiere:                                                     ' . $data_pr['pr_cart_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_cart_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_cart_cantidad'] . '
+
+        ****  Ciudad Santa Marta  ****
+        Requiere:                                                     ' . $data_pr['pr_stm_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_stm_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_stm_cantidad'] . '
+
+        ****  Ciudad Montería  ****
+        Requiere:                                                     ' . $data_pr['pr_mon_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_mon_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_mon_cantidad'] . '
+
+        ****  Ciudad Valledupar  ****
+        Requiere:                                                     ' . $data_pr['pr_vall_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_vall_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_vall_cantidad'] . '
+
+        ****  Ciudad Sincelejo  ****
+        Requiere:                                                     ' . $data_pr['pr_sinc_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_sinc_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_sinc_cantidad'] . '
+
+        ****  Ciudad Pereira  ****
+        Requiere:                                                     ' . $data_pr['pr_per_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_per_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_per_cantidad'] . '
+
+        ****  Ciudad Armenia  ****
+        Requiere:                                                     ' . $data_pr['pr_arme_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_arme_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_arme_cantidad'] . '
+
+        ****  Ciudad Manizales  ****
+        Requiere:                                                     ' . $data_pr['pr_man_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_man_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_man_cantidad'] . '
+
+        ****  Ciudad Ibagué  ****
+        Requiere:                                                     ' . $data_pr['pr_iba_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_iba_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_iba_cantidad'] . '
+
+        ****  Ciudad Cucutá  ****
+        Requiere:                                                     ' . $data_pr['pr_cuc_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_cuc_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_cuc_cantidad'] . '
+
+        ****  Ciudad Bucaramanga  ****
+        Requiere:                                                     ' . $data_pr['pr_buc_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_buc_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_buc_cantidad'] . '
+
+        ****  Ciudad Duitama  ****
+        Requiere:                                                     ' . $data_pr['pr_dui_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_dui_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_dui_cantidad'] . '
+
+        ****  Ciudad Sogamoso  ****
+        Requiere:                                                     ' . $data_pr['pr_sog_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_sog_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_sog_cantidad'] . '
+
+        ****  Ciudad Flandes  ****
+        Requiere:                                                     ' . $data_pr['pr_flan_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_flan_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_flan_cantidad'] . '
+
+        ****  Ciudad Rivera  ****
+        Requiere:                                                     ' . $data_pr['pr_riv_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_riv_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_riv_cantidad'] . '
+
+        ****  Ciudad Aipe  ****
+        Requiere:                                                     ' . $data_pr['pr_aipe_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_aipe_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_aipe_cantidad'] . '
+
+        ****  Ciudad Lebrija  ****
+        Requiere:                                                     ' . $data_pr['pr_leb_requiere'] . '
+        NUMERACIÓN ASIGNADA EN TAB:                                   ' . $data_pr['pr_leb_numeracion'] . '
+        CANTIDAD DID:                                                 ' . $data_pr['pr_leb_cantidad'] . '
+
 
         ';
     }
