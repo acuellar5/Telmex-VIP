@@ -606,19 +606,29 @@ $(function () {
                     function (data) {
                         var obj = JSON.parse(data);
                         console.log(obj);
+                        $.each(obj,function(i,item){
+                            $('#pr_' + i).val(item);
+                            
+                            var $el = $('#pr_' + i);
+                            $el.replaceWith($('<input />').attr({ 
+                                type: 'text',
+                                id: $el.attr('id'),
+                                name: $el.attr('name'),
+                                class: $el.attr('class'),
+                                value: $el.val(),
+                                readonly: true,
+                                style: 'font-size: 12px;'
+                            }));
+                        });
+                        
+                        $("#mdl_cierreKo #id_ot_padre").val(obj.id_ot_padre);
+                        $("#mdl_cierreKo #id_ot_padre_ori").val(obj.id_ot_padre);
+                        $("#mdl_cierreKo #id_ot_padre_des").val(obj.id_ot_padre);
+                        $("#mdl_cierreKo").css("font-size", "12px");
+                        $("#mdl_cierreKo label").css("width", "150px");
+                        $("#mdl_cierreKo .selectContainer").css("margin-bottom", "5px");
                     });
-
-//            
-//            
-//            var $el = $('#tipo_predio');
-//    $el.replaceWith($('<input />').attr({ 
-//        type: 'text',
-//        id: $el.attr('id'),
-//        name: $el.attr('name'),
-//        class: $el.attr('class'),
-//        value: $el.val(),
-//        readonly: true
-//        }));
+          
             $('#mdl_cierreKo').modal('show');
         },
         onClickBtnEditOtp: function () {

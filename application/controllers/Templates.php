@@ -60,13 +60,14 @@ class Templates extends CI_Controller {
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
-            // $this->guardar_linea_base($this->input->post());
+            $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
             $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             echo '<pre>'; print_r($plantila_txt); echo '</pre>';
             // 3. enviar correo
             // $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // // 3.1 si se envio guardar formulario servicio en log correo.
+
             // if ($res_envio) {
             //     $this->guardar_servicio($pt, $servicio);
             //     // 4. Actualizar ot_hija en tabla ot_hija
@@ -144,7 +145,7 @@ class Templates extends CI_Controller {
                 'promocion'                => $pt['pr_promocion'],
             );
             $this->Dao_producto_model->insert_pr_internet($data_pr);
-            $txt = $this->plantilla_txt_pr_internet($data_pr);
+            // $txt = $this->plantilla_txt_pr_internet($data_pr);
             break;
         /*formulario MPLS*/
         case '3': // mpls_avanzado_intranet
@@ -861,11 +862,11 @@ class Templates extends CI_Controller {
             'fecha_mod'  => $fActual,
         );
 
-        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
-        // $msj = 'ok';
-        // $this->session->set_flashdata('msj', $msj);
-        // header('Location: ' . URL::base() . '/managementOtp');
+        $msj = 'ok';
+        $this->session->set_flashdata('msj', $msj);
+        header('Location: ' . URL::base() . '/managementOtp');
     }
 
     //Actualiza el estato (hay que enviarle el post)
@@ -1240,8 +1241,8 @@ class Templates extends CI_Controller {
                 $argumentos['campo10']['no'] = $this->no($p['campo10']);
                 $argumentos['campo11']['si'] = $this->si($p['campo11']);
                 $argumentos['campo11']['no'] = $this->no($p['campo11']);
-                $argumentos['camp12']['si'] = $this->si($p['camp12']);
-                $argumentos['camp12']['no'] = $this->no($p['camp12']);
+                $argumentos['campo12']['si'] = $this->si($p['campo12']);
+                $argumentos['campo12']['no'] = $this->no($p['campo12']);
                 $argumentos['campo13']['si'] = $this->si($p['campo13']);
                 $argumentos['campo13']['no'] = $this->no($p['campo13']);
                 $argumentos['campo14']['si'] = $this->si($p['campo14']);
@@ -1252,6 +1253,7 @@ class Templates extends CI_Controller {
 
         case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $argumentos = array(
+                'campo0'  => $p['nro_ot_onyx'],
                 'campo1'  => $p['nombre'], //  nombre
                 'campo2'  => $p['nombre_cliente'], //  nombre cliente
                 'campo3'  => $p['servicio'], //  servicio
@@ -1307,8 +1309,8 @@ class Templates extends CI_Controller {
                 'campo41' => $p['campo41'], //  Fecha de Entrega de su servicio
             );
 
-                $argumentos['campO11']['si'] = $this->si($p['campO11']);
-                $argumentos['campO11']['no'] = $this->no($p['campO11']);
+                $argumentos['campo11']['si'] = $this->si($p['campo11']);
+                $argumentos['campo11']['no'] = $this->no($p['campo11']);
                 $argumentos['campo13']['si'] = $this->si($p['campo13']);
                 $argumentos['campo13']['no'] = $this->no($p['campo13']);
                 $argumentos['campo16']['si'] = $this->si($p['campo16']);
@@ -8437,6 +8439,7 @@ class Templates extends CI_Controller {
 
     
     public function cambio_de_equipos_servicio($argumentos) {
+
         return '
         <div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
@@ -11059,7 +11062,7 @@ class Templates extends CI_Controller {
     }
     
     public function soluciones_administrativas_comunicaciones_unificadas_pbx_administrada($argumentos) {
-
+        echo "<pre>".print_r($argumentos)."</pre>";
         return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p>
         <p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span></p>
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span></p>
@@ -11931,7 +11934,6 @@ class Templates extends CI_Controller {
     }
     //
     public function instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1($argumentos) {
-        echo '<pre>xxxx'; print_r($argumentos); echo 'xxxxx</pre>';
         return '
         <div style="overflow: hidden;"><font size="-1"><div style="overflow: hidden;"><font size="-1"><table width="100%" cellpadding="12" cellspacing="0" border="0"><tbody><tr><td><div style="overflow: hidden;"><font size="-1"><div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span></p>
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span></p>
@@ -12831,7 +12833,7 @@ class Templates extends CI_Controller {
     //
     public function instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip($argumentos) {
 
-        return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span></p>
+        return '<d  iv dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span></p>
 
@@ -15092,7 +15094,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">&nbsp;</span></i><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" style="margin: 0in 0in 10pt; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">AMPLIACIÓN&nbsp;DE
           SERVICIO</span></i><span lang="ES-CO" style="color: black;"></span></p>
-          <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">ZZZZZ</span></i><span lang="ES-CO" style="color: black;"></span></p>
+          <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">' . $argumentos['campo3'] . '</span></i><span lang="ES-CO" style="color: black;"></span></p>
           <p class="MsoNormal" align="center" style="margin: 0in 0in 10pt; text-align: center; font-size: 11pt; font-family: Calibri, sans-serif;"><b><i><span lang="ES" style="font-size: 14pt; font-family: Arial, sans-serif; color: black;">OTP:' . $argumentos['campo0'] . '</span></i></b><span lang="ES-CO" style="color: black;"></span></p>
           </td>
           <td width="675" colspan="16" valign="top" style="width: 506.3pt; border-top: none; border-left: none; border-bottom: 1pt solid rgb(192, 0, 0); border-right: 1pt solid rgb(192, 0, 0); padding: 0in 5.4pt; height: 14.55pt;">
@@ -15602,7 +15604,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" style="margin:0in 0in 10pt;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">AMPLIACIÓN
           <span style="color:black">DE SERVICIO</span></span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">ZZZZZ</span></i><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">' . $argumentos['campo3'] . '</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">OTP:' . $argumentos['campo0'] . '</span></i></b><span lang="ES-CO"></span></p>
           </td>
           <td width="575" colspan="10" valign="top" style="width:431.3pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:14.75pt">
@@ -16011,6 +16013,8 @@ class Templates extends CI_Controller {
         <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">&nbsp;</span></p>
 
         <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO">&nbsp;</span></p></div>';
+
+        return $cadena;
 
     }
 
