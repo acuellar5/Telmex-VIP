@@ -350,12 +350,12 @@ if (!function_exists('validarEnProduccion')) {
 
 }
 
-if (!function_exists('enviarCorreo')) {
+if (!function_exists('h_enviarCorreo')) {
 
     //Funcion para enviar correos
     //recibe 4 parametros: el cuerpo del correo; el correo al cual sera enviado; si tiene copia, el asunto
     //Retorna un mensaje diciendo si el correo se pudo enviar o no
-    function enviarCorreo($cuerpo, $dirigido, $asunto = 'Sin asunto', $mail_cc = null) {
+    function h_enviarCorreo($cuerpo, $dirigido, $asunto = 'Sin asunto', $mail_cc = null) {
         $return = array();
         $CI =& get_instance();
         $CI->load->library('parser');

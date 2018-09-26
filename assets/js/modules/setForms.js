@@ -1332,7 +1332,7 @@ $(function() {
 											<option value="Medellín">Medellín</option>
 											<option value="Barranquilla">Barranquilla</option>
 											<option value="Cartagena">Cartagena</option>
-											<option value="Santa">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Montería">Montería</option>
 											<option value="Valledupar">Valledupar</option>
 											<option value="Sincelejo">Sincelejo</option>
@@ -2084,7 +2084,7 @@ $(function() {
 											<option value="Aipe">Aipe</option>
 											<option value="Girardot">Girardot</option>
 											<option value="Popayán">Popayán</option>
-											<option value="campo6 Marta">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Armenia">Armenia</option>
 											<option value="Duitama">Duitama</option>
 											<option value="Lebrija">Lebrija</option>
@@ -2172,7 +2172,7 @@ $(function() {
 											<option value="Aipe">Aipe</option>
 											<option value="Girardot">Girardot</option>
 											<option value="Popayán">Popayán</option>
-											<option value="campo6 Marta">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Armenia">Armenia</option>
 											<option value="Duitama">Duitama</option>
 											<option value="Lebrija">Lebrija</option>
@@ -2257,7 +2257,7 @@ $(function() {
 											<option value="Aipe">Aipe</option>
 											<option value="Girardot">Girardot</option>
 											<option value="Popayán">Popayán</option>
-											<option value="campo6 Marta">Santa Marta</option>
+											<option value="Santa_Marta">Santa Marta</option>
 											<option value="Armenia">Armenia</option>
 											<option value="Duitama">Duitama</option>
 											<option value="Lebrija">Lebrija</option>
@@ -2424,10 +2424,10 @@ $(function() {
 
 							<label for="campo7" class="col-md-6 control-label">Requiere Cambio de equipo:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo7" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo7">NO</label>
+				              <label><input type="radio" value="NO" name="campo7">NO</label>
 				            </div>							
 						</fieldset>
 					</div>
@@ -2436,10 +2436,10 @@ $(function() {
 						<fieldset class="col-md-6">
 							<label for="campo8" class="col-md-6 control-label">Requiere Cambio de Última Milla:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo8" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo8" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo8">NO</label>
+				              <label><input type="radio" value="NO" name="campo8">NO</label>
 				            </div>
 						</fieldset>
 
@@ -2447,10 +2447,10 @@ $(function() {
 							<!-- radio button -->
 							<label for="campo9" class="col-md-6 control-label">Existen otros Servicios a Modificar:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo9" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo9" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo9">NO</label>
+				              <label><input type="radio" value="NO" name="campo9">NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -2584,10 +2584,10 @@ $(function() {
 
 							<label for="campo7" class="col-md-6 control-label">Requiere Cambio de equipo:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo7" checked>SI</label>
+				              <label><input type="radio" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo7">NO</label>
+				              <label><input type="radio" name="campo7">NO</label>
 				            </div>							
 						</fieldset>
 					</div>
@@ -2597,10 +2597,10 @@ $(function() {
 							<!-- radio button -->
 							<label for="campo8" class="col-md-6 control-label">Existen otros Servicios a Modificar:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo8" checked>SI</label>
+				              <label><input type="radio" name="campo8" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="checkbox" name="campo8">NO</label>
+				              <label><input type="radio" name="campo8">NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -2643,123 +2643,33 @@ $(function() {
 									</div>
 								</div>
 							</div>
-							<label for="campo12" class="col-md-6 control-label">Requiere Cambio de equipos:</label>
-				            <div class="radio">
-				              <label><input type="radio" value="SI" name="campo12" checked>SI</label>
-				            </div>
-				            <div class="radio">
-				              <label><input type="radio" value="NO" name="campo12">NO</label>
-				            </div>	
+							<!--*********************  SELECT  *********************-->
+							<div class="form-group">
+								<label for="campo12[]" class="col-md-3 control-label">Requiere Cambio de equipos:</label>
+								<div class="col-md-8 selectContainer">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
+										<select name="campo12[]" class="form-control" required>
+											<option value="SI">SI</option>
+											<option value="NO">NO</option>
+										</select>
+									</div>
+								</div>
+							</div>
 
 						</fieldset>
-					</div>
-				</div>
 				
-				<div class="widget bg_white m-t-25 d-inline-b cliente">
-					<div class="d-inline-b">
 						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo13" class="col-md-3 control-label">inicio al Proceso:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="date" name="campo13" id="campo13" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo14" class="col-md-3 control-label">Parafiscales:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo14" id="campo14" class="form-control">
-									</div>
-								</div>
-							</div>
-						</fieldset>
-						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo15" class="col-md-3 control-label">Certificación Alturas:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="text" name="campo15" id="campo15" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo16" class="col-md-3 control-label">Cursos Especiales:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo16" id="campo16" class="form-control">
-									</div>
-								</div>
-							</div>
-						</fieldset>
-					</div>
-					<div class="d-inline-b">
-						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo17" class="col-md-3 control-label">EPP:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-record"></i></span>
-										<input type="date" name="campo17" id="campo17" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo18" class="col-md-3 control-label">Rack:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo18" id="campo18" class="form-control">
-									</div>
-								</div>
-							</div>
-
 							<!--*********************  INPUT DATE  *********************-->
 							<div class="form-group">
-								<label for="campo21" class="col-md-3 control-label">Fecha Entrega Ampliación: &nbsp;</label>
+								<label for="campo14" class="col-md-3 control-label">Fecha Entrega Ampliación: &nbsp;</label>
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="date" name="campo21" id="campo21" required class="form-control">
+										<input type="date" name="campo14" id="campo14" required class="form-control">
 									</div>
 								</div>
 							</div>
-							
-							
-						</fieldset>
-						<fieldset class="col-md-6">
-							<!--*********************  INPUT TEXT  *********************-->
-							<div class="form-group">
-								<label for="campo19" class="col-md-3 control-label">Tomas reguladas:</label>
-								<div class="col-md-9 selectContainer">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-										<input type="text" name="campo19" id="campo19" class="form-control">
-									</div>
-								</div>
-							</div>
-
-							<label for="campo20" class="col-md-6 control-label">Requiere que el Cambio de Ultima Milla necesario para soportar la ampliación del Servicio, se ejecute en horario No Hábil o Fin de Semana:</label>
-				            <div class="radio">
-				              <label><input type="radio" value="SI" name="campo20" checked>SI</label>
-				            </div>
-				            <div class="radio">
-				              <label><input type="radio" value="NO" name="campo20">NO</label>
-				            </div>	
 						</fieldset>
 					</div>
 				</div>
@@ -8640,11 +8550,11 @@ $(function() {
 
 						    <!-- OTP -->
 							<div class="form-group">
-						        <label for="id_ot_padre" class="col-md-3 control-label">OTP:</label>
+						        <label for="pr_id_ot_padre" class="col-md-3 control-label">OTP:</label>
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="id_ot_padre" id="id_ot_padre" class="form-control" type="text" value="${otp}" readonly>
+						                <input name="pr_id_ot_padre" id="pr_id_ot_padre" class="form-control" type="text" value="${otp}" readonly>
 						            </div>
 						        </div>
 						    </div>
@@ -8941,19 +8851,41 @@ $(function() {
 
 					<!-- 3.1 sesion: TELEFONOS --> 
 					<legend class="f-s-15">TELEFONOS </legend>
+					<div id="aca_ref_cant" class="widget bg_white m-t-25 d-inline-b cliente m-b-20">
+						<span class="btn btn-success f-r" id="añadir_seccion_ref_cant"> Add  <i class="fa fa-plus"></i></span>
+						<div class="d-inline-b" id="duplicar_ref_cant">
+							<fieldset class="col-md-6">
+								<!--*********************  INPUT TEXT  *********************-->
+								<div class="form-group">
+									<label for="pr_referencia" class="col-md-3 control-label">Referencia: &nbsp;</label>
+									<div class="col-md-9 selectContainer">
+										<div class="input-group">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
+											<input type="text" name="pr_referencia[]" class="form-control">
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset class="col-md-6">
+								<!-- Cantidad:--> 
+							    <div class="form-group">
+							        <label for="pr_cantidad" class="col-md-3 control-label">Cantidad:</label>
+							        <div class="ol-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order-alt" ></i></span>
+							                <input name="pr_cantidad[]" class="form-control" type="number" >
+							            </div>
+							        </div>
+							    </div>
+															
+							</fieldset>
+						</div>
+
+					</div>
 
 					<div class="d-inline-b">
+
 						<fieldset class="col-md-6">
-							<!-- Cantidad:--> 
-						    <div class="form-group">
-						        <label for="pr_cantidad" class="col-md-3 control-label">Cantidad:</label>
-						        <div class="ol-md-9 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order-alt" ></i></span>
-						                <input name="pr_cantidad" id="pr_cantidad" class="form-control" type="number" >
-						            </div>
-						        </div>
-						    </div>
 
 						    <!-- Fuentes de Teléfonos:--> 
 						    <div class="form-group">

@@ -60,5 +60,13 @@ class Dao_producto_model extends CI_Model {
             return false;
         }
     }
+    // insertar en pabla pr_pbx_administrada
+    public function insert_pr_pbx_administrada($data) {
+        if ($this->db->insert('pr_pbx_administrada', $data)) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+    }
 
 }
