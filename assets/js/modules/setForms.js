@@ -1885,12 +1885,12 @@ $(function() {
 					</div>
 					<div class="d-inline-b">
 						<fieldset class="col-md-12">
-							<label for="campos25" class="col-md-6 control-label">Incluye Grabación de Voz:</label>
+							<label for="campo25" class="col-md-6 control-label">Incluye Grabación de Voz:</label>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campos25">SI</label>
+				              <label><input type="radio" name="campo25">SI</label>
 				            </div>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campos25" checked>NO</label>
+				              <label><input type="radio" name="campo25" checked>NO</label>
 				            </div>
 						</fieldset>
 					</div>
