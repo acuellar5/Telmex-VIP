@@ -60,11 +60,11 @@ class Templates extends CI_Controller {
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
-            // $this->guardar_linea_base($this->input->post());
+            $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            // $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
-            $res_envio = $this->enviar_correo_servicio($pt, $servicio);
+            $res_envio = true;//$this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
             if ($res_envio) {
                 $this->guardar_servicio($pt, $servicio);
@@ -143,7 +143,7 @@ class Templates extends CI_Controller {
                 'promocion'                => $pt['pr_promocion'],
             );
             $this->Dao_producto_model->insert_pr_internet($data_pr);
-            $txt = $this->plantilla_txt_pr_internet($data_pr);
+            // $txt = $this->plantilla_txt_pr_internet($data_pr);
             break;
         /*formulario MPLS*/
         case '3': // mpls_avanzado_intranet
@@ -859,11 +859,11 @@ class Templates extends CI_Controller {
             'fecha_mod'  => $fActual,
         );
 
-        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
-        // $msj = 'ok';
-        // $this->session->set_flashdata('msj', $msj);
-        // header('Location: ' . URL::base() . '/managementOtp');
+        $msj = 'ok';
+        $this->session->set_flashdata('msj', $msj);
+        header('Location: ' . URL::base() . '/managementOtp');
     }
 
     //Actualiza el estato (hay que enviarle el post)

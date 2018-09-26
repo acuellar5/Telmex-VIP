@@ -2796,11 +2796,11 @@ $(function() {
 						<fieldset class="col-md-6">
 						    <!-- ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE) -->
 						    <div class="form-group">
-						        <label for="" class="col-md-3 control-label">Alias del lugar:</label>
+						        <label for="pr_alias_lugar" class="col-md-3 control-label">Alias del lugar:</label>
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-						                <input name="" id="" class="form-control" type="text" >
+						                <input name="pr_alias_lugar" id="pr_alias_lugar" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
