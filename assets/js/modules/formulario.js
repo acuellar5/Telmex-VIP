@@ -338,12 +338,13 @@ $(function() {
             if (checkeado) {
                 $('#mpls_punto_origen').html(setForm.formProduct_mpls_form_origen());
                 $('#pestana_puto_origen').show(300);
+                $('#is_origen').val('1');
             } else {
                 $('#mpls_punto_origen').html("");
                 $('#pestana_puto_origen').hide(300);
                 $('#pestana_punto_destino').click();
+                $('#is_origen').val('0');
             }
-            console.log(this.checked);
         },
         //************ fin formulario de edicion oth ***************//
     };

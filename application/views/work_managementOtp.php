@@ -624,6 +624,7 @@
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
                         <input name="c_email" id="c_email" type="hidden">
                         <input name="num_servicio" id="num_servicio">
+                        <input name="is_origen" id="is_origen" value="0" type="hidden">
 
                         <fieldset>
                             <div class="toggle_info_detail" style="display: none">

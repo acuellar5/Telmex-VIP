@@ -4491,10 +4491,11 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_resp_factibilidad" id="pr_factibilidad_bw_ori" class=pr_factibilidad_bw_ori-control" type="text" >
+							                <input name="pr_factibilidad_bw_ori" id="pr_factibilidad_bw_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
+
 
 					            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 							    <div class="form-group">
@@ -4523,7 +4524,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-							                <input name="pr_sds_destino" id="pr_sds_destino_ori" class=pr_sds_destino_ori-control" type="text" >
+							                <input name="pr_sds_destino_ori" id="pr_sds_destino_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -4618,7 +4619,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_conversor_medio" id="pr_conversor_medio_ori" class=pr_conversor_medio_ori-control" type="text" >
+							                <input name="pr_conversor_medio_ori" id="pr_conversor_medio_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -4630,7 +4631,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-							                <input name="pr_referencia_router" id="pr_referencia_router_ori" class=pr_referencia_router_ori-control" type="text" >
+							                <input name="pr_referencia_router_ori" id="pr_referencia_router_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>

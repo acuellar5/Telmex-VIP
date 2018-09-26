@@ -63,22 +63,22 @@ class Templates extends CI_Controller {
             $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
             $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
-            echo '<pre>'; print_r($plantila_txt); echo '</pre>';
+            echo 'xxx<pre>'; print_r($plantila_txt); echo '</pre>';
             // 3. enviar correo
-            // $res_envio = $this->enviar_correo_servicio($pt, $servicio);
-            // // 3.1 si se envio guardar formulario servicio en log correo.
+            $res_envio = $this->enviar_correo_servicio($pt, $servicio);
+            // 3.1 si se envio guardar formulario servicio en log correo.
 
-            // if ($res_envio) {
-            //     $this->guardar_servicio($pt, $servicio);
-            //     // 4. Actualizar ot_hija en tabla ot_hija
-            //     $this->actualizar_oth($pt, true);
-            // }
-            // // si no se envia no se envia el correo
-            // else {
-            //     $msj = 'error';
-            //     $this->session->set_flashdata('msj', $msj);
-            //     header('Location: ' . URL::base() . '/managementOtp');
-            // }
+            if ($res_envio) {
+                $this->guardar_servicio($pt, $servicio);
+                // 4. Actualizar ot_hija en tabla ot_hija
+                $this->actualizar_oth($pt, true);
+            }
+            // si no se envia no se envia el correo
+            else {
+                $msj = 'error';
+                $this->session->set_flashdata('msj', $msj);
+                header('Location: ' . URL::base() . '/managementOtp');
+            }
         } else {
             // actualizar el estado
             $this->actualizar_oth($pt);
@@ -88,6 +88,7 @@ class Templates extends CI_Controller {
 
     // guardar formulario de producto dependiendo el numero del producto
     private function guardar_producto_more_txt($pt) {
+        // echo '<pre>'; print_r($pt); echo '</pre>';
         switch ($pt['num_servicio']) {
         /*formulario Internet*/
         case '1': // internet dedicado empresarial
@@ -144,8 +145,8 @@ class Templates extends CI_Controller {
                 'web_hosting'              => $pt['pr_web_hosting'],
                 'promocion'                => $pt['pr_promocion'],
             );
-            $this->Dao_producto_model->insert_pr_internet($data_pr);
-            // $txt = $this->plantilla_txt_pr_internet($data_pr);
+            // $this->Dao_producto_model->insert_pr_internet($data_pr);
+            $txt = $this->plantilla_txt_pr_internet($pt);
             break;
         /*formulario MPLS*/
         case '3': // mpls_avanzado_intranet
@@ -157,47 +158,6 @@ class Templates extends CI_Controller {
         case '9': // MPLS Avanzado con Componente Datacenter Claro
         case '10': // MPLS Transaccional 3G
             $data_pr = array(
-                'id_ot_padre_ori'              => $pt['nro_ot_onyx'],
-                'ciudad_ori'                   => $pt['pr_ciudad_ori'],
-                'direccion_ori'                => $pt['pr_direccion_ori'],
-                'tipo_predio_ori'              => $pt['pr_tipo_predio_ori'],
-                'nit_cliente_ori'              => $pt['pr_nit_cliente_ori'],
-                'alias_lugar_ori'              => $pt['pr_alias_lugar_ori'],
-                'otp_asociada_ori'             => $pt['pr_otp_asociada_ori'],
-                'tipo_mpls_ori'                => $pt['pr_tipo_mpls_ori'],
-                'ancho_banda_ori'              => $pt['pr_ancho_banda_ori'],
-                'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion_ori'],
-                'servicio_actual_ori'          => $pt['pr_servicio_actual_ori'],
-                'servicio_principal_ori'       => $pt['pr_servicio_principal_ori'],
-                'requiere_um_ori'              => $pt['pr_requiere_um_ori'],
-                'um_backup_ori'                => $pt['pr_um_backup_ori'],
-                'proveedor_ori'                => $pt['pr_proveedor_ori'],
-                'medio_ori'                    => $pt['pr_medio_ori'],
-                'factibilidad_bw_ori'          => $pt['pr_factibilidad_bw_ori'],
-                'tipo_conector_ori'            => $pt['pr_tipo_conector_ori'],
-                'sds_destino_ori'              => $pt['pr_sds_destino_ori'],
-                'interfaz_entrega_cliente_ori' => $pt['pr_interfaz_entrega_cliente_ori'],
-                'requiere_voc_ori'             => $pt['pr_requiere_voc_ori'],
-                'programacion_voc_ori'         => $pt['pr_programacion_voc_ori'],
-                'requiere_rfc_ori'             => $pt['pr_requiere_rfc_ori'],
-                'conversor_medio_ori'          => $pt['pr_conversor_medio_ori'],
-                'referencia_router_ori'        => $pt['pr_referencia_router_ori'],
-                'modulos_tarjetas_ori'         => $pt['pr_modulos_tarjetas_ori'],
-                'licencias_ori'                => $pt['pr_licencias_ori'],
-                'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales_ori'],
-                'consumibles_ori'              => $pt['pr_consumibles_ori'],
-                'carta_valorizada_ori'         => $pt['pr_carta_valorizada_ori'],
-                'nombre_1_ori'                 => $pt['pr_nombre_1_ori'],
-                'telefono_1_ori'               => $pt['pr_telefono_1_ori'],
-                'celular_1_ori'                => $pt['pr_celular_1_ori'],
-                'correo_1_ori'                 => $pt['pr_correo_1_ori'],                
-                'nombre_2_ori'                 => $pt['pr_nombre_2_ori'],
-                'telefono_2_ori'               => $pt['pr_telefono_2_ori'],
-                'celular_2_ori'                => $pt['pr_celular_2_ori'],
-                'correo_2_ori'                 => $pt['pr_correo_2_ori'],
-                'observaciones_1_ori'          => $pt['pr_observaciones_1_ori'],
-                'id_ot_padre_des'              => $pt['pr_id_ot_padre_des'],
-
                 'ciudad_des'                   => $pt['pr_ciudad_des'],
                 'id_ot_padre_des'              => $pt['pr_id_ot_padre_des'],
                 'direccion_des'                => $pt['pr_direccion_des'],
@@ -237,10 +197,55 @@ class Templates extends CI_Controller {
                 'celular_2_des'                => $pt['pr_celular_2_des'],
                 'correo_2_des'                 => $pt['pr_correo_2_des'],
                 'observaciones_1_des'          => $pt['pr_observaciones_1_des'],
-                
             );
-            $this->Dao_producto_model->insert_pr_mpls($data_pr);
-            $txt = $this->plantilla_txt_pr_mpls($data_pr);
+
+            if ($pt['is_origen'] == '1') {
+
+                $data_pr['id_ot_padre_ori']              = $pt['nro_ot_onyx'];
+                $data_pr['ciudad_ori']                   = $pt['pr_ciudad_ori'];
+                $data_pr['direccion_ori']                = $pt['pr_direccion_ori'];
+                $data_pr['tipo_predio_ori']              = $pt['pr_tipo_predio_ori'];
+                $data_pr['nit_cliente_ori']              = $pt['pr_nit_cliente_ori'];
+                $data_pr['alias_lugar_ori']              = $pt['pr_alias_lugar_ori'];
+                $data_pr['otp_asociada_ori']             = $pt['pr_otp_asociada_ori'];
+                $data_pr['tipo_mpls_ori']                = $pt['pr_tipo_mpls_ori'];
+                $data_pr['ancho_banda_ori']              = $pt['pr_ancho_banda_ori'];
+                $data_pr['tipo_instalacion_ori']         = $pt['pr_tipo_instalacion_ori'];
+                $data_pr['servicio_actual_ori']          = $pt['pr_servicio_actual_ori'];
+                $data_pr['servicio_principal_ori']       = $pt['pr_servicio_principal_ori'];
+                $data_pr['requiere_um_ori']              = $pt['pr_requiere_um_ori'];
+                $data_pr['um_backup_ori']                = $pt['pr_um_backup_ori'];
+                $data_pr['proveedor_ori']                = $pt['pr_proveedor_ori'];
+                $data_pr['medio_ori']                    = $pt['pr_medio_ori'];
+                $data_pr['factibilidad_bw_ori']          = $pt['pr_factibilidad_bw_ori'];
+                $data_pr['tipo_conector_ori']            = $pt['pr_tipo_conector_ori'];
+                $data_pr['sds_destino_ori']              = $pt['pr_sds_destino_ori'];
+                $data_pr['interfaz_entrega_cliente_ori'] = $pt['pr_interfaz_entrega_cliente_ori'];
+                $data_pr['requiere_voc_ori']             = $pt['pr_requiere_voc_ori'];
+                $data_pr['programacion_voc_ori']         = $pt['pr_programacion_voc_ori'];
+                $data_pr['requiere_rfc_ori']             = $pt['pr_requiere_rfc_ori'];
+                $data_pr['conversor_medio_ori']          = $pt['pr_conversor_medio_ori'];
+                $data_pr['referencia_router_ori']        = $pt['pr_referencia_router_ori'];
+                $data_pr['modulos_tarjetas_ori']         = $pt['pr_modulos_tarjetas_ori'];
+                $data_pr['licencias_ori']                = $pt['pr_licencias_ori'];
+                $data_pr['equipos_adicionales_ori']      = $pt['pr_equipos_adicionales_ori'];
+                $data_pr['consumibles_ori']              = $pt['pr_consumibles_ori'];
+                $data_pr['carta_valorizada_ori']         = $pt['pr_carta_valorizada_ori'];
+                $data_pr['nombre_1_ori']                 = $pt['pr_nombre_1_ori'];
+                $data_pr['telefono_1_ori']               = $pt['pr_telefono_1_ori'];
+                $data_pr['celular_1_ori']                = $pt['pr_celular_1_ori'];
+                $data_pr['correo_1_ori']                 = $pt['pr_correo_1_ori'];
+                $data_pr['nombre_2_ori']                 = $pt['pr_nombre_2_ori'];
+                $data_pr['telefono_2_ori']               = $pt['pr_telefono_2_ori'];
+                $data_pr['celular_2_ori']                = $pt['pr_celular_2_ori'];
+                $data_pr['correo_2_ori']                 = $pt['pr_correo_2_ori'];
+                $data_pr['observaciones_1_ori']          = $pt['pr_observaciones_1_ori'];
+                $data_pr['id_ot_padre_des']              = $pt['pr_id_ot_padre_des'];
+                
+            }
+
+            // $this->Dao_producto_model->insert_pr_mpls($data_pr);
+            $txt = $this->plantilla_txt_pr_mpls($pt, $pt['is_origen']);
             break;
         /*FORMULARIO NOVEDADES*/
         case '12': // Cambio de Equipos Servicio
@@ -391,8 +396,8 @@ class Templates extends CI_Controller {
                 'leb_numeracion'                => $pt['pr_leb_numeracion'],
                 'leb_cantidad'                  => $pt['pr_leb_cantidad'],
             );
-            $this->Dao_producto_model->insert_pr_novedades($data_pr);
-            $txt = $this->plantilla_txt_pr_novedades($data_pr);
+            // $this->Dao_producto_model->insert_pr_novedades($data_pr);
+            $txt = $this->plantilla_txt_pr_novedades($pt);
             break;
         /*TRASLADO_EXTERNO*/
         case '15': // Traslado Externo Servicio
@@ -442,7 +447,8 @@ class Templates extends CI_Controller {
                 'correo_2'                  => $pt['pr_correo_2'],
                 'observaciones'             => $pt['pr_observaciones'],
             );
-            $this->Dao_producto_model->insert_pr_traslado_externo($data_pr);
+            // $this->Dao_producto_model->insert_pr_traslado_externo($data_pr);
+            $txt = $this->plantilla_txt_pr_traslado_externo($pt);
             break;
         /*TRASLADO_INTERNO*/
         case '16': // Traslado Interno Servicio
@@ -488,8 +494,8 @@ class Templates extends CI_Controller {
                 'correo_2'                 => $pt['pr_correo_2'],
                 'observaciones'            => $pt['pr_observaciones'],
             );
-            $this->Dao_producto_model->insert_pr_traslado_interno($data_pr);
-            $txt = $this->plantilla_txt_pr_traslado_interno($data_pr);
+            // $this->Dao_producto_model->insert_pr_traslado_interno($data_pr);
+            $txt = $this->plantilla_txt_pr_traslado_interno($pt);
             break;
         /*PVX_ADMINISTRADA*/
         case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
@@ -543,7 +549,7 @@ class Templates extends CI_Controller {
                 'referencia'           => $referencia
             );
 
-             $this->Dao_producto_model->insert_pr_pbx_administrada($data_pr);
+             // $this->Dao_producto_model->insert_pr_pbx_administrada($data_pr);
              $txt = $this->plantilla_txt_pr_pbx_administrada($data_pr);
             break;
         /*TELEFONIA FIJA*/
@@ -693,7 +699,7 @@ class Templates extends CI_Controller {
                 'leb_cantidad'                  => $pt['pr_leb_cantidad'],
             );
 
-            $this->Dao_producto_model->insert_pr_telefonia_fija($data_pr);
+            // $this->Dao_producto_model->insert_pr_telefonia_fija($data_pr);
             $txt = $this->plantilla_txt_pr_telefonia_fija($data_pr);
             break;
 
@@ -702,6 +708,8 @@ class Templates extends CI_Controller {
 
             break;
         }
+
+        return $txt;
     }
 
     // guardar linea base en base de datos
@@ -1998,14 +2006,15 @@ class Templates extends CI_Controller {
 
     // retorna plantilla tyexto producto internet
     private function plantilla_txt_pr_internet($data_pr) {
-        return 'SERVICIO INTERNET
+        return '
+        SERVICIO INTERNET
 
         ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
         CIUDAD:                                             ' . $data_pr['pr_ciudad'] . '
         DIRECCIÓN:                                          ' . $data_pr['pr_direccion'] . '
         TIPO PREDIO:                                        ' . $data_pr['pr_tipo_predio'] . '
         NIT del cliente:                                    ' . $data_pr['pr_nit_cliente'] . '
-        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):     ' . $data_pr['pr_alias_lugar'] . '
+        ALIAS DEL LUGAR:                                    ' . $data_pr['pr_alias_lugar'] . '
         OTP:                                                ' . $data_pr['pr_id_ot_padre'] . '
         OTP ASOCIADAS:                                      ' . $data_pr['pr_otp_asociada'] . '
         TIPO DE INTERNET:                                   ' . $data_pr['pr_tipo_internet'] . '
@@ -2019,7 +2028,7 @@ class Templates extends CI_Controller {
         MEDIO :                                             ' . $data_pr['pr_medio'] . '
         RESPUESTA FACTIBILIDAD BW > =100 MEGAS :            ' . $data_pr['pr_factibilidad_bw'] . '
         TIPO DE CONECTOR *** (Aplica para FO Claro):        ' . $data_pr['pr_tipo_conector'] . '
-        ACCESO (Solo Aplica para Canales > = 100 MEGAS   =======    SDS DESTINO (Unifilar):       ' . $data_pr['pr_sds_destino'] . '
+        ACCESO (Solo Aplica para Canales > = 100 MEGAS:     ' . $data_pr['pr_sds_destino'] . '
         OLT (GPON):                                         ' . $data_pr['pr_olt'] . '
         INTERFACE DE ENTREGA AL CLIENTE:                    ' . $data_pr['pr_interfaz_entrega_cliente'] . '
         REQUIERE VOC :                                      ' . $data_pr['pr_requiere_voc'] . '
@@ -2033,7 +2042,7 @@ class Templates extends CI_Controller {
             Modulos o Tarjetas:                             ' . $data_pr['pr_modulos_tarjetas'] . '
             Licencias :                                     ' . $data_pr['pr_licencias'] . '
             Equipos Adicionales :                           ' . $data_pr['pr_equipos_adicionales'] . '
-            Consumibles :                                   ' . $data_pr['pr_Consumibles'] . '
+            Consumibles :                                   ' . $data_pr['pr_consumibles'] . '
         REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:         ' . $data_pr['pr_carta_valorizada'] . '
 
         ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
@@ -2062,73 +2071,16 @@ class Templates extends CI_Controller {
         Espacio de correo (GB) :                            ' . $data_pr['pr_espacio_correo'] . '
         Plataforma de WEBHosting :                          ' . $data_pr['pr_plataforma_web'] . '
         WEB Hosting (MB) :                                  ' . $data_pr['pr_web_hosting'] . '
-        APLICA A ALGUNA PROMOCION VIGENTE (POR FAVOR DOCUMENTAR  NOMBRE DE LA PROMOCION) :      ' . $data_pr['pr_promocion'] . '
-
-        ';
-    }
-
-    // retorna plantilla tyexto para mpls origen
-    private function plantilla_txt_pr_mpls_origen($data_pr) {
-        return 'MPLS 
-
-        ***********************************************     PUNTO ORIGEN       ************************************************
-        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
-        CIUDAD:                                                       ' . $data_pr['pr_ciudad_ori'] . '
-        DIRECCIÓN:                                                    ' . $data_pr['pr_direccion_ori'] . '
-        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio_ori'] . '
-        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente_ori'] . '
-        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):  ' . $data_pr['pr_alias_lugar_ori'] . '
-        OTP:                                                          ' . $data_pr['pr_id_ot_padre_ori'] . '
-        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada_ori'] . '
-        TIPO MPLS:                                                    ' . $data_pr['pr_tipo_mpls_ori'] . '
-        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_ori'] . '
-        TIPO DE INSTALACION :                                         ' . $data_pr['pr_tipo_instalacion_ori'] . '
-        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual_ori'] . '
-        ID SERVICIO PRINCIPAL (Aplica solo para enlaces Backup):      ' . $data_pr['pr_servicio_principal_ori'] . '
-
-        *******************************************  INFORMACIÓN  ULTIMA MILLA DESTINO  ********************************************
-        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um_ori'] . '
-        ESTA ULTIMA MILLA ES UN BACKUP?:                              ' . $data_pr['pr_um_backup_ori'] . '
-        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor_ori'] . '
-        MEDIO:                                                        ' . $data_pr['pr_medio_ori'] . '
-        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw_ori'] . '
-        TIPO DE CONECTOR *** (Aplica para FO Claro):                  ' . $data_pr['pr_tipo_conector_ori'] . '
-        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======    SDS DESTINO (Unifilar):    ' . $data_pr['pr_sds_destino_ori'] . '
-        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente_ori'] . '
-        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc_ori'] . '
-        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc_ori'] . '
-
-        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
-        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc_ori'] . '
-        EQUIPOS   (VER LISTA COMPLETA):       
-            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio_ori'] . '
-            Referencia Router :                                       ' . $data_pr['pr_referencia_router_ori'] . '
-            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas_ori'] . '
-            Licencias :                                               ' . $data_pr['pr_licencias_ori'] . '
-            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales_ori'] . '
-            Consumibles :                                             ' . $data_pr['pr_consumibles_ori'] . '
-        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada_ori'] . '
-
-        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
-        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
-        NOMBRE :                                                      ' . $data_pr['pr_nombre_1_ori'] . '
-        TELEFONO :                                                    ' . $data_pr['pr_telefono_1_ori'] . '
-        CELULAR :                                                     ' . $data_pr['pr_celular_1_ori'] . '
-        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1_ori'] . '
-
-        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
-        NOMBRE :                                                      ' . $data_pr['pr_nombre_2_ori'] . '
-        TELEFONO :                                                    ' . $data_pr['pr_telefono_2_ori'] . '
-        CELULAR :                                                     ' . $data_pr['pr_celular_2_ori'] . '
-        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_ori'] . '
-        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_1_ori'] . '
+        APLICA A ALGUNA PROMOCION VIGENTE  :                ' . $data_pr['pr_promocion'] . '
 
         ';
     }
 
     // retorna plantilla tyexto para mpls de destino 
-    private function plantilla_txt_pr_mpls_destino($data_pr) {
-        return 'MPLS 
+    private function plantilla_txt_pr_mpls($data_pr, $flag) {
+        $cadena = '';
+        $cadena .= '
+        MPLS DESTINO 
 
         ***********************************************     PUNTO DESTINO       ************************************************
         ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
@@ -2137,7 +2089,7 @@ class Templates extends CI_Controller {
         TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio_des'] . '
         NIT del cliente:                                              ' . $data_pr['pr_nit_cliente_des'] . '
         ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):  ' . $data_pr['pr_alias_lugar_des'] . '
-        OTP:                                                          ' . $data_pr[''] . '
+        OTP:                                                          ' . $data_pr['nro_ot_onyx'] . '
         OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada_des'] . '
         TIPO MPLS:                                                    ' . $data_pr['pr_tipo_mpls_des'] . '
         ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_des'] . '
@@ -2181,8 +2133,67 @@ class Templates extends CI_Controller {
         CELULAR :                                                     ' . $data_pr['pr_celular_2_des'] . '
         CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_des'] . '
         OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_1_des'] . '
-
         ';
+        if ($flag == '1') {
+            $cadena .= '
+        ******************************************************MPLS ORIGEN******************************************************
+        MPLS ORIGEN
+
+        ***********************************************     PUNTO ORIGEN       ************************************************
+        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD:                                                       ' . $data_pr['pr_ciudad_ori'] . '
+        DIRECCIÓN:                                                    ' . $data_pr['pr_direccion_ori'] . '
+        TIPO PREDIO:                                                  ' . $data_pr['pr_tipo_predio_ori'] . '
+        NIT del cliente:                                              ' . $data_pr['pr_nit_cliente_ori'] . '
+        ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE):  ' . $data_pr['pr_alias_lugar_ori'] . '
+        OTP:                                                          ' . $data_pr['nro_ot_onyx'] . '
+        OTP ASOCIADAS:                                                ' . $data_pr['pr_otp_asociada_ori'] . '
+        TIPO MPLS:                                                    ' . $data_pr['pr_tipo_mpls_ori'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_ori'] . '
+        TIPO DE INSTALACION :                                         ' . $data_pr['pr_tipo_instalacion_ori'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):                ' . $data_pr['pr_servicio_actual_ori'] . '
+        ID SERVICIO PRINCIPAL (Aplica solo para enlaces Backup):      ' . $data_pr['pr_servicio_principal_ori'] . '
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA DESTINO  ********************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM?:                        ' . $data_pr['pr_requiere_um_ori'] . '
+        ESTA ULTIMA MILLA ES UN BACKUP?:                              ' . $data_pr['pr_um_backup_ori'] . '
+        PROVEEDOR:                                                    ' . $data_pr['pr_proveedor_ori'] . '
+        MEDIO:                                                        ' . $data_pr['pr_medio_ori'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS:                         ' . $data_pr['pr_factibilidad_bw_ori'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro):                  ' . $data_pr['pr_tipo_conector_ori'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS   =======    SDS DESTINO (Unifilar):    ' . $data_pr['pr_sds_destino_ori'] . '
+        INTERFACE DE ENTREGA AL CLIENTE:                              ' . $data_pr['pr_interfaz_entrega_cliente_ori'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc_ori'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc_ori'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc_ori'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio_ori'] . '
+            Referencia Router :                                       ' . $data_pr['pr_referencia_router_ori'] . '
+            Modulos o Tarjetas:                                       ' . $data_pr['pr_modulos_tarjetas_ori'] . '
+            Licencias :                                               ' . $data_pr['pr_licencias_ori'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales_ori'] . '
+            Consumibles :                                             ' . $data_pr['pr_consumibles_ori'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:                   ' . $data_pr['pr_carta_valorizada_ori'] . '
+
+        ****************************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        **********************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  ***********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1_ori'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1_ori'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1_ori'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1_ori'] . '
+
+        *******************************************************         DATOS CONTACTO TÉCNICO    ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2_ori'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2_ori'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2_ori'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_ori'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_1_ori'] . '
+            ';
+        }
+
+        return $cadena;
     }
 
     // retorna plantilla tyexto formulario de novedades
@@ -2611,7 +2622,7 @@ class Templates extends CI_Controller {
     }
 
     // retorna plantilla tyexto formulario de telefonia fija
-    private function plantilla_txt_pr_mpls($data_pr) {
+    private function plantilla_txt_pr_telefonia_fija($data_pr) {
         return 'TELEFONIA FIJA  
 
         ****************************************************     DATOS BÁSICOS DE INSTALACION    **********************************************
