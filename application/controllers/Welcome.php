@@ -17,7 +17,7 @@ class Welcome extends CI_Controller
     }
 
     public function prueba(){
-        $this->load->view('index');
+        $this->load->view('prueba_imagenes_tempates');
     }
 
     public function insertuser(){

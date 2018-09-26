@@ -60,23 +60,23 @@ class Templates extends CI_Controller {
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
-            $this->guardar_linea_base($this->input->post());
+            // $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
             // $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
             $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
-            if ($res_envio) {
-                $this->guardar_servicio($pt, $servicio);
-                // 4. Actualizar ot_hija en tabla ot_hija
-                $this->actualizar_oth($pt, true);
-            }
-            // si no se envia no se envia el correo
-            else {
-                $msj = 'error';
-                $this->session->set_flashdata('msj', $msj);
-                header('Location: ' . URL::base() . '/managementOtp');
-            }
+            // if ($res_envio) {
+            //     $this->guardar_servicio($pt, $servicio);
+            //     // 4. Actualizar ot_hija en tabla ot_hija
+            //     $this->actualizar_oth($pt, true);
+            // }
+            // // si no se envia no se envia el correo
+            // else {
+            //     $msj = 'error';
+            //     $this->session->set_flashdata('msj', $msj);
+            //     header('Location: ' . URL::base() . '/managementOtp');
+            // }
         } else {
             // actualizar el estado
             $this->actualizar_oth($pt);
@@ -798,12 +798,16 @@ class Templates extends CI_Controller {
              $template = $this->cambio_de_equipo($array_template);
              break;
         }
-        $this->load->helper('camilo');
 
-        $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
-        $se_envio = h_enviarCorreo($template, 'bredybuitrago@gmail.com' , $asunto);
 
-        return $se_envio['success'];
+        print_r($template);
+        print_r($array_template);
+        // $this->load->helper('camilo');
+
+        // // $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
+        // // $se_envio = h_enviarCorreo($template, 'bredybuitrago@gmail.com' , $asunto);
+
+        // return $se_envio['success'];
 
     }
 
@@ -852,11 +856,11 @@ class Templates extends CI_Controller {
             'fecha_mod'  => $fActual,
         );
 
-        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
-        $msj = 'ok';
-        $this->session->set_flashdata('msj', $msj);
-        header('Location: ' . URL::base() . '/managementOtp');
+        // $msj = 'ok';
+        // $this->session->set_flashdata('msj', $msj);
+        // header('Location: ' . URL::base() . '/managementOtp');
     }
 
     //Actualiza el estato (hay que enviarle el post)
@@ -1106,8 +1110,8 @@ class Templates extends CI_Controller {
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
                 'campo3'  => $p['servicio'], // servicio
                 'campo4'  => $p['campo4'], // Dirección Sede
-                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
-                'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
+                // 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
+                // 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (no)
                 'campo6'  => $p['campo6'], // cantidad
                 'campo7'  => $p['campo7'], // otp
                 'campo8'  => $p['campo8'], // Códigos de Servicio en el CPE a Cambiar
@@ -1117,6 +1121,9 @@ class Templates extends CI_Controller {
                 'campo12' => $p['ingeniero1_tel'], // TELEFONOS DE CONTACTO
                 'campo13' => $p['ingeniero1_email'], // MAIL
             );
+                $argumentos['campo5']['si'] = $this->si($p['campo5']);
+                $argumentos['campo5']['no'] = $this->no($p['campo5']);
+
             break;
 
         case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
@@ -7158,7 +7165,7 @@ class Templates extends CI_Controller {
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img width="928" height="542"><span lang="ES-CO"></span></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img  src = "' . URL::base() . '/assets/img/entrega_puertos_lan_aeropuerto_dorado_opain/servicio.png" width="928" height="542"><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -7301,7 +7308,7 @@ class Templates extends CI_Controller {
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img width="770" height="389"><span lang="ES-CO"></span></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src = "' . URL::base() . '/assets/img/entrega_puertos_lan_aeropuerto_dorado_opain/actividades.png" width="770" height="389"><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -7537,7 +7544,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt">Atraso en la instalación por Inconvenientes de
           &nbsp;Acceso al Predio en las Visitas Programadas</span></i></b><i><span lang="ES" style="font-size:10pt">.</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;color:white">&nbsp;</span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:10pt"><img width="420" height="110"></span><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:10pt"><img src = "' . URL::base() . '/assets/img/entrega_puertos_lan_aeropuerto_dorado_opain/imagenA.png" width="420" height="110"></span><span lang="ES-CO"></span></p>
           </td>
           <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
           <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:9pt">&nbsp;</span></i><span lang="ES-CO"></span></p>
@@ -7560,7 +7567,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt">Atraso en Instalación por falta de &nbsp;envió
           de la información técnica de la sede para la configuración del servicio.</span></i></b><span lang="ES-CO"></span></p>
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:10pt">&nbsp;</span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt"><img width="187" height="117"></span><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt"><img src = "' . URL::base() . '/assets/img/entrega_puertos_lan_aeropuerto_dorado_opain/imagenB.png" width="187" height="117"></span><span lang="ES-CO"></span></p>
           </td>
           <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
           <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:9pt">&nbsp;</span><span lang="ES-CO"></span></p>
@@ -7576,7 +7583,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:10pt">Atraso en la adecuación de la sede con los
           requisitos mínimos de condiciones eléctricas y ambientales para instalar los
           equipos.</span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img width="369" height="126"><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src = "' . URL::base() . '/assets/img/entrega_puertos_lan_aeropuerto_dorado_opain/imagenC.png" width="369" height="126"><span lang="ES-CO"></span></p>
           </td>
           <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
           <p class="m_-3467023647703346101gmail-MsoListParagraph" style="margin:0in 0in 6pt 17.4pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:9pt">&nbsp;</span><span lang="ES-CO"></span></p>
@@ -7632,8 +7639,7 @@ class Templates extends CI_Controller {
           </td>
           <td width="265" valign="top" style="width:198.45pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:12.5pt">' . $argumentos['campo17'] . '</td>
          </tr>
-        </tbody></table></div>
-        ';
+        </tbody></table></div>';
 
     }
 
@@ -7669,7 +7675,7 @@ class Templates extends CI_Controller {
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img width="951" height="747"><span lang="ES-CO"></span></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src = "' . URL::base() . '/assets/img/proceso_cambio_equipos/servicio.png" width="951" height="747"><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -7695,7 +7701,7 @@ class Templates extends CI_Controller {
          <tr style="height:16.45pt">
           <td width="309" rowspan="5" valign="top" style="width:232.1pt;border-right:1pt solid rgb(192,0,0);border-bottom:1pt solid rgb(192,0,0);border-left:1pt solid rgb(192,0,0);border-top:none;background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:16pt;line-height:115%;color:black">&nbsp;</span></i></b><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">CAMBIO DE EQUIPOS PARA EL SERVICIO ' . $argumento['campo3'] . '</span></i><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:14pt;line-height:115%;font-family:Arial,sans-serif">CAMBIO DE EQUIPOS PARA EL SERVICIO ' . $argumentos['campo3'] . '</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" align="center" style="margin:0in 0in 10pt;text-align:center;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES">OTP:' . $argumentos['campo7'] . '</span></i><span lang="ES-CO"></span></p>
           </td>
           <td width="453" colspan="3" valign="top" style="width:339.55pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:16.45pt">
@@ -7748,7 +7754,7 @@ class Templates extends CI_Controller {
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
-        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img width="715" height="360"><span lang="ES-CO"></span></p>
+        <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src = "' . URL::base() . '/assets/img/proceso_cambio_equipos/actividades.png" width="715" height="360"><span lang="ES-CO"></span></p>
 
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="color:rgb(31,73,125)">&nbsp;</span><span lang="ES-CO"></span></p>
 
@@ -7837,7 +7843,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en
           el Traslado por Inconvenientes de &nbsp;Acceso al Predio en las Visitas Programadas</span></i></b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">.</span></i><span lang="ES-CO"></span></p>
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-CO" style="font-size:10pt;font-family:Arial,sans-serif;color:white">&nbsp;</span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:10pt"><img width="420" height="110"></span><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:10pt"><img src = "' . URL::base() . '/assets/img/proceso_cambio_equipos/imagenA.png" width="420" height="110"></span><span lang="ES-CO"></span></p>
           </td>
           <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
           <p class="MsoNormal" style="margin:0in 0in 6pt 0.25in;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
@@ -7857,7 +7863,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><b><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en
           el Traslado por falta de &nbsp;confirmación de la información solicitada</span></i></b><span lang="ES-CO"></span></p>
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">&nbsp;</span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt"><img width="187" height="117"></span><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-CO" style="font-size:10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<wbr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt"><img src = "' . URL::base() . '/assets/img/proceso_cambio_equipos/imagenB.png" width="187" height="117"></span><span lang="ES-CO"></span></p>
           </td>
           <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
           <p class="MsoNormal" style="margin:0in 0in 6pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
@@ -7872,7 +7878,7 @@ class Templates extends CI_Controller {
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><i><span lang="ES" style="font-size:10pt;font-family:Arial,sans-serif">Atraso en la adecuación de
           la sede con los requisitos mínimos de condiciones eléctricas y ambientales
           para instalar los equipos.</span></i><span lang="ES-CO"></span></p>
-          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img width="369" height="126"><span lang="ES-CO"></span></p>
+          <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><img src = "' . URL::base() . '/assets/img/proceso_cambio_equipos/imagenC.png" width="369" height="126"><span lang="ES-CO"></span></p>
           </td>
           <td width="274" valign="top" style="width:205.5pt;border-top:none;border-left:none;border-bottom:1pt solid rgb(192,0,0);border-right:1pt solid rgb(192,0,0);background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial;padding:0in 5.4pt;height:29.05pt">
           <p class="m_-8853427311147278176gmail-MsoListParagraph" style="margin:0in 0in 6pt 17.4pt;text-align:justify;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:9pt;font-family:Arial,sans-serif">&nbsp;</span><span lang="ES-CO"></span></p>
@@ -8649,6 +8655,7 @@ class Templates extends CI_Controller {
     }
     
     public function cambio_de_servicio_telefonia_fija_pública_linea_sip_a_pbx_distribuida_linea_sip($argumentos) {
+        print_r($argumentos);
 
         return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
 
