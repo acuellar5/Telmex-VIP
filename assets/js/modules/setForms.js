@@ -2886,11 +2886,11 @@ $(function() {
 						<fieldset class="col-md-6">
 						    <!-- ALIAS DEL LUGAR (CODIGO DE SERVICIO//CIUDAD//SERVICIO//COMERCIO O SEDE DEL CLIENTE) -->
 						    <div class="form-group">
-						        <label for="" class="col-md-3 control-label">Alias del lugar:</label>
+						        <label for="pr_alias_lugar" class="col-md-3 control-label">Alias del lugar:</label>
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-						                <input name="" id="" class="form-control" type="text" >
+						                <input name="pr_alias_lugar" id="pr_alias_lugar" class="form-control" type="text" >
 						            </div>
 						        </div>
 						    </div>
@@ -7316,11 +7316,11 @@ $(function() {
 
 							<!--TIPO DE SERVICIO: -->
 							<div class="form-group">
-								<label for=pr_"pr_tipo_servicio" class="col-md-3 control-label">Tipo de servicio:</label>
+								<label for="pr_tipo_servicio" class="col-md-3 control-label">Tipo de servicio:</label>
 								<div class="col-md-9 selectContainer">
 								    <div class="input-group">
 								        <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-								        <select class="form-control" id=pr_"pr_tipo_servicio" name="pr_tipo_servicio">
+								        <select class="form-control" id="pr_tipo_servicio" name="pr_tipo_servicio">
 										    <option value="">Seleccionar...</option>
 										    <option value="Internet Dedicado con diferenciación de tráfico (Internet / NAP)">Internet Dedicado con diferenciación de tráfico (Internet / NAP)</option>
 											<option value="Internet Dedicado + Monitoreo CPE (Gestion Proactiva)">Internet Dedicado + Monitoreo CPE (Gestion Proactiva)</option>
@@ -9270,11 +9270,11 @@ $(function() {
 						<fieldset class="col-md-6">
 							<!-- INCLUYE LAN ADMINISTRADA: --> 
 						    <div class="form-group">
-						        <label for="lan_administrada" class="col-md-3 control-label">Incluye LAN administrada:</label>
+						        <label for="pr_lan_administrada" class="col-md-3 control-label">Incluye LAN administrada:</label>
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <select class="form-control" id="lan_administrada" name="lan_administrada">
+						                <select class="form-control" id="pr_lan_administrada" name="pr_lan_administrada">
 						                	<option value="">Seleccionar...</option>
 										    <option>Si</option>
 	      									<option>No</option>
