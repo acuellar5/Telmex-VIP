@@ -11082,7 +11082,7 @@ class Templates extends CI_Controller {
     }
     
     public function soluciones_administrativas_comunicaciones_unificadas_pbx_administrada($argumentos) {
-        echo "<pre>".print_r($argumentos)."</pre>";
+                print_r($argumentos);
         return '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX">&nbsp;</span></p>
         <p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span></p>
         <p class="MsoNormal" style="text-align:justify;margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES-MX" style="font-size:12pt;font-family:Arial,sans-serif;color:rgb(31,73,125)">&nbsp;</span></p>
