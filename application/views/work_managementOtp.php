@@ -816,7 +816,7 @@
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                    <input name="nro_ot_onyx" id="nro_ot_onyx" class="form-control" type="text" readonly>
+                                                    <input name="nro_ot_onyx" id="nro_ot_onyx" class="form-control" type="" readonly>
                                                 </div>
                                             </div>
                                         </div>
