@@ -866,7 +866,7 @@ class Templates extends CI_Controller {
             'fecha_mod'  => $fActual,
         );
 
-        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
         $msj = 'ok';
         if ($is_ko_3) {
