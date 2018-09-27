@@ -60,17 +60,18 @@ class Templates extends CI_Controller {
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
-            $this->guardar_linea_base($this->input->post());
+            //$this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            //$plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
             $res_envio =  $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
 
             if ($res_envio) {
-                $this->guardar_servicio($pt, $servicio);
+                //$this->guardar_servicio($pt, $servicio);
                 // 4. Actualizar ot_hija en tabla ot_hija
-                $this->actualizar_oth($pt, true, $plantila_txt);
+                //$this->actualizar_oth($pt, true, $plantila_txt);
+                echo("ok");
             }
             // si no se envia no se envia el correo
             else {
@@ -809,21 +810,12 @@ class Templates extends CI_Controller {
              $template = $this->cambio_de_equipo($array_template);
              break;
         }
-<<<<<<< HEAD
 
         $this->load->helper('camilo');
 
         $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
         $se_envio = h_enviarCorreo($template, Auth::user()->n_mail_user , $asunto);
-=======
-       
-        
-        $this->load->helper('camilo');
 
-        $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
-        $borrar = ['bredybuitrago@gmail.com', 'bredi.buitrago@zte.com.cn'];
-        $se_envio = h_enviarCorreo($template, 'johnfbr1998@gmail.com' , $asunto, $borrar);
->>>>>>> 2354744e0818ff5b80f7d8648b0eaa6da39aa3d1
         return $se_envio['success'];
 
     }
