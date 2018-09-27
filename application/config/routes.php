@@ -71,5 +71,7 @@ $route['login'] = 'welcome/index';
 $route['facturacion'] = 'Facturacion_ots/index';
 
 $route['cierre_ots'] = 'Cierre_ots/index';
+$route['copy_text'] = 'Templates/view_textarea';
+
 
 
