@@ -114,7 +114,7 @@
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-					                <select class="form-control" id="ing_responsable" name="ing_responsable">
+					                <select class="form-control" id="ing_responsable" name="ing_responsable" required>
 									    <option>Seleccionar...</option>
 									    <?php foreach ($inenieros as $ingeniero): ?>
 									    	<option value="<?=$ingeniero->k_id_user;?>"><?=$ingeniero->ingenieros;?></option>
@@ -132,7 +132,7 @@
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="fa fa-braille" ></i></span>
-					                <input name="id_oth" id="id_oth" class="form-control" type="number" >
+					                <input name="id_oth" id="id_oth" class="form-control" type="number" required>
 					            </div>
 					        </div>
 					    </div>
@@ -158,8 +158,8 @@
 					        <div class="col-md-8 selectContainer">
 					            <div class="input-group">
 					                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-					                <select class="form-control" id="estado_oth" name="estado_oth">
-									    <option>Seleccionar...</option>
+					                <select class="form-control" id="estado_oth" name="estado_oth" required>
+									    <option value="">Seleccionar...</option>
 
 									</select>
 					            </div>

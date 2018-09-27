@@ -91,7 +91,7 @@ $(function() {
             }
 
             if (true) {
-                form += setForm.ultimaSeccionServicio();
+                form += setForm.ultimaSeccionServicio(servicio_val);
             }
 
             return form;
@@ -850,8 +850,9 @@ $(function() {
         },
 
         // ultima seccion de servicios
-        ultimaSeccionServicio: function(direccion_destino) {
-            return `<div class="widget bg_white m-t-25 d-inline-b cliente">
+        ultimaSeccionServicio: function(num_service) {
+            let cadena = '';
+             cadena += `<div class="widget bg_white m-t-25 d-inline-b cliente">
 					    <fieldset class="col-md-6">
 					        <div class="form-group ingeniero1">
 					            <label for="proveedor_ultima_milla" class="col-md-3 control-label">Ingeniero 1: &nbsp;</label>
@@ -883,8 +884,11 @@ $(function() {
 					            </div>
 					        </div>
 					    </fieldset>
-					    <!--  fin seccion izquierda form---->
-					    <!--  inicio seccion derecha form---->
+					    <!--  fin seccion izquierda form---->`;
+					if (num_service < 10) {				
+					
+					   cadena += `
+					   <!--  inicio seccion derecha form---->
 					    <fieldset class="col-md-6">
 					        <div class="form-group ingeniero2 ">
 					            <label for="ingeniero2" class="col-md-3 control-label">Ingeniero 2: &nbsp;</label>
@@ -950,8 +954,11 @@ $(function() {
 					                </div>
 					            </div>
 					        </div>
-					    </fieldset>
-					</div>`;
+					    </fieldset>`;
+					}
+					
+					cadena += `</div>`;
+					return cadena;
         },
 
         /*PLANTILLAS DE SERVICIO NUEVAS*/
