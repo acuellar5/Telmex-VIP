@@ -62,25 +62,25 @@ class Templates extends CI_Controller {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            // $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
-            // // 3. enviar correo
-            // $res_envio = true; // $this->enviar_correo_servicio($pt, $servicio);
-            // // 3.1 si se envio guardar formulario servicio en log correo.
+            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            // 3. enviar correo
+            $res_envio = true; // $this->enviar_correo_servicio($pt, $servicio);
+            // 3.1 si se envio guardar formulario servicio en log correo.
 
-            // if ($res_envio) {
-            //     $this->guardar_servicio($pt, $servicio);
-            //     // 4. Actualizar ot_hija en tabla ot_hija
-            //     $this->actualizar_oth($pt, true, $plantila_txt);
-            // }
-            // // si no se envia no se envia el correo
-            // else {
-            //     $msj = 'error';
-            //     $this->session->set_flashdata('msj', $msj);
-            //     header('Location: ' . URL::base() . '/managementOtp');
-            // }
+            if ($res_envio) {
+                $this->guardar_servicio($pt, $servicio);
+                // 4. Actualizar ot_hija en tabla ot_hija
+                $this->actualizar_oth($pt, true, $plantila_txt);
+            }
+            // si no se envia no se envia el correo
+            else {
+                $msj = 'error';
+                $this->session->set_flashdata('msj', $msj);
+                header('Location: ' . URL::base() . '/managementOtp');
+            }
         } else {
             // actualizar el estado
-            // $this->actualizar_oth($pt);
+            $this->actualizar_oth($pt);
         }
 
     }
@@ -712,7 +712,6 @@ class Templates extends CI_Controller {
 
     // guardar linea base en base de datos
     private function guardar_linea_base($pt) {
-        echo '<pre>'; print_r($pt); echo '</pre>';
         $data = array(
             'id_ot_padre'                => $pt['nro_ot_onyx'],
             'fecha_compromiso'           => $pt['lb_fecha_compromiso'],
