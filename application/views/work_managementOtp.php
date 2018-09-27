@@ -618,7 +618,7 @@
                 <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?= URL::to('assets/images/plus.png'); ?>" data-simbol="plus" class="rigth"></span></button>
 
                 <div>
-                    <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
+                    <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" >
                         <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">

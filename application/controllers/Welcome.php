@@ -16,9 +16,9 @@ class Welcome extends CI_Controller
        $this->load->view('login');
     }
 
-    public function prueba(){
-        $this->load->view('prueba_imagenes_tempates');
-    }
+    // public function prueba(){
+    //     $this->load->view('');
+    // }
 
     public function insertuser(){
       $dao = new dao_examples_model();
