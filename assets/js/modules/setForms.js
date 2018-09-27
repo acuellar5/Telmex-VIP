@@ -1023,7 +1023,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo8" id="campo8" class="form-control">
+				                      <input type="number" name="campo8" id="campo8" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1046,7 +1046,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-sound-5-1"></i></span>
-				                      <input type="text" name="campo10" id="campo10" class="form-control">
+				                      <input type="number" name="campo10" id="campo10" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1105,7 +1105,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-				                      <input type="text" name="campo19" id="campo19" class="form-control">
+				                      <input type="date" name="campo19" id="campo19" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1172,7 +1172,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo6" id="campo6" class="form-control">
+				                      <input type="number" name="campo6" id="campo6" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1219,7 +1219,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				                        <input type="text" name="campo5" id="campo5"  class="form-control">
+				                        <input type="number" name="campo5" id="campo5"  class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -1257,7 +1257,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo8" id="campo8" class="form-control">
+				                      <input type="number" name="campo8" id="campo8" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1310,7 +1310,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				                        <input type="text" name="campo5" id="campo5"  class="form-control">
+				                        <input type="number" name="campo5" id="campo5"  class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -1439,7 +1439,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo7" id="campo7" class="form-control">
+				                      <input type="number" name="campo7" id="campo7" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1518,7 +1518,7 @@ $(function() {
 				            	<div class="col-md-9 selectContainer">
 				            		<div class="input-group">
 				            			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				            			<input type="text" name="campo6" id="campo6" class="form-control">
+				            			<input type="number" name="campo6" id="campo6" class="form-control">
 				            		</div>
 				            	</div>
 				            </div>
@@ -1650,7 +1650,7 @@ $(function() {
 				    		<div class="col-md-9 selectContainer">
 				    			<div class="input-group">
 				    				<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-				    				<input type="text" name="campo5" id="campo5" class="form-control" placeholder="Existenete">
+				    				<input type="number" name="campo5" id="campo5" class="form-control" placeholder="Existenete">
 				    			</div>
 				    		</div>
 				    	</div>
@@ -1733,7 +1733,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo12" id="campo12" class="form-control">
+										<input type="number" name="campo12" id="campo12" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1758,7 +1758,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo14" id="campo14" class="form-control">
+										<input type="number" name="campo14" id="campo14" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1790,7 +1790,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo17" id="campo17" class="form-control">
+										<input type="number" name="campo17" id="campo17" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1836,7 +1836,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo21" id="campo21" class="form-control">
+										<input type="number" name="campo21" id="campo21" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1860,7 +1860,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo36" id="campo36" class="form-control">
+										<input type="number" name="campo36" id="campo36" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1884,7 +1884,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo24" id="campo24" class="form-control">
+										<input type="number" name="campo24" id="campo24" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1918,7 +1918,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo27" id="campo27" class="form-control">
+										<input type="number" name="campo27" id="campo27" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1962,7 +1962,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo31" id="campo31" class="form-control">
+										<input type="number" name="campo31" id="campo31" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -2052,7 +2052,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo5" id="campo5" class="form-control">
+				                        <input type="number" name="campo5" id="campo5" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2140,7 +2140,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo5" id="campo5" class="form-control">
+				                        <input type="number" name="campo5" id="campo5" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2225,7 +2225,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo5" id="campo5" class="form-control">
+				                        <input type="number" name="campo5" id="campo5" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2309,7 +2309,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo4" id="campo4" class="form-control">
+				                        <input type="number" name="campo4" id="campo4" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2331,7 +2331,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo6" id="campo6" class="form-control">
+				                        <input type="number" name="campo6" id="campo6" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2346,7 +2346,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo7" id="campo7" class="form-control">
+				                        <input type="number" name="campo7" id="campo7" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2474,7 +2474,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo10[]" id="campo10" class="form-control" required>
+										<input type="number" name="campo10[]" id="campo10" class="form-control" required>
 									</div>
 								</div>
 							</div>
@@ -2484,7 +2484,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo11[]" id="campo11" class="form-control">
+										<input type="number" name="campo11[]" id="campo11" class="form-control">
 									</div>
 								</div>
 							</div>

@@ -60,9 +60,9 @@ class Templates extends CI_Controller {
 
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
-            //$this->guardar_linea_base($this->input->post());
+            $this->guardar_linea_base($this->input->post());
             // 2. guardar formulario producto
-            //$plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
             $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
