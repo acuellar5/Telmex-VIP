@@ -868,7 +868,8 @@ class Templates extends CI_Controller {
         $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
         $msj = 'ok';
-        if ($textArea) {
+        if ($is_ko_3) {
+            echo "deberia ser el txt";
             $this->session->set_flashdata('textarea', $textArea);
             header('Location: ' . URL::base() . '/copy_text');
 
@@ -2005,7 +2006,7 @@ class Templates extends CI_Controller {
 
     // pintar el text area
     public function view_textarea(){
-        print_r($this->session->flashdata('textarea'););
+        echo '<pre>'; print_r($this->session->flashdata('textarea')); echo '</pre>';
     }
 
     // retorna plantilla tyexto producto internet
