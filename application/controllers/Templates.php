@@ -877,8 +877,7 @@ class Templates extends CI_Controller {
 
         $msj = 'ok';
         if ($is_ko_3) {
-            echo "deberia ser el txt";
-            $this->session->set_flashdata('textarea', $textArea);
+            $this->session->set_tempdata('textarea', $textArea, 120);
             header('Location: ' . URL::base() . '/copy_text');
 
         } else {
@@ -2014,7 +2013,7 @@ class Templates extends CI_Controller {
 
     // pintar el text area
     public function view_textarea(){
-        echo '<pre>'; print_r($this->session->flashdata('textarea')); echo '</pre>';
+        echo '<pre>'; print_r($this->session->tempdata('textarea')); echo '</pre>';
     }
 
     // retorna plantilla tyexto producto internet
