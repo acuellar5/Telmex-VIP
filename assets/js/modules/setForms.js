@@ -1871,10 +1871,10 @@ $(function() {
 						<fieldset class="col-md-6">
 							<label for="campo23" class="col-md-6 control-label">botoneras:</label>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campo23">SI</label>
+				              <label><input type="radio" value="SI" name="campo23">SI</label>
 				            </div>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campo23" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo23" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
@@ -1894,10 +1894,10 @@ $(function() {
 						<fieldset class="col-md-12">
 							<label for="campo25" class="col-md-6 control-label">Incluye Grabación de Voz:</label>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campo25">SI</label>
+				              <label><input type="radio" value="SI" name="campo25">SI</label>
 				            </div>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campo25" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo25" checked>NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -4208,7 +4208,7 @@ $(function() {
         //MPLS FORMULARIO DE ORIGEN
         formProduct_mpls_form_origen: function() {
             return `
-				
+				<div id="seccion_mpls_ori">
 					<h3>PUNTO DE ORIGEN</h3>
 					<div class="widget bg_white m-t-25 d-inline-b cliente">
 						<legend class="f-s-15">Datos básicos de instalacion - origen</legend>
@@ -4829,7 +4829,7 @@ $(function() {
 							</fieldset>
 						</div>
 					</div>		
-				
+				</div>
 
             `;
         },
@@ -8869,7 +8869,7 @@ $(function() {
 									<div class="col-md-9 selectContainer">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-											<input type="text" name="pr_referencia[]" class="form-control">
+											<input type="text" name="pr_referencia[]" id="pr_referencia" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -8881,7 +8881,7 @@ $(function() {
 							        <div class="ol-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order-alt" ></i></span>
-							                <input name="pr_cantidad[]" class="form-control" type="number" >
+							                <input name="pr_cantidad[]" id="pr_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>

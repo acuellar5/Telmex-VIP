@@ -64,7 +64,7 @@ class Templates extends CI_Controller {
             // 2. guardar formulario producto
             $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
-            $res_envio = true; // $this->enviar_correo_servicio($pt, $servicio);
+            $res_envio = $this->enviar_correo_servicio($pt, $servicio);
             // 3.1 si se envio guardar formulario servicio en log correo.
 
             if ($res_envio) {
@@ -195,11 +195,11 @@ class Templates extends CI_Controller {
                 'celular_2_des'                => $pt['pr_celular_2_des'],
                 'correo_2_des'                 => $pt['pr_correo_2_des'],
                 'observaciones_1_des'          => $pt['pr_observaciones_1_des'],
+                'id_ot_padre_ori'              => $pt['nro_ot_onyx']
             );
 
             if ($pt['is_origen'] == '1') {
 
-                $data_pr['id_ot_padre_ori']              = $pt['nro_ot_onyx'];
                 $data_pr['ciudad_ori']                   = $pt['pr_ciudad_ori'];
                 $data_pr['direccion_ori']                = $pt['pr_direccion_ori'];
                 $data_pr['tipo_predio_ori']              = $pt['pr_tipo_predio_ori'];
@@ -706,7 +706,9 @@ class Templates extends CI_Controller {
 
             break;
         }
-
+        // actualizar el finalizo de ot padre
+        $this->load->model('data/Dao_ot_padre_model');
+        $this->Dao_ot_padre_model->update_ot_padre(array('finalizo' => $pt['num_servicio']), $pt['nro_ot_onyx']);
         return $txt;
     }
 
@@ -814,8 +816,7 @@ class Templates extends CI_Controller {
         $this->load->helper('camilo');
 
         $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
-        $borrar = ['bredybuitrago@gmail.com', 'bredi.buitrago@zte.com.cn'];
-        $se_envio = h_enviarCorreo($template, 'johnfbr1998@gmail.com' , $asunto, $borrar);
+        $se_envio = h_enviarCorreo($template, 'bredi.buitrago@zte.com.cn' , $asunto);
         return $se_envio['success'];
 
     }
