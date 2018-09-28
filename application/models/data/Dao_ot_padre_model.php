@@ -61,7 +61,7 @@ class Dao_ot_padre_model extends CI_Model {
         $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion = " AND otp.k_id_user = $usuario_session ";
+            $condicion = " WHERE otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
                 SELECT 

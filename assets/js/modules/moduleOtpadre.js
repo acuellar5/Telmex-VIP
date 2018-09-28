@@ -595,9 +595,16 @@ $(function () {
         },
 
         showDetailsCierreKo: function (data) {
-            var form = setForm.returnFormularyProduct(data.finalizo);
+            var s = data.finalizo;
+            var flag = false;
+            var form = setForm.returnFormularyProduct(s);
+            if (s == 3 || s == 4 || s == 5 || s == 6 || s == 7 || s == 8 || s == 9 || s == 10) {
+                form += setForm.formProduct_mpls_form_origen();
+                flag = true;
+            }
             $("#form_cierreKo").html(form);
-
+            $('.max-w_border-n').remove();
+            
             $.post(baseurl + '/OtPadre/c_getProductByOtp',
                     {
                         id_otp: data.k_id_ot_padre,
@@ -607,7 +614,6 @@ $(function () {
                         var obj = JSON.parse(data);
                         console.log(obj);
                         $.each(obj,function(i,item){
-                            $('#pr_' + i).val(item);
                             
                             var $el = $('#pr_' + i);
                             $el.replaceWith($('<input />').attr({ 
@@ -619,8 +625,13 @@ $(function () {
                                 readonly: true,
                                 style: 'font-size: 12px;'
                             }));
+                            $('#pr_' + i).val(item);
                         });
-                        
+
+                        if (flag && obj.ciudad_ori == null) {
+                            $('#seccion_mpls_ori').remove();
+                        }
+
                         $("#mdl_cierreKo #id_ot_padre").val(obj.id_ot_padre);
                         $("#mdl_cierreKo #id_ot_padre_ori").val(obj.id_ot_padre);
                         $("#mdl_cierreKo #id_ot_padre_des").val(obj.id_ot_padre);

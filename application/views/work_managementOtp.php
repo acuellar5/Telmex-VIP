@@ -626,12 +626,13 @@
                 <button class="btn m-b-10" id="btn_mostrar_detalle"> ver detalle &nbsp;<img src="<?= URL::to('assets/images/plus.png'); ?>" data-simbol="plus" class="rigth"></span></button>
 
                 <div>
-                    <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" novalidate="novalidate">
+                    <form class="well form-horizontal f-s-12" id="formModal" action="Templates/c_updateStatusOt" method="post" >
                         <input name="id_orden_trabajo_hija" id="id_orden_trabajo_hija" type="hidden">
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
                         <input name="c_email" id="c_email" type="hidden">
                         <input name="num_servicio" id="num_servicio">
+                        <input name="is_origen" id="is_origen" value="0" type="hidden">
 
                         <fieldset>
                             <div class="toggle_info_detail" style="display: none">
@@ -823,7 +824,7 @@
                                             <div class="col-md-8 selectContainer">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class='glyphicon glyphicon-calendar'></i></span>
-                                                    <input name="nro_ot_onyx" id="nro_ot_onyx" class="form-control" type="text" readonly>
+                                                    <input name="nro_ot_onyx" id="nro_ot_onyx" class="form-control" type="" readonly>
                                                 </div>
                                             </div>
                                         </div>

@@ -91,7 +91,7 @@ $(function() {
             }
 
             if (true) {
-                form += setForm.ultimaSeccionServicio();
+                form += setForm.ultimaSeccionServicio(servicio_val);
             }
 
             return form;
@@ -850,8 +850,9 @@ $(function() {
         },
 
         // ultima seccion de servicios
-        ultimaSeccionServicio: function(direccion_destino) {
-            return `<div class="widget bg_white m-t-25 d-inline-b cliente">
+        ultimaSeccionServicio: function(num_service) {
+            let cadena = '';
+             cadena += `<div class="widget bg_white m-t-25 d-inline-b cliente">
 					    <fieldset class="col-md-6">
 					        <div class="form-group ingeniero1">
 					            <label for="proveedor_ultima_milla" class="col-md-3 control-label">Ingeniero 1: &nbsp;</label>
@@ -883,8 +884,11 @@ $(function() {
 					            </div>
 					        </div>
 					    </fieldset>
-					    <!--  fin seccion izquierda form---->
-					    <!--  inicio seccion derecha form---->
+					    <!--  fin seccion izquierda form---->`;
+					if (num_service < 10) {				
+					
+					   cadena += `
+					   <!--  inicio seccion derecha form---->
 					    <fieldset class="col-md-6">
 					        <div class="form-group ingeniero2 ">
 					            <label for="ingeniero2" class="col-md-3 control-label">Ingeniero 2: &nbsp;</label>
@@ -950,8 +954,11 @@ $(function() {
 					                </div>
 					            </div>
 					        </div>
-					    </fieldset>
-					</div>`;
+					    </fieldset>`;
+					}
+					
+					cadena += `</div>`;
+					return cadena;
         },
 
         /*PLANTILLAS DE SERVICIO NUEVAS*/
@@ -1016,7 +1023,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo8" id="campo8" class="form-control">
+				                      <input type="number" name="campo8" id="campo8" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1039,7 +1046,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-sound-5-1"></i></span>
-				                      <input type="text" name="campo10" id="campo10" class="form-control">
+				                      <input type="number" name="campo10" id="campo10" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1098,7 +1105,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-				                      <input type="text" name="campo19" id="campo19" class="form-control">
+				                      <input type="date" name="campo19" id="campo19" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1165,7 +1172,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo6" id="campo6" class="form-control">
+				                      <input type="number" name="campo6" id="campo6" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1212,7 +1219,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				                        <input type="text" name="campo5" id="campo5"  class="form-control">
+				                        <input type="number" name="campo5" id="campo5"  class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -1250,7 +1257,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo8" id="campo8" class="form-control">
+				                      <input type="number" name="campo8" id="campo8" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1303,7 +1310,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-				                        <input type="text" name="campo5" id="campo5"  class="form-control">
+				                        <input type="number" name="campo5" id="campo5"  class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -1432,7 +1439,7 @@ $(function() {
 				              <div class="col-md-9 selectContainer">
 				                  <div class="input-group">
 				                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                      <input type="text" name="campo7" id="campo7" class="form-control">
+				                      <input type="number" name="campo7" id="campo7" class="form-control">
 				                  </div>
 				              </div>
 				          </div>
@@ -1511,7 +1518,7 @@ $(function() {
 				            	<div class="col-md-9 selectContainer">
 				            		<div class="input-group">
 				            			<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				            			<input type="text" name="campo6" id="campo6" class="form-control">
+				            			<input type="number" name="campo6" id="campo6" class="form-control">
 				            		</div>
 				            	</div>
 				            </div>
@@ -1643,7 +1650,7 @@ $(function() {
 				    		<div class="col-md-9 selectContainer">
 				    			<div class="input-group">
 				    				<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-				    				<input type="text" name="campo5" id="campo5" class="form-control" placeholder="Existenete">
+				    				<input type="number" name="campo5" id="campo5" class="form-control" placeholder="Existenete">
 				    			</div>
 				    		</div>
 				    	</div>
@@ -1726,7 +1733,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo12" id="campo12" class="form-control">
+										<input type="number" name="campo12" id="campo12" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1751,7 +1758,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo14" id="campo14" class="form-control">
+										<input type="number" name="campo14" id="campo14" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1783,7 +1790,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo17" id="campo17" class="form-control">
+										<input type="number" name="campo17" id="campo17" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1829,7 +1836,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo21" id="campo21" class="form-control">
+										<input type="number" name="campo21" id="campo21" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1853,7 +1860,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo36" id="campo36" class="form-control">
+										<input type="number" name="campo36" id="campo36" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1864,10 +1871,10 @@ $(function() {
 						<fieldset class="col-md-6">
 							<label for="campo23" class="col-md-6 control-label">botoneras:</label>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campo23">SI</label>
+				              <label><input type="radio" value="SI" name="campo23">SI</label>
 				            </div>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campo23" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo23" checked>NO</label>
 				            </div>
 						</fieldset>
 						<fieldset class="col-md-6">
@@ -1877,7 +1884,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo24" id="campo24" class="form-control">
+										<input type="number" name="campo24" id="campo24" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1885,12 +1892,12 @@ $(function() {
 					</div>
 					<div class="d-inline-b">
 						<fieldset class="col-md-12">
-							<label for="campos25" class="col-md-6 control-label">Incluye Grabación de Voz:</label>
+							<label for="campo25" class="col-md-6 control-label">Incluye Grabación de Voz:</label>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campos25">SI</label>
+				              <label><input type="radio" value="SI" name="campo25">SI</label>
 				            </div>
 				            <div class="radio col-md-3">
-				              <label><input type="radio" name="campos25" checked>NO</label>
+				              <label><input type="radio" value="NO" name="campo25" checked>NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -1911,7 +1918,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo27" id="campo27" class="form-control">
+										<input type="number" name="campo27" id="campo27" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -1955,7 +1962,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-										<input type="text" name="campo31" id="campo31" class="form-control">
+										<input type="number" name="campo31" id="campo31" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -2045,7 +2052,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo5" id="campo5" class="form-control">
+				                        <input type="number" name="campo5" id="campo5" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2133,7 +2140,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo5" id="campo5" class="form-control">
+				                        <input type="number" name="campo5" id="campo5" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2218,7 +2225,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo5" id="campo5" class="form-control">
+				                        <input type="number" name="campo5" id="campo5" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2302,7 +2309,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo4" id="campo4" class="form-control">
+				                        <input type="number" name="campo4" id="campo4" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2324,7 +2331,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo6" id="campo6" class="form-control">
+				                        <input type="number" name="campo6" id="campo6" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2339,7 +2346,7 @@ $(function() {
 				                <div class="col-md-9 selectContainer">
 				                    <div class="input-group">
 				                        <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-				                        <input type="text" name="campo7" id="campo7" class="form-control">
+				                        <input type="number" name="campo7" id="campo7" class="form-control">
 				                    </div>
 				                </div>
 				            </div>
@@ -2467,7 +2474,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo10[]" id="campo10" class="form-control" required>
+										<input type="number" name="campo10[]" id="campo10" class="form-control" required>
 									</div>
 								</div>
 							</div>
@@ -2477,7 +2484,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo11[]" id="campo11" class="form-control">
+										<input type="number" name="campo11[]" id="campo11" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -2584,10 +2591,10 @@ $(function() {
 
 							<label for="campo7" class="col-md-6 control-label">Requiere Cambio de equipo:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo7" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo7" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo7">NO</label>
+				              <label><input type="radio" value="NO" name="campo7">NO</label>
 				            </div>							
 						</fieldset>
 					</div>
@@ -2597,10 +2604,10 @@ $(function() {
 							<!-- radio button -->
 							<label for="campo8" class="col-md-6 control-label">Existen otros Servicios a Modificar:</label>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo8" checked>SI</label>
+				              <label><input type="radio" value="SI" name="campo8" checked>SI</label>
 				            </div>
 				            <div class="radio col-md-6">
-				              <label><input type="radio" name="campo8">NO</label>
+				              <label><input type="radio" value="NO" name="campo8">NO</label>
 				            </div>
 						</fieldset>
 					</div>
@@ -2617,7 +2624,7 @@ $(function() {
 								<div class="col-md-9 selectContainer">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-										<input type="text" name="campo9[]" id="campo9" class="form-control">
+										<input type="number" name="campo9[]" id="campo9" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -3331,7 +3338,7 @@ $(function() {
 						        <div class="col-md-8 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+						                <textarea  name="pr_observaciones" id="pr_observaciones" class="form-control" ></textarea>
 						            </div>
 						        </div>
 						    </div>
@@ -3600,7 +3607,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
 								                <select class="form-control" id="pr_tipo_predio_des" name="pr_tipo_predio_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Edificio">Edificio</option>
 				  									<option value="Casa">Casa</option>
 												    
@@ -3718,7 +3725,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_tipo_instalacion_des" name="pr_tipo_instalacion_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Instalar UM con PE">Instalar UM con PE</option>
 												    <option value="Instalar UM con PE sobre OTP de Pymes">Instalar UM con PE sobre OTP de Pymes</option>
 												    <option value="Instalar UM con CT">Instalar UM con CT</option>
@@ -3768,7 +3775,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_requiere_um_des" name="pr_requiere_um_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>   												    
 												</select>
@@ -3783,7 +3790,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_um_backup_des" name="pr_um_backup_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>   					    
 												</select>
@@ -3838,7 +3845,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_medio_des" name="pr_medio_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="No Aplica">No Aplica</option> 	   
 												    <option value="Fibra">Fibra</option>
 												    <option value="Cobre">Cobre</option>
@@ -3873,7 +3880,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_tipo_conector_des" name="pr_tipo_conector_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="LC">LC</option>  									   									
 												    <option value="SC">SC</option> 	   
 												    <option value="ST">ST</option>
@@ -3902,7 +3909,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_interfaz_entrega_cliente_des" name="pr_interfaz_entrega_cliente_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="No aplica">No aplica</option> 									   									
 												    <option value="Ethernet">Ethernet</option> 	   
 												    <option value="Serial V.35">Serial V.35</option>
@@ -3928,7 +3935,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_requiere_voc_des" name="pr_requiere_voc_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>    
 												</select>
@@ -3945,7 +3952,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_programacion_voc_des" name="pr_programacion_voc_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Programada">Programada</option>
 				  									<option value="No requiere programación">No requiere programación</option>   												
 				  									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
@@ -3967,7 +3974,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_requiere_rfc_des" name="pr_requiere_rfc_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 				  									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  												
 				  									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
@@ -4048,7 +4055,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_consumibles_des" name="pr_consumibles_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Bandeja">Bandeja</option>
 				  									<option value="Cables de Poder ">Cables de Poder </option>
 				  									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
@@ -4066,7 +4073,7 @@ $(function() {
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 								                <select class="form-control" id="pr_carta_valorizada_des" name="pr_carta_valorizada_des">
-												    <option value="Seleccionar...">Seleccionar...</option>
+												    <option value="">Seleccionar...</option>
 												    <option value="Si">Si</option>
 				  									<option value="No">No</option>
 												</select>
@@ -4183,7 +4190,8 @@ $(function() {
 								        <div class="col-md-9 selectContainer">
 								            <div class="input-group">
 								                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-								                <input name="pr_observaciones_1_des" id="pr_observaciones_1_des" class="form-control" type="text" >
+								                <textarea name="pr_observaciones_1_des" id="pr_observaciones_1_des" class="form-control"></textarea>
+
 								            </div>
 								        </div>
 								    </div>
@@ -4201,7 +4209,7 @@ $(function() {
         //MPLS FORMULARIO DE ORIGEN
         formProduct_mpls_form_origen: function() {
             return `
-				
+				<div id="seccion_mpls_ori">
 					<h3>PUNTO DE ORIGEN</h3>
 					<div class="widget bg_white m-t-25 d-inline-b cliente">
 						<legend class="f-s-15">Datos básicos de instalacion - origen</legend>
@@ -4237,7 +4245,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
 							                <select class="form-control" id="pr_tipo_predio_ori" name="pr_tipo_predio_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Edificio">Edificio</option>
 			  									<option value="Casa">Casa</option>
 											    
@@ -4344,7 +4352,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_tipo_instalacion_ori" name="pr_tipo_instalacion_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Instalar UM con PE">Instalar UM con PE</option>
 											    <option value="Instalar UM con PE sobre OTP de Pymes">Instalar UM con PE sobre OTP de Pymes</option>
 											    <option value="Instalar UM con CT">Instalar UM con CT</option>
@@ -4393,7 +4401,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_requiere_um_ori" name="pr_requiere_um_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Si">Si</option>
 			  									<option value="No">No</option>   												
 			  									<option value="Existente">Existente</option> 	    
@@ -4410,7 +4418,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_um_backup_ori" name="pr_um_backup_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Si">Si</option>
 			  									<option value="No">No</option>   												
 			  									<option value="Existente">Existente</option> 				    
@@ -4428,7 +4436,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_proveedor_ori" name="pr_proveedor_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="No aplica">No aplica</option>
 			  									<option value="Existente">Existente</option>
 			  									<option value="Claro">Claro</option>
@@ -4468,7 +4476,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_medio_ori" name="pr_medio_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="No Aplica">No Aplica</option> 	   
 											    <option value="Fibra">Fibra</option>
 											    <option value="Cobre">Cobre</option>
@@ -4491,10 +4499,11 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_resp_factibilidad" id="pr_factibilidad_bw_ori" class=pr_factibilidad_bw_ori-control" type="text" >
+							                <input name="pr_factibilidad_bw_ori" id="pr_factibilidad_bw_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
+
 
 					            <!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
 							    <div class="form-group">
@@ -4523,7 +4532,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-							                <input name="pr_sds_destino" id="pr_sds_destino_ori" class=pr_sds_destino_ori-control" type="text" >
+							                <input name="pr_sds_destino_ori" id="pr_sds_destino_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -4535,7 +4544,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_interfaz_entrega_cliente_ori" name="pr_interfaz_entrega_cliente_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="No aplica">No aplica</option> 									   									
 											    <option value="Ethernet">Ethernet</option> 	   
 											    <option value="Serial V.35">Serial V.35</option>
@@ -4559,7 +4568,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_requiere_voc_ori" name="pr_requiere_voc_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Si">Si</option>
 			  									<option value="No">No</option>   												
 			  									<option value="No aplica">No aplica</option> 	    
@@ -4578,7 +4587,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_programacion_voc_ori" name="pr_programacion_voc_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Programada">Programada</option>
 			  									<option value="No requiere programación">No requiere programación</option>   												
 			  									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
@@ -4600,7 +4609,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_requiere_rfc_ori" name="pr_requiere_rfc_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 			  									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  												
 			  									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
@@ -4618,7 +4627,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_conversor_medio" id="pr_conversor_medio_ori" class=pr_conversor_medio_ori-control" type="text" >
+							                <input name="pr_conversor_medio_ori" id="pr_conversor_medio_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -4630,7 +4639,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-							                <input name="pr_referencia_router" id="pr_referencia_router_ori" class=pr_referencia_router_ori-control" type="text" >
+							                <input name="pr_referencia_router_ori" id="pr_referencia_router_ori" class="form-control" type="text" >
 							            </div>
 							        </div>
 							    </div>
@@ -4679,7 +4688,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_consumibles_ori" name="pr_consumibles_ori">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 											    <option value="Bandeja">Bandeja</option>
 			  									<option value="Cables de Poder ">Cables de Poder </option>
 			  									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
@@ -4814,14 +4823,14 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_observaciones_1_ori" id="pr_observaciones_1_ori" class="form-control" type="text" >
+							                <textarea name="pr_observaciones_1_ori" id="pr_observaciones_1_ori" class="form-control" ></textarea>
 							            </div>
 							        </div>
 							    </div>
 							</fieldset>
 						</div>
 					</div>		
-				
+				</div>
 
             `;
         },
@@ -5478,7 +5487,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+						                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control"></textarea>
 						            </div>
 						        </div>
 						    </div>
@@ -5557,7 +5566,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_did" id="pr_cant_did" class="form-control" type="text" >
+						                <input name="pr_cant_did" id="pr_cant_did" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5568,7 +5577,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_canales" id="pr_cant_canales" class="form-control" type="text" >
+						                <input name="pr_cant_canales" id="pr_cant_canales" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5705,9 +5714,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bog_numeracion" name="pr_bog_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -5718,7 +5728,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_bog_cantidad" id="pr_bog_cantidad" class="form-control" type="text" >
+						                <input name="pr_bog_cantidad" id="pr_bog_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5749,9 +5759,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tun_numeracion" name="pr_tun_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -5762,7 +5773,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_tun_cantidad" id="pr_tun_cantidad" class="form-control" type="text" >
+						                <input name="pr_tun_cantidad" id="pr_tun_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5795,8 +5806,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_vill_numeracion" name="pr_vill_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -5808,7 +5820,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_vill_cantidad" id="pr_vill_cantidad" class="form-control" type="text" >
+							                <input name="pr_vill_cantidad" id="pr_vill_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -5839,8 +5851,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_fac_numeracion" name="pr_fac_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -5852,7 +5865,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_fac_cantidad" id="pr_fac_cantidad" class="form-control" type="text" >
+							                <input name="pr_fac_cantidad" id="pr_fac_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -5885,9 +5898,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_gir_numeracion" name="pr_gir_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -5898,7 +5912,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_gir_cantidad" id="pr_gir_cantidad" class="form-control" type="text" >
+						                <input name="pr_gir_cantidad" id="pr_gir_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5929,9 +5943,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_yop_numeracion" name="pr_yop_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -5942,7 +5957,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_yop_cantidad" id="pr_yop_cantidad" class="form-control" type="text" >
+						                <input name="pr_yop_cantidad" id="pr_yop_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5975,9 +5990,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_cali_numeracion" name="pr_cali_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -5988,7 +6004,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cali_cantidad" id="pr_cali_cantidad" class="form-control" type="text" >
+						                <input name="pr_cali_cantidad" id="pr_cali_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6019,9 +6035,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bave_numeracion" name="pr_bave_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6032,7 +6049,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_bave_cantidad" id="pr_bave_cantidad" class="form-control" type="text" >
+						                <input name="pr_bave_cantidad" id="pr_bave_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6065,9 +6082,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_pas_numeracion" name="pr_pas_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6078,7 +6096,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_pas_cantidad" id="pr_pas_cantidad" class="form-control" type="text" >
+						                <input name="pr_pas_cantidad" id="pr_pas_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6109,9 +6127,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_pop_numeracion" name="pr_pop_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6122,7 +6141,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_pop_cantidad" id="pr_pop_cantidad" class="form-control" type="text" >
+						                <input name="pr_pop_cantidad" id="pr_pop_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6155,9 +6174,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_nei_numeracion" name="pr_nei_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6168,7 +6188,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_nei_cantidad" id="pr_nei_cantidad" class="form-control" type="text" >
+						                <input name="pr_nei_cantidad" id="pr_nei_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6199,9 +6219,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_med_numeracion" name="pr_med_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6212,7 +6233,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_med_cantidad" id="pr_med_cantidad" class="form-control" type="text" >
+						                <input name="pr_med_cantidad" id="pr_med_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6245,9 +6266,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bar_numeracion" name="pr_bar_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6258,7 +6280,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_bar_cantidad" id="pr_bar_cantidad" class="form-control" type="text" >
+						                <input name="pr_bar_cantidad" id="pr_bar_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6289,9 +6311,10 @@ $(function() {
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_cart_numeracion" name="pr_cart_numeracion">
 										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
+										/select>
 						            </div>
 						        </div>
 						    </div>
@@ -6302,7 +6325,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cart_cantidad" id="pr_cart_cantidad" class="form-control" type="text" >
+						                <input name="pr_cart_cantidad" id="pr_cart_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -6338,8 +6361,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_stm_numeracion" name="pr_stm_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6351,7 +6375,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_stm_cantidad" id="pr_stm_cantidad" class="form-control" type="text" >
+							                <input name="pr_stm_cantidad" id="pr_stm_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6384,8 +6408,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_mon_numeracion" name="pr_mon_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6397,7 +6422,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_mon_cantidad" id="pr_mon_cantidad" class="form-control" type="text" >
+							                <input name="pr_mon_cantidad" id="pr_mon_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6432,8 +6457,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_vall_numeracion" name="pr_vall_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    	<option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6445,7 +6471,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_vall_cantidad" id="pr_vall_cantidad" class="form-control" type="text" >
+							                <input name="pr_vall_cantidad" id="pr_vall_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6478,8 +6504,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_sinc_numeracion" name="pr_sinc_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    	<option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6491,7 +6518,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_sinc_cantidad" id="pr_sinc_cantidad" class="form-control" type="text" >
+							                <input name="pr_sinc_cantidad" id="pr_sinc_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6526,8 +6553,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_per_numeracion" name="pr_per_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    	<option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6539,7 +6567,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_per_cantidad" id="pr_per_cantidad" class="form-control" type="text" >
+							                <input name="pr_per_cantidad" id="pr_per_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6572,8 +6600,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_arme_numeracion" name="pr_arme_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    	<option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6585,7 +6614,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_arme_cantidad" id="pr_arme_cantidad" class="form-control" type="text" >
+							                <input name="pr_arme_cantidad" id="pr_arme_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6620,8 +6649,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_man_numeracion" name="pr_man_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6633,7 +6663,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_man_cantidad" id="pr_man_cantidad" class="form-control" type="text" >
+							                <input name="pr_man_cantidad" id="pr_man_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6666,8 +6696,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_iba_numeracion" name="pr_iba_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6679,7 +6710,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_iba_cantidad" id="pr_iba_cantidad" class="form-control" type="text" >
+							                <input name="pr_iba_cantidad" id="pr_iba_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6714,8 +6745,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_cuc_numeracion" name="pr_cuc_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6727,7 +6759,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cuc_cantidad" id="pr_cuc_cantidad" class="form-control" type="text" >
+							                <input name="pr_cuc_cantidad" id="pr_cuc_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6760,8 +6792,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_buc_numeracion" name="pr_buc_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6773,7 +6806,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_buc_cantidad" id="pr_buc_cantidad" class="form-control" type="text" >
+							                <input name="pr_buc_cantidad" id="pr_buc_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6808,8 +6841,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_dui_numeracion" name="pr_dui_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6821,7 +6855,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_dui_cantidad" id="pr_dui_cantidad" class="form-control" type="text" >
+							                <input name="pr_dui_cantidad" id="pr_dui_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6854,8 +6888,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_sog_numeracion" name="pr_sog_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6867,7 +6902,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_sog_cantidad" id="pr_sog_cantidad" class="form-control" type="text" >
+							                <input name="pr_sog_cantidad" id="pr_sog_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6902,8 +6937,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_flan_numeracion" name="pr_flan_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6915,7 +6951,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_flan_cantidad" id="pr_flan_cantidad" class="form-control" type="text" >
+							                <input name="pr_flan_cantidad" id="pr_flan_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6948,8 +6984,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_riv_numeracion" name="pr_riv_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -6961,7 +6998,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_riv_cantidad" id="pr_riv_cantidad" class="form-control" type="text" >
+							                <input name="pr_riv_cantidad" id="pr_riv_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -6996,8 +7033,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_aipe_numeracion" name="pr_aipe_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -7009,7 +7047,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_aipe_cantidad" id="pr_aipe_cantidad" class="form-control" type="text" >
+							                <input name="pr_aipe_cantidad" id="pr_aipe_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -7042,8 +7080,9 @@ $(function() {
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_leb_numeracion" name="pr_leb_numeracion">
 											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
+												<option value="SI">SI</option>
+												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+												<option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -7055,7 +7094,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_leb_cantidad" id="pr_leb_cantidad" class="form-control" type="text" >
+							                <input name="pr_leb_cantidad" id="pr_leb_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -7796,7 +7835,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+						                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control" ></textarea>
 						            </div>
 						        </div>
 						    </div>
@@ -7940,7 +7979,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_servicio" name="pr_tipo_servicio">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Internet Dedicado con diferenciación de tráfico (Internet / NAP)">Internet Dedicado con diferenciación de tráfico (Internet / NAP)</option>
 	      									<option value="Internet Dedicado + Monitoreo CPE (Gestion Proactiva)">Internet Dedicado + Monitoreo CPE (Gestion Proactiva)</option>
 	      									<option value="Internet Dedicado Administrado + Monitoreo CPE (Gestion Proactiva)">Internet Dedicado Administrado + Monitoreo CPE (Gestion Proactiva)</option>
@@ -7990,7 +8029,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_actividad" name="pr_tipo_actividad">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Traslado Interno - Ejecutar de acuerdo a Visita de Cotización">Traslado Interno - Ejecutar de acuerdo a Visita de Cotización</option>
 										    <option value="OTP Legalización - Traslado Punto Central u Origen">OTP Legalización - Traslado Punto Central u Origen</option>
 	      									<option value="Traslado Interno - En Datacenter Claro">Traslado Interno - En Datacenter Claro</option>
@@ -8026,7 +8065,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 										<select name="pr_requiere_um" id="pr_requiere_um" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="SI">SI</option>
 											<option value="NO">NO</option>
 										</select>
@@ -8041,7 +8080,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 										<select name="pr_proveedor" id="pr_proveedor" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="No aplica">No aplica</option>
 											<option value="Claro">Claro</option>
 											<option value="Axesat">Axesat</option>
@@ -8082,14 +8121,14 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_medio" name="pr_medio">
-										    <option="Seleccionar...">Seleccionar...</option>
-										    <option="No Aplica">No Aplica</option>
-										    <option="FIBRA">FIBRA</option>
-										    <option="COBRE">COBRE</option> 
-										    <option="SATELITAL">SATELITAL</option>
-										    <option="RADIO ENLACE">RADIO ENLACE</option>
-										    <option="3G">3G</option>
-										    <option="UTP">UTP</option>
+										    <option value="">Seleccionar...</option>
+										    <option value="No Aplica">No Aplica</option>
+										    <option value="FIBRA">FIBRA</option>
+										    <option value="COBRE">COBRE</option> 
+										    <option value="SATELITAL">SATELITAL</option>
+										    <option value="RADIO ENLACE">RADIO ENLACE</option>
+										    <option value="3G">3G</option>
+										    <option value="UTP">UTP</option>
 										</select>
 						            </div>
 						        </div>
@@ -8147,7 +8186,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_interfaz_entrega_cliente" name="pr_interfaz_entrega_cliente">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>						   									
 										    <option value="Ethernet">Ethernet</option>
 										    <option value="Serial V.35">Serial V.35</option>
@@ -8168,7 +8207,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 										<select type="text" name="pr_requiere_voc" id="pr_requiere_voc" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="Si">Si</option>
 											<option value="No">No</option>
 										</select>
@@ -8187,7 +8226,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-altt" ></i></span>
 										<select type="text" name="pr_programacion_voc" id="pr_programacion_voc" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="Programada">Programada</option>
 											<option value="No requiere programación">No requiere programación</option>
 											<option value="No programada. Otra ciudad">No programada. Otra ciudad</option>
@@ -8212,7 +8251,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 										<select type="text" name="pr_requiere_ventana_mtto" id="pr_requiere_ventana_mtto" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="si">si</option>
 											<option value="No">No</option>
 										</select>
@@ -8227,7 +8266,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 										<select type="text" name="pr_requiere_rfc" id="pr_requiere_rfc" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 											<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
 											<option value="SI => Cliente Critico">SI => Cliente Critico</option>
@@ -8313,7 +8352,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 										<select type="text" name="pr_consumibles" id="pr_consumibles" class="form-control">
-											<option value="Seleccionar...">Seleccionar...</option>
+											<option value="">Seleccionar...</option>
 											<option value="Bandeja">Bandeja</option>
 											<option value="Cables de Poder">Cables de Poder</option>
 											<option value="Clavijas de Conexión">Clavijas de Conexión</option>
@@ -8335,7 +8374,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select name="pr_carta_valorizada" id="pr_carta_valorizada" class="form-control">
-						                	<option value="Seleccionar...">Seleccionar...</option>
+						                	<option value="">Seleccionar...</option>
 						                	<option value="SI">SI</option>
 						                	<option value="NO">NO</option>
 						                </select>
@@ -8456,7 +8495,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-							                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+							                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control"></textarea>
 							            </div>
 							        </div>
 							    </div>
@@ -8513,7 +8552,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Edificio">Edificio</option>
 	      									<option value="Casa">Casa</option>
 										</select>
@@ -8581,7 +8620,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_pbx" name="pr_tipo_pbx">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Estándar">Estándar</option>
 	      									<option value="No Estándar">No Estándar</option>						
 										</select>
@@ -8601,7 +8640,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_instalacion" name="pr_tipo_instalacion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Instalar UM con PE">Instalar UM con PE</option>
 										    <option value="Instalar UM con PE sobre OTP de Pymes">Instalar UM con PE sobre OTP de Pymes</option>
 										    <option value="Instalar UM con CT (No aplica para Internet Dedicado Empresarial)">Instalar UM con CT (No aplica para Internet Dedicado Empresarial)</option>
@@ -8644,7 +8683,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_um" name="pr_requiere_um">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>   
 	      									<option value="Existe">Existe</option>												    
@@ -8660,7 +8699,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_proveedor" name="pr_proveedor">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>
 	      									<option value="Existente">Existente</option>
 	      									<option value="Claro">Claro</option>
@@ -8702,7 +8741,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_medio" name="pr_medio">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="No Aplica">No Aplica</option> 	   
 										    <option value="Fibra">Fibra</option>
 										    <option value="Cobre">Cobre</option>
@@ -8722,7 +8761,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_voc" name="pr_requiere_voc">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>    
 										</select>
@@ -8743,7 +8782,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_programacion_voc" name="pr_programacion_voc">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Programada">Programada</option>
 	      									<option value="No requiere programación">No requiere programación</option>   												
 	      									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
@@ -8768,7 +8807,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_rfc" name="pr_requiere_rfc">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 	      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  							
 	      									<option value="SI => Cliente Critico">SI => Cliente Critico</option>
@@ -8861,7 +8900,7 @@ $(function() {
 									<div class="col-md-9 selectContainer">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
-											<input type="text" name="pr_referencia[]" class="form-control">
+											<input type="text" name="pr_referencia[]" id="pr_referencia" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -8873,7 +8912,7 @@ $(function() {
 							        <div class="ol-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order-alt" ></i></span>
-							                <input name="pr_cantidad[]" class="form-control" type="number" >
+							                <input name="pr_cantidad[]" id="pr_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -8971,7 +9010,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list" ></i></span>
 						                <select class="form-control" id="pr_consumibles" name="pr_consumibles">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Bandeja">Bandeja</option>
 	      									<option value="Cables de Poder ">Cables de Poder </option>
 	      									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
@@ -8994,7 +9033,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list" ></i></span>
 						                <select class="form-control" id="pr_carta_valorizada" name="pr_carta_valorizada">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9122,7 +9161,7 @@ $(function() {
 						        <div class="col-md-10 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-						                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+						                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control" ></textarea>
 						            </div>
 						        </div>
 						    </div>
@@ -9171,7 +9210,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 						                <select class="form-control" id="pr_cantidad_buzones_voz" name="pr_cantidad_buzones_voz">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Cantidad IPs: 2 - Mascara: /30">Cantidad IPs: 2 - Mascara: /30</option>
 	      									<option value="Cantidad IPs 6 - Mascara: /29">Cantidad IPs 6 - Mascara: /29</option>
 	      									<option value="Cantidad IPs 14 - Mascara: /28 - Requiere Viabilidad Preventa">Cantidad IPs 14 - Mascara: /28 - Requiere Viabilidad Preventa</option>    
@@ -9188,7 +9227,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 						                <select class="form-control" id="pr_grabacion_voz" name="pr_grabacion_voz">
-						                	<option value="Seleccionar...">Seleccionar...</option>
+						                	<option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9264,7 +9303,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Edificio">Edificio</option>
 	      									<option value="Casa">Casa</option>										    
 										</select>
@@ -9305,7 +9344,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-						                <input name="pr_id_ot_padre" id="pr_id_ot_padre" class="form-control" type="text" disables value="${otp}">
+						                <input name="pr_id_ot_padre" id="pr_id_ot_padre" class="form-control" type="number" readonly value="${otp}">
 						            </div>
 						        </div>
 						    </div>
@@ -9331,7 +9370,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_telefonia" name="pr_tipo_telefonia">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Telefonia Pública - Líneas Análogas">Telefonia Pública - Líneas Análogas</option>
 	      									<option value="Telefonia Pública - Líneas E1 - R2">Telefonia Pública - Líneas E1 - R2</option>
 	      									<option value="Telefonia Pública - Líneas E1 - PRI">Telefonia Pública - Líneas E1 - PRI</option>
@@ -9370,7 +9409,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_instalacion" name="pr_tipo_instalacion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Instalar UM con PE">Instalar UM con PE</option>
 	      									<option value="Instalar UM con PE sobre OTP de Pymes">Instalar UM con PE sobre OTP de Pymes</option>
 	      									<option value="Instalar UM con CT (Solo Acceso Fibra)">Instalar UM con CT (Solo Acceso Fibra)</option>
@@ -9413,7 +9452,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_um" name="pr_requiere_um">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>   												
 	      									<option value="Existente">Existente</option> 	    
@@ -9429,7 +9468,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_proveedor" name="pr_proveedor">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>
 	      									<option value="Existente">Existente</option>
 	      									<option value="Claro">Claro</option>
@@ -9471,7 +9510,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_medio" name="pr_medio">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="No Aplica">No Aplica</option>  									   									
 										    <option value="Existente">Existente</option> 	   
 										    <option value="Fibra">Fibra</option>
@@ -9492,7 +9531,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tipo_conector" name="pr_tipo_conector">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="LC">LC</option>  									   									
 										    <option value="SC">SC</option> 	   
 										    <option value="ST">ST</option>
@@ -9515,7 +9554,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_interfaz_entrega_cliente" name="pr_interfaz_entrega_cliente">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="No aplica">No aplica</option>  									   									
 										    <option value="Ethernet">Ethernet</option> 	   
 										    <option value="Serial V.35">Serial V.35</option>
@@ -9536,7 +9575,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_voc" name="pr_requiere_voc">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>  									   									
 										    <option value="No">No</option> 	  										    
 										</select>
@@ -9555,7 +9594,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_programacion_voc" name="pr_programacion_voc">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Programada">Programada</option>  									   									
 										    <option value="No requiere programación">No requiere programación</option> 	   
 										    <option value="No programada. Otra ciudad">No programada. Otra ciudad</option>
@@ -9580,7 +9619,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_requiere_rfc" name="pr_requiere_rfc">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
 	      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>							
 	      									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
@@ -9665,7 +9704,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_consumibles" name="pr_consumibles">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Bandeja">Bandeja</option>
 	      									<option value="Cables de poder">Cables de poder</option>
 	      									<option value="Clavijas de conexión">Clavijas de conexión</option>
@@ -9684,7 +9723,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_carta_valorizada" name="pr_carta_valorizada">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9813,7 +9852,7 @@ $(function() {
 						        <div class="col-md-10 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+						                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control"></textarea>
 						            </div>
 						        </div>
 						    </div>
@@ -9833,7 +9872,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_activacion_plan" name="pr_activacion_plan">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9848,7 +9887,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_equipo_cliente" name="pr_equipo_cliente">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Teléfonos analogos">Teléfonos analogos</option>
 	      									<option value="Planta E1">Planta E1</option>
 	      									<option value="Planta IP">Planta IP</option>
@@ -9867,7 +9906,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_interfaz_equipo_cliente" name="pr_interfaz_equipo_cliente">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="FXS">FXS</option>
 	      									<option value="RJ11">RJ11</option>
 	      									<option value="RJ45">RJ45</option>
@@ -9940,7 +9979,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_num_cabezera_pbx" name="pr_num_cabezera_pbx">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9960,7 +9999,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-print" ></i></span>
 						                <select class="form-control" id="pr_fax_email" name="pr_fax_email">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9975,7 +10014,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
 						                <select class="form-control" id="pr_telefono_virtual" name="pr_telefono_virtual">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="SI (SOLICITAR LICENCIA A LIDER TECNICO GRUPO ASE)">SI (SOLICITAR LICENCIA A LIDER TECNICO GRUPO ASE)</option>
 	      									<option value="No">No</option>
 										</select>
@@ -9993,7 +10032,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
 						                <select class="form-control" id="pr_permisos_larga_distancia" name="pr_permisos_larga_distancia">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 	      									<option value="No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff">No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff</option>
@@ -10009,7 +10048,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_larga_distancia_internacional" name="pr_larga_distancia_internacional">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 	      									<option value="No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff">No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff</option>
@@ -10029,7 +10068,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
 						                <select class="form-control" id="pr_permisos_moviles" name="pr_permisos_moviles">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 	      									<option value="No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff">No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff</option>
@@ -10045,7 +10084,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
 						                <select class="form-control" id="pr_permiso_local_extendida" name="pr_permiso_local_extendida">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 										    <option value="Si">Si</option>
 	      									<option value="No">No</option>
 	      									<option value="No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff">No hay Survey Adjunto - En espera de Respuesta a reporte de Inicio de Kickoff</option>
@@ -10072,7 +10111,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bog_requiere" name="pr_bog_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10087,9 +10126,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bog_numeracion" name="pr_bog_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10101,7 +10141,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_bog_cantidad" id="pr_bog_cantidad" class="form-control" type="text" >
+						                <input name="pr_bog_cantidad" id="pr_bog_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10116,7 +10156,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tun_requiere" name="pr_tun_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10131,9 +10171,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_tun_numeracion" name="pr_tun_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10145,7 +10186,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_tun_cantidad" id="pr_tun_cantidad" class="form-control" type="text" >
+						                <input name="pr_tun_cantidad" id="pr_tun_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10162,7 +10203,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_vill_requiere" name="pr_vill_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10177,9 +10218,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_vill_numeracion" name="pr_vill_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10191,7 +10233,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_vill_cantidad" id="pr_vill_cantidad" class="form-control" type="text" >
+							                <input name="pr_vill_cantidad" id="pr_vill_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10206,7 +10248,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_fac_requiere" name="pr_fac_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10221,9 +10263,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_fac_numeracion" name="pr_fac_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10235,7 +10278,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_fac_cantidad" id="pr_fac_cantidad" class="form-control" type="text" >
+							                <input name="pr_fac_cantidad" id="pr_fac_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10252,7 +10295,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_gir_requiere" name="pr_gir_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10267,9 +10310,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_gir_numeracion" name="pr_gir_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10281,7 +10325,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_gir_cantidad" id="pr_gir_cantidad" class="form-control" type="text" >
+						                <input name="pr_gir_cantidad" id="pr_gir_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10296,7 +10340,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_yop_requiere" name="pr_yop_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10311,9 +10355,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_yop_numeracion" name="pr_yop_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10325,7 +10370,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_yop_cantidad" id="pr_yop_cantidad" class="form-control" type="text" >
+						                <input name="pr_yop_cantidad" id="pr_yop_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10342,7 +10387,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_cali_requiere" name="pr_cali_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10357,9 +10402,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_cali_numeracion" name="pr_cali_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10371,7 +10417,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cali_cantidad" id="pr_cali_cantidad" class="form-control" type="text" >
+						                <input name="pr_cali_cantidad" id="pr_cali_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10386,7 +10432,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bave_requiere" name="pr_bave_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10401,9 +10447,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bave_numeracion" name="pr_bave_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10415,7 +10462,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_bave_cantidad" id="pr_bave_cantidad" class="form-control" type="text" >
+						                <input name="pr_bave_cantidad" id="pr_bave_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10432,7 +10479,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_pas_requiere" name="pr_pas_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10447,9 +10494,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_pas_numeracion" name="pr_pas_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10461,7 +10509,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_pas_cantidad" id="pr_pas_cantidad" class="form-control" type="text" >
+						                <input name="pr_pas_cantidad" id="pr_pas_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10476,7 +10524,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_pop_requiere" name="pr_pop_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10491,9 +10539,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_pop_numeracion" name="pr_pop_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10505,7 +10554,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_pop_cantidad" id="pr_pop_cantidad" class="form-control" type="text" >
+						                <input name="pr_pop_cantidad" id="pr_pop_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10522,7 +10571,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_nei_requiere" name="pr_nei_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10537,9 +10586,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_nei_numeracion" name="pr_nei_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10551,7 +10601,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_nei_cantidad" id="pr_nei_cantidad" class="form-control" type="text" >
+						                <input name="pr_nei_cantidad" id="pr_nei_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10566,7 +10616,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_med_requiere" name="pr_med_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10581,9 +10631,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_med_numeracion" name="pr_med_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10595,7 +10646,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_med_cantidad" id="pr_med_cantidad" class="form-control" type="text" >
+						                <input name="pr_med_cantidad" id="pr_med_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10612,7 +10663,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bar_requiere" name="pr_bar_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10627,9 +10678,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_bar_numeracion" name="pr_bar_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10641,7 +10693,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_bar_cantidad" id="pr_bar_cantidad" class="form-control" type="text" >
+						                <input name="pr_bar_cantidad" id="pr_bar_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10656,7 +10708,7 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_cart_requiere" name="pr_cart_requiere">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
 										    <option value="No">No</option>
 										</select>
@@ -10671,9 +10723,10 @@ $(function() {
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 						                <select class="form-control" id="pr_cart_numeracion" name="pr_cart_numeracion">
-										    <option value="Seleccionar...">Seleccionar...</option>
+										    <option value="">Seleccionar...</option>
 	      									<option value="SI">SI</option>
-										    <option value="No">No</option>
+										    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+										    <option value="No Requiere">No Requiere</option>
 										</select>
 						            </div>
 						        </div>
@@ -10685,7 +10738,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cart_cantidad" id="pr_cart_cantidad" class="form-control" type="text" >
+						                <input name="pr_cart_cantidad" id="pr_cart_cantidad" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -10705,7 +10758,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_stm_requiere" name="pr_stm_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10720,9 +10773,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_stm_numeracion" name="pr_stm_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10734,7 +10788,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_stm_cantidad" id="pr_stm_cantidad" class="form-control" type="text" >
+							                <input name="pr_stm_cantidad" id="pr_stm_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10751,7 +10805,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_mon_requiere" name="pr_mon_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10766,9 +10820,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_mon_numeracion" name="pr_mon_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10780,7 +10835,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_mon_cantidad" id="pr_mon_cantidad" class="form-control" type="text" >
+							                <input name="pr_mon_cantidad" id="pr_mon_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10799,7 +10854,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_vall_requiere" name="pr_vall_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10814,9 +10869,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_vall_numeracion" name="pr_vall_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10828,7 +10884,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_vall_cantidad" id="pr_vall_cantidad" class="form-control" type="text" >
+							                <input name="pr_vall_cantidad" id="pr_vall_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10845,7 +10901,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_sinc_requiere" name="pr_sinc_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10860,9 +10916,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_sinc_numeracion" name="pr_sinc_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10874,7 +10931,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_sinc_cantidad" id="pr_sinc_cantidad" class="form-control" type="text" >
+							                <input name="pr_sinc_cantidad" id="pr_sinc_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10893,7 +10950,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_per_requiere" name="pr_per_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10908,9 +10965,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_per_numeracion" name="pr_per_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10922,7 +10980,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_per_cantidad" id="pr_per_cantidad" class="form-control" type="text" >
+							                <input name="pr_per_cantidad" id="pr_per_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10939,7 +10997,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_arme_requiere" name="pr_arme_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -10954,9 +11012,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_arme_numeracion" name="pr_arme_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -10968,7 +11027,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_arme_cantidad" id="pr_arme_cantidad" class="form-control" type="text" >
+							                <input name="pr_arme_cantidad" id="pr_arme_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -10987,7 +11046,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_man_requiere" name="pr_man_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11002,9 +11061,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_man_numeracion" name="pr_man_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11016,7 +11076,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_man_cantidad" id="pr_man_cantidad" class="form-control" type="text" >
+							                <input name="pr_man_cantidad" id="pr_man_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11033,7 +11093,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_iba_requiere" name="pr_iba_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11048,9 +11108,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_iba_numeracion" name="pr_iba_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11062,7 +11123,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_iba_cantidad" id="pr_iba_cantidad" class="form-control" type="text" >
+							                <input name="pr_iba_cantidad" id="pr_iba_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11081,7 +11142,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_cuc_requiere" name="pr_cuc_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11096,9 +11157,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_cuc_numeracion" name="pr_cuc_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11110,7 +11172,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_cuc_cantidad" id="pr_cuc_cantidad" class="form-control" type="text" >
+							                <input name="pr_cuc_cantidad" id="pr_cuc_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11127,7 +11189,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_buc_requiere" name="pr_buc_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11142,9 +11204,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_buc_numeracion" name="pr_buc_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11156,7 +11219,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_buc_cantidad" id="pr_buc_cantidad" class="form-control" type="text" >
+							                <input name="pr_buc_cantidad" id="pr_buc_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11175,7 +11238,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_dui_requiere" name="pr_dui_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11190,9 +11253,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_dui_numeracion" name="pr_dui_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11204,7 +11268,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_dui_cantidad" id="pr_dui_cantidad" class="form-control" type="text" >
+							                <input name="pr_dui_cantidad" id="pr_dui_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11221,7 +11285,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_sog_requiere" name="pr_sog_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11236,9 +11300,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_sog_numeracion" name="pr_sog_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11250,7 +11315,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_sog_cantidad" id="pr_sog_cantidad" class="form-control" type="text" >
+							                <input name="pr_sog_cantidad" id="pr_sog_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11269,7 +11334,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_flan_requiere" name="pr_flan_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11284,9 +11349,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_flan_numeracion" name="pr_flan_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11298,7 +11364,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_flan_cantidad" id="pr_flan_cantidad" class="form-control" type="text" >
+							                <input name="pr_flan_cantidad" id="pr_flan_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11315,7 +11381,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_riv_requiere" name="pr_riv_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11330,9 +11396,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_riv_numeracion" name="pr_riv_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11344,7 +11411,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_riv_cantidad" id="pr_riv_cantidad" class="form-control" type="text" >
+							                <input name="pr_riv_cantidad" id="pr_riv_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11363,7 +11430,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_aipe_requiere" name="pr_aipe_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11378,9 +11445,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_aipe_numeracion" name="pr_aipe_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11392,7 +11460,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_aipe_cantidad" id="pr_aipe_cantidad" class="form-control" type="text" >
+							                <input name="pr_aipe_cantidad" id="pr_aipe_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11409,7 +11477,7 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_leb_requiere" name="pr_leb_requiere">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
 											    <option value="No">No</option>
 											</select>
@@ -11424,9 +11492,10 @@ $(function() {
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
 							                <select class="form-control" id="pr_leb_numeracion" name="pr_leb_numeracion">
-											    <option value="Seleccionar...">Seleccionar...</option>
+											    <option value="">Seleccionar...</option>
 		      									<option value="SI">SI</option>
-											    <option value="No">No</option>
+											    <option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
+											    <option value="No Requiere">No Requiere</option>
 											</select>
 							            </div>
 							        </div>
@@ -11438,7 +11507,7 @@ $(function() {
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-							                <input name="pr_leb_cantidad" id="pr_leb_cantidad" class="form-control" type="text" >
+							                <input name="pr_leb_cantidad" id="pr_leb_cantidad" class="form-control" type="number" >
 							            </div>
 							        </div>
 							    </div>
@@ -11492,7 +11561,7 @@ $(function() {
         // 		                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
         // 						    <option value="">Seleccionar...</option>
         // 						    <option value="Edificio">Edificio</option>
-        //    									<option value="Casa">Casa</option>									    
+        //    						<option value="Casa">Casa</option>									    
         // 						</select>
         // 		            </div>
         // 		        </div>
@@ -11986,10 +12055,11 @@ $(function() {
         // 		        <div class="col-md-9 selectContainer">
         // 		            <div class="input-group">
         // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 						<input type="text" name="pr_observacion" id="pr_observacion">
+        // 						<textarea name="pr_observacion" id="pr_observacion"></textarea>
         // 		            </div>
         // 		        </div>
         // 		    </div>
+
         // 		</fieldset>
         // 	</div>
 
@@ -12805,7 +12875,7 @@ $(function() {
         // 				        <div class="col-md-9 selectContainer">
         // 				            <div class="input-group">
         // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_observaciones_1" id="pr_observaciones_1" class="form-control" type="text" >
+        // 				                <textarea name="pr_observaciones_1" id="pr_observaciones_1" class="form-control"></textarea>
         // 				            </div>
         // 				        </div>
         // 				    </div>
@@ -12856,7 +12926,7 @@ $(function() {
         // 				                <select class="form-control" id="pr_tipo_predio_d" name="pr_tipo_predio_d">
         // 								    <option value="">Seleccionar...</option>
         // 								    <option value="Edificio">Edificio</option>
-        //      									<option value="Casa">Casa</option>									    
+        //      							<option value="Casa">Casa</option>									    
         // 								</select>
         // 				            </div>
         // 				        </div>
@@ -13374,7 +13444,7 @@ $(function() {
         // 				        <div class="col-md-9 selectContainer">
         // 				            <div class="input-group">
         // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_observaciones_2" id="pr_observaciones_2" class="form-control" type="text" >
+        // 				                <textarea name="pr_observaciones_2" id="pr_observaciones_2" class="form-control"></textarea>
         // 				            </div>
         // 				        </div>
         // 				    </div>
@@ -13496,7 +13566,7 @@ $(function() {
         // 		            <div class="input-group">
         // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
         // 		                <select class="form-control" id="pr_topologia" name="pr_topologia">
-        // 						    <option value="Seleccionar...">Seleccionar...</option>
+        // 						    <option value="">Seleccionar...</option>
         // 						    <option value="INTERNET DEDICADO (Solución Diferenciación de tráfico (Internet / NAP))">INTERNET DEDICADO (Solución Diferenciación de tráfico (Internet / NAP))</option>
         //    									<option value="INTERNET DEDICADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))">INTERNET DEDICADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>	
         //    									<option value="INTERNET DEDICADO ADMINISTRADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))">INTERNET DEDICADO ADMINISTRADO (VLR AGRE -Monitoreo CPE (Gestion Proactiva))</option>
@@ -13537,7 +13607,7 @@ $(function() {
         // 		            <div class="input-group">
         // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
         // 		                <select class="form-control" id="pr_requiere_res" name="pr_requiere_res">
-        // 						    <option value="Seleccionar...">Seleccionar...</option>
+        // 						    <option value="">Seleccionar...</option>
         // 						    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
         //    									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  												
         //    									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
@@ -13767,7 +13837,7 @@ $(function() {
         // 		        <div class="col-md-9 selectContainer">
         // 		            <div class="input-group">
         // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_observaciones" id="pr_observaciones" class="form-control" type="text" >
+        // 		                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control"></textarea>
         // 		            </div>
         // 		        </div>
         // 		    </div>
