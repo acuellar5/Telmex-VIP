@@ -2745,7 +2745,7 @@ $(function() {
         /*INTERNET*/
         formProduct_internet: function(otp) {
             return `
-				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO DE INTERNET</small></h2>
+				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>SERVICIO DE INTERNET</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<legend class="f-s-15">Datos basicos de instalación</legend>
 					<div class="d-inline-b">
@@ -3560,7 +3560,7 @@ $(function() {
 						<span>SI</span>
 					</div>
             	</legend>
-				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>MPLS</small></h2>
+				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>MPLS</small></h2>
 				<!--*********************  MODULO PESTAÑAS  *********************-->
 				<ul class="nav nav-tabs">
 					<li class="active" id=""><a data-toggle="tab" href="#mpls_punto_destino" id="pestana_punto_destino">PUNTO DESTINO</a></li>
@@ -4838,7 +4838,7 @@ $(function() {
         /*NOVEDADES*/
         formProduct_novedades: function() {
             return `
-				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>NOVEDADES</small></h2>
+				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>NOVEDADES</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<legend class="f-s-15">DATOS BASICOS DE INSTALACIÓN</legend>
 					<div class="d-inline-b">
@@ -7108,7 +7108,7 @@ $(function() {
         /*TRASLADO EXTERNO*/
         formProduct_traslado_externo: function(otp) {
             return `
-				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>TRASLADO EXTERNO</small></h2>
+				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>TRASLADO EXTERNO</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					<!-- Primera sesion --> 
 					<legend class="f-s-15">DATOS BASICOS</legend>
@@ -7848,7 +7848,7 @@ $(function() {
         /*TRASLADO INTERNO*/
         formProduct_traslado_interno: function() {
             return `
-        		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>TRASLADO INTERNO</small></h2>
+        		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>TRASLADO INTERNO</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 					
 					<legend class="f-s-15">DATOS BASICOS</legend>
@@ -8511,7 +8511,7 @@ $(function() {
         /*PBX ADMINISTRADA*/
         formProduct_pvx_administrada: function(otp) {
             return `
-        		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO PBX ADMINISTRADA</small></h2>
+        		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>SERVICIO PBX ADMINISTRADA</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 
 					<!-- Primera sesion --> 
@@ -9262,7 +9262,7 @@ $(function() {
         // TELEFONIA FIJA
         formProduct_telefonia_fija: function(otp) {
             return `
-        		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>SERVICIO TELEFONIA FIJA</small></h2>
+        		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>SERVICIO TELEFONIA FIJA</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
 
 					<!-- Primera sesion: datos basicos de instalacion -->
@@ -11521,7 +11521,7 @@ $(function() {
         //PUNTA DATACENTER NO TIENE NADA QUE LO DISPARE
         //     formProduct_punta_datacenter: function(otp){
         //     	return `
-        //     		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>PUNTO DATACENTER</small></h2>
+        //     		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>PUNTO DATACENTER</small></h2>
         // <div class="widget bg_white m-t-25 d-inline-b cliente">
         // 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION </legend>
         // 	<div class="d-inline-b">
@@ -12270,7 +12270,7 @@ $(function() {
         //PRIVATE LINE NO TIENE NADA QUE LO DISPARE
         //     formProduct_private_line: function(otp){
         //     	return `
-        //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>PRIVATE LINE</small></h2>
+        //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>PRIVATE LINE</small></h2>
         // <!--*********************  MODULO PESTAÑAS  *********************-->
         // <ul class="nav nav-tabs">
         // 	<li class="active"><a data-toggle="tab" href="#mpls_punto_origen_pl">PUNTO DE ORIGEN</a></li>
@@ -13459,7 +13459,7 @@ $(function() {
         //LAN ADMINISTRADA NO TIENE NADA QUE LO DISPARE
         //     formProduct_LAN_ADMINISTRADA: function(otp){
         //     	return `
-        //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario de producto <small>LAN ADMINISTRADA</small></h2>
+        //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>LAN ADMINISTRADA</small></h2>
         // <div class="widget bg_white m-t-25 d-inline-b cliente">
 
         // 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION</legend>

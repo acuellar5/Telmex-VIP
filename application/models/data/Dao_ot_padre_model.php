@@ -69,7 +69,8 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo,
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -93,7 +94,8 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo 
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo,
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -118,7 +120,8 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo,
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -165,7 +168,8 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo,
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -256,7 +260,8 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo,
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
