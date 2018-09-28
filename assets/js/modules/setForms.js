@@ -9358,7 +9358,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
