@@ -7,6 +7,7 @@ class Templates extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('data/Dao_ot_hija_model');
+        $this->load->model('data/Dao_ot_padre_model');
         $this->load->model('data/Dao_estado_ot_model');
         $this->load->model('data/Dao_log_correo_model');
         $this->load->model('data/Dao_hito_model');
@@ -55,9 +56,6 @@ class Templates extends CI_Controller {
         $pt       = $this->input->post();
         $servicio = $pt['num_servicio'];
 
-        // header('Content-Type: text/plain');
-        // print_r($this->input->post());
-
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             $this->guardar_linea_base($this->input->post());
@@ -71,6 +69,9 @@ class Templates extends CI_Controller {
                 $this->guardar_servicio($pt, $servicio);
                 // 4. Actualizar ot_hija en tabla ot_hija
                 $this->actualizar_oth($pt, true, $plantila_txt);
+                // 5. actualizar ot_padre
+                $this->actualizar_otp($pt['nro_ot_onyx']);
+
             }
             // si no se envia no se envia el correo
             else {
@@ -878,6 +879,19 @@ class Templates extends CI_Controller {
             header('Location: ' . URL::base() . '/managementOtp');
         }
     }
+
+
+    // Actualizar campos de ot_padre
+    private function actualizar_otp($otp){
+        date_default_timezone_set("America/Bogota");
+         
+        $data = array(
+              'ultimo_envio_reporte' => date('Y-m-d')
+          );
+        $this->Dao_ot_padre_model->update_ot_padre($data, $otp);
+            
+    }
+
 
     //Actualiza el estato (hay que enviarle el post)
     private function update_status($pt, $is_mail = false) {
@@ -2015,7 +2029,7 @@ class Templates extends CI_Controller {
         return '
         SERVICIO INTERNET
 
-        *****************************************************     DATOS B    ***************************************************
+        **************************************************   DATOS BASICOS   **************************************************
         CIUDAD: ............................................' . $data_pr['pr_ciudad'] . '
         DIRECCIÓN: .........................................' . $data_pr['pr_direccion'] . '
         TIPO PREDIO: .......................................' . $data_pr['pr_tipo_predio'] . '
