@@ -167,7 +167,7 @@ class LoadInformation extends CI_Controller {
                             'fecha_compromiso'            => $this->getDatePHPExcel($sheet, 'AO' . $row),
                             'fecha_programacion'          => $this->getDatePHPExcel($sheet, 'AP' . $row),
                             // comparacion para ot_hija
-                            'tiempo_estado'               => $this->getValueCell($sheet, 'X' . $row),
+                            // 'tiempo_estado'               => $this->getValueCell($sheet, 'X' . $row),
                             'descripcion'                 => $this->getValueCell($sheet, 'AJ' . $row),
                             'fecha_realizacion'           => $this->getDatePHPExcel($sheet, 'AQ' . $row),
                             'estado_orden_trabajo_hija'   => $this->getValueCell($sheet, 'AZ' . $row),
