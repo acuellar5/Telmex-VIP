@@ -68,10 +68,9 @@ class Templates extends CI_Controller {
             // 3.1 si se envio guardar formulario servicio en log correo.
 
             if ($res_envio) {
-                //$this->guardar_servicio($pt, $servicio);
+                $this->guardar_servicio($pt, $servicio);
                 // 4. Actualizar ot_hija en tabla ot_hija
-                //$this->actualizar_oth($pt, true, $plantila_txt);
-                echo("ok");
+                $this->actualizar_oth($pt, true, $plantila_txt);
             }
             // si no se envia no se envia el correo
             else {
