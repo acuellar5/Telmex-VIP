@@ -292,12 +292,10 @@
                             <option value="">SELECCIONE...</option>
                             <option value="KICK OFF">KICK OFF</option>
                             <option value="VISITA OBRA CIVIL">VISITA OBRA CIVIL</option>
-                            <option value="VISITA OBRA CIVIL TERCEROS">VISITA OBRA CIVIL TERCEROS</option>
                             <option value="ENVIO COTIZACION">ENVIO COTIZACION</option>
                             <option value="APROBACION COTIZACION">APROBACION COTIZACION</option>
                             <option value="SOLICITUD INFORMACIÓN TECNICA">SOLICITUD INFORMACIÓN TECNICA</option>
                             <option value="VISITA EJECUCION OBRA CIVIL">VISITA EJECUCION OBRA CIVIL</option>
-                            <option value="VISITA EJECUCION OBRA CIVIL TERCERO">VISITA EJECUCION OBRA CIVIL TERCERO</option>
                             <option value="CONFIGURACION RED CLARO">CONFIGURACION RED CLARO</option>
                             <option value="VISITA ENTREGA UM TERCEROS">VISITA ENTREGA UM TERCEROS</option>
                         </select>
@@ -350,7 +348,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td rowspan="2">
+                                <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
 
@@ -359,12 +357,17 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td>VISITA OBRA CIVIL</td>
-                                <td>
-                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control fechas_hitos">
+                                <td><!--VISITA OBRA CIVIL-->
+                                    <select name="tipo_voc" id="tipo_voc" class="form-control">
+                                        <option value="VISITA OBRA CIVIL" >VISITA OBRA CIVIL</option>
+                                        <option value="VISITA OBRA CIVIL TERCEROS" >VISITA OBRA CIVIL TERCEROS</option>
+                                    </select>
                                 </td>
                                 <td>
-                                    <select name="estado" id="estado_voc" class="form-control">
+                                    <input type="date" name="f_compromiso" id="f_compromiso_voc" class="form-control fechas_hitos fechVoc">
+                                </td>
+                                <td>
+                                    <select name="estado" id="estado_voc" class="form-control estVoc">
                                         <option value="" >SELECCIONE...</option>
                                         <option value="EJECUTADA" >EJECUTADA</option>
                                         <option value="ENVIADA" >ENVIADA</option>
@@ -375,10 +378,10 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <textarea name="observaciones" id="observaciones_voc" rows="2"></textarea>
+                                    <textarea name="observaciones" id="observaciones_voc" rows="2" class="obsVoc"></textarea>
                                 </td>
                             </tr>
-                            <tr>
+<!--                            <tr>
                                 <td>VISITA OBRA CIVIL TERCEROS</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control fechas_hitos">
@@ -397,7 +400,7 @@
                                 <td>
                                     <textarea name="observaciones" id="observaciones_voct" rows="2"></textarea>
                                 </td>
-                            </tr>
+                            </tr>-->
                             <tr>
                                 <td>
                                     <ul class="timeline timeline-jhon">
@@ -486,7 +489,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td rowspan="2">
+                                <td>
                                     <ul class="timeline timeline-jhon">
                                         <li class="timeline-item">
 
@@ -495,7 +498,12 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td>VISITA EJECUCION OBRA CIVIL</td>
+                                <td><!--VISITA EJECUCION OBRA CIVIL-->
+                                    <select name="tipo_veoc" id="tipo_veoc" class="form-control">
+                                        <option value="VISITA EJECUCION OBRA CIVIL" >VISITA EJECUCION OBRA CIVIL</option>
+                                        <option value="VISITA EJECUCION OBRA CIVIL TERCERO" >VISITA EJECUCION OBRA CIVIL TERCERO</option>
+                                    </select>
+                                </td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veoc" class="form-control fechas_hitos">
                                 </td>
@@ -514,7 +522,7 @@
                                     <textarea name="observaciones" id="observaciones_veoc" rows="2"></textarea>
                                 </td>
                             </tr>
-                            <tr>
+<!--                            <tr>
                                 <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control fechas_hitos">
@@ -533,7 +541,7 @@
                                 <td>
                                     <textarea name="observaciones" id="observaciones_veoct" rows="2"></textarea>
                                 </td>
-                            </tr>
+                            </tr>-->
                             <tr>
                                 <td>
                                     <ul class="timeline timeline-jhon">

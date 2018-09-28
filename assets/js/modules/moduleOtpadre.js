@@ -1172,8 +1172,7 @@ $(function () {
 
 
 //            console.log(ids_otp);
-        }
-
+        },
     };
     eventos.init();
 
