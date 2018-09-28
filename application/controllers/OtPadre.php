@@ -9,6 +9,7 @@ class OtPadre extends CI_Controller {
         $this->load->model('data/Dao_user_model');
         $this->load->model('data/Dao_ot_padre_model');
         $this->load->model('data/Dao_ot_hija_model');
+        $this->load->model('data/Dao_email_model');
     }
 
     // carga la vista para como vamos ot padre
@@ -285,11 +286,13 @@ class OtPadre extends CI_Controller {
         $template = '';
         $observaciones = '';
         $asunOtp = ' - ';
-        $this->load->helper('camilo');
+//        $this->load->helper('camilo');
+        
         $ids_otp = $this->input->post('ids_otp');
         $email = Auth::user()->n_mail_user;
 //        $email_cc = ['prfmjhonfredy@gmail.com','jfchaparro33@misena.edu.co','bredi.buitrago@zte.com.cn'];
         foreach ($ids_otp as $idOtp) {
+            
             $asunOtp .= $idOtp . ' - ';
             $hitosotp = $this->Dao_ot_padre_model->getHitosOtp($idOtp);
             $infOtp = $this->Dao_ot_padre_model->getDetailsHitosOTP($idOtp); 
@@ -381,7 +384,7 @@ class OtPadre extends CI_Controller {
             
         }
         
-        $res = h_enviarCorreo($template, $email, 'Reporte de actualización - ' . $infOtp->n_nombre_cliente . substr($asunOtp, 0, -2));
+        $res = $this->Dao_email_model->h_enviarCorreo($template, $email, 'Reporte de actualización - ' . $infOtp->n_nombre_cliente . substr($asunOtp, 0, -2));
 //        print_r($template);
         echo json_encode($res);
     }

@@ -12,6 +12,7 @@ class Templates extends CI_Controller {
         $this->load->model('data/Dao_log_correo_model');
         $this->load->model('data/Dao_hito_model');
         $this->load->model('data/Dao_producto_model');
+        $this->load->model('data/Dao_email_model');
     }
 
     //
@@ -816,7 +817,7 @@ class Templates extends CI_Controller {
         $this->load->helper('camilo');
 
         $asunto = "Notificación de Servicio de la orden " . $pt['nro_ot_onyx'] . "-" . $pt['id_orden_trabajo_hija'];
-        $se_envio = h_enviarCorreo($template, Auth::user()->n_mail_user , $asunto);
+        $se_envio = $this->Dao_email_model->h_enviarCorreo($template, Auth::user()->n_mail_user , $asunto);
 
         return $se_envio['success'];
 
@@ -867,7 +868,7 @@ class Templates extends CI_Controller {
             'fecha_mod'  => $fActual,
         );
 
-        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+         $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
         $msj = 'ok';
         if ($is_ko_3) {
