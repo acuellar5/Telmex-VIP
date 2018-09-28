@@ -604,7 +604,7 @@ $(function () {
             }
             $("#form_cierreKo").html(form);
             $('.max-w_border-n').remove();
-
+            
             $.post(baseurl + '/OtPadre/c_getProductByOtp',
                     {
                         id_otp: data.k_id_ot_padre,
@@ -614,7 +614,6 @@ $(function () {
                         var obj = JSON.parse(data);
                         console.log(obj);
                         $.each(obj,function(i,item){
-                            $('#pr_' + i).val(item);
                             
                             var $el = $('#pr_' + i);
                             $el.replaceWith($('<input />').attr({ 
@@ -626,6 +625,7 @@ $(function () {
                                 readonly: true,
                                 style: 'font-size: 12px;'
                             }));
+                            $('#pr_' + i).val(item);
                         });
 
                         if (flag && obj.ciudad_ori == null) {
@@ -1172,8 +1172,7 @@ $(function () {
 
 
 //            console.log(ids_otp);
-        }
-
+        },
     };
     eventos.init();
 
