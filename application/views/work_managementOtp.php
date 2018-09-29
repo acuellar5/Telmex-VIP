@@ -695,7 +695,7 @@
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
                         <input name="c_email" id="c_email" type="hidden">
-                        <input name="num_servicio" id="num_servicio">
+                        <input name="num_servicio" id="num_servicio" type="hidden">
                         <input name="is_origen" id="is_origen" value="0" type="hidden">
 
                         <fieldset>
@@ -1415,10 +1415,10 @@
                                                         <h2 class="glyphicon glyphicon-resize-horizontal"></h2><br/>Linea Base
                                                     </a>
                                                     <a href="#" class="list-group-item text-center">
-                                                        <h2 class="glyphicon glyphicon-list"></h2><br/>Producto
+                                                        <h2 class="glyphicon glyphicon-list"></h2><br/>Cierre de Kickoff
                                                     </a>
                                                     <a href="#" class="list-group-item text-center">
-                                                        <h2 class="glyphicon glyphicon-folder-open"></h2><br/>Servicio
+                                                        <h2 class="glyphicon glyphicon-folder-open"></h2><br/>Reporte de inicio
                                                     </a>
                                                     <a href="#" class="list-group-item text-center" id="contentAll">
                                                         <h2 class="glyphicon glyphicon-eye-open"></h2><br/>Ver Todo
@@ -1585,7 +1585,7 @@
                                                 </div>
                                                 <!--tab 3 -->
                                                 <div class="bhoechie-tab-content" id="contentTab3">
-                                                    <h2 class="h4"><i class="fa fa-dot-circle-o"></i> Formulario de servicio</h2>
+                                                    <h2 class="h4"><i class="fa fa-dot-circle-o"></i> Reporte de inicio</h2>
                                                     <!-- llenar esta seccion con el form de servicio -->
                                                     <div id="general_servicio"></div>
                                                 </div>
