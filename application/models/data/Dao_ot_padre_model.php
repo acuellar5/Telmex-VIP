@@ -69,7 +69,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -93,7 +93,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo 
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -118,7 +118,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -165,7 +165,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
-                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo
+                otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte
                 FROM ot_hija oth 
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user 
@@ -244,6 +244,7 @@ class Dao_ot_padre_model extends CI_Model {
         }
     }
 
+    // ots q tienen correos enviados
     public function getListOtsOtPadreEmail() {
         $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
@@ -267,6 +268,32 @@ class Dao_ot_padre_model extends CI_Model {
                 ORDER BY cant_mails DESC
         ");
         return $query->result();
+    }
+
+    // trae  todas las ots que tienen que enviar correo de actualizacion
+    public function getOtsPtesPorEnvioActualizacion(){
+        $condicion = " ";
+        if (Auth::user()->n_role_user == 'ingeniero') {
+            $usuario_session = Auth::user()->k_id_user;
+            $condicion = " AND otp.k_id_user = $usuario_session ";
+        }
+        $query = $this->db->query("
+            SELECT 
+            otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
+            otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+            otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
+            CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
+            otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte
+            FROM ot_hija oth 
+            INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
+            INNER JOIN user ON otp.k_id_user = user.k_id_user
+            LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
+            WHERE 
+            DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 7
+            $condicion
+            GROUP BY nro_ot_onyx
+        ");
+        return $query;
     }
 
       // obtiene las otp de una sede (pasarle el id de la sede)

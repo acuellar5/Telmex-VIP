@@ -27,6 +27,24 @@ and open the template in the editor.
     font-size: 15px;
 }
 
+.border_red {
+    color: #ff5050;
+    border: 1px solid !important;
+}
+
+/* color */
+.clr_lime {
+    color: #99ff99;
+}.clr_green {
+    color: green;
+}
+.clr_white{
+    color: #fff;
+}
+.clr_red{
+    color: red;
+}
+
 .f-l{
     float: left;
 }
@@ -383,6 +401,9 @@ a.link-normal:hover{
 }
 .text-lowercase{
     text-transform: lowercase;
+}
+.bg-red{
+    background: red;
 }
 
 .bg-gray{

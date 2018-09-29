@@ -867,7 +867,7 @@ class Templates extends CI_Controller {
             'fecha_mod'  => $fActual,
         );
 
-        // $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
+        $res = $this->Dao_ot_hija_model->m_updateStatusOt($data, $dataLog);
 
         $msj = 'ok';
         if ($is_ko_3) {
@@ -889,7 +889,6 @@ class Templates extends CI_Controller {
               'ultimo_envio_reporte' => date('Y-m-d')
           );
         $this->Dao_ot_padre_model->update_ot_padre($data, $otp);
-            
     }
 
 

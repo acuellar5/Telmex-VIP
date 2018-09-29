@@ -265,6 +265,17 @@ class OtPadre extends CI_Controller {
         $otPadreList = $this->Dao_ot_padre_model->getListOtsOtPadreEmail();
         echo json_encode($otPadreList);
     }
+
+    // TRAE LOS OTP QUE ESTAN PENDIENTES DE ENVIO DE CORREO DE ACTUALIZACION
+    public function c_getOtsPtesPorEnvio(){
+        $otPadreList = $this->Dao_ot_padre_model->getOtsPtesPorEnvioActualizacion();
+        $data = array(
+            'data' => $otPadreList->result(),
+            'cantidad' => $otPadreList->num_rows()
+        );
+        
+        echo json_encode($data);   
+    }
     
     //obtine la informacion de los hitos de una otp
     public function c_getHitosOtp() {
@@ -281,6 +292,7 @@ class OtPadre extends CI_Controller {
         echo json_encode($res);
     }
     
+
     public function c_sendReportUpdate() {
         $template = '';
         $observaciones = '';
@@ -288,8 +300,13 @@ class OtPadre extends CI_Controller {
         $this->load->helper('camilo');
         $ids_otp = $this->input->post('ids_otp');
         $email = Auth::user()->n_mail_user;
-//        $email_cc = ['prfmjhonfredy@gmail.com','jfchaparro33@misena.edu.co','bredi.buitrago@zte.com.cn'];
+
+
+
+
         foreach ($ids_otp as $idOtp) {
+            //actualizar la ultima fecha de envio de reporte de loa ot padre (CAMILO)
+            $this->Dao_ot_padre_model->update_ot_padre(array('ultimo_envio_reporte' => date('Y-m-d')), $idOtp);
             $asunOtp .= $idOtp . ' - ';
             $hitosotp = $this->Dao_ot_padre_model->getHitosOtp($idOtp);
             $infOtp = $this->Dao_ot_padre_model->getDetailsHitosOTP($idOtp); 
