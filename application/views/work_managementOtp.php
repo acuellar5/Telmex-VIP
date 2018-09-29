@@ -25,7 +25,8 @@
             <li class="toggle-vis" data-column="8">Ingeniero<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="9">Lista<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="10">Observaciónes<i class="f-r glyphicon glyphicon-eye-open"></i></li>
-            <li class="toggle-vis inactive" data-column="11">ultimo envio<i class="f-r glyphicon glyphicon-eye-close"></i></li>
+            <li class="toggle-vis inactive" data-column="11">Recurrente<i class="f-r glyphicon glyphicon-eye-close"></i></li>
+            <li class="toggle-vis inactive" data-column="12">ultimo envio<i class="f-r glyphicon glyphicon-eye-close"></i></li>
         </ul>
     </div>
 </div>
@@ -64,6 +65,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -87,6 +89,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -97,6 +100,7 @@
         <table id="table_otPadreListVencidas" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -206,6 +210,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -229,6 +234,7 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -239,6 +245,7 @@
         <table id="table_reporte_actualizacion" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
