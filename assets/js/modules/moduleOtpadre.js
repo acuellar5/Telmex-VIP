@@ -1,5 +1,38 @@
 // *******************************************TABLAS de OT PADRE ***************************
 $(function () {
+    
+    gral = {
+        init: function () {
+            gral.events();
+            
+        },
+
+        //Eventos de la ventana.
+        events: function () {
+        
+        },
+
+        // Retorna cantidad de dias desde el ultimo reporte
+        cant_dias_ultimo_reporte: function(obj){
+            
+            if (obj.ultimo_envio_reporte) {
+                const hoy  = new Date (formato_fecha.getFullYear(), formato_fecha.getMonth(), formato_fecha.getDate());
+
+                const s = obj.ultimo_envio_reporte.split("-");
+                const send = new Date(s[0], s[1] - 1, s[2]); 
+               
+                const diasdif = hoy.getTime()-send.getTime();
+
+                const cantdias = Math.round(diasdif/(1000*60*60*24));
+                console.log("cantdias", cantdias);
+                return cantdias;
+            }
+            return null;
+        },
+    };
+    gral.init();
+
+
     vista = {
         init: function () {
             vista.events();
@@ -34,13 +67,14 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OT Padre", data: "estado_orden_trabajo"},
-                {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observaciónes dejadas", data: vista.getObservacionTotal},
+                {title: "Recurrente", data: "MRC", visible: false},
+                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },
@@ -48,6 +82,7 @@ $(function () {
         configTable: function (data, columns, onDraw) {
             return {
                 initComplete: function () {
+
                     $('#table_otPadreList tfoot th').each(function () {
                         $(this).html('<input type="text" placeholder="Buscar" />');
                     });
@@ -126,7 +161,6 @@ $(function () {
                     }
 
 
-                    // console.log("cadena", cadena);
 
                     return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
                               <span class="tooltiptext">${obj.observacion}</span>
@@ -152,11 +186,11 @@ $(function () {
             if (obj.finalizo != null) {
                 cierreKo = "<a class='btn btn-default btn-xs product-otp btn_datatable_cami' data-btn='cierreKo' title='Ver Detalle Cierre KO'><span class='fa fa-fw fa-info-circle'></span></a>";
             }
-
+            const color = (obj.id_hitos) ? 'clr_lime' : '';
             var botones = "<div class='btn-group-vertical'>"
                     + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='" + title + "'>" + span + "</a>"
                     + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
-                    + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-header'></span></a>"
+                    + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-header "+color+"'></span></a>"
                     + cierreKo
                     + "</div>";
             return botones;
@@ -199,13 +233,14 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OT Padre", data: "estado_orden_trabajo"},
-                {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Recurrente", data: "MRC", visible: false},
+                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -315,13 +350,14 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OT Padre", data: "estado_orden_trabajo"},
-                {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Recurrente", data: "MRC", visible: false},
+                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -442,13 +478,14 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OT Padre", data: "estado_orden_trabajo"},
-                {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Recurrente", data: "MRC", visible: false},
+                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
             ]));
         },
@@ -550,6 +587,44 @@ $(function () {
             $('#table_selected').on('click', 'img.quitar_fila', eventos.quitarFila);
             $('#mdl-enviar-reporte').on('click', eventos.onClickSendReportUpdate);
 
+             // ***********************Inicio del evento del menu sticky******************
+            $('.contenedor_sticky').on('click', function () {
+                $(this).hide();
+                $('.contenedor_menu_sticky').show(300);
+            });
+            $('.btn_cerrar_sticky').on('click', function () {
+                $('.contenedor_menu_sticky').hide(300);
+                $('.contenedor_sticky').show(300);
+            });
+
+            // dar mostrar o ocultar la columna en la sesion work managment por medio del menu stick
+            $('.toggle-vis').click( eventos.showHideTable);
+
+            // Fin del evento del menu sticky
+
+            // ***************************************Fin del evento del menu sticky***************************************
+
+        },
+
+         // dar mostrar o ocultar la columna en la sesion work managment por medio del menu stick segun el id de la tabla
+        showHideTable: function () {
+            let icono = $(this).children('i');
+            if ($(this).hasClass('inactive')) {
+                $(this).removeClass('inactive');
+                icono.removeClass('glyphicon-eye-close');
+                icono.addClass('glyphicon-eye-open');
+            }else {
+                $(this).addClass('inactive');
+                icono.removeClass('glyphicon-eye-open');
+                icono.addClass('glyphicon-eye-close');
+            }
+            const tablas = [vista.table_otPadreList, hoy.table_otPadreListHoy, vencidas.table_otPadreListVencidas, lista.tableOpcList, emails.table_otPadreListEmails];
+            let number_column = $(this).data('column');
+            let columna;
+            for (var i = 0; i < tablas.length; i++) {
+                columna = tablas[i].column( number_column );
+                columna.visible( ! columna.visible() );      
+            }
         },
 
         // funcion para correcion modal sobre modal
@@ -580,6 +655,9 @@ $(function () {
                 case 'table_otPadreListEmails':
                     record = emails.table_otPadreListEmails.row(trParent).data();
                     break;
+                case 'table_reporte_actualizacion':
+                    record = reporte_act.table_reporte_actualizacion.row(trParent).data();
+                    break;
             }
 
             var btn_clas = e.currentTarget;
@@ -595,7 +673,6 @@ $(function () {
                     break;
             }
 
-//            eventos.closeOtp(record);
         },
 
         showDetailsCierreKo: function (data) {
@@ -1001,31 +1078,31 @@ $(function () {
 
             if (vacios == 0) {
                 $.post(baseurl + '/OtPadre/c_saveHitosOtp',
-                        {
-                            idOtp: $('#otpHIto').html(),
-                            formulario: $("#formModalHitosOTP").serializeArray()
-                        },
-                        function (data) {
-                            var obj = JSON.parse(data);
-                            if (obj.response == 'success') {
-                                swal({
-                                    position: 'top-end',
-                                    type: 'success',
-                                    title: obj.msg,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                $('#modalHitosOtp').modal('toggle');
-                                location.reload();
-                            } else {
-                                swal(
-                                        'Error',
-                                        obj.msg,
-                                        'error'
-                                        )
-                            }
+                    {
+                        idOtp: $('#otpHIto').html(),
+                        formulario: $("#formModalHitosOTP").serializeArray()
+                    },
+                    function (data) {
+                        var obj = JSON.parse(data);
+                        if (obj.response == 'success') {
+                            swal({
+                                position: 'top-end',
+                                type: 'success',
+                                title: obj.msg,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            $('#modalHitosOtp').modal('toggle');
+                            location.reload();
+                        } else {
+                            swal(
+                                    'Error',
+                                    obj.msg,
+                                    'error'
+                                    )
+                        }
 
-                        });
+                    });
             } else {
                 swal(
                         'Recuerde!',
@@ -1056,6 +1133,9 @@ $(function () {
                     break;
                 case 'table_otPadreListEmails':
                     record = emails.table_otPadreListEmails;
+                    break;
+                case 'table_reporte_actualizacion':
+                    record = reporte_act.table_reporte_actualizacion;
                     break;
             }
 
@@ -1139,43 +1219,58 @@ $(function () {
             $('#mdl-title-cierre').html(`<b>${cuantas}</b> ORDENES SELECCIONADAS`);
 
         },
+        ya_se_envio: true,
         //Envia el reporte de actualizacion dependiendo de las OTP seleccionadas
         onClickSendReportUpdate: function () {
-            var tableSelected = eventos.table_selected.rows().data();
-            var ids_otp = [];
-            var flag = true;
-            tableSelected.each(function (otp) {
-                ids_otp.push(otp.k_id_ot_padre);
-//                console.log(otp.id_hitos);
-                if (otp.id_hitos === null) {
-                    flag = false;
-                }
-            });
+            if (eventos.ya_se_envio) {
 
-            if (flag) {
-                $.post(baseurl + '/OtPadre/c_sendReportUpdate',
-                        {
-                            ids_otp: ids_otp
-                        },
-                        function (data) {
-                            var obj = JSON.parse(data);
-                            swal(
-                                    (obj.success) ? 'Correo enviado' : 'Error',
-                                    obj.msg,
-                                    (obj.success) ? 'success' : 'error'
-                                    );
-                            $('#mdl_cierre').modal('toggle');
-                        });
-            } else {
-                swal(
-                        'Recuerde!',
-                        'No se puede enviar el email sin haber diligenciado los hitos de los registros marcados en rojo',
-                        'warning'
-                        );
+                var tableSelected = eventos.table_selected.rows().data();
+                var ids_otp = [];
+                var flag = true;
+                tableSelected.each(function (otp) {
+                    ids_otp.push(otp.k_id_ot_padre);
+                    if (otp.id_hitos === null) {
+                        flag = false;
+                    }
+                });
+
+                if (flag) {
+                    $.post(baseurl + '/OtPadre/c_sendReportUpdate',
+                            {
+                                ids_otp: ids_otp
+                            },
+                            function (data) {
+                                
+                                var obj = JSON.parse(data);
+
+                                swal({
+                                      title: (obj.success)? 'OK': 'Error' ,
+                                      html: (obj.success) ? 'Correo enviado' : 'Error',
+                                      type: (obj.success) ? 'success' : 'error',
+                                      // confirmButtonColor: '#3085d6',
+                                      // confirmButtonText: 'OK!',
+                                      allowOutsideClick: false // al darle clic fuera se cierra el alert
+                                    }).then((respuesta) => {
+                                        if (respuesta.value) {
+                                            location.reload()
+                                        } 
+                                    });
+                                $('#mdl_cierre').modal('toggle');
+                            });
+                } else {
+                    swal(
+                            'Recuerde!',
+                            'No se puede enviar el email sin haber diligenciado los hitos de los registros marcados en rojo',
+                            'warning'
+                            );
+                }
+                eventos.ya_se_envio = false;
+                setTimeout(function(){
+                   eventos.ya_se_envio = true; 
+                }, 3000);
+
             }
 
-
-//            console.log(ids_otp);
         },
     };
     eventos.init();
@@ -1215,6 +1310,9 @@ $(function () {
                     break;
                 case 'table_otPadreListEmails':
                     record = emails.table_otPadreListEmails.row(trParent).data();
+                    break;
+                case 'table_reporte_actualizacion':
+                    record = reporte_act.table_reporte_actualizacion.row(trParent).data();
                     break;
             }
 
@@ -1337,13 +1435,14 @@ $(function () {
                 {title: "Tipo", data: "orden_trabajo"},
                 {title: "Servicio", data: "servicio"},
                 {title: "Estado OT Padre", data: "estado_orden_trabajo"},
-                {title: "Recurrente", data: "MRC"},
                 {title: "Fecha Programación", data: "fecha_programacion"},
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
                 {title: "Lista", data: "lista_observaciones"},
                 {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Recurrente", data: "MRC", visible: false},
+                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opc", data: vista.getButtonsOTP},
             ]));
         },
@@ -1417,5 +1516,127 @@ $(function () {
         }
     };
     emails.init();
+
+    //*********************************** lista las ot padres conreporte de actualizacion pendiente para hoy
+    reporte_act = {
+        init: function () {
+            reporte_act.events();
+            reporte_act.getOtsPtesPorEnvio();
+
+        },
+        //Eventos de la ventana.
+        events: function () {
+
+        },
+        getOtsPtesPorEnvio: function () {
+            //metodo ajax (post)
+            $.post(baseurl + '/OtPadre/c_getOtsPtesPorEnvio',
+                    {
+                        //parametros
+
+                    },
+                    // funcion que recibe los datos
+                            function (data) {
+                                // convertir el json a objeto de javascript
+                                var obj = JSON.parse(data);
+                                reporte_act.printTableReporteAtc(obj.data);
+
+                                if (obj.cantidad > 0) {
+                                    $('#badge_cant_report').html(obj.cantidad);
+                                    $('#pestana_cant_report').removeClass('hidden');
+                                    console.log('fdfgsadfsgregsrdgrge4tge5y56h5rehrhe5trh4reg');
+                                }
+                            }
+                    );
+                },
+        printTableReporteAtc: function (data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            reporte_act.table_reporte_actualizacion = $('#table_reporte_actualizacion').DataTable(reporte_act.configTableEmail(data, [
+                {title: "Ot Padre", data: "k_id_ot_padre"},
+                {title: "Nombre Cliente", data: "n_nombre_cliente"},
+                {title: "Tipo", data: "orden_trabajo"},
+                {title: "Servicio", data: "servicio"},
+                {title: "Estado OT Padre", data: "estado_orden_trabajo"},
+                {title: "Fecha Programación", data: "fecha_programacion"},
+                {title: "Fecha Compromiso", data: "fecha_compromiso"},
+                {title: "Fecha Creación", data: "fecha_creacion"},
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "Lista", data: "lista_observaciones", visible: false},
+                {title: "Observaciónes dejadas", data: "observacion", visible: false},
+                {title: "Recurrente", data: "MRC"},
+                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte},
+                {title: "Opc", data: vista.getButtonsOTP},
+            ]));
+        },
+        // Datos de configuracion del datatable
+        configTableEmail: function (data, columns, onDraw) {
+            return {
+                initComplete: function () {
+                    $('#table_reporte_actualizacion tfoot th').each(function () {
+                        $(this).html('<input type="text" placeholder="Buscar" />');
+                    });
+                    var r = $('#table_reporte_actualizacion tfoot tr');
+                    r.find('th').each(function () {
+                        $(this).css('padding', 8);
+                    });
+                    $('#table_reporte_actualizacion thead').append(r);
+                    $('#search_0').css('text-align', 'center');
+
+                    // DataTable
+                    var table = $('#table_reporte_actualizacion').DataTable();
+
+                    // Apply the search
+                    table.columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change', function () {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+                },
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                },
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'excel',
+                        title: 'ZOLID EXCEL',
+                        filename: 'zolid ' + fecha_actual
+                    },
+                    {
+                        text: 'Imprimir <span class="fa fa-print"></span>',
+                        className: 'btn-cami_cool',
+                        extend: 'print',
+                        title: 'Reporte Zolid',
+                    },
+                    {
+                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+                        className: 'btn-cami_cool btn-rpt_act',
+                        action: eventos.otp_seleccionadas,
+                    }
+                ],
+                select: true,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                ordering: true,
+                columnDefs: [{
+                        // targets: -1,
+                        // visible: false,
+                        defaultContent: "",
+                        // targets: -1,
+                        orderable: false,
+                    }],
+                order: [[11, 'desc']],
+                drawCallback: onDraw
+            }
+        }
+    };
+    reporte_act.init();
 
 });
