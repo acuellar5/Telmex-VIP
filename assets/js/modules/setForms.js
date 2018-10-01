@@ -4884,7 +4884,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -4998,7 +4998,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
+						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5034,7 +5034,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -5537,7 +5537,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_lineas_basicas" id="pr_cant_lineas_basicas" class="form-control" type="text" >
+						                <input name="pr_cant_lineas_basicas" id="pr_cant_lineas_basicas" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -7214,7 +7214,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -7230,7 +7230,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_cant_servicios_trasladar" id="pr_cant_servicios_trasladar" class="form-control" type="text" >
+						                <input name="pr_cant_servicios_trasladar" id="pr_cant_servicios_trasladar" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -7312,7 +7312,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
+						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -7344,7 +7344,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -7922,7 +7922,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -7933,7 +7933,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_cant_servicios_trasladar" id="pr_cant_servicios_trasladar" class="form-control" type="text" >
+						                <input name="pr_cant_servicios_trasladar" id="pr_cant_servicios_trasladar" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8015,7 +8015,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
+						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8045,7 +8045,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8405,7 +8405,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-						                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="text" >
+						                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8418,7 +8418,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="text" >
+						                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8457,7 +8457,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-						                <input name="pr_telefono_2" id="pr_telefono_2" class="form-control" type="text" >
+						                <input name="pr_telefono_2" id="pr_telefono_2" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8470,7 +8470,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <input name="pr_celular_2" id="pr_celular_2" class="form-control" type="text" >
+						                <input name="pr_celular_2" id="pr_celular_2" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8494,7 +8494,7 @@ $(function() {
 							        <label for="pr_observaciones" class="col-md-3 control-label">Observaciones:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
-							                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" ></i></span>
 							                <textarea name="pr_observaciones" id="pr_observaciones" class="form-control"></textarea>
 							            </div>
 							        </div>
@@ -8607,7 +8607,7 @@ $(function() {
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
+						                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8663,7 +8663,7 @@ $(function() {
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -8932,7 +8932,7 @@ $(function() {
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-						                <input name="pr_fuentes_telefonos" id="pr_fuentes_telefonos" class="form-control" type="text" >
+						                <input name="pr_fuentes_telefonos" id="pr_fuentes_telefonos" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -9195,7 +9195,7 @@ $(function() {
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-						                <input name="pr_cantidad_extenciones" id="pr_cantidad_extenciones" class="form-control" type="text" >
+						                <input name="pr_cantidad_extenciones" id="pr_cantidad_extenciones" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -9397,7 +9397,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
+						                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>		
@@ -9432,7 +9432,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="text" >
+						                <input name="pr_servicio_actual" id="pr_servicio_actual" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -9923,7 +9923,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cantidad_lineas_basicas" id="pr_cantidad_lineas_basicas" class="form-control" type="text" >
+						                <input name="pr_cantidad_lineas_basicas" id="pr_cantidad_lineas_basicas" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>						    
@@ -9952,7 +9952,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-						                <input name="pr_cant_did_solicitados" id="pr_cant_did_solicitados" class="form-control" type="text" >
+						                <input name="pr_cant_did_solicitados" id="pr_cant_did_solicitados" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>
@@ -9967,7 +9967,7 @@ $(function() {
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-						                <input name="pr_cant_canales" id="pr_cant_canales" class="form-control" type="text" >
+						                <input name="pr_cant_canales" id="pr_cant_canales" class="form-control" type="number" >
 						            </div>
 						        </div>
 						    </div>

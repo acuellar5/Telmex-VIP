@@ -870,7 +870,7 @@ class Templates extends CI_Controller {
 
         $msj = 'ok';
         if ($is_ko_3) {
-            $this->session->set_tempdata('textarea', $textArea, 1200);
+            $this->session->set_tempdata('textarea', $textArea, 120);
             header('Location: ' . URL::base() . '/copy_text');
 
         } else {
