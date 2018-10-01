@@ -4868,7 +4868,7 @@ $(function() {
 
 						    <!-- DIRECCIÓN UBICACIÓN ACTUAL DEL SERVICIO:-->
 						    <div class="form-group">
-						        <label for="pr_ubicacion_actual" class="col-md-3 control-label">Dirección ubicación actual del servicio:</label>
+						        <label for="pr_ubicacion_actual" class="col-md-3 control-label"><a title=" Ubicación actual del servicio">Dirección:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
@@ -5042,7 +5042,7 @@ $(function() {
 						<fieldset class="col-md-6">
 							<!-- ID SERVICIO ACTUAL (Aplica para UM Existente): -->
 							<div class="form-group">
-						        <label for="pr_servicio_actual" class="col-md-3 control-label">ID servicio actual (Aplica para UM Existente):</label>
+						        <label for="pr_servicio_actual" class="col-md-3 control-label"><a title="Aplica para UM Existente">ID servicio actual:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -5055,7 +5055,7 @@ $(function() {
 						<fieldset class="col-md-6">
 							 <!-- REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA SEDE ANTIGUA(PROVEEDOR TERCERO) -->
 						    <div class="form-group">
-						        <label for="pr_liberacion_um" class="col-md-3 control-label">Requiere liberación de recursos ultima milla sede antigua(proveedor tercero):</label>
+						        <label for="pr_liberacion_um" class="col-md-3 control-label"><a title="sede antigua(proveedor tercero)">Requiere liberación recursos ultima milla:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
@@ -5232,7 +5232,7 @@ $(function() {
 						                <select class="form-control" id="pr_programacion_voc" name="pr_programacion_voc">
 										    <option value="">Seleccionar...</option>
 										    <option value="Programada">Programada</option>
-	      									<option value="No requiere programación">No requiere programación</option>   												
+	      									<option value="No requiere programación">No requiere programación</option>
 	      									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
 	      									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
 										</select>
@@ -5244,7 +5244,7 @@ $(function() {
 						<fieldset class="col-md-6">
 						    <!-- REQUIERE LIBERACIÓN DE RECURSOS DE ULTIMA MILLA (FO) EN SEDE ANTIGUA -->
 						     <div class="form-group">
-						        <label for="pr_liberacion_um_fo" class="col-md-3 control-label">Requiere liberación de recursos de ultima milla (FO) sede antigua:</label>
+						        <label for="pr_liberacion_um_fo" class="col-md-3 control-label">Requiere liberación recursos de ultima milla(FO) sede antigua:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
@@ -5359,7 +5359,7 @@ $(function() {
 
 						    <!-- Consumibles:--> 
 						    <div class="form-group">
-						        <label for="pr_consumibles" class=" ">Consumibles:</label>
+						        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
@@ -5729,7 +5729,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -5774,7 +5774,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -5842,17 +5842,17 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Facatativa</legend>
 								<div class="form-group">
-						        <label for="pr_fac_requiere" class="col-md-3 control-label">Requiere:</label>
-							        <div class="col-md-9 selectContainer">
-							            <div class="input-group">
-							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-							                <select class="form-control" id="pr_fac_requiere" name="pr_fac_requiere">
-											    <option value="">Seleccionar...</option>
-		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-											    <option value="No">No</option>
-											</select>
-							            </div>
-							        </div>
+							        <label for="pr_fac_requiere" class="col-md-3 control-label">Requiere:</label>
+								        <div class="col-md-9 selectContainer">
+								            <div class="input-group">
+								                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+								                <select class="form-control" id="pr_fac_requiere" name="pr_fac_requiere">
+												    <option value="">Seleccionar...</option>
+			      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
+												    <option value="No">No</option>
+												</select>
+								            </div>
+								        </div>
 							    </div>
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
@@ -5889,17 +5889,17 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 								<legend class="f-s-15">Girardot</legend>
 								<div class="form-group">
-						        <label for="pr_gir_requiere" class="col-md-3 control-label">Requiere:</label>
-						        <div class="col-md-9 selectContainer">
-						            <div class="input-group">
-						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-						                <select class="form-control" id="pr_gir_requiere" name="pr_gir_requiere">
-										    <option value="">Seleccionar...</option>
-	      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
-										    <option value="No">No</option>
-										</select>
-						            </div>
-						        </div>
+							        <label for="pr_gir_requiere" class="col-md-3 control-label">Requiere:</label>
+							        <div class="col-md-9 selectContainer">
+							            <div class="input-group">
+							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+							                <select class="form-control" id="pr_gir_requiere" name="pr_gir_requiere">
+											    <option value="">Seleccionar...</option>
+		      									<option value="SI (Debe esta firmado por el Cliente en el Survey o AOS)">SI (Debe esta firmado por el Cliente en el Survey o AOS)</option>
+											    <option value="No">No</option>
+											</select>
+							            </div>
+							        </div>
 						    </div>
 
 						    <!-- NUMERACIÓN ASIGNADA EN TAB -->
@@ -5913,7 +5913,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -5958,7 +5958,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6005,7 +6005,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6050,7 +6050,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6097,7 +6097,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6142,7 +6142,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6189,7 +6189,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6234,7 +6234,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6281,7 +6281,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6326,7 +6326,7 @@ $(function() {
 												<option value="SI">SI</option>
 												<option value="NO - Escalar a Soporte Comercial">NO - Escalar a Soporte Comercial</option>
 												<option value="No Requiere">No Requiere</option>
-										/select>
+										</select>
 						            </div>
 						        </div>
 						    </div>
@@ -6542,8 +6542,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Pereira: -->
-							    <legend class="f-s-15"> Pereira: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Pereira </legend>
+							    <div class="form-group">
 							        <label for="pr_per_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6559,7 +6559,7 @@ $(function() {
 
 							    <!-- NUMERACIÓN ASIGNADA EN TAB -->
 							    <div class="form-group">
-							        <label for="pr_per_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
+							        <label for="pr_vall_numeracion" class="col-md-3 control-label">Numeración asignada en TAB :</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
 							                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
@@ -6589,8 +6589,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Armenia: -->
-							    <legend class="f-s-15"> Armenia: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Armenia </legend>
+							   <div class="form-group">
 							        <label for="pr_arme_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6638,8 +6638,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Manizalez: -->
-							    <legend class="f-s-15"> Manizalez: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Manizales </legend>
+							    <div class="form-group">
 							        <label for="pr_man_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6685,8 +6685,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Ibaué: -->
-							    <legend class="f-s-15"> Ibaué: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Ibagué </legend>
+							    <div class="form-group">
 							        <label for="pr_iba_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6734,8 +6734,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Cucutá: -->
-							    <legend class="f-s-15"> Cucutá: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Cucutá </legend>
+							    <div class="form-group">
 							        <label for="pr_cuc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6781,8 +6781,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Bucaramanga: -->
-							    <legend class="f-s-15"> Bucaramanga: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Bucaramanga </legend>
+							    <div class="form-group">
 							        <label for="pr_buc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6830,8 +6830,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Duitama : -->
-							    <legend class="f-s-15"> Duitama : </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Duitama </legend>
+							    <div class="form-group">
 							        <label for="pr_dui_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6877,8 +6877,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Sogamoso: -->
-							    <legend class="f-s-15"> Sogamoso: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Sogamoso </legend>
+							    <div class="form-group">
 							        <label for="pr_sog_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6926,8 +6926,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Flandes: -->
-							    <legend class="f-s-15"> Flandes: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Flandes </legend>
+							    <div class="form-group">
 							        <label for="pr_flan_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -6973,8 +6973,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Rivera: -->
-							    <legend class="f-s-15"> Rivera: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Rivera </legend>
+							    <div class="form-group">
 							        <label for="pr_riv_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -7023,7 +7023,7 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Aipe -->
 							    <legend class="f-s-15"> Aipe </legend>
-							    <div class:="form-group">
+							    <div class="form-group">
 							        <label for="pr_aipe_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -7069,8 +7069,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Lebrija: -->
-							    <legend class="f-s-15"> Lebrija: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Lebrija </legend>
+							    <div class="form-group">
 							        <label for="pr_leb_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -8671,7 +8671,7 @@ $(function() {
 
 							<!-- ID SERVICIO ACTUAL -->
 							<div class="form-group">
-						        <label for="pr_servicio_actual" class="col-md-3 control-label">ID servicio actual (Aplica para UM Existente):</label>
+						        <label for="pr_servicio_actual" class="col-md-3 control-label"><a title="Aplica para UM Existente">ID servicio actual:</a></label>
 						        <div class="ol-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -8821,7 +8821,7 @@ $(function() {
 						                <select class="form-control" id="pr_requiere_rfc" name="pr_requiere_rfc">
 										    <option value="">Seleccionar...</option>
 										    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
-	      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  							
+	      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option> 
 	      									<option value="SI => Cliente Critico">SI => Cliente Critico</option>
 	      									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
 	      									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
@@ -8948,11 +8948,8 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
-						</fieldset>
 
-						<fieldset class="col-md-6">
-
-							<!-- Diademas:--> 
+						    <!-- Diademas:--> 
 						    <div class="form-group">
 						        <label for="pr_diademas" class="col-md-3 control-label">Diademas:</label>
 						        <div class="ol-md-9 selectContainer">
@@ -8962,6 +8959,9 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
+						</fieldset>
+
+						<fieldset class="col-md-6">
 
 						    <!-- Arañas de Conferencia:--> 
 						    <div class="form-group">
@@ -8973,13 +8973,8 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
-						</fieldset>
-					</div>
 
-					<div class="d-inline-b">
-						<fieldset class="col-md-6">
-
-							<!-- Botoneras:--> 
+						    <!-- Botoneras:--> 
 						    <div class="form-group">
 						        <label for="pr_botoneras" class="col-md-3 control-label">Botoneras:</label>
 						        <div class="ol-md-9 selectContainer">
@@ -8989,6 +8984,12 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
+						</fieldset>
+					</div>
+
+					<div class="d-inline-b">
+						<fieldset class="col-md-6">
+						
 
 						    <!-- Modulo Expansión Botonera:--> 
 						    <div class="form-group">
@@ -9000,11 +9001,8 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
-						</fieldset>
 
-						<fieldset class="col-md-6">
-
-							<!-- Fuente Botonera: -->
+						    <!-- Fuente Botonera: -->
 						    <div class="form-group">
 						        <label for="pr_fuente_botonera" class="col-md-3 control-label">Fuente Botonera:</label>
 						        <div class="ol-md-9 selectContainer">
@@ -9014,7 +9012,11 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
+						</fieldset>
 
+						<fieldset class="col-md-6">
+
+							
 						    <!-- Consumibles:--> 
 						    <div class="form-group">
 						        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
@@ -9032,13 +9034,8 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
-						</fieldset>
-					</div>
 
-					<div class="d-inline-b">
-						<fieldset class="col-md-6">
-
-							<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
+						    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
 							<div class="form-group">
 						        <label for="pr_carta_valorizada" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
 						        <div class="ol-md-9 selectContainer">
@@ -9052,7 +9049,6 @@ $(function() {
 						            </div>
 						        </div>
 						    </div>
-
 						</fieldset>
 					</div>
 
@@ -9440,7 +9436,7 @@ $(function() {
 
 							<!-- ID SERVICIO ACTUAL (Aplica para UM Existente) -->
 							<div class="form-group">
-						        <label for="pr_servicio_actual" class="col-md-3 control-label">ID servicio Actual(Aplica para UM Existente):</label>
+						        <label for="pr_servicio_actual" class="col-md-3 control-label"><a title="Aplica para UM Existente">ID servicio Actual:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
@@ -9879,7 +9875,7 @@ $(function() {
 
 							<!-- Activación de PLAN LD CON COSTO (0 $): -->
 						    <div class="form-group">
-						        <label for="pr_activacion_plan" class="col-md-3 control-label">Activación plan LD con costo(0 $):</label>
+						        <label for="pr_activacion_plan" class="col-md-3 control-label"><a title="(0 $)">Activación plan LD con costo:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
@@ -9931,7 +9927,7 @@ $(function() {
 
 						    <!-- Cantidad Lineas Básicas (Solo Telefonia Pública Líneas Análogas):  --> 
 						    <div class="form-group">
-						        <label for="pr_cantidad_lineas_basicas" class="col-md-3 control-label">Cantidad Lineas Básicas(Telef. Pública Líneas Análogas):</label>
+						        <label for="pr_cantidad_lineas_basicas" class="col-md-3 control-label"><a title="Telef. Pública Líneas Análogas">Cantidad Lineas Básicas:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -9948,7 +9944,7 @@ $(function() {
 
 							<!-- Conformación PBX (Solo Telefonia Pública Líneas Análogas)  --> 
 						    <div class="form-group">
-						        <label for="pr_conformacion_pbx" class="col-md-3 control-label">Confirmación PBX(Telef. Pública Líneas Análogas):</label>
+						        <label for="pr_conformacion_pbx" class="col-md-3 control-label"><a title="Telef. Pública Líneas Análogas">Confirmación PBX:</a></label>
 						        <div class="col-md-9 selectContainer">
 						            <div class="input-group">
 						                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
@@ -11051,8 +11047,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Manizalez: -->
-							    <legend class="f-s-15"> Manizalez: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Manizales </legend>
+							    <div class="form-group">
 							        <label for="pr_man_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11098,8 +11094,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Ibaué: -->
-							    <legend class="f-s-15"> Ibaué: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Ibagué </legend>
+							    <div class="form-group">
 							        <label for="pr_iba_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11147,8 +11143,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Cucutá: -->
-							    <legend class="f-s-15"> Cucutá: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Cucutá </legend>
+							    <div class="form-group">
 							        <label for="pr_cuc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11194,8 +11190,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Bucaramanga: -->
-							    <legend class="f-s-15"> Bucaramanga: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Bucaramanga </legend>
+							    <div class="form-group">
 							        <label for="pr_buc_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11243,8 +11239,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Duitama : -->
-							    <legend class="f-s-15"> Duitama : </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Duitama </legend>
+							    <div class="form-group">
 							        <label for="pr_dui_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11290,8 +11286,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Sogamoso: -->
-							    <legend class="f-s-15"> Sogamoso: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Sogamoso </legend>
+							    <div class="form-group">
 							        <label for="pr_sog_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11339,8 +11335,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Flandes: -->
-							    <legend class="f-s-15"> Flandes: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Flandes </legend>
+							    <div class="form-group">
 							        <label for="pr_flan_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11386,8 +11382,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Rivera: -->
-							    <legend class="f-s-15"> Rivera: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Rivera </legend>
+							    <div class="form-group">
 							        <label for="pr_riv_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11436,7 +11432,7 @@ $(function() {
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Aipe -->
 							    <legend class="f-s-15"> Aipe </legend>
-							    <div class:="form-group">
+							    <div class="form-group">
 							        <label for="pr_aipe_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
@@ -11482,8 +11478,8 @@ $(function() {
 						<fieldset class="col-md-6">
 							<div class="widget bg_white m-t-25 d-inline-b cliente">
 							    <!-- Lebrija: -->
-							    <legend class="f-s-15"> Lebrija: </legend>
-							    <div class:="form-group">
+							    <legend class="f-s-15"> Lebrija </legend>
+							    <div class="form-group">
 							        <label for="pr_leb_requiere" class="col-md-3 control-label">Requiere:</label>
 							        <div class="col-md-9 selectContainer">
 							            <div class="input-group">
