@@ -15551,7 +15551,7 @@ class Templates extends CI_Controller {
           <td width="120" style="width: 1.25in; padding: 0in; height: 92.25pt;">
           <p class="MsoNormal" style="margin: 0in 0in 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;"><span id="gmail-Imagen_x0020_37" type="#_x0000_t75" alt="Descripción: https://webmail.telmexla.com.co/resources/images/logo.png" href="http://www.claro.com.co/" style="margin-left: 0px; margin-top: 0px; width: 1in; height: 1in; z-index: 251659264; visibility: visible;">
 
-
+            <img src="' . URL::base() . '/assets/img/claro.png">
            <span type="square">
           </span></span><span lang="ES-CO"></span></p>
           </td>
@@ -16032,8 +16032,7 @@ class Templates extends CI_Controller {
          <tbody><tr style="height:92.25pt">
           <td width="120" style="width:1.25in;padding:0in;height:92.25pt">
           <p class="MsoNormal" style="margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span id="m_4201575670114597249gmail-Imagen_x0020_43" type="#_x0000_t75" alt="Descripción: https://webmail.telmexla.com.co/resources/images/logo.png" href="http://www.claro.com.co/" style="margin-left:0px;margin-top:0px;width:1in;height:1in">
-
-
+           <img src="' . URL::base() . '/assets/img/claro.png">
            <span type="square">
           </span></span><span lang="ES-CO"></span></p>
           </td>
