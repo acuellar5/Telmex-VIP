@@ -1237,7 +1237,11 @@ $(function () {
                 if (flag) {
                     $.post(baseurl + '/OtPadre/c_sendReportUpdate',
                             {
-                                ids_otp: ids_otp
+                                ids_otp: ids_otp,
+                                senior: $('#seniorHitos').val(),
+                                configuracion: $('#configuracionHitos').val(),
+                                entregaServicio: $('#entregaServicioHitos').val(),
+                                observaciones: $('#observacionesHitos').val()
                             },
                             function (data) {
                                 
