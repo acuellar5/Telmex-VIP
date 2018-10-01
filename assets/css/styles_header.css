@@ -999,3 +999,11 @@ margin-left: -53%;
     max-width: 23%;
     border: none !important;
 }
+.cod_antigu {
+    background: #db8181bd;
+    color:black;
+}
+.cod_nuev{
+    background: #add8e6;
+    color:black;
+}
