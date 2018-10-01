@@ -13,7 +13,7 @@
         <i class="glyphicon glyphicon-chevron-left"></i> Cerrar
     </div>
     <div class="menu-fixed">
-         <ul>                
+        <ul>                
             <li class="toggle-vis" data-column="0">OTP<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="1">Cliente<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="2">Tipo<i class="f-r glyphicon glyphicon-eye-open"></i></li>
@@ -1706,6 +1706,33 @@
             </div>
             <div class="modal-body">
                 <table id="table_selected" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="seniorHitos" class="col-sm-2 control-label">Señor(a)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="seniorHitos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="configuracionHitos" class="col-sm-2 control-label">Configuración</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="configuracionHitos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="entregaServicioHitos" class="col-sm-2 control-label">Entrega del servicio</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="entregaServicioHitos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacionesHitos" class="col-sm-2 control-label">Observaciones</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" id="observacionesHitos"></textarea>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
@@ -1720,18 +1747,18 @@
     <div class="modal-dialog modal-lg2" style="width: 1200px;">
         <div class="modal-content">
             <!--<div class="row">-->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
-                    <h3 class="modal-title" id="mdl-title-cierre"></h3>
-                </div>
-                <div class="modal-body">
-                    <div id="form_cierreKo" class="container autoheight">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="mdl-title-cierre"></h3>
+            </div>
+            <div class="modal-body">
+                <div id="form_cierreKo" class="container autoheight">
 
-                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+            </div>
             <!--</div>-->
         </div>
     </div>
@@ -1757,5 +1784,5 @@ if ($msj == 'error') {
     </script>
 <?php } else if ($msj == 'ok') { ?>
     <script> swal('OK', 'se actualizó correctamente', 'success');</script>
-<?php
+    <?php
 }
