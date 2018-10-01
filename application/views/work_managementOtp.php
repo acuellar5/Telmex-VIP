@@ -1,3 +1,39 @@
+<link rel="stylesheet" type="text/css" href="<?= URL::to('assets/css/MenuStickyLeft.css') ?>">
+<!------------------------------- menu sticky para las columnas ------------------------------->
+<div class="contenedor_sticky">
+    <div id="btn_sticky_open" class="rotar" >
+        <div class="rotar">
+            <i class="glyphicon glyphicon-chevron-up">columnas</i>
+        </div>
+    </div>
+</div>
+
+<div class="contenedor_menu_sticky" style="display: none">
+    <div class="btn_cerrar_sticky" align="center">
+        <i class="glyphicon glyphicon-chevron-left"></i> Cerrar
+    </div>
+    <div class="menu-fixed">
+         <ul>                
+            <li class="toggle-vis" data-column="0">OTP<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="1">Cliente<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="2">Tipo<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="3">Servicio<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="4">Estado OTP<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="5">F Programa<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="6">F Compromiso<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="7">f Creación<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="8">Ingeniero<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="9">Lista<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis" data-column="10">Observaciónes<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis inactive" data-column="11">Recurrente<i class="f-r glyphicon glyphicon-eye-close"></i></li>
+            <li class="toggle-vis inactive" data-column="12">ultimo envio<i class="f-r glyphicon glyphicon-eye-close"></i></li>
+        </ul>
+    </div>
+</div>
+
+<!-- fin menu sticky de columnas -->
+
+
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs" id="pestania">
     <li tabla="table_otPadreList" class="active"><a data-toggle="tab" href="#total">Total</a></li>
@@ -5,6 +41,7 @@
     <li tabla="table_otPadreListVencidas" class=""><a data-toggle="tab" href="#vencidas">Vencida</a></li>
     <li tabla="table_list_opc" class=""><a data-toggle="tab" href="#por_lista">Por Lista</a></li>
     <li tabla="table_otPadreListEmails" class=""><a data-toggle="tab" href="#lista_email">Cant emails</a></li>
+    <li tabla="table_reporte_actualizacion" class=""><a class="clr_red hidden" data-toggle="tab" href="#reporte_actualizacion" id="pestana_cant_report"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Enviar Reporte <span class="badge border_red bg-white" id="badge_cant_report"></span></a></li>
 </ul>
 
 <!--*********************  CONTENIDO PESTAÑAS  *********************-->
@@ -15,6 +52,8 @@
         <table id="table_otPadreList" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -49,6 +88,8 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -59,6 +100,8 @@
         <table id="table_otPadreListVencidas" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -166,6 +209,8 @@
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -176,6 +221,32 @@
         <table id="table_otPadreListEmails" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div id="reporte_actualizacion" class="tab-pane fade">
+        <h3>Reportes de Actualización para hoy</h3>
+        <table id="table_reporte_actualizacion" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -381,7 +452,7 @@
                                     <textarea name="observaciones" id="observaciones_voc" rows="2" class="obsVoc"></textarea>
                                 </td>
                             </tr>
-<!--                            <tr>
+                    <!--    <tr>
                                 <td>VISITA OBRA CIVIL TERCEROS</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_voct" class="form-control fechas_hitos">
@@ -522,7 +593,7 @@
                                     <textarea name="observaciones" id="observaciones_veoc" rows="2"></textarea>
                                 </td>
                             </tr>
-<!--                            <tr>
+                    <!--   <tr>
                                 <td>VISITA EJECUCION OBRA CIVIL TERCERO</td>
                                 <td>
                                     <input type="date" name="f_compromiso" id="f_compromiso_veoct" class="form-control fechas_hitos">
@@ -631,7 +702,7 @@
                         <input name="estado_orden_trabajo_hija" id="estado_orden_trabajo_hija" type="hidden">
                         <input name="k_id_estado_ot_value" id="k_id_estado_ot_value" type="hidden">
                         <input name="c_email" id="c_email" type="hidden">
-                        <input name="num_servicio" id="num_servicio">
+                        <input name="num_servicio" id="num_servicio" type="hidden">
                         <input name="is_origen" id="is_origen" value="0" type="hidden">
 
                         <fieldset>
@@ -1351,10 +1422,10 @@
                                                         <h2 class="glyphicon glyphicon-resize-horizontal"></h2><br/>Linea Base
                                                     </a>
                                                     <a href="#" class="list-group-item text-center">
-                                                        <h2 class="glyphicon glyphicon-list"></h2><br/>Producto
+                                                        <h2 class="glyphicon glyphicon-list"></h2><br/>Cierre de Kickoff
                                                     </a>
                                                     <a href="#" class="list-group-item text-center">
-                                                        <h2 class="glyphicon glyphicon-folder-open"></h2><br/>Servicio
+                                                        <h2 class="glyphicon glyphicon-folder-open"></h2><br/>Reporte de inicio
                                                     </a>
                                                     <a href="#" class="list-group-item text-center" id="contentAll">
                                                         <h2 class="glyphicon glyphicon-eye-open"></h2><br/>Ver Todo
@@ -1521,7 +1592,7 @@
                                                 </div>
                                                 <!--tab 3 -->
                                                 <div class="bhoechie-tab-content" id="contentTab3">
-                                                    <h2 class="h4"><i class="fa fa-dot-circle-o"></i> Formulario de servicio</h2>
+                                                    <h2 class="h4"><i class="fa fa-dot-circle-o"></i> Reporte de inicio</h2>
                                                     <!-- llenar esta seccion con el form de servicio -->
                                                     <div id="general_servicio"></div>
                                                 </div>

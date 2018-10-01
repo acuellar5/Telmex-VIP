@@ -340,7 +340,7 @@ if (!function_exists('validarEnProduccion')) {
         $CI = & get_instance();
         $CI->load->database();
         if ($CI->db->hostname == 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com') {
-            $version = '1.1';
+            $version = '2.1';
         } else {
             $version = time();
         }
@@ -385,12 +385,14 @@ if (!function_exists('h_enviarCorreo')) {
         if ($CI->email->send()) {
             $return['success'] = true;
             $return['msg'] = 'El correo fue enviado correctamente.';
+            return $return;
         } else {
             $return['success'] = false;
             $return['msg'] = 'Hubo un error al momento de enviar el correo, por favor inténtelo nuevamente.';
+            show_error($CI->email->print_debugger());
         }
         
-        return $return;
+        
     }
 
 }
