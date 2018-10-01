@@ -2743,7 +2743,7 @@ $(function() {
         },
 
         /*INTERNET*/
-        formProduct_internet: function(otp) {
+        formProduct_internet: function(otp) { 
             return `
 				<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>SERVICIO DE INTERNET</small></h2>
 				<div class="widget bg_white m-t-25 d-inline-b cliente">
