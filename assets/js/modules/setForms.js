@@ -885,7 +885,7 @@ $(function() {
 					        </div>
 					    </fieldset>
 					    <!--  fin seccion izquierda form---->`;
-					if (num_service < 10) {				
+					if (num_service <= 10) {				
 					
 					   cadena += `
 					   <!--  inicio seccion derecha form---->
