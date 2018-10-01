@@ -361,7 +361,7 @@ if (!function_exists('h_enviarCorreo')) {
         $CI->load->library('parser');
 
         $config = Array(
-            // 'smtp_crypto' => 'ssl', //protocolo de encriptado
+            //'smtp_crypto' => 'ssl', //protocolo de encriptado
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
@@ -400,3 +400,4 @@ if (!function_exists('h_enviarCorreo')) {
 
 
 
+ 
