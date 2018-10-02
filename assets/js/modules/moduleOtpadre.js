@@ -17,14 +17,10 @@ $(function () {
             
             if (obj.ultimo_envio_reporte) {
                 const hoy  = new Date (formato_fecha.getFullYear(), formato_fecha.getMonth(), formato_fecha.getDate());
-
                 const s = obj.ultimo_envio_reporte.split("-");
                 const send = new Date(s[0], s[1] - 1, s[2]); 
-               
                 const diasdif = hoy.getTime()-send.getTime();
-
                 const cantdias = Math.round(diasdif/(1000*60*60*24));
-                console.log("cantdias", cantdias);
                 return cantdias;
             }
             return null;
@@ -693,7 +689,6 @@ $(function () {
                     },
                     function (data) {
                         var obj = JSON.parse(data);
-                        console.log(obj);
                         $.each(obj,function(i,item){
                             
                             var $el = $('#pr_' + i);
@@ -1030,7 +1025,7 @@ $(function () {
                 {data: "clase"},
                 {data: "servicio"},
                 {data: "usuario_en_sesion"},
-                {data: "destinatarios"},
+                // {data: "destinatarios"},
                 {data: "nombre"},
                 {data: eventos.getButonsPrint}
             ]));
@@ -1645,7 +1640,6 @@ $(function () {
                                 if (obj.cantidad > 0) {
                                     $('#badge_cant_report').html(obj.cantidad);
                                     $('#pestana_cant_report').removeClass('hidden');
-                                    console.log('fdfgsadfsgregsrdgrge4tge5y56h5rehrhe5trh4reg');
                                 }
                             }
                     );
