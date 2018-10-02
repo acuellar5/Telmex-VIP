@@ -340,7 +340,7 @@ if (!function_exists('validarEnProduccion')) {
         $CI = & get_instance();
         $CI->load->database();
         if ($CI->db->hostname == 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com') {
-            $version = '2.1';
+            $version = '4.1';
         } else {
             $version = time();
         }
@@ -361,7 +361,7 @@ if (!function_exists('h_enviarCorreo')) {
         $CI->load->library('parser');
 
         $config = Array(
-            // 'smtp_crypto' => 'ssl', //protocolo de encriptado
+            //'smtp_crypto' => 'ssl', //protocolo de encriptado
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
@@ -400,3 +400,4 @@ if (!function_exists('h_enviarCorreo')) {
 
 
 
+ 

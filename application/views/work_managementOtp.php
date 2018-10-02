@@ -13,7 +13,7 @@
         <i class="glyphicon glyphicon-chevron-left"></i> Cerrar
     </div>
     <div class="menu-fixed">
-         <ul>                
+        <ul>                
             <li class="toggle-vis" data-column="0">OTP<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="1">Cliente<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="2">Tipo<i class="f-r glyphicon glyphicon-eye-open"></i></li>
@@ -123,75 +123,152 @@
 
         <div align="center">
             <select class='btn-cami_cool' name='opc_lista' id="select_filter">
-                <option value='EN PROCESOS CIERRE KO'>EN PROCESOS CIERRE KO</option>
-                <option value='ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>
-                <option value='ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO'>ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO</option>
-                <option value='ASIGNADO LIDER TECNICO'>ASIGNADO LIDER TECNICO</option>
-                <option value='CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)'>CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)</option>
-                <option value='CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA'>CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA</option>
-                <option value='CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL'>CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL</option>
-                <option value='CLIENTE - NO PERMITE CIERRE DE KO'>CLIENTE - NO PERMITE CIERRE DE KO</option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO</option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA</option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO</option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC</option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO '>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO </option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES</option>
-                <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC</option>
-                <option value='CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO'>CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO</option>
-                <option value='CLIENTE - PROGRAMADA_POSTERIOR '>CLIENTE - PROGRAMADA_POSTERIOR </option>
-                <option value='CLIENTE - SIN CONTRATO FIRMADO'>CLIENTE - SIN CONTRATO FIRMADO</option>
-                <option value='CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )'>CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )</option>
-                <option value='CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)'>CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)</option>
-                <option value='CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO'>CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO</option>
-                <option value='COEX - EN PROCESO DE CONFIGURACIÓN BACKEND'>COEX - EN PROCESO DE CONFIGURACIÓN BACKEND</option>
-                <option value='COEX -ATRASO CONFIGURACIÓN BACKEND'>COEX -ATRASO CONFIGURACIÓN BACKEND</option>
-                <option value='COMERCIAL - ESCALADO ORDEN DE REEMPLAZO'>COMERCIAL - ESCALADO ORDEN DE REEMPLAZO</option>
-                <option value='COMERCIAL - ESCALADO PENDIENTE INGRESO OTS'>COMERCIAL - ESCALADO PENDIENTE INGRESO OTS</option>
-                <option value='CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN'>CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN</option>
-                <option value='CSM - Retiro equipos - Renovación de Contrato'>CSM - Retiro equipos - Renovación de Contrato</option>
-                <option value='DATACENTER  CLARO- CABLEADO SIN EJECUTAR'>DATACENTER  CLARO- CABLEADO SIN EJECUTAR</option>
-                <option value='DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER'>DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER</option>
-                <option value='DATACENTER CLARO- CABLEADO EN CURSO'>DATACENTER CLARO- CABLEADO EN CURSO</option>
-                <option value='ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE'>ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE</option>
-                <option value='ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS'>ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS</option>
-                <option value='ENTREGA Y/O SOPORTE PROGRAMADO'>ENTREGA Y/O SOPORTE PROGRAMADO</option>
-                <option value='EQUIPOS - DEFECTUOSOS'>EQUIPOS - DEFECTUOSOS</option>
-                <option value='EQUIPOS - EN COMPRAS'>EQUIPOS - EN COMPRAS</option>
-                <option value='ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE'>ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE</option>
-                <option value='ESTADO CANCELADO'>ESTADO CANCELADO</option>
-                <option value='ESTADO PENDIENTE CLIENTE'>ESTADO PENDIENTE CLIENTE</option>
-                <option value='GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO'>GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO</option>
-                <option value='GPC - EN PROCESO DE CANCELACIÓN'>GPC - EN PROCESO DE CANCELACIÓN</option>
-                <option value='GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE'>GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE</option>
-                <option value='GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR'>GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR</option>
-                <option value='GPC - SIN ALCANCE PARA FABRICA'>GPC - SIN ALCANCE PARA FABRICA</option>
-                <option value='IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR'>IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR</option>
-                <option value='INCONVENIENTE TECNICO'>INCONVENIENTE TECNICO</option>
-                <option value='LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO'>LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO</option>
-                <option value='LIDER TECNICO - PENDIENTE PLAN TECNICO'>LIDER TECNICO - PENDIENTE PLAN TECNICO</option>
-                <option value='LIDER TECNICO - SOLUCIÓN NO ESTANDAR'>LIDER TECNICO - SOLUCIÓN NO ESTANDAR</option>
-                <option value='LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN'>LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN</option>
-                <option value='PASO A PENDIENTE CLIENTE'>PASO A PENDIENTE CLIENTE</option>
-                <option value='PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>
-                <option value='PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO'>PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO</option>
-                <option value='PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC'>PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC</option>
-                <option value='PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD'>PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD</option>
-                <option value='PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE'>PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE</option>
-                <option value='PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL'>PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL</option>
-                <option value='PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES'>PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES</option>
-                <option value='PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>
-                <option value='PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS'>PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS</option>
-                <option value='PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC'>PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC</option>
-                <option value='PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA'>PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA</option>
-                <option value='PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS'>PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS</option>
-                <option value='PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR'>PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR</option>
-                <option value='PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS'>PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS</option>
-                <option value='PROYECTO ÉXITO ANTIGUO'>PROYECTO ÉXITO ANTIGUO</option>
-                <option value='TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO'>TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO</option>
-                <option value='TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>
-                <option value='TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN'>TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN</option>
-                <option value='TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA'>TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA</option>
+                <optgroup class="cod_nuev" label="CODIGOS NUEVOS">
+                    <option value="CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO">CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO</option>
+                    <option value="CLIENTE/SIN FECHA ADECUACIONES EN SEDE (ELEC/FIS)">CLIENTE/SIN FECHA ADECUACIONES EN SEDE (ELEC/FIS)</option>
+                    <option value="CLIENTE/SIN DISPONIBILIDAD INFRA (PTA TELEF/LAN)">CLIENTE/SIN DISPONIBILIDAD INFRA (PTA TELEF/LAN)</option>
+                    <option value="CLIENTE/CAMBIO DE ALCANCE (CBIO  TIPO SERVICIO)">CLIENTE/CAMBIO DE ALCANCE (CBIO  TIPO SERVICIO)</option>
+                    <option value="CLIENTE/CAMBIO DE UBICACIÓN DE ULTIMA MILLA">CLIENTE/CAMBIO DE UBICACIÓN DE ULTIMA MILLA</option>
+                    <option value="CLIENTE/NO APRUEBA COSTOS DE OBRA CIVIL">CLIENTE/NO APRUEBA COSTOS DE OBRA CIVIL</option>
+                    <option value="CLIENTE/NO PERMITE CIERRE DE KO">CLIENTE/NO PERMITE CIERRE DE KO</option>
+                    <option value="CLIENTE/SIN DEFINICIÓN DIR DE UBICACIÓN SERVICIO">CLIENTE/SIN DEFINICIÓN DIR DE UBICACIÓN SERVICIO</option>
+                    <option value="CLIENTE/NO PERMITE PROG ACT ETAPA INICIAL VOC">CLIENTE/NO PERMITE PROG ACT ETAPA INICIAL VOC</option>
+                    <option value="CLIENTE/NO PERMITE PROG ACT ETAPA INTERMEDIA EOC">CLIENTE/NO PERMITE PROG ACT ETAPA INTERMEDIA EOC</option>
+                    <option value = "CLIENTE/NO PERMITE PROG ACT ETAPA INTERMEDIA EMP">CLIENTE/NO PERMITE PROG ACT ETAPA INTERMEDIA EMP</option>
+                    <option value = "CLIENTE/NO PERMITE PROG ACT  VOC TERCERO">CLIENTE/NO PERMITE PROG ACT  VOC TERCERO</option>
+                    <option value = "CLIENTE/NO PERMITE PROG ACT ETAP INTERMEDIA UM TER">CLIENTE/NO PERMITE PROG ACT ETAP INTERMEDIA UM TER</option>
+                    <option value = "CLIENTE/NO PERMITE PROG ACT ETAPA FINAL ES">CLIENTE/NO PERMITE PROG ACT ETAPA FINAL ES</option>
+                    <option value = "CLIENTE/NO PERMITE PROG ACT ETAPA FINAL ES REQ VM">CLIENTE/NO PERMITE PROG ACT ETAPA FINAL ES REQ VM</option>
+                    <option value = "CLIENTE/SIN CONTRATO FIRMADO">CLIENTE/SIN CONTRATO FIRMADO</option>
+                    <option value = "CLIENTE/PROGRAMADA_PROXIMO PERIODO">CLIENTE/PROGRAMADA_PROXIMO PERIODO</option>
+                    <option value = "PL_ EXT/PERMISO MUNI - PERMISO ARREND INFRAESTRUC">PL_ EXT/PERMISO MUNI - PERMISO ARREND INFRAESTRUC</option>
+                    <option value = "PL_ EXT/NO VIABLE EN FACTIBILIDAD POR TERCEROS">PL_ EXT/NO VIABLE EN FACTIBILIDAD POR TERCEROS</option>
+                    <option value = "PL_ EXT/ETAPA INTERMEDIA/SIN PERSONAL  EOC/EMP">PL_ EXT/ETAPA INTERMEDIA/SIN PERSONAL  EOC/EMP</option>
+                    <option value = "PL_ EXT/SIN APROBACIÓN COSTOS TENDIDO EXTERNO">PL_ EXT/SIN APROBACIÓN COSTOS TENDIDO EXTERNO</option>
+                    <option value = "PL_ EXT/NO VIABLE EN FO - EN INSTALACIÓN POR HFC">PL_ EXT/NO VIABLE EN FO - EN INSTALACIÓN POR HFC</option>
+                    <option value = "PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC">PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC</option>
+                    <option value = "PL_ EXT/INCUMPLIMIENTO FE DE UM/CANCELO/REPR ES">PL_ EXT/INCUMPLIMIENTO FE DE UM/CANCELO/REPR ES</option>
+                    <option value = "PL_ EXT/EN CURSO SIN INCONVENIENTE REPORTADO">PL_ EXT/EN CURSO SIN INCONVENIENTE REPORTADO</option>
+                    <option value = "PL_ EXT/ESCALADO_IFO_RESULTADO DE ACTIVIDAD">PL_ EXT/ESCALADO_IFO_RESULTADO DE ACTIVIDAD</option>
+                    <option value = "PL_ EXT/ESCALADO_IFO_SOLICITUD DE DESBORDE">PL_ EXT/ESCALADO_IFO_SOLICITUD DE DESBORDE</option>
+                    <option value = "PL_ EXT/ESCALADO_IFO_SOLICITUD DE PERSONAL">PL_ EXT/ESCALADO_IFO_SOLICITUD DE PERSONAL</option>
+                    <option value = "PLANTA EXTERNA - EN CURSO SOBRE OTP PYMES">PLANTA EXTERNA - EN CURSO SOBRE OTP PYMES</option>
+                    <option value = "PLANTA EXTERNA - EN CURSO SOBRE OTP ASOCIADA">PLANTA EXTERNA - EN CURSO SOBRE OTP ASOCIADA</option>
+                    <option value = "TERCEROS/NO VIABLE/EN PROC CANCELACIÓN">TERCEROS/NO VIABLE/EN PROC CANCELACIÓN</option>
+                    <option value = "TERCEROS/INCUMPLIMIENTO FECHA ENTREGA UM">TERCEROS/INCUMPLIMIENTO FECHA ENTREGA UM</option>
+                    <option value = "TERCEROS/SIN AVANCE SOBRE LA FECHA ENTREGA UM">TERCEROS/SIN AVANCE SOBRE LA FECHA ENTREGA UM</option>
+                    <option value = "TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO">TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO</option>
+                    <option value = "ALIADO/SIN INFORM ENTREGADA A TERC PARA INICIAR">ALIADO/SIN INFORM ENTREGADA A TERC PARA INICIAR</option>
+                    <option value = "PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS">PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS</option>
+                    <option value = "PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR">PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR</option>
+                    <option value = "IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR">IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR</option>
+                    <option value = "COMERCIAL - ESCALADO ORDEN DE REEMPLAZO">COMERCIAL - ESCALADO ORDEN DE REEMPLAZO</option>
+                    <option value = "EQUIPOS - EN COMPRAS">EQUIPOS - EN COMPRAS</option>
+                    <option value = "EQUIPOS - DEFECTUOSOS">EQUIPOS - DEFECTUOSOS</option>
+                    <option value = "EQUIPOS - SIN CODIGO SAP PARA SOLICITUD DE EQUIPOS">EQUIPOS - SIN CODIGO SAP PARA SOLICITUD DE EQUIPOS</option>
+                    <option value = "GPC/PENDIENTE INFOR DEL CLIENTE PARA CONFIGURAR">GPC/PENDIENTE INFOR DEL CLIENTE PARA CONFIGURAR</option>
+                    <option value = "GPC/PENDIENTE ACEPTACIÓN CRONOGRAMA POR CLIENTE">GPC/PENDIENTE ACEPTACIÓN CRONOGRAMA POR CLIENTE</option>
+                    <option value = "GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO">GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO</option>
+                    <option value = "GPC - EN PROCESO DE CANCELACIÓN">GPC - EN PROCESO DE CANCELACIÓN</option>
+                    <option value = "GPC/PENDIENTE ACEPTACIÓN CRONOGRAMA POR CLIENTE">GPC/PENDIENTE ACEPTACIÓN CRONOGRAMA POR CLIENTE</option>
+                    <option value = "GPC - SIN ALCANCE PARA FABRICA">GPC - SIN ALCANCE PARA FABRICA</option>
+                    <option value = "LIDER TECNICO - PENDIENTE PLAN TECNICO">LIDER TECNICO - PENDIENTE PLAN TECNICO</option>
+                    <option value = "LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO">LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO</option>
+                    <option value = "LIDER TECNICO/SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN">LIDER TECNICO/SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN</option>
+                    <option value = "CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN">CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN</option>
+                    <option value = "COEX - EN PROCESO DE CONFIGURACIÓN BACKEND">COEX - EN PROCESO DE CONFIGURACIÓN BACKEND</option>
+                    <option value = "COEX -ATRASO CONFIGURACIÓN BACKEND">COEX -ATRASO CONFIGURACIÓN BACKEND</option>
+                    <option value = "ESCALADO/EN PROCESO PASO A PENDIENTE CLIENTE">ESCALADO/EN PROCESO PASO A PENDIENTE CLIENTE</option>
+                    <option value = "ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE">ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE</option>
+                    <option value = "ENTREGA/SIN DISPONIBILIDAD AGENDA">ENTREGA/SIN DISPONIBILIDAD AGENDA</option>
+                    <option value = "ENTREGA Y/O SOPORTE PROGRAMADO">ENTREGA Y/O SOPORTE PROGRAMADO</option>
+                    <option value = "PENDIENTE SOLICITAR ENTREGA DEL SERVICIO">PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>
+                    <option value = "DATACENTER CLARO- CABLEADO EN CURSO">DATACENTER CLARO- CABLEADO EN CURSO</option>
+                    <option value = "DATACENTER  CLARO- CABLEADO SIN EJECUTAR">DATACENTER  CLARO- CABLEADO SIN EJECUTAR</option>
+                    <option value = "DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER">DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER</option>
+                    <option value = "EN PROCESO DE PASO A ESTADO PENDIENTE CLIENTE">EN PROCESO DE PASO A ESTADO PENDIENTE CLIENTE</option>
+                    <option value = "EN PROCESO DE PASO A ESTADO CANCELADO ">EN PROCESO DE PASO A ESTADO CANCELADO </option>
+                    <option value = "INCONVENIENTE TECNICO">INCONVENIENTE TECNICO</option>
+                    <option value = "KO PENDIENTE">KO PENDIENTE</option>
+                    <option value = "EN CONFIGURACIÓN">EN CONFIGURACIÓN</option>
+                    <option value = "GPC/CAMBIO DE ALCANCE ORDEN DE PEDIDO">GPC/CAMBIO DE ALCANCE ORDEN DE PEDIDO</option>
+                    <option value = "GPC/EN PROCESO DE CANCELACIÓN">GPC/EN PROCESO DE CANCELACIÓN</option>
+                    <option value = "GPC/PENDIENTE INFORM DEL CLIENTE PARA CONFIGURAR">GPC/PENDIENTE INFORM DEL CLIENTE PARA CONFIGURAR</option>
+                    <option value = "GPC/SIN ALCANCE PARA FABRICA">GPC/SIN ALCANCE PARA FABRICA</option>
+                    <option value = "ESTADO CANCELADO">ESTADO CANCELADO</option>
+                    <option value = "ESTADO PENDIENTE CLIENTE">ESTADO PENDIENTE CLIENTE</option>
+                </optgroup>
+                <optgroup class="cod_antigu" label="CODIGOS ANTIGUOS">
+                    <option value='EN PROCESOS CIERRE KO'>EN PROCESOS CIERRE KO</option>
+                    <option value='ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>
+                    <option value='ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO'>ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO</option>
+                    <option value='ASIGNADO LIDER TECNICO'>ASIGNADO LIDER TECNICO</option>
+                    <option value='CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)'>CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)</option>
+                    <option value='CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA'>CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA</option>
+                    <option value='CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL'>CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL</option>
+                    <option value='CLIENTE - NO PERMITE CIERRE DE KO'>CLIENTE - NO PERMITE CIERRE DE KO</option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO</option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA</option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO</option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC</option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO '>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO </option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES</option>
+                    <option value='CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC'>CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC</option>
+                    <option value='CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO'>CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO</option>
+                    <option value='CLIENTE - PROGRAMADA_POSTERIOR '>CLIENTE - PROGRAMADA_POSTERIOR </option>
+                    <option value='CLIENTE - SIN CONTRATO FIRMADO'>CLIENTE - SIN CONTRATO FIRMADO</option>
+                    <option value='CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )'>CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )</option>
+                    <option value='CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)'>CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)</option>
+                    <option value='CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO'>CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO</option>
+                    <option value='COEX - EN PROCESO DE CONFIGURACIÓN BACKEND'>COEX - EN PROCESO DE CONFIGURACIÓN BACKEND</option>
+                    <option value='COEX -ATRASO CONFIGURACIÓN BACKEND'>COEX -ATRASO CONFIGURACIÓN BACKEND</option>
+                    <option value='COMERCIAL - ESCALADO ORDEN DE REEMPLAZO'>COMERCIAL - ESCALADO ORDEN DE REEMPLAZO</option>
+                    <option value='COMERCIAL - ESCALADO PENDIENTE INGRESO OTS'>COMERCIAL - ESCALADO PENDIENTE INGRESO OTS</option>
+                    <option value='CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN'>CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN</option>
+                    <option value='CSM - Retiro equipos - Renovación de Contrato'>CSM - Retiro equipos - Renovación de Contrato</option>
+                    <option value='DATACENTER  CLARO- CABLEADO SIN EJECUTAR'>DATACENTER  CLARO- CABLEADO SIN EJECUTAR</option>
+                    <option value='DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER'>DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER</option>
+                    <option value='DATACENTER CLARO- CABLEADO EN CURSO'>DATACENTER CLARO- CABLEADO EN CURSO</option>
+                    <option value='ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE'>ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE</option>
+                    <option value='ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS'>ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS</option>
+                    <option value='ENTREGA Y/O SOPORTE PROGRAMADO'>ENTREGA Y/O SOPORTE PROGRAMADO</option>
+                    <option value='EQUIPOS - DEFECTUOSOS'>EQUIPOS - DEFECTUOSOS</option>
+                    <option value='EQUIPOS - EN COMPRAS'>EQUIPOS - EN COMPRAS</option>
+                    <option value='ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE'>ESCALADO_LIDER_IMPLEMENTACIÓN_PASO A PENDIENTE CLIENTE</option>
+                    <option value='ESTADO CANCELADO'>ESTADO CANCELADO</option>
+                    <option value='ESTADO PENDIENTE CLIENTE'>ESTADO PENDIENTE CLIENTE</option>
+                    <option value='GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO'>GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO</option>
+                    <option value='GPC - EN PROCESO DE CANCELACIÓN'>GPC - EN PROCESO DE CANCELACIÓN</option>
+                    <option value='GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE'>GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE</option>
+                    <option value='GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR'>GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR</option>
+                    <option value='GPC - SIN ALCANCE PARA FABRICA'>GPC - SIN ALCANCE PARA FABRICA</option>
+                    <option value='IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR'>IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR</option>
+                    <option value='INCONVENIENTE TECNICO'>INCONVENIENTE TECNICO</option>
+                    <option value='LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO'>LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO</option>
+                    <option value='LIDER TECNICO - PENDIENTE PLAN TECNICO'>LIDER TECNICO - PENDIENTE PLAN TECNICO</option>
+                    <option value='LIDER TECNICO - SOLUCIÓN NO ESTANDAR'>LIDER TECNICO - SOLUCIÓN NO ESTANDAR</option>
+                    <option value='LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN'>LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN</option>
+                    <option value='PASO A PENDIENTE CLIENTE'>PASO A PENDIENTE CLIENTE</option>
+                    <option value='PENDIENTE SOLICITAR ENTREGA DEL SERVICIO'>PENDIENTE SOLICITAR ENTREGA DEL SERVICIO</option>
+                    <option value='PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO'>PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO</option>
+                    <option value='PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC'>PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC</option>
+                    <option value='PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD'>PLANTA EXTERNA - ESCALADO_IFO_RESULTADO DE ACTIVIDAD</option>
+                    <option value='PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE'>PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE DESBORDE</option>
+                    <option value='PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL'>PLANTA EXTERNA - ESCALADO_IFO_SOLICITUD DE PERSONAL</option>
+                    <option value='PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES'>PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES</option>
+                    <option value='PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>
+                    <option value='PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS'>PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS</option>
+                    <option value='PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC'>PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC</option>
+                    <option value='PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA'>PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA</option>
+                    <option value='PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS'>PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS</option>
+                    <option value='PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR'>PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR</option>
+                    <option value='PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS'>PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS</option>
+                    <option value='PROYECTO ÉXITO ANTIGUO'>PROYECTO ÉXITO ANTIGUO</option>
+                    <option value='TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO'>TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO</option>
+                    <option value='TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO'>TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO</option>
+                    <option value='TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN'>TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN</option>
+                    <option value='TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA'>TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILLA</option>
+                </optgroup>
             </select>
         </div>
         <table id="table_list_opc" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
@@ -1628,6 +1705,33 @@
             </div>
             <div class="modal-body">
                 <table id="table_selected" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
+
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="seniorHitos" class="col-sm-2 control-label">Señor(a)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="seniorHitos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="configuracionHitos" class="col-sm-2 control-label">Configuración</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="configuracionHitos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="entregaServicioHitos" class="col-sm-2 control-label">Entrega del servicio</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="entregaServicioHitos">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacionesHitos" class="col-sm-2 control-label">Observaciones</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" id="observacionesHitos"></textarea>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
@@ -1642,18 +1746,18 @@
     <div class="modal-dialog modal-lg2" style="width: 1200px;">
         <div class="modal-content">
             <!--<div class="row">-->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
-                    <h3 class="modal-title" id="mdl-title-cierre"></h3>
-                </div>
-                <div class="modal-body">
-                    <div id="form_cierreKo" class="container autoheight">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">X</button>
+                <h3 class="modal-title" id="mdl-title-cierre"></h3>
+            </div>
+            <div class="modal-body">
+                <div id="form_cierreKo" class="container autoheight">
 
-                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="mdl-cierre-cerrar" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancelar</button>
+            </div>
             <!--</div>-->
         </div>
     </div>
@@ -1679,5 +1783,5 @@ if ($msj == 'error') {
     </script>
 <?php } else if ($msj == 'ok') { ?>
     <script> swal('OK', 'se actualizó correctamente', 'success');</script>
-<?php
+    <?php
 }
