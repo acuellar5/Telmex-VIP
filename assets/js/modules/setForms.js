@@ -91,7 +91,8 @@ $(function() {
             }
 
             if (true) {
-                form += setForm.ultimaSeccionServicio(servicio_val);
+                form += setForm.
+                (servicio_val);
             }
 
             return form;
