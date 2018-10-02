@@ -329,7 +329,6 @@
                                 <th>CLASE</th>
                                 <th>SERVICIO</th>
                                 <th>ENVIADO POR</th>
-                                <th>DESTINATARIOS</th>
                                 <th>DIRIGIDO A</th>
                                 <th>opc</th>
                                 </thead>

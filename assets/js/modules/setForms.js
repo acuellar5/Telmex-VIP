@@ -150,7 +150,7 @@ $(function() {
 					            <div class="col-md-8 selectContainer">
 					                <div class="input-group">
 					                    <span class="input-group-addon"><i class='glyphicon glyphicon-user'></i></span>
-					                    <input name="servicio" id="servicio_val" class="form-control" type="text" value="${servicio_nombre}" readonly>
+					                    <input name="servicio" id="servicio_val" class="form-control" type="" value="${servicio_nombre}" readonly>
 					                </div>
 					            </div>
 					        </div>
@@ -885,7 +885,7 @@ $(function() {
 					        </div>
 					    </fieldset>
 					    <!--  fin seccion izquierda form---->`;
-					if (num_service < 10) {				
+					if (num_service <= 10) {				
 					
 					   cadena += `
 					   <!--  inicio seccion derecha form---->
