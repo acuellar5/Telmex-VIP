@@ -727,6 +727,126 @@ class Templates extends CI_Controller {
         case '11': // Adición Marquillas Aeropuerto el Dorado Opain
 
             break;
+
+        //PRIVATE LINE
+        case "24":
+
+        $data_pr = array(
+
+           'id_private_line'              => $pt['pr_id_private_line'],  
+           'id_ot_padre_ori'              => $pt['pr_id_ot_padre_ori'],  
+           'ciudad_ori'                   => $pt['pr_ciudad_ori'],  
+           'direccion_ori'                => $pt['pr_direccion_ori'],  
+           'tipo_predio_ori'              => $pt['pr_tipo_predio_ori'],  
+           'nit_cliente_ori'              => $pt['pr_nit_cliente_ori'],  
+           'alias_lugar_ori'              => $pt['pr_alias_lugar_ori'],  
+           'otp_asociada_ori'             => $pt['pr_otp_asociada_ori'],  
+           'tipo_private'                 => $pt['pr_tipo_private'],  
+           'ancho_banda_ori'              => $pt['pr_ancho_banda_ori'],  
+           'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion_ori'],  
+           'servicio_actual_ori'          => $pt['pr_servicio_actual_ori'],  
+           'requiere_um_ori'              => $pt['pr_requiere_um_ori'],  
+           'proveedor_ori'                => $pt['pr_proveedor_ori'],  
+           'medio_ori'                    => $pt['pr_medio_ori'],  
+           'factibilidad_bw_ori'          => $pt['pr_factibilidad_bw_ori'],  
+           'tipo_conector_ori'            => $pt['pr_tipo_conector_ori'],  
+           'sds_destino_ori'              => $pt['pr_sds_destino_ori'],  
+           'interfaz_entrega_cliente_ori' => $pt['pr_interfaz_entrega_cliente_ori'],  
+           'requiere_voc_ori'             => $pt['pr_requiere_voc_ori'],  
+           'programacion_voc_ori'         => $pt['pr_programacion_voc_ori'],  
+           'requiere_rfc_ori'             => $pt['pr_requiere_rfc_ori'],  
+           'conversor_medio_ori'          => $pt['pr_conversor_medio_ori'],  
+           'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales_ori'],  
+           'consumibles_ori'              => $pt['pr_consumibles_ori'],  
+           'carta_valorizada_ori'         => $pt['pr_carta_valorizada_ori'],  
+           'transmision_entrega'          => $pt['pr_transmision_entrega'],  
+           'cantidad_macs'                => $pt['pr_cantidad_macs'],  
+           'nombre_1_ori'                 => $pt['pr_nombre_1_ori'],  
+           'telefono_1_ori'               => $pt['pr_telefono_1_ori'],  
+           'celular_1_ori'                => $pt['pr_celular_1_ori'],  
+           'correo_1_ori'                 => $pt['pr_correo_1_ori'],  
+           'telefono_2_ori'               => $pt['pr_telefono_2_ori'],  
+           'celular_2_ori'                => $pt['pr_celular_2_ori'],  
+           'correo_2_ori'                 => $pt['pr_correo_2_ori'],  
+           'observaciones_ori'            => $pt['pr_observaciones_ori'],  
+           'id_ot_padre_des'              => $pt['pr_id_ot_padre_des'],  
+           'ciudad_des'                   => $pt['pr_ciudad_des'],  
+           'direccion_des'                => $pt['pr_direccion_des'],  
+           'tipo_predio_des'              => $pt['pr_tipo_predio_des'],  
+           'nit_cliente_des'              => $pt['pr_nit_cliente_des'],  
+           'alias_lugar_des'              => $pt['pr_alias_lugar_des'],  
+           'otp_asociada_des'             => $pt['pr_otp_asociada_des'],  
+           'ancho_banda_des'              => $pt['pr_ancho_banda_des'],  
+           'tipo_instalacion_des'         => $pt['pr_tipo_instalacion_des'],  
+           'servicio_actual_des'          => $pt['pr_servicio_actual_des'],  
+           'requiere_um_des'              => $pt['pr_requiere_um_des'],  
+           'proveedor_des'                => $pt['pr_proveedor_des'],  
+           'medio_des'                    => $pt['pr_medio_des'],  
+           'factibilidad_bw_des'          => $pt['pr_factibilidad_bw_des'],  
+           'tipo_conector_des'            => $pt['pr_tipo_conector_des'],  
+           'sds_destino_des'              => $pt['pr_sds_destino_des'],  
+           'interfaz_entrega_cliente_des' => $pt['pr_interfaz_entrega_cliente_des'],  
+           'requiere_voc_des'             => $pt['pr_requiere_voc_des'],  
+           'programacion_voc_des'         => $pt['pr_programacion_voc_des'],  
+           'requiere_rfc_des'             => $pt['pr_requiere_rfc_des'],  
+           'conversor_medio_des'          => $pt['pr_conversor_medio_des'],  
+           'equipos_adicionales_des'      => $pt['pr_equipos_adicionales_des'],  
+           'consumibles_des'              => $pt['pr_consumibles_des'],  
+           'carta_valorizada_des'         => $pt['pr_carta_valorizada_des'],  
+           'nombre_1_des'                 => $pt['pr_nombre_1_des'],  
+           'telefono_1_des'               => $pt['pr_telefono_1_des'],  
+           'celular_1_des'                => $pt['pr_celular_1_des'],  
+           'correo_1_des'                 => $pt['pr_correo_1_des'],  
+           'telefono_2_des'               => $pt['pr_telefono_2_des'],  
+           'celular_2_des'                => $pt['pr_celular_2_des'],  
+           'correo_2_des'                 => $pt['pr_correo_2_des'],  
+           'observaciones_des'            => $pt['pr_observaciones_des']
+        );  
+
+            
+
+            break;
+
+        //LAN ADMINISTRADA    
+        case "25":
+
+        $data_pr = array(
+            'id_lan_admin'        => $pt['pr_id_lan_admin'],
+            'ciudad'              => $pt['pr_ciudad'],
+            'direccion'           => $pt['pr_direccion'],
+            'tipo_predio'         => $pt['pr_tipo_predio'],
+            'nit_cliente'         => $pt['pr_nit_cliente'],
+            'alias_lugar'         => $pt['pr_alias_lugar'],
+            'id_ot_padre'         => $pt['pr_id_ot_padre'],  
+            'otp_asociada'        => $pt['pr_otp_asociada'],
+            'topologia'           => $pt['pr_topologia'],
+            'servicio_actual'     => $pt['pr_servicio_actual'],
+            'requiere_rfc'        => $pt['pr_requiere_rfc'],
+            'conversor_medio'     => $pt['pr_requiere_rfc'],
+            'referencia_router'   => $pt['pr_requiere_rfc'],
+            'modulos_tarjetas'    => $pt['pr_requiere_rfc'],
+            'licencias'           => $pt['pr_requiere_rfc'],
+            'equipos_adicionales' => $pt['pr_requiere_rfc'],
+            'consumibles'         => $pt['pr_requiere_rfc'],
+            'carta_valorizada'    => $pt['pr_requiere_rfc'],
+            'nombre_1'            => $pt['pr_requiere_rfc'],
+            'telefono_1'          => $pt['pr_requiere_rfc'],
+            'celular_1'           => $pt['pr_requiere_rfc'],
+            'correo_1'            => $pt['pr_requiere_rfc'],
+            'nombre_2'            => $pt['pr_requiere_rfc'],
+            'telefono_2'          => $pt['pr_requiere_rfc'],
+            'celular_2'           => $pt['pr_requiere_rfc'],
+            'correo_2'            => $pt['pr_requiere_rfc'],
+            'observaciones'       => $pt['pr_requiere_rfc'],
+            'tipo_protocolo'      => $pt['pr_requiere_rfc']
+        );
+
+
+
+            break;
+            
+
+
         }
         // actualizar el finalizo de ot padre
         $this->load->model('data/Dao_ot_padre_model');
