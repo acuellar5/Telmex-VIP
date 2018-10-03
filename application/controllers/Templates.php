@@ -15,7 +15,6 @@ class Templates extends CI_Controller {
         $this->load->model('data/Dao_email_model');
     }
 
-    //
     public function ko_15d($servicio = null) {
 
         date_default_timezone_set("America/Bogota");
@@ -60,6 +59,13 @@ class Templates extends CI_Controller {
         if ($servicio && $this->input->post('k_id_estado_ot') == 3) {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             $this->guardar_linea_base($this->input->post());
+
+            // $this->actualizar_compromiso_oths($this->input->post());
+
+
+
+
+
             // 2. guardar formulario producto
             $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
             // 3. enviar correo
@@ -83,6 +89,19 @@ class Templates extends CI_Controller {
             // actualizar el estado
             $this->actualizar_oth($pt);
         }
+
+    }
+
+    // actualiza la fecha de compromiso de las ot hijas de la ot padre referente a la linea base
+    public function actualizar_compromiso_oths($post){
+        //1. seleccionar las ot hijas de esa otp
+        //2. iterar el listado de oth
+        //3. comparar el tipo de oth
+            // ejemplo... si es oth tipo configuracion, se usa lb_fecha_configuracion
+        //4. actualizar la oth... $this->Dao_ot_hija_model->update_oth($data);
+        $otp = $post['nro_ot_onyx'];
+        // [lb_fecha...]
+
 
     }
 
@@ -958,6 +977,7 @@ class Templates extends CI_Controller {
     // Arma el pdf para mostrar el correo enviado
     public function generatePDF() {
         $data = $this->input->post('data');
+        // echo '<pre>'; print_r($data); echo '</pre>';
 
         if ($data['clase'] == 'cierre_ko') {
             switch ($data['servicio']) {
@@ -990,6 +1010,130 @@ class Templates extends CI_Controller {
                 break;
             case 'MPLS Transaccional 3G':
                 $template = $this->mpls_transaccional_3g($data);
+                break;
+            /***********************************PLANTILLAS NUEVAS***********************************/
+            case 'Adición Marquillas Aeropuerto el Dorado Opain':
+                $template = $this->adicion_marquillas_aeropuerto_el_dorado_opain($data);
+                break;
+            case 'Cambio de Equipos Servicio':
+                 $data['campo5'] = array('si' => $this->si($data['campo5']), 'no' => $this->no($data['campo5']));
+                $template = $this->cambio_de_equipos_servicio($data);
+                break;
+            case 'Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1':
+                $template = $this->cambio_de_servicio_telefonia_fija_publica_linea_basica_a_linea_e1($data);
+                break;
+            case 'Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP':
+
+                $array_cities = explode(', ',  $data['campo6']);
+                $list_ciudades = $this->set_cities();
+                foreach ($list_ciudades as $key => $ciudad) {
+                    if (in_array($ciudad , $array_cities)) {
+                        $parcial[$ciudad] = 'X';
+                    } else {
+                        $parcial[$ciudad] = '';
+                    }
+                }
+                $data['campo6'] = $parcial;
+                $template = $this->cambio_de_servicio_telefonia_fija_pública_linea_sip_a_pbx_distribuida_linea_sip($data);
+                break;
+            case 'Traslado Externo Servicio':
+                $data['campo6'] = array('si' => $this->si($data['campo6']), 'no' => $this->no($data['campo6']));
+                $template = $this->traslado_externo_servicio($data);
+                break;
+            case 'Traslado Interno Servicio':
+                $data['campo5'] = array('si' => $this->si($data['campo5']), 'no' => $this->no($data['campo5']));
+                $data['campo9'] = array('si' => $this->si($data['campo9']), 'no' => $this->no($data['campo9']));
+                $data['campo10'] = array('si' => $this->si($data['campo10']), 'no' => $this->no($data['campo10']));
+                $data['campo11'] = array('si' => $this->si($data['campo11']), 'no' => $this->no($data['campo11']));
+                $data['campo12'] = array('si' => $this->si($data['campo12']), 'no' => $this->no($data['campo12']));
+                $data['campo13'] = array('si' => $this->si($data['campo13']), 'no' => $this->no($data['campo13']));
+                $data['campo14'] = array('si' => $this->si($data['campo14']), 'no' => $this->no($data['campo14']));
+                $data['campo15'] = array('si' => $this->si($data['campo15']), 'no' => $this->no($data['campo15']));
+                $template = $this->traslado_interno_servicio($data);
+                break;
+            case 'SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA':
+                $data['campo0'] = $data['k_id_ot_padre'];
+                $data['campo11'] = array('si' => $this->si($data['campo11']), 'no' => $this->no($data['campo11']));
+                $data['campo13'] = array('si' => $this->si($data['campo13']), 'no' => $this->no($data['campo13']));
+                $data['campo16'] = array('si' => $this->si($data['campo16']), 'no' => $this->no($data['campo16']));
+                $data['campo20'] = array('si' => $this->si($data['campo20']), 'no' => $this->no($data['campo20']));
+                $data['campo22'] = array('si' => $this->si($data['campo22']), 'no' => $this->no($data['campo22']));
+                $data['campo23'] = array('si' => $this->si($data['campo23']), 'no' => $this->no($data['campo23']));
+                $data['campo25'] = array('si' => $this->si($data['campo25']), 'no' => $this->no($data['campo25']));
+                $data['campo26'] = array('si' => $this->si($data['campo26']), 'no' => $this->no($data['campo26']));
+                $data['campo29'] = array('si' => $this->si($data['campo29']), 'no' => $this->no($data['campo29']));
+                $data['campo30'] = array('si' => $this->si($data['campo30']), 'no' => $this->no($data['campo30']));
+                $data['campo32'] = array('si' => $this->si($data['campo32']), 'no' => $this->no($data['campo32']));
+                $data['campo35'] = array('mpls' => ($data['campo35'] == 'MPLS')? 'X':'' , 'internet' => ($data['campo35'] == 'Internet')? 'X':'');
+                $template = $this->soluciones_administrativas_comunicaciones_unificadas_pbx_administrada($data);
+                break;
+            case 'Instalación Servicio Telefonia Fija PBX Distribuida Linea E1':
+
+                $array_cities = explode(', ',  $data['campo6']);
+                $list_ciudades = $this->set_cities();
+                foreach ($list_ciudades as $key => $ciudad) {
+                    if (in_array($ciudad , $array_cities)) {
+                        $parcial[$ciudad] = 'X';
+                    } else {
+                        $parcial[$ciudad] = '';
+                    }
+                }
+                $data['campo6'] = $parcial;
+                $template = $this->instalacion_servicio_telefonia_fija_pbx_distribuida_linea_e1($data);
+                break;
+
+            case 'Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP':
+
+                $array_cities = explode(', ',  $data['campo6']);
+                $list_ciudades = $this->set_cities();
+                foreach ($list_ciudades as $key => $ciudad) {
+                    if (in_array($ciudad , $array_cities)) {
+                        $parcial[$ciudad] = 'X';
+                    } else {
+                        $parcial[$ciudad] = '';
+                    }
+                }
+                $data['campo6'] = $parcial;
+                $template = $this->instalacion_servicio_telefonia_fija_pbx_distribuida_linea_sip($data);
+                break;
+            case 'Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz':
+
+                $array_cities = explode(', ',  $data['campo6']);
+                $list_ciudades = $this->set_cities();
+                foreach ($list_ciudades as $key => $ciudad) {
+                    if (in_array($ciudad , $array_cities)) {
+                        $parcial[$ciudad] = 'X';
+                    } else {
+                        $parcial[$ciudad] = '';
+                    }
+                }
+                $data['campo6'] = $parcial;
+                $template = $this->instalación_servicio_telefonia_fija_pbx_distribuida_linea_sip_con_gateway_de_voz($data);
+                break;
+            case 'Instalación Telefonía Publica Básica - Internet Dedicado':
+                $template = $this->instalación_telefonia_publica_basica_internet_dedicado($data);
+                break;
+            case 'Cambio de Última Milla':
+                $data['campo0'] = $data['k_id_ot_padre'];
+                $data['campo10'] = explode(', ', $data['campo10']);
+                $data['campo11'] = explode(', ', $data['campo11']);
+                $data['campo12'] = explode(', ', $data['campo12']);
+                $data['campo13'] = explode(', ', $data['campo13']);
+                $data['campo14'] = explode(', ', $data['campo14']);
+                $data['campo7'] = array('si' => $this->si($data['campo7']), 'no' => $this->no($data['campo7']));
+                $data['campo8'] = array('si' => $this->si($data['campo8']), 'no' => $this->no($data['campo8']));
+                $data['campo9'] = array('si' => $this->si($data['campo9']), 'no' => $this->no($data['campo9']));
+                $template = $this->cambio_de_ultima_milla($data);
+                break;
+            case 'Cambio de Equipo':
+                $data['campo9'] = explode(', ', $data['campo9']);
+                $data['campo10'] = explode(', ', $data['campo10']);
+                $data['campo11'] = explode(', ', $data['campo11']);
+                $data['campo12'] = explode(', ', $data['campo12']);
+                $data['campo0'] = $data['k_id_ot_padre'];
+                $data['campo7'] = array('si' => $this->si($data['campo7']), 'no' => $this->no($data['campo7']));
+                $data['campo8'] = array('si' => $this->si($data['campo8']), 'no' => $this->no($data['campo8']));
+                $template = $this->cambio_de_equipo($data);
                 break;
             }
         } else if ($data['clase'] == 'ko_8d') {
@@ -1621,9 +1765,14 @@ class Templates extends CI_Controller {
         /********************NUEVAS PLANTILLAS********************/
         case ($s == 11): //Adición Marquillas Aeropuerto el Dorado Opain
             $argumentos = array(
-                'campo1'  => $p['nombre'], // nombre
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
-                'campo3'  => $p['servicio'], // servicio
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // marquillas
                 'campo5'  => $p['campo5'], // local
                 'campo6'  => $p['campo6'], // internet
@@ -1645,9 +1794,14 @@ class Templates extends CI_Controller {
         case ($s == 12): // Cambio de Equipos Servicio
 
             $argumentos = array(
-                'campo1'  => $p['nombre'], // nombre
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
-                'campo3'  => $p['servicio'], // servicio
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // Dirección Sede
                 'campo5'  => $p['campo5'], // Existen otros Servicios sobre el CPE (si)
                 'campo6'  => $p['campo6'], // cantidad
@@ -1663,10 +1817,14 @@ class Templates extends CI_Controller {
 
         case ($s == 13): //Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
             $argumentos = array(
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
 
-                'campo1'  => $p['nombre'],// nombre
-                'campo2'  => $p['nombre_cliente'],// nombre cliente
-                'campo3'  => $p['servicio'],// servicio
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'],// Dirección Destino
                 'campo5'  => $p['campo5'],// Cantidad de Líneas Telefónicas Básicas
                 'campo6'  => $p['campo6'],// cantidadCiudad 
@@ -1687,9 +1845,15 @@ class Templates extends CI_Controller {
 
             $ciudades = implode(", ", $p['campo6']);
             $argumentos = array(
-                'campo1'  => $p['nombre'], // nombre
+
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
-                'campo3'  => $p['servicio'], // servicio
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // Dirección Destino
                 'campo5'  => $p['campo5'], // Cantidad de DID
                 'campo6'  => $ciudades, // ciudades (x)
@@ -1703,9 +1867,14 @@ class Templates extends CI_Controller {
             break;
         case ($s == 15): // Traslado Externo Servicio
             $argumentos = array(
-                'campo1'  => $p['nombre'], // nombre
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
-                'campo3'  => $p['servicio'], // servicio
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // Dirección Sede Antigua
                 'campo5'  => $p['campo5'], // Dirección Sede Nueva
                 'campo6'  => $p['campo6'], // Existen otros Servicios a Trasladar (si, no)
@@ -1722,9 +1891,14 @@ class Templates extends CI_Controller {
 
         case ($s == 16): // Traslado Interno Servicio
             $argumentos = array(
-                'campo1'  => $p['nombre'], // NOMBRE
-                'campo2'  => $p['nombre_cliente'], // NOMBRE CLIENTE
-                'campo3'  => $p['servicio'], // SERVICIO
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // Dirección Sede
                 'campo5'  => $p['campo5'], // Existen otros Servicios a Trasladar (SI, NO)
                 'campo6'  => $p['campo6'], // cantidad
@@ -1746,9 +1920,14 @@ class Templates extends CI_Controller {
 
         case ($s == 17): // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
             $argumentos = array(
-                'campo1'  => $p['nombre'], //  nombre
-                'campo2'  => $p['nombre_cliente'], //  nombre cliente
-                'campo3'  => $p['servicio'], //  servicio
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], //  Dirección Destino
                 'campo5'  => $p['campo5'], //  Existente
                 'campo6'  => $p['campo6'], //  A Implementar
@@ -1795,9 +1974,14 @@ class Templates extends CI_Controller {
             $ciudades = implode(', ' , $p['campo6']);
 
             $argumentos = array(
-                'campo1'  => $p['nombre'], // nombre
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
-                'campo3'  => $p['servicio'], // servicio
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // Dirección Destino
                 'campo5'  => $p['campo5'], // Cantidad de DID por Ciudad
                 'campo6'  => $ciudades, // ciudades
@@ -1812,9 +1996,14 @@ class Templates extends CI_Controller {
         case ($s == 19): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
             $ciudades = implode(', ' , $p['campo6']);
             $argumentos = array(
-                'campo1'  => $p['nombre'], // nombre
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
                 'campo2'  => $p['nombre_cliente'], // nombre cliente
-                'campo3'  => $p['servicio'], // servicio
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4'  => $p['campo4'], // Dirección Destino
                 'campo5'  => $p['campo5'], // Cantidad de DID
                 'campo6'  => $ciudades, // ciudades
@@ -1829,9 +2018,14 @@ class Templates extends CI_Controller {
         case ($s == 20): // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
             $ciudades = implode(', ' , $p['campo6']);
             $argumentos = array(
-                'campo1' => $p['nombre'], // nombre
-                'campo2' => $p['nombre_cliente'], // nombre cliente
-                'campo3' => $p['servicio'], // servicio
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4' => $p['campo4'], // Dirección Destino
                 'campo5' => $p['campo5'], // Cantidad de DID
                 'campo6' => $ciudades, // ciudades
@@ -1845,8 +2039,13 @@ class Templates extends CI_Controller {
 
         case ($s == 21): // Instalación Telefonía Publica Básica - Internet Dedicado
             $argumentos = array(
-                'campo1' => $p['nombre'], //nombre
-                'campo2' => $p['nombre_cliente'], //nombre cliente
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+
                 'campo3' => $p['campo3'], //Dirección Destino
                 'campo4' => $p['campo4'], //Cantidad de Líneas Telefónicas Básicas
                 'campo5' => $p['campo5'], //OTP Internet Dedicado
@@ -1871,9 +2070,14 @@ class Templates extends CI_Controller {
 
 
             $argumentos = array(
-                'campo1' => $p['nombre'] , //nombre
-                'campo2' => $p['nombre_cliente'] , //nombre cliente
-                'campo3' => $p['servicio'] , //servicio
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4' => $p['campo4'] , //Dirección Sede
                 'campo5' => $p['campo5'] , //BW Actual
                 'campo6' => $p['campo6'] , //BW Nuevo
@@ -1902,9 +2106,14 @@ class Templates extends CI_Controller {
 
 
             $argumentos = array(
-                'campo1' => $p['nombre'], //nombre
-                'campo2' => $p['nombre_cliente'], //nombre cliente
-                'campo3' => $p['servicio'], //servicio
+                'nombre'  => $p['nombre'], // nombre
+                'servicio'  => $p['servicio'], // servicio
+                'nombre_cliente'  => $p['nombre_cliente'], // nombre_cliente
+
+                'campo1' => $p['nombre'],
+                'campo2'  => $p['nombre_cliente'], // nombre cliente
+                'campo3'  => $p['servicio'], // nombre cliente
+
                 'campo4' => $p['campo4'], //Dirección Sede
                 'campo5' => $p['campo5'], //BW Actual
                 'campo6' => $p['campo6'], //BW Nuevo
@@ -15569,7 +15778,7 @@ class Templates extends CI_Controller {
     }
     //
     public function cambio_de_equipo($argumentos) {
-        $col_span = count($argumentos['campo10']) * 2 + 6;
+        $col_span = count($argumentos['campo9']) * 2 + 6;
 
         $cadena = '';
         $cadena .= '<div dir="ltr"><p class="MsoNormal" style="margin:0in 0in 10pt;text-align:justify;line-height:115%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="ES" style="font-size:12pt;line-height:115%;font-family:Arial,sans-serif">Cordial Saludo Señor(a)</span><span lang="ES-CO"></span></p>
