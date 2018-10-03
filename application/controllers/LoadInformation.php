@@ -166,13 +166,15 @@ class LoadInformation extends CI_Controller {
                             'estado_orden_trabajo'        => $this->getValueCell($sheet, 'W' . $row),
                             'fecha_compromiso'            => $this->getDatePHPExcel($sheet, 'AO' . $row),
                             'fecha_programacion'          => $this->getDatePHPExcel($sheet, 'AP' . $row),
+                            'k_id_user'                   => $this->cedula_del_inegeniero(str_replace(array("ñ", "Ñ"), 'N', $this->getValueCell($sheet, 'AB' . $row)), $list_inges),
                             // comparacion para ot_hija
                             // 'tiempo_estado'               => $this->getValueCell($sheet, 'X' . $row),
                             'descripcion'                 => $this->getValueCell($sheet, 'AJ' . $row),
                             'fecha_realizacion'           => $this->getDatePHPExcel($sheet, 'AQ' . $row),
                             'estado_orden_trabajo_hija'   => $this->getValueCell($sheet, 'AZ' . $row),
                             'fec_actualizacion_onyx_hija' => $this->getDatePHPExcel($sheet, 'BF' . $row),
-                            'tipo_trascurrido'            => $this->getValueCell($sheet, 'BG' . $row)
+                            'tipo_trascurrido'            => $this->getValueCell($sheet, 'BG' . $row),
+                            'usuario_asignado'            => $this->getValueCell($sheet, 'AB'. $row)
                         );
 
                         // Se hace la comparacion antes del foreach para el tratamiento de cambio de estados
@@ -238,7 +240,7 @@ class LoadInformation extends CI_Controller {
                             $up_oth = [];
 
                             foreach ($updates as $indice => $value) {
-                                if ($indice == 'estado_orden_trabajo' || $indice == 'fecha_compromiso' || $indice == 'fecha_programacion') {
+                                if ($indice == 'estado_orden_trabajo' || $indice == 'fecha_compromiso' || $indice == 'fecha_programacion' || $indice == 'k_id_user') {
                                     $up_otp[$indice] = $value;
                                 } else {
                                     $up_oth[$indice] = $value;
@@ -345,7 +347,8 @@ class LoadInformation extends CI_Controller {
                             'tipo_trascurrido'                 => $this->getValueCell($sheet, 'BG' . $row),
                             'fecha_actual'                     => $fActual,
                             'fecha_insercion_zolid'            => $fActual_hora,
-                            'estado_mod'                       => 0
+                            'estado_mod'                       => 0,
+                            'fecha_compromiso'                 => $this->getDatePHPExcel($sheet, 'AO' . $row),
                         );
 
                         //inserto la fila en la base de datos
