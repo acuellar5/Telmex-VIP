@@ -57,20 +57,20 @@ class Templates extends CI_Controller {
     public function c_updateStatusOtEspeciales(){
         $pt       = $this->input->post();
         $servicio = $pt['num_servicio'];
-            // 1. formulario linea base guardar en bd tabla linea_base (otp)
-            $this->guardar_linea_base($this->input->post());
+        // 1. formulario linea base guardar en bd tabla linea_base (otp)
+        $this->guardar_linea_base($this->input->post());
 
-            // 2. guardar formulario producto
-            $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
-            // 4. Actualizar ot_hija en tabla ot_hija
-            $this->actualizar_oth($pt, true, $plantila_txt);
-            // 5. actualizar ot_padre
-            $this->actualizar_otp($pt['nro_ot_onyx']);
-            $this->session->set_flashdata('msj', $msj);
-            header('Location: ' . URL::base() . '/managementOtp');
-            }
+        // 2. guardar formulario producto
+        $plantila_txt = $this->guardar_producto_more_txt($this->input->post());
+        // 4. Actualizar ot_hija en tabla ot_hija
+        $this->actualizar_oth($pt, true, $plantila_txt);
+        // 5. actualizar ot_padre
+        $this->actualizar_otp($pt['nro_ot_onyx']);
+        $this->session->set_flashdata('msj', $msj);
+        header('Location: ' . URL::base() . '/managementOtp');
+        
 
-            // $this->actualizar_compromiso_oths($this->input->post());
+        // $this->actualizar_compromiso_oths($this->input->post());
 
     }
 
@@ -733,42 +733,9 @@ class Templates extends CI_Controller {
 
         $data_pr = array(
 
-           'id_private_line'              => $pt['pr_id_private_line'],  
-           'id_ot_padre_ori'              => $pt['pr_id_ot_padre_ori'],  
-           'ciudad_ori'                   => $pt['pr_ciudad_ori'],  
-           'direccion_ori'                => $pt['pr_direccion_ori'],  
-           'tipo_predio_ori'              => $pt['pr_tipo_predio_ori'],  
-           'nit_cliente_ori'              => $pt['pr_nit_cliente_ori'],  
-           'alias_lugar_ori'              => $pt['pr_alias_lugar_ori'],  
-           'otp_asociada_ori'             => $pt['pr_otp_asociada_ori'],  
-           'tipo_private'                 => $pt['pr_tipo_private'],  
-           'ancho_banda_ori'              => $pt['pr_ancho_banda_ori'],  
-           'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion_ori'],  
-           'servicio_actual_ori'          => $pt['pr_servicio_actual_ori'],  
-           'requiere_um_ori'              => $pt['pr_requiere_um_ori'],  
-           'proveedor_ori'                => $pt['pr_proveedor_ori'],  
-           'medio_ori'                    => $pt['pr_medio_ori'],  
-           'factibilidad_bw_ori'          => $pt['pr_factibilidad_bw_ori'],  
-           'tipo_conector_ori'            => $pt['pr_tipo_conector_ori'],  
-           'sds_destino_ori'              => $pt['pr_sds_destino_ori'],  
-           'interfaz_entrega_cliente_ori' => $pt['pr_interfaz_entrega_cliente_ori'],  
-           'requiere_voc_ori'             => $pt['pr_requiere_voc_ori'],  
-           'programacion_voc_ori'         => $pt['pr_programacion_voc_ori'],  
-           'requiere_rfc_ori'             => $pt['pr_requiere_rfc_ori'],  
-           'conversor_medio_ori'          => $pt['pr_conversor_medio_ori'],  
-           'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales_ori'],  
-           'consumibles_ori'              => $pt['pr_consumibles_ori'],  
-           'carta_valorizada_ori'         => $pt['pr_carta_valorizada_ori'],  
-           'transmision_entrega'          => $pt['pr_transmision_entrega'],  
-           'cantidad_macs'                => $pt['pr_cantidad_macs'],  
-           'nombre_1_ori'                 => $pt['pr_nombre_1_ori'],  
-           'telefono_1_ori'               => $pt['pr_telefono_1_ori'],  
-           'celular_1_ori'                => $pt['pr_celular_1_ori'],  
-           'correo_1_ori'                 => $pt['pr_correo_1_ori'],  
-           'telefono_2_ori'               => $pt['pr_telefono_2_ori'],  
-           'celular_2_ori'                => $pt['pr_celular_2_ori'],  
-           'correo_2_ori'                 => $pt['pr_correo_2_ori'],  
-           'observaciones_ori'            => $pt['pr_observaciones_ori'],  
+           'id_private_line_des'          => $pt['pr_id_private_line_des'],
+           'transmision_entrega_des'      => $pt['pr_transmision_entrega_des'],  
+           'cantidad_des'                => $pt['pr_cantidad_des'],  
            'id_ot_padre_des'              => $pt['pr_id_ot_padre_des'],  
            'ciudad_des'                   => $pt['pr_ciudad_des'],  
            'direccion_des'                => $pt['pr_direccion_des'],  
@@ -797,11 +764,51 @@ class Templates extends CI_Controller {
            'telefono_1_des'               => $pt['pr_telefono_1_des'],  
            'celular_1_des'                => $pt['pr_celular_1_des'],  
            'correo_1_des'                 => $pt['pr_correo_1_des'],  
+           'nombre_2_des'                 => $pt['pr_nombre_2_des'],
            'telefono_2_des'               => $pt['pr_telefono_2_des'],  
            'celular_2_des'                => $pt['pr_celular_2_des'],  
            'correo_2_des'                 => $pt['pr_correo_2_des'],  
            'observaciones_des'            => $pt['pr_observaciones_des']
-        );  
+
+        );
+          
+            if ($pt['is_origen'] == '1') {  
+            
+               'id_ot_padre_ori'              => $pt['pr_id_ot_padre_ori'];
+               'ciudad_ori'                   => $pt['pr_ciudad_ori'];
+               'direccion_ori'                => $pt['pr_direccion_ori'];
+               'tipo_predio_ori'              => $pt['pr_tipo_predio_ori'];
+               'nit_cliente_ori'              => $pt['pr_nit_cliente_ori'];
+               'alias_lugar_ori'              => $pt['pr_alias_lugar_ori'];
+               'otp_asociada_ori'             => $pt['pr_otp_asociada_ori'];
+               'tipo_private_ori'                 => $pt['pr_tipo_private_ori'];
+               'ancho_banda_ori'              => $pt['pr_ancho_banda_ori'];
+               'tipo_instalacion_ori'         => $pt['pr_tipo_instalacion_ori'];
+               'servicio_actual_ori'          => $pt['pr_servicio_actual_ori'];
+               'requiere_um_ori'              => $pt['pr_requiere_um_ori'];
+               'proveedor_ori'                => $pt['pr_proveedor_ori'];
+               'medio_ori'                    => $pt['pr_medio_ori'];
+               'factibilidad_bw_ori'          => $pt['pr_factibilidad_bw_ori'];
+               'tipo_conector_ori'            => $pt['pr_tipo_conector_ori'];
+               'sds_destino_ori'              => $pt['pr_sds_destino_ori'];
+               'interfaz_entrega_cliente_ori' => $pt['pr_interfaz_entrega_cliente_ori'];
+               'requiere_voc_ori'             => $pt['pr_requiere_voc_ori'];
+               'programacion_voc_ori'         => $pt['pr_programacion_voc_ori'];
+               'requiere_rfc_ori'             => $pt['pr_requiere_rfc_ori'];
+               'conversor_medio_ori'          => $pt['pr_conversor_medio_ori'];
+               'equipos_adicionales_ori'      => $pt['pr_equipos_adicionales_ori'];
+               'consumibles_ori'              => $pt['pr_consumibles_ori'];
+               'carta_valorizada_ori'         => $pt['pr_carta_valorizada_ori'];
+               'nombre_1_ori'                 => $pt['pr_nombre_1_ori'];
+               'telefono_1_ori'               => $pt['pr_telefono_1_ori'];
+               'celular_1_ori'                => $pt['pr_celular_1_ori'];
+               'correo_1_ori'                 => $pt['pr_correo_1_ori'];
+               'nombre_2_ori'                 => $pt['pr_nombre_2_ori'];
+               'telefono_2_ori'               => $pt['pr_telefono_2_ori'];
+               'celular_2_ori'                => $pt['pr_celular_2_ori'];
+               'correo_2_ori'                 => $pt['pr_correo_2_ori'];
+               'observaciones_ori'            => $pt['pr_observaciones_ori'];
+            }  
 
             
 
@@ -868,8 +875,11 @@ class Templates extends CI_Controller {
             'fecha_ejecucion_obra_civil' => $pt['lb_fecha_ejecucion_obra_civil'],
             'fecha_equipos'              => $pt['lb_fecha_equipos'],
             'fecha_empalmes'             => $pt['lb_fecha_empalmes'],
-            'fecha_entrega_servicio'     => $pt['lb_fecha_entrega_servicio'],
+            'fecha_entrega_servicio'     => $pt['lb_fecha_entrega_servicio']
+
         );
+            $this->Dao_producto_model->insert_pr_telefonia_fija($data_pr);
+            $txt = $this->plantilla_txt_pr_lan_administrada($pt);
 
         return $this->Dao_hito_model->insert_linea_base($data);
 
