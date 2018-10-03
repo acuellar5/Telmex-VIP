@@ -1475,6 +1475,10 @@
                                                             <option value="21">Instalación Telefonía Publica Básica - Internet Dedicado</option>
                                                             <option value="22">Cambio de Última Milla</option>
                                                             <option value="23">Cambio de Equipo</option>
+                                                            <optgroup label="SIN REPORTE INICIO">
+                                                            <option value="24">PRIVATE LINE</option>
+                                                            <option value="25">LAN ADMINISTRADA</option>
+                                                            </optgroup>
                                                         </select>
 
                                                     </div>

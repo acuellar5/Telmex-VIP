@@ -238,6 +238,20 @@ $(function() {
             $.post(baseurl + "/User/c_getStatusByType", {
                 idtipo: idtipo
             }, function(data) {
+                
+                //valida si la opcion no tiene reporte reinicio(correo) y la dijire a otro controlador, el cual solo actualiza la oth y no envia correo
+                if (val_estado > 23) {
+                    switch(val_estado){
+                        case "23":
+                        $('#formModal').attr('action', 'Templates/c_updateStatusOtEspeciales/23');
+                        $('#btnUpdOt').attr('disabled', false);
+                        break;
+                        case "24":
+                        $('#formModal').attr('action', 'Templates/c_updateStatusOtEspeciales/24');
+                        $('#btnUpdOt').attr('disabled', false);
+                        break;
+                    }
+                }
                 // Decodifica el objeto traido desde el controlador
                 var status = JSON.parse(data);
                 // Pinto el select de estado

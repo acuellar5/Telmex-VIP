@@ -91,8 +91,7 @@ $(function() {
             }
 
             if (true) {
-                form += setForm.
-                (servicio_val);
+                form += setForm.ultimaSeccionServicio(servicio_val);
             }
 
             return form;
@@ -11527,1945 +11526,1196 @@ $(function() {
         	`;
         }
 
-        //PUNTA DATACENTER NO TIENE NADA QUE LO DISPARE
-        //     formProduct_punta_datacenter: function(otp){
-        //     	return `
-        //     		<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>PUNTO DATACENTER</small></h2>
-        // <div class="widget bg_white m-t-25 d-inline-b cliente">
-        // 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION </legend>
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- CIUDAD -->
-        // 			<div class="form-group">
-        // 		        <label for="pr_ciudad" class="col-md-3 control-label">Ciudad:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
-        // 		                <input name="pr_ciudad" id="pr_ciudad" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- DIRECCIÓN:-->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_direccion" class="col-md-3 control-label">Dirección:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 		                <input name="pr_direccion" id="pr_direccion" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- TIPO PREDIO: -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_tipo_predio" class="col-md-3 control-label">Tipo predio:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
-        // 		                <select class="form-control" id="pr_tipo_predio" name="pr_tipo_predio">
-        // 						    <option value="">Seleccionar...</option>
-        // 						    <option value="Edificio">Edificio</option>
-        //    						<option value="Casa">Casa</option>									    
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- NIT del cliente: -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_nit_cliente" class="col-md-3 control-label">NIT del cliente:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 		                <input name="pr_nit_cliente" id="pr_nit_cliente" class="form-control" type="number" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>							    
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- ALIAS DEL LUGAR  -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_alias_lugar" class="col-md-3 control-label">Alias del lugar:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 		                <input name="pr_alias_lugar" id="pr_alias_lugar" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- OTP -->
-        // 			<div class="form-group">
-        // 		        <label for="pr_otp" class="col-md-3 control-label">OTP:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 		                <input name="pr_otp" id="pr_otp" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- otp_asociadas -->
-        // 			<div class="form-group">
-        // 		        <label for="pr_otp_asociada" class="col-md-3 control-label">OTP asociadas:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_otp_asociada" id="pr_otp_asociada" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		     <!-- TIPO DE SERIVICIO: -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_tipo_servicio" class="col-md-3 control-label">Tipo de servicio:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 		                <select class="form-control" id="pr_tipo_servicio" name="pr_tipo_servicio">
-        // 						    <option value="">Seleccionar...</option>
-        // 						    <option value="MPLS Avanzado Intranet con Punta en Rack de Appliance (Componente Datacenter)">MPLS Avanzado Intranet con Punta en Rack de Appliance (Componente Datacenter)</option>
-        //    									<option value="MPLS Avanzado Extranet con Punta en Rack de Appliance (Componente Datacenter)">MPLS Avanzado Extranet con Punta en Rack de Appliance (Componente Datacenter)</option>
-        //    									<option value="MPLS Transaccional con Punta en Rack de Appliance">MPLS Transaccional con Punta en Rack de Appliance</option>
-        //    									<option value="PL Ethernet Local - P2P con Punta en Rack de Appliance">PL Ethernet Local - P2P con Punta en Rack de Appliance</option>
-        //    									<option value="PL Ethernet Local - P2MP con Punta en Rack de Appliance">PL Ethernet Local - P2MP con Punta en Rack de Appliance</option> 
-        //    									<option value="PL Ethernet Nacional - P2P con Punta en Rack de Appliance">PL Ethernet Nacional - P2P con Punta en Rack de Appliance</option>						
-        //    									<option value="PL Ethernet Nacional - P2MP con Punta en Rack de Appliance">PL Ethernet Nacional - P2MP con Punta en Rack de Appliance</option>						
-        //    									<option value="PL Ethernet - VPRN con Punta en Rack de Appliance">PL Ethernet - VPRN con Punta en Rack de Appliance</option>	
-        //    									<option value="Telefonia Pública - Líneas Análogas con Punta en Rack de Appliance">Telefonia Pública - Líneas Análogas con Punta en Rack de Appliance</option>						
-        //    									<option value="Telefonia Pública - Líneas E1 - R2 con Punta en Rack de Appliance">Telefonia Pública - Líneas E1 - R2 con Punta en Rack de Appliance</option>						
-        //    									<option value="Telefonia Pública - Líneas E1 - PRI con Punta en Rack de Appliance">Telefonia Pública - Líneas E1 - PRI con Punta en Rack de Appliance</option>						
-        //    									<option value="Telefonia Pública - Línea SIP (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance">Telefonia Pública - Línea SIP (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance</option>		
-        //    									<option value="PBX Distribuida - Línea SIP  (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance">PBX Distribuida - Línea SIP  (Troncal IP Ethernet con Audiocodec o GW Cisco) con Punta en Rack de Appliance</option>		
-        //    									<option value="PBX Distribuida - Línea SIP  (Centralizado) con Punta en Rack de Appliance">PBX Distribuida - Línea SIP  (Centralizado) con Punta en Rack de Appliance</option>				
-        //    									<option value="PBX Distribuida  Linea E1 -R2 con Punta en Rack de Appliance">PBX Distribuida  Linea E1 -R2 con Punta en Rack de Appliance</option>						
-        //    									<option value="PBX Distribuida  Linea E1 -PRI con Punta en Rack de Appliance">PBX Distribuida  Linea E1 -PRI con Punta en Rack de Appliance</option>						
-        //    									<option value="Telefonia Corporativa con Punta en Rack de Appliance">Telefonia Corporativa con Punta en Rack de Appliance</option>	
-        //    									<option value="Migración Topologia Backend a Rack de Appliance">Migración Topologia Backend a Rack de Appliance</option>			
-        //    									<option value="Migración Claro Connect a Rack de Appliance">Migración Claro Connect a Rack de Appliance</option>						
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>	
-
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- ancho_banda -->
-        // 			<div class="form-group">
-        // 		        <label for="pr_ancho_banda" class="col-md-3 control-label">Ancho de banda:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 		                <input name="pr_ancho_banda" id="pr_ancho_banda" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- TIPO INSTALACION: -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_tipo_instalacion" class="col-md-3 control-label">Tipo instalación:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 		                <select class="form-control" id="pr_tipo_instalacion" name="pr_tipo_instalacion">
-        // 						    <option value="">Seleccionar...</option>
-        // 						    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
-        // 						    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
-        //    									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>
-        //    									<option value="UM existente. Requiere Adición de equipo">UM existente. Requiere Adición de equipo</option>					    
-        //    									<option value="UM existente. Solo configuración">UM existente. Solo configuración</option>					    
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- ID SERVICIO ACTUAL -->
-        // 			<div class="form-group">
-        // 		        <label for="pr_id_servicio_actual" class="col-md-3 control-label">ID SERVICIO ACTUAL(Aplica para UM Existente):</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 		                <input name="pr_id_servicio_actual" id="pr_id_servicio_actual" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION </legend>	
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- NOMBRE --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_nombre_1" class="col-md-3 control-label">Nombre:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-        // 		                <input name="pr_nombre_1" id="pr_nombre_1" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- TELEFONO --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_telefono_1" class="col-md-3 control-label">Telefono:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-        // 		                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- CELULAR --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_celular_1" class="col-md-3 control-label">Celular:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-        // 		                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="number" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- EMAIL --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-        // 		                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>	
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- REQUIERE RFC:--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_crequiere_rfc" class="col-md-3 control-label">Requiere RFC:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 						<select name="pr_crequiere_rfc" id="pr_crequiere_rfc">
-        // 							<option value="">Seleccionar...</option>
-        // 							<option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
-        // 							<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
-        // 							<option value="SI => Cliente Critico">SI => Cliente Critico</option>
-        // 							<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
-        // 							<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
-        // 							<option value="No">No</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Conversor Medio: -->
-        //             <div class="form-group">
-        // 		        <label for="pr_conversor_medio" class="col-md-3 control-label">Conversor Medio:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_conversor_medio" id="pr_conversor_medio" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Referencia Router: -->
-        //             <div class="form-group">
-        // 		        <label for="pr_referencia_router" class="col-md-3 control-label">Referencia Router:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 		                <input name="pr_referencia_router" id="pr_referencia_router" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Modulos o Tarjetas: -->
-        //             <div class="form-group">
-        // 		        <label for="pr_modulo_tarjeta" class="col-md-3 control-label">Modulos o Tarjetas:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_modulo_tarjeta" id="pr_modulo_tarjeta" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>								
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Licencias --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_licencias" class="col-md-3 control-label">Licencias:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_licencias" id="pr_licencias" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Equipos Adicionale--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_equipos_adicionales" class="col-md-3 control-label">Equipos adicionale:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_equipos_adicionales" id="pr_equipos_adicionales" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Consumibles--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_consumibles" class="col-md-3 control-label">Consumibles:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 						<select name="pr_consumibles" id="pr_consumibles">
-        // 							<option value="">Seleccionar...</option>
-        // 							<option value="Bandeja">Bandeja</option>
-        // 							<option value="Cables de Poder">Cables de Poder</option>
-        // 							<option value="Clavijas de Conexión">Clavijas de Conexión</option>
-        // 							<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
-        // 							<option value="No Aplica">No Aplica</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA:--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_registro_carta" class="col-md-3 control-label">Registro de importación y carta valorizada:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 						<select name="pr_registro_carta" id="pr_registro_carta">
-        // 							<option value="">Seleccionar...</option>
-        // 							<option value="SI">SI</option>
-        // 							<option value="NO">NO</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<legend class="f-s-15">INFORMACIÓN  ULTIMA MILLA </legend>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- ¿esta ot requiere instalacion de  um?--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_requiere_um" class="col-md-3 control-label">¿esta ot requiere instalacion de  um?</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 						<select name="pr_requiere_um" id="pr_requiere_um">
-        // 							<option value="">Seleccionar...</option>
-        // 							<option value="SI">SI</option>
-        // 							<option value="NO">NO</option>
-        // 							<option value="Existente">Existente</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Proveedor --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_proveedor" class="col-md-3 control-label">Proveedor</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 						<select name="pr_proveedor" id="pr_proveedor">
-        // 							<option value="">Seleccionar...</option>
-        // 							<option value="No aplica">No aplica</option>
-        // 							<option value="Existente">Existente</option>
-        // 							<option value="Axesat">Axesat</option>
-        // 							<option value="Comcel">Comcel</option>
-        // 							<option value="Tigo">Tigo</option>
-        // 							<option value="Media Commerce">Media Commerce</option>
-        // 							<option value="Diveo">Diveo</option>
-        // 							<option value="Edatel">Edatel</option>
-        // 							<option value="UNE">UNE</option>
-        // 							<option value="ETB">ETB</option>
-        // 							<option value="IBM">IBM</option>
-        // 							<option value="IFX">IFX</option>
-        // 							<option value="Level 3 Colombia">Level 3 Colombia</option>
-        // 							<option value="Mercanet">Mercanet</option>
-        // 							<option value="Metrotel">Metrotel</option>
-        // 							<option value="Promitel">Promitel</option>
-        // 							<option value="Skynet">Skynet</option>
-        // 							<option value="Telebucaramanga">Telebucaramanga</option>
-        // 							<option value="Telecom">Telecom</option>
-        // 							<option value="Terremark">Terremark</option>
-        // 							<option value="Sol Cable Vision">Sol Cable Vision</option>
-        // 							<option value="Sistelec">Sistelec</option>
-        // 							<option value="Opain">Opain</option>
-        // 							<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option>
-        // 							<option value="TV Azteca">TV Azteca</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- MEDIO -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_medio" class="col-md-3 control-label">Medio:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 		                <select class="form-control" id="pr_medio" name="pr_medio">
-        // 						    <option value="">Seleccionar...</option>
-        // 						    <option value="No Aplica">No Aplica</option> 	   
-        // 						    <option value="Existente">Existente</option>
-        // 						    <option value="FIBRA">FIBRA</option>
-        // 						    <option value="COBRE">COBRE</option> 
-        // 						    <option value="SATELITAL">SATELITAL</option>
-        // 						    <option value="RADIO ENLACE">RADIO ENLACE</option>
-        // 						    <option value="3G">3G</option>
-        // 						    <option value="UTP">UTP</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- RESPUESTA FACTIBILIDAD BW > 100 MEGAS : -->
-        //             <div class="form-group">
-        // 		        <label for="pr_resp_factivilidad" class="col-md-3 control-label">Respuesta factibilidad BW > 100 Megas :</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_resp_factivilidad" id="pr_resp_factivilidad" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_tipo_conector" class="col-md-3 control-label">TIPO DE CONECTOR (Aplica para FO Claro):</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 		                <select class="form-control" id="pr_tipo_conector" name="pr_tipo_conector">
-        // 						    <option value="">Seleccionar...</option>
-        // 						    <option value="LC">LC</option>  								   									
-        // 						    <option value="SC">SC</option> 	   
-        // 						    <option value="ST">ST</option>
-        // 						    <option value="FC">FC</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- SDS DESTINO (Unifilar) -->
-        // 			<div class="form-group">
-        // 		        <label for="pr_sds_destino" class="col-md-3 control-label">SDS destino (Unifilar):</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_sds_destino" id="pr_sds_destino" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- OLT (GPON) : -->
-        //             <div class="form-group">
-        // 		        <label for="pr_olt" class="col-md-3 control-label">OLT (GPON) :</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_olt" id="pr_olt" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- INTERFACE DE ENTREGA AL CLIENTE: -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_interface_e_cliente" class="col-md-3 control-label">Interface de entrega al cliente:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 		                <select class="form-control" id="pr_interface_e_cliente" name="pr_interface_e_cliente">
-        // 						    <option value="">Seleccionar...</option>
-        // 						    <option value="No aplica">No aplica</option> 		   									
-        // 						    <option value="Ethernet">Ethernet</option> 	   
-        // 						    <option value="Serial V.35">Serial V.35</option>
-        // 						    <option value="Giga (óptico)">Giga (óptico)</option>
-        // 						    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
-        // 						    <option value="STM-1">STM-1</option>
-        // 						    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
-        // 						    <option value="G703 BNC">G703 BNC</option>
-        // 						</select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- OBSERVACIONES -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_observacion" class="col-md-3 control-label">Observaciones</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 						<textarea name="pr_observacion" id="pr_observacion"></textarea>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<legend class="f-s-15">INFORMACIÓN DE CONEXIÓN  EN DATACENTER IMPLEMENTACIÓN </legend>
-
-        // 	<legend class="f-s-15">PUNTO A - Equipo de acceso: Alcatel Triara</legend>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- equipo acceso : -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_equipos_1" class="col-md-3 control-label">Equipo de Acceso:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input type="text" name="pr_equipos_1" id="pr_equipos_1">
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Puerto Equipo de Acceso: -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_puerto_1" class="col-md-3 control-label">Puerto Equipo de Acceso:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input type="text" name="pr_puerto_1" id="pr_puerto_1">
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Tipo de Interface : -->
-        // 		    <div class="form-group">
-        // 		        <label for="pr_tipo_interface_1" class="col-md-3 control-label">Tipo de Interface :</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input type="text" name="pr_tipo_interface_1" id="pr_tipo_interface_1">
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<legend class="f-s-15">PUNTO B Equipo Claro - Rack: Appliance</legend>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Equipo Claro: -->
-        //             <div class="form-group">
-        // 		        <label for="pr_equipo_c" class="col-md-3 control-label">Equipo Claro:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-wrench" ></i></span>
-        // 		                <input name="pr_equipo_c" id="pr_equipo_c" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Conector WAN: -->
-        //             <div class="form-group">
-        // 		        <label for="pr_conector_wan" class="col-md-3 control-label">Conector WAN:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal" ></i></span>
-        // 		                <input name="pr_conector_wan" id="pr_conector_wan" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Puerto LAN:  -->
-        //             <div class="form-group">
-        // 		        <label for="pr_puerto_lan" class="col-md-3 control-label">Puerto LAN: </label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-option-horizontal" ></i></span>
-        // 		                <input name="pr_puerto_lan" id="pr_puerto_lan" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Conector LAN:  -->
-        //             <div class="form-group">
-        // 		        <label for="pr_conector_lan" class="col-md-3 control-label">Conector LAN:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_conector_lan" id="pr_conector_lan" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- TOMAS REGULADAS REQUERIDAS  -->
-        //             <div class="form-group">
-        // 		        <label for="pr_tomas_r" class="col-md-3 control-label">TOMAS REGULADAS REQUERIDAS</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 		                <select name="pr_tomas_r" id="pr_tomas_r" class="form-control">
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>					                	
-        // 		                </select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<legend class="f-s-15">PUNTO C Equipo Cliente - Rack y Unidad de conexión:</legend>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Equipos de conexion--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_equipos_conexion" class="col-md-3 control-label">Equipo de conexión:</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-wrench" ></i></span>
-        // 		                <input name="pr_equipos_conexion" id="pr_equipos_conexion" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- Puerto Cliente--> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_puerto_cliente" class="col-md-3 control-label">Puerto Cliente</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_puerto_cliente" id="pr_puerto_cliente" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- Tipo de Interface  --> 
-        // 		    <div class="form-group">
-        // 		        <label for="pr_tipo_interface" class="col-md-3 control-label">Tipo de Interface :</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <input name="pr_tipo_interface" id="pr_tipo_interface" class="form-control" type="text" >
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-
-        // 		    <!-- TOMAS REGULADAS REQUERIDAS  -->
-        //             <div class="form-group">
-        // 		        <label for="pr_tomas_reguladas_2" class="col-md-3 control-label">Tomas reguladas requeridas</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <select name="pr_tomas_reguladas_2" id="pr_tomas_reguladas_2" class="form-control">
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>					                	
-        // 		                </select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>
-
-        // 	<div class="d-inline-b">
-        // 		<fieldset class="col-md-6">
-
-        // 			<!-- TOTAL UNIDADES DE RACK  -->
-        //             <div class="form-group">
-        // 		        <label for="pr_total_u" class="col-md-3 control-label">TOTAL UNIDADES DE RACK</label>
-        // 		        <div class="col-md-9 selectContainer">
-        // 		            <div class="input-group">
-        // 		                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 		                <select name="pr_total_u" id="pr_total_u" class="form-control">
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-        // 		                	<option value=""></option>
-
-        // 		                </select>
-        // 		            </div>
-        // 		        </div>
-        // 		    </div>
-        // 		</fieldset>
-        // 	</div>						
-        // </div>
-        //     	`;
-        //     }
-
-        //PRIVATE LINE NO TIENE NADA QUE LO DISPARE
-        //     formProduct_private_line: function(otp){
-        //     	return `
-        //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>PRIVATE LINE</small></h2>
-        // <!--*********************  MODULO PESTAÑAS  *********************-->
-        // <ul class="nav nav-tabs">
-        // 	<li class="active"><a data-toggle="tab" href="#mpls_punto_origen_pl">PUNTO DE ORIGEN</a></li>
-        // 	<li class=""><a data-toggle="tab" href="#mpls_punto_destino_pl">PUNTO DESTINO</a></li>
-        // </ul>
-
-        // <!--*********************  CONTENIDO PESTAÑAS  *********************-->
-        // <div class="tab-content">
-
-        // 	<!--*********************  PUNTO DE ORIGEN  *********************-->
-        // 	<div id="mpls_punto_origen_pl" class="tab-pane fade in active">
-        // 		<h3>PUNTO DE ORIGEN</h3>
-        // 		<div class="widget bg_white m-t-25 d-inline-b cliente">
-        // 			<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION ORIGEN </legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CIUDAD -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_ciudad_o" class="col-md-3 control-label">Ciudad:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
-        // 				                <input name="pr_ciudad_o" id="pr_ciudad_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- DIRECCIÓN:-->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_direccion_o" class="col-md-3 control-label">Dirección:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_direccion_o" id="pr_direccion_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- TIPO PREDIO: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_predio_o" class="col-md-3 control-label">Tipo predio:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_predio_o" name="pr_tipo_predio_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Edificio">Edificio</option>
-        //      									<option value="Casa">Casa</option>									    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- NIT del cliente: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_nit_cliente_o" class="col-md-3 control-label">NIT del cliente:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_nit_cliente_o" id="pr_nit_cliente_o" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ALIAS DEL LUGAR  -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_alias_lugar_o" class="col-md-3 control-label">Alias del lugar:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_alias_lugar_o" id="pr_alias_lugar_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- OTP -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_otp_o" class="col-md-3 control-label">OTP:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_otp_o" id="pr_otp_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- otp_asociadas -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_otp_asociadas_o" class="col-md-3 control-label">OTP asociadas:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_otp_asociadas_o" id="pr_otp_asociadas_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TIPO PRIVATE LINE: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_private_o" class="col-md-3 control-label">Tipo PRIVATE LINE:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_private_o" name="pr_tipo_private_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Local - P2P">Local - P2P</option>
-        //      									<option value="Local - P2MP">Local - P2MP</option>
-        //      									<option value="Nacional - P2P">Nacional - P2P</option>
-        //      									<option value="Nacional - P2MP">Nacional - P2MP</option>
-        //      									<option value="VPRN">VPRN</option> 
-        //      									<option value="Private Line Service (SDH)">Private Line Service (SDH)</option>			
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ancho_banda -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_ancho_banda_o" class="col-md-3 control-label">Ancho de banda:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_ancho_banda_o" id="pr_ancho_banda_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TIPO INSTALACION: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_instalacion_o" class="col-md-3 control-label">Tipo instalación:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_instalacion_o" name="pr_tipo_instalacion_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Instalar UM con PE">Instalar UM con PE</option>
-        // 								    <option value="Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)">Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)</option>
-        // 								    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
-        // 								    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
-        //      									<option value="Instalar UM en Datacenter Tercero">Instalar UM en Datacenter Tercero</option>
-        //      									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>					    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ID SERVICIO ACTUAL -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_id_servicio_actual_o" class="col-md-3 control-label">ID SERVICIO ACTUAL (Aplica para UM Existente):</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_id_servicio_actual_o" id="pr_id_servicio_actual_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">INFORMACIÓN  ULTIMA MILLA </legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_requiere_um_o" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_requiere_um_o" name="pr_requiere_um_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Si">Si</option>
-        //      									<option value="No">No</option>   	
-        //      									<option value="Existente">Existente</option>											    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- PROVEEDOR: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_proveedor_o" class="col-md-3 control-label">Proveedor:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_proveedor_o" name="pr_proveedor_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="No aplica">No aplica</option>
-        //      									<option value="Existente">Existente</option>
-        //      									<option value="Claro">Claro</option>
-        //      									<option value="Axesat">Axesat</option>
-        //      									<option value="Comcel">Comcel</option> 	
-        //      									<option value="Tigo">Tigo</option> 		
-        //      									<option value="Media Commerce">Media Commerce</option> 		
-        //      									<option value="Diveo">Diveo</option>
-        //      									<option value="Edatel">Edatel</option> 	
-        //      									<option value="UNE">UNE</option> 		
-        //      									<option value="ETB">ETB</option> 	
-        //      									<option value="IBM">IBM</option> 		
-        //      									<option value="IFX">IFX</option> 		
-        //      									<option value="Level 3 Colombia">Level 3 Colombia</option>
-        //      									<option value="Mercanet">Mercanet</option> 	
-        //      									<option value="Metrotel">Metrotel</option> 		
-        //      									<option value="Promitel">Promitel</option> 		
-        //      									<option value="Skynet">Skynet</option> 		
-        //      									<option value="Telebucaramanga">Telebucaramanga</option>
-        //      									<option value="Telecom">Telecom</option> 	
-        //      									<option value="Terremark">Terremark</option> 		
-        //      									<option value="Sol Cable Vision">Sol Cable Vision</option> 		
-        //      									<option value="Sistelec">Sistelec</option>
-        //      									<option value="Opain">Opain</option> 	
-        //      									<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option> 		
-        //      									<option value="TV Azteca">TV Azteca</option> 						    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- MEDIO -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_medio_o" class="col-md-3 control-label">Medio:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_medio_o" name="pr_medio_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="No Aplica">No Aplica</option> 	   
-        // 								    <option value="Fibra">Fibra</option>
-        // 								    <option value="Cobre">Cobre</option>
-        // 								    <option value="Satelital">Satelital</option> 
-        // 								    <option value="Radio enlace">Radio enlace</option>
-        // 								    <option value="3G">3G</option>
-        // 								    <option value="UTP">UTP</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- RESPUESTA FACTIBILIDAD BW > 300 MEGAS : -->
-        // 		            <div class="form-group">
-        // 				        <label for="pr_resp_factibilidad_o" class="col-md-3 control-label">Respuesta factibilidad BW > 300 MEGAS:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_resp_factibilidad_o" id="pr_resp_factibilidad_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_conector_o" class="col-md-3 control-label">Tipo conector:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_conector_o" name="pr_tipo_conector_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="LC">LC</option>  									   									
-        // 								    <option value="SC">SC</option> 	   
-        // 								    <option value="ST">ST</option>
-        // 								    <option value="FC">FC</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- SDS destino(Unifilar) -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_sds_destino_o" class="col-md-3 control-label">SDS destino(Unifilar):</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_sds_destino_o" id="pr_sds_destino_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_interface_entrega_o" class="col-md-3 control-label">Interface de entrega al cliente:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_interface_entrega_o" name="pr_interface_entrega_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="No aplica">No aplica</option>						   									
-        // 								    <option value="Ethernet">Ethernet</option> 	   
-        // 								    <option value="Serial V.35">Serial V.35</option>
-        // 								    <option value="Giga (óptico)">Giga (óptico)</option>
-        // 								    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
-        // 								    <option value="STM-1">STM-1</option>
-        // 								    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
-        // 								    <option value="G703 BNC">G703 BNC</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- REQUIERE VOC : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_requiere_voc_o" class="col-md-3 control-label">Requiere VOC:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_requiere_voc_o" name="pr_requiere_voc_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Si">Si</option>
-        //      									<option value="No">No</option>    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- PROGRAMACIÓN DE VOC : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_programacion_voc_o" class="col-md-3 control-label">Programación de VOC:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_programacion_voc_o" name="pr_programacion_voc_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Programada">Programada</option>
-        //      									<option value="No requiere programación">No requiere programación</option> 									
-        //      									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
-        //      									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- REQUIERE RFC : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_requiere_rfc_o" class="col-md-3 control-label">Requiere RFC:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_requiere_rfc_o" name="pr_requiere_rfc_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
-        //      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  	
-        //      									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
-        //      									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
-        //      									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
-        //      									<option value="No">No</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- CONVESOR MEDIO: -->
-        // 		            <div class="form-group">
-        // 				        <label for="pr_conversor_medio_o" class="col-md-3 control-label">Conversor Medio:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_conversor_medio_o" id="pr_conversor_medio_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- Equipos Adicionale--> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_equipos_adicional_o" class="col-md-3 control-label">Equipos adicionale:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-plus" ></i></span>
-        // 				                <input name="pr_equipos_adicional_o" id="pr_equipos_adicional_o" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- Consumibles:--> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_consumibles_o" class="col-md-3 control-label">Consumibles:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_consumibles_o" name="pr_consumibles_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Bandeja">Bandeja</option>
-        //      									<option value="Cables de Poder ">Cables de Poder </option>
-        //      									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
-        //      									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
-        //      									<option value="No Aplica">No Aplica</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_reg_importacion_o" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_reg_importacion_o" name="pr_reg_importacion_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Si">Si</option>
-        //      									<option value="No">No</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- MODO TRANSMISIÓN ENTREGA CANAL -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_modo_transmision_o" class="col-md-3 control-label">Modo transmisión entrega canal:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_modo_transmision_o" name="pr_modo_transmision_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Troncal - Especifique VLAN">Troncal - Especifique VLAN</option>
-        //      									<option value="Acceso (Null)">Acceso (Null)</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CANTIDAD MACS : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_ctd_macs_o" class="col-md-3 control-label">Cantidad MACS:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
-        // 				                <select class="form-control" id="pr_ctd_macs_o" name="pr_ctd_macs_o">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="0 - 250 Estándar">0 - 250 Estándar</option>
-        //      									<option value="250 en Adelante - Solicitar autorización a CORE">250 en Adelante - Solicitar autorización a CORE</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN </legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- NOMBRE --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_nombre_1" class="col-md-3 control-label">Nombre:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-        // 				                <input name="pr_nombre_1" id="pr_nombre_1" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TELEFONO --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_telefono_1" class="col-md-3 control-label">Telefono:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-        // 				                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CELULAR --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_celular_1" class="col-md-3 control-label">Celular:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-        // 				                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- EMAIL --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-        // 				                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">DATOS CLIENTE: TÉCNICO</legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- NOMBRE --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_nombre_2" class="col-md-3 control-label">Nombre:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-        // 				                <input name="pr_nombre_2" id="pr_nombre_2" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TELEFONO --> 
-        // 				    <div class="form-group">
-        // 				        <label for="telefono_dct_pl_po" class="col-md-3 control-label">Telefono:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-        // 				                <input name="telefono_dct_pl_po" id="telefono_dct_pl_po" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CELULAR --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_celular_2" class="col-md-3 control-label">Celular:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-        // 				                <input name="pr_celular_2" id="pr_celular_2" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- EMAIL --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_email_2" class="col-md-3 control-label">Email:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-        // 				                <input name="pr_email_2" id="pr_email_2" class="form-control" type="email" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-        // 					<!-- OBSERVACIONES: --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_observaciones_1" class="col-md-3 control-label">Observaciones:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <textarea name="pr_observaciones_1" id="pr_observaciones_1" class="form-control"></textarea>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-        // 		</div>
-        // 	</div>
-
-        // 	<!--*********************  PUNTO DESTINO   *********************-->
-        // 	<div id="mpls_punto_destino_pl" class="tab-pane fade">
-        // 		<h3>PUNTO DESTINO</h3>
-        // 		<div class="widget bg_white m-t-25 d-inline-b cliente">
-        // 			<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION DESTINO</legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CIUDAD -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_ciudad_d" class="col-md-3 control-label">Ciudad:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
-        // 				                <input name="pr_ciudad_d" id="pr_ciudad_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- DIRECCIÓN:-->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_direccion_d" class="col-md-3 control-label">Dirección:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_direccion_d" id="pr_direccion_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- TIPO PREDIO: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_predio_d" class="col-md-3 control-label">Tipo predio:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_predio_d" name="pr_tipo_predio_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Edificio">Edificio</option>
-        //      							<option value="Casa">Casa</option>									    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>	
-
-        // 				    <!-- NIT del cliente: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_nit_cliente_d" class="col-md-3 control-label">NIT del cliente:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_nit_cliente_d" id="pr_nit_cliente_d" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ALIAS DEL LUGAR  -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_alias_lugar_d" class="col-md-3 control-label">Alias del lugar:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_alias_lugar_d" id="pr_alias_lugar_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- OTP -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_otp_d" class="col-md-3 control-label">OTP:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_otp_d" id="pr_otp_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- otp_asociadas -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_otp_asociado_d" class="col-md-3 control-label">OTP asociadas:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_otp_asociado_d" id="pr_otp_asociado_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TIPO PRIVATE LINE: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_pl_d" class="col-md-3 control-label">Tipo PRIVATE LINE:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_pl_d" name="pr_tipo_pl_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Local - P2P">Local - P2P</option>
-        //      									<option value="Local - P2MP">Local - P2MP</option>
-        //      									<option value="Nacional - P2P">Nacional - P2P</option>
-        //      									<option value="Nacional - P2MP">Nacional - P2MP</option>
-        //      									<option value="VPRN">VPRN</option> 
-        //      									<option value="Private Line Service (SDH)">Private Line Service (SDH)</option>						
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>	
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-        // 					<!-- ancho_banda -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_ancho_banda_d" class="col-md-3 control-label">Ancho de banda:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_ancho_banda_d" id="pr_ancho_banda_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>		
-
-        // 				    <!-- TIPO INSTALACION: -->
-        // 				     <div class="form-group">
-        // 				        <label for="pr_tipo_instalacion_d" class="col-md-3 control-label">Tipo instalación:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_instalacion_d" name="pr_tipo_instalacion_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Instalar UM con PE">Instalar UM con PE</option>
-        // 								    <option value="Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)">Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)</option>
-        // 								    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
-        // 								    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
-        //      									<option value="Instalar UM en Datacenter Tercero">Instalar UM en Datacenter Tercero</option>
-        //      									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>					    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ID SERVICIO ACTUAL -->
-        // 					<div class="form-group">
-        // 				        <label for="pr_idservicio_act_d" class="col-md-3 control-label">ID SERVICIO ACTUAL(Aplica para UM Existente):</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_idservicio_act_d" id="pr_idservicio_act_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">NFORMACIÓN  ULTIMA MILLA</legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_requiere_instalacion_d" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_requiere_instalacion_d" name="pr_requiere_instalacion_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Si">Si</option>
-        //      									<option value="No">No</option>   												    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- PROVEEDOR: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_proveedor_d" class="col-md-3 control-label">Proveedor:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_proveedor_d" name="pr_proveedor_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="No aplica">No aplica</option>
-        //      									<option value="Existente">Existente</option>
-        //      									<option value="Claro">Claro</option>
-        //      									<option value="Axesat">Axesat</option>
-        //      									<option value="Comcel">Comcel</option> 	
-        //      									<option value="Tigo">Tigo</option> 		
-        //      									<option value="Media Commerce">Media Commerce</option> 		
-        //      									<option value="Diveo">Diveo</option>
-        //      									<option value="Edatel">Edatel</option> 	
-        //      									<option value="UNE">UNE</option> 		
-        //      									<option value="ETB">ETB</option> 	
-        //      									<option value="IBM">IBM</option> 		
-        //      									<option value="IFX">IFX</option> 		
-        //      									<option value="Level 3 Colombia">Level 3 Colombia</option>
-        //      									<option value="Mercanet">Mercanet</option> 	
-        //      									<option value="Metrotel">Metrotel</option> 		
-        //      									<option value="Promitel">Promitel</option> 		
-        //      									<option value="Skynet">Skynet</option> 		
-        //      									<option value="Telebucaramanga">Telebucaramanga</option>
-        //      									<option value="Telecom">Telecom</option> 	
-        //      									<option value="Terremark">Terremark</option> 		
-        //      									<option value="Sol Cable Vision">Sol Cable Vision</option> 		
-        //      									<option value="Sistelec">Sistelec</option>
-        //      									<option value="Opain">Opain</option> 	
-        //      									<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option>	
-        //      									<option value="TV Azteca">TV Azteca</option> 						    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-        // 					<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_tipo_conector_d" class="col-md-3 control-label">Tipo conector(Aplica para FO Claro):</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_tipo_conector_d" name="pr_tipo_conector_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="LC">LC</option>							   									
-        // 								    <option value="SC">SC</option> 	   
-        // 								    <option value="ST">ST</option>
-        // 								    <option value="FC">FC</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- ACCESO (Solo Aplica para Canales SDH): -->
-        // 				    SDS DESTINO
-        // 		            <div class="form-group">
-        // 				        <label for="pr_sds_destino" class="col-md-3 control-label">SDS destino (Unifilar):</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-        // 				                <input name="pr_sds_destino" id="pr_sds_destino" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_inter_entrega_cd" class="col-md-3 control-label">Interface de entrega al cliente:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_inter_entrega_cd" name="pr_inter_entrega_cd">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="No aplica">No aplica</option>					   									
-        // 								    <option value="Ethernet">Ethernet</option> 	   
-        // 								    <option value="Serial V.35">Serial V.35</option>
-        // 								    <option value="Giga (óptico)">Giga (óptico)</option>
-        // 								    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
-        // 								    <option value="STM-1">STM-1</option>
-        // 								    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
-        // 								    <option value="G703 BNC">G703 BNC</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 			        <!-- REQUIERE VOC : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_requiere_voc_d" class="col-md-3 control-label">Requiere VOC:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_requiere_voc_d" name="pr_requiere_voc_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Si">Si</option>
-        //      									<option value="No">No</option>    
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- PROGRAMACIÓN DE VOC : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_programacion_d" class="col-md-3 control-label">Programación de VOC:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <select class="form-control" id="pr_programacion_d" name="pr_programacion_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Programada">Programada</option>
-        //      									<option value="No requiere programación">No requiere programación</option>							
-        //      									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
-        //      									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- REQUIERE RFC : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_requiere_rfc_d" class="col-md-3 control-label">Requiere RFC:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_requiere_rfc_d" name="pr_requiere_rfc_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
-        //      									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
-        //      									<option value="SI => Cliente Critico">SI => Cliente Critico</option>
-        //      									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
-        //      									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
-        //      									<option value="No">No</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- Conversor Medio: -->
-        // 		            <div class="form-group">
-        // 				        <label for="pr_conversor_medio_d" class="col-md-3 control-label">Conversor Medio:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
-        // 				                <input name="pr_conversor_medio_d" id="pr_conversor_medio_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- Equipos Adicionale--> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_equipos_adicionales_d" class="col-md-3 control-label">Equipos adicionale:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <input name="pr_equipos_adicionales_d" id="pr_equipos_adicionales_d" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- Consumibles:--> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_consumibles_d" class="col-md-3 control-label">Consumibles:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
-        // 				                <select class="form-control" id="pr_consumibles_d" name="pr_consumibles_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="Bandeja">Bandeja</option>
-        //      									<option value="Cables de Poder ">Cables de Poder </option>
-        //      									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
-        //      									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
-        //      									<option value="No Aplica">No Aplica</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_registro_importacion_carta" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <select class="form-control" id="pr_registro_importacion_carta" name="pr_registro_importacion_carta">
-        // 								    <option>Seleccionar...</option>
-        // 								    <option>Si</option>
-        //      									<option>No</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- MODO TRANSMISIÓN ENTREGA CANAL -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_modo_transmision" class="col-md-3 control-label">Modo transmisión entrega canal:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <select class="form-control" id="pr_modo_transmision" name="pr_modo_transmision">
-        // 								    <option>Seleccionar...</option>
-        // 								    <option>Troncal - Especifique VLAN</option>
-        //      									<option>Acceso (Null)</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CANTIDAD MACS : -->
-        // 				    <div class="form-group">
-        // 				        <label for="pr_cantidad_macs_d" class="col-md-3 control-label">Cantidad MACS:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
-        // 				                <select class="form-control" id="pr_cantidad_macs_d" name="pr_cantidad_macs_d">
-        // 								    <option value="">Seleccionar...</option>
-        // 								    <option value="0 - 250 Estándar">0 - 250 Estándar</option>
-        //      									<option value="250 en Adelante - Solicitar autorización a CORE">250 en Adelante - Solicitar autorización a CORE</option>
-        // 								</select>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN</legend>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- NOMBRE --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_nombre_3" class="col-md-3 control-label">Nombre:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-        // 				                <input name="pr_nombre_3" id="pr_nombre_3" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TELEFONO --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_telefono_3" class="col-md-3 control-label">Telefono:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-        // 				                <input name="pr_telefono_3" id="pr_telefono_3" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CELULAR --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_celular_3" class="col-md-3 control-label">Celular:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-        // 				                <input name="pr_celular_3" id="pr_celular_3" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- EMAIL --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_email_3" class="col-md-3 control-label">Email:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-        // 				                <input name="pr_email_3" id="pr_email_3" class="form-control" type="email" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<legend class="f-s-15">DATOS CLIENTE: TÉCNICO</legend>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- NOMBRE --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_nombre_4" class="col-md-3 control-label">Nombre:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
-        // 				                <input name="pr_nombre_4" id="pr_nombre_4" class="form-control" type="text" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- TELEFONO --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_telefono_4" class="col-md-3 control-label">Telefono:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
-        // 				                <input name="pr_telefono_4" id="pr_telefono_4" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- CELULAR --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_celular_4" class="col-md-3 control-label">Celular:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
-        // 				                <input name="pr_celular_4" id="pr_celular_4" class="form-control" type="number" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-
-        // 				    <!-- EMAIL --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_email_4" class="col-md-3 control-label">Correo electronico:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
-        // 				                <input name="pr_email_4" id="pr_email_4" class="form-control" type="email" >
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-
-        // 			<div class="d-inline-b">
-        // 				<fieldset class="col-md-6">
-
-        // 					<!-- OBSERVACIONES: --> 
-        // 				    <div class="form-group">
-        // 				        <label for="pr_observaciones_2" class="col-md-3 control-label">Observaciones:</label>
-        // 				        <div class="col-md-9 selectContainer">
-        // 				            <div class="input-group">
-        // 				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
-        // 				                <textarea name="pr_observaciones_2" id="pr_observaciones_2" class="form-control"></textarea>
-        // 				            </div>
-        // 				        </div>
-        // 				    </div>
-        // 				</fieldset>
-        // 			</div>
-        // 		</div>
-        // 	</div>
-        // </div>
-        //     	`;
-        //     }
-
-        //LAN ADMINISTRADA NO TIENE NADA QUE LO DISPARE
+        //PRIVATE LINE 
+	    formProduct_private_line: function(otp){
+	    	return `
+		    	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>PRIVATE LINE</small></h2>
+	         <!--*********************  MODULO PESTAÑAS  *********************-->
+	        <ul class="nav nav-tabs">
+	        	<li class="active"><a data-toggle="tab" href="#mpls_punto_origen_pl">PUNTO DE ORIGEN</a></li>
+	        	<li class=""><a data-toggle="tab" href="#mpls_punto_destino_pl">PUNTO DESTINO</a></li>
+	        </ul>
+
+	         <!--*********************  CONTENIDO PESTAÑAS  *********************-->
+	        <div class="tab-content">
+
+	        	<!--*********************  PUNTO DE ORIGEN  *********************-->
+	        	<div id="mpls_punto_origen_pl" class="tab-pane fade in active">
+	        		<h3>PUNTO DE ORIGEN</h3>
+	        		<div class="widget bg_white m-t-25 d-inline-b cliente">
+	        			<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION ORIGEN </legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CIUDAD -->
+	        					<div class="form-group">
+	        				        <label for="pr_ciudad_o" class="col-md-3 control-label">Ciudad:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
+	        				                <input name="pr_ciudad_o" id="pr_ciudad_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- DIRECCIÓN:-->
+	        				    <div class="form-group">
+	        				        <label for="pr_direccion_o" class="col-md-3 control-label">Dirección:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_direccion_o" id="pr_direccion_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- TIPO PREDIO: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_predio_o" class="col-md-3 control-label">Tipo predio:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_predio_o" name="pr_tipo_predio_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Edificio">Edificio</option>
+	             									<option value="Casa">Casa</option>									    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- NIT del cliente: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_nit_cliente_o" class="col-md-3 control-label">NIT del cliente:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_nit_cliente_o" id="pr_nit_cliente_o" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ALIAS DEL LUGAR  -->
+	        				    <div class="form-group">
+	        				        <label for="pr_alias_lugar_o" class="col-md-3 control-label">Alias del lugar:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_alias_lugar_o" id="pr_alias_lugar_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- OTP -->
+	        					<div class="form-group">
+	        				        <label for="pr_otp_o" class="col-md-3 control-label">OTP:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_otp_o" id="pr_otp_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- otp_asociadas -->
+	        					<div class="form-group">
+	        				        <label for="pr_otp_asociadas_o" class="col-md-3 control-label">OTP asociadas:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <input name="pr_otp_asociadas_o" id="pr_otp_asociadas_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TIPO PRIVATE LINE: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_private_o" class="col-md-3 control-label">Tipo PRIVATE LINE:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_private_o" name="pr_tipo_private_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Local - P2P">Local - P2P</option>
+	             									<option value="Local - P2MP">Local - P2MP</option>
+	             									<option value="Nacional - P2P">Nacional - P2P</option>
+	             									<option value="Nacional - P2MP">Nacional - P2MP</option>
+	             									<option value="VPRN">VPRN</option> 
+	             									<option value="Private Line Service (SDH)">Private Line Service (SDH)</option>			
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ancho_banda -->
+	        					<div class="form-group">
+	        				        <label for="pr_ancho_banda_o" class="col-md-3 control-label">Ancho de banda:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_ancho_banda_o" id="pr_ancho_banda_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TIPO INSTALACION: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_instalacion_o" class="col-md-3 control-label">Tipo instalación:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_instalacion_o" name="pr_tipo_instalacion_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Instalar UM con PE">Instalar UM con PE</option>
+	        								    <option value="Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)">Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)</option>
+	        								    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
+	        								    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
+	             									<option value="Instalar UM en Datacenter Tercero">Instalar UM en Datacenter Tercero</option>
+	             									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>					    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ID SERVICIO ACTUAL -->
+	        					<div class="form-group">
+	        				        <label for="pr_id_servicio_actual_o" class="col-md-3 control-label">ID SERVICIO ACTUAL (Aplica para UM Existente):</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <input name="pr_id_servicio_actual_o" id="pr_id_servicio_actual_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">INFORMACIÓN  ULTIMA MILLA </legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_requiere_um_o" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_requiere_um_o" name="pr_requiere_um_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Si">Si</option>
+	             									<option value="No">No</option>   	
+	             									<option value="Existente">Existente</option>											    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- PROVEEDOR: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_proveedor_o" class="col-md-3 control-label">Proveedor:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_proveedor_o" name="pr_proveedor_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="No aplica">No aplica</option>
+	             									<option value="Existente">Existente</option>
+	             									<option value="Claro">Claro</option>
+	             									<option value="Axesat">Axesat</option>
+	             									<option value="Comcel">Comcel</option> 	
+	             									<option value="Tigo">Tigo</option> 		
+	             									<option value="Media Commerce">Media Commerce</option> 		
+	             									<option value="Diveo">Diveo</option>
+	             									<option value="Edatel">Edatel</option> 	
+	             									<option value="UNE">UNE</option> 		
+	             									<option value="ETB">ETB</option> 	
+	             									<option value="IBM">IBM</option> 		
+	             									<option value="IFX">IFX</option> 		
+	             									<option value="Level 3 Colombia">Level 3 Colombia</option>
+	             									<option value="Mercanet">Mercanet</option> 	
+	             									<option value="Metrotel">Metrotel</option> 		
+	             									<option value="Promitel">Promitel</option> 		
+	             									<option value="Skynet">Skynet</option> 		
+	             									<option value="Telebucaramanga">Telebucaramanga</option>
+	             									<option value="Telecom">Telecom</option> 	
+	             									<option value="Terremark">Terremark</option> 		
+	             									<option value="Sol Cable Vision">Sol Cable Vision</option> 		
+	             									<option value="Sistelec">Sistelec</option>
+	             									<option value="Opain">Opain</option> 	
+	             									<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option> 		
+	             									<option value="TV Azteca">TV Azteca</option> 						    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- MEDIO -->
+	        				    <div class="form-group">
+	        				        <label for="pr_medio_o" class="col-md-3 control-label">Medio:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_medio_o" name="pr_medio_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="No Aplica">No Aplica</option> 	   
+	        								    <option value="Fibra">Fibra</option>
+	        								    <option value="Cobre">Cobre</option>
+	        								    <option value="Satelital">Satelital</option> 
+	        								    <option value="Radio enlace">Radio enlace</option>
+	        								    <option value="3G">3G</option>
+	        								    <option value="UTP">UTP</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- RESPUESTA FACTIBILIDAD BW > 300 MEGAS : -->
+	        		            <div class="form-group">
+	        				        <label for="pr_resp_factibilidad_o" class="col-md-3 control-label">Respuesta factibilidad BW > 300 MEGAS:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <input name="pr_resp_factibilidad_o" id="pr_resp_factibilidad_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_conector_o" class="col-md-3 control-label">Tipo conector:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_conector_o" name="pr_tipo_conector_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="LC">LC</option>  									   									
+	        								    <option value="SC">SC</option> 	   
+	        								    <option value="ST">ST</option>
+	        								    <option value="FC">FC</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- SDS destino(Unifilar) -->
+	        					<div class="form-group">
+	        				        <label for="pr_sds_destino_o" class="col-md-3 control-label">SDS destino(Unifilar):</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_sds_destino_o" id="pr_sds_destino_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_interface_entrega_o" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_interface_entrega_o" name="pr_interface_entrega_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="No aplica">No aplica</option>						   									
+	        								    <option value="Ethernet">Ethernet</option> 	   
+	        								    <option value="Serial V.35">Serial V.35</option>
+	        								    <option value="Giga (óptico)">Giga (óptico)</option>
+	        								    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
+	        								    <option value="STM-1">STM-1</option>
+	        								    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
+	        								    <option value="G703 BNC">G703 BNC</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- REQUIERE VOC : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_requiere_voc_o" class="col-md-3 control-label">Requiere VOC:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_requiere_voc_o" name="pr_requiere_voc_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Si">Si</option>
+	             									<option value="No">No</option>    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- PROGRAMACIÓN DE VOC : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_programacion_voc_o" class="col-md-3 control-label">Programación de VOC:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_programacion_voc_o" name="pr_programacion_voc_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Programada">Programada</option>
+	             									<option value="No requiere programación">No requiere programación</option> 									
+	             									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
+	             									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- REQUIERE RFC : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_requiere_rfc_o" class="col-md-3 control-label">Requiere RFC:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_requiere_rfc_o" name="pr_requiere_rfc_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
+	             									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>  	
+	             									<option value="SI => Cliente Critico">SI => Cliente Critico</option> 	    
+	             									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
+	             									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+	             									<option value="No">No</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- CONVESOR MEDIO: -->
+	        		            <div class="form-group">
+	        				        <label for="pr_conversor_medio_o" class="col-md-3 control-label">Conversor Medio:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <input name="pr_conversor_medio_o" id="pr_conversor_medio_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- Equipos Adicionale--> 
+	        				    <div class="form-group">
+	        				        <label for="pr_equipos_adicional_o" class="col-md-3 control-label">Equipos adicionale:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-plus" ></i></span>
+	        				                <input name="pr_equipos_adicional_o" id="pr_equipos_adicional_o" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- Consumibles:--> 
+	        				    <div class="form-group">
+	        				        <label for="pr_consumibles_o" class="col-md-3 control-label">Consumibles:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_consumibles_o" name="pr_consumibles_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Bandeja">Bandeja</option>
+	             									<option value="Cables de Poder ">Cables de Poder </option>
+	             									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
+	             									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
+	             									<option value="No Aplica">No Aplica</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_reg_importacion_o" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_reg_importacion_o" name="pr_reg_importacion_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Si">Si</option>
+	             									<option value="No">No</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- MODO TRANSMISIÓN ENTREGA CANAL -->
+	        				    <div class="form-group">
+	        				        <label for="pr_modo_transmision_o" class="col-md-3 control-label">Modo transmisión entrega canal:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_modo_transmision_o" name="pr_modo_transmision_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Troncal - Especifique VLAN">Troncal - Especifique VLAN</option>
+	             									<option value="Acceso (Null)">Acceso (Null)</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CANTIDAD MACS : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_ctd_macs_o" class="col-md-3 control-label">Cantidad MACS:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
+	        				                <select class="form-control" id="pr_ctd_macs_o" name="pr_ctd_macs_o">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="0 - 250 Estándar">0 - 250 Estándar</option>
+	             									<option value="250 en Adelante - Solicitar autorización a CORE">250 en Adelante - Solicitar autorización a CORE</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN </legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- NOMBRE --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_nombre_1" class="col-md-3 control-label">Nombre:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+	        				                <input name="pr_nombre_1" id="pr_nombre_1" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TELEFONO --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_telefono_1" class="col-md-3 control-label">Telefono:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+	        				                <input name="pr_telefono_1" id="pr_telefono_1" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CELULAR --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_celular_1" class="col-md-3 control-label">Celular:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+	        				                <input name="pr_celular_1" id="pr_celular_1" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- EMAIL --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_email_1" class="col-md-3 control-label">Email:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+	        				                <input name="pr_email_1" id="pr_email_1" class="form-control" type="email" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">DATOS CLIENTE: TÉCNICO</legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- NOMBRE --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_nombre_2" class="col-md-3 control-label">Nombre:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+	        				                <input name="pr_nombre_2" id="pr_nombre_2" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TELEFONO --> 
+	        				    <div class="form-group">
+	        				        <label for="telefono_dct_pl_po" class="col-md-3 control-label">Telefono:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+	        				                <input name="telefono_dct_pl_po" id="telefono_dct_pl_po" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CELULAR --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_celular_2" class="col-md-3 control-label">Celular:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+	        				                <input name="pr_celular_2" id="pr_celular_2" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- EMAIL --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_email_2" class="col-md-3 control-label">Email:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+	        				                <input name="pr_email_2" id="pr_email_2" class="form-control" type="email" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+	        					<!-- OBSERVACIONES: --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_observaciones_1" class="col-md-3 control-label">Observaciones:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <textarea name="pr_observaciones_1" id="pr_observaciones_1" class="form-control"></textarea>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+	        		</div>
+	        	</div>
+
+	        	<!--*********************  PUNTO DESTINO   *********************-->
+	        	<div id="mpls_punto_destino_pl" class="tab-pane fade">
+	        		<h3>PUNTO DESTINO</h3>
+	        		<div class="widget bg_white m-t-25 d-inline-b cliente">
+	        			<legend class="f-s-15">DATOS BÁSICOS DE INSTALACION DESTINO</legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CIUDAD -->
+	        					<div class="form-group">
+	        				        <label for="pr_ciudad_d" class="col-md-3 control-label">Ciudad:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-globe" ></i></span>
+	        				                <input name="pr_ciudad_d" id="pr_ciudad_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- DIRECCIÓN:-->
+	        				    <div class="form-group">
+	        				        <label for="pr_direccion_d" class="col-md-3 control-label">Dirección:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_direccion_d" id="pr_direccion_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- TIPO PREDIO: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_predio_d" class="col-md-3 control-label">Tipo predio:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="fa fa-home" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_predio_d" name="pr_tipo_predio_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Edificio">Edificio</option>
+	             							<option value="Casa">Casa</option>									    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>	
+
+	        				    <!-- NIT del cliente: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_nit_cliente_d" class="col-md-3 control-label">NIT del cliente:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_nit_cliente_d" id="pr_nit_cliente_d" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ALIAS DEL LUGAR  -->
+	        				    <div class="form-group">
+	        				        <label for="pr_alias_lugar_d" class="col-md-3 control-label">Alias del lugar:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_alias_lugar_d" id="pr_alias_lugar_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- OTP -->
+	        					<div class="form-group">
+	        				        <label for="pr_otp_d" class="col-md-3 control-label">OTP:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_otp_d" id="pr_otp_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- otp_asociadas -->
+	        					<div class="form-group">
+	        				        <label for="pr_otp_asociado_d" class="col-md-3 control-label">OTP asociadas:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_otp_asociado_d" id="pr_otp_asociado_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TIPO PRIVATE LINE: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_pl_d" class="col-md-3 control-label">Tipo PRIVATE LINE:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_pl_d" name="pr_tipo_pl_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Local - P2P">Local - P2P</option>
+	             									<option value="Local - P2MP">Local - P2MP</option>
+	             									<option value="Nacional - P2P">Nacional - P2P</option>
+	             									<option value="Nacional - P2MP">Nacional - P2MP</option>
+	             									<option value="VPRN">VPRN</option> 
+	             									<option value="Private Line Service (SDH)">Private Line Service (SDH)</option>						
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>	
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+	        					<!-- ancho_banda -->
+	        					<div class="form-group">
+	        				        <label for="pr_ancho_banda_d" class="col-md-3 control-label">Ancho de banda:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_ancho_banda_d" id="pr_ancho_banda_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>		
+
+	        				    <!-- TIPO INSTALACION: -->
+	        				     <div class="form-group">
+	        				        <label for="pr_tipo_instalacion_d" class="col-md-3 control-label">Tipo instalación:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_instalacion_d" name="pr_tipo_instalacion_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Instalar UM con PE">Instalar UM con PE</option>
+	        								    <option value="Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)">Instalar UM con CT (No Estándar - Requiere Validación Solución No Estándar)</option>
+	        								    <option value="Instalar UM en Datacenter Claro- Cableado">Instalar UM en Datacenter Claro- Cableado</option>
+	        								    <option value="Instalar UM en Datacenter Claro- Implementación">Instalar UM en Datacenter Claro- Implementación</option>
+	             									<option value="Instalar UM en Datacenter Tercero">Instalar UM en Datacenter Tercero</option>
+	             									<option value="UM existente. Requiere Cambio de equipo">UM existente. Requiere Cambio de equipo</option>					    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ID SERVICIO ACTUAL -->
+	        					<div class="form-group">
+	        				        <label for="pr_idservicio_act_d" class="col-md-3 control-label">ID SERVICIO ACTUAL(Aplica para UM Existente):</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <input name="pr_idservicio_act_d" id="pr_idservicio_act_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">NFORMACIÓN  ULTIMA MILLA</legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- ¿ESTA OT REQUIERE INSTALACION DE  UM?: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_requiere_instalacion_d" class="col-md-3 control-label">¿Esta OT requiere instalacion UM?:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_requiere_instalacion_d" name="pr_requiere_instalacion_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Si">Si</option>
+	             									<option value="No">No</option>   												    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- PROVEEDOR: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_proveedor_d" class="col-md-3 control-label">Proveedor:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_proveedor_d" name="pr_proveedor_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="No aplica">No aplica</option>
+	             									<option value="Existente">Existente</option>
+	             									<option value="Claro">Claro</option>
+	             									<option value="Axesat">Axesat</option>
+	             									<option value="Comcel">Comcel</option> 	
+	             									<option value="Tigo">Tigo</option> 		
+	             									<option value="Media Commerce">Media Commerce</option> 		
+	             									<option value="Diveo">Diveo</option>
+	             									<option value="Edatel">Edatel</option> 	
+	             									<option value="UNE">UNE</option> 		
+	             									<option value="ETB">ETB</option> 	
+	             									<option value="IBM">IBM</option> 		
+	             									<option value="IFX">IFX</option> 		
+	             									<option value="Level 3 Colombia">Level 3 Colombia</option>
+	             									<option value="Mercanet">Mercanet</option> 	
+	             									<option value="Metrotel">Metrotel</option> 		
+	             									<option value="Promitel">Promitel</option> 		
+	             									<option value="Skynet">Skynet</option> 		
+	             									<option value="Telebucaramanga">Telebucaramanga</option>
+	             									<option value="Telecom">Telecom</option> 	
+	             									<option value="Terremark">Terremark</option> 		
+	             									<option value="Sol Cable Vision">Sol Cable Vision</option> 		
+	             									<option value="Sistelec">Sistelec</option>
+	             									<option value="Opain">Opain</option> 	
+	             									<option value="Airplan - (Información y Tecnologia)">Airplan - (Información y Tecnologia)</option>	
+	             									<option value="TV Azteca">TV Azteca</option> 						    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+	        					<!-- TIPO DE CONECTOR *** (Aplica para FO Claro): -->
+	        				    <div class="form-group">
+	        				        <label for="pr_tipo_conector_d" class="col-md-3 control-label">Tipo conector(Aplica para FO Claro):</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_tipo_conector_d" name="pr_tipo_conector_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="LC">LC</option>							   									
+	        								    <option value="SC">SC</option> 	   
+	        								    <option value="ST">ST</option>
+	        								    <option value="FC">FC</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- ACCESO (Solo Aplica para Canales SDH): -->
+	        				    SDS DESTINO
+	        		            <div class="form-group">
+	        				        <label for="pr_sds_destino" class="col-md-3 control-label">SDS destino (Unifilar):</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
+	        				                <input name="pr_sds_destino" id="pr_sds_destino" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- INTERFACE DE ENTREGA AL CLIENTE: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_inter_entrega_cd" class="col-md-3 control-label">Interface de entrega al cliente:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_inter_entrega_cd" name="pr_inter_entrega_cd">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="No aplica">No aplica</option>					   									
+	        								    <option value="Ethernet">Ethernet</option> 	   
+	        								    <option value="Serial V.35">Serial V.35</option>
+	        								    <option value="Giga (óptico)">Giga (óptico)</option>
+	        								    <option value="Giga Ethernet (Electrico)">Giga Ethernet (Electrico)</option>
+	        								    <option value="STM-1">STM-1</option>
+	        								    <option value="RJ45 - 120 OHM">RJ45 - 120 OHM</option>
+	        								    <option value="G703 BNC">G703 BNC</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        			        <!-- REQUIERE VOC : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_requiere_voc_d" class="col-md-3 control-label">Requiere VOC:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_requiere_voc_d" name="pr_requiere_voc_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Si">Si</option>
+	             									<option value="No">No</option>    
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- PROGRAMACIÓN DE VOC : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_programacion_d" class="col-md-3 control-label">Programación de VOC:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <select class="form-control" id="pr_programacion_d" name="pr_programacion_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Programada">Programada</option>
+	             									<option value="No requiere programación">No requiere programación</option>							
+	             									<option value="No programada. Otra ciudad">No programada. Otra ciudad</option> 	    
+	             									<option value="No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto">No programada. Cliente solicita ser contactado en fecha posterior y/o con otro contacto</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">REQUERIMIENTOS PARA ENTREGA DEL SERVICIO</legend>
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- REQUIERE RFC : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_requiere_rfc_d" class="col-md-3 control-label">Requiere RFC:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_requiere_rfc_d" name="pr_requiere_rfc_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="SI => Cliente Critico Punto Central">SI => Cliente Critico Punto Central</option>
+	             									<option value="SI => Servicio Critico (Listado)">SI => Servicio Critico (Listado)</option>
+	             									<option value="SI => Cliente Critico">SI => Cliente Critico</option>
+	             									<option value="SI => RFC Estándar Saturación">SI => RFC Estándar Saturación</option>
+	             									<option value="SI => Cliente Critico Punto Central - RFC Estándar Saturación">SI => Cliente Critico Punto Central - RFC Estándar Saturación</option>
+	             									<option value="No">No</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- Conversor Medio: -->
+	        		            <div class="form-group">
+	        				        <label for="pr_conversor_medio_d" class="col-md-3 control-label">Conversor Medio:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-sort-by-order" ></i></span>
+	        				                <input name="pr_conversor_medio_d" id="pr_conversor_medio_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- Equipos Adicionale--> 
+	        				    <div class="form-group">
+	        				        <label for="pr_equipos_adicionales_d" class="col-md-3 control-label">Equipos adicionale:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <input name="pr_equipos_adicionales_d" id="pr_equipos_adicionales_d" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- Consumibles:--> 
+	        				    <div class="form-group">
+	        				        <label for="pr_consumibles_d" class="col-md-3 control-label">Consumibles:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
+	        				                <select class="form-control" id="pr_consumibles_d" name="pr_consumibles_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="Bandeja">Bandeja</option>
+	             									<option value="Cables de Poder ">Cables de Poder </option>
+	             									<option value="Clavijas de Conexión">Clavijas de Conexión</option>
+	             									<option value="Accesorios para rackear (Orejas)">Accesorios para rackear (Orejas)</option>
+	             									<option value="No Aplica">No Aplica</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA: -->
+	        				    <div class="form-group">
+	        				        <label for="pr_registro_importacion_carta" class="col-md-3 control-label">Registro importación y carta valorizada:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <select class="form-control" id="pr_registro_importacion_carta" name="pr_registro_importacion_carta">
+	        								    <option>Seleccionar...</option>
+	        								    <option>Si</option>
+	             									<option>No</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- MODO TRANSMISIÓN ENTREGA CANAL -->
+	        				    <div class="form-group">
+	        				        <label for="pr_modo_transmision" class="col-md-3 control-label">Modo transmisión entrega canal:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <select class="form-control" id="pr_modo_transmision" name="pr_modo_transmision">
+	        								    <option>Seleccionar...</option>
+	        								    <option>Troncal - Especifique VLAN</option>
+	             									<option>Acceso (Null)</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CANTIDAD MACS : -->
+	        				    <div class="form-group">
+	        				        <label for="pr_cantidad_macs_d" class="col-md-3 control-label">Cantidad MACS:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-modal-window" ></i></span>
+	        				                <select class="form-control" id="pr_cantidad_macs_d" name="pr_cantidad_macs_d">
+	        								    <option value="">Seleccionar...</option>
+	        								    <option value="0 - 250 Estándar">0 - 250 Estándar</option>
+	             									<option value="250 en Adelante - Solicitar autorización a CORE">250 en Adelante - Solicitar autorización a CORE</option>
+	        								</select>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">DATOS DEL CONTACTO PARA COMUNICACIÓN</legend>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- NOMBRE --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_nombre_3" class="col-md-3 control-label">Nombre:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+	        				                <input name="pr_nombre_3" id="pr_nombre_3" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TELEFONO --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_telefono_3" class="col-md-3 control-label">Telefono:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+	        				                <input name="pr_telefono_3" id="pr_telefono_3" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CELULAR --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_celular_3" class="col-md-3 control-label">Celular:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+	        				                <input name="pr_celular_3" id="pr_celular_3" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- EMAIL --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_email_3" class="col-md-3 control-label">Email:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+	        				                <input name="pr_email_3" id="pr_email_3" class="form-control" type="email" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<legend class="f-s-15">DATOS CLIENTE: TÉCNICO</legend>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- NOMBRE --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_nombre_4" class="col-md-3 control-label">Nombre:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+	        				                <input name="pr_nombre_4" id="pr_nombre_4" class="form-control" type="text" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- TELEFONO --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_telefono_4" class="col-md-3 control-label">Telefono:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt" ></i></span>
+	        				                <input name="pr_telefono_4" id="pr_telefono_4" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+
+	        				<fieldset class="col-md-6">
+
+	        					<!-- CELULAR --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_celular_4" class="col-md-3 control-label">Celular:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" ></i></span>
+	        				                <input name="pr_celular_4" id="pr_celular_4" class="form-control" type="number" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+
+	        				    <!-- EMAIL --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_email_4" class="col-md-3 control-label">Correo electronico:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" ></i></span>
+	        				                <input name="pr_email_4" id="pr_email_4" class="form-control" type="email" >
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+
+	        			<div class="d-inline-b">
+	        				<fieldset class="col-md-6">
+
+	        					<!-- OBSERVACIONES: --> 
+	        				    <div class="form-group">
+	        				        <label for="pr_observaciones_2" class="col-md-3 control-label">Observaciones:</label>
+	        				        <div class="col-md-9 selectContainer">
+	        				            <div class="input-group">
+	        				                <span class="input-group-addon"><i class="glyphicon glyphicon-edit" ></i></span>
+	        				                <textarea name="pr_observaciones_2" id="pr_observaciones_2" class="form-control"></textarea>
+	        				            </div>
+	        				        </div>
+	        				    </div>
+	        				</fieldset>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	           	`;
+   		}
+
+        //LAN ADMINISTRADA
         //     formProduct_LAN_ADMINISTRADA: function(otp){
         //     	return `
         //     	<h2 class="h4"><i class="fa fa-eye"></i> &nbsp; Formulario Cierre de Kickoff  <small>LAN ADMINISTRADA</small></h2>
