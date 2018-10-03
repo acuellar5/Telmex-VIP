@@ -488,6 +488,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -522,6 +523,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -571,6 +573,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -600,6 +603,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -629,6 +633,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -663,6 +668,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -712,6 +718,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -741,6 +748,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
