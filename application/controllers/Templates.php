@@ -3021,7 +3021,6 @@ class Templates extends CI_Controller {
         ';
     }
 
-
     // retorna plantilla texto de lan administrada
     private function plantilla_txt_pr_lan_administrada($data_pr) {
         return '
@@ -3067,6 +3066,125 @@ class Templates extends CI_Controller {
 
         ';
     }
+
+        // retorna plantilla tyexto para private line
+    private function plantilla_txt_pr_private_line($data_pr, $flag) {
+        $cadena = '';
+        $cadena .= '
+        MPLS DESTINO
+
+        ***************************************************   PUNTO DESTINO       ************************************************
+        *******************************************    DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD :                                                      ' . $data_pr['pr_ciudad_des'] . '
+        DIRECCIÓN :                                                   ' . $data_pr['pr_direccion_des'] . '
+        TIPO PREDIO :                                                 ' . $data_pr['pr_tipo_predio_des'] . '
+        NIT del cliente :                                             ' . $data_pr['pr_nit_cliente_des'] . '
+        ALIAS DEL LUGAR :                                             ' . $data_pr['pr_alias_lugar_des'] . '
+        OTP :                                                         ' . $data_pr['pr_id_ot_padre_des'] . '
+        OTP ASOCIADAS :                                               ' . $data_pr['pr_otp_asociada_des'] . '
+        TIPO PRIVATE LINE :                                           ' . $data_pr['pr_tipo_private_des'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_des'] . '
+        TIPO DE INSTALACIÓN :                                         ' . $data_pr['pr_tipo_instalacion_des'] . '
+        ID SERVICIO ACTUAL :                                          ' . $data_pr['pr_servicio_actual_des'] . '
+        
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA DESTINO  ******************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM? :                       ' . $data_pr['pr_requiere_um_des'] . '
+        PROVEEDOR :                                                   ' . $data_pr['pr_proveedor_des'] . '
+        MEDIO                                                         ' . $data_pr['pr_medio_des'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS :                        ' . $data_pr['pr_factibilidad_bw_des'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro) :                 ' . $data_pr['pr_tipo_conector_des'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS  
+            SDS DESTINO :                                             ' . $data_pr['pr_sds_destino_des'] . '
+        INTERFACE DE ENTREGA AL CLIENTE :                             ' . $data_pr['pr_interfaz_entrega_cliente_des'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc_des'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc_des'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc_des'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio_des'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales_des'] . '            
+            Consumibles :                                             ' . $data_pr['pr_consumibles_des'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA :                  ' . $data_pr['pr_carta_valorizada_des'] . '
+        MODO TRANSMISION ENTREGA CANAL :                              ' . $data_pr['pr_transmision_entrega_des'] . '
+        CANTIDAD MACS :                                               ' . $data_pr['pr_cantidad_macs_des'] . '
+
+        *********************************************  DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        ****************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  *********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1_des'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1_des'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1_des'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1_des'] . '
+
+        ***********************************************   DATOS CONTACTO TÉCNICO   ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2_des'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2_des'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2_des'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_des'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_des'] . '
+        ';
+        if ($flag == '1') {
+            $cadena .= '
+        ******************************************************MPLS ORIGEN******************************************************
+        MPLS ORIGEN
+
+        ***********************************************     PUNTO ORIGEN       ************************************************
+        ****************************************     DATOS BÁSICOS DE INSTALACION      *****************************************
+        CIUDAD :                                                      ' . $data_pr['pr_ciudad_ori'] . '
+        DIRECCIÓN :                                                   ' . $data_pr['pr_direccion_ori'] . '
+        TIPO PREDIO :                                                 ' . $data_pr['pr_tipo_predio_ori'] . '
+        NIT del cliente :                                             ' . $data_pr['pr_nit_cliente_ori'] . '
+        ALIAS DEL LUGAR :                                             ' . $data_pr['pr_alias_lugar_ori'] . '
+        OTP :                                                         ' . $data_pr['pr_id_ot_padre_ori'] . '
+        OTP ASOCIADAS :                                               ' . $data_pr['pr_otp_asociada_ori'] . '
+        TIPO PRIVATE LINE :                                           ' . $data_pr['pr_tipo_private_ori'] . '
+        ANCHO DE BANDA :                                              ' . $data_pr['pr_ancho_banda_ori'] . '
+        TIPO DE INSTALACIÓN :                                         ' . $data_pr['pr_tipo_instalacion_ori'] . '
+        ID SERVICIO ACTUAL :                                          ' . $data_pr['pr_servicio_actual_ori'] . '
+        
+
+        *******************************************  INFORMACIÓN  ULTIMA MILLA DESTINO  ******************************************
+        ¿ESTA OT REQUIERE INSTALACION DE  UM? :                       ' . $data_pr['pr_requiere_um_ori'] . '
+        PROVEEDOR :                                                   ' . $data_pr['pr_proveedor_ori'] . '
+        MEDIO                                                         ' . $data_pr['pr_medio_ori'] . '
+        RESPUESTA FACTIBILIDAD BW >100 MEGAS :                        ' . $data_pr['pr_factibilidad_bw_ori'] . '
+        TIPO DE CONECTOR *** (Aplica para FO Claro) :                 ' . $data_pr['pr_tipo_conector_ori'] . '
+        ACCESO (Solo Aplica para Canales > 100 MEGAS  
+            SDS DESTINO :                                             ' . $data_pr['pr_sds_destino_ori'] . '
+        INTERFACE DE ENTREGA AL CLIENTE :                             ' . $data_pr['pr_interfaz_entrega_cliente_ori'] . '
+        REQUIERE VOC :                                                ' . $data_pr['pr_requiere_voc_ori'] . '
+        PROGRAMACIÓN DE VOC :                                         ' . $data_pr['pr_programacion_voc_ori'] . '
+
+        *******************************************    REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ************************************
+        REQUIERE RFC                                                  ' . $data_pr['pr_requiere_rfc_ori'] . '
+        EQUIPOS   (VER LISTA COMPLETA):       
+            Conversor Medio :                                         ' . $data_pr['pr_conversor_medio_ori'] . '
+            Equipos Adicionales :                                     ' . $data_pr['pr_equipos_adicionales_ori'] . '            
+            Consumibles :                                             ' . $data_pr['pr_consumibles_ori'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA :                  ' . $data_pr['pr_carta_valorizada_ori'] . '
+        MODO TRANSMISION ENTREGA CANAL :                              ' . $data_pr['pr_transmision_entrega_ori'] . '
+        CANTIDAD MACS :                                               ' . $data_pr['pr_cantidad_macs_ori'] . '
+
+        *********************************************  DATOS DEL CONTACTO PARA COMUNICACIÓN     **************************************
+        ****************************************  APRUEBA COSTOS DE OC Y CIERRE DE ORDEN DE TRABAJO  *********************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_1_ori'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_1_ori'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_1_ori'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_1_ori'] . '
+
+        ***********************************************   DATOS CONTACTO TÉCNICO   ***************************************************
+        NOMBRE :                                                      ' . $data_pr['pr_nombre_2_ori'] . '
+        TELEFONO :                                                    ' . $data_pr['pr_telefono_2_ori'] . '
+        CELULAR :                                                     ' . $data_pr['pr_celular_2_ori'] . '
+        CORREO ELECTRONICO :                                          ' . $data_pr['pr_correo_2_ori'] . '
+        OBSERVACIONES:                                                ' . $data_pr['pr_observaciones_ori'] . '
+        ';
+        }
+
+        return $cadena;
+    }
+
     public function internet_dedicado_empresarial($argumentos) {
         return '
           <div dir="ltr"><div class="adM">
