@@ -3011,6 +3011,52 @@ class Templates extends CI_Controller {
         ';
     }
 
+
+    // retorna plantilla texto de lan administrada
+    private function plantilla_txt_pr_lan_administrada($data_pr) {
+        return '
+        SERVICIO LAN ADMINISTRADA
+
+        **************************************************   DATOS BASICOS   **************************************************
+        CIUDAD: ............................................' . $data_pr['pr_ciudad'] . '
+        DIRECCIÓN: .........................................' . $data_pr['pr_direccion'] . '
+        TIPO PREDIO: .......................................' . $data_pr['pr_tipo_predio'] . '
+        NIT del cliente: ...................................' . $data_pr['pr_nit_cliente'] . '
+        ALIAS DEL LUGAR: ...................................' . $data_pr['pr_alias_lugar'] . '
+        OTP: ...............................................' . $data_pr['pr_id_ot_padre'] . '
+        OTP ASOCIADAS: .....................................' . $data_pr['pr_otp_asociada'] . '
+        TOPOLOGIA: .........................................' . $data_pr['pr_topologia'] . '
+        ID SERVICIO ACTUAL (Aplica para UM Existente):......' . $data_pr['pr_servicio_actual'] . '
+
+        *****************************************  REQUERIMIENTOS PARA ENTREGA DEL SERVICIO  ***********************************
+        REQUIERE RFC........................................' . $data_pr['pr_requiere_rfc'] . '       
+        Conversor Medio :...................................' . $data_pr['pr_conversor_medio'] . '
+        Referencia Router :.................................' . $data_pr['pr_referencia_router'] . '
+        Modulos o Tarjetas :................................' . $data_pr['pr_modulos_tarjetas'] . '
+        Licencias :.........................................' . $data_pr['pr_licencias'] . '
+        Equipos Adicionales :...............................' . $data_pr['pr_equipos_adicionales'] . '
+        Consumibles :.......................................' . $data_pr['pr_consumibles'] . '
+        REGISTRO DE IMPORTACIÓN Y CARTA VALORIZADA :........' . $data_pr['pr_carta_valorizada'] . '
+
+        *****************************************   DATOS DEL CONTACTO PARA COMUNICACIÓN   **************************************
+        ****************************  APRUEBA COSTOS DE OC E INICIO DE FACTURACIÓN DE ORDEN DE TRABAJO  *************************
+        NOMBRE :............................................' . $data_pr['pr_nombre_1'] . '
+        TELEFONO :..........................................' . $data_pr['pr_telefono_1'] . '
+        CELULAR :...........................................' . $data_pr['pr_celular_1'] . '
+        CORREO ELECTRONICO :................................' . $data_pr['pr_correo_1'] . '
+
+        ************************************************  DATOS CONTACTO TÉCNICO   **********************************************
+        NOMBRE :............................................' . $data_pr['pr_nombre_2'] . ' 
+        TELEFONO :..........................................' . $data_pr['pr_telefono_2'] . ' 
+        CELULAR :...........................................' . $data_pr['pr_celular_2'] . ' 
+        CORREO ELECTRONICO :................................' . $data_pr['pr_correo_2'] . '
+        OBSERVACIONES :.....................................' . $data_pr['pr_observaciones'] . ' 
+
+        ***************************************************  KIKOFF TECNICO     *************************************************
+        TIPO PROTOCOLO (STP, RSTP, VTP, DTP) :..............' . $data_pr['pr_tipo_protocolo'] . '
+
+        ';
+    }
     public function internet_dedicado_empresarial($argumentos) {
         return '
           <div dir="ltr"><div class="adM">
