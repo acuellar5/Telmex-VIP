@@ -113,7 +113,6 @@ $(function() {
                 formulario.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
                 // si el tipo de la ot es KO validamos el select por si es cerrado
                 if (registro.k_id_tipo == 1) {
-                    console.log("registro", registro);
                     $('#k_id_estado_ot').on('change', function() {
                         //argumentos para pasar a los templates 
                         const arg = {
@@ -239,19 +238,6 @@ $(function() {
                 idtipo: idtipo
             }, function(data) {
                 
-                //valida si la opcion no tiene reporte reinicio(correo) y la dijire a otro controlador, el cual solo actualiza la oth y no envia correo
-                if (val_estado > 23) {
-                    switch(val_estado){
-                        case "24":
-                        $('#formModal').attr('action', 'Templates/c_updateStatusOtEspeciales/23');
-                        $('#btnUpdOt').attr('disabled', false);
-                        break;
-                        case "25":
-                        $('#formModal').attr('action', 'Templates/c_updateStatusOtEspeciales/24');
-                        $('#btnUpdOt').attr('disabled', false);
-                        break;
-                    }
-                }
                 // Decodifica el objeto traido desde el controlador
                 var status = JSON.parse(data);
                 // Pinto el select de estado
@@ -276,7 +262,9 @@ $(function() {
         },
         // Metodo para validar formularios al darle click en actualizar
         validarFormulario: function() {
+            var val_estado = $('#num_servicio').val();
             if ($("#k_id_estado_ot").val() == 3) {
+
                 let msj = false;
                 // const mail = $('#ingeniero1_email').val();
                 // const mail1 = $('#mail_envio').val();
@@ -300,18 +288,33 @@ $(function() {
                 //     return false;
                 // }
                 const email_user = helper.inSession('n_mail_user');
-                swal({
-                    title: "Desea Guardar?",
-                    html: `La información se enviará al correo <br> <b>${email_user}</b>`,
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, Continuar!',
-                    cancelButtonText: 'Cancelar!',
-                }).then((continuar) => {
+
+                    swal({
+                        title: "Desea Guardar?",
+                        html: (val_estado <= 23) ? `La información se enviará al correo <br> <b>${email_user}</b>` : '',
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, Continuar!',
+                        cancelButtonText: 'Cancelar!',
+                    }).then((continuar) => {
+                
                     if (continuar.value) {
-                        $('#formModal').submit();
+                        //valida si la opcion no tiene reporte reinicio(correo) y la dijire a otro controlador, 
+                        //el cual solo actualiza la oth y no envia correo
+                        if (val_estado > 23)  { 
+
+                            $('#formModal').attr('action', baseurl + '/Templates/c_updateStatusOtEspeciales');
+                            $('#btnUpdOt').attr('disabled', false);
+                            $('#formModal').submit();
+
+                        }else{
+
+                            $('#formModal').submit();
+
+                         }
+
                     } else {
                         helper.miniAlert();
                         return false;
@@ -320,6 +323,7 @@ $(function() {
             } else {
                 $('#formModal').submit();
             }
+
         },
         //llena el select de ingeniero
         get_eingenieer: function() {
@@ -348,9 +352,16 @@ $(function() {
         },
         // cambia segun el interruptor entre origen form y destino
         toggle_origen_destino: function() {
+            var val_estado = $('#num_servicio').val();
+
             let checkeado = this.checked;
             if (checkeado) {
-                $('#mpls_punto_origen').html(setForm.formProduct_mpls_form_origen());
+                if (val_estado == 24) {
+                    $('#mpls_punto_origen').html(setForm.formProduct_private_line_origen());
+
+                } else {
+                    $('#mpls_punto_origen').html(setForm.formProduct_mpls_form_origen());
+                }                
                 $('#pestana_puto_origen').show(300);
                 $('#is_origen').val('1');
             } else {
@@ -359,6 +370,7 @@ $(function() {
                 $('#pestana_punto_destino').click();
                 $('#is_origen').val('0');
             }
+
         },
         //************ fin formulario de edicion oth ***************//
     };
