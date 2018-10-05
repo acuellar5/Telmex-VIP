@@ -1702,7 +1702,7 @@
     </div>
 </div>
 <!------------------------------------------ Fin Modal editar OTs -------------------------------------->
-
+ 
 <!------------------------------------------ modal ordenes seleccionadas ------------------------------->
 <div id="mdl_cierre" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
