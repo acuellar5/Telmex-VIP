@@ -488,6 +488,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -522,6 +523,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -571,6 +573,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -600,6 +603,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -629,6 +633,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -663,6 +668,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -712,6 +718,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -741,6 +748,7 @@
                                         <option value="CONFIGURADO" >CONFIGURADO</option>
                                         <option value="PENDIENTE" >PENDIENTE</option>
                                         <option value="CERRADA" >CERRADA</option>
+                                        <option value="NO APLICA" >NO APLICA</option>
                                     </select>
                                 </td>
                                 <td>
@@ -1475,6 +1483,10 @@
                                                             <option value="21">Instalación Telefonía Publica Básica - Internet Dedicado</option>
                                                             <option value="22">Cambio de Última Milla</option>
                                                             <option value="23">Cambio de Equipo</option>
+                                                            <optgroup label="SIN REPORTE INICIO">
+                                                            <option value="24">PRIVATE LINE</option>
+                                                            <option value="25">LAN ADMINISTRADA</option>
+                                                            </optgroup>
                                                         </select>
 
                                                     </div>
@@ -1694,7 +1706,7 @@
     </div>
 </div>
 <!------------------------------------------ Fin Modal editar OTs -------------------------------------->
-
+ 
 <!------------------------------------------ modal ordenes seleccionadas ------------------------------->
 <div id="mdl_cierre" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
