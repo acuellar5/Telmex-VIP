@@ -60,7 +60,7 @@ class Templates extends CI_Controller {
             // 1. formulario linea base guardar en bd tabla linea_base (otp)
             $this->guardar_linea_base($this->input->post());
 
-            // $this->actualizar_compromiso_oths($this->input->post());
+            $this->actualizar_compromiso_oths($this->input->post());
 
 
 
