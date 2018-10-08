@@ -77,7 +77,7 @@ class User extends CI_Controller {
         } elseif ('Implementacion') {
             $this->load->view('principal');
         } elseif ('Graphics') {
-            $this->load->view('graficas/view_load_graphics');
+            $this->load->view('graficas/view_graphics/BBVA');
         }
         // $this->load->view('moduleOtp');
 
