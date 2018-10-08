@@ -160,6 +160,12 @@
     <script src="<?= URL::to("assets/js/modules/facturacion_ots.js?v=" . validarEnProduccion()) ?>"></script>    
 <?php endif ?>
 
+<?php if ($this->uri->segment(1) == 'Graphics' && $this->uri->segment(2) == 'view_load_graphics'): ?>
+    <script src="<?= URL::to("assets/js/modules/graficas/custom-file-input.js?v=" . validarEnProduccion()) ?>"></script>    
+
+
+<?php endif ?>
+
 
 
     <script src="<?= URL::to('assets/plugins/select2/select2.js') ?>"></script>

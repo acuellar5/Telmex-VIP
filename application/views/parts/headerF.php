@@ -23,24 +23,24 @@
   <?php if ($this->uri->segment(1) == 'type_restore'): ?>
 <!-- ************************************ type_restore ******************************************* -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
-<?php endif ?>
+  <?php endif ?>
 
   <script src="<?= URL::to("assets/plugins/jquery/jquery.min.js") ?>"></script>
   <script src="<?= URL::to("assets/plugins/bootstrap/js/bootstrap.min.js") ?>"></script>
 
-<?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
-<!-- ************************************** type_restore ********************************************* -->
-    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
-    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
-<?php endif ?>
+  <?php if ($this->uri->segment(1) == 'type_restore' || $this->uri->segment(1) == 'Type'): ?>
+  <!-- ************************************** type_restore ********************************************* -->
+      <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-select.min.css") ?>">
+      <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/sweetalert2/animate.css") ?>">
+  <?php endif ?>
 
-<?php if ($this->uri->segment(1) == 'managementOtp'|| $this->uri->segment(1) == 'Sede'): ?>
-<!-- ************************************** WORK MANAGEMENT OTP CSS ********************************************* -->
-    <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/tooltip.css") ?>">
-<?php endif ?>
+  <?php if ($this->uri->segment(1) == 'managementOtp'|| $this->uri->segment(1) == 'Sede'): ?>
+  <!-- ************************************** WORK MANAGEMENT OTP CSS ********************************************* -->
+      <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/tooltip.css") ?>">
+  <?php endif ?>
 
-    <?php if ($this->uri->segment(1) == 'managementOtp'): ?>
-<!-- ************************************** timeLine CSS ********************************************* -->
+  <?php if ($this->uri->segment(1) == 'managementOtp'): ?>
+  <!-- ************************************** timeLine CSS ********************************************* -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/timeLine.css?v=" . validarEnProduccion()) ?>">
     <!-- css para el formulario con tabs seccionado -->
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/vertical_tabs.css?v=" . validarEnProduccion()) ?>">
@@ -49,7 +49,7 @@
     <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/prettify.min.css?v=" . validarEnProduccion()) ?>">
 
 
-<?php endif ?>
+  <?php endif ?>
             
         <link rel="stylesheet" type="text/css" href="<?= URL::to('assets/vendor/select2/select2.min.css') ?>">
 
@@ -66,14 +66,23 @@
         <!--==============================================================================================-->
 
   <?php endif ?>
-    <?php if ($this->uri->segment(1) == 'managementOtp' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija' || $this->uri->segment(1) == 'Sede') { ?>
-        <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . validarEnProduccion()) ?>" />
-        <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
+  <?php if ($this->uri->segment(1) == 'managementOtp' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'OtHija' || $this->uri->segment(1) == 'Sede') { ?>
+      <link rel="stylesheet" href="<?= URL::to('assets/css/styleModalCami.css?v=' . validarEnProduccion()) ?>" />
+      <link rel="stylesheet" href="<?= URL::to('assets/css/helper-class.css?v=1.0') ?>">
 
-     <?php } ?>
+  <?php } ?>
   <?php if ($this->uri->segment(1) == 'OTP' || $this->uri->segment(2) == 'loginUser') { ?>
         <link rel="stylesheet" href="<?= URL::to('assets/css/style_principal_otp.css?v=' . validarEnProduccion()) ?>" />
   <?php } ?>
+
+  <?php if ($this->uri->segment(1) == 'Graphics' && $this->uri->segment(2) == 'view_load_graphics'): ?>
+      <link rel="stylesheet" href="<?= URL::to('assets/css/input_file/component.css?v=' . validarEnProduccion()) ?>" />
+      <link rel="stylesheet" href="<?= URL::to('assets/css/input_file/demo.css?v=' . validarEnProduccion()) ?>" />
+  <?php endif ?>
+
+
+  
+
 
 </head>
 
@@ -110,7 +119,7 @@
 
                     <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
-                    <li><a href="<?= URL::to('Graphics/load_base') ?>">Graficas</a></li>
+                    <li><a href="<?= URL::to('Graphics/view_load_graphics') ?>">Graficas</a></li>
                     <?php endif ?>
                   </ul>
                 </li>
@@ -166,5 +175,5 @@
       </div>
     </nav>
   </div>
-  <div class="container" style="min-height: 518px;">
+  <div class="container" style="min-height: 513px;">
 
