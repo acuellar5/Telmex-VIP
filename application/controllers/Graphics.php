@@ -177,25 +177,24 @@ class Graphics extends CI_Controller {
         return $date;
     }
 
-  // carga la vista de las graficas
-  public function view_graphics($cliente){
-  	
-
-
-
-
-
-  }
-  
-  public function load_base() {
-        $data['title'] = 'Cargar Información Graficas';
-        $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
+    // carga la vista de las graficas
+    public function view_graphics($cliente){
+        $data['title']='Graficas';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
-        $data['estados'] = $this->Dao_ot_hija_model->getStatusNull();
         $this->load->view('parts/headerF', $data);
-        $this->load->view('view_load_graphics');
+        $this->load->view('graficas/view_graphics');
         $this->load->view('parts/footerF');
     }
+
+    // cargar la vista de carga de data para las graficas
+    public function view_load_graphics(){
+        $data['title']='cargar excel';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('graficas/view_load_graphics');
+        $this->load->view('parts/footerF');
+    }
+
 
 
   

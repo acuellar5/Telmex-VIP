@@ -1,0 +1,70 @@
+.inputfile + label {
+    max-width: 80%;
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+
+/* style 4 */
+
+.inputfile-4 + label {
+    color: #ffffff;
+    transition: all 0.4s ease-in-out;
+}
+
+.inputfile-4:focus + label,
+.inputfile-4.has-focus + label,
+.inputfile-4 + label:hover {
+    text-shadow: 0px 0px 8px #ffffff;
+}
+
+.inputfile-4 + label figure {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #2376b7;
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+    border: 5px solid #fff;
+    transition: all 0.4s ease-in-out;
+
+}
+
+.inputfile-4:focus + label figure,
+.inputfile-4.has-focus + label figure,
+.inputfile-4 + label:hover figure {
+    background-color: #5e9bd8;
+    box-shadow: 0px 0px 18px #ffffff;
+}
+
+.inputfile-4 + label svg {
+    width: 100%;
+    height: 100%;
+    fill: #ffffff;
+}
+
+.btn-cami_cool2 {
+    background: transparent;
+    border-radius: 0;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 6px 35px;
+    transition: all 0.4s ease-in-out;
+    margin-top: 30px;
+    box-shadow: 1px 1px 1px #000;
+}
+.btn-cami_cool2:hover {
+     box-shadow: 0px 0px 8px #ffffff;
+     text-shadow: 0px 0px 8px #ffffff;
+
+}
+
