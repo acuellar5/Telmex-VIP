@@ -110,6 +110,7 @@
 
                     <?php if (Auth::user()->n_role_user == 'administrador'): ?>
                     <li><a href="<?= URL::to('cargarOts') ?>">load information</a></li>
+                    <li><a href="<?= URL::to('Graphics/load_base') ?>">Graficas</a></li>
                     <?php endif ?>
                   </ul>
                 </li>

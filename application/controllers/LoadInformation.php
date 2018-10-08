@@ -92,12 +92,8 @@ class LoadInformation extends CI_Controller {
             require_once APPPATH . 'models/bin/PHPExcel-1.8.1/Classes/PHPExcel/IOFactory.php';
             $cacheMethod = PHPExcel_CachedObjectStorageFactory:: cache_to_phpTemp;
             $cacheSettings = array(' memoryCacheSize ' => '15MB');
-//            if (intval(phpversion()) <= 5) {
             PHPExcel_Settings::setZipClass(PHPExcel_Settings::PCLZIP);
-//            }
             PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
-//            include_once('PHPExcel_1.8.0_doc/Classes/PHPExcel/IOFactory.php');
-//            $this->load->model('bin/PHPExcel-1.8.1/Classes/PHPExcel/IOFactory.php');
 
             try {
 
