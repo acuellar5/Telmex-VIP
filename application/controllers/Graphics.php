@@ -5,6 +5,7 @@ class Graphics extends CI_Controller {
 
   function __construct() {
     parent::__construct();
+    $this->load->model('data/Dao_ot_hija_model');
   }
   
     public function uploadfile() {
@@ -185,6 +186,16 @@ class Graphics extends CI_Controller {
 
 
   }
+  
+  public function load_base() {
+        $data['title'] = 'Cargar Información Graficas';
+        $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $data['estados'] = $this->Dao_ot_hija_model->getStatusNull();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('view_load_graphics');
+        $this->load->view('parts/footerF');
+    }
 
 
   
