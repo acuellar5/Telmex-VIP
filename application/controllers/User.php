@@ -33,17 +33,16 @@ class User extends CI_Controller {
             $this->load->model('data/Dao_cierre_ots_model');
 
             if ($this->session->has_userdata('date_min_fact')) {
-              $this->session->unset_userdata('date_min_fact');
+                $this->session->unset_userdata('date_min_fact');
             }
 
 
             $data_session = array(
-              'date_min_fact' => $this->Dao_cierre_ots_model->get_date_min_facturada()
-            );           
+                'date_min_fact' => $this->Dao_cierre_ots_model->get_date_min_facturada()
+            );
             $this->session->set_userdata($data_session);
 
-            $this->load_principal(Auth::user()->n_role_user, Auth::user()->n_project ); // roll y proyecto
-
+            $this->load_principal(Auth::user()->n_role_user, Auth::user()->n_project); // roll y proyecto
         } else {
             $answer['error'] = "error";
             $this->load->view('login', $answer);
@@ -58,32 +57,31 @@ class User extends CI_Controller {
         $this->load->view('principal', $answer);
     }
 
-
     //
-    private function load_principal($roll, $proyecto = 'Gestion'){
-      $data['title'] = 'Principal';
-      $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
-      $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
-      $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
-      $data['title']      = 'OTP';// cargar el  titulo en la pestaña de la pagina para otp
-      $this->load->view('parts/headerF', $data);
-        if ($proyecto === 'Gestion' ) {
-          if ($roll == 'clarocc') {
+    private function load_principal($roll, $proyecto = 'Gestion') {
+        $data['title'] = 'Principal';
+        $data['last_time'] = $this->Dao_ot_hija_model->get_last_time_import();
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
+        $data['title'] = 'OTP'; // cargar el  titulo en la pestaña de la pagina para otp
+        $this->load->view('parts/headerF', $data);
+        if ($proyecto === 'Gestion') {
+            if ($roll == 'clarocc') {
 
-            $this->load->view('vista_x');
+                $this->load->view('vista_x');
+            } else {
+                $data['title'] = '¿Cómo vamos OTP?';
 
-          } else {
-            $data['title'] = '¿Cómo vamos OTP?';
-
-            $this->load->view('moduleOtp');
-          }
-        } else {
-          $this->load->view('principal');
+                $this->load->view('moduleOtp');
+            }
+        } elseif ('Implementacion') {
+            $this->load->view('principal');
+        } elseif ('Graphics') {
+            $this->load->view('graficas/view_graphics/BBVA');
         }
         // $this->load->view('moduleOtp');
 
-      $this->load->view('parts/footerF');
-          
+        $this->load->view('parts/footerF');
     }
 
     public function logout() {
@@ -105,12 +103,12 @@ class User extends CI_Controller {
             Redirect::to(URL::base());
         }
 
-          $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
-          $data['title'] = 'Home';
-          $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
-          $this->load->view('parts/headerF', $data);
-          $this->load->view('principal');
-          $this->load->view('parts/footerF');
+        $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
+        $data['title'] = 'Home';
+        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $this->load->view('parts/headerF', $data);
+        $this->load->view('principal');
+        $this->load->view('parts/footerF');
     }
 
     public function routingVerification() {
@@ -122,11 +120,11 @@ class User extends CI_Controller {
             $this->load->view('principal', ["stadistics" => $daoEvaluador->getAllStadistics()->data]);
         } else {
 
-          $data['title'] = 'VerificacionRouting';
-          $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
-          $this->load->view('parts/headerF', $data);
-          $this->load->view('dataValidation');
-          $this->load->view('parts/footerF');
+            $data['title'] = 'VerificacionRouting';
+            $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+            $this->load->view('parts/headerF', $data);
+            $this->load->view('dataValidation');
+            $this->load->view('parts/footerF');
         }
     }
 
@@ -134,7 +132,7 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-        $data['title']='Cargar OTS';
+        $data['title'] = 'Cargar OTS';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('loadInformation');
@@ -145,7 +143,7 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-        $data['title']='Marcaciones';
+        $data['title'] = 'Marcaciones';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('markings');
@@ -153,24 +151,23 @@ class User extends CI_Controller {
     }
 
     //arma la cadena de trexto de los prefijos
-    public function getPrefijo(){
+    public function getPrefijo() {
 
         $prefijos = $this->input->post('pref');
         // header('Content-Type: text/plain');
         // print_r($prefijos);
 
 
-        for ($i=0; $i < count($prefijos) ; $i++) { 
-          if (is_numeric($prefijos[$i][3])) {
-            $pref[substr($prefijos[$i], 0, 3)][$i] = substr($prefijos[$i], 3);      
-          } else {
-            if (is_numeric($prefijos[$i][4])) {
-            $pref[substr($prefijos[$i], 0, 4)][$i] = substr($prefijos[$i], 4);
+        for ($i = 0; $i < count($prefijos); $i++) {
+            if (is_numeric($prefijos[$i][3])) {
+                $pref[substr($prefijos[$i], 0, 3)][$i] = substr($prefijos[$i], 3);
             } else {
-              $pref[substr($prefijos[$i], 0, 5)][$i] = substr($prefijos[$i], 5);
+                if (is_numeric($prefijos[$i][4])) {
+                    $pref[substr($prefijos[$i], 0, 4)][$i] = substr($prefijos[$i], 4);
+                } else {
+                    $pref[substr($prefijos[$i], 0, 5)][$i] = substr($prefijos[$i], 5);
+                }
             }
-
-          }  
         }
 
         $j = 0;
@@ -184,328 +181,267 @@ class User extends CI_Controller {
         $data['alcatel'] = $this->getDialingAlcatel($res, $pref);
 
 
-        
+
         // echo json_encode($data);
         $this->json($data);
-
-  
     }
 
     //
-    private function getDialingHuaweiZte($res, $pref){
+    private function getDialingHuaweiZte($res, $pref) {
         $respuesta = "";
-        for($i = 0; $i < count($res); $i++){
-          $string[$i] = $res[$i];
-          $flag = 0;
-          sort($pref[$res[$i]]);
-          //RECORRE EL ARREGLO
-          for($j = 0; $j < count($pref[$res[$i]]); $j++){
+        for ($i = 0; $i < count($res); $i++) {
+            $string[$i] = $res[$i];
+            $flag = 0;
+            sort($pref[$res[$i]]);
+            //RECORRE EL ARREGLO
+            for ($j = 0; $j < count($pref[$res[$i]]); $j++) {
 
-            //VERIFICA SI EL ARREGLO TIENE MAS DE UN ELEMENTO
-            if(count($pref[$res[$i]]) != 1){
+                //VERIFICA SI EL ARREGLO TIENE MAS DE UN ELEMENTO
+                if (count($pref[$res[$i]]) != 1) {
 
-                  //VERIFICA QUE NO LLEGUE AL ULTIMO ELEMENTO DEL ARREGLO
-                  if($j != (count($pref[$res[$i]])-1)){
+                    //VERIFICA QUE NO LLEGUE AL ULTIMO ELEMENTO DEL ARREGLO
+                    if ($j != (count($pref[$res[$i]]) - 1)) {
 
                         //COMPARA SI EL NUMERO VA PARA UNA SECUENCIA
-                        if($pref[$res[$i]][$j+1] == ($pref[$res[$i]][$j]) + 1){
+                        if ($pref[$res[$i]][$j + 1] == ($pref[$res[$i]][$j]) + 1) {
 
-                              if($flag == 0){                                
-                                  //NO VIENE DE SECUENCIA Y VA PARA SECUENCIA, PINTA NUMERO -
-                                  if (isset($pref[$res[$i]][$j-1])) {
-                                      // MODIFICACION PARA COLUMNA 2 Y 3 (CUANDO ES SOLO UN COSECUTIVO AÑADE , EN VEZ DE _)
-                                      // if (isset($pref[$res[$i]][$j+2])) {
-
-                                      //     if ($pref[$res[$i]][$j+2] == $pref[$res[$i]][$j] + 2) {
-                                            
-                                      //       $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j])."_";
-                                      //     }else {
-                                      //       $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
-                                            
-                                      //     }
-                                        
-                                      // }else{                                      
-                                      //     $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
-                                      // }
+                            if ($flag == 0) {
+                                //NO VIENE DE SECUENCIA Y VA PARA SECUENCIA, PINTA NUMERO -
+                                if (isset($pref[$res[$i]][$j - 1])) {
+                                    // MODIFICACION PARA COLUMNA 2 Y 3 (CUANDO ES SOLO UN COSECUTIVO AÑADE , EN VEZ DE _)
+                                    // if (isset($pref[$res[$i]][$j+2])) {
+                                    //     if ($pref[$res[$i]][$j+2] == $pref[$res[$i]][$j] + 2) {
+                                    //       $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j])."_";
+                                    //     }else {
+                                    //       $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
+                                    //     }
+                                    // }else{                                      
+                                    //     $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
+                                    // }
 
 
 
-                                    $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j])."_";
-
-                                  }
-                                  else {
+                                    $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . "_";
+                                } else {
 
                                     // if (isset($pref[$res[$i]][$j+2])) {
-
                                     //     if ($pref[$res[$i]][$j+2] == $pref[$res[$i]][$j] + 2) {
-                                          
                                     //        $string[$i] = $string[$i].$pref[$res[$i]][$j]."_";
                                     //     }else {
                                     //        $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
-                                          
                                     //     }
-
                                     // }else{                                      
                                     //    $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
                                     // }
 
 
-                                    $string[$i] = $string[$i].$pref[$res[$i]][$j]."_";
-                                  }
-                              } 
-
-                              else {
+                                    $string[$i] = $string[$i] . $pref[$res[$i]][$j] . "_";
+                                }
+                            } else {
                                 //NO HACE NADA PORQUE VIENE DE SECUENCIA Y SIGUE EN SECUENCIA
-                              }
-                          $flag = 1;
-                        } 
-
-                        else {
-                              //VERIFICA SI VIENE DE UNA SECUENCIA
-                              if($flag == 0){
-                                  //NO VIENE DE SECUENCIA Y NO VA PARA SECUENCIA, NUMERO,
-                                  if (isset($pref[$res[$i]][$j-1])) {
-                                    $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).".";
-                                  }
-                                  else {
-                                    $string[$i] = $string[$i].$pref[$res[$i]][$j].".";
-                                  }
-                              } 
-
-                              else {
+                            }
+                            $flag = 1;
+                        } else {
+                            //VERIFICA SI VIENE DE UNA SECUENCIA
+                            if ($flag == 0) {
                                 //NO VIENE DE SECUENCIA Y NO VA PARA SECUENCIA, NUMERO,
-                                  $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).".";
-
-
-                              }
-                          $flag = 0;
+                                if (isset($pref[$res[$i]][$j - 1])) {
+                                    $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ".";
+                                } else {
+                                    $string[$i] = $string[$i] . $pref[$res[$i]][$j] . ".";
+                                }
+                            } else {
+                                //NO VIENE DE SECUENCIA Y NO VA PARA SECUENCIA, NUMERO,
+                                $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ".";
+                            }
+                            $flag = 0;
                         }
-                  }
+                    } else {
 
-                  else {
-
-                    //COMO ES EL ULTIMO VALOR, SE PINTA EL NUMERO SOLO
-                    $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]);
-                  }
-            } 
-
-            else {
-              // CUANDO SOLO TIENE UN ELEMENTO EL ARRAY DE VALORES (IMPRIME SIN COMA NI OUNTO AL FINAL)
-              $string[$i] = $string[$i].$pref[$res[$i]][0];
-              // print_r("\n".$pref[$res[$i]][0]);
-
+                        //COMO ES EL ULTIMO VALOR, SE PINTA EL NUMERO SOLO
+                        $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]);
+                    }
+                } else {
+                    // CUANDO SOLO TIENE UN ELEMENTO EL ARRAY DE VALORES (IMPRIME SIN COMA NI OUNTO AL FINAL)
+                    $string[$i] = $string[$i] . $pref[$res[$i]][0];
+                    // print_r("\n".$pref[$res[$i]][0]);
+                }
             }
-          }
-          if($i != (count($res)-1)){
-            $respuesta = $respuesta.$string[$i].".";
-          } 
-          else {
-              $respuesta = $respuesta.$string[$i];
-          }
+            if ($i != (count($res) - 1)) {
+                $respuesta = $respuesta . $string[$i] . ".";
+            } else {
+                $respuesta = $respuesta . $string[$i];
+            }
         }
 
         return $respuesta;
-
     }
 
     //
-    private function getDialingAlcatel($res, $pref){
-          $respuesta = "";
-        for($i = 0; $i < count($res); $i++){
-          $string[$i] = $res[$i];
-          $flag = 0;
-          sort($pref[$res[$i]]);
-          //RECORRE EL ARREGLO
-          for($j = 0; $j < count($pref[$res[$i]]); $j++){
+    private function getDialingAlcatel($res, $pref) {
+        $respuesta = "";
+        for ($i = 0; $i < count($res); $i++) {
+            $string[$i] = $res[$i];
+            $flag = 0;
+            sort($pref[$res[$i]]);
+            //RECORRE EL ARREGLO
+            for ($j = 0; $j < count($pref[$res[$i]]); $j++) {
 
-            //VERIFICA SI EL ARREGLO TIENE MAS DE UN ELEMENTO
-            if(count($pref[$res[$i]]) != 1){
+                //VERIFICA SI EL ARREGLO TIENE MAS DE UN ELEMENTO
+                if (count($pref[$res[$i]]) != 1) {
 
-                  //VERIFICA QUE NO LLEGUE AL ULTIMO ELEMENTO DEL ARREGLO
-                  if($j != (count($pref[$res[$i]])-1)){
+                    //VERIFICA QUE NO LLEGUE AL ULTIMO ELEMENTO DEL ARREGLO
+                    if ($j != (count($pref[$res[$i]]) - 1)) {
 
                         //COMPARA SI EL NUMERO VA PARA UNA SECUENCIA
-                        if($pref[$res[$i]][$j+1] == ($pref[$res[$i]][$j]) + 1){
+                        if ($pref[$res[$i]][$j + 1] == ($pref[$res[$i]][$j]) + 1) {
 
-                              if($flag == 0){                                
-                                  //NO VIENE DE SECUENCIA Y VA PARA SECUENCIA, PINTA NUMERO -
-                                  if (isset($pref[$res[$i]][$j-1])) {
-                                      // MODIFICACION PARA COLUMNA 2 Y 3 (CUANDO ES SOLO UN COSECUTIVO AÑADE , EN VEZ DE _)
-                                      if (isset($pref[$res[$i]][$j+2])) {
+                            if ($flag == 0) {
+                                //NO VIENE DE SECUENCIA Y VA PARA SECUENCIA, PINTA NUMERO -
+                                if (isset($pref[$res[$i]][$j - 1])) {
+                                    // MODIFICACION PARA COLUMNA 2 Y 3 (CUANDO ES SOLO UN COSECUTIVO AÑADE , EN VEZ DE _)
+                                    if (isset($pref[$res[$i]][$j + 2])) {
 
-                                          if ($pref[$res[$i]][$j+2] == $pref[$res[$i]][$j] + 2) {
-                                            
-                                            $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j])."_";
-                                          }else {
-                                            $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
-                                            
-                                          }
-                                        
-                                      }else{                                      
-                                          $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
-                                      }
+                                        if ($pref[$res[$i]][$j + 2] == $pref[$res[$i]][$j] + 2) {
+
+                                            $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . "_";
+                                        } else {
+                                            $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ",";
+                                        }
+                                    } else {
+                                        $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ",";
+                                    }
 
 
 
                                     // $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j])."_";
+                                } else {
 
-                                  }
-                                  else {
+                                    if (isset($pref[$res[$i]][$j + 2])) {
 
-                                    if (isset($pref[$res[$i]][$j+2])) {
+                                        if ($pref[$res[$i]][$j + 2] == $pref[$res[$i]][$j] + 2) {
 
-                                        if ($pref[$res[$i]][$j+2] == $pref[$res[$i]][$j] + 2) {
-                                          
-                                           $string[$i] = $string[$i].$pref[$res[$i]][$j]."_";
-                                        }else {
-                                           $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
-                                          
+                                            $string[$i] = $string[$i] . $pref[$res[$i]][$j] . "_";
+                                        } else {
+                                            $string[$i] = $string[$i] . $pref[$res[$i]][$j] . ",";
                                         }
-
-                                    }else{                                      
-                                       $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
+                                    } else {
+                                        $string[$i] = $string[$i] . $pref[$res[$i]][$j] . ",";
                                     }
 
 
                                     // $string[$i] = $string[$i].$pref[$res[$i]][$j]."_";
-                                  }
-                              } 
-
-                              else {
+                                }
+                            } else {
                                 //NO HACE NADA PORQUE VIENE DE SECUENCIA Y SIGUE EN SECUENCIA
-                              }
-                          $flag = 1;
-                        } 
-
-                        else {
-                              //VERIFICA SI VIENE DE UNA SECUENCIA
-                              if($flag == 0){
-                                  //NO VIENE DE SECUENCIA Y NO VA PARA SECUENCIA, NUMERO,
-                                  if (isset($pref[$res[$i]][$j-1])) {
-                                    $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).".";
-                                  }
-                                  else {
-                                    $string[$i] = $string[$i].$pref[$res[$i]][$j].".";
-                                  }
-                              } 
-
-                              else {
+                            }
+                            $flag = 1;
+                        } else {
+                            //VERIFICA SI VIENE DE UNA SECUENCIA
+                            if ($flag == 0) {
                                 //NO VIENE DE SECUENCIA Y NO VA PARA SECUENCIA, NUMERO,
-                                  $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).".";
-
-
-                              }
-                          $flag = 0;
+                                if (isset($pref[$res[$i]][$j - 1])) {
+                                    $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ".";
+                                } else {
+                                    $string[$i] = $string[$i] . $pref[$res[$i]][$j] . ".";
+                                }
+                            } else {
+                                //NO VIENE DE SECUENCIA Y NO VA PARA SECUENCIA, NUMERO,
+                                $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ".";
+                            }
+                            $flag = 0;
                         }
-                  }
+                    } else {
 
-                  else {
-
-                    //COMO ES EL ULTIMO VALOR, SE PINTA EL NUMERO SOLO
-                    $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]);
-                  }
-            } 
-
-            else {
-              // CUANDO SOLO TIENE UN ELEMENTO EL ARRAY DE VALORES (IMPRIME SIN COMA NI OUNTO AL FINAL)
-              $string[$i] = $string[$i].$pref[$res[$i]][0];
-              // print_r("\n".$pref[$res[$i]][0]);
-
+                        //COMO ES EL ULTIMO VALOR, SE PINTA EL NUMERO SOLO
+                        $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]);
+                    }
+                } else {
+                    // CUANDO SOLO TIENE UN ELEMENTO EL ARRAY DE VALORES (IMPRIME SIN COMA NI OUNTO AL FINAL)
+                    $string[$i] = $string[$i] . $pref[$res[$i]][0];
+                    // print_r("\n".$pref[$res[$i]][0]);
+                }
             }
-          }
-          if($i != (count($res)-1)){
-            $respuesta = $respuesta.$string[$i].".";
-          } 
-          else {
-              $respuesta = $respuesta.$string[$i];
-          }
+            if ($i != (count($res) - 1)) {
+                $respuesta = $respuesta . $string[$i] . ".";
+            } else {
+                $respuesta = $respuesta . $string[$i];
+            }
         }
 
         return $respuesta;
     }
 
-
-
-   
-
     //FUNCIONA
     // RETORNA SOLO LAS COINCIDENCIAS DE SE SEGUNDO NUMERO CON RESPECTO AL PRIMERO 
     //EJEM_ (232, 238) => 8    EJ: (123, 143)
-    public function delecteCoinci($num1, $num2){
-      $num1 .= "";
-      $num2 .= "";
-      $flag= 0;
-      $string = "";
+    public function delecteCoinci($num1, $num2) {
+        $num1 .= "";
+        $num2 .= "";
+        $flag = 0;
+        $string = "";
 
-      while (isset($num1[$flag]) && isset($num2[$flag])) {
-        if ($num1[$flag] != $num2[$flag]) {
-          return substr($num2, $flag);
-          // $string .= $num2[$flag];
+        while (isset($num1[$flag]) && isset($num2[$flag])) {
+            if ($num1[$flag] != $num2[$flag]) {
+                return substr($num2, $flag);
+                // $string .= $num2[$flag];
+            }
+
+            $flag++;
         }
-
-        $flag++;
-      }
-      return $num2;
-      
+        return $num2;
     }
 
     //retorna a js los estados segun id de tipo
-    public function c_getStatusByType(){
-      $data = $this->Dao_estado_ot_model->m_getStatusByType($this->input->post('idtipo'));
-      echo json_encode($data);
-
+    public function c_getStatusByType() {
+        $data = $this->Dao_estado_ot_model->m_getStatusByType($this->input->post('idtipo'));
+        echo json_encode($data);
     }
-
-
-
 
     //
-    public function prueba(){
-      $exist = $this->Dao_ot_hija_model->getExistIdOtHija();
-      header('Content-Type: text/plain');
-      print_r($exist);
-      
-      echo "<br>";
-     
+    public function prueba() {
+        $exist = $this->Dao_ot_hija_model->getExistIdOtHija();
+        header('Content-Type: text/plain');
+        print_r($exist);
+
+        echo "<br>";
     }
 
-  //  TRAE LOS REGISTROS DE LA TABLA DE INCONSISTENCIAS
-  public function c_print_table_incons(){
-    if (Auth::check()) {
+    //  TRAE LOS REGISTROS DE LA TABLA DE INCONSISTENCIAS
+    public function c_print_table_incons() {
+        if (Auth::check()) {
             $data = $this->Dao_ot_hija_model->print_tabl();
             echo json_encode($data);
         } else {
             $this->json(new Response(EMessages::SESSION_INACTIVE));
         }
-  }
-  //cambia el estado de estado_Ver (1) a estado ver (0)
-  public function c_hide_inconsistency(){
-    $data = array(
-      'k_id_inconsistencia' =>$this->input->post('k_id_inconsistencia'),
-      'estado_ver' => 0,
-       );
-    $this->Dao_ot_hija_model->upVerTo_0();
-    echo json_encode($data);
-  }
-  //trae nombre, email y telefono de los ingenieros de la tabla user
-  public function c_get_eingenieer(){
-    $data = $this->Dao_user_model->fill_with_eingenieer();
-    echo json_encode($data);
-  }
-
-
-  // retorna para js las variables del usuario en session
-  public function getSessionValues(){
-    $clave = $this->input->post('clave');
-
-    if ($clave) {
-      echo json_encode(Auth::user()->$clave);
-    } else {
-      echo json_encode(Auth::user());
     }
-  }
 
+    //cambia el estado de estado_Ver (1) a estado ver (0)
+    public function c_hide_inconsistency() {
+        $data = array(
+            'k_id_inconsistencia' => $this->input->post('k_id_inconsistencia'),
+            'estado_ver' => 0,
+        );
+        $this->Dao_ot_hija_model->upVerTo_0();
+        echo json_encode($data);
+    }
 
+    //trae nombre, email y telefono de los ingenieros de la tabla user
+    public function c_get_eingenieer() {
+        $data = $this->Dao_user_model->fill_with_eingenieer();
+        echo json_encode($data);
+    }
 
+    // retorna para js las variables del usuario en session
+    public function getSessionValues() {
+        $clave = $this->input->post('clave');
+
+        if ($clave) {
+            echo json_encode(Auth::user()->$clave);
+        } else {
+            echo json_encode(Auth::user());
+        }
+    }
 
 }
