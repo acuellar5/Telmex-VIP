@@ -305,6 +305,10 @@ class Graphics extends CI_Controller {
     }
 
 
-
+    // data para grafica de barras (cuarta)
+    public function getDataNoEfectividad(){
+        $div    = $this->data_graphic_process_detail('causas_visita_perdida_primario', 'tipo_sede');
+        echo json_encode($div);        
+    }
   
 }

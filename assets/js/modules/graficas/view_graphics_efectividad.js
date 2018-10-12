@@ -8,6 +8,7 @@ $(function () {
             efectividad.get_data_barras_2();
             efectividad.get_data_efectividad_torta_3();
             efectividad.get_data_barras_3();
+            efectividad.get_data_barras_4();
         },
 
         colores: ['#f44336', '#9c27b0', '#3f51b5', '#2196f3', '#4caf50', '#ffeb3b', '#ff9800', '#795548', '#9e9e9e', '#607d8b', '#0027ff', '#00ffba', '#b2ff00', '#404040', '#ffc107', '#8bc34a', '#673ab7', '#e91e63'],
@@ -441,7 +442,66 @@ $(function () {
                 }
             });
         },
+//
+        get_data_barras_4: function () {
+            $.post(baseurl + '/Graphics/getDataNoEfectividad', {
+                // fecha: fecha
+            }, function (data) {
+                const obj = JSON.parse(data);
+                efectividad.printGraphicBars4(obj);
+            });
+        }, 
+        // pinta la grafica de barras 2
+        printGraphicBars4: function (data) {
+            const datasets = efectividad.get_datasets(data);
+            var ctx = $("#barras_4");
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: data.names,
+                    datasets: datasets,
+                },
+                options: {
+                    // onClick: vista.clickEventGrafics,
+                    title: {
+                        display: true,
+                        text: 'CAUSALES NO EFECTIFIVAD TOTAL',
+                        fontSize: 18
+                    },
 
+                    scales: {
+                        xAxes: [{
+                                gridLines: {
+                                    // display: false,
+                                    color: '#000'
+                                },
+                                display: true,
+                                stacked: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Cantidades Tipo Sede'
+                                },
+
+                            }],
+                        yAxes: [{
+                                gridLines: {
+                                    // display: false,
+                                    color: '#000'
+                                },
+                                display: true,
+                                stacked: true,
+                                scaleLabel: {
+                                    display: false,
+                                    labelString: 'Causas Visita Perdida primario'
+                                },
+                                ticks: {
+                                    // beginAtZero: true,
+                                }
+                            }]
+                    }
+                }
+            });
+        },
 
     };
     efectividad.init();
