@@ -41,7 +41,8 @@ $(function () {
 			                "#84FF63",
 			                "#8463FF",
 			                "#6384FF"
-			            ]
+			            ],
+			            
 			        }]
 			};
 
@@ -91,8 +92,27 @@ $(function () {
 						    }
 
 			        },
-			        
-			    }
+			        cutoutPercentage: 50,
+			        title: {
+			            display: true,
+			            text: 'EFECTIVIDAD'
+			        },
+			        tooltips: {
+
+			            callbacks: {
+			                label: function(tooltipItem, data) {
+			                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+			                    if (label) {
+			                        label += ': ';
+			                    }
+			                    label += Math.round(tooltipItem.yLabel * 100) / 100;
+			                    return 'label';
+			                }
+			            }
+			        }
+
+			    },
 			});
         },
 

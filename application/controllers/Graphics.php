@@ -228,24 +228,49 @@ class Graphics extends CI_Controller {
         $this->load->view('parts/footerF');
     }
 
+    //
+    private function data_graphic_process_all($data){
+        $nombres = [];
+        $cantidades = [];
+
+        for ($i=0; $i < count($data); $i++) { 
+            array_push($nombres, $data[$i]->nombre);
+            array_push($cantidades, $data[$i]->cant);
+        }
+
+        return array(
+            'nombres' => $nombres,
+            'cantidades' => $cantidades
+        );
+    }
+
+    //
+    private function data_graphic_process_detail($data){
+        header('Content-Type: text/plain');
+        print_r($data);
+
+
+
+
+
+          
+    }
+
+
+
+
+
+
 
     //
     public function get_data_grafics(){
         $torta1 = $this->Dao_efectividad_model->get_estado_voc_vs_tipo_estado();
-        $estados = [];
-        $cantidades = [];
+        $total  = $this->data_graphic_process_all($torta1);
+        $div    = $this->data_graphic_process_detail($torta1);
 
 
-        for ($i=0; $i < count($torta1); $i++) { 
-            array_push($estados, $torta1[$i]->estado_voc_primario);
-            array_push($cantidades, $torta1[$i]->cant);
-         }
-
-         $res = array(
-            'estados' => $estados,
-            'cantidades' => $cantidades
-        );
-        echo json_encode($res);
+        
+        // echo json_encode($res);
     }
 
 
