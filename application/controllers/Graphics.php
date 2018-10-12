@@ -245,32 +245,43 @@ class Graphics extends CI_Controller {
     }
 
     //
-    private function data_graphic_process_detail($data){
-        header('Content-Type: text/plain');
-        print_r($data);
+    private function data_graphic_process_detail($nombre, $seccion, $fecha){
+        $nombres = $this->Dao_efectividad_model->get_names_by_col($nombre, $fecha);
+        $secciones = $this->Dao_efectividad_model->get_names_by_col($seccion, $fecha);
+        // $res['cantidad'] = count($secciones);
+        $res['names'] = [];
 
+        for ($i=0; $i < count($secciones); $i++) { 
+            if (!isset($res[$secciones[$i][$seccion]])) {
+                $res[$secciones[$i][$seccion]] = [];
+            }
 
+            for ($j=0; $j < count($nombres); $j++) {
+                // necesario para arrmar los nombres
+                if (!in_array($nombres[$j][$nombre], $res['names'])) {
+                    array_push($res['names'], $nombres[$j][$nombre]);
+                }
 
+                array_push($res[$secciones[$i][$seccion]], $this->Dao_efectividad_model->get_cant_section_in_name($seccion, $secciones[$i][$seccion], $nombre, $nombres[$j][$nombre])->cant);
+            }
 
+        }
 
-          
+        return $res;
     }
 
 
-
-
-
-
-
-    //
+    // Data para grafica semanal total de torta
     public function get_data_grafics(){
         $torta1 = $this->Dao_efectividad_model->get_estado_voc_vs_tipo_estado();
         $total  = $this->data_graphic_process_all($torta1);
-        $div    = $this->data_graphic_process_detail($torta1);
+        echo json_encode($total);
+    }
 
-
-        
-        // echo json_encode($res);
+    // data para grafica de barras (primeras)
+    public function getDataEfectividadSemanal(){
+        $div    = $this->data_graphic_process_detail('estado_voc_primario', 'tipo_sede', '2018-10-05');
+        echo json_encode($div);        
     }
 
 
