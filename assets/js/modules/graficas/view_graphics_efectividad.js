@@ -174,40 +174,40 @@ $(function () {
                 options: {
                     // onClick: vista.clickEventGrafics,
                     title: {
-                        display: true,
-                        text: 'EFECTIVIDAD SEMANAL estado voc principal',
-                        fontSize: 18
-                    },
+                    display: true,
+                    text: 'EFECTIVIDAD SEMANAL Estado VOC Principal',
+                    fontSize: 18
+                  },
 
                     scales: {
-                        xAxes: [{
-                                gridLines: {
-                                    // display: false,
-                                    color: '#ccc'
-                                },
-                                display: true,
-                                stacked: true,
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'cantidades Tipo Sede'
-                                },
+                       xAxes: [{
+                              gridLines: {
+                                // display: false,
+                                color: '#000'
+                              },
+                            display: true,
+                            stacked: true,
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'cantidades Tipo Sede'
+                            },
 
                             }],
                         yAxes: [{
-                                gridLines: {
-                                    // display: false,
-                                    color: '#ccc'
-                                },
-                                display: true,
-                                stacked: true,
-                                scaleLabel: {
-                                    display: false,
-                                    labelString: 'Estado VOC Principal'
-                                },
-                                ticks: {
-                                    // beginAtZero: true,
-                                }
-                            }]
+                            gridLines: {
+                                // display: false,
+                                color: '#000'
+                              },
+                            display: true,
+                            stacked: true,
+                            scaleLabel: {
+                              display: false,
+                              labelString: 'Estado VOC Principal'
+                            },
+                            ticks: {
+                              // beginAtZero: true,
+                            }
+                        }]
                     }
                 }
             });
