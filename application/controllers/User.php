@@ -400,11 +400,14 @@ class User extends CI_Controller {
 
     //
     public function prueba() {
-        $exist = $this->Dao_ot_hija_model->getExistIdOtHija();
-        header('Content-Type: text/plain');
-        print_r($exist);
+        $a = "bredycamilo";
+        $b = "BREDYCAMILO                  \n ";
 
-        echo "<br>";
+        if ($a == rtrim (strtolower($b))) {
+            echo "son iguales";
+        } else {
+            echo "no son iguales";
+        }
     }
 
     //  TRAE LOS REGISTROS DE LA TABLA DE INCONSISTENCIAS
@@ -443,5 +446,6 @@ class User extends CI_Controller {
             echo json_encode(Auth::user());
         }
     }
+
 
 }

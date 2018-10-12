@@ -6,6 +6,7 @@ class Graphics extends CI_Controller {
   function __construct() {
     parent::__construct();
     $this->load->model('data/Dao_ot_hija_model');
+    $this->load->model('data/Dao_efectividad_model');
   }
   
     public function uploadfile() {
@@ -54,7 +55,7 @@ class Graphics extends CI_Controller {
             $sheet         = $objPHPExcel->getSheet(0);
             $row           = 1;
             $validator     = new Validator();
-            while ($validator->required("", $this->getValueCell($sheet, "AW" . $row))) {
+            while ($validator->required("", $this->getValueCell($sheet, "P" . $row))) {
                 $row++;
             }
             $highestRowSheet1 = $row;
@@ -108,10 +109,6 @@ class Graphics extends CI_Controller {
                 $limit         = $row + $request->limit;
                 $inserts       = 0;
                 $errorInsert   = [];
-                $errorUpdate   = [];
-                $errorNoChange = [];
-                $actualizar    = 0;
-                $actualizados  = 0;
 
                 //fecha Actual
                 date_default_timezone_set("America/Bogota");
@@ -120,10 +117,32 @@ class Graphics extends CI_Controller {
 
                 //Inicializamos un objeto de PHPExcel para escritura...
                 //while para recorrer filas del excel...
-                while ($this->getValueCell($sheet, 'AW' . $row) > 0 && ($row < $limit)) {
+                // Eliminar informacion de la tabla efectividad
+                $trun = $this->Dao_efectividad_model->delete_efectividad_table();
+                $validator = new validator();
+                while ($validator->required("", $this->getValueCell($sheet, "P" . $row)) && ($row < $limit) ) {
+                    // filtrar si es para ZTE
+                    if (rtrim(strtolower($this->getValueCell($sheet, "L" . $row))) == 'zte') {
+                        // Calcular fecha, ESTADO VOC 1 , efectividad
+                        // armar el array para insercion
+                        $insert = array(
+                            'fecha' => $this->getDatePHPExcel($sheet, 'A' . $row),
+                            'estado_voc_1' => $this->get_estado_voc_1($this->getValueCell($sheet, "AC" . $row), $this->getValueCell($sheet, "AF" . $row)) ,// estado curso, Estado VOC Primario
+                            'efectividad' => $this->get_efectividad($this->getValueCell($sheet, "AF" . $row), $this->getValueCell($sheet, "AL" . $row)) , // Estado VOC Primario (af), Estado VOC Secundaria(al)
+                            'otp_enlace_principal' => $this->getValueCell($sheet, "P" . $row),
+                            'fecha_programacion_voc' => $this->getDatePHPExcel($sheet, 'A' . $row),
+                            'tipo_sede' => $this->getValueCell($sheet, "E" . $row) ,
+                            'aliado' =>   $this->getValueCell($sheet, "L" . $row),
+                            'estado_curso' => $this->getValueCell($sheet, "AC" . $row) ,
+                            'estado_voc_primario' => $this->getValueCell($sheet, "AF" . $row) ,
+                            'causas_visita_perdida_primario' => $this->getValueCell($sheet, "AH" . $row) ,
+                        );
+                        
+                        $ins = $this->Dao_efectividad_model->insert_data_efectividad($insert);
+
+                    }
                     
-
-
+                    $row++;
                 }
 
                 if (($limit - $row) >= 2) {
@@ -131,16 +150,12 @@ class Graphics extends CI_Controller {
                 }
 
 
-                // $response->setData([
-                //     "nuevos"                  => $inserts,
-                //     "Actualizados"            => $actualizados,
-                //     "No hay cambio"           => ($row - $request->index) - $actualizados - $inserts,
-                //     "error de insercion"      => $errorInsert,
-                //     "error al Actualizar"     => $errorUpdate,
-                //     "error act a sin cambios" => $errorNoChange,
-                //     "row"                     => ($row - $request->index),
-                //     "data"                    => $this->objs
-                // ]);
+                $response->setData([
+                    "nuevos"                  => $inserts,
+                    "error de insercion"      => $errorInsert,
+                    "row"                     => ($row - $request->index),
+                    "data"                    => $this->objs
+                ]);
 
 
             } catch (DeplynException $ex) {
@@ -177,8 +192,26 @@ class Graphics extends CI_Controller {
         return $date;
     }
 
+    // 
+    private function get_estado_voc_1($estado_curso, $estado_voc_primario){
+        if (rtrim($estado_curso) != '' && rtrim($estado_voc_primario) == '' ) {
+             return 'curso';
+         } else {
+            return null;
+         }
+    }
+
+    //
+    private function get_efectividad($estado_voc_primario, $estadovocsecundaria){
+        if (rtrim($estado_voc_primario) == 'Realizada' || (rtrim($estado_voc_primario) == '' && rtrim($estadovocsecundaria) == 'Realizada')) {
+            return 'efectiva';
+        } else {
+            return 'no efectiva';
+        }
+    }
+
     // carga la vista de las graficas
-    public function view_graphics($cliente){
+    public function view_graphics($cliente = 'BBVA'){
         $data['title']='Graficas';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
@@ -193,6 +226,26 @@ class Graphics extends CI_Controller {
         $this->load->view('parts/headerF', $data);
         $this->load->view('graficas/view_load_graphics');
         $this->load->view('parts/footerF');
+    }
+
+
+    //
+    public function get_data_grafics(){
+        $torta1 = $this->Dao_efectividad_model->get_estado_voc_vs_tipo_estado();
+        $estados = [];
+        $cantidades = [];
+
+
+        for ($i=0; $i < count($torta1); $i++) { 
+            array_push($estados, $torta1[$i]->estado_voc_primario);
+            array_push($cantidades, $torta1[$i]->cant);
+         }
+
+         $res = array(
+            'estados' => $estados,
+            'cantidades' => $cantidades
+        );
+        echo json_encode($res);
     }
 
 

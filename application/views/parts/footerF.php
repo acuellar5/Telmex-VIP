@@ -13,7 +13,7 @@
         var id_session = "<?php echo Auth::user()->k_id_user ?>";
     </script>
 
-<?php if ($this->uri->segment(1) == 'cargarOts'): ?>
+<?php if ($this->uri->segment(1) == 'cargarOts' || $this->uri->segment(2) == 'view_load_graphics'): ?>
 <!-- **********************************************VISTA EDITAR OTS *********************************************-->
     <script src="<?= URL::to("assets/js/utils/app.global.js?v=1.2") ?>" type="text/javascript"></script>
     <script src="<?= URL::to("assets/js/utils/app.dom.js?v=" . validarEnProduccion()) ?>" type="text/javascript"></script>
@@ -162,10 +162,11 @@
 
 <?php if ($this->uri->segment(1) == 'Graphics' && $this->uri->segment(2) == 'view_load_graphics'): ?>
     <script src="<?= URL::to("assets/js/modules/graficas/custom-file-input.js?v=" . validarEnProduccion()) ?>"></script>    
-
-
 <?php endif ?>
 
+<?php if ($this->uri->segment(1) == 'Graphics' && $this->uri->segment(2) == 'view_graphics'): ?>
+    <script src="<?= URL::to("assets/js/modules/graficas/view_graphics_efectividad.js?v=" . validarEnProduccion()) ?>"></script>    
+<?php endif ?>
 
 
     <script src="<?= URL::to('assets/plugins/select2/select2.js') ?>"></script>
