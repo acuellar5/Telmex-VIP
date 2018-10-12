@@ -43,13 +43,37 @@ class Dao_efectividad_model extends CI_Model {
     public function get_estado_voc_vs_tipo_sede() {
         $query = $this->db->query("
 			SELECT COUNT(tipo_sede) AS cant, estado_voc_primario AS nombre
-                        FROM efectividad
-                        WHERE estado_voc_primario <> ''
-                        GROUP BY estado_voc_primario
-                        ORDER BY cant DESC
+			FROM efectividad
+			WHERE estado_voc_primario <> ''
+			GROUP BY estado_voc_primario
+			ORDER BY cant DESC
 		");
 
         return $query->result();
+    }
+
+    // retorna valores de dicha columna y  fecha
+    public function get_names_by_col($columna, $fecha = '0000-00-00'){
+    	$query = $this->db->query("
+				SELECT DISTINCT($columna) FROM efectividad WHERE 
+				fecha >= '$fecha'
+
+    		");
+    	return $query->result_array();
+    }
+
+
+    // 
+    public function get_cant_section_in_name($name_seccion, $value_seccion, $name_nombre, $name_value){
+    	$query = $this->db->query("
+			SELECT count(1) as cant FROM 
+			efectividad
+			where
+			$name_nombre = '$name_value'
+			and
+			$name_seccion = '$value_seccion'
+    	");
+    	return $query->row();
     }
 
 }
