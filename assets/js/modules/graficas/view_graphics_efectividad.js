@@ -2,8 +2,11 @@ $(function () {
     efectividad = {
         init: function () {
             efectividad.events();
-            efectividad.get_data_efectividad();
+            efectividad.get_data_efectividad_torta_1();
+            efectividad.get_data_barras_1();
         },
+
+        colores: ['#f44336','#9c27b0','#3f51b5','#2196f3','#4caf50','#ffeb3b','#ff9800','#795548','#9e9e9e','#607d8b','#0027ff','#00ffba','#b2ff00','#404040','#ffc107','#8bc34a','#673ab7','#e91e63'],
 
         //Eventos de la ventana.
         events: function () {
@@ -12,12 +15,11 @@ $(function () {
 
 
         //vgh
-        get_data_efectividad: function(){
+        get_data_efectividad_torta_1: function(){
             $.post(baseurl + '/Graphics/get_data_grafics', {
             	// fecha: fecha
             }, function(data) {
             	const obj = JSON.parse(data);
-            	console.log("obj", obj);
             	efectividad.printGraphicTorta1(obj);
             });
         },
@@ -41,7 +43,7 @@ $(function () {
 			                "#8463FF",
 			                "#6384FF"
 			            ],
-			            
+
 			        }]
 			};
 
@@ -76,6 +78,104 @@ $(function () {
 
 			    },
 			});
+        },
+
+        //trae los datos para barras 1
+        get_data_barras_1: function(){
+            $.post(baseurl + '/Graphics/getDataEfectividadSemanal', {
+            	// fecha: fecha
+            }, function(data) {
+            	const obj = JSON.parse(data);
+            	efectividad.printGraphicBars1(obj);
+            });
+        },
+
+        // retorna los datos para el chart js
+        get_datasets: function(data){
+        	var response = [];
+        	console.log(data);
+        	// for (var i = 0; i < data.length; i++) {
+        	// 	data[i]
+        	// }
+        	let flag = 0;
+        	$.each(data, function(seccion, cantidades) {
+        		if (seccion != 'names') {
+        			response.push({
+        				label: seccion,
+                        fill: true,
+                        lineTension: 0.1,
+                        backgroundColor: efectividad.colores[flag],
+                        borderColor: "#333",
+                        borderCapStyle: 'butt',
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: 'miter',
+                        pointHitRadius: 10,
+                        data:cantidades, //vertical
+                        spanGaps: false,
+                        borderWidth: 2,
+
+        			});
+
+        			flag++;   			
+        		}
+
+
+        	});
+
+            return response;
+        },
+
+        // pinta la grafica de barras 1 (semanal total)
+        printGraphicBars1: function(data){
+        	const datasets = efectividad.get_datasets(data);
+            var ctx = $("#barras_1");
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: data.names,
+                    datasets: datasets,    
+                },
+                options: {
+                    // onClick: vista.clickEventGrafics,
+                    title: {
+                    display: true,
+                    text: 'EFECTIVIDAD SEMANAL estado voc principal',
+                    fontSize: 18
+                  },
+
+                    scales: {
+                       xAxes: [{
+                              gridLines: {
+                                // display: false,
+                                color: '#ccc'
+                              },
+                            display: true,
+                            stacked: true,
+                            scaleLabel: {
+                              display: true,
+                              labelString: 'cantidades Tipo Sede'
+                            },
+
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                // display: false,
+                                color: '#ccc'
+                              },
+                            display: true,
+                            stacked: true,
+                            scaleLabel: {
+                              display: false,
+                              labelString: 'Estado VOC Principal'
+                            },
+                            ticks: {
+                              // beginAtZero: true,
+                            }
+                        }]
+                    }
+                }
+            });
         },
 
 

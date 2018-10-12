@@ -52,4 +52,28 @@ class Dao_efectividad_model extends CI_Model {
         return $query->result();
     }
 
+    // retorna valores de dicha columna y  fecha
+    public function get_names_by_col($columna, $fecha = '0000-00-00'){
+    	$query = $this->db->query("
+				SELECT DISTINCT($columna) FROM efectividad WHERE 
+				fecha >= '$fecha'
+
+    		");
+    	return $query->result_array();
+    }
+
+
+    // 
+    public function get_cant_section_in_name($name_seccion, $value_seccion, $name_nombre, $name_value){
+    	$query = $this->db->query("
+			SELECT count(1) as cant FROM 
+			efectividad
+			where
+			$name_nombre = '$name_value'
+			and
+			$name_seccion = '$value_seccion'
+    	");
+    	return $query->row();
+    }
+
 }
