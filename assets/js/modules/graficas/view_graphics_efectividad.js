@@ -26,25 +26,21 @@ $(function () {
 
         //
         printGraphicTorta1: function(data){
-            var oilCanvas = document.getElementById("myChart");
+            var oilCanvas = document.getElementById("torta_1");
 
 			Chart.defaults.global.defaultFontFamily = "sans-serif";
 			Chart.defaults.global.defaultFontSize = 16;
 			Chart.defaults.global.defaultFontColor = 'black';
 
 			var oilData = {
-			    labels: data.estados,
+			    labels: data.nombres,
 			    datasets: [
 			        {
 			            data: data.cantidades,
 			            backgroundColor: [
-			                "#FF6384",
-			                "#63FF84",
-			                "#84FF63",
-			                "#8463FF",
-			                "#6384FF"
+			               '#f44336','#9c27b0','#3f51b5','#2196f3','#4caf50','#ffeb3b','#ff9800'
 			            ],
-
+			            
 			        }]
 			};
 
@@ -100,18 +96,19 @@ $(function () {
 			            text: 'EFECTIVIDAD'
 			        },
 			        tooltips: {
+			        	backgroundColor: '#000',
+			        	position: 'average',
+			            // callbacks: {
+			            //     label: function(tooltipItem, data) {
+			            //         var label = data.datasets[tooltipItem.datasetIndex].label || '';
 
-			            callbacks: {
-			                label: function(tooltipItem, data) {
-			                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
-
-			                    if (label) {
-			                        label += ': ';
-			                    }
-			                    label += Math.round(tooltipItem.yLabel * 100) / 100;
-			                    return 'label';
-			                }
-			            }
+			            //         if (label) {
+			            //             label += ': ';
+			            //         }
+			            //         label += Math.round(tooltipItem.yLabel * 100) / 100;
+			            //         return 'label';
+			            //     }
+			            // }
 			        }
 
 			    },

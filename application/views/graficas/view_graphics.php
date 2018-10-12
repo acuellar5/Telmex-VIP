@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-md-6">
 		<div id="contentGraphics" style="position: relative;width: 46em;height: 13cm;">
-			<canvas id="myChart"></canvas>
+			<canvas id="torta_1"></canvas>
 		</div>
 	</div>
 </div>
