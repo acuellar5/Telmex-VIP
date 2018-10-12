@@ -1007,3 +1007,6 @@ margin-left: -53%;
     background: #add8e6;
     color:black;
 }
+.div_graficas_torta1, .div_graficas_torta3{
+    margin-bottom: 40px;
+}
