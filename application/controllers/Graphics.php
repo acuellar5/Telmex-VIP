@@ -245,7 +245,7 @@ class Graphics extends CI_Controller {
     }
 
     //
-    private function data_graphic_process_detail($nombre, $seccion, $fecha){
+    private function data_graphic_process_detail($nombre, $seccion, $fecha = '0000-00-00'){
         $nombres = $this->Dao_efectividad_model->get_names_by_col($nombre, $fecha);
         $secciones = $this->Dao_efectividad_model->get_names_by_col($seccion, $fecha);
         // $res['cantidad'] = count($secciones);
@@ -281,6 +281,20 @@ class Graphics extends CI_Controller {
     // data para grafica de barras (primeras)
     public function getDataEfectividadSemanal(){
         $div    = $this->data_graphic_process_detail('estado_voc_primario', 'tipo_sede', '2018-10-05');
+        echo json_encode($div);        
+    }
+
+
+    // Data para grafica  total de torta 3
+    public function get_data_grafics_torta_3(){
+        $torta3 = $this->Dao_efectividad_model->get_estado_voc_vs_tipo_estado_all();
+        $total  = $this->data_graphic_process_all($torta3);
+        echo json_encode($total);
+    }
+
+    // data para grafica de barras (primeras)
+    public function getDataEfectividadSemanal_barras3(){
+        $div    = $this->data_graphic_process_detail('estado_voc_primario', 'tipo_sede');
         echo json_encode($div);        
     }
 
