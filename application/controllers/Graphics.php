@@ -283,6 +283,12 @@ class Graphics extends CI_Controller {
         $div    = $this->data_graphic_process_detail('estado_voc_primario', 'tipo_sede', '2018-10-05');
         echo json_encode($div);        
     }
+    
+    // data para grafica de barras (segunda)
+    public function getDataNoEfectividadSemanal(){
+        $div    = $this->data_graphic_process_detail('causas_visita_perdida_primario', 'tipo_sede', '2018-10-05');
+        echo json_encode($div);        
+    }
 
 
     // Data para grafica  total de torta 3
