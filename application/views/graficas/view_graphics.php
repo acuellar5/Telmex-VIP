@@ -7,7 +7,7 @@
             <canvas id="barras_1" height="100" style="margin-bottom: 40px"></canvas>
     </div>
     <div class="col-md-12" style="margin-top: 50px;">
-            <canvas id="torta_1" height="100"></canvas>
+            <canvas id="torta_1" height="150"></canvas>
     </div>
     <!--              cominezo jhonChaparro              -->
     <div class="col-md-12" style="margin-top: 50px;">
