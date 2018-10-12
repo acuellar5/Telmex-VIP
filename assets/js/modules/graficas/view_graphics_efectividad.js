@@ -175,7 +175,7 @@ $(function () {
                     // onClick: vista.clickEventGrafics,
                     title: {
                     display: true,
-                    text: 'EFECTIVIDAD SEMANAL estado voc principal',
+                    text: 'EFECTIVIDAD SEMANAL Estado VOC Principal',
                     fontSize: 18
                   },
 
@@ -183,7 +183,7 @@ $(function () {
                        xAxes: [{
                               gridLines: {
                                 // display: false,
-                                color: '#ccc'
+                                color: '#000'
                               },
                             display: true,
                             stacked: true,
@@ -196,7 +196,7 @@ $(function () {
                         yAxes: [{
                             gridLines: {
                                 // display: false,
-                                color: '#ccc'
+                                color: '#000'
                               },
                             display: true,
                             stacked: true,
