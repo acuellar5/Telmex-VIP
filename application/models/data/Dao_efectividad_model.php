@@ -42,9 +42,9 @@ class Dao_efectividad_model extends CI_Model {
     //
     public function get_estado_voc_vs_tipo_sede() {
         $query = $this->db->query("
-			SELECT COUNT(efectividad) AS cant, estado_voc_primario AS nombre
+			SELECT COUNT(tipo_sede) AS cant, estado_voc_primario AS nombre
                         FROM efectividad
-                        WHERE fecha >= '2018-10-05' AND estado_voc_1 IS NULL
+                        WHERE estado_voc_primario <> ''
                         GROUP BY estado_voc_primario
                         ORDER BY cant DESC
 		");
