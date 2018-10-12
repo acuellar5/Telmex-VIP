@@ -10,3 +10,5 @@
 		<button class="btn-cami_cool2" type="submit"> Subir Archivo <span class="glyphicon glyphicon-ok"></span></button>
 	</form>
 </div>
+<script src="<?= URL::to("assets/plugins/sweetalert2/sweetalert2.all.js") ?>"></script>
+<script src="<?= URL::to("assets/js/modules/graficas/loadBaseGraficas.js?v=" . time()) ?>" type="text/javascript"></script>
