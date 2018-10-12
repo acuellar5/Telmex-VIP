@@ -137,7 +137,7 @@
 
                   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"></span> Facturación <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="<?= URL::to('cierre_ots') ?>">Cierre </a></li>
+                      <li><a href="<?= URL::to('Cierre_ots') ?>">Cierre </a></li>
                       <li><a href="<?= URL::to('facturacion') ?>">Facturados </a></li>
                     </ul>
                   </li>   
