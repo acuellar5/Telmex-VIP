@@ -96,7 +96,7 @@ $(function () {
                     cutoutPercentage: 50,
                     title: {
                         display: true,
-                        text: 'EFECTIVIDAD'
+                        text: 'EFECTIVIDAD SEMANAL'
                     },
                     tooltips: {
                         backgroundColor: '#000',
@@ -356,7 +356,7 @@ $(function () {
 			        cutoutPercentage: 50,
 			        title: {
 			            display: true,
-			            text: 'EFECTIVIDAD'
+			            text: 'EFECTIVIDAD GENERAL'
 			        },
 			        tooltips: {
 			        	backgroundColor: '#000',
@@ -404,7 +404,7 @@ $(function () {
                     // onClick: vista.clickEventGrafics,
                     title: {
                     display: true,
-                    text: 'EFECTIVIDAD SEMANAL Estado VOC Principal',
+                    text: 'EFECTIVIDAD GENERAL Estado VOC Principal',
                     fontSize: 18
                   },
 
