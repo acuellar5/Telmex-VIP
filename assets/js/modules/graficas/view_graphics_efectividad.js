@@ -221,7 +221,7 @@ $(function () {
                 const obj = JSON.parse(data);
                 efectividad.printGraphicBars2(obj);
             });
-        },
+        }, 
         // pinta la grafica de barras 2
         printGraphicBars2: function (data) {
             const datasets = efectividad.get_datasets(data);
