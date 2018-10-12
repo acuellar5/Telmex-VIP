@@ -247,7 +247,7 @@ $(function () {
                         xAxes: [{
                                 gridLines: {
                                     // display: false,
-                                    color: '#ccc'
+                                    color: '#000'
                                 },
                                 display: true,
                                 stacked: true,
@@ -260,7 +260,7 @@ $(function () {
                         yAxes: [{
                                 gridLines: {
                                     // display: false,
-                                    color: '#ccc'
+                                    color: '#000'
                                 },
                                 display: true,
                                 stacked: true,
@@ -448,3 +448,4 @@ $(function () {
 });
 
 
+000
