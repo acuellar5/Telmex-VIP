@@ -2313,6 +2313,7 @@
 .max-h-full {max-height: 100%;}
 .min-w-full {min-width: 100%;}
 .min-h-full {min-height: 100%;}
+.wth-95{width: 100px !important;}
 
 /*[ Top Bottom Left Right ]
 -----------------------------------------------------------
