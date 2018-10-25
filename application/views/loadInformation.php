@@ -15,4 +15,3 @@
     });
 </script>
 <script src="<?= URL::to("assets/js/modules/loadInformation.js?v=" . time()) ?>" type="text/javascript"></script>
-    

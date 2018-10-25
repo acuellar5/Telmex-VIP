@@ -74,10 +74,11 @@ class User extends CI_Controller {
 
                 $this->load->view('moduleOtp');
             }
-        } elseif ('Implementacion') {
+        } elseif ($proyecto === 'Implementacion') {
             $this->load->view('principal');
-        } elseif ('Graphics') {
-            $this->load->view('graficas/view_graphics/BBVA');
+        } elseif ($proyecto === 'Graphics') {
+            header('location: ' . URL::base() . '/Graphics/view_graphics/BBVA');
+            // $this->load->view('graficas/view_graphics/BBVA');
         }
         // $this->load->view('moduleOtp');
 
@@ -400,14 +401,16 @@ class User extends CI_Controller {
 
     //
     public function prueba() {
-        $a = "bredycamilo";
-        $b = "BREDYCAMILO                  \n ";
+        $var = "0";
 
-        if ($a == rtrim (strtolower($b))) {
-            echo "son iguales";
+        if ($var) {
+        echo 'verdadero';
         } else {
-            echo "no son iguales";
+        echo 'falso';
         }
+
+
+
     }
 
     //  TRAE LOS REGISTROS DE LA TABLA DE INCONSISTENCIAS

@@ -132,10 +132,6 @@ $(function () {
         // retorna los datos para el chart js
         get_datasets: function (data) {
             var response = [];
-            console.log(data);
-            // for (var i = 0; i < data.length; i++) {
-            // 	data[i]
-            // }
             let flag = 0;
             $.each(data, function (seccion, cantidades) {
                 if (seccion != 'names') {
@@ -508,4 +504,3 @@ $(function () {
 });
 
 
-000
