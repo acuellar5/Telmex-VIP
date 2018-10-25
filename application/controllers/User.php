@@ -14,11 +14,8 @@ class User extends CI_Controller {
 
     private function validUser($request) {
         return Auth::attempt([
-                    "n_mail_user" => $request->username,
+                    "n_username_user" => $request->username,
                     "n_password" => $request->password,
-                    "OR" => [
-                        "n_username_user" => $request->username
-                    ]
         ]);
     }
 
@@ -216,7 +213,7 @@ class User extends CI_Controller {
                                     //     }else {
                                     //       $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
                                     //     }
-                                    // }else{                                      
+                                    // }else{
                                     //     $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
                                     // }
 
@@ -231,7 +228,7 @@ class User extends CI_Controller {
                                     //     }else {
                                     //        $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
                                     //     }
-                                    // }else{                                      
+                                    // }else{
                                     //    $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
                                     // }
 
@@ -374,7 +371,7 @@ class User extends CI_Controller {
     }
 
     //FUNCIONA
-    // RETORNA SOLO LAS COINCIDENCIAS DE SE SEGUNDO NUMERO CON RESPECTO AL PRIMERO 
+    // RETORNA SOLO LAS COINCIDENCIAS DE SE SEGUNDO NUMERO CON RESPECTO AL PRIMERO
     //EJEM_ (232, 238) => 8    EJ: (123, 143)
     public function delecteCoinci($num1, $num2) {
         $num1 .= "";
@@ -405,6 +402,7 @@ class User extends CI_Controller {
 
         if ($var) {
         echo 'verdadero';
+
         } else {
         echo 'falso';
         }
@@ -449,6 +447,5 @@ class User extends CI_Controller {
             echo json_encode(Auth::user());
         }
     }
-
 
 }

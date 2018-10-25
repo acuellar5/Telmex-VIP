@@ -6,7 +6,7 @@ class Auth {
     private static $class;
 
     function __construct() {
-        
+
     }
 
     public static function init() {

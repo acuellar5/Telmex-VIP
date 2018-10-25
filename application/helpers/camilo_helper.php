@@ -8,10 +8,10 @@ if (!defined('BASEPATH'))
 if (!function_exists('comparationsNames')) {
 
     // Funcion que compara dos nombres por lo general de fuentes distintas que humanamente es facil
-    // Pero computacional es mas complejo por temas de mayusculas y cambios ortograficos o segundo 
+    // Pero computacional es mas complejo por temas de mayusculas y cambios ortograficos o segundo
     // nombre omitido. Ejemplo comparar nombres de un excel con relacion con nombres de db
     // recibe 2 parametros, un array con los nombres deseados... por lo general de db y el nombre a comparar
-    // Retorna "false" si no encontro similitud importante o retorna el nombre del array 
+    // Retorna "false" si no encontro similitud importante o retorna el nombre del array
     // con el que hay mayor similitud
     // IMPORTANTE.. PASAR NOMBREBASE CON MINIMO DOS PALABRAS
     function comparationsNames($arrayNames, $nameBase) {
@@ -45,7 +45,7 @@ if (!function_exists('comparationsNames')) {
                 }
                 // si en alguna de las comparaciones con respecto al nombrebase es mayor al 69%
                 if ($pLastname1 > 69 || $pLastname2 > 69 || $pLastname3 > 69 || $pLastname1B > 69 || $pLastname2B > 69 || $pLastname3B > 69) {
-                    //lo capturo en una variables y lo agrego a arreglo de similares	
+                    //lo capturo en una variables y lo agrego a arreglo de similares
                     $nameResult = $arrayNames[$i];
                     array_push($similares, $nameResult);
                     //uso el contador por si hay mas de un registro q cumple las condiciones
@@ -57,7 +57,7 @@ if (!function_exists('comparationsNames')) {
         if ($contador > 1) {
             // ciclo hasta la cantidad de registros que cumple...
             for ($j = 0; $j < count($similares); $j++) {
-                // los comparo directamente con el nombre base completo sin seccionarlo y 
+                // los comparo directamente con el nombre base completo sin seccionarlo y
                 // guardo la similitud en una variable
                 $sim[$j] = similar_text($nameBase, $similares[$j]);
             }
@@ -167,7 +167,7 @@ if (!function_exists('validarFestivo')) {
 
     //Funcion para validar si una fecha es Festivo
     //recibe 1 parametro; la fecha a calcular FORMATO AAAA-MM-DD
-    //Retorna '1' si es festivo o '0' si no lo es 
+    //Retorna '1' si es festivo o '0' si no lo es
     // NOTA: tambien recibe fechas de distito formato ejemplo AAAA-M-D (2018-3-9)
     function validarFestivo($fecha) {
         $fecha = new DateTime($fecha);
@@ -279,8 +279,8 @@ if (!function_exists('is_sat_sun_or_fest')) {
 if (!function_exists('elimina_acentos')) {
 
     //Funcion para eliminar acentos
-    //recibe 1 parametro; un string al que le vamos a eliminar los acentos 
-    //Retorna el string sin acentos		  
+    //recibe 1 parametro; un string al que le vamos a eliminar los acentos
+    //Retorna el string sin acentos
     function elimina_acentos($text) {
         $text = htmlentities($text, ENT_QUOTES, 'UTF-8');
         $text = strtolower($text);
@@ -340,7 +340,7 @@ if (!function_exists('validarEnProduccion')) {
         $CI = & get_instance();
         $CI->load->database();
         if ($CI->db->hostname == 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com') {
-            $version = '8.1';
+            $version = '9.1';
         } else {
             $version = time();
         }
@@ -357,7 +357,7 @@ if (!function_exists('h_enviarCorreo')) {
     //Retorna un mensaje diciendo si el correo se pudo enviar o no
     function h_enviarCorreo($cuerpo, $dirigido, $asunto = 'Sin asunto', $mail_cc = null) {
         $return = array();
-        $CI =& get_instance();
+        $CI = & get_instance();
         $CI->load->library('parser');
 
         $config = Array(
@@ -372,7 +372,7 @@ if (!function_exists('h_enviarCorreo')) {
             'charset' => 'utf-8',
             'priority' => 1,
         );
-        
+
         $CI->load->library('email', $config);
         $CI->email->set_newline("\r\n");
         $CI->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
@@ -391,8 +391,6 @@ if (!function_exists('h_enviarCorreo')) {
             $return['msg'] = 'Hubo un error al momento de enviar el correo, por favor inténtelo nuevamente.';
             show_error($CI->email->print_debugger());
         }
-        
-        
     }
 
 }
@@ -400,4 +398,3 @@ if (!function_exists('h_enviarCorreo')) {
 
 
 
- 
