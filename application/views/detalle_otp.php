@@ -757,6 +757,8 @@ for ($i=0; $i < count($registros['oth']); $i++) {
         </div>
     </div>
 </div>
+
+
 <?php if (isset($_GET['msj'])): ?>
     <script>
         var urlbase = "<?php echo URL::base(); ?>";

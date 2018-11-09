@@ -82,5 +82,37 @@ class Dao_sede_model extends CI_Model {
         return $query->result();
     }
 
+    // Retorna el listados de nombres y ids de las sedes 
+    public function get_list_sedes(){
+        $query = $this->db->select('id_sede, nombre_sede')
+                            ->order_by('nombre_sede', 'ASC')
+                            ->get('sede');
+
+        return $query->result();
+
+    }
+
+    // Retorna el listado de ot padres que tienen sede
+    public function get_list_otps_sedes(){
+        $query = $this->db
+                    ->select('k_id_ot_padre')
+                    ->join('sede s', 'otp.id_sede = s.id_sede', 'inner')
+                    ->get('ot_padre otp');
+        return $query->result();
+
+    }
+
+    // selecciona otp por id o ids de sedes 
+    public function get_ots_by_idsede($ots){
+        $query = $this->db
+                    ->select('k_id_ot_padre')
+                    ->where_in('id_sede', $ots)
+                    ->get('ot_padre');
+
+
+        return $query->result();
+
+    }
+
 }
 
