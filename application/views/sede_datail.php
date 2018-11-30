@@ -1,4 +1,7 @@
-<img src="<?= URL::to('assets/img/claro.png') ?>" class="img_claro_sticky">
+<div class="cont_logos" style="width: 90px;float: right; ">
+  <img src="<?= URL::to('assets/img/claro.png') ?>" class="" style="height:34px;">
+  <img src="<?= URL::to('assets/img/bbva.png') ?>" class="" style="height:28px;margin-top: 2px;">
+</div>
 <?php if (isset($otp[0]->nombre_sede)): ?>
 	<h3 align="center">Detalle de la sede <b><?= $otp[0]->nombre_sede ?></b>  :  Cliente <b><?= $otp[0]->n_nombre_cliente ?></b></h3>
 	<h4 align="center">Cantidad de <b> control de cambios</b> de esta sede: <b><?= count($log) ?></b></h4>

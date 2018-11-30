@@ -14,6 +14,14 @@ and open the template in the editor.
     padding: 15px;
     background: #fbfbfb;
 }
+
+.d-inline-table{
+    display: inline-table;
+}
+.w-1000px {
+    width: 1000px !important;
+}
+
 /*BEGIN:: HELPER CLASS*/
 /*MARGIN*/
 /* font size */
