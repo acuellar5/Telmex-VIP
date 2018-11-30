@@ -7,15 +7,15 @@ class Dao_ot_padre_model extends CI_Model {
     protected $session;
 
     public function __construct() {
-        
+
     }
 
     // Retorna registro otp por id de ot padre
     public function exist_otp_by_id($id) {
         $query = $this->db->query("
-				SELECT 
-				k_id_ot_padre 
-				FROM 
+				SELECT
+				k_id_ot_padre
+				FROM
 				ot_padre
 				WHERE
 				k_id_ot_padre = $id
@@ -45,12 +45,12 @@ class Dao_ot_padre_model extends CI_Model {
     // Retorna ots de ingenieros sin estado cancelada, cerrada ni terminada
     public function get_otp_by_id_user($id) {
         $query = $this->db->query("
-				SELECT 
-				k_id_ot_padre, estado_orden_trabajo  
-				FROM 
+				SELECT
+				k_id_ot_padre, estado_orden_trabajo
+				FROM
 				ot_padre
 				WHERE
-				k_id_user = '$id' AND 
+				k_id_user = '$id' AND
 				estado_orden_trabajo != 'otp_cerrada'
 		");
         return $query->result();
@@ -64,14 +64,14 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " WHERE otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-                SELECT 
-                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                SELECT
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo,
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion,
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
                 CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
-                FROM ot_hija oth 
+                FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
                 LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
@@ -89,17 +89,17 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-                SELECT 
-                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                SELECT
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo,
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion,
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
                 CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
-                FROM ot_hija oth 
+                FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
-                LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre 
+                LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
                 WHERE otp.fecha_compromiso = CURDATE()
                 $condicion
                 GROUP BY nro_ot_onyx
@@ -115,16 +115,16 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-                SELECT 
-                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                SELECT
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo,
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion,
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
                 CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
-                FROM ot_hija oth 
+                FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
-                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                INNER JOIN user ON otp.k_id_user = user.k_id_user
                 LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
                 WHERE otp.fecha_compromiso < CURDATE()
                 $condicion
@@ -133,7 +133,7 @@ class Dao_ot_padre_model extends CI_Model {
         return $query->result();
     }
 
-    //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles  
+    //Inserta la observaciones, usuario que lo hizo y fecha de la vista detalles
     public function update_new_data($data) {
         if (Auth::user()->n_role_user == 'administrador') {
             $this->db->where('k_id_ot_padre', $data['k_id_ot_padre']);
@@ -163,19 +163,19 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-                SELECT 
-                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                SELECT
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo,
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion,
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
                 CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
-                FROM ot_hija oth 
+                FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
-                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                INNER JOIN user ON otp.k_id_user = user.k_id_user
                 LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
-                WHERE lista_observaciones = '$opcion' 
-                $condicion 
+                WHERE lista_observaciones = '$opcion'
+                $condicion
                 GROUP BY oth.nro_ot_onyx
 
         ");
@@ -189,9 +189,9 @@ class Dao_ot_padre_model extends CI_Model {
                 SELECT COUNT(k_id_register) AS cant
                 FROM ot_hija oth
                 WHERE nro_ot_onyx = $idOtp
-                AND estado_orden_trabajo_hija != 'Cerrada' 
-                AND estado_orden_trabajo_hija != 'Cancelada' 
-                AND estado_orden_trabajo_hija != '3- Terminada' 
+                AND estado_orden_trabajo_hija != 'Cerrada'
+                AND estado_orden_trabajo_hija != 'Cancelada'
+                AND estado_orden_trabajo_hija != '3- Terminada'
         ");
         return $query->row();
     }
@@ -202,9 +202,9 @@ class Dao_ot_padre_model extends CI_Model {
                 SELECT id_orden_trabajo_hija
                 FROM ot_hija oth
                 WHERE nro_ot_onyx = $idOtp
-                AND estado_orden_trabajo_hija != 'Cerrada' 
-                AND estado_orden_trabajo_hija != 'Cancelada' 
-                AND estado_orden_trabajo_hija != '3- Terminada' 
+                AND estado_orden_trabajo_hija != 'Cerrada'
+                AND estado_orden_trabajo_hija != 'Cancelada'
+                AND estado_orden_trabajo_hija != '3- Terminada'
         ");
         return $query->result();
     }
@@ -256,16 +256,16 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-                SELECT 
-                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+                SELECT
+                otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo,
+                otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion,
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
                 CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
-                FROM ot_hija oth 
+                FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
-                INNER JOIN user ON otp.k_id_user = user.k_id_user 
+                INNER JOIN user ON otp.k_id_user = user.k_id_user
                 LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
                 $condicion
                 GROUP BY nro_ot_onyx
@@ -276,25 +276,25 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     // trae  todas las ots que tienen que enviar correo de actualizacion
-    public function getOtsPtesPorEnvioActualizacion(){
+    public function getOtsPtesPorEnvioActualizacion() {
         $condicion = " ";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
             $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-            SELECT 
-            otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo, 
-            otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion, 
+            SELECT
+            otp.k_id_ot_padre, otp.n_nombre_cliente, otp.orden_trabajo,
+            otp.servicio, REPLACE(otp.estado_orden_trabajo,'otp_cerrada','Cerrada') AS estado_orden_trabajo, otp.fecha_programacion,
             otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
             CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
             otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
             CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
-            FROM ot_hija oth 
+            FROM ot_hija oth
             INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
             INNER JOIN user ON otp.k_id_user = user.k_id_user
             LEFT JOIN hitos ON hitos.id_ot_padre = otp.k_id_ot_padre
-            WHERE 
+            WHERE
             DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 7
             $condicion
             GROUP BY nro_ot_onyx
@@ -302,52 +302,53 @@ class Dao_ot_padre_model extends CI_Model {
         return $query;
     }
 
-      // obtiene las otp de una sede (pasarle el id de la sede)
-    public function get_otp_by_idsede($idsede){
-       $query = $this->db->query("
-            SELECT 
-            otp.k_id_ot_padre, 
-            otp.k_id_user, 
-            otp.id_cliente_onyx, 
-            otp.n_nombre_cliente, 
-            otp.orden_trabajo, 
-            otp.servicio, 
-            otp.estado_orden_trabajo, 
-            otp.fecha_creacion, 
-            otp.fecha_compromiso, 
-            otp.fecha_programacion, 
-            s.id_sede, 
-            s.nombre_sede, 
+    // obtiene las otp de una sede (pasarle el id de la sede)
+    public function get_otp_by_idsede($idsede) {
+        $query = $this->db->query("
+            SELECT
+            otp.k_id_ot_padre,
+            otp.k_id_user,
+            otp.id_cliente_onyx,
+            otp.n_nombre_cliente,
+            otp.orden_trabajo,
+            otp.servicio,
+            otp.estado_orden_trabajo,
+            otp.fecha_creacion,
+            otp.fecha_compromiso,
+            otp.fecha_programacion,
+            s.id_sede,
+            s.nombre_sede,
             (
                 SELECT COUNT(1) FROM control_cambios cc
                 WHERE cc.id_ot_padre = otp.k_id_ot_padre
             ) AS num_ctrl
-            FROM 
-            ot_padre otp 
-            INNER JOIN sede s ON otp.id_sede = s.id_sede 
-            WHERE 
+            FROM
+            ot_padre otp
+            INNER JOIN sede s ON otp.id_sede = s.id_sede
+            WHERE
             otp.id_sede = $idsede
-        "); 
+        ");
 
-       return $query->result();
+        return $query->result();
     }
 
     // retorna todos los hitos de la ot_padre
     public function getHitosOtp($idOtp) {
         $query = $this->db->query("
-            SELECT f_compromiso_ko, estado_ko, observaciones_ko,
-                f_compromiso_voc, estado_voc, observaciones_voc,
-                f_compromiso_ec, estado_ec, observaciones_ec,
-                f_compromiso_ac, estado_ac, observaciones_ac,
-                f_compromiso_sit, estado_sit, observaciones_sit,
-                f_compromiso_veoc, estado_veoc, observaciones_veoc,
-                f_compromiso_crc, estado_crc, observaciones_crc,
-                f_compromiso_veut, estado_veut, observaciones_veut,
+            SELECT
+                IFNULL(date_sub(lb.fecha_visita_obra_civil, INTERVAL 3 DAY), h.f_compromiso_ko) AS f_compromiso_ko, estado_ko, observaciones_ko,
+                IFNULL(lb.fecha_visita_obra_civil, h.f_compromiso_voc) AS f_compromiso_voc, estado_voc, observaciones_voc,
+                IFNULL(lb.fecha_dcoc, h.f_compromiso_ec) AS f_compromiso_ec, estado_ec, observaciones_ec,
+                IFNULL(lb.fecha_aprobacion_coc, h.f_compromiso_ac) AS f_compromiso_ac, estado_ac, observaciones_ac,
+                IFNULL(lb.fecha_ingenieria_detalle, h.f_compromiso_sit) AS f_compromiso_sit, estado_sit, observaciones_sit,
+                IFNULL(lb.fecha_ejecucion_obra_civil, h.f_compromiso_veoc) AS f_compromiso_veoc, estado_veoc, observaciones_veoc,
+                IFNULL(lb.fecha_configuracion, h.f_compromiso_crc) AS f_compromiso_crc, estado_crc, observaciones_crc,
+                IFNULL(lb.fecha_ejecucion_obra_civil, h.f_compromiso_veut) AS f_compromiso_veut, estado_veut, observaciones_veut,
                 actividad_actual, tipo_voc, tipo_veoc
-            FROM 
-            hitos
-            WHERE 
-            id_ot_padre = $idOtp
+            FROM hitos h
+            LEFT JOIN linea_base lb ON lb.id_ot_padre = h.id_ot_padre
+            WHERE
+            h.id_ot_padre = $idOtp
         ");
 
         return $query->row();
@@ -357,11 +358,11 @@ class Dao_ot_padre_model extends CI_Model {
     public function saveHitosOtp($idOtp, $formulario) {
         $respuesta = array();
         $query = "";
-        
+
         $exist = $this->db->query("
             SELECT id_hitos FROM hitos WHERE id_ot_padre = $idOtp
         ");
-        
+
         if ($exist->num_rows() <= 0) {
             $query = "INSERT INTO hitos (id_ot_padre,
                             f_compromiso_ko,
@@ -464,7 +465,7 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     // obtener listas de tipos de otp
-    public function getListTypesOTP(){
+    public function getListTypesOTP() {
         $query = $this->db->query("
             SELECT orden_trabajo FROM ot_padre GROUP BY orden_trabajo
         ");
@@ -472,26 +473,27 @@ class Dao_ot_padre_model extends CI_Model {
     }
 
     // retorna listadode estados de otp
-    public function getListStatusOTP(){
+    public function getListStatusOTP() {
         $query = $this->db->query("
             SELECT estado_orden_trabajo FROM ot_padre GROUP BY estado_orden_trabajo
         ");
         return $query->result();
     }
-    
+
     /* retorna:
      * nombre_cliente
      * servicio
      * ciudad
      * diereccion
      * de una OTP
-    */
-    public function getDetailsHitosOTP($idOtp){
+     */
+
+    public function getDetailsHitosOTP($idOtp) {
         $query = $this->db->query("
             SELECT otp.n_nombre_cliente, otp.servicio, oth.ciudad,
                 CASE
                         WHEN oth.direccion_origen = '' THEN oth.direccion_destino
-                        ELSE '' 
+                        ELSE ''
                 END AS 'direccion'
             FROM ot_padre otp
             INNER JOIN ot_hija oth ON oth.nro_ot_onyx = otp.k_id_ot_padre
@@ -500,69 +502,91 @@ class Dao_ot_padre_model extends CI_Model {
         ");
         return $query->row();
     }
-    
+
     /* retorna:
      * la informacion del producto de una OTP
-    */
-    public function getProductByOtp($idOtp, $numServicio){
+     */
+
+    public function getProductByOtp($idOtp, $numServicio) {
         $tabla = '';
         $columWhere = 'id_ot_padre';
         switch ($numServicio) {
-            /*formulario Internet*/
-            	case '1': // internet dedicado empresarial
-            	case '2': // internet dedicado 
-            		$tabla = 'pr_internet';
-            		break;
-            	/*formulario MPLS*/
-            	case '3': // mpls_avanzado_intranet
-            	case '4': // mpls_avanzado_intranet_varios_puntos
-            	case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
-            	case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
-            	case '7': // MPLS Avanzado Extranet
-            	case '8': // Backend MPLS 
-            	case '9': // MPLS Avanzado con Componente Datacenter Claro
-            	case '10': // MPLS Transaccional 3G
-            		$tabla = 'pr_mpls';
-                        $columWhere = 'id_ot_padre_ori';
-            		break;
-            	/*FORMULARIO NOVEDADES*/
-            	case '12': // Cambio de Equipos Servicio
-            	case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
-            	case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
-            	case '22': // Cambio de Última Milla
-            	case '23': // Cambio de Equipo
-            		$tabla = 'pr_novedades';
-            		break;
-            	/*TRASLADO_EXTERNO*/
-            	case '15': // Traslado Externo Servicio
-            		$tabla = 'pr_traslado_externo';
-            		break;
-            	/*TRASLADO_INTERNO*/
-            	case '16': // Traslado Interno Servicio
-            		$tabla = 'pr_traslado_interno';
-            		break;
-            	/*PVX_ADMINISTRADA*/
-            	case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
-            		$tabla = 'pr_pbx_administrada';
-            		break;
-            	/*TELEFONIA FIJA*/
-            	case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
-            	case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
-            	case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
-            	case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
-            		$tabla = 'pr_telefonia_fija';
-            		break;
+            /* formulario Internet */
+            case '1': // internet dedicado empresarial
+            case '2': // internet dedicado
+                $tabla = 'pr_internet';
+                break;
+            /* formulario MPLS */
+            case '3': // mpls_avanzado_intranet
+            case '4': // mpls_avanzado_intranet_varios_puntos
+            case '5': // MPLS Avanzado Intranet con Backup de Ultima Milla - NDS 2
+            case '6': // MPLS Avanzado Intranet con Backup de Ultima Milla y Router - NDS1
+            case '7': // MPLS Avanzado Extranet
+            case '8': // Backend MPLS
+            case '9': // MPLS Avanzado con Componente Datacenter Claro
+            case '10': // MPLS Transaccional 3G
+                $tabla = 'pr_mpls';
+                $columWhere = 'id_ot_padre_ori';
+                break;
+            /* FORMULARIO NOVEDADES */
+            case '12': // Cambio de Equipos Servicio
+            case '13': // Cambio de Servicio Telefonia Fija Pública Linea Basica a Linea E1
+            case '14': // Cambio de Servicio Telefonia Fija Pública Linea SIP a PBX Distribuida Linea SIP
+            case '22': // Cambio de Última Milla
+            case '23': // Cambio de Equipo
+                $tabla = 'pr_novedades';
+                break;
+            /* TRASLADO_EXTERNO */
+            case '15': // Traslado Externo Servicio
+                $tabla = 'pr_traslado_externo';
+                break;
+            /* TRASLADO_INTERNO */
+            case '16': // Traslado Interno Servicio
+                $tabla = 'pr_traslado_interno';
+                break;
+            /* PVX_ADMINISTRADA */
+            case '17': // SOLUCIONES ADMINISTRATIVAS - COMUNICACIONES UNIFICADAS PBX ADMINISTRADA
+                $tabla = 'pr_pbx_administrada';
+                break;
+            /* TELEFONIA FIJA */
+            case '18': // Instalación Servicio Telefonia Fija PBX Distribuida Linea E1
+            case '19': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP
+            case '20': // Instalación Servicio Telefonia Fija PBX Distribuida Linea SIP con Gateway de Voz
+            case '21': // Instalación Telefonía Publica Básica - Internet Dedicado
+                $tabla = 'pr_telefonia_fija';
+                break;
 
-            	/*NN HERFANITO*/
-            	case '11': // Adición Marquillas Aeropuerto el Dorado Opain
+            /* NN HERFANITO */
+            case '11': // Adición Marquillas Aeropuerto el Dorado Opain
 
-            		break;
+                break;
         }
-        
+
         $query = $this->db->query("
             SELECT * FROM $tabla WHERE $columWhere = $idOtp
         ");
         return $query->row();
+    }
+
+    // trae la cantidad de otp sin enviar correo
+    public function getCountPtesPorEnvio() {
+        $condicion = " ";
+        if (Auth::user()->n_role_user == 'ingeniero') {
+            $usuario_session = Auth::user()->k_id_user;
+            $condicion = " AND u.k_id_user = $usuario_session ";
+        }
+        $query = $this->db->query("
+            SELECT
+                u.k_id_user, CONCAT(u.n_name_user, ' ' , u.n_last_name_user) AS ingeniero,
+                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND (DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 7 AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) <= 8)) AS menor_ocho,
+                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND (DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 9 AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) <= 15)) AS menor_quince,
+                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND (DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 16 AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) <= 30)) AS menor_treinta,
+                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 31) AS mayor_treinta
+            FROM user u
+            WHERE u.n_role_user = 'ingeniero'
+            $condicion
+        ");
+        return $query->result();
     }
 
 }

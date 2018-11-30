@@ -118,8 +118,8 @@
 <?php endif ?>
 
 <!-- ***********************faber*********************************** -->
-<?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User' || $this->uri->segment(1) == 'managementOtp' || $this->uri->segment(1) == 'cierre_ots' || $this->uri->segment(1) == 'Sede'): ?>
-    <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script> -->
+<?php if ($this->uri->segment(1) == 'editarOts' || $this->uri->segment(1) == 'paginaPrincipal' || $this->uri->segment(1) == 'User' || $this->uri->segment(1) == 'managementOtp' || $this->uri->segment(1) == 'Cierre_ots' || $this->uri->segment(1) == 'Sede'): ?>
+        <!-- <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script> -->
     <script src="<?= URL::to('assets/plugins/datatables/js/dataTables.buttons.min.js') ?>"></script>
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
     <script src="<?= URL::to('assets/plugins/datatables/js/jszip.min.js') ?>"></script>
