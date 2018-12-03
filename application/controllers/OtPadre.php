@@ -196,8 +196,6 @@ class OtPadre extends CI_Controller {
             'usuario_actualizacion' => $ingeniero
         );
 
-        // print_r($data);
-
 
         $res = $this->Dao_ot_padre_model->update_new_data($data);
 
@@ -426,16 +424,23 @@ class OtPadre extends CI_Controller {
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Celular: </span><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $celIngeniero . '</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo electrónico: </span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: rgb(79, 129, 189);"><a href="mailto:' . $email . '" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">' . $email . '</span></a></span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">&nbsp;</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
-            <p class="x_MsoNormal" style="text-align:justify"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 2:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto 1.</span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Coordinador Estándar: <span style="color:#1F497D">&nbsp;</span>Alejandra Rendon Calderon &nbsp;</span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Teléfono. 7569858 Ext &nbsp;2008 Celular:</span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo: <span style="color:#4F81BD"><a href="mailto:alejandra.rendon.ext@claro.com.co" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">alejandra.rendon.ext@claro.com.co</span></a> </span></span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
-            <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 3:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto 2.</span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Ingeniero Implementación Claro: </span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: rgb(31, 73, 125);">&nbsp;</span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Vivian Rodriguez</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Ingeniero Aprovisionamiento Estándar</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Celular: 3138892717</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo electrónico: <span style="color:#4F81BD"><a href="mailto:vivian.rodriguez@claro.com.co" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">vivian.rodriguez@claro.com.co</span></a></span><span style="color:black">&nbsp;</span></span></p>
+
+
+            <p class="m_-5751456617445139844xmsonormal" style="text-align:justify"><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Nivel de Contacto 2:</span></strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto &nbsp;1.</span><u></u><u></u></p>
+
+            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Coordinador Estándar: <span style="color:#1f497d">&nbsp;</span>Alejandra Rendon Calderon &nbsp;</span><u></u><u></u></p>
+            <p class="MsoNormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Teléfono. 7569858 Ext &nbsp;2008 Celular:</span> 3102129290<u></u><u></u></p>
+            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Correo: <span style="color:#4f81bd"> <a href="mailto:alejandra.rendon.ext@claro.com.co" target="_blank"><span style="color:#4f81bd">alejandra.rendon.ext@claro.<wbr>com.co</span></a> </span></span><u></u><u></u></p>
+            <p class="MsoNormal">53124277<u></u><u></u></p>
+            <p class="MsoNormal"><u></u>&nbsp;<u></u></p>
+            <p class="MsoNormal"><u></u>&nbsp;<u></u></p>
+            <p class="m_-5751456617445139844xmsonormal" style="text-align:justify"><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Nivel de Contacto 3:</span></strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto &nbsp;1.</span><u></u><u></u></p>
+            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Coordinador Estándar: &nbsp;Maria Marcela Rojas<u></u><u></u></span></p>
+            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Teléfono.7500300&nbsp; Ext 83037 &nbsp;&nbsp;Celular 3133337675<u></u><u></u></span></p>
+            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Correo: <a href="mailto:maria.rojasa@claro.com.co" target="_blank"> maria.rojasa@claro.com.co</a><u></u><u></u></span></p>
+            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">53122402<u></u><u></u></span></p>
+            <p class="MsoNormal"><u></u>&nbsp;<u></u></p>
+
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: rgb(31, 73, 125);">&nbsp;</span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Gracias por la atención prestada y quedo atento a sus comentarios.</span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p><br><br>';
@@ -460,3 +465,17 @@ class OtPadre extends CI_Controller {
     }
 
 }
+
+
+ // <p class="x_MsoNormal" style="text-align:justify"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 2:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto 1.</span></p>            
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Coordinador Estándar: <span style="color:#1F497D">&nbsp;</span>Alejandra Rendon Calderon &nbsp;</span></p>
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Teléfono. 7569858 Ext &nbsp;2008 Celular: </span> 3102129290</p>
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo: <span style="color:#4F81BD"><a href="mailto:alejandra.rendon.ext@claro.com.co" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">alejandra.rendon.ext@claro.com.co</span></a> </span></span></p>
+ //            <p>53124277</p>
+
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
+ //            <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 3:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto 2.</span></p>
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Ingeniero Implementación Claro: </span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: rgb(31, 73, 125);">&nbsp;</span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Vivian Rodriguez</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Ingeniero Aprovisionamiento Estándar</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Celular: 3138892717</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
+ //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo electrónico: <span style="color:#4F81BD"><a href="mailto:vivian.rodriguez@claro.com.co" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">vivian.rodriguez@claro.com.co</span></a></span><span style="color:black">&nbsp;</span></span></p> 

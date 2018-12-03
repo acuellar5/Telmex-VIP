@@ -6,6 +6,7 @@ class Cierre_ots extends CI_Controller {
 		$this->load->model('data/Dao_ot_padre_model');
 		$this->load->model('data/Dao_ot_hija_model');
 		$this->load->model('data/Dao_cierre_ots_model');
+		$this->load->model('data/Dao_hito_model');
 	}
 	// carga la vista de enrutamiento de cierres
 	public function index(){
@@ -26,8 +27,21 @@ class Cierre_ots extends CI_Controller {
 		$otp    = $this->input->post('otp');
 		$delete = $this->Dao_cierre_ots_model->eliminar_registros($otp); // cantidad de registros eliminados en cierre_ots
 		if ($delete) {
-			// Eliminar en ot padre
-			$delete_otp = $this->Dao_ot_padre_model->deleteById($otp);
+			// recorrer las ot_padre seleccionadas para ver si tienen hijas en tabla ot_hija
+			for ($i=0; $i < count($otp); $i++) { 
+				$in_oth = $this->Dao_ot_hija_model->get_by_otps($otp[$i]);
+				//si no trae nada es porque no existe ninguna hija en ot hija
+				if (!$in_oth) {
+					// verificar si la ot_padre tiene algun hito creado para podr eliminar la ot_padre
+					$in_hito = $this->Dao_hito_model->get_hito_by_otps($otp[$i]);
+					// si existe el hito de la ot padre, se elimina para poder borrar la ot_padre
+					if ($in_hito) {
+						$this->Dao_hito_model->eliminar_hito($otp[$i]);
+					}
+					// Eliminar en ot padre
+					$delete_otp += $this->Dao_ot_padre_model->deleteById($otp[$i]);					
+				}
+			}
 		}
 		$ret = array(
 			'del' => $delete,

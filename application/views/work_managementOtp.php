@@ -23,8 +23,8 @@
             <li class="toggle-vis" data-column="6">F Compromiso<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="7">f Creación<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="8">Ingeniero<i class="f-r glyphicon glyphicon-eye-open"></i></li>
-            <li class="toggle-vis" data-column="9">Lista<i class="f-r glyphicon glyphicon-eye-open"></i></li>
-            <li class="toggle-vis" data-column="10">Observaciónes<i class="f-r glyphicon glyphicon-eye-open"></i></li>
+            <li class="toggle-vis inactive" data-column="9">Lista<i class="f-r glyphicon glyphicon-eye-close"></i></li>
+            <li class="toggle-vis inactive" data-column="10">Observaciónes<i class="f-r glyphicon glyphicon-eye-close"></i></li>
             <li class="toggle-vis inactive" data-column="11">Recurrente<i class="f-r glyphicon glyphicon-eye-close"></i></li>
             <li class="toggle-vis inactive" data-column="12">ultimo envio<i class="f-r glyphicon glyphicon-eye-close"></i></li>
         </ul>
@@ -33,7 +33,8 @@
 
 <!-- fin menu sticky de columnas -->
 
-
+<!-- boton para "guardar codigos de resolucion" falso  -->
+<a class="btn btn_datatable_cami" id="reload" title="Guardar Código de Resolución" style="float: right;"><span class="glyphicon glyphicon-save"></span></a>
 <!--*********************  MODULO PESTAÑAS  *********************-->
 <ul class="nav nav-tabs" id="pestania">
     <li tabla="table_otPadreList" class="active"><a data-toggle="tab" href="#total">Total</a></li>

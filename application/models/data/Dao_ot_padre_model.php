@@ -335,20 +335,19 @@ class Dao_ot_padre_model extends CI_Model {
     // retorna todos los hitos de la ot_padre
     public function getHitosOtp($idOtp) {
         $query = $this->db->query("
-            SELECT
-                IFNULL(date_sub(lb.fecha_visita_obra_civil, INTERVAL 3 DAY), h.f_compromiso_ko) AS f_compromiso_ko, estado_ko, observaciones_ko,
-                IFNULL(lb.fecha_visita_obra_civil, h.f_compromiso_voc) AS f_compromiso_voc, estado_voc, observaciones_voc,
-                IFNULL(lb.fecha_dcoc, h.f_compromiso_ec) AS f_compromiso_ec, estado_ec, observaciones_ec,
-                IFNULL(lb.fecha_aprobacion_coc, h.f_compromiso_ac) AS f_compromiso_ac, estado_ac, observaciones_ac,
-                IFNULL(lb.fecha_ingenieria_detalle, h.f_compromiso_sit) AS f_compromiso_sit, estado_sit, observaciones_sit,
-                IFNULL(lb.fecha_ejecucion_obra_civil, h.f_compromiso_veoc) AS f_compromiso_veoc, estado_veoc, observaciones_veoc,
-                IFNULL(lb.fecha_configuracion, h.f_compromiso_crc) AS f_compromiso_crc, estado_crc, observaciones_crc,
-                IFNULL(lb.fecha_ejecucion_obra_civil, h.f_compromiso_veut) AS f_compromiso_veut, estado_veut, observaciones_veut,
+            SELECT f_compromiso_ko, estado_ko, observaciones_ko,
+                f_compromiso_voc, estado_voc, observaciones_voc,
+                f_compromiso_ec, estado_ec, observaciones_ec,
+                f_compromiso_ac, estado_ac, observaciones_ac,
+                f_compromiso_sit, estado_sit, observaciones_sit,
+                f_compromiso_veoc, estado_veoc, observaciones_veoc,
+                f_compromiso_crc, estado_crc, observaciones_crc,
+                f_compromiso_veut, estado_veut, observaciones_veut,
                 actividad_actual, tipo_voc, tipo_veoc
-            FROM hitos h
-            LEFT JOIN linea_base lb ON lb.id_ot_padre = h.id_ot_padre
+            FROM
+            hitos
             WHERE
-            h.id_ot_padre = $idOtp
+            id_ot_padre = $idOtp
         ");
 
         return $query->row();
