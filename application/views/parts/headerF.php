@@ -49,6 +49,7 @@
             <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/interruptor.css?v=" . validarEnProduccion()) ?>">
             <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/bootstrap-multiselect.css?v=" . validarEnProduccion()) ?>">
             <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/plugins/bootstrap/css/prettify.min.css?v=" . validarEnProduccion()) ?>">
+            <link rel="stylesheet" type="text/css" href="<?= URL::to("assets/css/util.css?v=" . validarEnProduccion()) ?>">
 
 
         <?php endif ?>

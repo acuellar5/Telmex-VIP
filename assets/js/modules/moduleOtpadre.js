@@ -1888,6 +1888,7 @@ $(function() {
         init: function() {
             reporte_act.events();
             reporte_act.getOtsPtesPorEnvio();
+            reporte_act.getCountPtesPorEnvio();
 
         },
         //Eventos de la ventana.
@@ -2000,7 +2001,44 @@ $(function() {
                 order: [[11, 'desc']],
                 drawCallback: onDraw
             }
-        }
+        },
+        getCountPtesPorEnvio: function() {
+            $.post(baseurl + '/OtPadre/c_getCountPtesPorEnvio', {
+                //parametros
+            },
+                    function(data) {
+                        var obj = JSON.parse(data);
+                        reporte_act.printTableCountPtesPorEnvio(obj);
+                    }
+            );
+        },
+        printTableCountPtesPorEnvio: function(data) {
+            // nombramos la variable para la tabla y llamamos la configuiracion
+            reporte_act.tableCountReporteActualizacion = $('#tableCountReporteActualizacion').DataTable(reporte_act.configTableCount(data, [
+
+                {title: "Ingeniero", data: "ingeniero"},
+                {title: "Menor 8 días", data: "menor_ocho"},
+                {title: "Menor 15 días", data: "menor_quince"},
+                {title: "menor 30 días", data: "menor_treinta"},
+                {title: "Mayor 30 días", data: "mayor_treinta"},
+            ]));
+        },
+        configTableCount: function(data, columns, onDraw) {
+            return {
+                data: data,
+                columns: columns,
+                "language": {
+                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+                },
+                columnDefs: [{
+                        defaultContent: "",
+//                        targets: -1,
+//                        orderable: false,
+                    }],
+                order: [[0, 'asc']],
+                drawCallback: onDraw,
+            }
+        },
     };
     reporte_act.init();
 

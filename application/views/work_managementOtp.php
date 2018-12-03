@@ -13,7 +13,7 @@
         <i class="glyphicon glyphicon-chevron-left"></i> Cerrar
     </div>
     <div class="menu-fixed">
-        <ul>                
+        <ul>
             <li class="toggle-vis" data-column="0">OTP<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="1">Cliente<i class="f-r glyphicon glyphicon-eye-open"></i></li>
             <li class="toggle-vis" data-column="2">Tipo<i class="f-r glyphicon glyphicon-eye-open"></i></li>
@@ -320,6 +320,9 @@
 
     <div id="reporte_actualizacion" class="tab-pane fade">
         <h3>Reportes de Actualización para hoy</h3>
+        <div class="container wth-60-p">
+            <table id="tableCountReporteActualizacion" class="table table-hover table-bordered table-striped dataTable_camilo fs-10"></table>
+        </div>
         <table id="table_reporte_actualizacion" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
                 <tr>
@@ -1485,8 +1488,8 @@
                                                             <option value="22">Cambio de Última Milla</option>
                                                             <option value="23">Cambio de Equipo</option>
                                                             <optgroup label="SIN REPORTE INICIO">
-                                                            <option value="24">PRIVATE LINE</option>
-                                                            <option value="25">LAN ADMINISTRADA</option>
+                                                                <option value="24">PRIVATE LINE</option>
+                                                                <option value="25">LAN ADMINISTRADA</option>
                                                             </optgroup>
                                                         </select>
 
@@ -1707,7 +1710,7 @@
     </div>
 </div>
 <!------------------------------------------ Fin Modal editar OTs -------------------------------------->
- 
+
 <!------------------------------------------ modal ordenes seleccionadas ------------------------------->
 <div id="mdl_cierre" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
