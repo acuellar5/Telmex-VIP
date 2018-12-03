@@ -576,12 +576,49 @@ class Dao_ot_padre_model extends CI_Model {
             $condicion = " AND u.k_id_user = $usuario_session ";
         }
         $query = $this->db->query("
-            SELECT
-                u.k_id_user, CONCAT(u.n_name_user, ' ' , u.n_last_name_user) AS ingeniero,
-                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND (DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 7 AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) <= 8)) AS menor_ocho,
-                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND (DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 9 AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) <= 15)) AS menor_quince,
-                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND (DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 16 AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) <= 30)) AS menor_treinta,
-                (SELECT COUNT(otp.k_id_ot_padre) FROM ot_padre otp WHERE otp.k_id_user = u.k_id_user AND DATEDIFF(CURDATE(), otp.ultimo_envio_reporte) >= 31) AS mayor_treinta
+            SELECT u.k_id_user, CONCAT(u.n_name_user, ' ', u.n_last_name_user) AS ingeniero,
+                (
+                    SELECT COUNT(1) FROM ot_padre otp1
+                    WHERE DATEDIFF(CURDATE(), otp1.ultimo_envio_reporte) <= 7
+                    AND otp1.k_id_user = u.k_id_user
+                    AND EXISTS(
+                        SELECT nro_ot_onyx FROM ot_hija AS oth1
+                        WHERE otp1.k_id_ot_padre = oth1.nro_ot_onyx
+                    )
+
+                ) AS menor_7,
+                (
+                    SELECT COUNT(1) FROM ot_padre otp2
+                    WHERE DATEDIFF(CURDATE(), otp2.ultimo_envio_reporte) >= 8
+                    AND DATEDIFF(CURDATE(), otp2.ultimo_envio_reporte) <= 15
+                    AND otp2.k_id_user = u.k_id_user
+                    AND EXISTS(
+                        SELECT nro_ot_onyx FROM ot_hija AS oth2
+                        WHERE otp2.k_id_ot_padre = oth2.nro_ot_onyx
+                    )
+
+                ) AS entre_8_15,
+                (
+                    SELECT COUNT(1) FROM ot_padre otp3
+                    WHERE DATEDIFF(CURDATE(), otp3.ultimo_envio_reporte) >= 16
+                    AND DATEDIFF(CURDATE(), otp3.ultimo_envio_reporte) <= 30
+                    AND otp3.k_id_user = u.k_id_user
+                    AND EXISTS(
+                        SELECT nro_ot_onyx FROM ot_hija AS oth3
+                        WHERE otp3.k_id_ot_padre = oth3.nro_ot_onyx
+                    )
+
+                ) AS entre_16_30,
+                (
+                    SELECT COUNT(1) FROM ot_padre otp4
+                    WHERE DATEDIFF(CURDATE(), otp4.ultimo_envio_reporte) > 30
+                    AND otp4.k_id_user = u.k_id_user
+                    AND EXISTS(
+                        SELECT nro_ot_onyx FROM ot_hija AS oth4
+                        WHERE otp4.k_id_ot_padre = oth4.nro_ot_onyx
+                    )
+
+                ) AS mayor_30
             FROM user u
             WHERE u.n_role_user = 'ingeniero'
             $condicion

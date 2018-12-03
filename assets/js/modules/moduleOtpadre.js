@@ -1744,14 +1744,36 @@ $(function() {
         },
         printTableCountPtesPorEnvio: function(data) {
             // nombramos la variable para la tabla y llamamos la configuiracion
-            reporte_act.tableCountReporteActualizacion = $('#tableCountReporteActualizacion').DataTable(reporte_act.configTableCount(data, [
-
-                {title: "Ingeniero", data: "ingeniero"},
-                {title: "Menor 8 días", data: "menor_ocho"},
-                {title: "Menor 15 días", data: "menor_quince"},
-                {title: "menor 30 días", data: "menor_treinta"},
-                {title: "Mayor 30 días", data: "mayor_treinta"},
-            ]));
+//            reporte_act.tableCountReporteActualizacion = $('#tableCountReporteActualizacion').DataTable(reporte_act.configTableCount(data, [
+//
+//                {title: "Ingeniero", data: "ingeniero"},
+//                {title: "Menor 8 días", data: "menor_7"},
+//                {title: "Entre 8 y 15 días", data: "entre_8_15"},
+//                {title: "Entre 16 y 30 días", data: "entre_16_30"},
+//                {title: "Mayor 30 días", data: "mayor_30"},
+//            ]));
+            let html = '';
+            for (var i = 0; i < data.length; i += 2) {
+                html += `<tr>
+                        <td><b>${data[i].ingeniero}</b></td>
+                        <td>${data[i].menor_7}</td>
+                        <td>${data[i].entre_8_15}</td>
+                        <td>${data[i].entre_16_30}</td>
+                        <td>${data[i].mayor_30}</td>
+                        `;
+                if (typeof data[i + 1] != 'undefined') {
+                    html += `
+                        <td><b>${data[i + 1].ingeniero}</b></td>
+                        <td>${data[i + 1].menor_7}</td>
+                        <td>${data[i + 1].entre_8_15}</td>
+                        <td>${data[i + 1].entre_16_30}</td>
+                        <td>${data[i + 1].mayor_30}</td>
+                        `;
+                }
+                html += `</tr>`;
+            }
+            console.log(html);
+            $('#tbodyCount').html(html);
         },
         configTableCount: function(data, columns, onDraw) {
             return {

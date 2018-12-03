@@ -318,9 +318,25 @@
     </div>
 
     <div id="reporte_actualizacion" class="tab-pane fade">
-        <h3>Reportes de Actualización para hoy</h3>
-        <div class="container wth-60-p">
-            <table id="tableCountReporteActualizacion" class="table table-hover table-bordered table-striped dataTable_camilo fs-10"></table>
+        <h3>Reportes de Actualización</h3>
+        <div class="container m-b-40">
+            <table id="tableCountReporteActualizacion" class="table table-hover table-bordered table-striped dataTable_camilo fs-10">
+                <thead>
+                    <tr>
+                        <th>Ingeniero</th>
+                        <th>Menor 8 días</th>
+                        <th>Entre 8 y 15 días</th>
+                        <th>Entre 16 y 30 días</th>
+                        <th>Mayor 30 días</th>
+                        <th>Ingeniero</th>
+                        <th>Menor 8 días</th>
+                        <th>Entre 8 y 15 días</th>
+                        <th>Entre 16 y 30 días</th>
+                        <th>Mayor 30 días</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyCount"></tbody>
+            </table>
         </div>
         <table id="table_reporte_actualizacion" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
             <tfoot>
