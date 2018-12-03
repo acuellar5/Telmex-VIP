@@ -9,7 +9,79 @@ $(function() {
 
         //Eventos de la ventana.
         events: function() {
+            //funciones para guardar los codigos de resolucion
+            $('body').on('change', 'select.cod_resolucion', gral.guardar_codigo_observacion);
+            $('body').on('blur', 'textarea.obs_cod_resolucion', gral.guardar_codigo_observacion);
+            // boton para refrescar la pantalla
+            $('body').on('click', 'a#reload', function(){ location.reload(); });
 
+        },
+
+        // Guarda el codigo de resolucion y su observacion cuandocambie el select o el textarea
+        guardar_codigo_observacion: function(){
+            var input = $(this);
+            var trParent = input.parents('tr');
+            var tabla = input.parents('table').attr('id');
+
+            const val_select = trParent.find('.cod_resolucion').val();
+            const val_observacion = trParent.find('.obs_cod_resolucion').val();
+
+            // const val_select = 
+
+            var record;
+            switch (tabla) {
+                case 'table_otPadreList':
+                    record = vista.table_otPadreList.row(trParent).data();
+                    break;
+                case 'table_otPadreListHoy':
+                    record = hoy.table_otPadreListHoy.row(trParent).data();
+                    break;
+                case 'table_otPadreListVencidas':
+                    record = vencidas.table_otPadreListVencidas.row(trParent).data();
+                    break;
+                case 'table_list_opc':
+                    record = lista.tableOpcList.row(trParent).data();
+                    break;
+                case 'table_otPadreListEmails':
+                    record = emails.table_otPadreListEmails.row(trParent).data();
+                    break;
+                case 'table_reporte_actualizacion':
+                    record = reporte_act.table_reporte_actualizacion.row(trParent).data();
+                    break;
+            }
+
+            
+            $.post(baseurl + '/OtPadre/update_data',
+                {
+                    // clave: 'valor' // parametros que se envian
+                    id: record.k_id_ot_padre,
+                    lista: val_select,
+                    observacion: val_observacion
+                },
+                function(data) {
+                    var res = JSON.parse(data);
+                    // if (res == true) {
+                    //     swal(
+                    //             'Guardado!',
+                    //             'Actualizo correctamente los campos',
+                    //             'success'
+                    //             )
+                    //     setTimeout("location.reload()", 1500);
+                    // } else {
+                    //     swal('Error',
+                    //             'No tiene permiso para esta accíon',
+                    //             'error'
+                    //             )
+                    // }
+                });
+
+
+
+
+
+
+
+            
         },
 
         // Retorna cantidad de dias desde el ultimo reporte
@@ -25,6 +97,174 @@ $(function() {
             }
             return null;
         },
+
+        // Retorna un input con las observaciones dejadas de la lista
+        inputObservaciones: function(obj){
+            // console.log("obj", obj);
+            const observacion = (obj.observacion == null) ? '' : obj.observacion;
+            return `<textarea class="obs_cod_resolucion" spellcheck="false">${observacion}</textarea>`;
+        },
+
+        // retorna select con la lista de observaciones
+        listaObservaciones: function(obj){
+            const seleccionada = (obj.lista_observaciones == null) ? `<option value=""></option>` : `<option value="${obj.lista_observaciones}" style="color: blue;">${obj.lista_observaciones.toLowerCase()}</option>` ;
+            const select = `
+                <select class="cod_resolucion">
+                    <optgroup label="Códigos Nuevos">
+                        ${seleccionada}
+                        <option value="CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO">Cliente - sin fecha para recibir el servicio</option>
+                        <option value="CLIENTE/SIN FECHA ADECUACIONES EN SEDE (ELEC/FIS)">Cliente/sin fecha adecuaciones en sede (elec/fis)</option>
+                        <option value="CLIENTE/SIN DISPONIBILIDAD INFRA (PTA TELEF/LAN)">Cliente/sin disponibilidad infra (pta telef/lan)</option>
+                        <option value="CLIENTE/CAMBIO DE ALCANCE (CBIO  TIPO SERVICIO)">Cliente/cambio de alcance (cbio  tipo servicio)</option>
+                        <option value="CLIENTE/CAMBIO DE UBICACIÓN DE ULTIMA MILLA">Cliente/cambio de ubicación de ultima milla</option>
+                        <option value="CLIENTE/NO APRUEBA COSTOS DE OBRA CIVIL">Cliente/no aprueba costos de obra civil</option>
+                        <option value="CLIENTE/NO PERMITE CIERRE DE KO">Cliente/no permite cierre de ko</option>
+                        <option value="CLIENTE/SIN DEFINICIÓN DIR DE UBICACIÓN SERVICIO">Cliente/sin definición dir de ubicación servicio</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT ETAPA INICIAL VOC">Cliente/no permite prog act etapa inicial voc</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT ETAPA INTERMEDIA EOC">Cliente/no permite prog act etapa intermedia eoc</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT ETAPA INTERMEDIA EMP">Cliente/no permite prog act etapa intermedia emp</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT  VOC TERCERO">Cliente/no permite prog act  voc tercero</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT ETAP INTERMEDIA UM TER">Cliente/no permite prog act etap intermedia um ter</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT ETAPA FINAL ES">Cliente/no permite prog act etapa final es</option>
+                        <option value="CLIENTE/NO PERMITE PROG ACT ETAPA FINAL ES REQ VM">Cliente/no permite prog act etapa final es req vm</option>
+                        <option value="CLIENTE/SIN CONTRATO FIRMADO">Cliente/sin contrato firmado</option>
+                        <option value="CLIENTE/PROGRAMADA_PROXIMO PERIODO">Cliente/programada_proximo periodo</option>
+                        <option value="PL_ EXT/PERMISO MUNI - PERMISO ARREND INFRAESTRUC">Pl_ ext/permiso muni - permiso arrend infraestruc</option>
+                        <option value="PL_ EXT/NO VIABLE EN FACTIBILIDAD POR TERCEROS">Pl_ ext/no viable en factibilidad por terceros</option>
+                        <option value="PL_ EXT/ETAPA INTERMEDIA/SIN PERSONAL  EOC/EMP">Pl_ ext/etapa intermedia/sin personal  eoc/emp</option>
+                        <option value="PL_ EXT/SIN APROBACIÓN COSTOS TENDIDO EXTERNO">Pl_ ext/sin aprobación costos tendido externo</option>
+                        <option value="PL_ EXT/NO VIABLE EN FO - EN INSTALACIÓN POR HFC">Pl_ ext/no viable en fo - en instalación por hfc</option>
+                        <option value="PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC">Planta externa - error en la ejecución de eoc</option>
+                        <option value="PL_ EXT/INCUMPLIMIENTO FE DE UM/CANCELO/REPR ES">Pl_ ext/incumplimiento fe de um/cancelo/repr es</option>
+                        <option value="PL_ EXT/EN CURSO SIN INCONVENIENTE REPORTADO">Pl_ ext/en curso sin inconveniente reportado</option>
+                        <option value="PL_ EXT/ESCALADO_IFO_RESULTADO DE ACTIVIDAD">Pl_ ext/escalado_ifo_resultado de actividad</option>
+                        <option value="PL_ EXT/ESCALADO_IFO_SOLICITUD DE DESBORDE">Pl_ ext/escalado_ifo_solicitud de desborde</option>
+                        <option value="PL_ EXT/ESCALADO_IFO_SOLICITUD DE PERSONAL">Pl_ ext/escalado_ifo_solicitud de personal</option>
+                        <option value="PLANTA EXTERNA - EN CURSO SOBRE OTP PYMES">Planta externa - en curso sobre otp pymes</option>
+                        <option value="PLANTA EXTERNA - EN CURSO SOBRE OTP ASOCIADA">Planta externa - en curso sobre otp asociada</option>
+                        <option value="TERCEROS/NO VIABLE/EN PROC CANCELACIÓN">Terceros/no viable/en proc cancelación</option>
+                        <option value="TERCEROS/INCUMPLIMIENTO FECHA ENTREGA UM">Terceros/incumplimiento fecha entrega um</option>
+                        <option value="TERCEROS/SIN AVANCE SOBRE LA FECHA ENTREGA UM">Terceros/sin avance sobre la fecha entrega um</option>
+                        <option value="TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO">Terceros - en curso sin inconveniente reportado</option>
+                        <option value="ALIADO/SIN INFORM ENTREGADA A TERC PARA INICIAR">Aliado/sin inform entregada a terc para iniciar</option>
+                        <option value="PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS">Preventa - sin id  factibilidad para terceros</option>
+                        <option value="PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR">Preventa - no es clara la solución a implementar</option>
+                        <option value="IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR">Implementación - solución no estandar</option>
+                        <option value="COMERCIAL - ESCALADO ORDEN DE REEMPLAZO">Comercial - escalado orden de reemplazo</option>
+                        <option value="EQUIPOS - EN COMPRAS">Equipos - en compras</option>
+                        <option value="EQUIPOS - DEFECTUOSOS">Equipos - defectuosos</option>
+                        <option value="EQUIPOS - SIN CODIGO SAP PARA SOLICITUD DE EQUIPOS">Equipos - sin codigo sap para solicitud de equipos</option>
+                        <option value="GPC/PENDIENTE INFOR DEL CLIENTE PARA CONFIGURAR">Gpc/pendiente infor del cliente para configurar</option>
+                        <option value="GPC/PENDIENTE ACEPTACIÓN CRONOGRAMA POR CLIENTE">Gpc/pendiente aceptación cronograma por cliente</option>
+                        <option value="GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO">Gpc - cambio de alcance orden de pedido</option>
+                        <option value="GPC - EN PROCESO DE CANCELACIÓN">Gpc - en proceso de cancelación</option>
+                        <option value="GPC/PENDIENTE ACEPTACIÓN CRONOGRAMA POR CLIENTE">Gpc/pendiente aceptación cronograma por cliente</option>
+                        <option value="GPC - SIN ALCANCE PARA FABRICA">Gpc - sin alcance para fabrica</option>
+                        <option value="LIDER TECNICO - PENDIENTE PLAN TECNICO">Lider tecnico - pendiente plan tecnico</option>
+                        <option value="LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO">Lider tecnico - cambio de alcance plan tecnico</option>
+                        <option value="LIDER TECNICO/SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN">Lider tecnico/solución no estandar sin definición</option>
+                        <option value="CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN">Control de cambios - rfc no estandar en aprobación</option>
+                        <option value="COEX - EN PROCESO DE CONFIGURACIÓN BACKEND">Coex - en proceso de configuración backend</option>
+                        <option value="COEX -ATRASO CONFIGURACIÓN BACKEND">Coex -atraso configuración backend</option>
+                        <option value="ESCALADO/EN PROCESO PASO A PENDIENTE CLIENTE">Escalado/en proceso paso a pendiente cliente</option>
+                        <option value="ENTREGA - SERVICIO_ENTREGADO_PROCESO DE CIERRE">Entrega - servicio_entregado_proceso de cierre</option>
+                        <option value="ENTREGA/SIN DISPONIBILIDAD AGENDA">Entrega/sin disponibilidad agenda</option>
+                        <option value="ENTREGA Y/O SOPORTE PROGRAMADO">Entrega y/o soporte programado</option>
+                        <option value="PENDIENTE SOLICITAR ENTREGA DEL SERVICIO">Pendiente solicitar entrega del servicio</option>
+                        <option value="DATACENTER CLARO- CABLEADO EN CURSO">Datacenter claro- cableado en curso</option>
+                        <option value="DATACENTER  CLARO- CABLEADO SIN EJECUTAR">Datacenter  claro- cableado sin ejecutar</option>
+                        <option value="DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER">Datacenter  claro- sin consumibles en datacenter</option>
+                        <option value="EN PROCESO DE PASO A ESTADO PENDIENTE CLIENTE">En proceso de paso a estado pendiente cliente</option>
+                        <option value="EN PROCESO DE PASO A ESTADO CANCELADO ">En proceso de paso a estado cancelado </option>
+                        <option value="INCONVENIENTE TECNICO">Inconveniente tecnico</option>
+                        <option value="KO PENDIENTE">Ko pendiente</option>
+                        <option value="EN CONFIGURACIÓN">En configuración</option>
+                        <option value="GPC/CAMBIO DE ALCANCE ORDEN DE PEDIDO">Gpc/cambio de alcance orden de pedido</option>
+                        <option value="GPC/EN PROCESO DE CANCELACIÓN">Gpc/en proceso de cancelación</option>
+                        <option value="GPC/PENDIENTE INFORM DEL CLIENTE PARA CONFIGURAR">Gpc/pendiente inform del cliente para configurar</option>
+                        <option value="GPC/SIN ALCANCE PARA FABRICA">Gpc/sin alcance para fabrica</option>
+                        <option value="ESTADO CANCELADO">Estado cancelado</option>
+                        <option value="ESTADO PENDIENTE CLIENTE">Estado pendiente cliente</option>
+                    </optgroup>   
+                    <optgroup label="Códigos Antiguos">
+                        <option value="EN PROCESOS CIERRE KO">En procesos cierre ko</option>
+                        <option value="ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO">Aliado - pendiente solicitar entrega del servicio</option>
+                        <option value="ALIADO - SIN INFORMACIÓN ENTREGADA A TERCEROS PARA INICIAR PROCESO">Aliado - sin información entregada a terceros para iniciar proceso</option>
+                        <option value="ASIGNADO LIDER TECNICO">Asignado lider tecnico</option>
+                        <option value="CLIENTE - CAMBIO DE ALCANCE (CAMBIO DE TIPO DE SERVICIO)">Cliente - cambio de alcance (cambio de tipo de servicio)</option>
+                        <option value="CLIENTE - CAMBIO DE UBICACIÓN DE ULTIMA MILLA">Cliente - cambio de ubicación de ultima milla</option>
+                        <option value="CLIENTE - NO APRUEBA COSTOS DE OBRA CIVIL">Cliente - no aprueba costos de obra civil</option>
+                        <option value="CLIENTE - NO PERMITE CIERRE DE KO">Cliente - no permite cierre de ko</option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO">Cliente - no permite programar actividad etapa final de entrega del servicio</option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA FINAL DE ENTREGA DEL SERVICIO - REQUIERE VENTANA">Cliente - no permite programar actividad etapa final de entrega del servicio - requiere ventana</option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL SURVEY O VISITA O CON TERCERO">Cliente - no permite programar actividad etapa inicial survey o visita o con tercero</option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INICIAL VOC">Cliente - no permite programar actividad etapa inicial voc</option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA  DE ULTIMA MILLA CON TERCERO ">Cliente - no permite programar actividad etapa intermedia  de ultima milla con tercero </option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EMPALMES">Cliente - no permite programar actividad etapa intermedia empalmes</option>
+                        <option value="CLIENTE - NO PERMITE PROGRAMAR ACTIVIDAD ETAPA INTERMEDIA EOC">Cliente - no permite programar actividad etapa intermedia eoc</option>
+                        <option value="CLIENTE - NO TIENE DEFINIDA LA DIRECCIÓN DONDE VA A QUEDAR UBICADO EL SERVICIO">Cliente - no tiene definida la dirección donde va a quedar ubicado el servicio</option>
+                        <option value="CLIENTE - PROGRAMADA POSTERIOR ">Cliente - programada posterior </option>
+                        <option value="CLIENTE - SIN CONTRATO FIRMADO">Cliente - sin contrato firmado</option>
+                        <option value="CLIENTE - SIN DISPONIBILIDAD DE INFRAESTRUCTURA (PLANTA TELEFONICA - LAN DIRECCIONAMIENTO )">Cliente - sin disponibilidad de infraestructura (planta telefonica - lan direccionamiento )</option>
+                        <option value="CLIENTE - SIN FECHA ADECUACIONES EN LA SEDE (ELECTRICAS Y/O FISICA)">Cliente - sin fecha adecuaciones en la sede (electricas y/o fisica)</option>
+                        <option value="CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO">Cliente - sin fecha para recibir el servicio</option>
+                        <option value="COEX - EN PROCESO DE CONFIGURACIÓN BACKEND">Coex - en proceso de configuración backend</option>
+                        <option value="COEX -ATRASO CONFIGURACIÓN BACKEND">Coex -atraso configuración backend</option>
+                        <option value="COMERCIAL - ESCALADO ORDEN DE REEMPLAZO">Comercial - escalado orden de reemplazo</option>
+                        <option value="COMERCIAL - ESCALADO PENDIENTE INGRESO OTS">Comercial - escalado pendiente ingreso ots</option>
+                        <option value="CONTROL DE CAMBIOS - RFC NO ESTANDAR EN APROBACIÓN">Control de cambios - rfc no estandar en aprobación</option>
+                        <option value="CSM - Retiro equipos - Renovación de Contrato">Csm - retiro equipos - renovación de contrato</option>
+                        <option value="DATACENTER  CLARO- CABLEADO SIN EJECUTAR">Datacenter  claro- cableado sin ejecutar</option>
+                        <option value="DATACENTER  CLARO- SIN CONSUMIBLES EN DATACENTER">Datacenter  claro- sin consumibles en datacenter</option>
+                        <option value="DATACENTER CLARO- CABLEADO EN CURSO">Datacenter claro- cableado en curso</option>
+                        <option value="ENTREGA - SERVICIO ENTREGADO PROCESO DE CIERRE">Entrega - servicio entregado proceso de cierre</option>
+                        <option value="ENTREGA - SIN DISPONIBILIDAD AGENDA EN VERIFICACIÓN DE RECURSOS">Entrega - sin disponibilidad agenda en verificación de recursos</option>
+                        <option value="ENTREGA Y/O SOPORTE PROGRAMADO">Entrega y/o soporte programado</option>
+                        <option value="EQUIPOS - DEFECTUOSOS">Equipos - defectuosos</option>
+                        <option value="EQUIPOS - EN COMPRAS">Equipos - en compras</option>
+                        <option value="ESCALADO LIDER IMPLEMENTACIÓN PASO A PENDIENTE CLIENTE">Escalado lider implementación paso a pendiente cliente</option>
+                        <option value="GPC - CAMBIO DE ALCANCE ORDEN DE PEDIDO">Gpc - cambio de alcance orden de pedido</option>
+                        <option value="GPC - EN PROCESO DE CANCELACIÓN">Gpc - en proceso de cancelación</option>
+                        <option value="GPC - PENDIENTE ACEPTACIÓN CRONOGRAMA POR PARTE DEL CLIENTE">Gpc - pendiente aceptación cronograma por parte del cliente</option>
+                        <option value="GPC - PENDIENTE INFORMACIÓN DEL CLIENTE PARA CONFIGURAR">Gpc - pendiente información del cliente para configurar</option>
+                        <option value="GPC - SIN ALCANCE PARA FABRICA">Gpc - sin alcance para fabrica</option>
+                        <option value="IMPLEMENTACIÓN - SOLUCIÓN NO ESTANDAR">Implementación - solución no estandar</option>
+                        <option value="INCONVENIENTE TECNICO">Inconveniente tecnico</option>
+                        <option value="LIDER TECNICO - CAMBIO DE ALCANCE PLAN TECNICO">Lider tecnico - cambio de alcance plan tecnico</option>
+                        <option value="LIDER TECNICO - PENDIENTE PLAN TECNICO">Lider tecnico - pendiente plan tecnico</option>
+                        <option value="LIDER TECNICO - SOLUCIÓN NO ESTANDAR">Lider tecnico - solución no estandar</option>
+                        <option value="LIDER TECNICO - SOLUCIÓN NO ESTANDAR SIN DEFINICIÓN">Lider tecnico - solución no estandar sin definición</option>
+                        <option value="PASO A PENDIENTE CLIENTE">Paso a pendiente cliente</option>
+                        <option value="PENDIENTE SOLICITAR ENTREGA DEL SERVICIO">Pendiente solicitar entrega del servicio</option>
+                        <option value="PLANTA EXTERNA - EN CURSO SIN INCONVENIENTE REPORTADO">Planta externa - en curso sin inconveniente reportado</option>
+                        <option value="PLANTA EXTERNA - ERROR EN LA EJECUCIÓN DE EOC">Planta externa - error en la ejecución de eoc</option>
+                        <option value="PLANTA EXTERNA - ESCALADO IFO RESULTADO DE ACTIVIDAD">Planta externa - escalado ifo resultado de actividad</option>
+                        <option value="PLANTA EXTERNA - ESCALADO IFO SOLICITUD DE DESBORDE">Planta externa - escalado ifo solicitud de desborde</option>
+                        <option value="PLANTA EXTERNA - ESCALADO IFO SOLICITUD DE PERSONAL">Planta externa - escalado ifo solicitud de personal</option>
+                        <option value="PLANTA EXTERNA - ETAPA INTERMEDIA - SIN CONFIRMACIÓN DE PERSONAL PARA EOC Y EMPALMES">Planta externa - etapa intermedia - sin confirmación de personal para eoc y empalmes</option>
+                        <option value="PLANTA EXTERNA - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO">Planta externa - incumplimiento en la fecha de entrega de ultima milla - se cancelo o reprogramo entrega de servicio</option>
+                        <option value="PLANTA EXTERNA - NO VIABLE EN FACTIBILIDAD POR TERCEROS">Planta externa - no viable en factibilidad por terceros</option>
+                        <option value="PLANTA EXTERNA - NO VIABLE EN FO - EN INSTALACIÓN POR HFC">Planta externa - no viable en fo - en instalación por hfc</option>
+                        <option value="PLANTA EXTERNA - PERMISOS MUNICIPALES - PERMISOS DE ARRENDADOR DE INFRAESTRUCTURA">Planta externa - permisos municipales - permisos de arrendador de infraestructura</option>
+                        <option value="PLANTA EXTERNA - SIN APROBACIÓN DE TENDIDO EXTERNO POR COSTOS">Planta externa - sin aprobación de tendido externo por costos</option>
+                        <option value="PREVENTA - NO ES CLARA LA SOLUCIÓN A IMPLEMENTAR">Preventa - no es clara la solución a implementar</option>
+                        <option value="PREVENTA - SIN ID  FACTIBILIDAD PARA TERCEROS">Preventa - sin id  factibilidad para terceros</option>
+                        <option value="PROYECTO ÉXITO ANTIGUO">Proyecto éxito antiguo</option>
+                        <option value="TERCEROS - EN CURSO SIN INCONVENIENTE REPORTADO">Terceros - en curso sin inconveniente reportado</option>
+                        <option value="TERCEROS - INCUMPLIMIENTO EN LA FECHA DE ENTREGA DE ULTIMA MILLA - SE CANCELO O REPROGRAMO ENTREGA DE SERVICIO">Terceros - incumplimiento en la fecha de entrega de ultima milla - se cancelo o reprogramo entrega de servicio</option>
+                        <option value="TERCEROS - NO VIABLE - EN PROCESO NOTIFICACIÓN A CLIENTE Y COMERCIAL PARA CANCELACIÓN">Terceros - no viable - en proceso notificación a cliente y comercial para cancelación</option>
+                        <option value="TERCEROS - SIN AVANCE SOBRE LA FECHA DE ENTREGA DE ULTIMA MILL">Terceros - sin avance sobre la fecha de entrega de ultima mill</option>
+                    </optgroup>
+                </select>
+            `;
+            return select;
+        },
+
+
+
+
+
+
     };
     gral.init();
 
@@ -67,8 +307,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Lista", data: gral.listaObservaciones, visible: false},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opc", data: vista.getButtonsOTP},
@@ -78,6 +318,8 @@ $(function() {
         configTable: function(data, columns, onDraw) {
             return {
                 initComplete: function() {
+
+                    // $('.cod_resolucion').selectize();
 
                     $('#table_otPadreList tfoot th').each(function() {
                         $(this).html('<input type="text" placeholder="Buscar" />');
@@ -103,6 +345,14 @@ $(function() {
                         });
                     });
                 },
+
+                // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
+                // o un cambio especifico en la pagina
+                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                
+
+                },
+
                 data: data,
                 columns: columns,
                 "language": {
@@ -185,7 +435,7 @@ $(function() {
             const color = (obj.id_hitos) ? 'clr_lime' : '';
             var botones = "<div class='btn-group-vertical'>"
                     + "<a class='btn btn-default btn-xs btnoths btn_datatable_cami' title='" + title + "'>" + span + "</a>"
-                    + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
+                    // + "<a class='btn btn-default btn-xs edit-otp btn_datatable_cami' title='Editar Ots'><span class='glyphicon glyphicon-save'></span></a>"
                     + "<a class='btn btn-default btn-xs hitos-otp btn_datatable_cami' data-btn='hito' title='Hitos Ots'><span class='glyphicon glyphicon-header " + color + "'></span></a>"
                     + cierreKo
                     + "</div>";
@@ -233,8 +483,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Lista", data: gral.listaObservaciones, visible: false},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
@@ -267,6 +517,11 @@ $(function() {
                             }
                         });
                     });
+                },
+                // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
+                // o un cambio especifico en la pagina
+                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                    // $('#table_otPadreListHoy .cod_resolucion').selectize();
                 },
                 data: data,
                 columns: columns,
@@ -350,8 +605,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Lista", data: gral.listaObservaciones, visible: false},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
@@ -384,6 +639,11 @@ $(function() {
                             }
                         });
                     });
+                },
+                // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
+                // o un cambio especifico en la pagina
+                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                    // $('#table_otPadreListVencidas .cod_resolucion').selectize();
                 },
                 data: data,
                 columns: columns,
@@ -478,8 +738,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Lista", data: gral.listaObservaciones, visible: false},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
@@ -512,6 +772,11 @@ $(function() {
                             }
                         });
                     });
+                },
+                // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
+                // o un cambio especifico en la pagina
+                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                    // $('#table_list_opc .cod_resolucion').selectize();
                 },
                 data: data,
                 columns: columns,
@@ -1535,8 +1800,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: "lista_observaciones"},
-                {title: "Observaciónes dejadas", data: "observacion"},
+                {title: "Lista", data: gral.listaObservaciones, visible: false},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opc", data: vista.getButtonsOTP},
@@ -1569,6 +1834,11 @@ $(function() {
                             }
                         });
                     });
+                },
+                // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
+                // o un cambio especifico en la pagina
+                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                    // $('#table_otPadreListEmails .cod_resolucion').selectize();
                 },
                 data: data,
                 columns: columns,

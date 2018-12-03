@@ -1245,11 +1245,11 @@ class Dao_ot_hija_model extends CI_Model {
     // obtiene la penultima fecha de carga
     public function getPenultimaFechaCarga() {
         $query = $this->db->query("
-                SELECT max(fecha_actual) AS fecha
+                SELECT max(DATE_FORMAT(fecha_actual, '%Y-%m-%d')) AS fecha
                 FROM
                 ot_hija
                 WHERE
-                fecha_actual < (SELECT MAX(fecha_actual) FROM ot_hija)
+                fecha_actual < (SELECT MAX(DATE_FORMAT(fecha_actual, '%Y-%m-%d')) FROM ot_hija)
 
             ");
         return $query->row();
@@ -1257,7 +1257,7 @@ class Dao_ot_hija_model extends CI_Model {
 
     // ELIMINA REGISTROS POR FECHA ACTUAL
     public function delete_oth_by_fecha($fecha) {
-        $this->db->delete('ot_hija', array('k_id_register >' => 0, 'fecha_actual' => $fecha));
+        $this->db->delete('ot_hija', array('k_id_register >' => 0, 'fecha_actual <=' => $fecha));
         return $this->db->affected_rows();
     }
 
@@ -1422,6 +1422,18 @@ class Dao_ot_hija_model extends CI_Model {
             return 0;
         }
     }
+
+    //
+    public function get_by_otps($otps){
+        $query = $this->db->select('*')
+                    ->from('ot_hija')
+                    ->where_in('nro_ot_onyx', $otps)
+                    ->get();
+
+        return $query->result();
+
+    }
+
 
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */

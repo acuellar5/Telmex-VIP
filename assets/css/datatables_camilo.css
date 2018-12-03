@@ -532,3 +532,36 @@ table.dataTable_camilo .btn_datatable_cami:hover{
     padding: 10px 19px 8px;
     letter-spacing: 0;
 }
+
+
+/* archivos no necesarios en css de datatables */
+
+.dataTable_camilo textarea{
+    color: #000;
+    /*width: 200px;*/
+    font-size: 10px;
+}
+
+.dataTable_camilo .cod_resolucion, .obs_cod_resolucion {
+    width: 300px;
+}
+
+.dataTable_camilo .obs_cod_resolucion {
+    border-radius: 5px;
+    background-color: #eeeeee;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.dataTable_camilo .cod_resolucion {
+    width: 300px;
+    padding: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #000;
+}
+
+.dataTable_camilo .cod_resolucion optgroup:nth-child(2){
+    background: #eee;
+}

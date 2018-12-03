@@ -27,3 +27,4 @@
 <div class="cont_graf">
 <canvas id="graficsTotal" width="400" height="180"></canvas>
 </div>
+
