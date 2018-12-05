@@ -13,12 +13,14 @@ $(function() {
             $('body').on('change', 'select.cod_resolucion', gral.guardar_codigo_observacion);
             $('body').on('blur', 'textarea.obs_cod_resolucion', gral.guardar_codigo_observacion);
             // boton para refrescar la pantalla
-            $('body').on('click', 'a#reload', function(){ location.reload(); });
+            $('body').on('click', 'a#reload', function() {
+                location.reload();
+            });
 
         },
 
         // Guarda el codigo de resolucion y su observacion cuandocambie el select o el textarea
-        guardar_codigo_observacion: function(){
+        guardar_codigo_observacion: function() {
             var input = $(this);
             var trParent = input.parents('tr');
             var tabla = input.parents('table').attr('id');
@@ -26,7 +28,7 @@ $(function() {
             const val_select = trParent.find('.cod_resolucion').val();
             const val_observacion = trParent.find('.obs_cod_resolucion').val();
 
-            // const val_select = 
+            // const val_select =
 
             var record;
             switch (tabla) {
@@ -50,38 +52,30 @@ $(function() {
                     break;
             }
 
-            
+
             $.post(baseurl + '/OtPadre/update_data',
-                {
-                    // clave: 'valor' // parametros que se envian
-                    id: record.k_id_ot_padre,
-                    lista: val_select,
-                    observacion: val_observacion
-                },
-                function(data) {
-                    var res = JSON.parse(data);
-                    // if (res == true) {
-                    //     swal(
-                    //             'Guardado!',
-                    //             'Actualizo correctamente los campos',
-                    //             'success'
-                    //             )
-                    //     setTimeout("location.reload()", 1500);
-                    // } else {
-                    //     swal('Error',
-                    //             'No tiene permiso para esta accíon',
-                    //             'error'
-                    //             )
-                    // }
-                });
-
-
-
-
-
-
-
-            
+                    {
+                        // clave: 'valor' // parametros que se envian
+                        id: record.k_id_ot_padre,
+                        lista: val_select,
+                        observacion: val_observacion
+                    },
+                    function(data) {
+                        var res = JSON.parse(data);
+                        // if (res == true) {
+                        //     swal(
+                        //             'Guardado!',
+                        //             'Actualizo correctamente los campos',
+                        //             'success'
+                        //             )
+                        //     setTimeout("location.reload()", 1500);
+                        // } else {
+                        //     swal('Error',
+                        //             'No tiene permiso para esta accíon',
+                        //             'error'
+                        //             )
+                        // }
+                    });
         },
 
         // Retorna cantidad de dias desde el ultimo reporte
@@ -99,15 +93,15 @@ $(function() {
         },
 
         // Retorna un input con las observaciones dejadas de la lista
-        inputObservaciones: function(obj){
+        inputObservaciones: function(obj) {
             // console.log("obj", obj);
             const observacion = (obj.observacion == null) ? '' : obj.observacion;
             return `<textarea class="obs_cod_resolucion" spellcheck="false">${observacion}</textarea>`;
         },
 
         // retorna select con la lista de observaciones
-        listaObservaciones: function(obj){
-            const seleccionada = (obj.lista_observaciones == null) ? `<option value=""></option>` : `<option value="${obj.lista_observaciones}" style="color: blue;">${obj.lista_observaciones.toLowerCase()}</option>` ;
+        listaObservaciones: function(obj) {
+            const seleccionada = (obj.lista_observaciones == null) ? `<option value=""></option>` : `<option value="${obj.lista_observaciones}" style="color: blue;">${obj.lista_observaciones.toLowerCase()}</option>`;
             const select = `
                 <select class="cod_resolucion">
                     <optgroup label="Códigos Nuevos">
@@ -185,7 +179,7 @@ $(function() {
                         <option value="GPC/SIN ALCANCE PARA FABRICA">Gpc/sin alcance para fabrica</option>
                         <option value="ESTADO CANCELADO">Estado cancelado</option>
                         <option value="ESTADO PENDIENTE CLIENTE">Estado pendiente cliente</option>
-                    </optgroup>   
+                    </optgroup>
                     <optgroup label="Códigos Antiguos">
                         <option value="EN PROCESOS CIERRE KO">En procesos cierre ko</option>
                         <option value="ALIADO - PENDIENTE SOLICITAR ENTREGA DEL SERVICIO">Aliado - pendiente solicitar entrega del servicio</option>
@@ -259,11 +253,6 @@ $(function() {
             `;
             return select;
         },
-
-
-
-
-
 
     };
     gral.init();
@@ -348,8 +337,8 @@ $(function() {
 
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
-                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
-                
+                fnInfoCallback: function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+
 
                 },
 
@@ -520,7 +509,7 @@ $(function() {
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
-                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                fnInfoCallback: function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
                     // $('#table_otPadreListHoy .cod_resolucion').selectize();
                 },
                 data: data,
@@ -642,7 +631,7 @@ $(function() {
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
-                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                fnInfoCallback: function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
                     // $('#table_otPadreListVencidas .cod_resolucion').selectize();
                 },
                 data: data,
@@ -775,7 +764,7 @@ $(function() {
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
-                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                fnInfoCallback: function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
                     // $('#table_list_opc .cod_resolucion').selectize();
                 },
                 data: data,
@@ -1837,7 +1826,7 @@ $(function() {
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
-                fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+                fnInfoCallback: function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
                     // $('#table_otPadreListEmails .cod_resolucion').selectize();
                 },
                 data: data,
