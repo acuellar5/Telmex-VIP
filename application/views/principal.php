@@ -57,10 +57,10 @@
                     echo " <td><a onclick='showModalDetResInTimes(" . $registros[$i]->k_id_tipo . ");'>" . $terna . "</a></td>";
                     echo " <td><a onclick='showModalDetResOutTime(" . $registros[$i]->k_id_tipo . ");'>" . $registros[$i]->fuera_tiempo . "</a></td>";
 
-                        array_push($ladoA['total'], $registros[$i]->count);
-                        array_push($ladoA['tipo'], $registros[$i]->n_name_tipo);
-                        array_push($ladoA['in'], $terna);
-                        array_push($ladoA['out'], $registros[$i]->fuera_tiempo);
+                    array_push($ladoA['total'], $registros[$i]->count);
+                    array_push($ladoA['tipo'], $registros[$i]->n_name_tipo);
+                    array_push($ladoA['in'], $terna);
+                    array_push($ladoA['out'], $registros[$i]->fuera_tiempo);
 
                     if (isset($registros[$i + 1])) {
                         $terna1 = ($registros[$i + 1]->en_tiempo == 0 && $registros[$i + 1]->fuera_tiempo == 0) ? $registros[$i + 1]->count : $registros[$i + 1]->en_tiempo;
@@ -73,11 +73,10 @@
                         array_push($ladoB['tipo'], $registros[$i + 1]->n_name_tipo);
                         array_push($ladoB['in'], $terna1);
                         array_push($ladoB['out'], $registros[$i + 1]->fuera_tiempo);
-
                     }
                     echo "</tr>";
                 }
-                ?>                
+                ?>
             </tbody>
         </table>
     </div>
@@ -238,7 +237,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="grupo_objetivo" id="mdl_grupo_objetivo" class="form-control tamanioletra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="segmento" class="col-md-12 control-label ubicacionLetra">Segmento: &nbsp;</label>
@@ -274,7 +273,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="departamento" id="mdl_departamento" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="grupo" class="col-md-12 control-label ubicacionLetra">Grupo: &nbsp;</label>
@@ -296,7 +295,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <!-- <input name="consultor_comercial" id="mdl_consultor_comercial" class="form-control" disabled="true"  minlength="3" type="text" required> -->
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="grupo2" class="col-md-12 control-label ubicacionLetra">Grupo 2: &nbsp;</label>
@@ -314,7 +313,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="consultor_postventa" id="mdl_consultor_postventa" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="proy_instalacion" class="col-md-12 control-label ubicacionLetra">Proy. Instalación: &nbsp;</label>
@@ -335,7 +334,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="ing_responsable" id="mdl_ing_responsable" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="id_enlace" class="col-md-12 control-label ubicacionLetra">ID Enlace: &nbsp;</label>
@@ -349,7 +348,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="alias_enlace" class="col-md-12 control-label ubicacionLetra">Alias Enlace: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">                                           
+                                        <div class="input-group">
                                             <textarea name="alias_enlace" id="mdl_alias_enlace" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>
                                             <!-- <input name="alias_enlace" id="mdl_alias_enlace" class="form-control" minlength="3" disabled="true" type="text" required> -->
@@ -382,7 +381,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="nro_ot_onyx" id="mdl_nro_ot_onyx" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="servicio" class="col-md-12 control-label ubicacionLetra">Servicio: &nbsp;</label>
@@ -402,7 +401,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="familia" id="mdl_familia" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="producto" class="col-md-12 control-label ubicacionLetra">Producto: &nbsp;</label>
@@ -420,7 +419,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="fecha_creacion" id="mdl_fecha_creacion" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="tiempo_incidente" class="col-md-12 control-label ubicacionLetra">Tiempo Incidente: &nbsp;</label>
@@ -438,7 +437,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="orden_trabajo" id="mdl_orden_trabajo" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="tiempo_estado" class="col-md-12 control-label ubicacionLetra">Tiempo Estado: &nbsp;</label>
@@ -470,11 +469,11 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="fecha_ingreso_estado" class="col-md-12 control-label ubicacionLetra">Fecha Ingreso Estado: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">                                         
+                                        <div class="input-group">
                                             <input name="fecha_ingreso_estado" id="mdl_fecha_ingreso_estado" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="usuario_asignado" class="col-md-12 control-label ubicacionLetra">Usuario Asignado: &nbsp;</label>
@@ -490,7 +489,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="grupo_asignado" class="col-md-12 control-label ubicacionLetra">Grupo Asignado: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">                                           
+                                        <div class="input-group">
                                             <input name="grupo_asignado" id="mdl_grupo_asignado" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
@@ -499,11 +498,11 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="ingeniero_provisioning" class="col-md-12 control-label ubicacionLetra">Ingeniero Provisioning: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">  
+                                        <div class="input-group">
                                             <textarea name="ingeniero_provisioning" id="mdl_ingeniero_provisioning" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
                                             </textarea>
                                             <!-- <input name="ingeniero_provisioning" id="mdl_ingeniero_provisioning" class="form-control" minlength="3" disabled="true" type="text" required>-->
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
 
@@ -521,7 +520,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="cargo_arriendo" id="mdl_cargo_arriendo" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="cargo_mensual" class="col-md-12 control-label ubicacionLetra">Cargo Mensual: &nbsp;</label>
@@ -539,7 +538,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="monto_moneda_local_arriendo" id="mdl_monto_moneda_local_arriendo" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="monto_moneda_local_cargo_mensual" class="col-md-12 control-label ubicacionLetra">Monto Moneda Local Cargo Mensual: &nbsp;</label>
@@ -557,7 +556,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="cargo_obra_civil" id="mdl_cargo_obra_civil" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="descripcion" class="col-md-12 control-label ubicacionLetra">Descripción: &nbsp;</label>
@@ -593,13 +592,13 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="direccion_destino" class="col-md-12 control-label ubicacionLetra">Dirección Destino: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">  
+                                        <div class="input-group">
                                             <textarea name="direccion_destino" id="mdl_direccion_destino" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>                                
+                                            </textarea>
                                             <!-- <input name="direccion_destino" id="mdl_direccion_destino" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="ciudad_incidente3" class="col-md-12 control-label ubicacionLetra">Ciudad Incidente 3: &nbsp;</label>
@@ -613,7 +612,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="fecha_compromiso" class="col-md-12 control-label ubicacionLetra">Fecha Compromiso: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">                                           
+                                        <div class="input-group">
                                             <input name="fecha_compromiso" id="mdl_fecha_compromiso" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
@@ -622,7 +621,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                 <div class="form-group col-md-12">
                                     <label for="fecha_programacion" class="col-md-12 control-label ubicacionLetra">Fecha Programación: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">                                           
+                                        <div class="input-group">
                                             <input name="fecha_programacion" id="mdl_fecha_programacion" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
@@ -635,7 +634,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="fecha_realizacion" id="mdl_fecha_realizacion" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="resolucion_1" class="col-md-12 control-label ubicacionLetra">Resolución 1: &nbsp;</label>
@@ -657,7 +656,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="resolucion_2" id="mdl_resolucion_2" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>     
+                                            </textarea>
                                             <!-- <input name="resolucion_2" id="mdl_resolucion_2" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
@@ -668,7 +667,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="resolucion_3" id="mdl_resolucion_3" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>     
+                                            </textarea>
                                             <!-- <input name="resolucion_3" id="mdl_resolucion_3" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
@@ -679,11 +678,11 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="resolucion_4" id="mdl_resolucion_4" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>     
+                                            </textarea>
                                             <!-- <input name="resolucion_4" id="mdl_resolucion_4" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="ot_hija" class="col-md-12 control-label ubicacionLetra">OT Hija: &nbsp;</label>
@@ -701,7 +700,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                             <input name="estado_orden_trabajo_hija" id="mdl_estado_orden_trabajo_hija" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="fecha_creacion_ot_hija" class="col-md-12 control-label ubicacionLetra">Fecha creacion OT Hija: &nbsp;</label>
@@ -717,30 +716,30 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="proveedor_ultima_milla" id="mdl_proveedor_ultima_milla" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>   
+                                            </textarea>
                                             <!-- <input name="proveedor_ultima_milla" id="mdl_proveedor_ultima_milla" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
 
                                 <div class="form-group col-md-12">
                                     <label for="usuario_asignado4" class="col-md-12 control-label ubicacionLetra">Usuario Asignado 4: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
-                                        <div class="input-group">                                         
+                                        <div class="input-group">
                                             <textarea name="usuario_asignado4" id="mdl_usuario_asignado4" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>  
+                                            </textarea>
                                             <!-- <input name="usuario_asignado4" id="mdl_usuario_asignado4" class="form-control ubicacionLetra" minlength="3" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group col-md-12">
                                     <label for="resolucion_15" class="col-md-12 control-label ubicacionLetra">Resolución 15: &nbsp;</label>
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="resolucion_15" id="mdl_resolucion_15" rows="2" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>  
+                                            </textarea>
                                             <!-- <input name="resolucion_15" id="mdl_resolucion_15" class="form-control ubicacionLetra" minlength="5" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
@@ -751,7 +750,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="resolucion_26" id="mdl_resolucion_26" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>  
+                                            </textarea>
                                             <!-- <input name="resolucion_26" id="mdl_resolucion_26" class="form-control ubicacionLetra" minlength="5" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
@@ -762,7 +761,7 @@ if (Auth::user()->n_project == 'Implementacion') {
                                     <div class="col-md-12 selectContainer">
                                         <div class="input-group">
                                             <textarea name="resolucion_37" id="mdl_resolucion_37" rows="1" cols="29" class="form-control csstextarea tamanioletra" disabled="true">
-                                            </textarea>  
+                                            </textarea>
                                             <!-- <input name="resolucion_37" id="mdl_resolucion_37" class="form-control ubicacionLetra" minlength="5" disabled="true" type="text" required> -->
                                         </div>
                                     </div>
@@ -800,13 +799,13 @@ if (Auth::user()->n_project == 'Implementacion') {
 
                         </fieldset>
                     </form>
-                </div>            
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 
 <!-- ****************************MODAL DE DETALLE RESUMEN FUERA DE TIEMPO************************************************ -->
@@ -821,13 +820,13 @@ if (Auth::user()->n_project == 'Implementacion') {
                 <div class="modal-body">
                     <h3>Fuera de Tiempos</h3>
                     <table id="tablaDetalleResOutTimes" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
-                </div>            
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 
 <!-- ****************************MODAL DE DETALLE RESUMEN EN TIEMPO************************************************ -->
@@ -842,13 +841,13 @@ if (Auth::user()->n_project == 'Implementacion') {
                 <div class="modal-body">
                     <h3>En Tiempos</h3>
                     <table id="tablaDetalleResInTimes" class="table table-hover table-bordered table-striped dataTable_camilo" width="100%"></table>
-                </div>            
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" id=CerrarModalDetalle" data-dismiss="modal"><i class='glyphicon glyphicon-remove'></i>&nbsp;Cerrar</button>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 
 <script>
