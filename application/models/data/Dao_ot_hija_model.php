@@ -14,8 +14,8 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function getAll() {
         try {
-            $otHija   = new OtHijaModel();
-            $datos    = $otHija->get();
+            $otHija = new OtHijaModel();
+            $datos = $otHija->get();
             $response = new Response(EMessages::SUCCESS);
             $response->setData($datos);
             return $response;
@@ -26,8 +26,8 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function findByOrdenTrabajoHija($idOrdenTrabajoHija) {
         try {
-            $db   = new DB();
-            $sql  = "SELECT * FROM ot_hija  WHERE id_orden_trabajo_hija = $idOrdenTrabajoHija  AND fecha_actual = DATE(DATE(NOW())-1)";
+            $db = new DB();
+            $sql = "SELECT * FROM ot_hija  WHERE id_orden_trabajo_hija = $idOrdenTrabajoHija  AND fecha_actual = DATE(DATE(NOW())-1)";
             $data = $db->select($sql)->first();
 //            echo $db->getSql();
             $response = new Response(EMessages::SUCCESS);
@@ -40,8 +40,8 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function insertOtHija($request) {
         try {
-            $otHija   = new OtHijaModel();
-            $datos    = $otHija->insert($request->all());
+            $otHija = new OtHijaModel();
+            $datos = $otHija->insert($request->all());
             $response = new Response(EMessages::SUCCESS);
             $response->setData($datos);
             return $response;
@@ -51,14 +51,14 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     public function getOtsAssigned($parameters, $search_col) {
-        $start              = $parameters['start'];
-        $length             = $parameters['length'];
-        $search             = $parameters['search'];
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
-        $condicion          = "";
+        $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion       = " AND otp.k_id_user = $usuario_session ";
+            $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         if ($search) {
             $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
@@ -106,7 +106,7 @@ class Dao_ot_hija_model extends CI_Model {
                 $limit_start_length
             ");
         $last_query = $this->db->last_query();
-        $cant       = $this->db->query("
+        $cant = $this->db->query("
                 SELECT count(1) cant
                 FROM
                 ot_hija ot
@@ -120,10 +120,10 @@ class Dao_ot_hija_model extends CI_Model {
                 $search_col
             ");
         $cantidad = $cant->row()->cant;
-        $retorno  = array(
-            "query"        => $last_query,
+        $retorno = array(
+            "query" => $last_query,
             "numDataTotal" => $cantidad,
-            "datos"        => $query,
+            "datos" => $query,
         );
         return $retorno;
     }
@@ -163,14 +163,14 @@ class Dao_ot_hija_model extends CI_Model {
     //                     WHERE ADDDATE(ot.fecha_insercion_zolid, INTERVAL 15 DAY) <= CURDATE()
     // AND ot.k_id_estado_ot = 1
     public function getOtsFiteenDays($parameters, $search_col) {
-        $start              = $parameters['start'];
-        $length             = $parameters['length'];
-        $search             = $parameters['search'];
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
-        $condicion          = "";
+        $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion       = " AND otp.k_id_user = $usuario_session ";
+            $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         if ($search) {
             $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
@@ -218,7 +218,7 @@ class Dao_ot_hija_model extends CI_Model {
                 $limit_start_length
             ");
         $last_query = $this->db->last_query();
-        $cant       = $this->db->query("
+        $cant = $this->db->query("
                 SELECT count(1) cant
                 FROM
                 ot_hija ot
@@ -233,10 +233,10 @@ class Dao_ot_hija_model extends CI_Model {
                 $search_col
             ");
         $cantidad = $cant->row()->cant;
-        $retorno  = array(
-            "query"        => $last_query,
+        $retorno = array(
+            "query" => $last_query,
             "numDataTotal" => $cantidad,
-            "datos"        => $query,
+            "datos" => $query,
         );
         return $retorno;
     }
@@ -254,6 +254,7 @@ class Dao_ot_hija_model extends CI_Model {
             ot.descripcion,
             otp.fecha_compromiso,
             otp.fecha_programacion,
+            otp.lista_observaciones,
             ot.fecha_realizacion,
             ot.estado_orden_trabajo_hija,
             ot.fec_actualizacion_onyx_hija,
@@ -319,7 +320,7 @@ class Dao_ot_hija_model extends CI_Model {
     public function getAllOtPS($parameters, $search_col) {
 
         // reasigno las variables para q sean mas dicientes y manejables
-        $start  = $parameters['start'];
+        $start = $parameters['start'];
         $length = $parameters['length'];
         $search = $parameters['search'];
         // $order = $parameters['order'];
@@ -331,7 +332,7 @@ class Dao_ot_hija_model extends CI_Model {
         $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion       = " AND otp.k_id_user = $usuario_session ";
+            $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         // si el usuario escribio algo en el buscador se concatena el where + lo que debe buscar
         if ($search) {
@@ -401,23 +402,23 @@ class Dao_ot_hija_model extends CI_Model {
 
         // retorno el objeto de la primera consulta entre ellos ->result() y -> num_rows() en la posicion datos y la cantidad total
         $retorno = array(
-            "query"        => $last_query,
+            "query" => $last_query,
             "numDataTotal" => $cantidad,
-            "datos"        => $query,
+            "datos" => $query,
         );
 
         return $retorno;
     }
 
     public function getOtsNew($parameters, $search_col) {
-        $start              = $parameters['start'];
-        $length             = $parameters['length'];
-        $search             = $parameters['search'];
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
-        $condicion          = "";
+        $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion       = " AND otp.k_id_user = $usuario_session ";
+            $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         if ($search) {
             $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
@@ -464,7 +465,7 @@ class Dao_ot_hija_model extends CI_Model {
                 $limit_start_length
             ");
         $last_query = $this->db->last_query();
-        $cant       = $this->db->query("
+        $cant = $this->db->query("
                 SELECT count(1) cant
                 FROM
                 ot_hija ot
@@ -478,24 +479,24 @@ class Dao_ot_hija_model extends CI_Model {
                 $search_col
             ");
         $cantidad = $cant->row()->cant;
-        $retorno  = array(
-            "query"        => $last_query,
+        $retorno = array(
+            "query" => $last_query,
             "numDataTotal" => $cantidad,
-            "datos"        => $query,
+            "datos" => $query,
         );
         return $retorno;
     }
 
     // -- WHERE estado_mod = 1
     public function getOtsChange($parameters, $search_col) {
-        $start              = $parameters['start'];
-        $length             = $parameters['length'];
-        $search             = $parameters['search'];
+        $start = $parameters['start'];
+        $length = $parameters['length'];
+        $search = $parameters['search'];
         $limit_start_length = ($length == -1) ? "" : "LIMIT $start, $length";
-        $condicion          = "";
+        $condicion = "";
         if (Auth::user()->n_role_user == 'ingeniero') {
             $usuario_session = Auth::user()->k_id_user;
-            $condicion       = " AND otp.k_id_user = $usuario_session ";
+            $condicion = " AND otp.k_id_user = $usuario_session ";
         }
         if ($search) {
             $srch = "AND (otp.n_nombre_cliente LIKE '%" . $search . "%' OR ";
@@ -542,7 +543,7 @@ class Dao_ot_hija_model extends CI_Model {
                 $limit_start_length
             ");
         $last_query = $this->db->last_query();
-        $cant       = $this->db->query("
+        $cant = $this->db->query("
                 SELECT count(1) cant
                 FROM
                 ot_hija ot
@@ -556,17 +557,17 @@ class Dao_ot_hija_model extends CI_Model {
                 $search_col
             ");
         $cantidad = $cant->row()->cant;
-        $retorno  = array(
-            "query"        => $last_query,
+        $retorno = array(
+            "query" => $last_query,
             "numDataTotal" => $cantidad,
-            "datos"        => $query,
+            "datos" => $query,
         );
         return $retorno;
     }
 
     public function getOtsReportPrincipalAdmin() {
         try {
-            $db    = new DB();
+            $db = new DB();
             $query = $this->db->query("SELECT oth.nombre_cliente, oth.id_cliente_onyx, oth.id_orden_trabajo_hija,
                                             oth.ot_hija, oth.estado_orden_trabajo_hija, oth.tipo_trascurrido,
                                             CONCAT(user.n_name_user, ' ', user.n_last_name_user) AS ingeniero
@@ -581,8 +582,8 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function getOtsOutTime($idTipo) {
         try {
-            $db              = new DB();
-            $condicion       = "";
+            $db = new DB();
+            $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
                 $condicion .= " AND otp.k_id_user = $usuario_session";
@@ -648,8 +649,8 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function getOtsInTimes($idTipo) {
         try {
-            $db              = new DB();
-            $condicion       = "";
+            $db = new DB();
+            $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
                 $condicion .= " AND otp.k_id_user = $usuario_session";
@@ -719,7 +720,7 @@ class Dao_ot_hija_model extends CI_Model {
 
     //trae conteo para pagina principal (resumen)
     public function getCountsSumary() {
-        $condicion       = "";
+        $condicion = "";
         $usuario_session = Auth::user()->k_id_user;
         if (Auth::user()->n_role_user == 'ingeniero') {
             $condicion = "AND otp.k_id_user = $usuario_session";
@@ -782,10 +783,10 @@ class Dao_ot_hija_model extends CI_Model {
 
     //Retorna la cantidad de registros irregulares en un array
     public function getCantUndefined() {
-        $data['indefinidos']    = $this->getCantIndefinidos();
-        $data['nulos']          = $this->getCantNull();
-        $data['new_types']      = $this->cant_new_types();
-        $data['new_status']     = $this->cant_new_status();
+        $data['indefinidos'] = $this->getCantIndefinidos();
+        $data['nulos'] = $this->getCantNull();
+        $data['new_types'] = $this->cant_new_types();
+        $data['new_status'] = $this->cant_new_status();
         $data['afeterEigtDays'] = $this->cant_after_eigt_days();
         return $data;
     }
@@ -908,9 +909,9 @@ class Dao_ot_hija_model extends CI_Model {
             $id_estado_ot = $query->row()->k_id_estado_ot;
 
             $where = array(
-                'k_id_estado_ot'            => '189',
+                'k_id_estado_ot' => '189',
                 'estado_orden_trabajo_hija' => $name_status,
-                'ot_hija'                   => $type,
+                'ot_hija' => $type,
             );
 
             $data = array(
@@ -994,9 +995,9 @@ class Dao_ot_hija_model extends CI_Model {
     //trae registros estado null por nombre de estado y ot_hija (tipo)
     public function update_regis_null_by_estado($id_estado_ot, $type, $name_status) {
         $where = array(
-            'k_id_estado_ot'            => null,
+            'k_id_estado_ot' => null,
             'estado_orden_trabajo_hija' => $name_status,
-            'ot_hija'                   => $type,
+            'ot_hija' => $type,
         );
 
         $data = array(
@@ -1339,8 +1340,8 @@ class Dao_ot_hija_model extends CI_Model {
 
     public function getAllOtsInExecution() {
         try {
-            $db              = new DB();
-            $condicion       = "";
+            $db = new DB();
+            $condicion = "";
             $usuario_session = Auth::user()->k_id_user;
             if (Auth::user()->n_role_user == 'ingeniero') {
                 $condicion .= " AND otp.k_id_user = $usuario_session";
@@ -1424,16 +1425,14 @@ class Dao_ot_hija_model extends CI_Model {
     }
 
     //
-    public function get_by_otps($otps){
+    public function get_by_otps($otps) {
         $query = $this->db->select('*')
-                    ->from('ot_hija')
-                    ->where_in('nro_ot_onyx', $otps)
-                    ->get();
+                ->from('ot_hija')
+                ->where_in('nro_ot_onyx', $otps)
+                ->get();
 
         return $query->result();
-
     }
-
 
     /*     * *********************************************************************************************************** */
     /*     * ***********************ACOSTUMBRENSE A COMENTAR TODAS LAS FUNCIONES QUE HAGAN PUTOS************************ */
