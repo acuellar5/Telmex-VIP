@@ -565,3 +565,10 @@ table.dataTable_camilo .btn_datatable_cami:hover{
 .dataTable_camilo .cod_resolucion optgroup:nth-child(2){
     background: #eee;
 }
+
+#tableCountReporteActualizacion  tbody td {
+    padding: 0px 10px;
+}
+#tableCountReporteActualizacion  tbody {
+    text-align: center;
+}

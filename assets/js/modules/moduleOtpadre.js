@@ -690,7 +690,7 @@ $(function() {
         },
         getOtpByOpcListJs: function(value = null) {
             //metodo ajax (post)
-            var opcion = (value) ? value : "EN PROCESOS CIERRE KO";
+            var opcion = (value) ? value : "CLIENTE - SIN FECHA PARA RECIBIR EL SERVICIO";
             $.post(baseurl + '/OtPadre/c_getOtpByOpcList',
                     {
                         opcion: opcion
@@ -868,7 +868,7 @@ $(function() {
                 icono.removeClass('glyphicon-eye-open');
                 icono.addClass('glyphicon-eye-close');
             }
-            const tablas = [vista.table_otPadreList, hoy.table_otPadreListHoy, vencidas.table_otPadreListVencidas, lista.tableOpcList, emails.table_otPadreListEmails];
+            const tablas = [vista.table_otPadreList, hoy.table_otPadreListHoy, vencidas.table_otPadreListVencidas, lista.tableOpcList];
             let number_column = $(this).data('column');
             let columna;
             for (var i = 0; i < tablas.length; i++) {
@@ -1752,125 +1752,125 @@ $(function() {
     listoth.init();
 
     //*********************************** lista las  ot padres con emails enviados
-    emails = {
-        init: function() {
-            emails.events();
-            emails.getListOtsOtPadreEmail();
+    // emails = {
+    //     init: function() {
+    //         emails.events();
+    //         emails.getListOtsOtPadreEmail();
 
-        },
-        //Eventos de la ventana.
-        events: function() {
+    //     },
+    //     //Eventos de la ventana.
+    //     events: function() {
 
-        },
-        getListOtsOtPadreEmail: function() {
-            //metodo ajax (post)
-            $.post(baseurl + '/OtPadre/c_getListOtsOtPadreEmail',
-                    {
-                        //parametros
+    //     },
+    //     getListOtsOtPadreEmail: function() {
+    //         //metodo ajax (post)
+    //         $.post(baseurl + '/OtPadre/c_getListOtsOtPadreEmail',
+    //                 {
+    //                     //parametros
 
-                    },
-                    // funcion que recibe los datos
-                            function(data) {
-                                // convertir el json a objeto de javascript
-                                var obj = JSON.parse(data);
-                                emails.printTableEmail(obj);
-                            }
-                    );
-                },
-        printTableEmail: function(data) {
-            // nombramos la variable para la tabla y llamamos la configuiracion
-            emails.table_otPadreListEmails = $('#table_otPadreListEmails').DataTable(emails.configTableEmail(data, [
-                {title: "Ot Padre", data: "k_id_ot_padre"},
-                {title: "Nombre Cliente", data: "n_nombre_cliente"},
-                {title: "Tipo", data: "orden_trabajo"},
-                {title: "Servicio", data: "servicio"},
-                {title: "Estado OT Padre", data: "estado_orden_trabajo"},
-                {title: "Fecha Programación", data: "fecha_programacion"},
-                {title: "Fecha Compromiso", data: "fecha_compromiso"},
-                {title: "Fecha Creación", data: "fecha_creacion"},
-                {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: gral.listaObservaciones, visible: false},
-                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
-                {title: "Recurrente", data: "MRC", visible: false},
-                {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
-                {title: "Opc", data: vista.getButtonsOTP},
-            ]));
-        },
-        // Datos de configuracion del datatable
-        configTableEmail: function(data, columns, onDraw) {
-            return {
-                initComplete: function() {
-                    $('#table_otPadreListEmails tfoot th').each(function() {
-                        $(this).html('<input type="text" placeholder="Buscar" />');
-                    });
-                    var r = $('#table_otPadreListEmails tfoot tr');
-                    r.find('th').each(function() {
-                        $(this).css('padding', 8);
-                    });
-                    $('#table_otPadreListEmails thead').append(r);
-                    $('#search_0').css('text-align', 'center');
+    //                 },
+    //                 // funcion que recibe los datos
+    //                         function(data) {
+    //                             // convertir el json a objeto de javascript
+    //                             var obj = JSON.parse(data);
+    //                             emails.printTableEmail(obj);
+    //                         }
+    //                 );
+    //             },
+    //     printTableEmail: function(data) {
+    //         // nombramos la variable para la tabla y llamamos la configuiracion
+    //         emails.table_otPadreListEmails = $('#table_otPadreListEmails').DataTable(emails.configTableEmail(data, [
+    //             {title: "Ot Padre", data: "k_id_ot_padre"},
+    //             {title: "Nombre Cliente", data: "n_nombre_cliente"},
+    //             {title: "Tipo", data: "orden_trabajo"},
+    //             {title: "Servicio", data: "servicio"},
+    //             {title: "Estado OT Padre", data: "estado_orden_trabajo"},
+    //             {title: "Fecha Programación", data: "fecha_programacion"},
+    //             {title: "Fecha Compromiso", data: "fecha_compromiso"},
+    //             {title: "Fecha Creación", data: "fecha_creacion"},
+    //             {title: "Ingeniero", data: "ingeniero"},
+    //             {title: "Lista", data: gral.listaObservaciones, visible: false},
+    //             {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
+    //             {title: "Recurrente", data: "MRC", visible: false},
+    //             {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
+    //             {title: "Opc", data: vista.getButtonsOTP},
+    //         ]));
+    //     },
+    //     // Datos de configuracion del datatable
+    //     configTableEmail: function(data, columns, onDraw) {
+    //         return {
+    //             initComplete: function() {
+    //                 $('#table_otPadreListEmails tfoot th').each(function() {
+    //                     $(this).html('<input type="text" placeholder="Buscar" />');
+    //                 });
+    //                 var r = $('#table_otPadreListEmails tfoot tr');
+    //                 r.find('th').each(function() {
+    //                     $(this).css('padding', 8);
+    //                 });
+    //                 $('#table_otPadreListEmails thead').append(r);
+    //                 $('#search_0').css('text-align', 'center');
 
-                    // DataTable
-                    var table = $('#table_otPadreListEmails').DataTable();
+    //                 // DataTable
+    //                 var table = $('#table_otPadreListEmails').DataTable();
 
-                    // Apply the search
-                    table.columns().every(function() {
-                        var that = this;
+    //                 // Apply the search
+    //                 table.columns().every(function() {
+    //                     var that = this;
 
-                        $('input', this.footer()).on('keyup change', function() {
-                            if (that.search() !== this.value) {
-                                that.search(this.value).draw();
-                            }
-                        });
-                    });
-                },
-                // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
-                // o un cambio especifico en la pagina
-                fnInfoCallback: function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
-                    // $('#table_otPadreListEmails .cod_resolucion').selectize();
-                },
-                data: data,
-                columns: columns,
-                "language": {
-                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
-                },
-                dom: 'Blfrtip',
-                buttons: [
-                    {
-                        text: 'Excel <span class="fa fa-file-excel-o"></span>',
-                        className: 'btn-cami_cool',
-                        extend: 'excel',
-                        title: 'ZOLID EXCEL',
-                        filename: 'zolid ' + fecha_actual
-                    },
-                    {
-                        text: 'Imprimir <span class="fa fa-print"></span>',
-                        className: 'btn-cami_cool',
-                        extend: 'print',
-                        title: 'Reporte Zolid',
-                    },
-                    {
-                        text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
-                        className: 'btn-cami_cool btn-rpt_act',
-                        action: eventos.otp_seleccionadas,
-                    }
-                ],
-                select: true,
-                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                ordering: true,
-                columnDefs: [{
-                        // targets: -1,
-                        // visible: false,
-                        defaultContent: "",
-                        // targets: -1,
-                        orderable: false,
-                    }],
-                order: [[11, 'desc']],
-                drawCallback: onDraw
-            }
-        }
-    };
-    emails.init();
+    //                     $('input', this.footer()).on('keyup change', function() {
+    //                         if (that.search() !== this.value) {
+    //                             that.search(this.value).draw();
+    //                         }
+    //                     });
+    //                 });
+    //             },
+    //             // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
+    //             // o un cambio especifico en la pagina
+    //             fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+    //                 // $('#table_otPadreListEmails .cod_resolucion').selectize();
+    //             },
+    //             data: data,
+    //             columns: columns,
+    //             "language": {
+    //                 "url": baseurl + "/assets/plugins/datatables/lang/es.json"
+    //             },
+    //             dom: 'Blfrtip',
+    //             buttons: [
+    //                 {
+    //                     text: 'Excel <span class="fa fa-file-excel-o"></span>',
+    //                     className: 'btn-cami_cool',
+    //                     extend: 'excel',
+    //                     title: 'ZOLID EXCEL',
+    //                     filename: 'zolid ' + fecha_actual
+    //                 },
+    //                 {
+    //                     text: 'Imprimir <span class="fa fa-print"></span>',
+    //                     className: 'btn-cami_cool',
+    //                     extend: 'print',
+    //                     title: 'Reporte Zolid',
+    //                 },
+    //                 {
+    //                     text: '<span class="fa fa-envelope-o" aria-hidden="true"></span> Reporte Actualización',
+    //                     className: 'btn-cami_cool btn-rpt_act',
+    //                     action: eventos.otp_seleccionadas,
+    //                 }
+    //             ],
+    //             select: true,
+    //             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    //             ordering: true,
+    //             columnDefs: [{
+    //                     // targets: -1,
+    //                     // visible: false,
+    //                     defaultContent: "",
+    //                     // targets: -1,
+    //                     orderable: false,
+    //                 }],
+    //             order: [[11, 'desc']],
+    //             drawCallback: onDraw
+    //         }
+    //     }
+    // };
+    // emails.init();
 
     //*********************************** lista las ot padres conreporte de actualizacion pendiente para hoy
     reporte_act = {
@@ -2002,53 +2002,28 @@ $(function() {
             );
         },
         printTableCountPtesPorEnvio: function(data) {
-            // nombramos la variable para la tabla y llamamos la configuiracion
-//            reporte_act.tableCountReporteActualizacion = $('#tableCountReporteActualizacion').DataTable(reporte_act.configTableCount(data, [
-//
-//                {title: "Ingeniero", data: "ingeniero"},
-//                {title: "Menor 8 días", data: "menor_7"},
-//                {title: "Entre 8 y 15 días", data: "entre_8_15"},
-//                {title: "Entre 16 y 30 días", data: "entre_16_30"},
-//                {title: "Mayor 30 días", data: "mayor_30"},
-//            ]));
+
             let html = '';
             for (var i = 0; i < data.length; i += 2) {
                 html += `<tr>
-                        <td><b>${data[i].ingeniero}</b></td>
-                        <td>${data[i].menor_7}</td>
-                        <td>${data[i].entre_8_15}</td>
-                        <td>${data[i].entre_16_30}</td>
-                        <td>${data[i].mayor_30}</td>
+                        <td style="text-align:left"><b>${data[i].ingeniero.toLowerCase()} </b></td>
+                        <td ${(data[i].menor_7 > 0) ? 'style="background:#00800075"' : ''}>${data[i].menor_7}</td>
+                        <td ${(data[i].entre_8_15 > 0) ? 'style="background:#fcff02a6"' : ''}>${data[i].entre_8_15}</td>
+                        <td ${(data[i].entre_16_30 > 0) ? 'style="background:#f2a404c7"' : ''}>${data[i].entre_16_30}</td>
+                        <td ${(data[i].mayor_30 > 0) ? 'style="background:#ed220073"' : ''}>${data[i].mayor_30}</td>
                         `;
                 if (typeof data[i + 1] != 'undefined') {
                     html += `
-                        <td><b>${data[i + 1].ingeniero}</b></td>
-                        <td>${data[i + 1].menor_7}</td>
-                        <td>${data[i + 1].entre_8_15}</td>
-                        <td>${data[i + 1].entre_16_30}</td>
-                        <td>${data[i + 1].mayor_30}</td>
+                        <td style="text-align:left"><b>${data[i + 1].ingeniero.toLowerCase()} </b></td>
+                        <td ${(data[i + 1].menor_7 > 0) ? 'style="background:#00800075"' : ''}>${data[i + 1].menor_7}</td>
+                        <td ${(data[i + 1].entre_8_15 > 0) ? 'style="background:#fcff02a6"' : ''}>${data[i + 1].entre_8_15}</td>
+                        <td ${(data[i + 1].entre_16_30 > 0) ? 'style="background:#f2a404c7"' : ''}>${data[i + 1].entre_16_30}</td>
+                        <td ${(data[i + 1].mayor_30 > 0) ? 'style="background:#ed220073"' : ''}>${data[i + 1].mayor_30}</td>
                         `;
                 }
                 html += `</tr>`;
             }
-            console.log(html);
             $('#tbodyCount').html(html);
-        },
-        configTableCount: function(data, columns, onDraw) {
-            return {
-                data: data,
-                columns: columns,
-                "language": {
-                    "url": baseurl + "/assets/plugins/datatables/lang/es.json"
-                },
-                columnDefs: [{
-                        defaultContent: "",
-//                        targets: -1,
-//                        orderable: false,
-                    }],
-                order: [[0, 'asc']],
-                drawCallback: onDraw,
-            }
         },
     };
     reporte_act.init();
