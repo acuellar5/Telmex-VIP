@@ -41,7 +41,6 @@
     <li tabla="table_otPadreListHoy" class=""><a data-toggle="tab" href="#hoy">Hoy</a></li>
     <li tabla="table_otPadreListVencidas" class=""><a data-toggle="tab" href="#vencidas">Vencida</a></li>
     <li tabla="table_list_opc" class=""><a data-toggle="tab" href="#por_lista">Por Lista</a></li>
-    <li tabla="table_otPadreListEmails" class=""><a data-toggle="tab" href="#lista_email">Cant emails</a></li>
     <li tabla="table_reporte_actualizacion" class=""><a class="clr_red hidden" data-toggle="tab" href="#reporte_actualizacion" id="pestana_cant_report"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Enviar Reporte <span class="badge border_red bg-white" id="badge_cant_report"></span></a></li>
 </ul>
 
@@ -294,29 +293,6 @@
         </table>
     </div>
 
-    <div id="lista_email" class="tab-pane fade">
-        <h3>Por cantidad de emails enviados</h3>
-        <table id="table_otPadreListEmails" class="table table-hover table-bordered table-striped dataTable_camilo" style="width: 100%;">
-            <tfoot>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
 
     <div id="reporte_actualizacion" class="tab-pane fade">
         <h3>Reportes de Actualización</h3>
@@ -324,12 +300,12 @@
             <table id="tableCountReporteActualizacion" class="table table-hover table-bordered table-striped dataTable_camilo fs-10">
                 <thead>
                     <tr>
-                        <th>Ingeniero</th>
+                        <th width="210">Ingeniero</th>
                         <th>Menor 8 días</th>
                         <th>Entre 8 y 15 días</th>
                         <th>Entre 16 y 30 días</th>
                         <th>Mayor 30 días</th>
-                        <th>Ingeniero</th>
+                        <th width="210">Ingeniero</th>
                         <th>Menor 8 días</th>
                         <th>Entre 8 y 15 días</th>
                         <th>Entre 16 y 30 días</th>
