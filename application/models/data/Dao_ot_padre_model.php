@@ -70,7 +70,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
-                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC, otp.lista_observaciones
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -95,7 +95,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
-                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC, otp.lista_observaciones
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -121,7 +121,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
-                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC, otp.lista_observaciones
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user
@@ -169,7 +169,7 @@ class Dao_ot_padre_model extends CI_Model {
                 otp.fecha_compromiso, otp.fecha_creacion, otp.k_id_user, user.n_name_user,
                 CONCAT(user.n_name_user, ' ' , user.n_last_name_user) AS ingeniero,
                 otp.lista_observaciones, otp.observacion, SUM(oth.c_email) AS cant_mails, hitos.id_hitos, otp.finalizo, otp.ultimo_envio_reporte,
-                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC
+                CONCAT('$ ',FORMAT(oth.monto_moneda_local_arriendo + oth.monto_moneda_local_cargo_mensual,2)) AS MRC, otp.lista_observaciones
                 FROM ot_hija oth
                 INNER JOIN ot_padre otp ON oth.nro_ot_onyx = otp.k_id_ot_padre
                 INNER JOIN user ON otp.k_id_user = user.k_id_user

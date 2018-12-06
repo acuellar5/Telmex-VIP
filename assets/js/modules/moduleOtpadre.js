@@ -296,8 +296,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: gral.listaObservaciones, visible: false},
-                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opc", data: vista.getButtonsOTP},
@@ -333,6 +333,11 @@ $(function() {
                             }
                         });
                     });
+
+                    columna9 = table.column(9);
+                    columna9.visible(!columna9.visible());
+                    columna10 = table.column(10);
+                    columna10.visible(!columna10.visible());
                 },
 
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
@@ -395,13 +400,10 @@ $(function() {
                         cadena += array_cadena[i] + " ";
                     }
 
-
-
                     return `<div class="tooltipo">${cadena} <img class="rigth" style="width:15px; margin-left:96%;" src="${baseurl}/assets/images/plus.png">
                               <span class="tooltiptext">${obj.observacion}</span>
                             </div>
                             `;
-
                 }
             }
             return obj.observacion;
@@ -438,7 +440,6 @@ $(function() {
         init: function() {
             hoy.events();
             hoy.getListOtsOtPadreHoy();
-
         },
         //Eventos de la ventana.
         events: function() {
@@ -472,8 +473,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: gral.listaObservaciones, visible: false},
-                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
@@ -506,6 +507,11 @@ $(function() {
                             }
                         });
                     });
+
+                    columna9 = table.column(9);
+                    columna9.visible(!columna9.visible());
+                    columna10 = table.column(10);
+                    columna10.visible(!columna10.visible());
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
@@ -560,7 +566,6 @@ $(function() {
         init: function() {
             vencidas.events();
             vencidas.getListOtsOtPadreVencidas();
-
         },
         //Eventos de la ventana.
         events: function() {
@@ -594,8 +599,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: gral.listaObservaciones, visible: false},
-                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
@@ -628,6 +633,11 @@ $(function() {
                             }
                         });
                     });
+
+                    columna9 = table.column(9);
+                    columna9.visible(!columna9.visible());
+                    columna10 = table.column(10);
+                    columna10.visible(!columna10.visible());
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
@@ -682,7 +692,6 @@ $(function() {
         init: function() {
             lista.events();
             lista.getOtpByOpcListJs();
-
         },
         //Eventos de la ventana.
         events: function() {
@@ -713,8 +722,6 @@ $(function() {
                 tabla.columns.adjust().draw();
                 return;
             }
-
-
             // nombramos la variable para la tabla y llamamos la configuiracion
             lista.tableOpcList = $('#table_list_opc').DataTable(lista.configTable(data, [
 
@@ -727,8 +734,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: gral.listaObservaciones, visible: false},
-                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
+                {title: "Lista", data: "lista_observaciones"},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opciones", data: vista.getButtonsOTP},
@@ -761,6 +768,11 @@ $(function() {
                             }
                         });
                     });
+
+                    columna9 = table.column(9);
+                    columna9.visible(!columna9.visible());
+                    columna10 = table.column(10);
+                    columna10.visible(!columna10.visible());
                 },
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
                 // o un cambio especifico en la pagina
