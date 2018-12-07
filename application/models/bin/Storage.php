@@ -3,7 +3,7 @@
 /*
  * @author = Starlly Software - https://starlly.com.
  * @licence = GNU
- * @description = Este archivo es propiedad de Deplyn Framework (https://deplyn.com) 
+ * @description = Este archivo es propiedad de Deplyn Framework (https://deplyn.com)
  * recuerda que para usarlo debes incluir en tu proyecto la licencia del framework.
  */
 
@@ -61,7 +61,7 @@ class Storage {
         $file->name = utf8_decode($file->name);
         if ($this->prefix) {
             $prefix = uniqid(rand());
-            $file->name = date('Y-m-d') . "_" . $file->name;
+            $file->name = date('Y-m-d____H i') . "_" . $file->name;
         }
         $file->ext = $ext;
         $file->path = trim($this->directory, "/") . "/" . $file->name;

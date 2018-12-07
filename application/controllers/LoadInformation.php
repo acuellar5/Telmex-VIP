@@ -40,6 +40,12 @@ class LoadInformation extends CI_Controller {
         error_reporting(E_ERROR);
         $request = $this->request;
         $file = $request->file;
+        //fecha Actual
+        date_default_timezone_set("America/Bogota");
+        $f_actual_hora = date('Y-m-d H:i:s');
+        $user_session = Auth::user()->n_name_user . ' ' . Auth::user()->n_last_name_user;
+        $pesoKb = filesize($file) / 1000;
+
         $response = new Response(EMessages::SUCCESS);
         try {
             //Se procesa el archivo de comentarios...
@@ -65,6 +71,9 @@ class LoadInformation extends CI_Controller {
                 $row++;
             }
             $highestRowSheet1 = $row;
+
+            // Solo para insertar la ultima hora de actualizacion
+            $this->Dao_log_model->insert_last_update($f_actual_hora, $user_session, $pesoKb);
 
             $lines = [
                 "sheet1" => $highestRowSheet1
