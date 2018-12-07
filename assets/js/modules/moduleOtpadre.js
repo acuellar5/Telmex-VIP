@@ -1911,7 +1911,7 @@ $(function() {
 
                                 if (obj.cantidad > 0) {
                                     $('#badge_cant_report').html(obj.cantidad);
-                                    $('#pestana_cant_report').removeClass('hidden');
+                                    // $('#pestana_cant_report').removeClass('hidden');
                                 }
                             }
                     );

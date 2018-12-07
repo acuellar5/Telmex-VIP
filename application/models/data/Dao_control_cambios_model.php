@@ -92,5 +92,14 @@ class Dao_control_cambios_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	// retornas si existe un registro
+	public function get_cc_exist_by_otp($otp){
+		$query = $this->db->query("
+			SELECT id_control_cambios FROM control_cambios WHERE id_ot_padre = $otp 
+			LIMIT 1;
+		");
+		return $query->row();
+	}
+
 
 }
