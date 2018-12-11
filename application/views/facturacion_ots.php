@@ -87,7 +87,7 @@
     <div class="modal-dialog modal-lg2" style="width: 1100px;">
         <div class="modal-content">
             <div class="modal-header csstypesubtitle">
-                <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="http://localhost/Telmex-VIP//assets/images/cerrar (7).png"></button>
+                <button type="button" class="close cerrar" data-dismiss="modal" aria-label="Close"><img src="<?= URL::to('assets/images/cerrar (7).png'); ?>"></button>
                 <h3 class="modal-title" id="myModalLabel"> Orden Ot Hija N <label id="id_ot_modal"></label></h3>
             </div>
             <div class="modal-body">
