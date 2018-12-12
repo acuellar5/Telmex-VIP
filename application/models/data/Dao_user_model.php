@@ -99,5 +99,16 @@ class Dao_user_model extends CI_Model {
         return $query->row();
     }
 
+    // Retorna listado de mails de los administradores
+    public function get_mail_administrators(){
+        $query = $this->db->select('n_mail_user')
+                            ->from('user')
+                            ->where('n_role_user', 'administrador')
+                            ->where('n_mail_user !=', null)                               
+                        ->get();
+
+        return $query->result();
+    }
+
 
 }

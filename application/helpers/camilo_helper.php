@@ -340,7 +340,7 @@ if (!function_exists('validarEnProduccion')) {
         $CI = & get_instance();
         $CI->load->database();
         if ($CI->db->hostname == 'zte-coldb.cwtksnwikcx3.us-west-2.rds.amazonaws.com') {
-            $version = '2.30';
+            $version = '2.34';
         } else {
             $version = time();
         }
@@ -349,52 +349,3 @@ if (!function_exists('validarEnProduccion')) {
     }
 
 }
-
-if (!function_exists('h_enviarCorreo')) {
-
-    //Funcion para enviar correos
-    //recibe 4 parametros: el cuerpo del correo; el correo al cual sera enviado; si tiene copia, el asunto
-    //Retorna un mensaje diciendo si el correo se pudo enviar o no
-    function h_enviarCorreo($cuerpo, $dirigido, $asunto = 'Sin asunto', $mail_cc = null) {
-        $return = array();
-        $CI = & get_instance();
-        $CI->load->library('parser');
-
-        $config = Array(
-            //'smtp_crypto' => 'ssl', //protocolo de encriptado
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'zolid.telmex.vip@gmail.com',
-            'smtp_pass' => 'z0l1dTelmex',
-            // 'smtp_timeout' => 5, //tiempo de conexion maxima 5 segundos
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-            'priority' => 1,
-        );
-
-        $CI->load->library('email', $config);
-        $CI->email->set_newline("\r\n");
-        $CI->email->from('zolid.telmex.vip@gmail.com', 'TELMEX VIP'); // change it to yours
-        $CI->email->to($dirigido); // change it to yours
-        if ($mail_cc) {
-            $CI->email->cc($mail_cc);
-        }
-        $CI->email->subject($asunto);
-        $CI->email->message($cuerpo);
-        if ($CI->email->send()) {
-            $return['success'] = true;
-            $return['msg'] = 'El correo fue enviado correctamente.';
-            return $return;
-        } else {
-            $return['success'] = false;
-            $return['msg'] = 'Hubo un error al momento de enviar el correo, por favor inténtelo nuevamente.';
-            show_error($CI->email->print_debugger());
-        }
-    }
-
-}
-
-
-
-
