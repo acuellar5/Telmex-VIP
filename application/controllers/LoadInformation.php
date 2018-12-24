@@ -364,6 +364,7 @@ class LoadInformation extends CI_Controller {
                 if (($limit - $row) >= 2) {
                     $response->setCode(2);
                     $this->insertar_cierre_ots();
+                    $this->enviar_correo_cant_reportes_actualizacion();
                 }
 
 
@@ -624,6 +625,157 @@ class LoadInformation extends CI_Controller {
         $this->session->set_flashdata('msj', $msj);
 
         header('location: ' . URL::base() . "/creacionoth");
+    }
+
+    // Enviar correo a los administradores con el cuadro de cantidades de reportes de actualizacion enviados por los ingenieros
+    public function enviar_correo_cant_reportes_actualizacion(){
+        // Variables actuales
+        $this->load->model('data/Dao_email_model');
+        $fecha = new DateTime();
+        $semana = $fecha->format('W') - 1;
+        $ano = $fecha->format('Y');
+        $date = $fecha->format('Y-m-d H:i:s');
+        // Valido si ya existe un registro en la tabla de la semana actual
+        $existe = $this->Dao_email_model->get_reporteautomatico_by_week($ano, $semana);
+        // Si no existe se envia el correo y se guarda el registro, si existe no se hace nada
+        if (!$existe) {
+            // consulta para las cantidades que van a ir en el cuadro
+            $cants = $this->Dao_ot_padre_model->getCountPtesPorEnvio();
+            // retorna la plantilla del correo que se va a enviar
+            $template = $this->template_mail_reporte_actualizacion($cants);
+            // enviar correo...
+            $se_envio = $this->Dao_email_model->h_enviarCorreo($template, 'bredybuitrago@gmail.com', 'TELMEX-VIP Informe automatico reportes de actualización');
+            // Si se envio el correo se actualiza la tabla de reporte_actualizacion con el nuevo registro
+            if ($se_envio['success']) {
+                $report = array(
+                    'semana' => $semana,
+                    'ano'    => $ano,
+                    'fecha'  => $date,
+                );
+                
+
+                $insert = $this->Dao_email_model->insert_reporte_automatico($report);
+            }
+        }
+
+    }
+
+    // retorna la tabla armada en html para ser enviada
+    public function template_mail_reporte_actualizacion($data){
+        $plantilla = '
+
+            <div dir="ltr">
+                <p style="background: #e4ff0085"><i>Ingenieros con todos los contadores en cero indica que no estan usando la plataforma</i></p>
+                <table class="m_848243451567401046gmail-MsoNormalTable" border="0" cellpadding="0" align="left" width="963" style="border:1pt solid rgb(8,76,112);margin-left:4.8pt;margin-right:4.8pt">
+                 <tbody>
+
+                    <tr style="height:25.55pt;color:#fff;">
+                      <td width="224" style="width:167.85pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Ingeniero</span></b><b><span style="font-size:8pt;font-family:Helvetica,sans-serif"></span></b></p>
+                      </td>
+                      <td width="64" style="width:47.75pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Menor 8 días</span></b></p>
+                      </td>
+                      <td width="55" style="width:41pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Entre 8 y 15 días</span></b></p>
+                      </td>
+                      <td width="55" style="width:41.05pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Entre 16 y 30 días</span></b></p>
+                      </td>
+                      <td width="55" style="width:41pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Mayor 30 días</span></b></p>
+                      </td>
+                      <td width="244" style="width:182.8pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Ingeniero</span></b><b><span style="font-size:8pt;font-family:Helvetica,sans-serif"></span></b></p>
+                      </td>
+                      <td width="64" style="width:48.1pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Menor 8 días</span></b></p>
+                      </td>
+                      <td width="55" colspan="2" style="width:41pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Entre 8 y 15 días</span></b></p>
+                      </td>
+                      <td width="64" colspan="2" style="width:48.15pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Entre 16 y 30 días</span></b></p>
+                      </td>
+                      <td width="63" style="width:47.35pt;border:1pt solid rgb(221,221,221);background:rgb(8,76,111);padding:0cm 7.5pt;height:25.55pt">
+                      <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><b><span style="font-size:8pt;font-family:Helvetica,sans-serif">Mayor 30 días</span></b></p>
+                      </td>
+                    </tr>';
+
+                    for ($i=0; $i < count($data); $i += 2) { 
+                        $plantilla .= '
+                        <tr style="height:8.55pt">
+                            <td width="224" style="width:200.85pt;border-bottom:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt">
+                            <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif"><b>' . strtolower($data[$i]->ingeniero) . '</b></span><span style="font-size:9pt;font-family:Helvetica,sans-serif"></span></p>
+                            </td>
+                            <td width="64" style="width:47.75pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if ($data[$i]->menor_7 > 0) $plantilla .= ';background:#00800075';
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">' . strtolower($data[$i]->menor_7) . '</span></p>
+                            </td>
+                            <td width="55" style="width:41pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if ($data[$i]->entre_8_15 > 0) $plantilla .= ';background:#fcff02a6';
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">' . strtolower($data[$i]->entre_8_15) . '</span></p>
+                            </td>
+                            <td width="55" style="width:41.05pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if($data[$i]->entre_16_30 > 0) $plantilla .= ';background:#f2a404c7';
+
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">' . strtolower($data[$i]->entre_16_30) . '</span></p>
+                            </td>
+                            <td width="55" style="width:41pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if($data[$i]->mayor_30 > 0) $plantilla .= ';background:#ed220073';
+
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">' . strtolower($data[$i]->mayor_30) . '</span></p>
+                            </td>';
+
+                        if ( isset($data[$i + 1]) ) {
+                            $plantilla .= '
+                            <td width="244" style="width:200.8pt;border-bottom:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt">
+                            <p class="MsoNormal" style="margin:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif"><b>'. strtolower($data[$i + 1]->ingeniero) .'</b></span><span style="font-size:9pt;font-family:Helvetica,sans-serif"></span></p>
+                            </td>
+                            <td width="64" style="width:48.1pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if($data[$i + 1]->menor_7 > 0) $plantilla .= ';background:#00800075';
+
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">'. strtolower($data[$i + 1]->menor_7) .'</span></p>
+                            </td>
+                            <td width="55" colspan="2" style="width:41pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if($data[$i + 1]->entre_8_15 > 0) $plantilla .= ';background:#fcff02a6';
+
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">'. strtolower($data[$i + 1]->entre_8_15) .'</span></p>
+                            </td>
+                            <td width="64" colspan="2" style="width:48.15pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if($data[$i + 1]->entre_16_30 > 0) $plantilla .= ';background:#f2a404c7';
+
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">'. strtolower($data[$i + 1]->entre_16_30) .'</span></p>
+                            </td>
+                            <td width="63" style="width:47.35pt;border:1pt solid rgb(221,221,221);padding:0cm 7.5pt;height:8.55pt';
+                            if($data[$i + 1]->mayor_30 > 0) $plantilla .= ';background:#ed220073';
+
+                            $plantilla .= '">
+                            <p class="MsoNormal" align="center" style="margin:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:9pt;font-family:Helvetica,sans-serif">'. strtolower($data[$i + 1]->mayor_30) .'</span></p>
+                            </td>';
+                        }
+
+                        $plantilla .= '</tr>';
+
+                    }
+                    $plantilla .= '         
+                            </tbody>
+                        </table>
+
+                            <p class="MsoNormal" style="margin:15pt 0cm 7.5pt;line-height:normal;font-size:11pt;font-family:Calibri,sans-serif"><span style="font-size:18pt;color:rgb(51,51,51)">&nbsp;</span></p>
+
+                            <p><i>Este reporte automático se genera semanalmente, muestra el listado de ingenieros de la operación, la cantidad de otp y el rango de días que tienen sin ser enviado reporte de actualización.</i></p>
+                            <p class="MsoNormal" style="margin:0cm 0cm 8pt;line-height:107%;font-size:11pt;font-family:Calibri,sans-serif"><span lang="EN-US">&nbsp;</span></p></div>
+                        ';
+        return $plantilla;
+
     }
 
 }

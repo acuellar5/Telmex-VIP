@@ -307,8 +307,8 @@ $(function() {
                 {title: "Fecha Compromiso", data: "fecha_compromiso"},
                 {title: "Fecha Creación", data: "fecha_creacion"},
                 {title: "Ingeniero", data: "ingeniero"},
-                {title: "Lista", data: gral.listaObservaciones, visible: false},
-                {title: "Observaciónes dejadas", data: gral.inputObservaciones, visible: false},
+                {title: "Lista", data: gral.listaObservaciones},
+                {title: "Observaciónes dejadas", data: gral.inputObservaciones},
                 {title: "Recurrente", data: "MRC", visible: false},
                 {title: "ultimo envio", data: gral.cant_dias_ultimo_reporte, visible: false},
                 {title: "Opc", data: vista.getButtonsOTP},
@@ -344,6 +344,13 @@ $(function() {
                             }
                         });
                     });
+
+                    columna9 = table.column(9);
+                    columna9.visible(!columna9.visible());
+                    columna10 = table.column(10);
+                    columna10.visible(!columna10.visible());
+
+
                 },
 
                 // Este callback se ejecuta cada vex que hay cambio de pagina, ordenamiento, o cambio en cantidad de registros a mostrar
@@ -1910,7 +1917,7 @@ $(function() {
 
                                 if (obj.cantidad > 0) {
                                     $('#badge_cant_report').html(obj.cantidad);
-                                    $('#pestana_cant_report').removeClass('hidden');
+                                    // $('#pestana_cant_report').removeClass('hidden');
                                 }
                             }
                     );
