@@ -39,12 +39,13 @@ class Dao_email_model extends CI_Model {
         if ($this->email->send()) {
             $return['success'] = true;
             $return['msg']     = 'El correo fue enviado correctamente.';
-            return $return;
         } else {
             $return['success'] = false;
             $return['msg']     = 'Hubo un error al momento de enviar el correo, por favor inténtelo nuevamente.';
-            show_error($this->email->print_debugger() . 'dao model');
+            $return['error'] = $this->email->print_debugger();
+            // show_error($this->email->print_debugger() . 'dao model');
         }
+        return $return;
 
     }
 
