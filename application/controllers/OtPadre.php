@@ -448,7 +448,7 @@ class OtPadre extends CI_Controller {
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Gracias por la atención prestada y quedo atento a sus comentarios.</span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>';
 
-        $res = $this->Dao_email_model->h_enviarCorreo($encabezado . $template . $contacto, $email, 'REPORTE DE ACTUALIZACION DE ACTIVIDADES ' . strtoupper($detCierreOtp->servicio) . ' - ' . $infOtp->n_nombre_cliente . ' / OT ' . substr($asunOtp, 0, -2));
+        $res = $this->Dao_email_model->h_enviarCorreo($encabezado . $template . $contacto, $email, 'REPORTE DE ACTUALIZACION DE ACTIVIDADES ' . strtoupper((isset($detCierreOtp->servicio) ? $detCierreOtp->servicio : $infOtp->servicio)) . ' - ' . $infOtp->n_nombre_cliente . ' / OT ' . substr($asunOtp, 0, -2));
 //        print_r($template);
         echo json_encode($res);
     }
@@ -470,12 +470,16 @@ class OtPadre extends CI_Controller {
     //Trae la dirrecion de cierre de la otp
     public function getDireccionCierreOTP($ids_in) {
         $tabla = '';
+        $dir = '';
         $columWhere = 'id_ot_padre';
         $detCierreOtp = $this->Dao_cierre_ots_model->getDetailsCierreOTP($ids_in);
 
-        $dirService = $this->Dao_cierre_ots_model->getDirServiceByOtp($detCierreOtp->k_id_ot_padre, $detCierreOtp->servicio);
+        if (isset($detCierreOtp->servicio)) {
+            $dirService = $this->Dao_cierre_ots_model->getDirServiceByOtp($detCierreOtp->k_id_ot_padre, $detCierreOtp->servicio);
+            $dir = $dirService->dir;
+        }
 
-        return $dirService->dir;
+        return $dir;
     }
 
 }

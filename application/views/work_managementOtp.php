@@ -1447,19 +1447,6 @@
                                                                         </div>
                                                                         <!--*********************  INPUT DATE  *********************-->
                                                                         <div class="form-group">
-                                                                            <label for="lb_fecha_programacion" class="col-md-3 control-label">Fecha Programación:</label>
-                                                                            <div class="col-md-9 selectContainer">
-                                                                                <div class="input-group">
-                                                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_programacion" id="lb_fecha_programacion" class="form-control validar_required">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </fieldset>
-                                                                    <fieldset class="col-md-6">
-                                                                        <!--*********************  INPUT DATE  *********************-->
-                                                                        <div class="form-group">
                                                                             <label for="lb_fecha_voc" class="col-md-3 control-label">Fecha Visita Obra Civil:</label>
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
@@ -1468,13 +1455,26 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
+                                                                    </fieldset>
+                                                                    <fieldset class="col-md-6">
                                                                         <!--*********************  INPUT DATE  *********************-->
                                                                         <div class="form-group">
-                                                                            <label for="lb_fecha_aprobacion_coc" class="col-md-3 control-label">Fecha Aprobación COC:</label>
+                                                                            <label for="lb_fecha_programacion" class="col-md-3 control-label">Fecha Programación:</label>
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_aprobacion_coc" id="lb_fecha_aprobacion_coc" class="form-control validar_required">
+                                                                                    <input type="date" name="lb_fecha_programacion" id="lb_fecha_programacion" class="form-control validar_required">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--*********************  INPUT DATE  *********************-->
+                                                                        <div class="form-group">
+                                                                            <label for="lb_fecha_dcoc" class="col-md-3 control-label">Fecha documentación cotización obra civil :</label>
+                                                                            <div class="col-md-9 selectContainer">
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                                                    <input type="date" name="lb_fecha_dcoc" id="lb_fecha_dcoc" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1486,14 +1486,15 @@
                                                                     <fieldset class="col-md-6">
                                                                         <!--*********************  INPUT DATE  *********************-->
                                                                         <div class="form-group">
-                                                                            <label for="lb_fecha_ingenieria_detalle" class="col-md-3 control-label">Fecha Ingeniería Detalle:</label>
+                                                                            <label for="lb_fecha_aprobacion_coc" class="col-md-3 control-label">Fecha Aprobación COC:</label>
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_ingenieria_detalle" id="lb_fecha_ingenieria_detalle" class="form-control validar_required">
+                                                                                    <input type="date" name="lb_fecha_aprobacion_coc" id="lb_fecha_aprobacion_coc" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
                                                                         <!--*********************  INPUT DATE  *********************-->
                                                                         <div class="form-group">
                                                                             <label for="lb_fecha_configuracion" class="col-md-3 control-label">Fecha Configuración:</label>
@@ -1508,15 +1509,16 @@
                                                                     </fieldset>
                                                                     <fieldset class="col-md-6">
                                                                         <!--*********************  INPUT DATE  *********************-->
-                                                                        <div class="form-group">
-                                                                            <label for="lb_fecha_ejecucion_obra_civil" class="col-md-3 control-label">Fecha Ejecución Obra Civil:</label>
+                                                                         <div class="form-group">
+                                                                            <label for="lb_fecha_ingenieria_detalle" class="col-md-3 control-label">Fecha Ingeniería Detalle:</label>
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_ejecucion_obra_civil" id="lb_fecha_ejecucion_obra_civil" class="form-control validar_required">
+                                                                                    <input type="date" name="lb_fecha_ingenieria_detalle" id="lb_fecha_ingenieria_detalle" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
                                                                         <!--*********************  INPUT DATE  *********************-->
                                                                         <div class="form-group">
                                                                             <label for="lb_fecha_equipos" class="col-md-3 control-label">Fecha Equipos:</label>
@@ -1544,15 +1546,16 @@
                                                                             </div>
                                                                         </div>
                                                                         <!--*********************  INPUT DATE  *********************-->
-                                                                        <div class="form-group">
-                                                                            <label for="lb_fecha_dcoc" class="col-md-3 control-label">Fecha documentación cotización obra civil :</label>
+                                                                       <div class="form-group">
+                                                                            <label for="lb_fecha_ejecucion_obra_civil" class="col-md-3 control-label">Fecha Ejecución Obra Civil:</label>
                                                                             <div class="col-md-9 selectContainer">
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                                                                    <input type="date" name="lb_fecha_dcoc" id="lb_fecha_dcoc" class="form-control validar_required">
+                                                                                    <input type="date" name="lb_fecha_ejecucion_obra_civil" id="lb_fecha_ejecucion_obra_civil" class="form-control validar_required">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
                                                                     </fieldset>
                                                                     <fieldset class="col-md-6">
                                                                         <!--*********************  INPUT DATE  *********************-->
