@@ -1629,8 +1629,14 @@
                             <input type="text" class="form-control" id="seniorHitos">
                         </div>
                     </div>
+<!--                    <div class="form-group">
+                        <label for="direccionHitos" class="col-sm-2 control-label">Dirección de servicio</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="direccionHitos">
+                        </div>
+                    </div>-->
                     <div class="form-group">
-                        <label for="configuracionHitos" class="col-sm-2 control-label">Configuración</label>
+                        <label for="configuracionHitos" class="col-sm-2 control-label">Nombre del cliente</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="configuracionHitos">
                         </div>
