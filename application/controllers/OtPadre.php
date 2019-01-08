@@ -10,6 +10,7 @@ class OtPadre extends CI_Controller {
         $this->load->model('data/Dao_ot_padre_model');
         $this->load->model('data/Dao_ot_hija_model');
         $this->load->model('data/Dao_email_model');
+        $this->load->model('data/Dao_cierre_ots_model');
     }
 
     // carga la vista para como vamos ot padre
@@ -298,6 +299,7 @@ class OtPadre extends CI_Controller {
         $configuracion = $this->input->post('configuracion');
         $entregaServicio = $this->input->post('entregaServicio');
         $observacionesEmail = $this->input->post('observaciones');
+        $direccionEmail = $this->input->post('direccion');
         $email = Auth::user()->n_mail_user;
         $ingeniero = Auth::user()->n_name_user . ' ' . Auth::user()->n_last_name_user;
         $celIngeniero = Auth::user()->cell_phone;
@@ -305,6 +307,9 @@ class OtPadre extends CI_Controller {
         $template = '';
         $observaciones = '';
         $asunOtp = ' - ';
+        $ids_in = implode(",", $ids_otp);
+        $direccionCierreOtp = $this->getDireccionCierreOTP($ids_in);
+        $detCierreOtp = $this->Dao_cierre_ots_model->getDetailsCierreOTP($ids_in);
 
         foreach ($ids_otp as $idOtp) {
             //actualizar la ultima fecha de envio de reporte de loa ot padre (CAMILO)
@@ -313,6 +318,7 @@ class OtPadre extends CI_Controller {
             $asunOtp .= $idOtp . ' - ';
             $hitosotp = $this->Dao_ot_padre_model->getHitosOtp($idOtp);
             $infOtp = $this->Dao_ot_padre_model->getDetailsHitosOTP($idOtp);
+
             $observaciones = $hitosotp->observaciones_ko . '<br><br>' .
                     $hitosotp->observaciones_voc . '<br><br>' .
                     $hitosotp->observaciones_ec . '<br><br>' .
@@ -407,15 +413,15 @@ class OtPadre extends CI_Controller {
             <p class="x_MsoNormal">&nbsp;</p>
             <p class="x_MsoListParagraph" style="text-indent:-18.0pt; text-autospace:none"><span style="font-family: Symbol, serif, EmojiFont;"><span style=""><span style="font: 7pt &quot;Times New Roman&quot;, serif, EmojiFont;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><strong><span lang="EN-US" style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;OT DESTINO &nbsp;</span></strong><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . substr($asunOtp, 0, -2) . '</span></strong><strong><span lang="EN-US" style="font-family: Arial, sans-serif, serif, EmojiFont;">: </span></strong><span lang="EN-US" style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $infOtp->servicio . ' </span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"><strong></strong></span></p>
             <p class="x_MsoNormal" style="text-autospace:none"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Ciudad: </span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $infOtp->ciudad . '</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
-            <p class="x_MsoNormal" style="text-autospace:none"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Dirección de servicio: </span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $infOtp->direccion . '&nbsp; </span><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></strong></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
-            <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Configuración: &nbsp;</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $configuracion . '<strong></strong></span></p>
+            <p class="x_MsoNormal" style="text-autospace:none"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Dirección de servicio: </span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $direccionCierreOtp . '&nbsp; </span><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></strong></p>
+            <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Cliente: &nbsp;</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $configuracion . '<strong></strong></span></p>
             <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Entrega del servicio:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> ' . $entregaServicio . ' </span><span lang="ES" style="font-family: Arial, sans-serif, serif, EmojiFont;">(Fecha sujeta a cambios en caso de tener algún inconveniente o adelantos en el proceso de instalación). </span><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
-            <p class="x_MsoNormal">&nbsp;</p>
             <p class="x_MsoNormal" style="text-align:justify"><span style="text-decoration:underline"><span lang="ES" style="font-family: Arial, sans-serif, serif, EmojiFont;">De acuerdo a lo anterior, solicitamos de su colaboración confirmado la siguiente información:</span></span></p>
-            <p class="x_MsoNormal" style="text-align:justify"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
             <p class="x_MsoListParagraph" style="text-indent:-18.0pt"><span style="font-family: Symbol, serif, EmojiFont;"><span style="">·<span style="font: 7pt &quot;Times New Roman&quot;, serif, EmojiFont;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-family: Arial, sans-serif, serif, EmojiFont;">' . $observacionesEmail . '</span></p>
             <p class="x_MsoListParagraph"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
+            <br><br>';
+
+        $contacto = '
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Durante todo el Proceso de Instalación puede contactar a:</span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
             <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 1:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> Para cualquier duda o inquietud sobre el proceso.</span></p>
@@ -431,21 +437,18 @@ class OtPadre extends CI_Controller {
             <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Coordinador Estándar: <span style="color:#1f497d">&nbsp;</span>Alejandra Rendon Calderon &nbsp;</span><u></u><u></u></p>
             <p class="MsoNormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Teléfono. 7569858 Ext &nbsp;2008 Celular:</span> 3102129290<u></u><u></u></p>
             <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Correo: <span style="color:#4f81bd"> <a href="mailto:alejandra.rendon.ext@claro.com.co" target="_blank"><span style="color:#4f81bd">alejandra.rendon.ext@claro.<wbr>com.co</span></a> </span></span><u></u><u></u></p>
-            <p class="MsoNormal">53124277<u></u><u></u></p>
-            <p class="MsoNormal"><u></u>&nbsp;<u></u></p>
             <p class="MsoNormal"><u></u>&nbsp;<u></u></p>
             <p class="m_-5751456617445139844xmsonormal" style="text-align:justify"><strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Nivel de Contacto 3:</span></strong><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto &nbsp;1.</span><u></u><u></u></p>
             <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Coordinador Estándar: &nbsp;Maria Marcela Rojas<u></u><u></u></span></p>
             <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Teléfono.7500300&nbsp; Ext 83037 &nbsp;&nbsp;Celular 3133337675<u></u><u></u></span></p>
             <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">Correo: <a href="mailto:maria.rojasa@claro.com.co" target="_blank"> maria.rojasa@claro.com.co</a><u></u><u></u></span></p>
-            <p class="m_-5751456617445139844xmsonormal"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;">53122402<u></u><u></u></span></p>
             <p class="MsoNormal"><u></u>&nbsp;<u></u></p>
 
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: rgb(31, 73, 125);">&nbsp;</span></p>
             <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Gracias por la atención prestada y quedo atento a sus comentarios.</span></p>
-            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p><br><br>';
+            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>';
 
-        $res = $this->Dao_email_model->h_enviarCorreo($encabezado . $template, $email, 'REPORTE DE ACTUALIZACION DE ACTIVIDADES SOLUCIONES ADMINISTRADAS - ' . $infOtp->n_nombre_cliente . ' / OT ' . substr($asunOtp, 0, -2));
+        $res = $this->Dao_email_model->h_enviarCorreo($encabezado . $template . $contacto, $email, 'REPORTE DE ACTUALIZACION DE ACTIVIDADES ' . strtoupper((isset($detCierreOtp->servicio) ? $detCierreOtp->servicio : $infOtp->servicio)) . ' - ' . $infOtp->n_nombre_cliente . ' / OT ' . substr($asunOtp, 0, -2));
 //        print_r($template);
         echo json_encode($res);
     }
@@ -464,18 +467,19 @@ class OtPadre extends CI_Controller {
         echo json_encode($otPadreCount);
     }
 
+    //Trae la dirrecion de cierre de la otp
+    public function getDireccionCierreOTP($ids_in) {
+        $tabla = '';
+        $dir = '';
+        $columWhere = 'id_ot_padre';
+        $detCierreOtp = $this->Dao_cierre_ots_model->getDetailsCierreOTP($ids_in);
+
+        if (isset($detCierreOtp->servicio)) {
+            $dirService = $this->Dao_cierre_ots_model->getDirServiceByOtp($detCierreOtp->k_id_ot_padre, $detCierreOtp->servicio);
+            $dir = $dirService->dir;
+        }
+
+        return $dir;
+    }
+
 }
-
-
- // <p class="x_MsoNormal" style="text-align:justify"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 2:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto 1.</span></p>            
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Coordinador Estándar: <span style="color:#1F497D">&nbsp;</span>Alejandra Rendon Calderon &nbsp;</span></p>
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Teléfono. 7569858 Ext &nbsp;2008 Celular: </span> 3102129290</p>
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo: <span style="color:#4F81BD"><a href="mailto:alejandra.rendon.ext@claro.com.co" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">alejandra.rendon.ext@claro.com.co</span></a> </span></span></p>
- //            <p>53124277</p>
-
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">&nbsp;</span></p>
- //            <p class="x_MsoNormal"><strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Nivel de Contacto 3:</span></strong><span style="font-family: Arial, sans-serif, serif, EmojiFont;"> En caso de que no se obtenga respuesta por parte del Nivel de Contacto 2.</span></p>
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Ingeniero Implementación Claro: </span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: rgb(31, 73, 125);">&nbsp;</span><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Vivian Rodriguez</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Ingeniero Aprovisionamiento Estándar</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont; color: black;">Celular: 3138892717</span><span style="font-family: Arial, sans-serif, serif, EmojiFont;"></span></p>
- //            <p class="x_MsoNormal"><span style="font-family: Arial, sans-serif, serif, EmojiFont;">Correo electrónico: <span style="color:#4F81BD"><a href="mailto:vivian.rodriguez@claro.com.co" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable"><span style="color:#4F81BD">vivian.rodriguez@claro.com.co</span></a></span><span style="color:black">&nbsp;</span></span></p> 

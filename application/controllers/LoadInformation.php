@@ -105,6 +105,8 @@ class LoadInformation extends CI_Controller {
             PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
 
             try {
+                //se envia el reporte automatico
+                $this->enviar_correo_cant_reportes_actualizacion();
 
                 // envio de reportte automatico semanal...
                 // $res_mail = $this->enviar_correo_cant_reportes_actualizacion();
@@ -146,7 +148,7 @@ class LoadInformation extends CI_Controller {
                     //valido si el id del excel existe en la base de datos
                     $exist = $this->Dao_ot_hija_model->getExistIdOtHija($this->getValueCell($sheet, 'AW' . $row));
 
-                    /*                     * ****************validacion para remplazar una oth creada manualmente***************** */
+                    /******************validacion para remplazar una oth creada manualmente******************/
                     if ($exist) {
                         if ($exist['b_flag'] == 1) {
                             $this->actualizar_ot_padre($sheet, $row, $list_inges);
@@ -154,7 +156,7 @@ class LoadInformation extends CI_Controller {
                             $exist = false;
                         }
                     }
-                    /*                     * **************************fin validacion*************************** */
+                    /****************************fin validacion****************************/
 
                     // si existe...
                     if ($exist) {
@@ -496,7 +498,7 @@ class LoadInformation extends CI_Controller {
         $delete = $this->Dao_ot_hija_model->delete_oth($id_oth);
     }
 
-    /*     * ****************CREAR OT MANUALMENTE***************** */
+    /******************CREAR OT MANUALMENTE******************/
 
     // Cargar vistas manualmente
     public function crear_orden() {
@@ -662,6 +664,7 @@ class LoadInformation extends CI_Controller {
                     'ano'    => $ano,
                     'fecha'  => $date,
                 );
+
 
                 $insert = $this->Dao_email_model->insert_reporte_automatico($report);
             }

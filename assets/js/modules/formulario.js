@@ -19,17 +19,18 @@ $(function() {
             });
 
             // funcion para duplicar referencia y cantidad
-            $('#formModal').on('click', 'span#añadir_seccion_ref_cant', function(){
+            $('#formModal').on('click', 'span#añadir_seccion_ref_cant', function() {
                 helper.duplicar_seccion($('#duplicar_ref_cant'), $('#aca_ref_cant'));
             })
 
             // funcion para remover seccion del form con el boton menos
             $('#formModal').on('click', 'span.remover_seccion', helper.remover_seccion);
 
-            //validacion al darle click al boton actualizar del formulario 
+            //validacion al darle click al boton actualizar del formulario
             $('#btnUpdOt').on('click', formulario.validarFormulario);
             // evento del check para mpls fomr origen form destino
             $('#formModal').on('change', 'input#checking', formulario.toggle_origen_destino);
+            $('#lb_fecha_cierreKo').on('change', formulario.calcularLineaBase);
         },
 
         // formulario tabs vertical
@@ -108,13 +109,14 @@ $(function() {
                 $('#id_ot_modal_edit_oth').text(registro.id_orden_trabajo_hija);
                 // ocultar select se servicio y mostrar modal
                 $('.ins_servicio').hide();
+                formulario.calcularLineaBase();
                 $('#modalEditTicket').modal('show');
                 // llear el select
                 formulario.fillSelect(registro.k_id_tipo, registro.k_id_estado_ot, registro.i_orden);
                 // si el tipo de la ot es KO validamos el select por si es cerrado
                 if (registro.k_id_tipo == 1) {
                     $('#k_id_estado_ot').on('change', function() {
-                        //argumentos para pasar a los templates 
+                        //argumentos para pasar a los templates
                         const arg = {
                             otp: registro.k_id_ot_padre
                         };
@@ -127,7 +129,7 @@ $(function() {
         // mostrar select de servicios
         cierreKickOf: function(nombre_cliente, direccion_destino, arg) {
             $('#general_servicio').html("");
-            // si se lecciona la opcion cerrada 
+            // si se lecciona la opcion cerrada
             if ($('#k_id_estado_ot').val() == 3) {
                 $('#btnUpdOt').attr('disabled', true);
                 // mostrar el select de servicios
@@ -237,7 +239,7 @@ $(function() {
             $.post(baseurl + "/User/c_getStatusByType", {
                 idtipo: idtipo
             }, function(data) {
-                
+
                 // Decodifica el objeto traido desde el controlador
                 var status = JSON.parse(data);
                 // Pinto el select de estado
@@ -289,31 +291,31 @@ $(function() {
                 // }
                 const email_user = helper.inSession('n_mail_user');
 
-                    swal({
-                        title: "Desea Guardar?",
-                        html: (val_estado <= 23) ? `La información se enviará al correo <br> <b>${email_user}</b>` : '',
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sí, Continuar!',
-                        cancelButtonText: 'Cancelar!',
-                    }).then((continuar) => {
-                
+                swal({
+                    title: "Desea Guardar?",
+                    html: (val_estado <= 23) ? `La información se enviará al correo <br> <b>${email_user}</b>` : '',
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, Continuar!',
+                    cancelButtonText: 'Cancelar!',
+                }).then((continuar) => {
+
                     if (continuar.value) {
-                        //valida si la opcion no tiene reporte reinicio(correo) y la dijire a otro controlador, 
+                        //valida si la opcion no tiene reporte reinicio(correo) y la dijire a otro controlador,
                         //el cual solo actualiza la oth y no envia correo
-                        if (val_estado > 23)  { 
+                        if (val_estado > 23) {
 
                             $('#formModal').attr('action', baseurl + '/Templates/c_updateStatusOtEspeciales');
                             $('#btnUpdOt').attr('disabled', false);
                             $('#formModal').submit();
 
-                        }else{
+                        } else {
 
                             $('#formModal').submit();
 
-                         }
+                        }
 
                     } else {
                         helper.miniAlert();
@@ -361,7 +363,7 @@ $(function() {
 
                 } else {
                     $('#mpls_punto_origen').html(setForm.formProduct_mpls_form_origen());
-                }                
+                }
                 $('#pestana_puto_origen').show(300);
                 $('#is_origen').val('1');
             } else {
@@ -373,6 +375,41 @@ $(function() {
 
         },
         //************ fin formulario de edicion oth ***************//
+        // calcula la linea base de acuerdo a la fecha de cierre de KO
+        calcularLineaBase: function() {
+            const fecha_cierreKO = $('#lb_fecha_cierreKo').val();
+            const fecha_compromiso = formulario.calcular_nueva_fecha(fecha_cierreKO, 20);
+            const fecha_voc = formulario.calcular_nueva_fecha(fecha_cierreKO, 2);
+            const fecha_dcoc = formulario.calcular_nueva_fecha(fecha_voc, 2);
+            const fecha_aprobacion_coc = formulario.calcular_nueva_fecha(fecha_dcoc, 3);
+            const fecha_ingenieria_detalle = formulario.calcular_nueva_fecha(fecha_aprobacion_coc, 2);
+            const fecha_configuracion = formulario.calcular_nueva_fecha(fecha_aprobacion_coc, 3);
+            const fecha_ejecucion_obra_civil = formulario.calcular_nueva_fecha(fecha_aprobacion_coc, 5);
+            const fecha_empalmes = formulario.calcular_nueva_fecha(fecha_cierreKO, 18);
+
+            $('#lb_fecha_compromiso').val(fecha_compromiso);
+            $('#lb_fecha_programacion').val(fecha_compromiso);
+            $('#lb_fecha_voc').val(fecha_voc);
+            $('#lb_fecha_dcoc').val(fecha_dcoc);
+            $('#lb_fecha_aprobacion_coc').val(fecha_aprobacion_coc);
+            $('#lb_fecha_ingenieria_detalle').val(fecha_ingenieria_detalle);
+            $('#lb_fecha_configuracion').val(fecha_configuracion);
+            $('#lb_fecha_equipos').val(fecha_configuracion);
+            $('#lb_fecha_ejecucion_obra_civil').val(fecha_ejecucion_obra_civil);
+            $('#lb_fecha_empalmes').val(fecha_empalmes);
+            $('#lb_fecha_entrega_servicio').val(fecha_compromiso);
+        },
+        //retorna fecha sumando X dias habiles (la fecha base debe tener el formato yyyy-mm-dd)
+        calcular_nueva_fecha: function(fecha_base, dias_h) {
+
+            while (dias_h > 0) {
+                fecha_base = helper.formatDate(helper.sumar_o_restar_dias_a_fecha(fecha_base));
+                if (!helper.validar_domingo_festivo(fecha_base)) {
+                    dias_h--;
+                }
+            }
+            return fecha_base;
+        }
     };
     formulario.init();
 });
