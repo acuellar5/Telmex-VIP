@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->load->model('data/Dao_user_model');
         $this->load->model('data/Dao_ot_hija_model');
@@ -14,8 +14,8 @@ class User extends CI_Controller {
 
     private function validUser($request) {
         return Auth::attempt([
-                    "n_username_user" => $request->username,
-                    "n_password" => $request->password,
+            "n_username_user" => $request->username,
+            "n_password"      => $request->password,
         ]);
     }
 
@@ -33,9 +33,8 @@ class User extends CI_Controller {
                 $this->session->unset_userdata('date_min_fact');
             }
 
-
             $data_session = array(
-                'date_min_fact' => $this->Dao_cierre_ots_model->get_date_min_facturada()
+                'date_min_fact' => $this->Dao_cierre_ots_model->get_date_min_facturada(),
             );
             $this->session->set_userdata($data_session);
 
@@ -56,11 +55,11 @@ class User extends CI_Controller {
 
     //
     private function load_principal($roll, $proyecto = 'Gestion') {
-        $data['title'] = 'Principal';
-        $data['last_time'] = $this->Dao_ot_hija_model->get_last_time_import();
-        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $data['title']      = 'Principal';
+        $data['last_time']  = $this->Dao_ot_hija_model->get_last_time_import();
+        $data['cantidad']   = $this->Dao_ot_hija_model->getCantUndefined();
         $data['ingenieros'] = $this->Dao_user_model->get_eng_trabajanding();
-        $data['title'] = 'OTP'; // cargar el  titulo en la pestaña de la pagina para otp
+        $data['title']      = 'OTP'; // cargar el  titulo en la pestaña de la pagina para otp
         $this->load->view('parts/headerF', $data);
         if ($proyecto === 'Gestion') {
             if ($roll == 'clarocc') {
@@ -102,8 +101,8 @@ class User extends CI_Controller {
         }
 
         $data['registros'] = $this->Dao_ot_hija_model->getCountsSumary();
-        $data['title'] = 'Home';
-        $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
+        $data['title']     = 'Home';
+        $data['cantidad']  = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('principal');
         $this->load->view('parts/footerF');
@@ -118,7 +117,7 @@ class User extends CI_Controller {
             $this->load->view('principal', ["stadistics" => $daoEvaluador->getAllStadistics()->data]);
         } else {
 
-            $data['title'] = 'VerificacionRouting';
+            $data['title']    = 'VerificacionRouting';
             $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
             $this->load->view('parts/headerF', $data);
             $this->load->view('dataValidation');
@@ -130,7 +129,7 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-        $data['title'] = 'Cargar OTS';
+        $data['title']    = 'Cargar OTS';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('loadInformation');
@@ -141,7 +140,7 @@ class User extends CI_Controller {
         if (!Auth::check()) {
             Redirect::to(URL::base());
         }
-        $data['title'] = 'Marcaciones';
+        $data['title']    = 'Marcaciones';
         $data['cantidad'] = $this->Dao_ot_hija_model->getCantUndefined();
         $this->load->view('parts/headerF', $data);
         $this->load->view('markings');
@@ -154,7 +153,6 @@ class User extends CI_Controller {
         $prefijos = $this->input->post('pref');
         // header('Content-Type: text/plain');
         // print_r($prefijos);
-
 
         for ($i = 0; $i < count($prefijos); $i++) {
             if (is_numeric($prefijos[$i][3])) {
@@ -174,11 +172,8 @@ class User extends CI_Controller {
             $j++;
         }
 
-
         $data['huawei_zte'] = $this->getDialingHuaweiZte($res, $pref);
-        $data['alcatel'] = $this->getDialingAlcatel($res, $pref);
-
-
+        $data['alcatel']    = $this->getDialingAlcatel($res, $pref);
 
         // echo json_encode($data);
         $this->json($data);
@@ -189,7 +184,7 @@ class User extends CI_Controller {
         $respuesta = "";
         for ($i = 0; $i < count($res); $i++) {
             $string[$i] = $res[$i];
-            $flag = 0;
+            $flag       = 0;
             sort($pref[$res[$i]]);
             //RECORRE EL ARREGLO
             for ($j = 0; $j < count($pref[$res[$i]]); $j++) {
@@ -217,8 +212,6 @@ class User extends CI_Controller {
                                     //     $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j]).",";
                                     // }
 
-
-
                                     $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . "_";
                                 } else {
 
@@ -231,7 +224,6 @@ class User extends CI_Controller {
                                     // }else{
                                     //    $string[$i] = $string[$i].$pref[$res[$i]][$j].",";
                                     // }
-
 
                                     $string[$i] = $string[$i] . $pref[$res[$i]][$j] . "_";
                                 }
@@ -280,7 +272,7 @@ class User extends CI_Controller {
         $respuesta = "";
         for ($i = 0; $i < count($res); $i++) {
             $string[$i] = $res[$i];
-            $flag = 0;
+            $flag       = 0;
             sort($pref[$res[$i]]);
             //RECORRE EL ARREGLO
             for ($j = 0; $j < count($pref[$res[$i]]); $j++) {
@@ -310,8 +302,6 @@ class User extends CI_Controller {
                                         $string[$i] = $string[$i] . $this->delecteCoinci($pref[$res[$i]][$j - 1], $pref[$res[$i]][$j]) . ",";
                                     }
 
-
-
                                     // $string[$i] = $string[$i].$this->delecteCoinci($pref[$res[$i]][$j-1], $pref[$res[$i]][$j])."_";
                                 } else {
 
@@ -326,7 +316,6 @@ class User extends CI_Controller {
                                     } else {
                                         $string[$i] = $string[$i] . $pref[$res[$i]][$j] . ",";
                                     }
-
 
                                     // $string[$i] = $string[$i].$pref[$res[$i]][$j]."_";
                                 }
@@ -376,7 +365,7 @@ class User extends CI_Controller {
     public function delecteCoinci($num1, $num2) {
         $num1 .= "";
         $num2 .= "";
-        $flag = 0;
+        $flag   = 0;
         $string = "";
 
         while (isset($num1[$flag]) && isset($num2[$flag])) {
@@ -398,16 +387,26 @@ class User extends CI_Controller {
 
     //
     public function prueba() {
-        $var = "0";
+        $a = array(
+            'esto',
+            'lo otro',
+            'casa'   => 'verde',
+            'saludo' => 'hola',
+            'jorge'  => 'algo',
+            '0' => 'xxxx',
+            'prueba'
 
-        if ($var) {
-        echo 'verdadero';
+        );
 
-        } else {
-        echo 'falso';
-        }
+        echo '<pre>'; print_r($a); echo '</pre>';
+        $a = [55,25,87,418,5,874,58];
 
+        // foreach ($a as $key => $value) {
+        //     echo '<pre>'; print_r($key); echo '</pre>';
+        //     # code...
+        // }
 
+        // print_r($a);
 
     }
 
@@ -425,7 +424,7 @@ class User extends CI_Controller {
     public function c_hide_inconsistency() {
         $data = array(
             'k_id_inconsistencia' => $this->input->post('k_id_inconsistencia'),
-            'estado_ver' => 0,
+            'estado_ver'          => 0,
         );
         $this->Dao_ot_hija_model->upVerTo_0();
         echo json_encode($data);

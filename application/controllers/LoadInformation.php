@@ -106,6 +106,9 @@ class LoadInformation extends CI_Controller {
 
             try {
 
+                // envio de reportte automatico semanal...
+                // $res_mail = $this->enviar_correo_cant_reportes_actualizacion();
+                
                 $inputFileType = PHPExcel_IOFactory::identify($file);
                 $objReader     = PHPExcel_IOFactory::createReader($inputFileType);
                 $objReader->setReadDataOnly(true);
@@ -371,7 +374,6 @@ class LoadInformation extends CI_Controller {
                 if (($limit - $row) >= 2) {
                     $response->setCode(2);
                     $this->insertar_cierre_ots();
-                    $res_mail = $this->enviar_correo_cant_reportes_actualizacion();
                 }
 
                 $response->setData([
