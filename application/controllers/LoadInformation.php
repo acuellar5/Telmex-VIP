@@ -106,7 +106,7 @@ class LoadInformation extends CI_Controller {
 
             try {
                 //se envia el reporte automatico
-                $this->enviar_correo_cant_reportes_actualizacion();
+                // $this->enviar_correo_cant_reportes_actualizacion();
 
                 // envio de reportte automatico semanal...
                 // $res_mail = $this->enviar_correo_cant_reportes_actualizacion();
@@ -373,6 +373,7 @@ class LoadInformation extends CI_Controller {
                     $row++;
                 }
 
+                
                 if (($limit - $row) >= 2) {
                     $response->setCode(2);
                     $this->insertar_cierre_ots();

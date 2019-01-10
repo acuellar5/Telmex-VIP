@@ -378,7 +378,7 @@ $(function() {
         // calcula la linea base de acuerdo a la fecha de cierre de KO
         calcularLineaBase: function() {
             const fecha_cierreKO = $('#lb_fecha_cierreKo').val();
-            const fecha_compromiso = formulario.calcular_nueva_fecha(fecha_cierreKO, 20);
+            const fecha_compromiso = formulario.calcular_compromiso(fecha_cierreKO);
             const fecha_voc = formulario.calcular_nueva_fecha(fecha_cierreKO, 2);
             const fecha_dcoc = formulario.calcular_nueva_fecha(fecha_voc, 2);
             const fecha_aprobacion_coc = formulario.calcular_nueva_fecha(fecha_dcoc, 3);
@@ -409,7 +409,21 @@ $(function() {
                 }
             }
             return fecha_base;
-        }
+        }, 
+
+        // Calcular la fecha de compromiso (caso especial)
+        calcular_compromiso: function(fecha_base){
+            const veinte = helper.sumar_o_restar_dias_a_fecha(fecha_base, 20);
+            const numDiaSem = veinte.getDay();
+            if (numDiaSem == 6) {
+                return helper.formatDate(helper.sumar_o_restar_dias_a_fecha(helper.formatDate(veinte), -1));
+            } else if(helper.validar_domingo_festivo(fecha_base)){
+                // calcular siguiente fecha habil
+                return formulario.calcular_nueva_fecha(fecha_base, 1)
+            } else {
+                return fecha_base;
+            }
+        },
     };
     formulario.init();
 });
